@@ -48,7 +48,7 @@ class EstablishmentRepository extends EstablishmentInterface {
   }
 
   @override
-  Future<int> setNew(EstablecimientoEntity establecimiento) async {
+  Future<String> setNew(EstablecimientoEntity establecimiento) async {
     final url = Uri.https(urlBase, '/api/client/establishment');
 
     http.Response response = await http.post(
@@ -56,9 +56,12 @@ class EstablishmentRepository extends EstablishmentInterface {
       headers: headersToken(),
       body: jsonEncode(establecimiento),
     );
-    print(response.statusCode);
-    print(response.body);
 
-    return 1;
+    var data = jsonDecode(response.body);
+
+    print(data);
+    print(data['id']);
+
+    return data['id'];
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/app/menu.dart';
-
 import 'establecimientos/vetsView.dart';
 
 class StablishmentsPageApp extends StatelessWidget {
@@ -15,7 +14,7 @@ class StablishmentsPageApp extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_rounded),
-        onPressed: () => Get.toNamed('/stablishments/create'),
+        onPressed: () => Get.toNamed('/establishments/create'),
       ),
       body: VetsView(),
     );

@@ -26,7 +26,7 @@ class NameRoutes {
   static final String attentions = '/attentions';
   static final String stats = '/stats';
   static final String offers = '/offers';
-  static final String stablishments = '/stablishments';
+  static final String establishments = '/establishments';
   static final String workers = '/workers';
   static final String config = '/config';
 }
@@ -83,13 +83,14 @@ abstract class AppPages {
       // ],
     ),
     GetPage(
-      name: NameRoutes.stablishments,
+      name: NameRoutes.establishments,
       page: () => StablishmentsMain(),
       middlewares: [GlobalMiddleware()],
       children: [
         GetPage(
           name: '/create',
           page: () => CreateVetMain(),
+          // binding:
         ),
         GetPage(
           name: '/show',
