@@ -29,7 +29,7 @@ List<dynamic> dataMenu = [
   {
     'icon': Icons.home_work_rounded,
     'name': 'Establecimientos',
-    'page': '/stablishments',
+    'page': '/establishments',
   },
   {
     'icon': Icons.people_rounded,

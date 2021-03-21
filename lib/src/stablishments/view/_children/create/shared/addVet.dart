@@ -98,7 +98,7 @@ class AddVet extends StatelessWidget {
                                           Duration(milliseconds: 3000),
                                           () {
                                             _.v.checked = false;
-                                            Get.toNamed('/stablishments/show');
+                                            Get.toNamed('/establishments/show');
                                           },
                                         );
                                       },

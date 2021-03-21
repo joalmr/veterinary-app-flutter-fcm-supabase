@@ -13,7 +13,7 @@ class BodyAddVet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CreateVetController>(
+    return GetX<CreateVetController>(
       builder: (_) {
         return Column(
           children: [

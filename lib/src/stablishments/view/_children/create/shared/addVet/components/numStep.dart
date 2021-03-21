@@ -27,6 +27,7 @@ class NumStep extends StatelessWidget {
                   '${_.v.selected} / 4',
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
+                    color: Colors.black38,
                     fontSize: 15,
                   ),
                 ),

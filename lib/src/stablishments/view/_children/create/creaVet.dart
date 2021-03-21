@@ -8,6 +8,7 @@ class CreateVetMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CreateVetController>(
+      init: CreateVetController(),
       builder: (_) {
         return context.width > 900 ? CreaVetPage() : CreaVetView();
       },
