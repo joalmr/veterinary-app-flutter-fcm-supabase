@@ -26,8 +26,14 @@ class CreateVetController extends GetxController {
   newEstablishment() => _newEstablishment();
 
   _newEstablishment() async {
+    print('new vet');
     var arr = [1, 2, 3];
 
+    // entity.name = 'A';
+    // entity.phone = '988111222';
+    // entity.ruc = '12345678901';
+    // entity.website = 'www.proypet.com';
+    //
     entity.typeId = 1;
     entity.address = "Misionero Salas 529, Callao, Perú";
     entity.latitude = 0;

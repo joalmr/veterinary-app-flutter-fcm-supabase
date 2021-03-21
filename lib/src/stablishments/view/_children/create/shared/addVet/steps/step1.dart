@@ -20,12 +20,15 @@ class Step1 extends StatelessWidget {
               SizedBox(height: 5),
               Text('Teléfono'),
               TextFormField(
+                keyboardType: TextInputType.number,
                 onChanged: (val) => _.entity.phone = val,
               ),
               SizedBox(height: 5),
               Text('RUC'),
               TextFormField(
                 onChanged: (val) => _.entity.ruc = val,
+                keyboardType: TextInputType.number,
+                maxLength: 11,
               ),
               SizedBox(height: 5),
               Text('Web o red social'),
