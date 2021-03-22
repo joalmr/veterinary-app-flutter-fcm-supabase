@@ -15,6 +15,7 @@ class Step4 extends StatelessWidget {
             children: [
               Text('Descripción'),
               TextFormField(
+                onChanged: (val) => _.v.description = val,
                 maxLines: 10,
               ),
             ],

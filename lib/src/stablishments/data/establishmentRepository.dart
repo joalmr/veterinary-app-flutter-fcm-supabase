@@ -3,14 +3,16 @@ import 'package:http/http.dart' as http;
 import 'package:vet_app/assets/utils/headerHttp.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/src/stablishments/data/model/establishmentModel.dart';
-import 'package:vet_app/src/stablishments/data/establishmentEntity.dart';
+import 'package:vet_app/src/stablishments/data/entity/establishmentEntity.dart';
+import 'package:vet_app/src/stablishments/data/model/serviceModel.dart';
 
+import 'entity/priceEstEntity.dart';
 import 'establishmentInterface.dart';
 
 class EstablishmentRepository extends EstablishmentInterface {
   @override
   Future<List<EstablecimientoModel>> getAll() async {
-    final url = Uri.https(urlBase, '/api/client/establishments');
+    final url = Uri.https(urlBase, '$pathBase/establishments');
 
     http.Response response = await http.get(url, headers: headersToken());
 
@@ -24,7 +26,7 @@ class EstablishmentRepository extends EstablishmentInterface {
 
   @override
   Future<EstablecimientoModel> getById(String idVet) async {
-    final url = Uri.https(urlBase, '/api/client/establishment/$idVet');
+    final url = Uri.https(urlBase, '$pathBase/establishment/$idVet');
     http.Response response = await http.get(url, headers: headersToken());
 
     EstablecimientoModel establecimiento =
@@ -35,7 +37,7 @@ class EstablishmentRepository extends EstablishmentInterface {
 
   @override
   Future<EstablecimientoModel> getFirst() async {
-    final url = Uri.https(urlBase, '/api/client/establishments');
+    final url = Uri.https(urlBase, '$pathBase/establishments');
 
     http.Response response = await http.get(url, headers: headersToken());
 
@@ -48,8 +50,9 @@ class EstablishmentRepository extends EstablishmentInterface {
   }
 
   @override
-  Future<String> setNew(EstablecimientoEntity establecimiento) async {
-    final url = Uri.https(urlBase, '/api/client/establishment');
+  Future<List<dynamic>> setNew(EstablecimientoEntity establecimiento) async {
+    final url = Uri.https(urlBase, '$pathBase/establishment');
+    var lista = [];
     print(jsonEncode(establecimiento));
     http.Response response = await http.post(
       url,
@@ -59,8 +62,88 @@ class EstablishmentRepository extends EstablishmentInterface {
 
     var data = jsonDecode(response.body);
 
-    print(data);
+    lista.add(response.statusCode);
+    lista.add(data['id']);
 
-    return 'abc';
+    return lista;
+  }
+
+  @override
+  Future<String> setPrices(
+    String establecimientoId,
+    PriceEstablecimientoEntity precios,
+  ) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/prices',
+    );
+
+    print(jsonEncode(precios));
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(precios),
+    );
+
+    var data = jsonDecode(response.body);
+
+    print(data);
+    return 'asd';
+  }
+
+  @override
+  Future<String> setSchedule(String establecimientoId, horarios) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/schedule',
+    );
+
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(horarios),
+    );
+
+    var data = jsonDecode(response.body);
+
+    print(data);
+    return 'asd';
+  }
+
+  @override
+  Future<String> setDescription(
+      String establecimientoId, String description) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/description',
+    );
+
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(description),
+    );
+
+    var data = jsonDecode(response.body);
+
+    print(data);
+    return 'asd';
+  }
+
+  @override
+  Future<List<ServiceVetModel>> getServiceVet() async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/services',
+    );
+
+    http.Response response = await http.get(
+      url,
+      headers: headersToken(),
+    );
+
+    var data = serviceVetModelFromJson(response.body);
+
+    return data;
   }
 }

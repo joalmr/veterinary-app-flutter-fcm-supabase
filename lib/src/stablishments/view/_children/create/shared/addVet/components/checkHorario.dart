@@ -14,6 +14,9 @@ class CheckHorario extends StatefulWidget {
 class _CheckHorarioState extends State<CheckHorario> {
   bool valueCheck = false;
 
+  final iniciaController = TextEditingController();
+  final finController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,9 +53,26 @@ class _CheckHorarioState extends State<CheckHorario> {
             ],
           ),
           valueCheck
-              ? TextFormField(
-                  enabled: valueCheck,
-                  keyboardType: TextInputType.number,
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Inicio'),
+                    SizedBox(height: 2.5),
+                    TextFormField(
+                      controller: iniciaController,
+                      enabled: valueCheck,
+                      keyboardType: TextInputType.number,
+                    ),
+                    SizedBox(height: 5),
+                    Text('Fin'),
+                    SizedBox(height: 2.5),
+                    TextFormField(
+                      enabled: iniciaController.text.isNotEmpty ? true : false,
+                      keyboardType: TextInputType.number,
+                    ),
+                    SizedBox(height: 5),
+                  ],
                 )
               : SizedBox(height: 0),
         ],

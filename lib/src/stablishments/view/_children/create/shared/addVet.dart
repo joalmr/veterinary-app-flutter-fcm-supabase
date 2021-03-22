@@ -6,7 +6,7 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:lottie/lottie.dart';
 import 'package:vet_app/src/stablishments/domain/createVetController.dart';
-import 'addVet/bodyAddVet.dart';
+import '../app/bodyAddVet.dart';
 import 'addVet/components/bodyStep.dart';
 import 'addVet/components/headerStep.dart';
 

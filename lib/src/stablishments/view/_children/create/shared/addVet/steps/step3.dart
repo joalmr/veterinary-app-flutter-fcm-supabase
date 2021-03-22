@@ -1,4 +1,3 @@
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/assets/utils/diaSemana.dart';
@@ -45,28 +44,33 @@ class Step3 extends StatelessWidget {
               Divider(),
               Text('Consulta'),
               TextFormField(
-                inputFormatters: [CurrencyTextInputFormatter(symbol: 'S/ ')],
+                onChanged: (val) {
+                  print(val);
+                  print(_.v.moneyConsulta.numberValue);
+                },
+                controller: _.v.moneyConsulta,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 5),
               Text('Desparasitación'),
               TextFormField(
-                inputFormatters: [CurrencyTextInputFormatter(symbol: 'S/ ')],
+                controller: _.v.moneyDesparasita,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 5),
               Text('Vacuna'),
               TextFormField(
-                inputFormatters: [CurrencyTextInputFormatter(symbol: 'S/ ')],
+                controller: _.v.moneyVacuna,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 5),
               Text('Grooming'),
               TextFormField(
-                inputFormatters: [CurrencyTextInputFormatter(symbol: 'S/ ')],
+                controller: _.v.moneyGrooming,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 5),
+              SizedBox(height: 20),
             ],
           ),
         );
