@@ -86,6 +86,36 @@ class EstablishmentRepository extends EstablishmentInterface {
   }
 
   @override
+  Future<String> setEmployee(
+    String establecimientoId,
+    int typeId,
+    String name,
+    String code,
+  ) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/employee',
+    );
+
+    final employee = {
+      "type_id": typeId,
+      "name": name,
+      "code": code,
+    };
+
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(employee),
+    );
+
+    var data = jsonDecode(response.body);
+
+    print(data);
+    return 'asd';
+  }
+
+  @override
   Future<String> setPrices(
     String establecimientoId,
     PriceEstablecimientoEntity precios,

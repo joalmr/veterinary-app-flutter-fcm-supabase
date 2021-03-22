@@ -6,6 +6,12 @@ import 'model/serviceModel.dart';
 abstract class EstablishmentInterface {
   Future<List<ServiceVetModel>> getServiceVet();
   Future<List<dynamic>> setNew(EstablecimientoEntity establecimiento);
+  Future<String> setEmployee(
+    String establecimientoId,
+    int typeId,
+    String name,
+    String code,
+  );
   Future<String> setPrices(
     String establecimientoId,
     PriceEstablecimientoEntity precios,

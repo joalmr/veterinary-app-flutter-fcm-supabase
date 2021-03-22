@@ -58,7 +58,7 @@ class _CheckHorarioState extends State<CheckHorario> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Inicio'),
-                    SizedBox(height: 2.5),
+                    // SizedBox(height: 2.5),
                     TextFormField(
                       controller: iniciaController,
                       enabled: valueCheck,
@@ -66,7 +66,7 @@ class _CheckHorarioState extends State<CheckHorario> {
                     ),
                     SizedBox(height: 5),
                     Text('Fin'),
-                    SizedBox(height: 2.5),
+                    // SizedBox(height: 2.5),
                     TextFormField(
                       enabled: iniciaController.text.isNotEmpty ? true : false,
                       keyboardType: TextInputType.number,

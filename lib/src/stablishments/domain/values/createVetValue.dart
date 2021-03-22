@@ -24,7 +24,7 @@ class CreateVetValue {
   String get vetType => _vetType.value;
   set vetType(String value) => _vetType.value = value;
 
-  RxString _personalType = '1'.obs;
+  RxString _personalType = '2'.obs;
   String get personalType => _personalType.value;
   set personalType(String value) => _personalType.value = value;
 
