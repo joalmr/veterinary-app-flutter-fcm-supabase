@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stablishments/data/entity/establishmentEntity.dart';
 import 'package:vet_app/src/stablishments/data/entity/priceEstEntity.dart';
 import 'package:vet_app/src/stablishments/data/establishmentRepository.dart';
@@ -91,6 +92,12 @@ class CreateVetController extends GetxController {
 
   validaStep1() {
     if (ename || ephone || eruc || eweb || eservices) {
+      Get.snackbar(
+        'Error',
+        'Llene todos los campos',
+        backgroundColor: colorRed.withAlpha(180),
+        colorText: colorRed3,
+      );
     } else {
       if (v.selected < 4) v.selected++;
     }
