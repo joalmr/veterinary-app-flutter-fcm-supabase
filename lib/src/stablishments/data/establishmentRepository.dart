@@ -50,6 +50,23 @@ class EstablishmentRepository extends EstablishmentInterface {
   }
 
   @override
+  Future<List<ServiceVetModel>> getServiceVet() async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/services',
+    );
+
+    http.Response response = await http.get(
+      url,
+      headers: headersToken(),
+    );
+
+    var data = serviceVetModelFromJson(response.body);
+
+    return data;
+  }
+
+  @override
   Future<List<dynamic>> setNew(EstablecimientoEntity establecimiento) async {
     final url = Uri.https(urlBase, '$pathBase/establishment');
     var lista = [];
@@ -128,22 +145,5 @@ class EstablishmentRepository extends EstablishmentInterface {
 
     print(data);
     return 'asd';
-  }
-
-  @override
-  Future<List<ServiceVetModel>> getServiceVet() async {
-    final url = Uri.https(
-      urlBase,
-      '$pathBase/establishment/services',
-    );
-
-    http.Response response = await http.get(
-      url,
-      headers: headersToken(),
-    );
-
-    var data = serviceVetModelFromJson(response.body);
-
-    return data;
   }
 }

@@ -31,9 +31,7 @@ class FooterCreateVet extends StatelessWidget {
                     btnAltern(
                       bold: true,
                       text: 'Continuar',
-                      onPressed: () {
-                        if (_.v.selected < 4) _.v.selected++;
-                      },
+                      onPressed: () => _.validaStep1(),
                     ),
                   ],
                 ),

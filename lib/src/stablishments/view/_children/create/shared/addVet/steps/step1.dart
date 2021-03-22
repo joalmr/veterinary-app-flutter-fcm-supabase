@@ -19,12 +19,14 @@ class Step1 extends StatelessWidget {
             children: [
               Text('Nombre'),
               TextFormField(
+                controller: _.v.nameVet,
                 onChanged: (val) => _.entity.name = val,
                 textCapitalization: TextCapitalization.sentences,
               ),
               SizedBox(height: 5),
               Text('Teléfono'),
               TextFormField(
+                controller: _.v.phoneVet,
                 onChanged: (val) => _.entity.phone = val,
                 keyboardType: TextInputType.number,
                 inputFormatters: [TextInputMask(mask: '999-999-999')],
@@ -32,6 +34,7 @@ class Step1 extends StatelessWidget {
               SizedBox(height: 5),
               Text('RUC'),
               TextFormField(
+                controller: _.v.rucVet,
                 onChanged: (val) => _.entity.ruc = val,
                 keyboardType: TextInputType.number,
                 inputFormatters: [TextInputMask(mask: '99999999999')],
@@ -39,6 +42,7 @@ class Step1 extends StatelessWidget {
               SizedBox(height: 5),
               Text('Web o red social'),
               TextFormField(
+                controller: _.v.webVet,
                 onChanged: (val) => _.entity.website = val,
               ),
               SizedBox(height: 5),
@@ -51,7 +55,7 @@ class Step1 extends StatelessWidget {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
                       isExpanded: true,
-                      value: _.v.valueType,
+                      value: _.v.vetType,
                       items: itemTipo.map((ItemService value) {
                         return new DropdownMenuItem<String>(
                           value: value.id,
@@ -60,7 +64,7 @@ class Step1 extends StatelessWidget {
                       }).toList(),
                       onChanged: (val) {
                         print(val);
-                        _.v.valueType = val;
+                        _.v.vetType = val;
                       },
                     ),
                   ),

@@ -4,12 +4,14 @@ import 'package:vet_app/assets/utils/diaSemana.dart';
 import 'package:vet_app/src/stablishments/domain/createVetController.dart';
 import 'package:vet_app/src/stablishments/view/_children/create/shared/addVet/components/checkHorario.dart';
 
+import 'dataTipo.dart';
+
 class Step3 extends StatelessWidget {
   const Step3({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CreateVetController>(
+    return GetX<CreateVetController>(
       builder: (_) {
         return Container(
           child: ListView(
@@ -22,10 +24,47 @@ class Step3 extends StatelessWidget {
               ),
               Divider(),
               Text('Tipo'),
-              TextFormField(),
+              Material(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(5),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      isExpanded: true,
+                      value: _.v.personalType,
+                      items: personalTipo.map((ItemService value) {
+                        return new DropdownMenuItem<String>(
+                          value: value.id,
+                          child: new Text(value.name),
+                        );
+                      }).toList(),
+                      onChanged: (val) {
+                        print(val);
+                        _.v.personalType = val;
+                      },
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(height: 5),
               Text('Nombre y apellido'),
-              TextFormField(),
+              TextFormField(
+                textCapitalization: TextCapitalization.words,
+              ),
+              SizedBox(height: 5),
+              _.v.personalType == '2'
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Código CMV'),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                        ),
+                      ],
+                    )
+                  : SizedBox(height: 0),
               SizedBox(height: 15),
               Text(
                 'Horario',

@@ -42,14 +42,13 @@ class CreateVetController extends GetxController {
         v.servicesVetSet.remove(numero);
       }
     }
-    print(v.servicesVetSet);
   }
 
   newEstablishment() => _newEstablishment();
 
   _newEstablishment() async {
     print('new vet');
-    entity.typeId = int.parse(v.valueType);
+    entity.typeId = int.parse(v.vetType);
     entity.address = "Misionero Salas, Callao, Perú";
     entity.latitude = -12.002784;
     entity.longitude = -77.100593;
@@ -82,5 +81,18 @@ class CreateVetController extends GetxController {
 
   _setDescription() async {
     await establishmentRepo.setDescription(v.idVet, v.description);
+  }
+
+  bool get ename => v.nameVet.text.isEmpty;
+  bool get ephone => v.phoneVet.text.isEmpty;
+  bool get eruc => v.rucVet.text.isEmpty;
+  bool get eweb => v.webVet.text.isEmpty;
+  bool get eservices => v.servicesVetSet.length == 0;
+
+  validaStep1() {
+    if (ename || ephone || eruc || eweb || eservices) {
+    } else {
+      if (v.selected < 4) v.selected++;
+    }
   }
 }
