@@ -175,7 +175,7 @@ class Day {
   String timeEnd;
 
   factory Day.fromJson(Map<String, dynamic> json) => Day(
-        daySwitch: json["switch"],
+        daySwitch: json["switch"] == 'on' ? true : json["switch"],
         timeStart: json["time_start"] == null ? '' : json["time_start"],
         timeEnd: json["time_end"] == null ? '' : json["time_end"],
       );

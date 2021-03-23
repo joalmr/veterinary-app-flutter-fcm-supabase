@@ -13,6 +13,7 @@ Widget dateForm({Function(String) onChanged}) {
         Icons.calendar_today,
         color: colorMain,
       ),
+      labelText: 'dd-mm-yyyy',
     ),
     inputFormatters: [
       TextInputMask(

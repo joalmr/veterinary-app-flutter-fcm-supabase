@@ -8,9 +8,10 @@ timeForm({Function(String) onChanged}) {
     decoration: InputDecoration(
       hintText: 'HH:mm',
       prefixIcon: Icon(
-        Icons.calendar_today,
+        Icons.watch_later_outlined,
         color: colorMain,
       ),
+      labelText: '24 horas',
     ),
     inputFormatters: [
       TextInputMask(

@@ -12,6 +12,7 @@ class HomePageApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<HomeController>(
       builder: (_) {
+        print(_.v.nameVet);
         return Scaffold(
           drawer: MenuDrawer(),
           appBar: AppBar(

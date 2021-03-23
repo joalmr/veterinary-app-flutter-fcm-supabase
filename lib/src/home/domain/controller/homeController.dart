@@ -21,7 +21,6 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    // initHome();
     v.carga = true;
     getAll();
     super.onInit();
@@ -38,9 +37,6 @@ class HomeController extends GetxController {
   }
 
   refreshUnconfirmed() => _refreshUnconfirmed();
-  getAll() => getTodos();
-  getVet() => getPorId();
-  confirm(idBooking) => setConfirmar(idBooking);
 
   Future<Null> _refreshUnconfirmed() async {
     v.carga = true;
@@ -49,8 +45,10 @@ class HomeController extends GetxController {
     return null;
   }
 
-  Future<List<ReservaModel>> getTodos() async {
-    print('entra getall');
+  getAll() => _getAll();
+
+  Future<List<ReservaModel>> _getAll() async {
+    print('entra getall bookings');
 
     v.reservas.clear();
     var misReservas = await bookingService.getAll(prefUser.vetId);
@@ -59,16 +57,20 @@ class HomeController extends GetxController {
     getVet();
     v.carga = false;
 
-    print('fin getall');
+    print('fin getall bookings');
     return v.reservas;
   }
 
-  Future<void> getPorId() async {
+  getVet() => _getVet();
+
+  Future<void> _getVet() async {
     final veterinary = await stablishmentService.getById(prefUser.vetId);
     v.nameVet = veterinary.name;
   }
 
-  Future<void> setConfirmar(idBooking) async {
+  confirm(idBooking) => _confirm(idBooking);
+
+  Future<void> _confirm(idBooking) async {
     v.carga = true;
     int resp = await bookingService.confirm(idBooking);
 
