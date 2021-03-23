@@ -23,6 +23,6 @@ class GlobalController extends GetxController {
   }
 
   openApp() {
-    Timer(Duration(milliseconds: 4000), () => Get.offNamed(NameRoutes.home));
+    Timer(Duration(milliseconds: 2500), () => Get.offNamed(NameRoutes.home));
   }
 }

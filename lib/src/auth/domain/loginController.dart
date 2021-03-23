@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/auth/data/authRepository.dart';
-import 'package:vet_app/src/stablishments/data/establishmentRepository.dart';
+import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 
 class LoginController extends GetxController {
   final authService = AuthRepository();

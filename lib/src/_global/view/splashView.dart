@@ -11,7 +11,7 @@ class SplashView extends GetWidget<GlobalController> {
     return Scaffold(
       backgroundColor: colorMain,
       body: Center(
-        child: BounceInLeft(
+        child: FadeIn(
           child: Hero(
             tag: 'logo',
             child: Image(

@@ -11,9 +11,9 @@ import 'package:vet_app/src/home/view/home.dart';
 import 'package:vet_app/src/offers/view/offers.dart';
 import 'package:vet_app/src/auth/view/Login/login.dart';
 import 'package:vet_app/src/attentions/view/attentions.dart';
-import 'package:vet_app/src/stablishments/view/_children/create/creaVet.dart';
-import 'package:vet_app/src/stablishments/view/_children/show/showVet.dart';
-import 'package:vet_app/src/stablishments/view/stablishments.dart';
+import 'package:vet_app/src/establishments/view/_children/create/creaVet.dart';
+import 'package:vet_app/src/establishments/view/_children/show/showVet.dart';
+import 'package:vet_app/src/establishments/view/establishments.dart';
 import 'package:vet_app/src/stats/view/stats.dart';
 import 'package:vet_app/src/workers/view/workers.dart';
 
