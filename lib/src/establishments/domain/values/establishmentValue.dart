@@ -7,6 +7,10 @@ class EstablishmentValue {
   bool get carga => _carga.value;
   set carga(bool value) => _carga.value = value;
 
+  RxBool _cargaById = false.obs;
+  bool get cargaById => _cargaById.value;
+  set cargaById(bool value) => _cargaById.value = value;
+
   RxList<EstablecimientoModelLite> establecimientos =
       <EstablecimientoModelLite>[].obs;
 

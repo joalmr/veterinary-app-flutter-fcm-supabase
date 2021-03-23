@@ -28,7 +28,7 @@ class CardEstablecimiento extends StatelessWidget {
     return GetBuilder<EstablishmentsController>(
       builder: (_) {
         return InkWell(
-          onTap: () => Get.toNamed('/establishments/show'),
+          onTap: () => _.go2Show(id),
           child: Card(
             margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Container(

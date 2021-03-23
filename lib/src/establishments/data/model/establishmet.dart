@@ -1,17 +1,20 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 
+EstablishmentModal establishmentModalFromJson(String str) =>
+    EstablishmentModal.fromJson(json.decode(str));
+
 class RxEstablishmentModal {
   RxString id;
   RxString name;
   RxString stars;
   RxString logo;
   RxString description;
-  Schedule schedule;
-  Prices prices;
-  List<Employee> employees;
+  Rx<Schedule> schedule;
+  Rx<Prices> prices;
+  RxList<Employee> employees;
 
-  RxEstablishmentModal({
+  RxEstablishmentModal(
     this.id,
     this.name,
     this.stars,
@@ -20,14 +23,8 @@ class RxEstablishmentModal {
     this.schedule,
     this.prices,
     this.employees,
-  });
+  );
 }
-
-EstablishmentModal establishmentModalFromJson(String str) =>
-    EstablishmentModal.fromJson(json.decode(str));
-
-String establishmentModalToJson(EstablishmentModal data) =>
-    json.encode(data.toJson());
 
 class EstablishmentModal {
   String id;
@@ -39,6 +36,7 @@ class EstablishmentModal {
   Prices prices;
   List<Employee> employees;
 
+  RxEstablishmentModal rx;
   EstablishmentModal({
     this.id,
     this.name,
@@ -48,7 +46,18 @@ class EstablishmentModal {
     this.schedule,
     this.prices,
     this.employees,
-  });
+  }) {
+    rx = RxEstablishmentModal(
+      id.obs,
+      name.obs,
+      stars.obs,
+      logo.obs,
+      description.obs,
+      schedule.obs,
+      prices.obs,
+      employees.obs,
+    );
+  }
 
   factory EstablishmentModal.fromJson(Map<String, dynamic> json) =>
       EstablishmentModal(
@@ -62,17 +71,6 @@ class EstablishmentModal {
         employees: List<Employee>.from(
             json["employees"].map((x) => Employee.fromJson(x))),
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "stars": stars,
-        "logo": logo,
-        "description": description,
-        "schedule": schedule.toJson(),
-        "prices": prices.toJson(),
-        "employees": List<dynamic>.from(employees.map((x) => x.toJson())),
-      };
 }
 
 class Employee {
@@ -97,14 +95,6 @@ class Employee {
         name: json["name"],
         code: json["code"] == null ? null : json["code"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "establishment_id": establishmentId,
-        "type_id": typeId,
-        "name": name,
-        "code": code == null ? null : code,
-      };
 }
 
 class Prices {
@@ -126,13 +116,6 @@ class Prices {
         vaccination: Price.fromJson(json["vaccination"]),
         grooming: Price.fromJson(json["grooming"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "consultation": consultation.toJson(),
-        "deworming": deworming.toJson(),
-        "vaccination": vaccination.toJson(),
-        "grooming": grooming.toJson(),
-      };
 }
 
 class Price {
@@ -141,18 +124,13 @@ class Price {
     this.to,
   });
 
-  int from;
-  dynamic to;
+  String from;
+  String to;
 
   factory Price.fromJson(Map<String, dynamic> json) => Price(
-        from: json["from"] == null ? null : json["from"],
+        from: json["from"] == null ? null : json["from"].toString(),
         to: json["to"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "from": from == null ? null : from,
-        "to": to,
-      };
 }
 
 class Schedule {
@@ -183,16 +161,6 @@ class Schedule {
         saturday: Day.fromJson(json["saturday"]),
         sunday: Day.fromJson(json["sunday"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "monday": monday.toJson(),
-        "tuesday": tuesday.toJson(),
-        "wednesday": wednesday.toJson(),
-        "thursday": thursday.toJson(),
-        "friday": friday.toJson(),
-        "saturday": saturday.toJson(),
-        "sunday": sunday.toJson(),
-      };
 }
 
 class Day {
@@ -208,13 +176,7 @@ class Day {
 
   factory Day.fromJson(Map<String, dynamic> json) => Day(
         daySwitch: json["switch"],
-        timeStart: json["time_start"] == null ? null : json["time_start"],
-        timeEnd: json["time_end"] == null ? null : json["time_end"],
+        timeStart: json["time_start"] == null ? '' : json["time_start"],
+        timeEnd: json["time_end"] == null ? '' : json["time_end"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "switch": daySwitch,
-        "time_start": timeStart == null ? null : timeStart,
-        "time_end": timeEnd == null ? null : timeEnd,
-      };
 }

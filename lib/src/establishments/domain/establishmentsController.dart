@@ -40,6 +40,26 @@ class EstablishmentsController extends GetxController {
     print('fin getAll');
   }
 
+  go2Show(String id) => _go2Show(id);
+
+  _go2Show(String id) async {
+    print(id);
+    v.cargaById = true;
+    await getByid(id);
+    v.cargaById = false;
+    Get.toNamed('/establishments/show');
+  }
+
+  getByid(String id) => _getByid(id);
+
+  _getByid(String id) async {
+    v.establishment = await establishmentRepo.getById(id);
+    print(v.establishment.name);
+    print(v.establishment.description);
+    print(v.establishment.employees.length);
+    print(v.establishment.prices.grooming.from);
+  }
+
   deldete(String id) => _deldete(id);
 
   _deldete(String id) async {
