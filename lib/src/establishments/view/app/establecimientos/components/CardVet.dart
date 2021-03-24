@@ -39,24 +39,13 @@ class CardEstablecimiento extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        height: 82.0,
-                        width: 82.0,
-                        decoration: BoxDecoration(
-                          color: tipo == 1 ? colorGreen : colorBlue,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.all(5),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(5.0),
-                              child: Image(
-                                fit: BoxFit.cover,
-                                image: CachedNetworkImageProvider(image),
-                              ),
-                            ),
-                          ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: Image(
+                          height: 82.0,
+                          width: 82.0,
+                          fit: BoxFit.cover,
+                          image: CachedNetworkImageProvider(image),
                         ),
                       ),
                       SizedBox(width: 10),

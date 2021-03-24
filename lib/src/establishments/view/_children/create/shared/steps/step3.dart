@@ -75,6 +75,8 @@ class Step3 extends StatelessWidget {
               Divider(),
               for (var i = 0; i < 7; i++)
                 CheckHorario(
+                  iniController: _.v.iniController[i],
+                  endController: _.v.endController[i],
                   day: diaSemana[i],
                   index: i,
                 ),

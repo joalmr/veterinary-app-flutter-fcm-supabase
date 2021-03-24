@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'entity/priceEstEntity.dart';
 import 'model/establishmentModelLite.dart';
 import 'entity/establishmentEntity.dart';
@@ -29,4 +31,5 @@ abstract class EstablishmentInterface {
   Future<List<EstablecimientoModelLite>> getAll();
   Future<EstablecimientoModelLite> getFirst();
   Future<EstablishmentModal> getById(String idVet);
+  Future<void> setLogo(String establecimientoId, File image);
 }

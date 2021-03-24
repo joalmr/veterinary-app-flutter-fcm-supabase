@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
+import 'package:vet_app/src/establishments/view/_children/show/showVet.dart';
 import 'values/establishmentValue.dart';
 
 class EstablishmentsController extends GetxController {
@@ -40,30 +44,41 @@ class EstablishmentsController extends GetxController {
     print('fin getAll');
   }
 
+  deldete(String id) => _deldete(id);
+
+  _deldete(String id) async {
+    await establishmentRepo.deleteEstablishmetn(id);
+    getAll();
+  }
+
   go2Show(String id) => _go2Show(id);
 
   _go2Show(String id) async {
-    print(id);
     v.cargaById = true;
     await getByid(id);
     v.cargaById = false;
-    Get.toNamed('/establishments/show');
+    Get.to(ShowVetMain(id: id));
   }
 
   getByid(String id) => _getByid(id);
 
   _getByid(String id) async {
     v.establishment = await establishmentRepo.getById(id);
-    print(v.establishment.name);
-    print(v.establishment.description);
-    print(v.establishment.employees.length);
-    print(v.establishment.prices.grooming.from);
   }
 
-  deldete(String id) => _deldete(id);
+  seleccionarLogo(String id) {
+    _procesarImagen(id, ImageSource.gallery);
+  }
 
-  _deldete(String id) async {
-    await establishmentRepo.deleteEstablishmetn(id);
-    getAll();
+  _procesarImagen(String id, ImageSource origen) async {
+    File _image;
+    var pickedFile =
+        await ImagePicker().getImage(source: origen, imageQuality: 80);
+    if (pickedFile != null) {
+      _image = File(pickedFile.path);
+      establishmentRepo.setLogo(id, _image);
+    } else {
+      print('No image');
+    }
   }
 }

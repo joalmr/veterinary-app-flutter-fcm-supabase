@@ -33,6 +33,28 @@ class CreateVetValue {
 
   RxList<String> errorDays = <String>[].obs;
 
+  // final iniciaController = TextEditingController();
+  // final finController = TextEditingController();
+  List<TextEditingController> iniController = <TextEditingController>[
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+  ];
+
+  List<TextEditingController> endController = <TextEditingController>[
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+  ];
+
   RxList<bool> checkDay = <bool>[
     false,
     false,
@@ -44,23 +66,23 @@ class CreateVetValue {
   ].obs;
 
   RxList<String> iniDay = <String>[
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    '07:00',
+    '07:00',
+    '07:00',
+    '07:00',
+    '07:00',
+    '07:00',
+    '07:00',
   ].obs;
 
   RxList<String> endDay = <String>[
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    '20:00',
+    '20:00',
+    '20:00',
+    '20:00',
+    '20:00',
+    '20:00',
+    '20:00',
   ].obs;
 
   final nameVet = TextEditingController();

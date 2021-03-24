@@ -6,13 +6,14 @@ import 'app/showVetView.dart';
 import 'web/showVetPage.dart';
 
 class ShowVetMain extends StatelessWidget {
-  const ShowVetMain({Key key}) : super(key: key);
+  final String id;
+  const ShowVetMain({Key key, this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EstablishmentsController>(
       builder: (_) {
-        return context.width < 900 ? ShowVetView() : ShowVetPage();
+        return context.width < 900 ? ShowVetView(id: id) : ShowVetPage();
       },
     );
   }

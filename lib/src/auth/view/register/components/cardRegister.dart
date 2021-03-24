@@ -21,7 +21,7 @@ class CardRegister extends StatelessWidget {
                 duration: Duration(milliseconds: 400),
                 child: Container(
                   padding: EdgeInsets.all(8.0),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Nombre',
                     ),
@@ -33,7 +33,7 @@ class CardRegister extends StatelessWidget {
                 duration: Duration(milliseconds: 400),
                 child: Container(
                   padding: EdgeInsets.all(8.0),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Apellido',
                     ),
@@ -45,7 +45,7 @@ class CardRegister extends StatelessWidget {
                 duration: Duration(milliseconds: 400),
                 child: Container(
                   padding: EdgeInsets.all(8.0),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Correo electrónico',
                     ),
@@ -57,7 +57,7 @@ class CardRegister extends StatelessWidget {
                 duration: Duration(milliseconds: 400),
                 child: Container(
                   padding: EdgeInsets.all(8.0),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Contraseña',
                     ),
@@ -69,7 +69,7 @@ class CardRegister extends StatelessWidget {
                 duration: Duration(milliseconds: 400),
                 child: Container(
                   padding: EdgeInsets.all(8.0),
-                  child: TextField(
+                  child: TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Repetir contraseña',
                     ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:vet_app/assets/utils/diaSemana.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/establishments/data/entity/establishmentEntity.dart';
@@ -185,6 +186,26 @@ class CreateVetController extends GetxController {
   }
 
   validaStep3() {
+    var diaError = "";
+    var diaHoraError = "";
+    for (var i = 0; i < 7; i++) {
+      String ini = v.iniController[i].text;
+      String end = v.endController[i].text;
+      if (v.checkDay[i]) {
+        if (ini.isEmpty || end.isEmpty) {
+          diaError == ""
+              ? diaError = diaError + diaSemana[i]
+              : diaError = diaError + ", " + diaSemana[i];
+        } else {
+          int iniNum = int.parse(ini.split(':')[0]);
+          int endNum = int.parse(end.split(':')[0]);
+          if (iniNum > endNum)
+            diaHoraError =
+                "Hora seleccionada incorrecta el día ${diaSemana[i]}, la hora de inicio es mayor a la de fin";
+        }
+      }
+    }
+
     if (emoneyConsulta ||
         emoneyDesparasita ||
         emoneyVacuna ||
@@ -197,6 +218,21 @@ class CreateVetController extends GetxController {
         backgroundColor: colorRed.withAlpha(180),
         colorText: colorRed3,
       );
+    } else if (diaError != "" || diaHoraError != "") {
+      if (diaError != "")
+        Get.snackbar(
+          'Error',
+          'Complete los datos de $diaError',
+          backgroundColor: colorRed.withAlpha(180),
+          colorText: colorRed3,
+        );
+      if (diaHoraError != "")
+        Get.snackbar(
+          'Error',
+          '$diaHoraError',
+          backgroundColor: colorRed.withAlpha(180),
+          colorText: colorRed3,
+        );
     } else {
       if (v.selected < 4) v.selected++;
     }
@@ -217,7 +253,7 @@ class CreateVetController extends GetxController {
         Duration(milliseconds: 3000),
         () {
           v.checked = false;
-          Get.toNamed(NameRoutes.establishments);
+          Get.offNamed(NameRoutes.establishments);
         },
       );
     }

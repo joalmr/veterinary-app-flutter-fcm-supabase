@@ -37,11 +37,10 @@ dependencies:
   animated_text_kit: ^4.0.0
   cached_network_image: ^2.5.0
   day_night_time_picker: ^0.4.0
-  
   flutter_conditional_rendering:
   flutter_linear_datepicker: ^1.1.2
-  
   flutter_sparkline: ^0.1.0
+  image_picker: ^0.7.3
   intl: ^0.17.0
   lottie: 
   percent_indicator: ^2.1.9+1

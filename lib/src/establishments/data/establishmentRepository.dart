@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/assets/utils/headerHttp.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
@@ -203,5 +204,27 @@ class EstablishmentRepository extends EstablishmentInterface {
 
     var data = jsonDecode(response.body);
     print(data);
+  }
+
+  @override
+  Future<void> setLogo(String establecimientoId, File image) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/logo',
+    );
+
+    var request = http.MultipartRequest("POST", url);
+    var pic = await http.MultipartFile.fromPath("logo", image.path);
+
+    request.headers['Content-Type'] = 'application/json; charset=UTF-8';
+    request.headers['Authorization'] = 'Bearer ${prefUser.logged}';
+    request.headers['X-Requested-With'] = 'XMLHttpRequest';
+
+    request.files.add(pic);
+    var response = await request.send();
+
+    var responseData = await response.stream.toBytes();
+    var responseString = String.fromCharCodes(responseData);
+    print(responseString);
   }
 }
