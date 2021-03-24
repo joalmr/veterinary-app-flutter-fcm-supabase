@@ -199,7 +199,7 @@ class CreateVetController extends GetxController {
         } else {
           int iniNum = int.parse(ini.split(':')[0]);
           int endNum = int.parse(end.split(':')[0]);
-          if (iniNum > endNum)
+          if (iniNum >= endNum)
             diaHoraError =
                 "Hora seleccionada incorrecta el día ${diaSemana[i]}, la hora de inicio es mayor a la de fin";
         }
