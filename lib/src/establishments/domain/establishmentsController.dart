@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
@@ -77,6 +76,8 @@ class EstablishmentsController extends GetxController {
     if (pickedFile != null) {
       _image = File(pickedFile.path);
       establishmentRepo.setLogo(id, _image);
+      // getByid(id);
+      // getAll();
     } else {
       print('No image');
     }

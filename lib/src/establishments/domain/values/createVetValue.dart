@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 
 class CreateVetValue {
@@ -33,8 +34,8 @@ class CreateVetValue {
 
   RxList<String> errorDays = <String>[].obs;
 
-  // final iniciaController = TextEditingController();
-  // final finController = TextEditingController();
+  RxList<Marker> marcador = <Marker>[].obs;
+
   List<TextEditingController> iniController = <TextEditingController>[
     TextEditingController(),
     TextEditingController(),

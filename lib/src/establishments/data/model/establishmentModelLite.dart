@@ -8,30 +8,38 @@ String establecimientoModelLiteToJson(List<EstablecimientoModelLite> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class EstablecimientoModelLite {
+  String id;
+  String logo;
+  String name;
+  String ruc;
+  int type;
+  int status;
+
   EstablecimientoModelLite({
     this.id,
-    this.name,
-    this.stars,
     this.logo,
+    this.name,
+    this.ruc,
+    this.type,
+    this.status,
   });
-
-  String id;
-  String name;
-  String stars;
-  String logo;
 
   factory EstablecimientoModelLite.fromJson(Map<String, dynamic> json) =>
       EstablecimientoModelLite(
         id: json["id"],
-        name: json["name"],
-        stars: json["stars"],
         logo: json["logo"],
+        name: json["name"],
+        ruc: json["ruc"],
+        type: json["type"],
+        status: json["status"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "name": name,
-        "stars": stars,
         "logo": logo,
+        "name": name,
+        "ruc": ruc,
+        "type": type,
+        "status": status,
       };
 }

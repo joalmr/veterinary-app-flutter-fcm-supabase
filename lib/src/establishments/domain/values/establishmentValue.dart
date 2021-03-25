@@ -14,5 +14,7 @@ class EstablishmentValue {
   RxList<EstablecimientoModelLite> establecimientos =
       <EstablecimientoModelLite>[].obs;
 
-  EstablishmentModal establishment;
+  Rx<EstablishmentModal> _establishment = EstablishmentModal().obs;
+  EstablishmentModal get establishment => _establishment.value;
+  set establishment(EstablishmentModal value) => _establishment.value = value;
 }

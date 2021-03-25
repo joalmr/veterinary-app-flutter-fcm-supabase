@@ -20,9 +20,9 @@ class VetsView extends StatelessWidget {
                 id: establecimiento.id,
                 image: establecimiento.logo,
                 name: establecimiento.name,
-                ruc: 'Ej->20202020201',
-                aprobado: 1,
-                tipo: 1,
+                ruc: establecimiento.ruc,
+                aprobado: establecimiento.status,
+                tipo: establecimiento.type,
               );
             },
           ),

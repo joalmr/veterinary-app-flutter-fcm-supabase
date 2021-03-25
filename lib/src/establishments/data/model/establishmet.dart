@@ -36,7 +36,7 @@ class EstablishmentModal {
   Prices prices;
   List<Employee> employees;
 
-  RxEstablishmentModal rx;
+  // RxEstablishmentModal rx;
   EstablishmentModal({
     this.id,
     this.name,
@@ -46,18 +46,19 @@ class EstablishmentModal {
     this.schedule,
     this.prices,
     this.employees,
-  }) {
-    rx = RxEstablishmentModal(
-      id.obs,
-      name.obs,
-      stars.obs,
-      logo.obs,
-      description.obs,
-      schedule.obs,
-      prices.obs,
-      employees.obs,
-    );
-  }
+  });
+  // {
+  //   rx = RxEstablishmentModal(
+  //     id.obs,
+  //     name.obs,
+  //     stars.obs,
+  //     logo.obs,
+  //     description.obs,
+  //     schedule.obs,
+  //     prices.obs,
+  //     employees.obs,
+  //   );
+  // }
 
   factory EstablishmentModal.fromJson(Map<String, dynamic> json) =>
       EstablishmentModal(

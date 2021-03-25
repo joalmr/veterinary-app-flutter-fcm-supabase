@@ -1,13 +1,15 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/assets/utils/diaSemana.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/establishments/data/entity/establishmentEntity.dart';
 import 'package:vet_app/src/establishments/data/entity/priceEstEntity.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
-// import 'establishmentsController.dart';
+import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'values/createVetValue.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class CreateVetController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
@@ -16,11 +18,18 @@ class CreateVetController extends GetxController {
   EstablecimientoEntity entity = new EstablecimientoEntity();
   PriceEstablecimientoEntity prices = new PriceEstablecimientoEntity();
   // final establishmentController = EstablishmentsController();
+  String _mapStyle;
+  GoogleMapController _controller;
+
+  String displayStringForOption(Prediction option) => option.name;
 
   @override
   void onInit() {
-    _getService();
     super.onInit();
+    _getService();
+    rootBundle.loadString('assets/map_style.txt').then((string) {
+      _mapStyle = string;
+    });
   }
 
   @override
@@ -39,6 +48,11 @@ class CreateVetController extends GetxController {
     v.servicesVet.addAll(lista);
   }
 
+  mapCreated(controller) {
+    _controller = controller;
+    _controller.setMapStyle(_mapStyle);
+  }
+
   void add2List(int numero) {
     if (!v.servicesVetSet.contains(numero))
       v.servicesVetSet.add(numero);
@@ -49,8 +63,6 @@ class CreateVetController extends GetxController {
     }
   }
 
-  newEstablishment() => _newEstablishment();
-
   _newEstablishment() async {
     entity.typeId = int.parse(v.vetType);
     entity.address = "Misionero Salas, Callao, Perú";
@@ -59,10 +71,15 @@ class CreateVetController extends GetxController {
     entity.services = v.servicesVetSet;
     entity.reference = "Cerca";
 
-    var resp = await establishmentRepo.setNew(entity);
-    v.idVet = resp[1];
-
-    if (resp[0] == 200) v.selected++;
+    // var resp =
+    establishmentRepo.setNew(entity).then((value) async {
+      v.idVet = value[1];
+      print(v.idVet);
+      await _setEmployee();
+      await _setSchedule();
+      await _setPrices();
+      await _setDescription();
+    });
   }
 
   _setEmployee() async {
@@ -127,18 +144,7 @@ class CreateVetController extends GetxController {
     await establishmentRepo.setDescription(v.idVet, v.description);
   }
 
-  setEmployee() => _setEmployee();
-  setSchedule() => _setSchedule();
-  setPrices() => _setPrices();
-  setDescription() => _setDescription();
-
-  setFinaliza() {
-    setEmployee();
-    setSchedule();
-    setPrices();
-    setDescription();
-    // establishmentController.getAll();
-  }
+  setFinaliza() => _newEstablishment();
 
   //step 1
   bool get ename => v.nameVet.text.isEmpty;
@@ -181,7 +187,7 @@ class CreateVetController extends GetxController {
         colorText: colorRed3,
       );
     } else {
-      newEstablishment();
+      if (v.selected < 4) v.selected++;
     }
   }
 
@@ -250,7 +256,7 @@ class CreateVetController extends GetxController {
       v.checked = true;
       setFinaliza();
       Timer(
-        Duration(milliseconds: 3000),
+        Duration(milliseconds: 3500),
         () {
           v.checked = false;
           Get.offNamed(NameRoutes.establishments);

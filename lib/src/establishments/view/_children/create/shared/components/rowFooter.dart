@@ -19,11 +19,12 @@ class FooterCreateVet extends StatelessWidget {
             1: (BuildContext context) => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    btnAltern(
-                      bold: true,
-                      text: 'Salir',
-                      onPressed: () => Get.back(),
-                    ),
+                    // btnAltern(
+                    //   bold: true,
+                    //   text: 'Salir',
+                    //   onPressed: () => Get.back(),
+                    // ),
+                    SizedBox(width: 0),
                     btnAltern(
                       bold: true,
                       text: 'Continuar',
@@ -41,6 +42,11 @@ class FooterCreateVet extends StatelessWidget {
                         if (_.v.selected > 1) _.v.selected--;
                       },
                     ),
+                    btnAltern(
+                      bold: true,
+                      text: 'Continuar',
+                      onPressed: _.validaStep2,
+                    ),
                   ],
                 ),
             3: (BuildContext context) => Row(
@@ -48,8 +54,10 @@ class FooterCreateVet extends StatelessWidget {
                   children: [
                     btnAltern(
                       bold: true,
-                      text: 'Salir',
-                      onPressed: () => Get.back(),
+                      text: 'Volver',
+                      onPressed: () {
+                        if (_.v.selected > 1) _.v.selected--;
+                      },
                     ),
                     btnAltern(
                       bold: true,
