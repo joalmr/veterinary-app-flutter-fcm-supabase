@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:vet_app/assets/utils/diaSemana.dart';
+import 'package:vet_app/assets/utils/days/diaSemana.dart';
 // import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';

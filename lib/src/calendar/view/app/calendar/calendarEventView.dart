@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional_switch.dart';
-import 'package:vet_app/assets/utils/daysName.dart';
+import 'package:vet_app/assets/utils/days/diaSemanaLite.dart';
 import 'package:vet_app/assets/utils/monthsName.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/calendar/view/shared/eventList/eventsBooking.dart';
@@ -120,7 +120,7 @@ class _CalendarEventViewState extends State<CalendarEventView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          daysName[dayNum],
+                          diaSemanaLite[dayNum - 1],
                           style: TextStyle(
                             color: daySelected ? Colors.white : null,
                             fontWeight: FontWeight.bold,

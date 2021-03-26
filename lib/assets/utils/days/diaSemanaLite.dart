@@ -1,5 +1,4 @@
-var daysName = [
-  null,
+var diaSemanaLite = [
   'Lun',
   'Mar',
   'Mie',

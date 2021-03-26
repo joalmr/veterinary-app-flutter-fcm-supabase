@@ -27,8 +27,8 @@ class EstablishmentRepository extends EstablishmentInterface {
 
   @override
   Future<EstablishmentModal> getById(String idVet) async {
-    //TODO:
     /*
+    TODO:
     Unhandled Exception: type 'String' is not a subtype of type 'bool'
     es xq viene 'on' en vez de boolean
     */
