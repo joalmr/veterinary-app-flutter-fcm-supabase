@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/assets/utils/icons_map.dart';
 
 class ServicesView extends StatelessWidget {
   const ServicesView({Key key}) : super(key: key);
@@ -57,7 +58,7 @@ class ServicesView extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Icon(
-                        Icons.pets,
+                        iconNum[1],
                         size: 20,
                         color: Get.textTheme.subtitle2.color,
                       ),
@@ -65,7 +66,7 @@ class ServicesView extends StatelessWidget {
                   ),
                   SizedBox(width: 5),
                   Text(
-                    'Ej->Serv',
+                    textMap[1],
                     style: TextStyle(
                       fontWeight: FontWeight.w300,
                     ),

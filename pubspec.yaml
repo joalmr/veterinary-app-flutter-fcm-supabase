@@ -1,5 +1,5 @@
 name: vet_app
-description: A new Flutter project.
+description: Recibe reservas las 24 horas e incrementa los ingresos de tu veterinaria.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -45,16 +45,16 @@ dependencies:
   intl: ^0.17.0
   lottie: 
   percent_indicator: ^2.1.9+1
-  # simple_autocomplete_formfield:
+  simple_autocomplete_formfield:
   scrollable_positioned_list: ^0.1.10
   url_launcher: ^6.0.2
   url_strategy: ^0.2.0
-
-  # mockito: ^4.1.4 # + -
   
   easy_mask: ^1.1.5
   flutter_masked_text: ^0.8.0 #use controller
   currency_text_input_formatter: ^2.0.0
+
+  # mockito: ^4.1.4 # + -
   # badges: ^1.1.6 # -
   # flutter_vector_icons: ^0.2.1
   # fl_chart: ^0.20.1
@@ -94,7 +94,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: IconProypet
+      fonts:
+        - asset: assets/fonts/IconProypet.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

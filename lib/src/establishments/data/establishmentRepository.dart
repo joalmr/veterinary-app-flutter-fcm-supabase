@@ -30,6 +30,7 @@ class EstablishmentRepository extends EstablishmentInterface {
     //TODO:
     /*
     Unhandled Exception: type 'String' is not a subtype of type 'bool'
+    es xq viene 'on' en vez de boolean
     */
     final url = Uri.https(urlBase, '$pathBase/establishment/$idVet');
     http.Response response = await http.get(url, headers: headersToken());

@@ -94,6 +94,7 @@ class CreateVetValue {
   final personalNameVet = TextEditingController();
   final personalCodeVet = TextEditingController();
   final descriptionVet = TextEditingController();
+  // final inputDireccionController = new TextEditingController();
 
   final moneyConsulta = new MoneyMaskedTextController(
     initialValue: 0,

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/assets/utils/diaSemana.dart';
+// import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/establishments/data/entity/establishmentEntity.dart';
@@ -10,6 +11,7 @@ import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'values/createVetValue.dart';
 import 'package:flutter/services.dart' show rootBundle;
+// import 'package:http/http.dart' as http;
 
 class CreateVetController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
@@ -63,9 +65,35 @@ class CreateVetController extends GetxController {
     }
   }
 
+  // onSearch(filter) async {
+  //   Uri url = Uri.https(
+  //     "maps.googleapis.com",
+  //     "/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter",
+  //   );
+  //   var response = await http.get(url);
+  //   var models = addressFromJson(response.body);
+  //   return models.predictions;
+  // }
+
+  gpsDireccion(Prediction data) {
+    _searchandNavigate(data);
+  }
+
+  _searchandNavigate(Prediction dato) async {
+    if (v.dirVet.text.trim() != "") {
+      // marcador.clear();
+      // final places = new GoogleMapsPlaces(apiKey: keyMap);
+      // final mapdata = await places.getDetailsByPlaceId(dato.placeId);
+
+      v.dirVet.text = dato.name;
+      entity.address = dato.name;
+      update(['xmap']);
+    }
+  }
+
   _newEstablishment() async {
     entity.typeId = int.parse(v.vetType);
-    entity.address = "Misionero Salas, Callao, Perú";
+    // entity.address = "Misionero Salas, Callao, Perú";
     entity.latitude = -12.002784;
     entity.longitude = -77.100593;
     entity.services = v.servicesVetSet;

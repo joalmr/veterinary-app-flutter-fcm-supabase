@@ -223,7 +223,7 @@ class ShowVetView extends StatelessWidget {
                         ),
                       ),
                       TabBar(
-                        // isScrollable: true,
+                        isScrollable: true,
                         indicatorColor: colorMain,
                         labelStyle: TextStyle(fontWeight: FontWeight.bold),
                         labelColor: colorMain,
