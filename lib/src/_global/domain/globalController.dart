@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:vet_app/routes/routes.dart';
 
 class GlobalController extends GetxController {
-  GlobalController();
-
   @override
   void onInit() {
     super.onInit();

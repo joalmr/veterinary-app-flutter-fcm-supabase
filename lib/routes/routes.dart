@@ -6,6 +6,7 @@ import 'package:vet_app/src/_vet/view/vetMain.dart';
 import 'package:vet_app/src/auth/view/register/register.dart';
 import 'package:vet_app/src/calendar/view/calendar.dart';
 import 'package:vet_app/src/config/view/configMain.dart';
+import 'package:vet_app/src/establishments/domain/binding/establishmentBinding.dart';
 import 'package:vet_app/src/home/domain/binding/homeBinding.dart';
 import 'package:vet_app/src/home/view/home.dart';
 import 'package:vet_app/src/offers/view/offers.dart';
@@ -39,8 +40,8 @@ abstract class AppPages {
     ),
     GetPage(
       name: NameRoutes.splash,
-      page: () => SplashView(),
       binding: GlobalBinding(),
+      page: () => SplashView(),
     ),
     GetPage(
       name: NameRoutes.register,
@@ -52,8 +53,8 @@ abstract class AppPages {
     ),
     GetPage(
       name: NameRoutes.home,
-      page: () => HomeMain(),
       binding: HomeBinding(),
+      page: () => HomeMain(),
       middlewares: [GlobalMiddleware()],
     ),
     GetPage(
@@ -75,16 +76,11 @@ abstract class AppPages {
       name: NameRoutes.offers,
       page: () => OffersMain(),
       middlewares: [GlobalMiddleware()],
-      // children: [
-      //   GetPage(
-      //     name: '/create',
-      //     page: () => CreaPromocionView(),
-      //   ),
-      // ],
     ),
     GetPage(
       name: NameRoutes.establishments,
-      page: () => StablishmentsMain(),
+      binding: EstablishmentsBinding(),
+      page: () => EstablishmentsMain(),
       middlewares: [GlobalMiddleware()],
       children: [
         GetPage(

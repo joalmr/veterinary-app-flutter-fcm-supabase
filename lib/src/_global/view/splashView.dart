@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/assets/images/images.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import '../domain/globalController.dart';
+import 'package:vet_app/src/_global/domain/globalController.dart';
 
 class SplashView extends GetWidget<GlobalController> {
   @override
@@ -15,7 +15,7 @@ class SplashView extends GetWidget<GlobalController> {
           child: Hero(
             tag: 'logo',
             child: Image(
-              width: 350,
+              width: 275,
               image: AssetImage(imgLogoProypet),
             ),
           ),

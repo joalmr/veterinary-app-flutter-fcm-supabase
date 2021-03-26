@@ -7,6 +7,5 @@ class GlobalBinding implements Bindings {
     Get.lazyPut<GlobalController>(
       () => GlobalController(),
     );
-    // Get.lazyPut<HomeController>(() => HomeController());
   }
 }

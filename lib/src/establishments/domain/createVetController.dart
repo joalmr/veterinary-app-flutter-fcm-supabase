@@ -2,16 +2,15 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/assets/utils/days/diaSemana.dart';
-// import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
-import 'package:vet_app/src/establishments/data/entity/establishmentEntity.dart';
-import 'package:vet_app/src/establishments/data/entity/priceEstEntity.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
+import 'package:vet_app/src/establishments/data/request/establishmentRequest.dart';
+import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
+import 'establishmentsController.dart';
 import 'values/createVetValue.dart';
 import 'package:flutter/services.dart' show rootBundle;
-// import 'package:http/http.dart' as http;
 
 class CreateVetController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
@@ -19,7 +18,8 @@ class CreateVetController extends GetxController {
 
   EstablecimientoEntity entity = new EstablecimientoEntity();
   PriceEstablecimientoEntity prices = new PriceEstablecimientoEntity();
-  // final establishmentController = EstablishmentsController();
+  final establishmentController = Get.find<EstablishmentsController>();
+
   String _mapStyle;
   GoogleMapController _controller;
 
@@ -107,6 +107,7 @@ class CreateVetController extends GetxController {
       await _setSchedule();
       await _setPrices();
       await _setDescription();
+      establishmentController.getAll();
     });
   }
 

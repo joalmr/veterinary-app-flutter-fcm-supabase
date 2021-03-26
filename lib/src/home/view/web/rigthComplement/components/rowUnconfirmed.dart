@@ -73,9 +73,14 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                           padding: EdgeInsets.all(2.5),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(5.0),
-                            child: Image(
+                            child: CachedNetworkImage(
+                              imageUrl: widget.petImg,
                               fit: BoxFit.cover,
-                              image: CachedNetworkImageProvider(widget.petImg),
+                              placeholder: (context, url) => Container(
+                                color: Colors.grey.shade200,
+                                alignment: Alignment.center,
+                                child: CircularProgressIndicator(),
+                              ),
                             ),
                             // Image.network(widget.petImg)
                           ),

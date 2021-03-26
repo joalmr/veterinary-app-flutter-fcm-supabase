@@ -1,231 +1,43 @@
-import 'dart:convert';
 import 'dart:io';
-import 'package:http/http.dart' as http;
-import 'package:vet_app/assets/utils/headerHttp.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
-import 'package:vet_app/src/establishments/data/model/establishmentModelLite.dart';
-import 'package:vet_app/src/establishments/data/entity/establishmentEntity.dart';
-import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
-import 'entity/priceEstEntity.dart';
-import 'establishmentInterface.dart';
+import 'establishmentApi.dart';
+import 'model/establishmentModelLite.dart';
 import 'model/establishmet.dart';
+import 'model/serviceModel.dart';
+import 'request/establishmentRequest.dart';
+import 'request/priceEstRequest.dart';
 
-class EstablishmentRepository extends EstablishmentInterface {
-  @override
-  Future<List<EstablecimientoModelLite>> getAll() async {
-    final url = Uri.https(urlBase, '$pathBase/establishments');
+class EstablishmentRepository {
+  final _repository = EstablishmentApi();
 
-    http.Response response = await http.get(url, headers: headersToken());
+  Future<List<ServiceVetModel>> getServiceVet() => _repository.getServiceVet();
 
-    List<EstablecimientoModelLite> establecimientos =
-        List<EstablecimientoModelLite>.from(json
-            .decode(response.body)
-            .map((x) => EstablecimientoModelLite.fromJson(x)));
+  Future<List<dynamic>> setNew(EstablecimientoEntity establecimiento) =>
+      _repository.setNew(establecimiento);
 
-    return establecimientos;
-  }
+  Future<void> deleteEstablishmetn(String establecimientoId) =>
+      _repository.deleteEstablishmetn(establecimientoId);
 
-  @override
-  Future<EstablishmentModal> getById(String idVet) async {
-    /*
-    TODO:
-    Unhandled Exception: type 'String' is not a subtype of type 'bool'
-    es xq viene 'on' en vez de boolean
-    */
-    final url = Uri.https(urlBase, '$pathBase/establishment/$idVet');
-    http.Response response = await http.get(url, headers: headersToken());
-
-    EstablishmentModal establecimiento =
-        EstablishmentModal.fromJson(json.decode(response.body));
-
-    return establecimiento;
-  }
-
-  @override
-  Future<EstablecimientoModelLite> getFirst() async {
-    final url = Uri.https(urlBase, '$pathBase/establishments');
-
-    http.Response response = await http.get(url, headers: headersToken());
-
-    List<EstablecimientoModelLite> establecimientos =
-        List<EstablecimientoModelLite>.from(json
-            .decode(response.body)
-            .map((x) => EstablecimientoModelLite.fromJson(x)));
-
-    return establecimientos.first;
-  }
-
-  @override
-  Future<List<ServiceVetModel>> getServiceVet() async {
-    final url = Uri.https(
-      urlBase,
-      '$pathBase/establishment/services',
-    );
-
-    http.Response response = await http.get(
-      url,
-      headers: headersToken(),
-    );
-
-    var data = serviceVetModelFromJson(response.body);
-
-    return data;
-  }
-
-  @override
-  Future<List<dynamic>> setNew(EstablecimientoEntity establecimiento) async {
-    final url = Uri.https(urlBase, '$pathBase/establishment');
-    var lista = [];
-    print(jsonEncode(establecimiento));
-    http.Response response = await http.post(
-      url,
-      headers: headersToken(),
-      body: jsonEncode(establecimiento),
-    );
-
-    var data = jsonDecode(response.body);
-
-    lista.add(response.statusCode);
-    lista.add(data['id']);
-
-    return lista;
-  }
-
-  @override
   Future<String> setEmployee(
-    String establecimientoId,
-    int typeId,
-    String name,
-    String code,
-  ) async {
-    final url = Uri.https(
-      urlBase,
-      '$pathBase/establishment/$establecimientoId/employee',
-    );
+          String establecimientoId, int typeId, String name, String code) =>
+      _repository.setEmployee(establecimientoId, typeId, name, code);
 
-    final employee = {
-      "type_id": typeId,
-      "name": name,
-      "code": code,
-    };
-
-    http.Response response = await http.post(
-      url,
-      headers: headersToken(),
-      body: jsonEncode(employee),
-    );
-
-    var data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
-  }
-
-  @override
   Future<String> setPrices(
-    String establecimientoId,
-    PriceEstablecimientoEntity precios,
-  ) async {
-    final url = Uri.https(
-      urlBase,
-      '$pathBase/establishment/$establecimientoId/prices',
-    );
+          String establecimientoId, PriceEstablecimientoEntity precios) =>
+      _repository.setPrices(establecimientoId, precios);
 
-    print(jsonEncode(precios));
-    http.Response response = await http.post(
-      url,
-      headers: headersToken(),
-      body: jsonEncode(precios),
-    );
+  Future<String> setSchedule(String establecimientoId, horarios) =>
+      _repository.setSchedule(establecimientoId, horarios);
 
-    var data = jsonDecode(response.body);
+  Future<String> setDescription(String establecimientoId, String description) =>
+      _repository.setDescription(establecimientoId, description);
 
-    print(data);
-    return 'asd';
-  }
+  Future<List<EstablecimientoModelLite>> getAll() => _repository.getAll();
 
-  @override
-  Future<String> setSchedule(
-    String establecimientoId,
-    horarios,
-  ) async {
-    final url = Uri.https(
-      urlBase,
-      '$pathBase/establishment/$establecimientoId/schedule',
-    );
+  Future<EstablecimientoModelLite> getFirst() => _repository.getFirst();
 
-    http.Response response = await http.post(
-      url,
-      headers: headersToken(),
-      body: jsonEncode(horarios),
-    );
+  Future<EstablishmentModal> getById(String idVet) =>
+      _repository.getById(idVet);
 
-    var data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
-  }
-
-  @override
-  Future<String> setDescription(
-    String establecimientoId,
-    String description,
-  ) async {
-    final url = Uri.https(
-      urlBase,
-      '$pathBase/establishment/$establecimientoId/description',
-    );
-
-    final descriptionData = {
-      "description": description,
-    };
-    http.Response response = await http.post(
-      url,
-      headers: headersToken(),
-      body: jsonEncode(descriptionData),
-    );
-
-    var data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
-  }
-
-  @override
-  Future<void> deleteEstablishmetn(String establecimientoId) async {
-    final url = Uri.https(
-      urlBase,
-      '$pathBase/establishment/$establecimientoId',
-    );
-
-    http.Response response = await http.delete(
-      url,
-      headers: headersToken(),
-    );
-
-    var data = jsonDecode(response.body);
-    print(data);
-  }
-
-  @override
-  Future<void> setLogo(String establecimientoId, File image) async {
-    final url = Uri.https(
-      urlBase,
-      '$pathBase/establishment/$establecimientoId/logo',
-    );
-
-    var request = http.MultipartRequest("POST", url);
-    var pic = await http.MultipartFile.fromPath("logo", image.path);
-
-    request.headers['Content-Type'] = 'application/json; charset=UTF-8';
-    request.headers['Authorization'] = 'Bearer ${prefUser.logged}';
-    request.headers['X-Requested-With'] = 'XMLHttpRequest';
-
-    request.files.add(pic);
-    var response = await request.send();
-
-    var responseData = await response.stream.toBytes();
-    var responseString = String.fromCharCodes(responseData);
-    print(responseString);
-  }
+  Future<void> setLogo(String establecimientoId, File image) =>
+      _repository.setLogo(establecimientoId, image);
 }

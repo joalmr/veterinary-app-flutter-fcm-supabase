@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
@@ -6,7 +7,12 @@ import 'package:vet_app/src/establishments/view/_children/show/showVet.dart';
 import 'values/establishmentValue.dart';
 
 class EstablishmentsController extends GetxController {
-  final establishmentRepo = EstablishmentRepository();
+  final EstablishmentRepository establishmentRepo;
+
+  EstablishmentsController({
+    @required this.establishmentRepo,
+  });
+
   final v = EstablishmentValue();
 
   @override
@@ -17,6 +23,7 @@ class EstablishmentsController extends GetxController {
 
   @override
   void onReady() {
+    getAll();
     super.onReady();
   }
 
@@ -67,6 +74,8 @@ class EstablishmentsController extends GetxController {
 
   seleccionarLogo(String id) {
     _procesarImagen(id, ImageSource.gallery);
+    getByid(id);
+    getAll();
   }
 
   _procesarImagen(String id, ImageSource origen) async {
@@ -76,8 +85,6 @@ class EstablishmentsController extends GetxController {
     if (pickedFile != null) {
       _image = File(pickedFile.path);
       establishmentRepo.setLogo(id, _image);
-      // getByid(id);
-      // getAll();
     } else {
       print('No image');
     }

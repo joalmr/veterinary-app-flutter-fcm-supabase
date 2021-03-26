@@ -41,11 +41,16 @@ class CardEstablecimiento extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(5.0),
-                        child: Image(
+                        child: CachedNetworkImage(
+                          imageUrl: image,
+                          fit: BoxFit.cover,
                           height: 82.0,
                           width: 82.0,
-                          fit: BoxFit.cover,
-                          image: CachedNetworkImageProvider(image),
+                          placeholder: (context, url) => Container(
+                            color: Colors.grey.shade200,
+                            alignment: Alignment.center,
+                            child: CircularProgressIndicator(),
+                          ),
                         ),
                       ),
                       SizedBox(width: 10),

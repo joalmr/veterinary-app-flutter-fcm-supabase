@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:vet_app/src/home/data/bookingRepository.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
+import 'package:vet_app/src/home/data/bookingRepository.dart';
 import '../controller/homeController.dart';
 
 class HomeBinding implements Bindings {

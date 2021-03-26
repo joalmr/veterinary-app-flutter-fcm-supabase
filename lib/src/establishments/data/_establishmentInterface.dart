@@ -1,10 +1,9 @@
 import 'dart:io';
-
-import 'entity/priceEstEntity.dart';
 import 'model/establishmentModelLite.dart';
-import 'entity/establishmentEntity.dart';
 import 'model/establishmet.dart';
 import 'model/serviceModel.dart';
+import 'request/establishmentRequest.dart';
+import 'request/priceEstRequest.dart';
 
 abstract class EstablishmentInterface {
   Future<List<ServiceVetModel>> getServiceVet();

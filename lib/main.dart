@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       getPages: AppPages.pages,
       initialRoute: NameRoutes.splash,
       defaultTransition: Transition.fadeIn,
+      // initialBinding: GlobalBinding(),
     );
   }
 }

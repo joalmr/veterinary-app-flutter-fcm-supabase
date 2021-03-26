@@ -37,10 +37,14 @@ class _NavigationBarState extends State<NavigationBar> {
                 backgroundColor: Colors.grey.withOpacity(0.3),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: Image(
+                  child: CachedNetworkImage(
+                    imageUrl: prefUser.vetLogo,
                     fit: BoxFit.cover,
-                    image: CachedNetworkImageProvider(
-                        prefUser.vetLogo), // AssetImage(imgLogo),
+                    placeholder: (context, url) => Container(
+                      color: Colors.grey.shade200,
+                      alignment: Alignment.center,
+                      child: CircularProgressIndicator(),
+                    ),
                   ),
                 ),
                 radius: 20,

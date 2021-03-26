@@ -65,9 +65,14 @@ class ReprogramarItem extends StatelessWidget {
                           child: Center(
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(5.0),
-                              child: Image(
+                              child: CachedNetworkImage(
+                                imageUrl: petImg,
                                 fit: BoxFit.cover,
-                                image: CachedNetworkImageProvider(petImg),
+                                placeholder: (context, url) => Container(
+                                  color: Colors.grey.shade200,
+                                  alignment: Alignment.center,
+                                  child: CircularProgressIndicator(),
+                                ),
                               ),
                             ),
                           ),
