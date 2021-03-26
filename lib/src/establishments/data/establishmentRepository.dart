@@ -1,4 +1,5 @@
 import 'dart:io';
+import '_establishmentInterface.dart';
 import 'establishmentApi.dart';
 import 'model/establishmentModelLite.dart';
 import 'model/establishmet.dart';
@@ -6,38 +7,63 @@ import 'model/serviceModel.dart';
 import 'request/establishmentRequest.dart';
 import 'request/priceEstRequest.dart';
 
-class EstablishmentRepository {
-  final _repository = EstablishmentApi();
+class EstablishmentRepository extends EstablishmentInterface {
+  final _api = EstablishmentApi();
 
-  Future<List<ServiceVetModel>> getServiceVet() => _repository.getServiceVet();
+  @override
+  Future<void> deleteEstablishmetn(String establecimientoId) {
+    return _api.deleteEstablishmetn(establecimientoId);
+  }
 
-  Future<List<dynamic>> setNew(EstablecimientoEntity establecimiento) =>
-      _repository.setNew(establecimiento);
+  @override
+  Future<List<EstablecimientoModelLite>> getAll() {
+    return _api.getAll();
+  }
 
-  Future<void> deleteEstablishmetn(String establecimientoId) =>
-      _repository.deleteEstablishmetn(establecimientoId);
+  @override
+  Future<EstablishmentModal> getById(String idVet) {
+    return _api.getById(idVet);
+  }
 
+  @override
+  Future<EstablecimientoModelLite> getFirst() {
+    return _api.getFirst();
+  }
+
+  @override
+  Future<List<ServiceVetModel>> getServiceVet() {
+    return _api.getServiceVet();
+  }
+
+  @override
+  Future<String> setDescription(String establecimientoId, String description) {
+    return _api.setDescription(establecimientoId, description);
+  }
+
+  @override
   Future<String> setEmployee(
-          String establecimientoId, int typeId, String name, String code) =>
-      _repository.setEmployee(establecimientoId, typeId, name, code);
+      String establecimientoId, int typeId, String name, String code) {
+    return _api.setEmployee(establecimientoId, typeId, name, code);
+  }
 
+  @override
+  Future<void> setLogo(String establecimientoId, File image) {
+    return _api.setLogo(establecimientoId, image);
+  }
+
+  @override
+  Future<List> setNew(EstablecimientoEntity establecimiento) {
+    return _api.setNew(establecimiento);
+  }
+
+  @override
   Future<String> setPrices(
-          String establecimientoId, PriceEstablecimientoEntity precios) =>
-      _repository.setPrices(establecimientoId, precios);
+      String establecimientoId, PriceEstablecimientoEntity precios) {
+    return _api.setPrices(establecimientoId, precios);
+  }
 
-  Future<String> setSchedule(String establecimientoId, horarios) =>
-      _repository.setSchedule(establecimientoId, horarios);
-
-  Future<String> setDescription(String establecimientoId, String description) =>
-      _repository.setDescription(establecimientoId, description);
-
-  Future<List<EstablecimientoModelLite>> getAll() => _repository.getAll();
-
-  Future<EstablecimientoModelLite> getFirst() => _repository.getFirst();
-
-  Future<EstablishmentModal> getById(String idVet) =>
-      _repository.getById(idVet);
-
-  Future<void> setLogo(String establecimientoId, File image) =>
-      _repository.setLogo(establecimientoId, image);
+  @override
+  Future<String> setSchedule(String establecimientoId, horarios) {
+    return _api.setSchedule(establecimientoId, horarios);
+  }
 }
