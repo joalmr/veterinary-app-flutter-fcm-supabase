@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/assets/utils/headerHttp.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
-import '_bookingInterface.dart';
+import 'bookingInterface.dart';
 import 'model/bookingModel.dart';
 
-class BookingApi extends BookingInterface {
+class BookingRepository extends BookingInterface {
   @override
   Future<int> confirm(String idBooking) async {
     final url = Uri.https(urlBase, '/api/client/booking/$idBooking/confirm');

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
-import 'package:vet_app/src/home/data/bookingRepository.dart';
+import 'package:vet_app/src/home/data/bookingApi.dart';
+import 'package:vet_app/src/home/data/bookingRepository2.dart';
 import '../controller/homeController.dart';
 
 class HomeBinding implements Bindings {
@@ -8,7 +9,7 @@ class HomeBinding implements Bindings {
   void dependencies() {
     Get.lazyPut<HomeController>(
       () => HomeController(
-        stablishmentService: EstablishmentRepository(),
+        establishmentService: EstablishmentRepository(),
         bookingService: BookingRepository(),
       ),
     );

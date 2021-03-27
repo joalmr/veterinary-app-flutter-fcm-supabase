@@ -2,16 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
-import 'package:vet_app/src/home/data/bookingRepository.dart';
+import 'package:vet_app/src/home/data/bookingApi.dart';
+import 'package:vet_app/src/home/data/bookingRepository2.dart';
 import 'package:vet_app/src/home/data/model/bookingModel.dart';
 import 'package:vet_app/src/home/domain/values/homeValue.dart';
 
 class HomeController extends GetxController {
-  final EstablishmentRepository stablishmentService;
+  final EstablishmentRepository establishmentService;
   final BookingRepository bookingService;
 
   HomeController({
-    @required this.stablishmentService,
+    @required this.establishmentService,
     @required this.bookingService,
   });
 
@@ -48,8 +49,6 @@ class HomeController extends GetxController {
   getAll() => _getAll();
 
   Future<List<ReservaModel>> _getAll() async {
-    print('entra getall bookings');
-
     v.reservas.clear();
     var misReservas = await bookingService.getAll(prefUser.vetId);
     v.reservas.addAll(misReservas);
@@ -57,14 +56,13 @@ class HomeController extends GetxController {
     getVet();
     v.carga = false;
 
-    print('fin getall bookings');
     return v.reservas;
   }
 
   getVet() => _getVet();
 
   Future<void> _getVet() async {
-    final veterinary = await stablishmentService.getById(prefUser.vetId);
+    final veterinary = await establishmentService.getById(prefUser.vetId);
     v.nameVet = veterinary.name;
   }
 
@@ -73,9 +71,7 @@ class HomeController extends GetxController {
   Future<void> _confirm(idBooking) async {
     v.carga = true;
     int resp = await bookingService.confirm(idBooking);
-
     if (resp == 200) getAll();
-
     v.cargaConfirmar = false;
   }
 }
