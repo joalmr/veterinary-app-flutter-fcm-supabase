@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/src/home/domain/controller/homeController.dart';
+import 'package:vet_app/src/home/domain/homeController.dart';
 
 import 'app/homeApp.dart';
 import 'web/homeWeb.dart';

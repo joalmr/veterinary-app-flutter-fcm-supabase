@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/src/establishments/domain/createVetController.dart';
+import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 import 'package:vet_app/src/establishments/view/_children/create/shared/components/rowFooter.dart';
 import '../shared/components/bodyStep.dart';
 import '../shared/components/headerStep.dart';

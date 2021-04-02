@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:vet_app/routes/routes.dart';
-import 'package:vet_app/src/auth/data/authRepository.dart';
+import 'package:vet_app/src/_auth/login/data/authRepository.dart';
 
 class ConfigController extends GetxController {
-  final AuthRepository authService = AuthRepository();
+  final authService = AuthRepository();
 
   @override
   void onInit() {

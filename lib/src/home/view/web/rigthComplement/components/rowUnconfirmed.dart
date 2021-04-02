@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/childRegion.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/home/domain/controller/homeController.dart';
+import 'package:vet_app/src/home/domain/homeController.dart';
 import 'contentReprograma.dart';
 
 class RowUnconfirmed extends StatefulWidget {

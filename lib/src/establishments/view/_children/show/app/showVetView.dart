@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/assets/images/images.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/establishments/domain/establishmentsController.dart';
+import 'package:vet_app/src/establishments/domain/edit/editVetController.dart';
 import 'descriptionView.dart';
 import 'employeesView.dart';
 import 'pricesView.dart';
@@ -16,9 +16,9 @@ class ShowVetView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetX<EstablishmentsController>(
+    return GetX<EditVetController>(
       builder: (_) {
-        final esTemp = _.v.establishment;
+        final esTemp = _.v.establishment.value;
         return Scaffold(
           appBar: AppBar(
             elevation: 0,

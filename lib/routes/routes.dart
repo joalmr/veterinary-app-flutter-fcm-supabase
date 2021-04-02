@@ -1,17 +1,13 @@
 import 'package:get/get.dart';
 import 'package:vet_app/middleware/globalMiddleware.dart';
-import 'package:vet_app/src/_global/domain/globalBinding.dart';
-import 'package:vet_app/src/_global/view/splashView.dart';
-import 'package:vet_app/src/_vet/view/vetMain.dart';
-import 'package:vet_app/src/auth/view/register/register.dart';
+import 'package:vet_app/src/__global/presentation/splashView.dart';
+import 'package:vet_app/src/_auth/login/presentation/pages/login.dart';
+import 'package:vet_app/src/_auth/register/presentation/pages/register.dart';
 import 'package:vet_app/src/calendar/view/calendar.dart';
-import 'package:vet_app/src/config/view/configMain.dart';
-import 'package:vet_app/src/establishments/domain/binding/establishmentBinding.dart';
-import 'package:vet_app/src/home/domain/binding/homeBinding.dart';
+import 'package:vet_app/src/config/presentation/pages/configMain.dart';
 import 'package:vet_app/src/home/view/home.dart';
 import 'package:vet_app/src/offers/view/offers.dart';
-import 'package:vet_app/src/auth/view/Login/login.dart';
-import 'package:vet_app/src/attentions/view/attentions.dart';
+import 'package:vet_app/src/attentions/presentation/pages/attentions.dart';
 import 'package:vet_app/src/establishments/view/_children/create/creaVet.dart';
 import 'package:vet_app/src/establishments/view/_children/show/showVet.dart';
 import 'package:vet_app/src/establishments/view/establishments.dart';
@@ -35,12 +31,7 @@ class NameRoutes {
 abstract class AppPages {
   static final pages = [
     GetPage(
-      name: '/uid/:user',
-      page: () => VetMain(),
-    ),
-    GetPage(
       name: NameRoutes.splash,
-      binding: GlobalBinding(),
       page: () => SplashView(),
     ),
     GetPage(
@@ -53,7 +44,6 @@ abstract class AppPages {
     ),
     GetPage(
       name: NameRoutes.home,
-      binding: HomeBinding(),
       page: () => HomeMain(),
       middlewares: [GlobalMiddleware()],
     ),
@@ -79,7 +69,6 @@ abstract class AppPages {
     ),
     GetPage(
       name: NameRoutes.establishments,
-      binding: EstablishmentsBinding(),
       page: () => EstablishmentsMain(),
       middlewares: [GlobalMiddleware()],
       children: [

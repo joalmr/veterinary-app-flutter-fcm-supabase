@@ -3,7 +3,7 @@ import 'package:flutter_conditional_rendering/conditional_switch.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/establishments/domain/createVetController.dart';
+import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 
 class FooterCreateVet extends StatelessWidget {
   const FooterCreateVet({Key key}) : super(key: key);

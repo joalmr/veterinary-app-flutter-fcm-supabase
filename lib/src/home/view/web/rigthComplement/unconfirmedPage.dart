@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/assets/utils/datetimeFormat.dart';
 import 'package:vet_app/components/subheader.dart';
 import 'package:vet_app/src/home/data/model/bookingModel.dart';
-import 'package:vet_app/src/home/domain/controller/homeController.dart';
+import 'package:vet_app/src/home/domain/homeController.dart';
 import 'components/rowUnconfirmed.dart';
 
 class Unconfirmed extends StatelessWidget {

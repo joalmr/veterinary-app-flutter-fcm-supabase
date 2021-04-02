@@ -9,6 +9,7 @@ class EstablishmentsMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EstablishmentsController>(
+      init: EstablishmentsController(),
       builder: (_) {
         return context.width < 900
             ? EstablishmentsPageApp()

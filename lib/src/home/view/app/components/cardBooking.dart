@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/home/domain/controller/homeController.dart';
+import 'package:vet_app/src/home/domain/homeController.dart';
 import 'package:vet_app/src/home/view/app/acttionBooking/reprogramar.dart';
 
 class CardBooking extends StatelessWidget {
@@ -38,7 +38,7 @@ class CardBooking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _home = Get.find<HomeController>();
+    final HomeController _home = Get.find();
 
     // String petImage = 'https://danger.proypet.com/' +
     //     petImg.split('http://18.188.214.204/')[1];

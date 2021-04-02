@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/src/establishments/domain/createVetController.dart';
+import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 import 'app/creaVetView.dart';
 import 'web/creaVetPage.dart';
 
