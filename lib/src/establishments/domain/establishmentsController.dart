@@ -1,17 +1,10 @@
-import 'dart:io';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/view/_children/show/showVet.dart';
 import 'establishmentValue.dart';
 
 class EstablishmentsController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
-
-  // EstablishmentsController({
-  //   @required this.establishmentRepo,
-  // });
-
   final v = EstablishmentValue();
 
   @override
