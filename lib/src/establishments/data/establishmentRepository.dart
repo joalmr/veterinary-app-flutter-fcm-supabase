@@ -47,7 +47,7 @@ class EstablishmentRepository extends EstablishmentInterface {
   }
 
   @override
-  Future<void> setLogo(String establecimientoId, File image) {
+  Future<String> setLogo(String establecimientoId, File image) {
     return _api.setLogo(establecimientoId, image);
   }
 

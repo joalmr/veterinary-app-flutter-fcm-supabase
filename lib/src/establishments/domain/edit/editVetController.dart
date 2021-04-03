@@ -7,22 +7,60 @@ import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 
 import '../establishmentsController.dart';
 
-part 'values.dart';
-
 class EditVetController extends GetxController {
-  final v = EditVetValue();
+  final establishmentRepo = EstablishmentRepository();
 
-  getByid(String id) => _getByid(id);
+  final EstablishmentsController establishmentController = Get.find();
 
-  _getByid(String id) async {
-    v.establishment.value = await v.establishmentRepo.getById(id);
-    v.establishment.refresh();
+  var _establishment = EstablishmentModal().obs;
+  EstablishmentModal get establishment => _establishment.value;
+  set establishment(EstablishmentModal value) => _establishment.value = value;
+
+  RxBool _cargando = true.obs;
+  bool get cargando => _cargando.value;
+  set cargando(bool val) => _cargando.value = val;
+
+  var argumentoId;
+
+  @override
+  void onInit() {
+    argumentoId = Get.arguments;
+    getByid();
+    super.onInit();
   }
 
-  seleccionarLogo(String id) {
-    _procesarImagen(id, ImageSource.gallery);
-    getByid(id);
-    v.establishmentController.getAll();
+  @override
+  void onClose() {
+    establishmentController.getAll();
+    super.onClose();
+  }
+
+  Future refresh() => _refresh();
+
+  Future<Null> _refresh() async {
+    cargando = true;
+    await Future.delayed(Duration(milliseconds: 2));
+    getByid();
+    return null;
+  }
+
+  getByid() => _getByid();
+
+  _getByid() async {
+    cargando = true;
+    establishment = await establishmentRepo.getById(argumentoId);
+    // establishment.refresh();
+
+    update(['showVet']);
+
+    cargando = false;
+  }
+
+  seleccionarLogo() async {
+    await _procesarImagen(argumentoId, ImageSource.gallery);
+    // refresh();
+
+    update(['showVet']);
   }
 
   _procesarImagen(String id, ImageSource origen) async {
@@ -31,7 +69,7 @@ class EditVetController extends GetxController {
         await ImagePicker().getImage(source: origen, imageQuality: 80);
     if (pickedFile != null) {
       _image = File(pickedFile.path);
-      v.establishmentRepo.setLogo(id, _image);
+      establishment.logo = await establishmentRepo.setLogo(id, _image);
     } else {
       print('No image');
     }

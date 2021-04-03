@@ -41,19 +41,25 @@ class _CalendarEventViewState extends State<CalendarEventView> {
               IconButton(
                 icon: Icon(Icons.keyboard_arrow_left_rounded),
                 onPressed: () {
-                  setState(() {
-                    if (valueMonth > 1) {
-                      valueMonth = valueMonth - 1;
-                      daysPerMonth =
-                          DateTime(valueYear, (valueMonth + 1), 0).day;
-                      valueDay = 1;
-                    } else {
-                      valueYear = valueYear - 1;
-                      valueMonth = 12;
-                      daysPerMonth =
-                          DateTime(valueYear, (valueMonth + 1), 0).day;
-                    }
-                  });
+                  setState(
+                    () {
+                      itemScrollController.scrollTo(
+                        index: 0,
+                        duration: Duration(milliseconds: 1000),
+                      );
+                      if (valueMonth > 1) {
+                        valueMonth = valueMonth - 1;
+                        daysPerMonth =
+                            DateTime(valueYear, (valueMonth + 1), 0).day;
+                        valueDay = 1;
+                      } else {
+                        valueYear = valueYear - 1;
+                        valueMonth = 12;
+                        daysPerMonth =
+                            DateTime(valueYear, (valueMonth + 1), 0).day;
+                      }
+                    },
+                  );
                 },
               ),
               Expanded(
@@ -70,18 +76,24 @@ class _CalendarEventViewState extends State<CalendarEventView> {
               IconButton(
                 icon: Icon(Icons.keyboard_arrow_right_rounded),
                 onPressed: () {
-                  setState(() {
-                    if (valueMonth < 12) {
-                      valueMonth = valueMonth + 1;
-                      daysPerMonth = DateTime(2021, (valueMonth + 1), 0).day;
-                      valueDay = 1;
-                    } else {
-                      valueYear = valueYear + 1;
-                      valueMonth = 1;
-                      daysPerMonth =
-                          DateTime(valueYear, (valueMonth + 1), 0).day;
-                    }
-                  });
+                  setState(
+                    () {
+                      itemScrollController.scrollTo(
+                        index: 0,
+                        duration: Duration(milliseconds: 1000),
+                      );
+                      if (valueMonth < 12) {
+                        valueMonth = valueMonth + 1;
+                        daysPerMonth = DateTime(2021, (valueMonth + 1), 0).day;
+                        valueDay = 1;
+                      } else {
+                        valueYear = valueYear + 1;
+                        valueMonth = 1;
+                        daysPerMonth =
+                            DateTime(valueYear, (valueMonth + 1), 0).day;
+                      }
+                    },
+                  );
                 },
               ),
               SizedBox(width: 20),

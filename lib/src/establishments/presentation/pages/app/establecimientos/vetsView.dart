@@ -13,9 +13,9 @@ class VetsView extends StatelessWidget {
           key: refreshKey,
           onRefresh: _.refresh,
           child: ListView.builder(
-            itemCount: _.v.establecimientos.length,
+            itemCount: _.establecimientos.length,
             itemBuilder: (BuildContext context, int index) {
-              final establecimiento = _.v.establecimientos[index];
+              final establecimiento = _.establecimientos[index];
               return CardEstablecimiento(
                 id: establecimiento.id,
                 image: establecimiento.logo,

@@ -1,38 +1,17 @@
 import 'dart:convert';
-import 'package:get/get.dart';
 
 EstablishmentModal establishmentModalFromJson(String str) =>
     EstablishmentModal.fromJson(json.decode(str));
 
-class RxEstablishmentModal {
-  RxString id;
-  RxString name;
-  RxString stars;
-  RxString logo;
-  RxString description;
-  Rx<Schedule> schedule;
-  Rx<Prices> prices;
-  RxList<Employee> employees;
-
-  RxEstablishmentModal(
-    this.id,
-    this.name,
-    this.stars,
-    this.logo,
-    this.description,
-    this.schedule,
-    this.prices,
-    this.employees,
-  );
-}
-
 class EstablishmentModal {
   String id;
   String name;
+  String address;
   String stars;
   String logo;
   String description;
   Schedule schedule;
+  List<Service> services;
   Prices prices;
   List<Employee> employees;
 
@@ -40,34 +19,26 @@ class EstablishmentModal {
   EstablishmentModal({
     this.id,
     this.name,
+    this.address,
     this.stars,
     this.logo,
     this.description,
     this.schedule,
+    this.services,
     this.prices,
     this.employees,
   });
-  // {
-  //   rx = RxEstablishmentModal(
-  //     id.obs,
-  //     name.obs,
-  //     stars.obs,
-  //     logo.obs,
-  //     description.obs,
-  //     schedule.obs,
-  //     prices.obs,
-  //     employees.obs,
-  //   );
-  // }
-
   factory EstablishmentModal.fromJson(Map<String, dynamic> json) =>
       EstablishmentModal(
         id: json["id"],
         name: json["name"],
+        address: json["address"],
         stars: json["stars"],
         logo: json["logo"],
         description: json["description"],
         schedule: Schedule.fromJson(json["schedule"]),
+        services: List<Service>.from(
+            json["services"].map((x) => Service.fromJson(x))),
         prices: Prices.fromJson(json["prices"]),
         employees: List<Employee>.from(
             json["employees"].map((x) => Employee.fromJson(x))),
@@ -96,6 +67,26 @@ class Employee {
         name: json["name"],
         code: json["code"] == null ? null : json["code"],
       );
+}
+
+class Service {
+  Service({
+    this.id,
+    this.name,
+  });
+
+  int id;
+  String name;
+
+  factory Service.fromJson(Map<String, dynamic> json) => Service(
+        id: json["id"],
+        name: json["name"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+      };
 }
 
 class Prices {

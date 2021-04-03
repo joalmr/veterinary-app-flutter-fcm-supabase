@@ -10,7 +10,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GlobalController>(
-      init: GlobalController(),
+      // init: GlobalController(),
       builder: (_) {
         return Scaffold(
           // backgroundColor: colorMain,

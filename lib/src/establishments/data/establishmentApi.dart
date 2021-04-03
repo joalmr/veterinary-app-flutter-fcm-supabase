@@ -208,7 +208,7 @@ class EstablishmentApi extends EstablishmentInterface {
   }
 
   @override
-  Future<void> setLogo(String establecimientoId, File image) async {
+  Future<String> setLogo(String establecimientoId, File image) async {
     final url = Uri.https(
       urlBase,
       '$pathBase/establishment/$establecimientoId/logo',
@@ -226,6 +226,9 @@ class EstablishmentApi extends EstablishmentInterface {
 
     var responseData = await response.stream.toBytes();
     var responseString = String.fromCharCodes(responseData);
-    print(responseString);
+
+    var dato = jsonDecode(responseString);
+
+    return dato['logo'];
   }
 }
