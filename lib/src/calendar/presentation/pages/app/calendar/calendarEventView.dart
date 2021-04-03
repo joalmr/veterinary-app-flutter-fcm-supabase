@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional_switch.dart';
-import 'package:vet_app/assets/utils/days/diaSemanaLite.dart';
-import 'package:vet_app/assets/utils/monthsName.dart';
+import 'package:vet_app/recursos/utils/days/diaSemanaLite.dart';
+import 'package:vet_app/recursos/utils/monthsName.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/calendar/presentation/widgets/eventList/eventsBooking.dart';
 import 'package:vet_app/src/calendar/presentation/widgets/eventList/eventsNextDate.dart';

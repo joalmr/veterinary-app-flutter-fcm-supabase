@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/assets/images/images.dart';
+import 'package:vet_app/recursos/images/images.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/establishments/domain/edit/editVetController.dart';
 import 'descriptionView.dart';

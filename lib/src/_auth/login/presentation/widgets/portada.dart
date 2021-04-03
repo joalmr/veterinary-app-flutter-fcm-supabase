@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/assets/images/images.dart';
+import 'package:vet_app/recursos/images/images.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 class Portada extends StatelessWidget {

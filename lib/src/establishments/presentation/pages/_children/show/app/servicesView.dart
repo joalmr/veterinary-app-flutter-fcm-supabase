@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/assets/utils/icons_map.dart';
+import 'package:vet_app/recursos/utils/icons_map.dart';
 
 class ServicesView extends StatelessWidget {
   const ServicesView({Key key}) : super(key: key);
