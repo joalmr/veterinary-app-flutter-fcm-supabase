@@ -42,7 +42,7 @@ String validaDate(String texto) {
     } else {
       DateTime dateNow = DateTime.now();
       DateTime tempDate = new DateFormat("dd-MM-yyyy").parse(texto);
-      // print(tempDate);
+
       int diff = tempDate.difference(dateNow).inDays;
       if (diff < 0) return 'Debe escribir una fecha mayor';
     }

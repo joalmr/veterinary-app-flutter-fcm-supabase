@@ -189,8 +189,7 @@ class CreateVetController extends GetxController {
       Get.snackbar(
         'Error',
         'Llene todos los campos',
-        backgroundColor: colorRed.withAlpha(180),
-        colorText: colorRed3,
+        backgroundColor: colorRed,
       );
     } else {
       if (v.selected < 4) v.selected++;
@@ -202,8 +201,7 @@ class CreateVetController extends GetxController {
       Get.snackbar(
         'Error',
         'Llene los campos',
-        backgroundColor: colorRed.withAlpha(180),
-        colorText: colorRed3,
+        backgroundColor: colorRed,
       );
     } else {
       if (v.selected < 4) v.selected++;
@@ -240,23 +238,20 @@ class CreateVetController extends GetxController {
       Get.snackbar(
         'Error',
         'Llene los campos',
-        backgroundColor: colorRed.withAlpha(180),
-        colorText: colorRed3,
+        backgroundColor: colorRed,
       );
     } else if (diaError != "" || diaHoraError != "") {
       if (diaError != "")
         Get.snackbar(
           'Error',
           'Complete los datos de $diaError',
-          backgroundColor: colorRed.withAlpha(180),
-          colorText: colorRed3,
+          backgroundColor: colorRed,
         );
       if (diaHoraError != "")
         Get.snackbar(
           'Error',
           '$diaHoraError',
-          backgroundColor: colorRed.withAlpha(180),
-          colorText: colorRed3,
+          backgroundColor: colorRed,
         );
     } else {
       if (v.selected < 4) v.selected++;
@@ -268,8 +263,7 @@ class CreateVetController extends GetxController {
       Get.snackbar(
         'Error',
         'Llene los campos',
-        backgroundColor: colorRed.withAlpha(180),
-        colorText: colorRed3,
+        backgroundColor: colorRed,
       );
     } else {
       v.checked = true;

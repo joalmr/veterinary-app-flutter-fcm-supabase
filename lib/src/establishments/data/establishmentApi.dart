@@ -76,7 +76,7 @@ class EstablishmentApi extends EstablishmentInterface {
   Future<List<dynamic>> setNew(EstablecimientoEntity establecimiento) async {
     final url = Uri.https(urlBase, '$pathBase/establishment');
     var lista = [];
-    print(jsonEncode(establecimiento));
+
     http.Response response = await http.post(
       url,
       headers: headersToken(),

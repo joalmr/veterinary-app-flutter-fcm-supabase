@@ -57,6 +57,7 @@ final iconNum = <int, IconData>{
   14: IconProypet.resonancia,
   15: IconProypet.farmacia,
   16: IconProypet.hospitalizacion,
+  17: IconProypet.petshop,
 };
 
 final textMap = <int, String>{
@@ -76,4 +77,5 @@ final textMap = <int, String>{
   14: "Resonancia",
   15: "Farmacia",
   16: "Hospitalización",
+  17: "Suplementación",
 };
