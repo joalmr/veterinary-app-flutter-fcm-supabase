@@ -8,6 +8,10 @@ class OffersController extends GetxController {
 
   RxList<OfferModal> promociones = <OfferModal>[].obs;
 
+  RxBool _cargando = true.obs;
+  bool get cargando => _cargando.value;
+  set cargando(bool val) => _cargando.value = val;
+
   @override
   void onInit() {
     getAll();
@@ -28,9 +32,11 @@ class OffersController extends GetxController {
   getAll() => _getAll();
 
   _getAll() async {
+    cargando = true;
     promociones.clear();
     var response = await _repo.getAll(prefUser.vetId);
     promociones.addAll(response);
+    cargando = false;
   }
 
   delete(String idOffer) => _delete(idOffer);
