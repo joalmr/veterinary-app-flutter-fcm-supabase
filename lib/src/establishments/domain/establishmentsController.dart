@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
-import 'package:vet_app/src/establishments/view/_children/show/showVet.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/show/showVet.dart';
+
 import 'establishmentValue.dart';
 
 class EstablishmentsController extends GetxController {
