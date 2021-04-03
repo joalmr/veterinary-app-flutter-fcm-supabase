@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/recursos/utils/icons_map.dart';
 import 'package:vet_app/src/establishments/domain/edit/editVetController.dart';
 
 class ServicesView extends StatelessWidget {
-  const ServicesView({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetX<EditVetController>(
       builder: (_) {
-        print(_.establishment.services);
         return SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +34,49 @@ class ServicesView extends StatelessWidget {
                       icon: Icon(
                         Icons.edit,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet<void>(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (BuildContext context) {
+                            return Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 40,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Editar servicios',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  //
+                                  SizedBox(height: 15),
+                                  Center(
+                                    child: btnSecondary(
+                                      text: 'Guardar',
+                                      onPressed: () {},
+                                    ),
+                                  ),
+                                  SizedBox(height: 15),
+                                  Center(
+                                    child: btnAltern(
+                                      text: 'Volver',
+                                      onPressed: () => Get.back(),
+                                      bold: true,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -78,8 +118,6 @@ class ServicesView extends StatelessWidget {
                     ],
                   ),
                 ),
-
-              // for (var i = 0; i < 10; i++)
             ],
           ),
         );

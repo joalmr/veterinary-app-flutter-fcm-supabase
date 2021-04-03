@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 
 import 'components/employeeShow.dart';
@@ -35,7 +36,49 @@ class EmployeesView extends StatelessWidget {
                   icon: Icon(
                     Icons.edit,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet<void>(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (BuildContext context) {
+                        return Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 40,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Editar empleados',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              //
+                              SizedBox(height: 15),
+                              Center(
+                                child: btnSecondary(
+                                  text: 'Guardar',
+                                  onPressed: () {},
+                                ),
+                              ),
+                              SizedBox(height: 15),
+                              Center(
+                                child: btnAltern(
+                                  text: 'Volver',
+                                  onPressed: () => Get.back(),
+                                  bold: true,
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),

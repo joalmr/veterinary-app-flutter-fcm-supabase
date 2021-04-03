@@ -253,11 +253,17 @@ class ShowVetView extends StatelessWidget {
                             children: <Widget>[
                               ServicesView(),
                               DescriptionView(
-                                  description: _.establishment.description),
-                              PricesView(prices: _.establishment.prices),
-                              SchedulesView(schedule: _.establishment.schedule),
+                                description: _.establishment.description,
+                              ),
+                              PricesView(
+                                prices: _.establishment.prices,
+                              ),
+                              SchedulesView(
+                                schedule: _.establishment.schedule,
+                              ),
                               EmployeesView(
-                                  employees: _.establishment.employees),
+                                employees: _.establishment.employees,
+                              ),
                             ],
                           ),
                         ),
