@@ -10,11 +10,13 @@ import 'package:vet_app/src/offers/data/model/offerModel.dart';
 class OffersApi extends OffersInterface {
   @override
   Future<List<OfferModal>> getAll(String idVet) async {
+    List<OfferModal> ofertas = [];
     final url = Uri.https(urlBase, '/api/client/establishment/$idVet/offers');
 
     http.Response response = await http.get(url, headers: headersToken());
-
-    return offerModalFromJson(response.body);
+    ofertas = offerModalFromJson(response.body);
+    print(ofertas.length);
+    return ofertas;
   }
 
   @override

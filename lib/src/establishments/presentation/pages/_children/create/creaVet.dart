@@ -10,7 +10,7 @@ class CreateVetMain extends StatelessWidget {
     return GetBuilder<CreateVetController>(
       init: CreateVetController(),
       builder: (_) {
-        return context.width > 900 ? CreaVetPage() : CreaVetView();
+        return context.width < 900 ? CreaVetView() : CreaVetPage();
       },
     );
   }

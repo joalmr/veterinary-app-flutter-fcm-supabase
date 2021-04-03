@@ -10,8 +10,6 @@ import 'package:vet_app/src/establishments/presentation/pages/_children/create/w
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/components/headerStep.dart';
 
 class AddVet extends StatelessWidget {
-  const AddVet({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetX<CreateVetController>(

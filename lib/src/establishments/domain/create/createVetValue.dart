@@ -36,7 +36,7 @@ class CreateVetValue {
 
   RxList<Marker> marcador = <Marker>[].obs;
 
-  List<TextEditingController> iniController = <TextEditingController>[
+  List<TextEditingController> iniController = [
     TextEditingController(),
     TextEditingController(),
     TextEditingController(),
@@ -46,7 +46,7 @@ class CreateVetValue {
     TextEditingController(),
   ];
 
-  List<TextEditingController> endController = <TextEditingController>[
+  List<TextEditingController> endController = [
     TextEditingController(),
     TextEditingController(),
     TextEditingController(),
@@ -56,7 +56,7 @@ class CreateVetValue {
     TextEditingController(),
   ];
 
-  RxList<bool> checkDay = <bool>[
+  RxList<bool> checkDay = [
     false,
     false,
     false,
@@ -66,7 +66,7 @@ class CreateVetValue {
     false,
   ].obs;
 
-  RxList<String> iniDay = <String>[
+  RxList<String> iniDay = [
     '07:00',
     '07:00',
     '07:00',
@@ -76,7 +76,7 @@ class CreateVetValue {
     '07:00',
   ].obs;
 
-  RxList<String> endDay = <String>[
+  RxList<String> endDay = [
     '20:00',
     '20:00',
     '20:00',

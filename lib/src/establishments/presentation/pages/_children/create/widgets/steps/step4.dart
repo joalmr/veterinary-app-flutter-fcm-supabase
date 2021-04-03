@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 
 class Step4 extends StatelessWidget {
-  const Step4({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CreateVetController>(

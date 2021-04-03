@@ -16,6 +16,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     v.carga = true;
+    print(prefUser.vetId);
     getAll();
     super.onInit();
   }

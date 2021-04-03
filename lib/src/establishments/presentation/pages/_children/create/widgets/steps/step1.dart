@@ -7,8 +7,6 @@ import 'package:vet_app/src/establishments/domain/create/createVetController.dar
 import 'dataTipo.dart';
 
 class Step1 extends StatelessWidget {
-  const Step1({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetX<CreateVetController>(

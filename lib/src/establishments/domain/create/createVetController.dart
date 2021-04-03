@@ -4,7 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/recursos/utils/days/diaSemana.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
-import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
+import 'package:vet_app/src/establishments/data/EstablishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/data/request/establishmentRequest.dart';
 import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
@@ -13,7 +13,7 @@ import 'createVetValue.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class CreateVetController extends GetxController {
-  final establishmentRepo = EstablishmentRepository();
+  final _repo = EstablishmentRepository();
   final v = CreateVetValue();
 
   EstablecimientoEntity entity = new EstablecimientoEntity();
@@ -45,7 +45,7 @@ class CreateVetController extends GetxController {
   }
 
   _getService() async {
-    var lista = await establishmentRepo.getServiceVet();
+    var lista = await _repo.getServiceVet();
     v.servicesVet.clear();
     v.servicesVet.addAll(lista);
   }
@@ -64,16 +64,6 @@ class CreateVetController extends GetxController {
       }
     }
   }
-
-  // onSearch(filter) async {
-  //   Uri url = Uri.https(
-  //     "maps.googleapis.com",
-  //     "/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter",
-  //   );
-  //   var response = await http.get(url);
-  //   var models = addressFromJson(response.body);
-  //   return models.predictions;
-  // }
 
   gpsDireccion(Prediction data) {
     _searchandNavigate(data);
@@ -100,7 +90,7 @@ class CreateVetController extends GetxController {
     entity.reference = "Cerca";
 
     // var resp =
-    establishmentRepo.setNew(entity).then((value) async {
+    _repo.setNew(entity).then((value) async {
       v.idVet = value[1];
       print(v.idVet);
       await _setEmployee();
@@ -115,7 +105,7 @@ class CreateVetController extends GetxController {
     int type = int.parse(v.personalType);
     String name = v.personalNameVet.text;
     String code = v.personalCodeVet.text;
-    await establishmentRepo.setEmployee(v.idVet, type, name, code);
+    await _repo.setEmployee(v.idVet, type, name, code);
   }
 
   _setPrices() async {
@@ -124,7 +114,7 @@ class CreateVetController extends GetxController {
     prices.groomingPriceFrom = v.moneyGrooming.numberValue;
     prices.vaccinationPriceFrom = v.moneyVacuna.numberValue;
 
-    await establishmentRepo.setPrices(v.idVet, prices);
+    await _repo.setPrices(v.idVet, prices);
   }
 
   _setSchedule() async {
@@ -166,11 +156,11 @@ class CreateVetController extends GetxController {
       },
     };
 
-    await establishmentRepo.setSchedule(v.idVet, schedule);
+    await _repo.setSchedule(v.idVet, schedule);
   }
 
   _setDescription() async {
-    await establishmentRepo.setDescription(v.idVet, v.description);
+    await _repo.setDescription(v.idVet, v.description);
   }
 
   setFinaliza() => _newEstablishment();

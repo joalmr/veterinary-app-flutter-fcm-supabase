@@ -6,12 +6,12 @@ import 'package:vet_app/routes/routes.dart';
 class GlobalController extends GetxController {
   @override
   void onInit() {
+    openApp();
     super.onInit();
   }
 
   @override
   void onReady() {
-    openApp();
     super.onReady();
   }
 

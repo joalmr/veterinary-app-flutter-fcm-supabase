@@ -6,8 +6,6 @@ import 'package:vet_app/src/establishments/presentation/pages/_children/create/w
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/components/rowFooter.dart';
 
 class BodyAddVet extends StatelessWidget {
-  const BodyAddVet({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetX<CreateVetController>(

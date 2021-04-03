@@ -11,12 +11,12 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<GlobalController>(
       init: GlobalController(),
-      initState: (_) {},
       builder: (_) {
         return Scaffold(
-          backgroundColor: colorMain,
+          // backgroundColor: colorMain,
           body: Center(
             child: FadeIn(
+              duration: Duration(milliseconds: 1750),
               child: Hero(
                 tag: 'logo',
                 child: Image(

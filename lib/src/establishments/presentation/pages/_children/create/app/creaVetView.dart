@@ -9,8 +9,6 @@ import 'package:vet_app/src/establishments/presentation/pages/_children/create/w
 import 'bodyAddVet.dart';
 
 class CreaVetView extends StatelessWidget {
-  const CreaVetView({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetX<CreateVetController>(

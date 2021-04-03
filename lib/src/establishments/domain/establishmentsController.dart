@@ -16,7 +16,6 @@ class EstablishmentsController extends GetxController {
 
   @override
   void onReady() {
-    getAll();
     super.onReady();
   }
 

@@ -1,8 +1,3 @@
-// var itemTipo = [
-//   {'id': 1, 'name': 'Veterinaria'},
-//   {'id': 2, 'name': 'Groomer'}
-// ];
-
 class ItemService {
   String id;
   String name;

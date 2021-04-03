@@ -9,8 +9,6 @@ import 'package:simple_autocomplete_formfield/simple_autocomplete_formfield.dart
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/components/map.dart';
 
 class Step2 extends StatelessWidget {
-  const Step2({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CreateVetController>(
