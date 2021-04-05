@@ -86,7 +86,7 @@ class ShowVetView extends StatelessWidget {
                               height: 55.0,
                               width: 55.0,
                               decoration: BoxDecoration(
-                                color: colorGray1,
+                                color: colorWhite,
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
                               child: ClipRRect(
