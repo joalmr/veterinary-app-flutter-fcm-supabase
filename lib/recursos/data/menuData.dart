@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:vet_app/routes/routes.dart';
 
 List<dynamic> dataMenu = [
   {
     'icon': Icons.home_rounded,
     'name': 'Inicio',
-    'page': '/home',
+    'page': NameRoutes.home,
   },
   {
     'icon': Icons.calendar_today_rounded,
     'name': 'Calendario',
-    'page': '/calendar',
+    'page': NameRoutes.calendar,
   },
   {
     'icon': Icons.book_rounded,
     'name': 'Atenciones',
-    'page': '/attentions',
+    'page': NameRoutes.attentions,
   },
   {
     'icon': Icons.bar_chart_rounded,
     'name': 'Estadísticas',
-    'page': '/stats',
+    'page': NameRoutes.stats,
   },
   {
     'icon': Icons.local_offer_rounded,
     'name': 'Promociones',
-    'page': '/offers',
+    'page': NameRoutes.offers,
   },
   {
     'icon': Icons.home_work_rounded,
     'name': 'Establecimientos',
-    'page': '/establishments',
+    'page': NameRoutes.establishments,
   },
   {
     'icon': Icons.people_rounded,
     'name': 'Administradores',
-    'page': '/workers',
+    'page': NameRoutes.workers,
   },
 ];

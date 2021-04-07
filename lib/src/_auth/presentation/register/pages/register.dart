@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../domain/registerController.dart';
+import '../../../domain/registerController.dart';
 
 import 'app/registerView.dart';
 import 'web/registerPage.dart';

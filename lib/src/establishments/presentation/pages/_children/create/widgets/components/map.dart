@@ -32,7 +32,7 @@ class MapVet extends StatelessWidget {
             target: LatLng(-12.045645176850693, -77.03056366799036),
             zoom: 15,
           ),
-          markers: Set.from(_.v.marcador),
+          markers: Set.from(_.marcador),
           onMapCreated: _.mapCreated,
         );
       },

@@ -14,7 +14,7 @@ class FooterCreateVet extends StatelessWidget {
       builder: (_) {
         return ConditionalSwitch.single<int>(
           context: context,
-          valueBuilder: (BuildContext context) => _.v.selected,
+          valueBuilder: (BuildContext context) => _.selected,
           caseBuilders: {
             1: (BuildContext context) => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +39,7 @@ class FooterCreateVet extends StatelessWidget {
                       bold: true,
                       text: 'Volver',
                       onPressed: () {
-                        if (_.v.selected > 1) _.v.selected--;
+                        if (_.selected > 1) _.selected--;
                       },
                     ),
                     btnAltern(
@@ -56,7 +56,7 @@ class FooterCreateVet extends StatelessWidget {
                       bold: true,
                       text: 'Volver',
                       onPressed: () {
-                        if (_.v.selected > 1) _.v.selected--;
+                        if (_.selected > 1) _.selected--;
                       },
                     ),
                     btnAltern(
@@ -73,7 +73,7 @@ class FooterCreateVet extends StatelessWidget {
                       bold: true,
                       text: 'Volver',
                       onPressed: () {
-                        if (_.v.selected > 1) _.v.selected--;
+                        if (_.selected > 1) _.selected--;
                       },
                     ),
                     btnAltern(

@@ -1,4 +1,3 @@
-import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 import 'package:vet_app/src/offers/data/_offersInterface.dart';
 import 'package:vet_app/src/offers/data/model/offerModel.dart';
 

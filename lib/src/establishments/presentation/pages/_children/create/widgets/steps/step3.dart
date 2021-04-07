@@ -30,7 +30,7 @@ class Step3 extends StatelessWidget {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
                       isExpanded: true,
-                      value: _.v.personalType,
+                      value: _.personalType,
                       items: personalTipo.map((ItemService value) {
                         return new DropdownMenuItem<String>(
                           value: value.id,
@@ -39,7 +39,7 @@ class Step3 extends StatelessWidget {
                       }).toList(),
                       onChanged: (val) {
                         print(val);
-                        _.v.personalType = val;
+                        _.personalType = val;
                       },
                     ),
                   ),
@@ -52,7 +52,7 @@ class Step3 extends StatelessWidget {
                 textCapitalization: TextCapitalization.words,
               ),
               SizedBox(height: 5),
-              _.v.personalType == '2'
+              _.personalType == '2'
                   ? Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,

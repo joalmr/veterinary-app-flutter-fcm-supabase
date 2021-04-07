@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/recursos/images/images.dart';
@@ -9,19 +8,16 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GlobalController>(
-      // init: GlobalController(),
       builder: (_) {
         return Scaffold(
-          // backgroundColor: colorMain,
-          body: Center(
-            child: FadeIn(
-              duration: Duration(milliseconds: 1750),
-              child: Hero(
-                tag: 'logo',
-                child: Image(
-                  width: 275,
-                  image: AssetImage(imgLogoProypet),
-                ),
+          body: Container(
+            child: Center(
+              child: FadeInImage(
+                placeholder: AssetImage(imgEmpty),
+                height: 70,
+                image: AssetImage(imgLogoProypet),
+                fadeInDuration: Duration(milliseconds: 1000),
+                fadeOutDuration: Duration(milliseconds: 800),
               ),
             ),
           ),

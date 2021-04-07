@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:vet_app/recursos/utils/headerHttp.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:http/http.dart' as http;
-import 'package:vet_app/src/establishments/data/establishmentApi.dart';
-import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 
 import 'package:vet_app/src/offers/data/_offersInterface.dart';
 import 'package:vet_app/src/offers/data/model/offerModel.dart';

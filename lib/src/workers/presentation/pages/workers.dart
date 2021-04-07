@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../domain/workersController.dart';
+import '../../domain/workersController.dart';
 
 import 'app/workersApp.dart';
 import 'web/workersWeb.dart';

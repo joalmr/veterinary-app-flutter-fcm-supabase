@@ -6,6 +6,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/establishments/data/EstablishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
+import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 import 'package:vet_app/src/establishments/data/request/establishmentRequest.dart';
 import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
 import '../establishmentsController.dart';
@@ -19,6 +20,37 @@ class CreateVetController extends GetxController {
   EstablecimientoEntity entity = new EstablecimientoEntity();
   PriceEstablecimientoEntity prices = new PriceEstablecimientoEntity();
   final EstablishmentsController establishmentController = Get.find();
+
+  RxBool _checked = false.obs;
+  bool get checked => _checked.value;
+  set checked(bool value) => _checked.value = value;
+
+  RxString _idVet = ''.obs;
+  String get idVet => _idVet.value;
+  set idVet(String value) => _idVet.value = value;
+
+  RxInt _selected = 1.obs;
+  int get selected => _selected.value;
+  set selected(int value) => _selected.value = value;
+
+  RxString _description = ''.obs;
+  String get description => _description.value;
+  set description(String value) => _description.value = value;
+
+  RxString _vetType = '1'.obs;
+  String get vetType => _vetType.value;
+  set vetType(String value) => _vetType.value = value;
+
+  RxString _personalType = '2'.obs;
+  String get personalType => _personalType.value;
+  set personalType(String value) => _personalType.value = value;
+
+  RxList<ServiceVetModel> servicesVet = <ServiceVetModel>[].obs;
+  RxList<int> servicesVetSet = <int>[].obs;
+
+  RxList<String> errorDays = <String>[].obs;
+
+  RxList<Marker> marcador = <Marker>[].obs;
 
   String _mapStyle;
   GoogleMapController _controller;
@@ -46,8 +78,8 @@ class CreateVetController extends GetxController {
 
   _getService() async {
     var lista = await _repo.getServiceVet();
-    v.servicesVet.clear();
-    v.servicesVet.addAll(lista);
+    servicesVet.clear();
+    servicesVet.addAll(lista);
   }
 
   mapCreated(controller) {
@@ -56,11 +88,11 @@ class CreateVetController extends GetxController {
   }
 
   void add2List(int numero) {
-    if (!v.servicesVetSet.contains(numero))
-      v.servicesVetSet.add(numero);
+    if (!servicesVetSet.contains(numero))
+      servicesVetSet.add(numero);
     else {
-      if (v.servicesVetSet.length > 1) {
-        v.servicesVetSet.remove(numero);
+      if (servicesVetSet.length > 1) {
+        servicesVetSet.remove(numero);
       }
     }
   }
@@ -82,17 +114,17 @@ class CreateVetController extends GetxController {
   }
 
   _newEstablishment() async {
-    entity.typeId = int.parse(v.vetType);
+    entity.typeId = int.parse(vetType);
     // entity.address = "Misionero Salas, Callao, Perú";
     entity.latitude = -12.002784;
     entity.longitude = -77.100593;
-    entity.services = v.servicesVetSet;
+    entity.services = servicesVetSet;
     entity.reference = "Cerca";
 
     // var resp =
     _repo.setNew(entity).then((value) async {
-      v.idVet = value[1];
-      print(v.idVet);
+      idVet = value[1];
+      print(idVet);
       await _setEmployee();
       await _setSchedule();
       await _setPrices();
@@ -102,10 +134,10 @@ class CreateVetController extends GetxController {
   }
 
   _setEmployee() async {
-    int type = int.parse(v.personalType);
+    int type = int.parse(personalType);
     String name = v.personalNameVet.text;
     String code = v.personalCodeVet.text;
-    await _repo.setEmployee(v.idVet, type, name, code);
+    await _repo.setEmployee(idVet, type, name, code);
   }
 
   _setPrices() async {
@@ -114,7 +146,7 @@ class CreateVetController extends GetxController {
     prices.groomingPriceFrom = v.moneyGrooming.numberValue;
     prices.vaccinationPriceFrom = v.moneyVacuna.numberValue;
 
-    await _repo.setPrices(v.idVet, prices);
+    await _repo.setPrices(idVet, prices);
   }
 
   _setSchedule() async {
@@ -156,11 +188,11 @@ class CreateVetController extends GetxController {
       },
     };
 
-    await _repo.setSchedule(v.idVet, schedule);
+    await _repo.setSchedule(idVet, schedule);
   }
 
   _setDescription() async {
-    await _repo.setDescription(v.idVet, v.description);
+    await _repo.setDescription(idVet, description);
   }
 
   setFinaliza() => _newEstablishment();
@@ -170,13 +202,13 @@ class CreateVetController extends GetxController {
   bool get ephone => v.phoneVet.text.isEmpty;
   bool get eruc => v.rucVet.text.isEmpty;
   bool get eweb => v.webVet.text.isEmpty;
-  bool get eservices => v.servicesVetSet.length == 0;
+  bool get eservices => servicesVetSet.length == 0;
   //step 2
   bool get edirVet => v.dirVet.text.isEmpty;
   //step 3
   bool get epersonalNameVet => v.personalNameVet.text.isEmpty;
   bool get epersonalCodeVet =>
-      v.personalCodeVet.text.isEmpty && v.personalType == '2';
+      v.personalCodeVet.text.isEmpty && personalType == '2';
   bool get emoneyConsulta => v.moneyConsulta.text.isEmpty;
   bool get emoneyDesparasita => v.moneyDesparasita.text.isEmpty;
   bool get emoneyVacuna => v.moneyVacuna.text.isEmpty;
@@ -192,7 +224,7 @@ class CreateVetController extends GetxController {
         backgroundColor: colorRed,
       );
     } else {
-      if (v.selected < 4) v.selected++;
+      if (selected < 4) selected++;
     }
   }
 
@@ -204,7 +236,7 @@ class CreateVetController extends GetxController {
         backgroundColor: colorRed,
       );
     } else {
-      if (v.selected < 4) v.selected++;
+      if (selected < 4) selected++;
     }
   }
 
@@ -254,7 +286,7 @@ class CreateVetController extends GetxController {
           backgroundColor: colorRed,
         );
     } else {
-      if (v.selected < 4) v.selected++;
+      if (selected < 4) selected++;
     }
   }
 
@@ -266,12 +298,12 @@ class CreateVetController extends GetxController {
         backgroundColor: colorRed,
       );
     } else {
-      v.checked = true;
+      checked = true;
       setFinaliza();
       Timer(
         Duration(milliseconds: 3500),
         () {
-          v.checked = false;
+          checked = false;
           Get.offNamed(NameRoutes.establishments);
         },
       );

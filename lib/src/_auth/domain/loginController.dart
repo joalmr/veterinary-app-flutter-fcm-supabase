@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/routes/routes.dart';
-import 'package:vet_app/src/_auth/login/data/authRepository.dart';
+import 'package:vet_app/src/_auth/data/authRepository.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 
 class LoginController extends GetxController {
@@ -14,21 +14,6 @@ class LoginController extends GetxController {
 
   RxBool errorLogIn = false.obs;
   RxBool btnLogIn = true.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   logIn() => _login();
 

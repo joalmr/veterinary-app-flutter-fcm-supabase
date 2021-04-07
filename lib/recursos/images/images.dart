@@ -1,3 +1,4 @@
+String imgEmpty = 'assets/images/empty.png';
 String imgLogo = 'assets/images/logo.jpg';
 String imgVet = 'assets/images/vetfoto.jpg';
 String imgTitleServicio = 'assets/images/title-servicios.png';

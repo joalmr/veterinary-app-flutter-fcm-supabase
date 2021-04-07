@@ -18,11 +18,11 @@ class BodyAddVet extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(width: 20),
-                  HeaderStep(selected: _.v.selected),
+                  HeaderStep(selected: _.selected),
                 ],
               ),
             ),
-            BodyStep(selected: _.v.selected),
+            BodyStep(selected: _.selected),
             FooterCreateVet(),
           ],
         );

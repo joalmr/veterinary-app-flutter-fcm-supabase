@@ -29,12 +29,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-  # get: ^4.1.1
-  get: ^3.26.0
-  get_storage: # + -
-  http: # + -
+  get: ^4.1.3
+  get_storage: ^2.0.2
+  http: ^0.13.1
   
-  animate_do:
+  animate_do: ^2.0.0
   animated_text_kit: ^4.0.0
   cached_network_image: ^2.5.0
   day_night_time_picker: ^0.4.0
@@ -44,7 +43,7 @@ dependencies:
   google_maps_flutter: 
   image_picker: ^0.7.3
   intl: ^0.17.0
-  lottie: 
+  lottie: ^1.0.1
   percent_indicator: ^2.1.9+1
   simple_autocomplete_formfield:
   scrollable_positioned_list: ^0.1.10

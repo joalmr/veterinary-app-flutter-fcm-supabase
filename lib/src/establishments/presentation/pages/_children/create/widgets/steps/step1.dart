@@ -53,7 +53,7 @@ class Step1 extends StatelessWidget {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton(
                       isExpanded: true,
-                      value: _.v.vetType,
+                      value: _.vetType,
                       items: itemTipo.map((ItemService value) {
                         return new DropdownMenuItem<String>(
                           value: value.id,
@@ -62,7 +62,7 @@ class Step1 extends StatelessWidget {
                       }).toList(),
                       onChanged: (val) {
                         print(val);
-                        _.v.vetType = val;
+                        _.vetType = val;
                       },
                     ),
                   ),
@@ -71,7 +71,7 @@ class Step1 extends StatelessWidget {
               SizedBox(height: 5),
               Text('Servicios'),
               Wrap(
-                children: _.v.servicesVet
+                children: _.servicesVet
                     .map(
                       (item) => Container(
                         margin: EdgeInsets.symmetric(horizontal: 2),
@@ -83,11 +83,10 @@ class Step1 extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 vertical: 0.5, horizontal: 5.0),
                             alignment: Alignment.center,
-                            backgroundColor:
-                                _.v.servicesVetSet.contains(item.id)
-                                    ? colorGreen
-                                    : Colors.transparent,
-                            primary: _.v.servicesVetSet.contains(item.id)
+                            backgroundColor: _.servicesVetSet.contains(item.id)
+                                ? colorGreen
+                                : Colors.transparent,
+                            primary: _.servicesVetSet.contains(item.id)
                                 ? Colors.white
                                 : colorGreen,
                             side: BorderSide(color: colorGreen),

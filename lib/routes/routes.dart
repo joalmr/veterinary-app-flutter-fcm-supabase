@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
 import 'package:vet_app/middleware/globalMiddleware.dart';
 import 'package:vet_app/src/__global/presentation/splashView.dart';
-import 'package:vet_app/src/_auth/login/presentation/pages/login.dart';
-import 'package:vet_app/src/_auth/register/presentation/pages/register.dart';
+import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
+import 'package:vet_app/src/_auth/presentation/register/pages/register.dart';
 import 'package:vet_app/src/calendar/presentation/pages/calendar.dart';
 import 'package:vet_app/src/config/presentation/pages/configMain.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/creaVet.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/showVet.dart';
 import 'package:vet_app/src/home/presentation/pages/home.dart';
-import 'package:vet_app/src/offers/presentation/offers.dart';
+import 'package:vet_app/src/offers/presentation/pages/offers.dart';
 import 'package:vet_app/src/attentions/presentation/pages/attentions.dart';
 import 'package:vet_app/src/establishments/presentation/pages/establishments.dart';
 import 'package:vet_app/src/stats/presentation/pages/stats.dart';
-import 'package:vet_app/src/workers/presentation/workers.dart';
+import 'package:vet_app/src/workers/presentation/pages/workers.dart';
 
 class NameRoutes {
   static final String splash = '/';

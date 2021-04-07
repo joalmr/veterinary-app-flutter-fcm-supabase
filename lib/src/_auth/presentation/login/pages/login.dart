@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/src/_auth/login/domain/loginController.dart';
+import 'package:vet_app/src/_auth/domain/loginController.dart';
 
 import 'app/loginView.dart';
 import 'web/loginPage.dart';

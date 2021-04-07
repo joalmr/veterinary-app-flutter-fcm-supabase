@@ -14,7 +14,7 @@ class AddVet extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<CreateVetController>(
       builder: (_) {
-        return _.v.checked
+        return _.checked
             ? Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -46,15 +46,15 @@ class AddVet extends StatelessWidget {
                       children: [
                         // NumStep(selected: selected),
                         SizedBox(width: 20),
-                        HeaderStep(selected: _.v.selected),
+                        HeaderStep(selected: _.selected),
                         Container(
                           width: 100,
-                          child: _.v.selected > 1
+                          child: _.selected > 1
                               ? btnAltern(
                                   bold: true,
                                   text: 'Volver',
                                   onPressed: () {
-                                    if (_.v.selected > 1) _.v.selected--;
+                                    if (_.selected > 1) _.selected--;
                                   },
                                 )
                               : null,
@@ -62,26 +62,26 @@ class AddVet extends StatelessWidget {
                         SizedBox(width: 20),
                         Container(
                           width: 100,
-                          child: _.v.selected < 4
+                          child: _.selected < 4
                               ? btnAltern(
                                   bold: true,
                                   text: 'Siguiente',
                                   onPressed: () {
-                                    switch (_.v.selected) {
+                                    switch (_.selected) {
                                       case 1:
-                                        print(_.v.selected);
+                                        print(_.selected);
                                         break;
                                       case 2:
-                                        print(_.v.selected);
+                                        print(_.selected);
                                         break;
                                       case 3:
-                                        print(_.v.selected);
+                                        print(_.selected);
                                         break;
                                       case 4:
-                                        print(_.v.selected);
+                                        print(_.selected);
                                         break;
                                     }
-                                    if (_.v.selected < 4) _.v.selected++;
+                                    if (_.selected < 4) _.selected++;
                                   },
                                 )
                               : btnAltern(
@@ -89,11 +89,11 @@ class AddVet extends StatelessWidget {
                                   text: 'Finalizar',
                                   color: colorMain,
                                   onPressed: () {
-                                    _.v.checked = true;
+                                    _.checked = true;
                                     Timer(
                                       Duration(milliseconds: 3000),
                                       () {
-                                        _.v.checked = false;
+                                        _.checked = false;
                                         Get.toNamed('/establishments/show');
                                       },
                                     );
@@ -104,7 +104,7 @@ class AddVet extends StatelessWidget {
                       ],
                     ),
                   ),
-                  BodyStep(selected: _.v.selected),
+                  BodyStep(selected: _.selected),
                   SizedBox(height: 0),
                 ],
               );

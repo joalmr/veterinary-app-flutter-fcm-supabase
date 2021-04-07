@@ -2,8 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/recursos/images/images.dart';
-import 'package:vet_app/src/_auth/login/presentation/widgets/portada.dart';
-import 'package:vet_app/src/_auth/register/presentation/widgets/cardRegister.dart';
+import 'package:vet_app/src/_auth/presentation/login/widgets/portada.dart';
+import 'package:vet_app/src/_auth/presentation/register/widgets/cardRegister.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key key}) : super(key: key);

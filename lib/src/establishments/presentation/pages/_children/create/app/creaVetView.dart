@@ -19,7 +19,7 @@ class CreaVetView extends StatelessWidget {
             title: Text('Crea establecimiento'),
             centerTitle: false,
           ),
-          body: _.v.checked
+          body: _.checked
               ? Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

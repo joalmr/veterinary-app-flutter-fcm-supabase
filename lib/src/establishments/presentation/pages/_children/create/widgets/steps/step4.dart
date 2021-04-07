@@ -14,7 +14,7 @@ class Step4 extends StatelessWidget {
               Text('Descripción'),
               TextFormField(
                 controller: _.v.descriptionVet,
-                onChanged: (val) => _.v.description = val,
+                onChanged: (val) => _.description = val,
                 textCapitalization: TextCapitalization.sentences,
                 maxLines: 10,
               ),
