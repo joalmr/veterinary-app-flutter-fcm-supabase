@@ -10,19 +10,19 @@ class ConfirmarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<HomeController>(
       builder: (_) {
-        return _.v.carga
+        return _.carga
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : _.v.reservas.length == 0
+            : _.reservas.length == 0
                 ? Center(
                     child: Text('No tiene reservas por confirmar'),
                   )
                 : ListView.builder(
                     padding: EdgeInsets.only(left: 10, right: 10, top: 15),
-                    itemCount: _.v.reservas.length,
+                    itemCount: _.reservas.length,
                     itemBuilder: (BuildContext context, int i) {
-                      ReservaModel booking = _.v.reservas[i];
+                      ReservaModel booking = _.reservas[i];
                       return CardBooking(
                         bookingId: booking.id,
                         petImg: booking.petPicture,

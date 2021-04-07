@@ -3,38 +3,40 @@ import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/home/data/bookingRepository.dart';
 import 'package:vet_app/src/home/data/model/bookingModel.dart';
-import 'package:vet_app/src/home/domain/homeValue.dart';
 
 class HomeController extends GetxController {
   final establishmentService = EstablishmentRepository();
   final bookingService = BookingRepository();
 
-  final v = HomeValue();
+  RxBool _carga = true.obs;
+  bool get carga => _carga.value;
+  set carga(bool value) => _carga.value = value;
+
+  RxBool _cargaConfirmar = false.obs;
+  bool get cargaConfirmar => _cargaConfirmar.value;
+  set cargaConfirmar(bool value) => _cargaConfirmar.value = value;
+
+  RxString _nameVet = "".obs;
+
+  String get nameVet => _nameVet.value;
+  set nameVet(String value) => _nameVet.value = value;
+
+  RxList<ReservaModel> reservas = <ReservaModel>[].obs;
 
 ////////////////////////////////////////////////////////////////////////////////
 
   @override
   void onInit() {
-    v.carga = true;
+    carga = true;
     print(prefUser.vetId);
     getAll();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   refreshUnconfirmed() => _refreshUnconfirmed();
 
   Future<Null> _refreshUnconfirmed() async {
-    v.carga = true;
+    carga = true;
     await Future.delayed(Duration(milliseconds: 2));
     getAll();
     return null;
@@ -43,29 +45,29 @@ class HomeController extends GetxController {
   getAll() => _getAll();
 
   Future<List<ReservaModel>> _getAll() async {
-    v.reservas.clear();
+    reservas.clear();
     var misReservas = await bookingService.getAll(prefUser.vetId);
-    v.reservas.addAll(misReservas);
+    reservas.addAll(misReservas);
 
     getVet();
-    v.carga = false;
+    carga = false;
 
-    return v.reservas;
+    return reservas;
   }
 
   getVet() => _getVet();
 
   Future<void> _getVet() async {
     final veterinary = await establishmentService.getById(prefUser.vetId);
-    v.nameVet = veterinary.name;
+    nameVet = veterinary.name;
   }
 
   confirm(idBooking) => _confirm(idBooking);
 
   Future<void> _confirm(idBooking) async {
-    v.carga = true;
+    carga = true;
     int resp = await bookingService.confirm(idBooking);
     if (resp == 200) getAll();
-    v.cargaConfirmar = false;
+    cargaConfirmar = false;
   }
 }

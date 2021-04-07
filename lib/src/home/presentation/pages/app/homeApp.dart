@@ -15,16 +15,16 @@ class HomePageApp extends StatelessWidget {
         return Scaffold(
           drawer: MenuDrawer(),
           appBar: AppBar(
-            title: FadeIn(child: Text(_.v.nameVet)),
+            title: FadeIn(child: Text(_.nameVet)),
             centerTitle: false,
           ),
-          body: _.v.carga
+          body: _.carga
               ? Center(
                   child: CircularProgressIndicator(),
                 )
               : DefaultTabController(
                   length: 2,
-                  initialIndex: _.v.reservas.length > 0 ? 1 : 0,
+                  initialIndex: _.reservas.length > 0 ? 1 : 0,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,

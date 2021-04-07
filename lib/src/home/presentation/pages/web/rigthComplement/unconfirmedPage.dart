@@ -22,23 +22,18 @@ class Unconfirmed extends StatelessWidget {
               subHeader(title: 'Reservas por confirmar'),
               SizedBox(height: 10.0),
               Expanded(
-                child: _.v.carga
+                child: _.carga
                     ? Center(
                         child: CircularProgressIndicator(),
-                        // Lottie.asset(
-                        //   lottieLoading,
-                        //   fit: BoxFit.cover,
-                        //   height: 100,
-                        // ),
                       )
-                    : _.v.reservas.length == 0
+                    : _.reservas.length == 0
                         ? Center(
                             child: Text('No tiene reservas por confirmar'),
                           )
                         : ListView.builder(
-                            itemCount: _.v.reservas.length,
+                            itemCount: _.reservas.length,
                             itemBuilder: (BuildContext context, int index) {
-                              ReservaModel booking = _.v.reservas[index];
+                              ReservaModel booking = _.reservas[index];
                               return RowUnconfirmed(
                                 bookingId: booking.id,
                                 petImg: booking.petPicture,
