@@ -142,11 +142,11 @@ class ReprogramarItem extends StatelessWidget {
                     SizedBox(height: 25),
                     Text('Fecha'),
                     SizedBox(height: 5),
-                    dateForm(onChanged: (val) => _.v.fecha = val),
+                    dateForm(onChanged: (val) => _.fecha = val),
                     SizedBox(height: 10),
                     Text('Hora'),
                     SizedBox(height: 5),
-                    timeForm(onChanged: (val) => _.v.hora = val),
+                    timeForm(onChanged: (val) => _.hora = val),
                     SizedBox(height: 30),
                     Center(
                       child: btnSecondary(
@@ -155,7 +155,7 @@ class ReprogramarItem extends StatelessWidget {
                         onPressed: () => _.reprogramar(bookingId),
                       ),
                     ),
-                    _.v.errorDateTime
+                    _.errorDateTime
                         ? FadeIn(
                             child: Container(
                               margin: EdgeInsets.all(5),
@@ -173,11 +173,11 @@ class ReprogramarItem extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      _.v.msgfecha,
+                                      _.msgfecha,
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     Text(
-                                      _.v.msghora,
+                                      _.msghora,
                                       style: TextStyle(color: Colors.white),
                                     ),
                                   ],

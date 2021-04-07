@@ -7,50 +7,60 @@ import 'package:vet_app/components/forms/timeForm.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/home/data/bookingRepository.dart';
 import '../homeController.dart';
-import 'reprogramaValue.dart';
 
 class ReprogramarController extends GetxController {
   final bookingRepository = BookingRepository();
-  final v = ReprogramaValue();
-
   final HomeController _homeController = Get.find();
+
+  RxBool _reprogramando = false.obs;
+  bool get reprogramando => _reprogramando.value;
+  set reprogramando(bool value) => _reprogramando.value = value;
+
+  RxBool _reprogramaBlock = false.obs;
+  bool get reprogramaBlock => _reprogramaBlock.value;
+  set reprogramaBlock(bool value) => _reprogramaBlock.value = value;
+
+  RxBool _errorDateTime = false.obs;
+  bool get errorDateTime => _errorDateTime.value;
+  set errorDateTime(bool value) => _errorDateTime.value = value;
+
+  RxString _fecha = "".obs;
+  String get fecha => _fecha.value;
+  set fecha(String value) => _fecha.value = value;
+
+  RxString _hora = "".obs;
+  String get hora => _hora.value;
+  set hora(String value) => _hora.value = value;
+
+  RxString _msgfecha = "".obs;
+  String get msgfecha => _msgfecha.value;
+  set msgfecha(String value) => _msgfecha.value = value;
+
+  RxString _msghora = "".obs;
+  String get msghora => _msghora.value;
+  set msghora(String value) => _msghora.value = value;
 ////////////////////////////////////////////////////////////////////////////////
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   reprogramar(idBooking) => _reprogramar(idBooking);
 
   Future<void> _reprogramar(String idBooking) async {
-    v.reprogramando = true;
+    reprogramando = true;
 
-    final date = validaDate(v.fecha);
-    final hour = validateTime(v.hora);
+    final date = validaDate(fecha);
+    final hour = validateTime(hora);
 
-    if (date != null) v.msgfecha = date;
-    if (hour != null) v.msghora = hour;
+    if (date != null) msgfecha = date;
+    if (hour != null) msghora = hour;
 
     if (date != null || hour != null) {
-      v.errorDateTime = true;
+      errorDateTime = true;
       Timer(
         Duration(milliseconds: 7500),
-        () => v.errorDateTime = false,
+        () => errorDateTime = false,
       );
     } else {
       String datetime = formatDateOut(
-        valor: '${v.fecha} ${v.hora}',
+        valor: '$fecha $hora',
         formatIn: "dd-MM-yyyy HH:mm",
         formatOut: "yyyy-MM-dd HH:mm:00",
       );
@@ -58,12 +68,12 @@ class ReprogramarController extends GetxController {
       var resp = await bookingRepository.reschedule(idBooking, datetime);
 
       if (resp == 200) {
-        v.reprogramando = false;
+        reprogramando = false;
         _homeController.getAll();
 
         Navigator.popUntil(Get.context, ModalRoute.withName(NameRoutes.home));
       }
     }
-    v.reprogramando = false;
+    reprogramando = false;
   }
 }
