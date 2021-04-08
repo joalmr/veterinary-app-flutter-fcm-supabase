@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/recursos/images/images.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 import 'components/base/editBaseView.dart';
@@ -35,16 +34,21 @@ class ShowVetView extends StatelessWidget {
                       Container(
                         height: double.maxFinite,
                         width: double.maxFinite,
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: Container(
-                            width: double.infinity,
-                            child: Image(
-                              fit: BoxFit.cover,
-                              image: CachedNetworkImageProvider(
-                                  _.establishment.slides[0]),
-                            ),
-                          ),
+                        child: PageView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            for (var item in _.establishment.slides)
+                              AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Container(
+                                  width: double.infinity,
+                                  child: Image(
+                                    fit: BoxFit.cover,
+                                    image: CachedNetworkImageProvider(item),
+                                  ),
+                                ),
+                              )
+                          ],
                         ),
                       ),
                       Positioned(

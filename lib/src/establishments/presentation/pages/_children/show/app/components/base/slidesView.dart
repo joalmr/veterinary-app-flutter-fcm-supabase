@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/recursos/images/images.dart';
+import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/app/widgets/slideItem.dart';
 
@@ -14,7 +14,7 @@ class EditSlidesView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Editar fotos'),
+            title: Text('Editar imágenes'),
           ),
           body: SafeArea(
             child: Container(
@@ -33,13 +33,15 @@ class EditSlidesView extends StatelessWidget {
                   SizedBox(height: 10),
                   btnSecondary(
                     text: 'Subir imagen',
-                    onPressed: _.seleccionarSlide,
-                  ),
-                  SizedBox(height: 30),
-                  btnSecondary(
-                    text: 'Volver',
-                    color: Colors.black38,
-                    onPressed: () => Get.back(),
+                    onPressed: _.establishment.slides.length == 2
+                        ? () {
+                            Get.snackbar(
+                              'Advertencia',
+                              'Alcanzaste el límite de imágenes',
+                              backgroundColor: colorYellow,
+                            );
+                          }
+                        : _.seleccionarSlide,
                   ),
                 ],
               ),

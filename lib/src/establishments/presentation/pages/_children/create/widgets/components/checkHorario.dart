@@ -98,7 +98,7 @@ class CheckHorario extends StatelessWidget {
                             );
                           },
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 15),
                         TextFormField(
                           decoration: InputDecoration(labelText: 'Fin'),
                           enableInteractiveSelection: false,

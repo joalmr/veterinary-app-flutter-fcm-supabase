@@ -47,145 +47,149 @@ class ReprogramarItem extends StatelessWidget {
             body: SafeArea(
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 88.0,
-                          width: 88.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Center(
-                            child: ClipRRect(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 88.0,
+                            width: 88.0,
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5.0),
-                              child: CachedNetworkImage(
-                                imageUrl: petImg,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => Container(
-                                  color: Colors.grey.shade200,
-                                  alignment: Alignment.center,
-                                  child: CircularProgressIndicator(),
+                            ),
+                            child: Center(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(5.0),
+                                child: CachedNetworkImage(
+                                  imageUrl: petImg,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => Container(
+                                    color: Colors.grey.shade200,
+                                    alignment: Alignment.center,
+                                    child: CircularProgressIndicator(),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(width: 10),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              petName,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            Text(
-                              petBreed,
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              '$date $time',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: color,
-                                    borderRadius: BorderRadius.circular(100.0),
-                                  ),
-                                  height: 7.5,
-                                  width: 7.5,
+                          SizedBox(width: 10),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                petName,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
-                                SizedBox(width: 5),
-                                Text(
-                                  status,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12.0,
-                                  ),
+                              ),
+                              Text(
+                                petBreed,
+                                style: TextStyle(
+                                  fontSize: 14,
                                 ),
-                              ],
-                            ),
-                            Text(
-                              userName,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
                               ),
-                            ),
-                            Text(
-                              userPhone,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                              Text(
+                                '$date $time',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 25),
-                    Text('Fecha'),
-                    SizedBox(height: 5),
-                    dateForm(onChanged: (val) => _.fecha = val),
-                    SizedBox(height: 10),
-                    Text('Hora'),
-                    SizedBox(height: 5),
-                    timeForm(onChanged: (val) => _.hora = val),
-                    SizedBox(height: 30),
-                    Center(
-                      child: btnSecondary(
-                        text: 'Reprogramar',
-                        color: Colors.grey[600],
-                        onPressed: () => _.reprogramar(bookingId),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: color,
+                                      borderRadius:
+                                          BorderRadius.circular(100.0),
+                                    ),
+                                    height: 7.5,
+                                    width: 7.5,
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    status,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 12.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                userName,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                userPhone,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ),
-                    _.errorDateTime
-                        ? FadeIn(
-                            child: Container(
-                              margin: EdgeInsets.all(5),
-                              padding: EdgeInsets.all(5),
-                              width: double.maxFinite,
-                              decoration: BoxDecoration(
-                                color: colorRed,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 5),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      _.msgfecha,
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    Text(
-                                      _.msghora,
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ],
+                      SizedBox(height: 25),
+                      Text('Fecha'),
+                      SizedBox(height: 5),
+                      dateForm(onChanged: (val) => _.fecha = val),
+                      SizedBox(height: 10),
+                      Text('Hora'),
+                      SizedBox(height: 5),
+                      timeForm(onChanged: (val) => _.hora = val),
+                      SizedBox(height: 30),
+                      Center(
+                        child: btnSecondary(
+                          text: 'Reprogramar',
+                          color: Colors.grey[600],
+                          onPressed: () => _.reprogramar(bookingId),
+                        ),
+                      ),
+                      _.errorDateTime
+                          ? FadeIn(
+                              child: Container(
+                                margin: EdgeInsets.all(5),
+                                padding: EdgeInsets.all(5),
+                                width: double.maxFinite,
+                                decoration: BoxDecoration(
+                                  color: colorRed,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 5),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        _.msgfecha,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      Text(
+                                        _.msghora,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                        : SizedBox(height: 0),
-                  ],
+                            )
+                          : SizedBox(height: 0),
+                    ],
+                  ),
                 ),
               ),
             ),

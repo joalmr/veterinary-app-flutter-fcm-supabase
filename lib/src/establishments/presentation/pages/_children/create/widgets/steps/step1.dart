@@ -21,7 +21,7 @@ class Step1 extends StatelessWidget {
                 onChanged: (val) => _.entity.name = val,
                 textCapitalization: TextCapitalization.sentences,
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Teléfono'),
                 controller: _.v.phoneVet,
@@ -29,7 +29,7 @@ class Step1 extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 inputFormatters: [TextInputMask(mask: '999-999-999')],
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               TextFormField(
                 decoration: InputDecoration(labelText: 'RUC'),
                 controller: _.v.rucVet,
@@ -37,13 +37,13 @@ class Step1 extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 inputFormatters: [TextInputMask(mask: '99999999999')],
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Web o red social'),
                 controller: _.v.webVet,
                 onChanged: (val) => _.entity.website = val,
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               Text('Tipo'),
               Material(
                 color: Colors.grey[200],
@@ -68,7 +68,7 @@ class Step1 extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               Text('Servicios'),
               Wrap(
                 children: _.servicesVet

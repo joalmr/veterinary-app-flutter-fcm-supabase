@@ -54,7 +54,7 @@ class CreaPromocionView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                     TextFormField(
                       decoration: InputDecoration(labelText: 'Descripción'),
                       controller: _.description,
@@ -62,7 +62,7 @@ class CreaPromocionView extends StatelessWidget {
                       maxLength: 150,
                       maxLines: 5,
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                     Text('Tipo'),
                     RadioListTile(
                       contentPadding: EdgeInsets.zero,
@@ -85,7 +85,7 @@ class CreaPromocionView extends StatelessWidget {
                       onChanged: (val) => _.selectValue = val,
                       title: Text('Precio promocional'),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                     TextFormField(
                       decoration: InputDecoration(labelText: 'Monto'),
                       controller: _.moneyController,

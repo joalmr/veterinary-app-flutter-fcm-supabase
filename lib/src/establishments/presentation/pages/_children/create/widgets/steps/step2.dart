@@ -49,7 +49,7 @@ class Step2 extends StatelessWidget {
                 height: 250,
                 child: MapVet(),
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Referencia'),
                 textCapitalization: TextCapitalization.sentences,

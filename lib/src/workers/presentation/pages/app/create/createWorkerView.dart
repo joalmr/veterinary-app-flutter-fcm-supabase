@@ -21,7 +21,7 @@ class CreaWorkerView extends StatelessWidget {
               decoration: InputDecoration(
                   labelText: 'Email del administrador a invitar'),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 15),
             SizedBox(
               width: double.infinity,
               child: btnPrimary(

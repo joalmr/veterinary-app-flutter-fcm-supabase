@@ -35,6 +35,7 @@ class CardLogin extends StatelessWidget {
                       onChanged: (val) => _.email = val,
                     ),
                   ),
+                  SizedBox(height: 15),
                   Container(
                     padding: EdgeInsets.all(8.0),
                     child: TextFormField(

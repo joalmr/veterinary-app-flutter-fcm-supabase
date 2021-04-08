@@ -24,14 +24,6 @@ class EditServicesView extends StatelessWidget {
                 onPressed: () {},
               ),
             ),
-            SizedBox(height: 15),
-            Center(
-              child: btnAltern(
-                text: 'Volver',
-                onPressed: () => Get.back(),
-                bold: true,
-              ),
-            ),
           ],
         ),
       ),

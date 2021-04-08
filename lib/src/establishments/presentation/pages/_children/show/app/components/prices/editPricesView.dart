@@ -53,14 +53,6 @@ class EditPricesView extends StatelessWidget {
                       onPressed: _.editPrecios,
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Center(
-                    child: btnSecondary(
-                      text: 'Volver',
-                      color: Colors.black38,
-                      onPressed: () => Get.back(),
-                    ),
-                  ),
                 ],
               ),
             ),

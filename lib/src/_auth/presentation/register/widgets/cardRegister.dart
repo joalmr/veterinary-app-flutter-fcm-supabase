@@ -28,6 +28,7 @@ class CardRegister extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 15),
               FadeInLeft(
                 from: 50,
                 duration: Duration(milliseconds: 400),
@@ -40,6 +41,7 @@ class CardRegister extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 15),
               FadeInLeft(
                 from: 50,
                 duration: Duration(milliseconds: 400),
@@ -52,6 +54,7 @@ class CardRegister extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 15),
               FadeInLeft(
                 from: 50,
                 duration: Duration(milliseconds: 400),
@@ -64,6 +67,7 @@ class CardRegister extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 15),
               FadeInLeft(
                 from: 50,
                 duration: Duration(milliseconds: 400),

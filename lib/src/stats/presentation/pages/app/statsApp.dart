@@ -9,7 +9,7 @@ import 'package:vet_app/src/stats/presentation/widgets/percent/percentVentasDia.
 
 import 'comentarios/feedbackView.dart';
 import 'components/filterStatView.dart';
-import 'estadisticas/valuesStats.dart';
+import 'base/valuesStats.dart';
 
 class StatsPageApp extends StatelessWidget {
   @override

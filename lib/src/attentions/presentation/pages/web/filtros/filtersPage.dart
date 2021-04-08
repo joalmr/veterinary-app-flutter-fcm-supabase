@@ -65,15 +65,15 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
                     },
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Nombre de usuario'),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Nombre de mascota'),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
                 Text('Especies'),
                 CheckFiltro(title: 'Perros'),
                 CheckFiltro(title: 'Gatos'),

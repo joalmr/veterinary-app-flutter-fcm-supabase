@@ -45,13 +45,13 @@ class Step3 extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Nombre y apellido'),
                 controller: _.v.personalNameVet,
                 textCapitalization: TextCapitalization.words,
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               _.personalType == '2'
                   ? Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -89,19 +89,19 @@ class Step3 extends StatelessWidget {
                 controller: _.v.moneyConsulta,
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Desparasitación'),
                 controller: _.v.moneyDesparasita,
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Vacuna'),
                 controller: _.v.moneyVacuna,
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 5),
+              SizedBox(height: 15),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Grooming'),
                 controller: _.v.moneyGrooming,

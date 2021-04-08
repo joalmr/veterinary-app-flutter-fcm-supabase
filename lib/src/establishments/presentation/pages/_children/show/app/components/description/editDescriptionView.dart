@@ -38,14 +38,6 @@ class EditDescriptionView extends StatelessWidget {
                       onPressed: _.editDescripcion,
                     ),
                   ),
-                  SizedBox(height: 15),
-                  Center(
-                    child: btnAltern(
-                      text: 'Volver',
-                      onPressed: () => Get.back(),
-                      bold: true,
-                    ),
-                  ),
                 ],
               ),
             ),

@@ -75,14 +75,6 @@ class EditBaseView extends StatelessWidget {
                       onPressed: _.updateBase,
                     ),
                   ),
-                  SizedBox(height: 15),
-                  Center(
-                    child: btnSecondary(
-                      text: 'Volver',
-                      color: Colors.black38,
-                      onPressed: () => Get.back(),
-                    ),
-                  ),
                 ],
               ),
             ),
