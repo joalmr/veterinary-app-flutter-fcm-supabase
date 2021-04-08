@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/recursos/utils/days/diaSemana.dart';
 import 'package:vet_app/src/establishments/data/model/establishmet.dart';
