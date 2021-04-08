@@ -66,4 +66,15 @@ class EstablishmentRepository extends EstablishmentInterface {
   Future<String> setSchedule(String establecimientoId, horarios) {
     return _api.setSchedule(establecimientoId, horarios);
   }
+
+  @override
+  Future<String> setSlides(String establecimientoId, File image) {
+    return _api.setSlides(establecimientoId, image);
+  }
+
+  @override
+  Future<String> updateBase(
+      EstablecimientoEntity datosBase, String establecimientoId) {
+    return _api.updateBase(datosBase, establecimientoId);
+  }
 }

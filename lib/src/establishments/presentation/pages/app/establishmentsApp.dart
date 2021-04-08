@@ -13,7 +13,6 @@ class EstablishmentsPageApp extends StatelessWidget {
           drawer: MenuDrawer(),
           appBar: AppBar(
             title: Text('Establecimientos'),
-            centerTitle: false,
           ),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add_rounded),

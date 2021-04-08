@@ -46,8 +46,8 @@ class Step3 extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 5),
-              Text('Nombre y apellido'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Nombre y apellido'),
                 controller: _.v.personalNameVet,
                 textCapitalization: TextCapitalization.words,
               ),
@@ -57,8 +57,8 @@ class Step3 extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Código CMV'),
                         TextFormField(
+                          decoration: InputDecoration(labelText: 'Código CMV'),
                           controller: _.v.personalCodeVet,
                           keyboardType: TextInputType.number,
                         ),
@@ -84,26 +84,26 @@ class Step3 extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Divider(),
-              Text('Consulta'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Consulta'),
                 controller: _.v.moneyConsulta,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 5),
-              Text('Desparasitación'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Desparasitación'),
                 controller: _.v.moneyDesparasita,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 5),
-              Text('Vacuna'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Vacuna'),
                 controller: _.v.moneyVacuna,
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 5),
-              Text('Grooming'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Grooming'),
                 controller: _.v.moneyGrooming,
                 keyboardType: TextInputType.number,
               ),

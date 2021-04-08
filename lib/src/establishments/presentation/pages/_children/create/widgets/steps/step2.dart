@@ -16,9 +16,8 @@ class Step2 extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10),
             children: [
-              Text('Dirección'),
-              // TextFormField(controller: _.v.dirVet),
               SimpleAutocompleteFormField<Prediction>(
+                decoration: InputDecoration(labelText: 'Dirección'),
                 controller: _.v.dirVet,
                 maxSuggestions: 3,
                 onSearch: (filter) async {
@@ -51,8 +50,8 @@ class Step2 extends StatelessWidget {
                 child: MapVet(),
               ),
               SizedBox(height: 5),
-              Text('Referencia'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Referencia'),
                 textCapitalization: TextCapitalization.sentences,
               ),
               SizedBox(height: 25),

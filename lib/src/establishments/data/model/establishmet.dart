@@ -14,6 +14,7 @@ class EstablishmentModal {
   List<Service> services;
   Prices prices;
   List<Employee> employees;
+  List<String> slides;
 
   // RxEstablishmentModal rx;
   EstablishmentModal({
@@ -27,6 +28,7 @@ class EstablishmentModal {
     this.services,
     this.prices,
     this.employees,
+    this.slides,
   });
   factory EstablishmentModal.fromJson(Map<String, dynamic> json) =>
       EstablishmentModal(
@@ -42,6 +44,7 @@ class EstablishmentModal {
         prices: Prices.fromJson(json["prices"]),
         employees: List<Employee>.from(
             json["employees"].map((x) => Employee.fromJson(x))),
+        slides: List<String>.from(json["slides"].map((x) => x)),
       );
 }
 

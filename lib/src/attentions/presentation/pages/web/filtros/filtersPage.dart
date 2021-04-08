@@ -66,11 +66,13 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
                   ),
                 ),
                 SizedBox(height: 10),
-                Text('Nombre de usuario'),
-                TextFormField(),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Nombre de usuario'),
+                ),
                 SizedBox(height: 10),
-                Text('Nombre de mascota'),
-                TextFormField(),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Nombre de mascota'),
+                ),
                 SizedBox(height: 10),
                 Text('Especies'),
                 CheckFiltro(title: 'Perros'),

@@ -10,7 +10,6 @@ class CreaWorkerView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Invitar administrador'),
-        centerTitle: false,
       ),
       body: Padding(
         padding: EdgeInsets.only(left: 10, right: 10, top: 10),
@@ -18,8 +17,10 @@ class CreaWorkerView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Email del administrador a invitar'),
-            TextFormField(),
+            TextFormField(
+              decoration: InputDecoration(
+                  labelText: 'Email del administrador a invitar'),
+            ),
             SizedBox(height: 10.0),
             SizedBox(
               width: double.infinity,

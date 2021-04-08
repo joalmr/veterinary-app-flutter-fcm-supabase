@@ -56,8 +56,8 @@ class ItemHorario extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Inicio'),
                     TextFormField(
+                      decoration: InputDecoration(labelText: 'Inicio'),
                       enableInteractiveSelection: false,
                       initialValue: iniDay,
                       readOnly: true,
@@ -87,8 +87,8 @@ class ItemHorario extends StatelessWidget {
                       },
                     ),
                     SizedBox(height: 5),
-                    Text('Fin'),
                     TextFormField(
+                      decoration: InputDecoration(labelText: 'Fin'),
                       enableInteractiveSelection: false,
                       initialValue: endDay,
                       readOnly: true,

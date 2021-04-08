@@ -16,7 +16,6 @@ class OffersPageApp extends StatelessWidget {
           drawer: MenuDrawer(),
           appBar: AppBar(
             title: Text('Promociones'),
-            centerTitle: false,
           ),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add_rounded),

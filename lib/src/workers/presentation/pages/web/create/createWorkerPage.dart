@@ -22,8 +22,9 @@ class CreaAdmin extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Email'),
-                TextFormField(),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Email'),
+                ),
                 SizedBox(height: 10.0),
                 SizedBox(
                   width: double.infinity,

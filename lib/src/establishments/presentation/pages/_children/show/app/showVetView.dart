@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/recursos/images/images.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/establishments/domain/edit/editVetController.dart';
-import 'descriptionView.dart';
-import 'employeesView.dart';
-import 'pricesView.dart';
-import 'schedulesView.dart';
-import 'servicesView.dart';
+import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
+import 'components/base/editBaseView.dart';
+import 'components/base/slidesView.dart';
+import 'components/description/_descriptionView.dart';
+import 'components/employees/_employeesView.dart';
+import 'components/prices/_pricesView.dart';
+import 'components/schedule/_schedulesView.dart';
+import 'components/servicess/_servicesView.dart';
 
 class ShowVetView extends StatelessWidget {
   final refreshKey = GlobalKey<RefreshIndicatorState>();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<EditVetController>(
-      id: 'showVet',
+    return GetX<ShowVetController>(
       builder: (_) {
         return _.cargando
             ? Scaffold(
@@ -40,7 +41,8 @@ class ShowVetView extends StatelessWidget {
                             width: double.infinity,
                             child: Image(
                               fit: BoxFit.cover,
-                              image: AssetImage(imgVetFoto),
+                              image: CachedNetworkImageProvider(
+                                  _.establishment.slides[0]),
                             ),
                           ),
                         ),
@@ -71,7 +73,7 @@ class ShowVetView extends StatelessWidget {
                                 Icons.edit,
                               ),
                               onPressed: () {
-                                print('slide');
+                                Get.to(EditSlidesView());
                               },
                             ),
                           ),
@@ -213,7 +215,6 @@ class ShowVetView extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(20.0),
                                         color: Colors.white,
-                                        // color: _.vet.typeId == 1 ? colorMain : colorBlue,
                                       ),
                                       child: Center(
                                         child: IconButton(
@@ -221,7 +222,7 @@ class ShowVetView extends StatelessWidget {
                                           iconSize: 18,
                                           icon: Icon(Icons.edit),
                                           onPressed: () {
-                                            print('datos basicos');
+                                            Get.to(EditBaseView());
                                           },
                                         ),
                                       ),

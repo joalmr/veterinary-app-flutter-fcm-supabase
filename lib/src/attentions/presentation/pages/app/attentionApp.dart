@@ -12,7 +12,6 @@ class AttentionView extends StatelessWidget {
       drawer: MenuDrawer(),
       appBar: AppBar(
         title: Text('Atenciones'),
-        centerTitle: false,
         actions: [
           IconButton(
             icon: Icon(Icons.filter_alt_rounded),

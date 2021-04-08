@@ -10,7 +10,6 @@ class FilterStatView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flitro de estadísticas'),
-        centerTitle: false,
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 10),

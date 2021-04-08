@@ -12,7 +12,6 @@ class WorkersPageApp extends StatelessWidget {
       drawer: MenuDrawer(),
       appBar: AppBar(
         title: Text('Administradores'),
-        centerTitle: false,
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_rounded),

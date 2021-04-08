@@ -15,7 +15,6 @@ class ConfigView extends StatelessWidget {
           drawer: MenuDrawer(),
           appBar: AppBar(
             title: Text('Configuración'),
-            centerTitle: false,
           ),
           body: Container(
             margin: EdgeInsets.only(left: 32.0),

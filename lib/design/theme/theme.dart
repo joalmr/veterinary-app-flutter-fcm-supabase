@@ -35,21 +35,28 @@ ThemeData temaClaro = ThemeData(
   dialogTheme: DialogTheme(shape: shape10),
   cardTheme: CardTheme(
     shape: shape10,
-    // elevation: 2,
     shadowColor: Colors.black.withOpacity(0.3),
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: Colors.grey[200],
-    contentPadding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+    contentPadding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
     hintStyle: TextStyle(fontSize: 14.0),
+    labelStyle: TextStyle(fontSize: 16.0),
     border: new OutlineInputBorder(
       borderRadius: new BorderRadius.circular(5.0),
-      borderSide: new BorderSide(style: BorderStyle.none, width: 0),
+      borderSide: new BorderSide(
+        style: BorderStyle.none,
+        width: 0,
+      ),
     ),
     focusedBorder: new OutlineInputBorder(
-      borderRadius: new BorderRadius.circular(10.0),
-      borderSide: new BorderSide(style: BorderStyle.none, width: 0),
+      borderRadius: new BorderRadius.circular(5.0),
+      borderSide: new BorderSide(
+        style: BorderStyle.solid,
+        color: colorMain,
+        width: 1,
+      ),
     ),
   ),
   textTheme: TextTheme(

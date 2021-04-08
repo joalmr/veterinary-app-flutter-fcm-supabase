@@ -17,7 +17,6 @@ class CreaVetView extends StatelessWidget {
           appBar: AppBar(
             leading: NumStep(),
             title: Text('Crea establecimiento'),
-            centerTitle: false,
           ),
           body: _.checked
               ? Center(

@@ -66,8 +66,8 @@ class CheckHorario extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Inicio'),
                         TextFormField(
+                          decoration: InputDecoration(labelText: 'Inicio'),
                           enableInteractiveSelection: false,
                           controller: iniController,
                           // initialValue: _.v.iniDay[index],
@@ -99,8 +99,8 @@ class CheckHorario extends StatelessWidget {
                           },
                         ),
                         SizedBox(height: 5),
-                        Text('Fin'),
                         TextFormField(
+                          decoration: InputDecoration(labelText: 'Fin'),
                           enableInteractiveSelection: false,
                           controller: endController,
                           // initialValue: _.v.endDay[index],

@@ -31,4 +31,8 @@ abstract class EstablishmentInterface {
   Future<EstablecimientoModelLite> getFirst();
   Future<EstablishmentModal> getById(String idVet);
   Future<String> setLogo(String establecimientoId, File image);
+  Future<String> setSlides(String establecimientoId, File image);
+
+  Future<String> updateBase(
+      EstablecimientoEntity datosBase, String establecimientoId);
 }

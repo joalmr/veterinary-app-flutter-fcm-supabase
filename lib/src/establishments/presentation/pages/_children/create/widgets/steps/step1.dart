@@ -15,31 +15,31 @@ class Step1 extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10),
             children: [
-              Text('Nombre'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Nombre'),
                 controller: _.v.nameVet,
                 onChanged: (val) => _.entity.name = val,
                 textCapitalization: TextCapitalization.sentences,
               ),
               SizedBox(height: 5),
-              Text('Teléfono'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Teléfono'),
                 controller: _.v.phoneVet,
                 onChanged: (val) => _.entity.phone = val,
                 keyboardType: TextInputType.number,
                 inputFormatters: [TextInputMask(mask: '999-999-999')],
               ),
               SizedBox(height: 5),
-              Text('RUC'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'RUC'),
                 controller: _.v.rucVet,
                 onChanged: (val) => _.entity.ruc = val,
                 keyboardType: TextInputType.number,
                 inputFormatters: [TextInputMask(mask: '99999999999')],
               ),
               SizedBox(height: 5),
-              Text('Web o red social'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Web o red social'),
                 controller: _.v.webVet,
                 onChanged: (val) => _.entity.website = val,
               ),

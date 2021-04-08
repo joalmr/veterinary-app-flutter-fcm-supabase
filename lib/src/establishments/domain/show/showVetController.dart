@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
@@ -8,7 +7,7 @@ import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 
 import '../establishmentsController.dart';
 
-class EditVetController extends GetxController {
+class ShowVetController extends GetxController {
   final _repo = EstablishmentRepository();
 
   final EstablishmentsController establishmentController = Get.find();
@@ -22,8 +21,6 @@ class EditVetController extends GetxController {
   set cargando(bool val) => _cargando.value = val;
 
   var argumentoId;
-
-  final descripcionControl = TextEditingController();
 
   @override
   void onInit() {
@@ -53,20 +50,14 @@ class EditVetController extends GetxController {
     cargando = true;
     establishment = await _repo.getById(argumentoId);
 
-    update(['showVet']);
-
-    descripcionControl.text = establishment.description;
-    //
     cargando = false;
   }
 
   seleccionarLogo() async {
-    await _procesarImagen(argumentoId, ImageSource.gallery);
-
-    update(['showVet']);
+    await _procesarLogo(argumentoId, ImageSource.gallery);
   }
 
-  _procesarImagen(String id, ImageSource origen) async {
+  _procesarLogo(String id, ImageSource origen) async {
     File _image;
     var pickedFile =
         await ImagePicker().getImage(source: origen, imageQuality: 80);
@@ -78,19 +69,27 @@ class EditVetController extends GetxController {
     }
   }
 
-  editServicio() => _editService();
-  _editService() {}
-
-  editDescripcion() => _editDescription();
-  _editDescription() async {
-    await _repo.setDescription(argumentoId, descripcionControl.text);
-    descripcionControl.text = "";
-    getByid();
-    Get.back();
+  seleccionarSlide() async {
+    await _procesarSlide(argumentoId, ImageSource.gallery);
   }
 
-  editPrecios() => _editPrices();
-  _editPrices() {}
+  _procesarSlide(String id, ImageSource origen) async {
+    File _image;
+    var pickedFile =
+        await ImagePicker().getImage(source: origen, imageQuality: 80);
+    if (pickedFile != null) {
+      _image = File(pickedFile.path);
+      await _repo.setSlides(id, _image);
+      getByid();
+      Get.back();
+      // establishment.logo =
+    } else {
+      print('No image');
+    }
+  }
+
+  editServicio() => _editService();
+  _editService() {}
 
   editHorario() => _editSchedule();
   _editSchedule() {}

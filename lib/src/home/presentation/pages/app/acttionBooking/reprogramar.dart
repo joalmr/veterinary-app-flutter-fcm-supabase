@@ -43,7 +43,6 @@ class ReprogramarItem extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               title: Text('Reprogramar'),
-              centerTitle: false,
             ),
             body: SafeArea(
               child: Container(

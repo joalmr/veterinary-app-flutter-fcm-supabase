@@ -11,8 +11,8 @@ class Step4 extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10),
             children: [
-              Text('Descripción'),
               TextFormField(
+                decoration: InputDecoration(labelText: 'Descripción'),
                 controller: _.v.descriptionVet,
                 onChanged: (val) => _.description = val,
                 textCapitalization: TextCapitalization.sentences,

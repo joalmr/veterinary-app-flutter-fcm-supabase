@@ -226,4 +226,57 @@ class EstablishmentApi extends EstablishmentInterface {
 
     return dato['logo'];
   }
+
+  @override
+  Future<String> setSlides(String establecimientoId, File image) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/slide',
+    );
+
+    var request = http.MultipartRequest("POST", url);
+    var pic = await http.MultipartFile.fromPath("slide", image.path);
+
+    request.headers['Content-Type'] = 'application/json; charset=UTF-8';
+    request.headers['Authorization'] = 'Bearer ${prefUser.logged}';
+    request.headers['X-Requested-With'] = 'XMLHttpRequest';
+
+    request.files.add(pic);
+    var response = await request.send();
+
+    var responseData = await response.stream.toBytes();
+    var responseString = String.fromCharCodes(responseData);
+
+    var dato = jsonDecode(responseString);
+    print(dato);
+    return "slide ok";
+  }
+
+  @override
+  Future<String> updateBase(
+      EstablecimientoEntity datosBase, String establecimientoId) async {
+    final url =
+        Uri.https(urlBase, '$pathBase/establishment/$establecimientoId');
+
+    final params = {
+      "name": datosBase.name,
+      "phone": datosBase.phone,
+      "type_id": datosBase.typeId,
+      "address": datosBase.address,
+      "latitude": datosBase.latitude,
+      "longitude": datosBase.longitude,
+    };
+
+    print(params);
+
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(params),
+    );
+
+    var data = jsonDecode(response.body);
+    print(data);
+    return response.statusCode.toString();
+  }
 }

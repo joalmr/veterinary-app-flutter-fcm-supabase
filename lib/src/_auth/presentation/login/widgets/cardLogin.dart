@@ -30,7 +30,7 @@ class CardLogin extends StatelessWidget {
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintText: 'Ingrese email',
+                        labelText: 'Ingrese email',
                       ),
                       onChanged: (val) => _.email = val,
                     ),
@@ -40,7 +40,7 @@ class CardLogin extends StatelessWidget {
                     child: TextFormField(
                       // textInputAction: TextInputAction.unspecified,
                       decoration: InputDecoration(
-                        hintText: 'Ingrese contraseña',
+                        labelText: 'Ingrese contraseña',
                       ),
                       obscureText: true,
                       onChanged: (val) => _.password = val,

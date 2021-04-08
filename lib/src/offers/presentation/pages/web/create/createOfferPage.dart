@@ -27,8 +27,8 @@ class CreaOferta extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.only(left: 10, right: 10),
               children: [
-                Text('Monto'),
                 TextFormField(
+                  decoration: InputDecoration(labelText: 'Monto'),
                   controller: moneyController,
                   keyboardType: TextInputType.number,
                 ),

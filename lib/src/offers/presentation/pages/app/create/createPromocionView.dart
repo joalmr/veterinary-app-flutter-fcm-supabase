@@ -14,7 +14,6 @@ class CreaPromocionView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text('Crea promoción'),
-            centerTitle: false,
           ),
           body: _.cargando
               ? Center(
@@ -56,8 +55,8 @@ class CreaPromocionView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10),
-                    Text('Descripción'),
                     TextFormField(
+                      decoration: InputDecoration(labelText: 'Descripción'),
                       controller: _.description,
                       textCapitalization: TextCapitalization.sentences,
                       maxLength: 150,
@@ -87,8 +86,8 @@ class CreaPromocionView extends StatelessWidget {
                       title: Text('Precio promocional'),
                     ),
                     SizedBox(height: 10),
-                    Text('Monto'),
                     TextFormField(
+                      decoration: InputDecoration(labelText: 'Monto'),
                       controller: _.moneyController,
                       keyboardType: TextInputType.number,
                     ),

@@ -12,7 +12,6 @@ class CalendarView extends StatelessWidget {
       drawer: MenuDrawer(),
       appBar: AppBar(
         title: Text('Calendario'),
-        centerTitle: false,
         actions: [
           IconButton(
             icon: Icon(Icons.add_circle_outline_rounded),
@@ -37,8 +36,8 @@ class CalendarView extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 5),
-                        Text('Título'),
                         TextFormField(
+                          decoration: InputDecoration(labelText: 'Título'),
                           textCapitalization: TextCapitalization.sentences,
                         ),
                         SizedBox(height: 5),
@@ -48,13 +47,13 @@ class CalendarView extends StatelessWidget {
                         Text('Hora'),
                         timeForm(),
                         SizedBox(height: 5),
-                        Text('Integrantes'),
                         TextFormField(
+                          decoration: InputDecoration(labelText: 'Integrantes'),
                           textCapitalization: TextCapitalization.words,
                         ),
                         SizedBox(height: 5),
-                        Text('Descripción'),
                         TextFormField(
+                          decoration: InputDecoration(labelText: 'Descripción'),
                           textCapitalization: TextCapitalization.sentences,
                           maxLength: 150,
                           maxLines: 5,
