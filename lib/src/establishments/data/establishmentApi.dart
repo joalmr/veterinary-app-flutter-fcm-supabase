@@ -14,14 +14,8 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<List<EstablecimientoModelLite>> getAll() async {
     final url = Uri.https(urlBase, '$pathBase/establishments');
-
     http.Response response = await http.get(url, headers: headersToken());
-
-    List<EstablecimientoModelLite> establecimientos =
-        List<EstablecimientoModelLite>.from(json
-            .decode(response.body)
-            .map((x) => EstablecimientoModelLite.fromJson(x)));
-
+    final establecimientos = establecimientoModelLiteFromJson(response.body);
     return establecimientos;
   }
 
@@ -39,14 +33,9 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<EstablecimientoModelLite> getFirst() async {
     final url = Uri.https(urlBase, '$pathBase/establishments');
-
     http.Response response = await http.get(url, headers: headersToken());
-
-    List<EstablecimientoModelLite> establecimientos =
-        List<EstablecimientoModelLite>.from(json
-            .decode(response.body)
-            .map((x) => EstablecimientoModelLite.fromJson(x)));
-
+    // List<EstablecimientoModelLite> establecimientos = List<EstablecimientoModelLite>.from(json.decode(response.body).map((x) => EstablecimientoModelLite.fromJson(x)));
+    final establecimientos = establecimientoModelLiteFromJson(response.body);
     return establecimientos.first;
   }
 
@@ -213,7 +202,7 @@ class EstablishmentApi extends EstablishmentInterface {
     var pic = await http.MultipartFile.fromPath("logo", image.path);
 
     request.headers['Content-Type'] = 'application/json; charset=UTF-8';
-    request.headers['Authorization'] = 'Bearer ${prefUser.logged}';
+    request.headers['Authorization'] = 'Bearer ${prefUser.token}';
     request.headers['X-Requested-With'] = 'XMLHttpRequest';
 
     request.files.add(pic);
@@ -238,7 +227,7 @@ class EstablishmentApi extends EstablishmentInterface {
     var pic = await http.MultipartFile.fromPath("slide", image.path);
 
     request.headers['Content-Type'] = 'application/json; charset=UTF-8';
-    request.headers['Authorization'] = 'Bearer ${prefUser.logged}';
+    request.headers['Authorization'] = 'Bearer ${prefUser.token}';
     request.headers['X-Requested-With'] = 'XMLHttpRequest';
 
     request.files.add(pic);

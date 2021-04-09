@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/recursos/utils/preferences/preferencesModel.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/_auth/data/authRepository.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
@@ -35,13 +36,14 @@ class LoginController extends GetxController {
   }
 
   Future<void> initHome() async {
-    if (!prefUser.vetIdHas() ||
-        !prefUser.vetNameHas() ||
-        !prefUser.vetLogoHas()) {
+    if (!prefUser.vetDataHas()) {
       var temp = await stablishmentService.getFirst();
-      prefUser.vetId = temp.id;
-      prefUser.vetName = temp.name;
-      prefUser.vetLogo = temp.logo;
+      VetStorage forStorage = VetStorage();
+      forStorage.vetId = temp.id;
+      forStorage.vetName = temp.name;
+      forStorage.vetLogo = temp.logo;
+
+      prefUser.vetData = vetStorageToJson(forStorage);
     }
   }
 }

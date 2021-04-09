@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:get/get.dart';
+import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/routes/routes.dart';
 
 class GlobalController extends GetxController {
@@ -21,6 +21,10 @@ class GlobalController extends GetxController {
   }
 
   openApp() {
-    Timer(Duration(milliseconds: 2500), () => Get.offNamed(NameRoutes.home));
+    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
+      Timer(Duration(milliseconds: 2500), () => Get.offNamed(NameRoutes.home));
+    } else {
+      Timer(Duration(milliseconds: 2500), () => Get.offNamed(NameRoutes.login));
+    }
   }
 }

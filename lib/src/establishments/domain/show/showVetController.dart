@@ -64,6 +64,7 @@ class ShowVetController extends GetxController {
     if (pickedFile != null) {
       _image = File(pickedFile.path);
       establishment.logo = await _repo.setLogo(id, _image);
+      getByid();
     } else {
       print('No image');
     }
@@ -82,7 +83,6 @@ class ShowVetController extends GetxController {
       await _repo.setSlides(id, _image);
       getByid();
       Get.back();
-      // establishment.logo =
     } else {
       print('No image');
     }

@@ -5,10 +5,7 @@ import 'package:url_strategy/url_strategy.dart';
 import 'design/theme/theme.dart';
 import 'routes/routes.dart';
 import 'src/__global/domain/globalController.dart';
-import 'src/establishments/domain/establishmentsController.dart';
-import 'src/home/domain/homeController.dart';
 
-//proypet vet
 main() async {
   setPathUrlStrategy();
   await GetStorage.init();
@@ -19,8 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(GlobalController());
-    Get.put(HomeController());
-    Get.put(EstablishmentsController());
+    // Get.put(HomeController());
+    // Get.put(EstablishmentsController());
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,

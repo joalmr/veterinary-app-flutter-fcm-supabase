@@ -7,10 +7,8 @@ class AuthRepository extends AuthInterface {
   @override
   Future<int> logOut() async {
     try {
-      prefUser.loggedDel();
-      prefUser.vetIdDel();
-      prefUser.vetNameDel();
-      prefUser.vetLogoDel();
+      prefUser.tokenDel();
+      prefUser.vetDataDel();
       return 200;
     } catch (_) {
       return 500;
@@ -27,7 +25,8 @@ class AuthRepository extends AuthInterface {
 
       if (response.statusCode == 200) {
         final jsonResp = json.decode(response.body);
-        prefUser.logged = jsonResp['token'];
+        prefUser.token = jsonResp['token'];
+        prefUser.userRol = jsonResp['rol'];
       }
       return response.statusCode;
     } catch (ex) {
