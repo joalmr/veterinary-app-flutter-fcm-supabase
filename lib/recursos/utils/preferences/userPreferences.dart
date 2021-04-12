@@ -25,22 +25,4 @@ class PreferenciasUsuario {
   get vetId => vetStorageFromJson(vetData).vetId;
   get vetName => vetStorageFromJson(vetData).vetName;
   get vetLogo => vetStorageFromJson(vetData).vetLogo;
-
-  // // //id temporal vet
-  // // get vetId => box.read('idVet') ?? '';
-  // // set vetId(String value) => box.write('idVet', value);
-  // // vetIdHas() => box.hasData('idVet');
-  // // vetIdDel() => box.remove('idVet');
-
-  // // ///name temporal vet
-  // // get vetName => box.read('nameVet') ?? '';
-  // // set vetName(String value) => box.write('nameVet', value);
-  // // vetNameHas() => box.hasData('nameVet');
-  // // vetNameDel() => box.remove('nameVet');
-
-  // // ///name temporal vet
-  // // get vetLogo => box.read('logoVet') ?? '';
-  // // set vetLogo(String value) => box.write('logoVet', value);
-  // // vetLogoHas() => box.hasData('logoVet');
-  // // vetLogoDel() => box.remove('logoVet');
 }
