@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/recursos/images/images.dart';
+import 'package:vet_app/resources/images/images.dart';
 import 'package:vet_app/src/_auth/presentation/login/widgets/cardLogin.dart';
 import 'package:vet_app/src/_auth/presentation/login/widgets/portada.dart';
 

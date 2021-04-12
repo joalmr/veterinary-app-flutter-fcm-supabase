@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/recursos/images/lotties.dart';
+import 'package:vet_app/resources/images/lotties.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:lottie/lottie.dart';

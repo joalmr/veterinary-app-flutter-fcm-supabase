@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/recursos/utils/datetimeFormat.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/components/forms/dateForm.dart';
 import 'package:vet_app/components/forms/timeForm.dart';
 import 'package:vet_app/routes/routes.dart';

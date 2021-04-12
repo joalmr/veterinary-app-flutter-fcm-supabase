@@ -3,7 +3,7 @@ import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/recursos/utils/icons_map.dart';
+import 'package:vet_app/resources/utils/icons_map.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 import 'package:vet_app/src/offers/data/model/offerModel.dart';

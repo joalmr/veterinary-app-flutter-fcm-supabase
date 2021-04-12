@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/recursos/utils/icons_map.dart';
+import 'package:vet_app/resources/utils/icons_map.dart';
 import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 import 'package:vet_app/src/offers/domain/create/createOfferController.dart';
 

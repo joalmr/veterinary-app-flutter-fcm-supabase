@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vet_app/recursos/icons/proypet_icons.dart';
+import 'package:vet_app/resources/icons/proypet_icons.dart';
 
 final iconMap = <String, IconData>{
   'grooming': IconProypet.grooming,

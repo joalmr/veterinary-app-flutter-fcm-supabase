@@ -1,4 +1,4 @@
-import 'package:vet_app/recursos/utils/preferences/userPreferences.dart';
+import 'package:vet_app/resources/utils/preferences/userPreferences.dart';
 
 final prefUser = new PreferenciasUsuario();
 

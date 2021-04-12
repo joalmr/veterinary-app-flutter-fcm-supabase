@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/recursos/utils/datetimeFormat.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/components/subheader.dart';
 import 'package:vet_app/src/home/data/model/bookingModel.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/recursos/data/menuData.dart';
-import 'package:vet_app/recursos/images/images.dart';
+import 'package:vet_app/resources/data/menuData.dart';
+import 'package:vet_app/resources/images/images.dart';
 
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({Key key}) : super(key: key);

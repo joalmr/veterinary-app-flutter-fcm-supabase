@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/recursos/utils/days/diaSemana.dart';
+import 'package:vet_app/resources/utils/days/diaSemana.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/components/checkHorario.dart';
 
