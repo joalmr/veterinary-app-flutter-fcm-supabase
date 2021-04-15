@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/headerHttp.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/src/establishments/data/model/dataMapModel.dart';
 import 'package:vet_app/src/establishments/data/model/establishmentModelLite.dart';
 import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 import '_establishmentInterface.dart';
@@ -247,25 +248,36 @@ class EstablishmentApi extends EstablishmentInterface {
     final url =
         Uri.https(urlBase, '$pathBase/establishment/$establecimientoId');
 
-    final params = {
-      "name": datosBase.name,
-      "phone": datosBase.phone,
-      "type_id": datosBase.typeId,
-      "address": datosBase.address,
-      "latitude": datosBase.latitude,
-      "longitude": datosBase.longitude,
-    };
-
-    print(params);
+    print(jsonEncode(datosBase));
 
     http.Response response = await http.post(
       url,
       headers: headersToken(),
-      body: jsonEncode(params),
+      body: jsonEncode(datosBase),
     );
 
     var data = jsonDecode(response.body);
     print(data);
     return response.statusCode.toString();
+  }
+
+  @override
+  Future<DataMapModel> getLatLngByPlaceId(String placeId) async {
+    final _urlBase = "maps.googleapis.com";
+    final url = Uri.https(
+      _urlBase,
+      '/maps/api/place/details/json',
+      {
+        "key": keyMap,
+        "language": "es",
+        "placeid": placeId,
+      },
+    );
+
+    http.Response response = await http.get(url);
+
+    final byPlaceId = dataMapModelFromJson(response.body);
+
+    return byPlaceId;
   }
 }

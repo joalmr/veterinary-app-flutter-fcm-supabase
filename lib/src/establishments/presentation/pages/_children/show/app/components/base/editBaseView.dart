@@ -49,7 +49,7 @@ class EditBaseView extends StatelessWidget {
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton(
                           isExpanded: true,
-                          value: _.vetType,
+                          value: _.vetTypeId,
                           items: itemTipo.map((ItemService value) {
                             return new DropdownMenuItem<String>(
                               value: value.id,
@@ -57,7 +57,7 @@ class EditBaseView extends StatelessWidget {
                             );
                           }).toList(),
                           onChanged: (val) {
-                            _.vetType = val;
+                            _.vetTypeId = val;
                           },
                         ),
                       ),

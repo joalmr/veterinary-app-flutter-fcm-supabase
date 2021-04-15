@@ -69,15 +69,26 @@ class CardLogin extends StatelessWidget {
                       onTap: _.btnLogIn.value ? () => _.logIn() : null,
                       borderRadius: BorderRadius.circular(5),
                       child: SizedBox.expand(
-                        child: Center(
-                          child: Text(
-                            'Ingresar',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            _.btnLogIn.value
+                                ? SizedBox(width: 0)
+                                : Container(
+                                    margin: EdgeInsets.only(right: 2.0),
+                                    padding: EdgeInsets.all(5.0),
+                                    child: CircularProgressIndicator(),
+                                  ),
+                            Text(
+                              'Ingresar',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ),

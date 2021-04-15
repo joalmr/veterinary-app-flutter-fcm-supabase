@@ -43,7 +43,7 @@ class ServicesView extends StatelessWidget {
                   ],
                 ),
               ),
-              for (var i = 0; i < _.establishment.services.length; i++)
+              for (var i = 0; i < _.establishment.value.services.length; i++)
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: Row(
@@ -65,7 +65,7 @@ class ServicesView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Icon(
-                            iconNum[_.establishment.services[i].id],
+                            iconNum[_.establishment.value.services[i].id],
                             size: 20,
                             color: Colors.white,
                           ),
@@ -73,7 +73,7 @@ class ServicesView extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        textMap[_.establishment.services[i].id],
+                        textMap[_.establishment.value.services[i].id],
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
                         ),

@@ -26,7 +26,6 @@ class Step2 extends StatelessWidget {
                   Uri url = Uri.parse(ruta);
                   var response = await http.get(url);
                   var models = addressFromJson(response.body);
-                  print(models);
                   return models.predictions;
                 },
                 minSearchLength: 2,
@@ -46,7 +45,7 @@ class Step2 extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Container(
-                height: 250,
+                height: 400,
                 child: MapVet(),
               ),
               SizedBox(height: 15),

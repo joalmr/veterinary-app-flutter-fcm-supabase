@@ -42,17 +42,17 @@ class EditPricesController extends GetxController {
 
   @override
   void onInit() {
-    consultaControl.text =
-        double.parse(showVetController.establishment.prices.consultation.from)
-            .toStringAsFixed(2);
-    desparasitaControl.text =
-        double.parse(showVetController.establishment.prices.deworming.from)
-            .toStringAsFixed(2);
-    vacunaControl.text =
-        double.parse(showVetController.establishment.prices.vaccination.from)
-            .toStringAsFixed(2);
+    consultaControl.text = double.parse(
+            showVetController.establishment.value.prices.consultation.from)
+        .toStringAsFixed(2);
+    desparasitaControl.text = double.parse(
+            showVetController.establishment.value.prices.deworming.from)
+        .toStringAsFixed(2);
+    vacunaControl.text = double.parse(
+            showVetController.establishment.value.prices.vaccination.from)
+        .toStringAsFixed(2);
     groomingControl.text =
-        double.parse(showVetController.establishment.prices.grooming.from)
+        double.parse(showVetController.establishment.value.prices.grooming.from)
             .toStringAsFixed(2);
     super.onInit();
   }

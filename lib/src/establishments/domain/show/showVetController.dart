@@ -12,9 +12,7 @@ class ShowVetController extends GetxController {
 
   final EstablishmentsController establishmentController = Get.find();
 
-  var _establishment = EstablishmentModal().obs;
-  EstablishmentModal get establishment => _establishment.value;
-  set establishment(EstablishmentModal value) => _establishment.value = value;
+  var establishment = EstablishmentModal().obs;
 
   RxBool _cargando = true.obs;
   bool get cargando => _cargando.value;
@@ -48,7 +46,7 @@ class ShowVetController extends GetxController {
 
   _getByid() async {
     cargando = true;
-    establishment = await _repo.getById(argumentoId);
+    establishment.value = await _repo.getById(argumentoId);
 
     cargando = false;
   }
@@ -63,8 +61,8 @@ class ShowVetController extends GetxController {
         await ImagePicker().getImage(source: origen, imageQuality: 80);
     if (pickedFile != null) {
       _image = File(pickedFile.path);
-      establishment.logo = await _repo.setLogo(id, _image);
-      getByid();
+      establishment.value.logo = await _repo.setLogo(id, _image);
+      establishment.refresh();
     } else {
       print('No image');
     }
@@ -81,7 +79,7 @@ class ShowVetController extends GetxController {
     if (pickedFile != null) {
       _image = File(pickedFile.path);
       await _repo.setSlides(id, _image);
-      getByid();
+      await getByid();
       Get.back();
     } else {
       print('No image');

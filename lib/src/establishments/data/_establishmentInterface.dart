@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'model/dataMapModel.dart';
 import 'model/establishmentModelLite.dart';
 import 'model/establishmet.dart';
 import 'model/serviceModel.dart';
@@ -32,7 +33,7 @@ abstract class EstablishmentInterface {
   Future<EstablishmentModal> getById(String idVet);
   Future<String> setLogo(String establecimientoId, File image);
   Future<String> setSlides(String establecimientoId, File image);
-
   Future<String> updateBase(
       EstablecimientoEntity datosBase, String establecimientoId);
+  Future<DataMapModel> getLatLngByPlaceId(String placeId);
 }

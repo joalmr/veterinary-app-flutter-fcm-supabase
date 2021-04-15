@@ -37,7 +37,7 @@ class ShowVetView extends StatelessWidget {
                         child: PageView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            for (var item in _.establishment.slides)
+                            for (var item in _.establishment.value.slides)
                               AspectRatio(
                                 aspectRatio: 16 / 9,
                                 child: Container(
@@ -98,7 +98,7 @@ class ShowVetView extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(100.0),
                                 child: CachedNetworkImage(
-                                  imageUrl: _.establishment.logo,
+                                  imageUrl: _.establishment.value.logo,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -163,20 +163,20 @@ class ShowVetView extends StatelessWidget {
                                       horizontal: 5,
                                     ),
                                     child: Text(
-                                      'Ej->Veterinaria',
+                                      _.establishment.value.type,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 8,
                                           color: Colors.white),
                                     ),
                                   ),
-                                  Text(_.establishment.name,
+                                  Text(_.establishment.value.name,
                                       maxLines: 2,
                                       style: Get.textTheme.subtitle1
                                           .apply(fontWeightDelta: 2)),
                                 ],
                               ),
-                              subtitle: Text(_.establishment.address,
+                              subtitle: Text(_.establishment.value.address,
                                   style: TextStyle(fontSize: 12)),
                               trailing: Stack(
                                 children: <Widget>[
@@ -198,7 +198,7 @@ class ShowVetView extends StatelessWidget {
                                           Icon(Icons.star,
                                               color: Colors.white, size: 12.0),
                                           Text(
-                                            _.establishment.stars,
+                                            _.establishment.value.stars,
                                             style: TextStyle(
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
@@ -258,16 +258,16 @@ class ShowVetView extends StatelessWidget {
                             children: <Widget>[
                               ServicesView(),
                               DescriptionView(
-                                description: _.establishment.description,
+                                description: _.establishment.value.description,
                               ),
                               PricesView(
-                                prices: _.establishment.prices,
+                                prices: _.establishment.value.prices,
                               ),
                               SchedulesView(
-                                schedule: _.establishment.schedule,
+                                schedule: _.establishment.value.schedule,
                               ),
                               EmployeesView(
-                                employees: _.establishment.employees,
+                                employees: _.establishment.value.employees,
                               ),
                             ],
                           ),

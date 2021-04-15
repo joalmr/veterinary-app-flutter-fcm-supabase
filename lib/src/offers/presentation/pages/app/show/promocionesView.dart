@@ -62,7 +62,7 @@ class PromocionesView extends StatelessWidget {
                                     style: TextStyle(color: colorMain),
                                   ),
                                   Text(
-                                    'Ej=> 15-02-2021',
+                                    _.promociones[index].date.toString(),
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),

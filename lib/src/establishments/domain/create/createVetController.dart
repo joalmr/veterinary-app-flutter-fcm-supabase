@@ -101,23 +101,51 @@ class CreateVetController extends GetxController {
     _searchandNavigate(data);
   }
 
+  double lat; //-12.045645176850693, -77.03056366799036
+  double lng;
+
   _searchandNavigate(Prediction dato) async {
     if (v.dirVet.text.trim() != "") {
-      // marcador.clear();
-      // final places = new GoogleMapsPlaces(apiKey: keyMap);
-      // final mapdata = await places.getDetailsByPlaceId(dato.placeId);
+      marcador.clear();
 
       v.dirVet.text = dato.name;
       entity.address = dato.name;
+
+      final datoById = await _repo.getLatLngByPlaceId(dato.placeId);
+      final location = datoById.result.geometry.location;
+      lat = location.lat;
+      lng = location.lng;
+      final latlng = LatLng(location.lat, location.lng);
+
+      marcador.add(
+        Marker(
+          markerId: MarkerId("1"),
+          position: latlng,
+          draggable: true,
+          onDragEnd: ((value) {
+            lat = value.latitude;
+            lng = value.longitude;
+          }),
+        ),
+      );
       update(['xmap']);
+      _controller.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+            target: latlng,
+            zoom: 16.0,
+            bearing: 45.0,
+            tilt: 45.0,
+          ),
+        ),
+      );
     }
   }
 
   _newEstablishment() async {
     entity.typeId = int.parse(vetType);
-    // entity.address = "Misionero Salas, Callao, Perú";
-    entity.latitude = -12.002784;
-    entity.longitude = -77.100593;
+    entity.latitude = lat;
+    entity.longitude = lng;
     entity.services = servicesVetSet;
     entity.reference = "Cerca";
 

@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:vet_app/src/establishments/data/model/dataMapModel.dart';
+
 import '_establishmentInterface.dart';
 import 'establishmentApi.dart';
 import 'model/establishmentModelLite.dart';
@@ -76,5 +78,10 @@ class EstablishmentRepository extends EstablishmentInterface {
   Future<String> updateBase(
       EstablecimientoEntity datosBase, String establecimientoId) {
     return _api.updateBase(datosBase, establecimientoId);
+  }
+
+  @override
+  Future<DataMapModel> getLatLngByPlaceId(String placeId) {
+    return _api.getLatLngByPlaceId(placeId);
   }
 }

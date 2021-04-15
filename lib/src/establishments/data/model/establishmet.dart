@@ -4,47 +4,71 @@ EstablishmentModal establishmentModalFromJson(String str) =>
     EstablishmentModal.fromJson(json.decode(str));
 
 class EstablishmentModal {
-  String id;
-  String name;
   String address;
-  String stars;
-  String logo;
   String description;
+  List<Employee> employees;
+  String id;
+  double latitude;
+  String logo;
+  double longitude;
+  String name;
+  String phone;
+  Prices prices;
+  String reference;
+  String ruc;
   Schedule schedule;
   List<Service> services;
-  Prices prices;
-  List<Employee> employees;
   List<String> slides;
+  String stars;
+  String type;
+  int typeId;
+  String website;
 
-  // RxEstablishmentModal rx;
   EstablishmentModal({
-    this.id,
-    this.name,
     this.address,
-    this.stars,
-    this.logo,
     this.description,
+    this.employees,
+    this.id,
+    this.latitude,
+    this.logo,
+    this.longitude,
+    this.name,
+    this.phone,
+    this.prices,
+    this.reference,
+    this.ruc,
     this.schedule,
     this.services,
-    this.prices,
-    this.employees,
     this.slides,
+    this.stars,
+    this.type,
+    this.typeId,
+    this.website,
   });
+
   factory EstablishmentModal.fromJson(Map<String, dynamic> json) =>
       EstablishmentModal(
-        id: json["id"],
-        name: json["name"],
         address: json["address"],
-        stars: json["stars"],
-        logo: json["logo"],
         description: json["description"],
+        employees: List<Employee>.from(
+            json["employees"].map((x) => Employee.fromJson(x))),
+        id: json["id"],
+        latitude: json["latitude"].toDouble(),
+        logo: json["logo"],
+        longitude: json["longitude"].toDouble(),
+        name: json["name"],
+        phone: json["phone"],
+        prices: Prices.fromJson(json["prices"]),
+        reference: json["reference"],
+        ruc: json["ruc"],
         schedule: Schedule.fromJson(json["schedule"]),
         services: List<Service>.from(
             json["services"].map((x) => Service.fromJson(x))),
-        prices: Prices.fromJson(json["prices"]),
-        employees: List<Employee>.from(
-            json["employees"].map((x) => Employee.fromJson(x))),
         slides: List<String>.from(json["slides"].map((x) => x)),
+        stars: json["stars"],
+        type: json["type"],
+        typeId: json["type_id"],
+        website: json["website"],
       );
 }
 

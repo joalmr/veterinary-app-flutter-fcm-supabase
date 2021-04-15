@@ -11,7 +11,7 @@ class EditDescriptionController extends GetxController {
 
   @override
   void onInit() {
-    descripcionControl.text = showVetController.establishment.description;
+    descripcionControl.text = showVetController.establishment.value.description;
     super.onInit();
   }
 

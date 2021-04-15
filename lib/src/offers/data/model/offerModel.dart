@@ -4,30 +4,31 @@
 
 import 'dart:convert';
 
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
+
 List<OfferModal> offerModalFromJson(String str) =>
     List<OfferModal>.from(json.decode(str).map((x) => OfferModal.fromJson(x)));
 
-String offerModalToJson(List<OfferModal> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class OfferModal {
+  String id;
+  String date;
+  Offer offer;
+
   OfferModal({
     this.id,
+    this.date,
     this.offer,
   });
 
-  String id;
-  Offer offer;
-
   factory OfferModal.fromJson(Map<String, dynamic> json) => OfferModal(
         id: json["id"],
+        date: formatDateOut(
+          valor: json["date"],
+          formatIn: "yyyy-MM-dd",
+          formatOut: "dd-MM-yyyy",
+        ),
         offer: Offer.fromJson(json["offer"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "offer": offer.toJson(),
-      };
 }
 
 class Offer {

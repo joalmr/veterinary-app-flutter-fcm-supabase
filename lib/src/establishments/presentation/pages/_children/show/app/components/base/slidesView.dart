@@ -21,27 +21,29 @@ class EditSlidesView extends StatelessWidget {
               padding: EdgeInsets.only(top: 10),
               child: Column(
                 children: [
-                  for (var i = 0; i < _.establishment.slides.length; i++)
+                  for (var i = 0; i < _.establishment.value.slides.length; i++)
                     SlideItem(
                       onPressedDelete: () {},
-                      img: _.establishment.slides[i],
+                      img: _.establishment.value.slides[i],
                     ),
                   // SlideItem(
                   //   onPressed: () {},
                   //   img: _.establishment.slides[1],
                   // ),
                   SizedBox(height: 10),
-                  btnSecondary(
-                    text: 'Subir imagen',
-                    onPressed: _.establishment.slides.length == 2
-                        ? () {
-                            Get.snackbar(
-                              'Advertencia',
-                              'Alcanzaste el límite de imágenes',
-                              backgroundColor: colorYellow,
-                            );
-                          }
-                        : _.seleccionarSlide,
+                  Center(
+                    child: btnSecondary(
+                      text: 'Subir imagen',
+                      onPressed: _.establishment.value.slides.length == 2
+                          ? () {
+                              Get.snackbar(
+                                'Advertencia',
+                                'Alcanzaste el límite de imágenes',
+                                backgroundColor: colorYellow,
+                              );
+                            }
+                          : _.seleccionarSlide,
+                    ),
                   ),
                 ],
               ),

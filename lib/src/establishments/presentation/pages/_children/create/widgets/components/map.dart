@@ -22,15 +22,17 @@ class MapVet extends StatelessWidget {
             ..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer()))
             ..add(
                 Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()))
-            ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer())),
+            ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
+            ..add(Factory<VerticalDragGestureRecognizer>(
+                () => VerticalDragGestureRecognizer())),
           rotateGesturesEnabled: false,
-          scrollGesturesEnabled: true,
+          scrollGesturesEnabled: false,
           zoomGesturesEnabled: true,
           tiltGesturesEnabled: true,
           mapType: MapType.normal,
           initialCameraPosition: CameraPosition(
             target: LatLng(-12.045645176850693, -77.03056366799036),
-            zoom: 15,
+            zoom: 16,
           ),
           markers: Set.from(_.marcador),
           onMapCreated: _.mapCreated,
