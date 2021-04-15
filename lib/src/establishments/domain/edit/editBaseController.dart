@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
@@ -54,8 +52,6 @@ class EditBaseController extends GetxController {
   void updateBase() => _updateBase();
 
   _updateBase() async {
-    print('update base');
-
     entityBase.update((val) {
       val.name = nameControl.text;
       val.phone = phoneControl.text;
