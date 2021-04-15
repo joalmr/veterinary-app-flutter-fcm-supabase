@@ -248,8 +248,6 @@ class EstablishmentApi extends EstablishmentInterface {
     final url =
         Uri.https(urlBase, '$pathBase/establishment/$establecimientoId');
 
-    print(jsonEncode(datosBase));
-
     http.Response response = await http.post(
       url,
       headers: headersToken(),

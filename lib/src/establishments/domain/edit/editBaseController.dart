@@ -63,7 +63,6 @@ class EditBaseController extends GetxController {
       val.typeId = int.parse(vetTypeId);
     });
 
-    print(jsonEncode(entityBase));
     await _repo.updateBase(entityBase.value, showVetController.argumentoId);
 
     showVetController.getByid();
