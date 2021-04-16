@@ -16,6 +16,24 @@ abstract class EstablishmentInterface {
     String name,
     String code,
   );
+  Future<List<Employee>> getAllEmployees(
+    String establecimientoId,
+  );
+  Future<Employee> getEmployee(
+    String establecimientoId,
+    String employeeId,
+  );
+  Future<String> updateEmployee(
+    String establecimientoId,
+    String employeeId,
+    int typeId,
+    String name,
+    String code,
+  );
+  Future<String> deleteEmployee(
+    String establecimientoId,
+    String employeeId,
+  );
   Future<String> setPrices(
     String establecimientoId,
     PriceEstablecimientoEntity precios,

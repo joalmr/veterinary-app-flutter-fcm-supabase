@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
@@ -13,6 +12,8 @@ class ShowVetController extends GetxController {
   final EstablishmentsController establishmentController = Get.find();
 
   var establishment = EstablishmentModal().obs;
+
+  var initialTab = 0.obs;
 
   RxBool _cargando = true.obs;
   bool get cargando => _cargando.value;

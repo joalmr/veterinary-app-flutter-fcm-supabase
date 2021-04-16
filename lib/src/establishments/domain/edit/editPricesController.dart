@@ -66,6 +66,7 @@ class EditPricesController extends GetxController {
     await _repo.setPrices(showVetController.argumentoId, prices);
 
     showVetController.getByid();
+    showVetController.initialTab.value = 2;
     Get.back();
   }
 }

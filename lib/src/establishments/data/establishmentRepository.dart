@@ -84,4 +84,34 @@ class EstablishmentRepository extends EstablishmentInterface {
   Future<DataMapModel> getLatLngByPlaceId(String placeId) {
     return _api.getLatLngByPlaceId(placeId);
   }
+
+  @override
+  Future<String> updateEmployee(String establecimientoId, String employeeId,
+      int typeId, String name, String code) {
+    return _api.updateEmployee(
+      establecimientoId,
+      employeeId,
+      typeId,
+      name,
+      code,
+    );
+  }
+
+  @override
+  Future<String> deleteEmployee(String establecimientoId, String employeeId) {
+    return _api.deleteEmployee(establecimientoId, employeeId);
+  }
+
+  @override
+  Future<Employee> getEmployee(
+    String establecimientoId,
+    String employeeId,
+  ) {
+    return _api.getEmployee(establecimientoId, employeeId);
+  }
+
+  @override
+  Future<List<Employee>> getAllEmployees(String establecimientoId) {
+    return _api.getAllEmployees(establecimientoId);
+  }
 }

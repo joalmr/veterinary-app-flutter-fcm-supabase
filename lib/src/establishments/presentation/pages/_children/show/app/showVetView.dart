@@ -136,6 +136,7 @@ class ShowVetView extends StatelessWidget {
                   onRefresh: _.refresh,
                   child: DefaultTabController(
                     length: 5,
+                    initialIndex: _.initialTab.value,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,

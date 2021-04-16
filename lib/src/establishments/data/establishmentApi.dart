@@ -78,11 +78,7 @@ class EstablishmentApi extends EstablishmentInterface {
 
   @override
   Future<String> setEmployee(
-    String establecimientoId,
-    int typeId,
-    String name,
-    String code,
-  ) async {
+      String establecimientoId, int typeId, String name, String code) async {
     final url = Uri.https(
       urlBase,
       '$pathBase/establishment/$establecimientoId/employee',
@@ -106,6 +102,91 @@ class EstablishmentApi extends EstablishmentInterface {
     return 'asd';
   }
 
+  //? obtener empleados
+  @override
+  Future<List<Employee>> getAllEmployees(String establecimientoId) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/employees',
+    );
+
+    http.Response response = await http.get(
+      url,
+      headers: headersToken(),
+    );
+    List<Employee> data = List<Employee>.from(
+        json.decode(response.body).map((x) => Employee.fromJson(x)));
+
+    return data;
+  }
+
+  //? obtener empleado
+  @override
+  Future<Employee> getEmployee(
+      String establecimientoId, String employeeId) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/employee/$employeeId',
+    );
+
+    http.Response response = await http.get(
+      url,
+      headers: headersToken(),
+    );
+
+    var data = Employee.fromJson(jsonDecode(response.body));
+
+    return data;
+  }
+
+  //? actualiza empleado
+  @override
+  Future<String> updateEmployee(String establecimientoId, String employeeId,
+      int typeId, String name, String code) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/employee',
+    );
+
+    final employee = {
+      "employee_id": employeeId,
+      "type_id": typeId,
+      "name": name,
+      "code": code,
+    };
+
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(employee),
+    );
+
+    var data = jsonDecode(response.body);
+
+    print(data);
+    return "asd";
+  }
+
+  //? elimina empleado
+  @override
+  Future<String> deleteEmployee(
+      String establecimientoId, String employeeId) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/employee/$employeeId',
+    );
+
+    http.Response response = await http.delete(
+      url,
+      headers: headersToken(),
+    );
+
+    var data = jsonDecode(response.body);
+
+    print(data);
+    return "asd";
+  }
+
   @override
   Future<String> setPrices(
     String establecimientoId,
@@ -116,7 +197,6 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/prices',
     );
 
-    print(jsonEncode(precios));
     http.Response response = await http.post(
       url,
       headers: headersToken(),
