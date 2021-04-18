@@ -6,7 +6,6 @@ import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 
 class EditPricesController extends GetxController {
   final _repo = EstablishmentRepository();
-
   final showVetController = Get.find<ShowVetController>();
 
   final consultaControl = new MoneyMaskedTextController(
@@ -55,6 +54,11 @@ class EditPricesController extends GetxController {
         double.parse(showVetController.establishment.value.prices.grooming.from)
             .toStringAsFixed(2);
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
   }
 
   editPrecios() => _editPrices();

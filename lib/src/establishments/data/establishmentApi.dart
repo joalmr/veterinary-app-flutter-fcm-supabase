@@ -164,7 +164,7 @@ class EstablishmentApi extends EstablishmentInterface {
     var data = jsonDecode(response.body);
 
     print(data);
-    return "asd";
+    return response.statusCode.toString();
   }
 
   //? elimina empleado

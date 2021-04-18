@@ -5,8 +5,6 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/src/establishments/domain/edit/editEmployeesController.dart';
 
-import 'setEmployee.dart';
-
 class EditEmployeesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class EditEmployeesView extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add_rounded),
             onPressed: () {
-              Get.to(SetEmployee());
+              _.goToNew();
             },
           ),
           body: ListView.builder(
@@ -119,7 +117,9 @@ class EditEmployeesView extends StatelessWidget {
                             Icons.edit,
                             color: colorBlue,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            _.goToUpdate(employee);
+                          },
                         ),
                       ],
                     ),

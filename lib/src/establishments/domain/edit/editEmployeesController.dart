@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/show/app/components/employees/setEmployee.dart';
 
 class EditEmployeeController extends GetxController {
   final _repo = EstablishmentRepository();
@@ -9,15 +10,25 @@ class EditEmployeeController extends GetxController {
 
   var employees = <Employee>[].obs;
 
-  RxString _personalType = '2'.obs;
+  var _personalType = '2'.obs;
   String get personalType => _personalType.value;
   set personalType(String value) => _personalType.value = value;
+
+  var employeeId = "".obs;
+  var name = "".obs;
+  var code = "".obs;
+
+  var isNew = true.obs;
 
   @override
   void onInit() {
     getEmployees();
-
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
   }
 
   getEmployees() => _getEmployees();
@@ -29,25 +40,59 @@ class EditEmployeeController extends GetxController {
     employees.addAll(response);
   }
 
+  goToNew() {
+    isNew.value = false;
+    employeeId.value = "";
+    name.value = "";
+    code.value = "";
+    personalType = "2";
+
+    Get.to(SetEmployee());
+  }
+
   addEmployee() => _addEmployee();
   _addEmployee() async {
-    // await _repo.setEmployee(
-    //   establecimientoId,
-    //   typeId,
-    //   name,
-    //   code,
-    // );
+    var reponse = await _repo.setEmployee(
+      showVetController.establishment.value.id,
+      int.parse(personalType),
+      name.value,
+      code.value,
+    );
+    if (reponse == "200") {
+      getEmployees();
+      showVetController.getByid();
+      Get.back();
+      showVetController.initialTab.value = 4;
+    }
+  }
+
+  goToUpdate(Employee employee) {
+    isNew.value = false;
+    employeeId.value = employee.id;
+    name.value = employee.name;
+    code.value = employee.code;
+    personalType = employee.typeId.toString();
+    Get.to(SetEmployee());
   }
 
   updateEmployee() => _updateEmployee();
   _updateEmployee() async {
-    // await _repo.updateEmployee(
-    //   showVetController.establishment.value.id,
-    //   employeeId,
-    //   typeId,
-    //   name,
-    //   code,
-    // );
+    if (personalType == "1") {
+      code.value = "";
+    }
+    var reponse = await _repo.updateEmployee(
+      showVetController.establishment.value.id,
+      employeeId.value,
+      int.parse(personalType),
+      name.value,
+      code.value,
+    );
+    if (reponse == "200") {
+      getEmployees();
+      showVetController.getByid();
+      Get.back();
+      showVetController.initialTab.value = 4;
+    }
   }
 
   deleteEmployee(String employeeId) => _deleteEmployee(employeeId);
@@ -58,5 +103,6 @@ class EditEmployeeController extends GetxController {
     );
     getEmployees();
     showVetController.getByid();
+    showVetController.initialTab.value = 4;
   }
 }

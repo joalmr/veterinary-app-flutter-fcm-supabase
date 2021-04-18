@@ -5,15 +5,18 @@ import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 
 class EditDescriptionController extends GetxController {
   final _repo = EstablishmentRepository();
-
   final descripcionControl = TextEditingController();
   final showVetController = Get.find<ShowVetController>();
 
   @override
   void onInit() {
     descripcionControl.text = showVetController.establishment.value.description;
-
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
   }
 
   editDescripcion() => _editDescription();
