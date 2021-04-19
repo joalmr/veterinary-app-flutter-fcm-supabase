@@ -114,4 +114,9 @@ class EstablishmentRepository extends EstablishmentInterface {
   Future<List<Employee>> getAllEmployees(String establecimientoId) {
     return _api.getAllEmployees(establecimientoId);
   }
+
+  @override
+  Future<String> deleteSlide(String establecimientoId, String slide) {
+    return _api.deleteSlide(establecimientoId, slide);
+  }
 }

@@ -54,4 +54,8 @@ abstract class EstablishmentInterface {
   Future<String> updateBase(
       EstablecimientoEntity datosBase, String establecimientoId);
   Future<DataMapModel> getLatLngByPlaceId(String placeId);
+  Future<String> deleteSlide(
+    String establecimientoId,
+    String slide,
+  );
 }

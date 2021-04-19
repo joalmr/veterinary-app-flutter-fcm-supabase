@@ -358,4 +358,27 @@ class EstablishmentApi extends EstablishmentInterface {
 
     return byPlaceId;
   }
+
+  @override
+  Future<String> deleteSlide(String establecimientoId, String slide) async {
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/slide',
+    );
+
+    final jsonData = {
+      "slide": slide,
+    };
+
+    http.Response response = await http.delete(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(jsonData),
+    );
+
+    var data = jsonDecode(response.body);
+
+    print(data);
+    return "asd";
+  }
 }

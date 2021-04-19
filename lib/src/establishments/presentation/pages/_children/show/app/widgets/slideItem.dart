@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 class SlideItem extends StatelessWidget {
@@ -34,7 +36,28 @@ class SlideItem extends StatelessWidget {
               ),
               child: IconButton(
                 icon: Icon(Icons.delete_rounded),
-                onPressed: onPressedDelete,
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('Eliminar'),
+                      content: Text('Seguro que desea eliminar esta imagen?'),
+                      actions: <Widget>[
+                        btnAltern(
+                          text: 'Sí, eliminar',
+                          bold: true,
+                          color: colorRed,
+                          onPressed: onPressedDelete,
+                        ),
+                        btnAltern(
+                          text: 'Cancelar',
+                          bold: true,
+                          onPressed: () => Get.back(),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ],

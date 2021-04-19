@@ -8,16 +8,13 @@ import '../establishmentsController.dart';
 
 class ShowVetController extends GetxController {
   final _repo = EstablishmentRepository();
-
-  final EstablishmentsController establishmentController = Get.find();
+  final establishmentController = Get.find<EstablishmentsController>();
 
   var establishment = EstablishmentModal().obs;
 
   var initialTab = 0.obs;
 
-  RxBool _cargando = true.obs;
-  bool get cargando => _cargando.value;
-  set cargando(bool val) => _cargando.value = val;
+  RxBool cargando = true.obs;
 
   var argumentoId;
 
@@ -37,7 +34,7 @@ class ShowVetController extends GetxController {
   Future refresh() => _refresh();
 
   Future<Null> _refresh() async {
-    cargando = true;
+    cargando.value = true;
     await Future.delayed(Duration(milliseconds: 2));
     getByid();
     return null;
@@ -46,10 +43,9 @@ class ShowVetController extends GetxController {
   getByid() => _getByid();
 
   _getByid() async {
-    cargando = true;
+    cargando.value = true;
     establishment.value = await _repo.getById(argumentoId);
-
-    cargando = false;
+    cargando.value = false;
   }
 
   seleccionarLogo() async {
@@ -87,12 +83,12 @@ class ShowVetController extends GetxController {
     }
   }
 
-  editServicio() => _editService();
-  _editService() {}
-
-  editHorario() => _editSchedule();
-  _editSchedule() {}
-
-  editEmpleado() => _editEmployee();
-  _editEmployee() {}
+  void eliminarSlide(String slide) => _eliminarSlide(slide);
+  _eliminarSlide(String slide) async {
+    final shortSlide = slide.split('/storage/')[1];
+    print(shortSlide);
+    await _repo.deleteSlide(argumentoId, shortSlide);
+    getByid();
+    Get.close(2);
+  }
 }

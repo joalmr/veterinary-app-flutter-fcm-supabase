@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// final colorGreen = Color(0xFF00A48C);
-
 final colorGreen = Color(0xFF0B8E7A);
 
 final colorRed = Color(0xFFE2645B);
@@ -32,19 +30,3 @@ final shape10 = RoundedRectangleBorder(
 );
 
 final borderRadius = BorderRadius.circular(10.0);
-
-// const MaterialColor colorMain = MaterialColor(
-//   0xFF5A4B46,
-//   <int, Color>{
-//     50: Color(0xFF9D877F),
-//     100: Color(0xFF927971),
-//     200: Color(0xFF846D66),
-//     300: Color(0xFF76615B),
-//     400: Color(0xFF685650),
-//     500: Color(0xFF5A4B46), //original
-//     600: Color(0xFF534540),
-//     700: Color(0xFF4D3F3B),
-//     800: Color(0xFF463A36),
-//     900: Color(0xFF403531),
-//   },
-// );

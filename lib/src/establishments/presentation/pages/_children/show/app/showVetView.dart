@@ -18,7 +18,7 @@ class ShowVetView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<ShowVetController>(
       builder: (_) {
-        return _.cargando
+        return _.cargando.value
             ? Scaffold(
                 body: Center(
                   child: CircularProgressIndicator(),
