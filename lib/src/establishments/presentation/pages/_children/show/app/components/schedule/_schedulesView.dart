@@ -37,7 +37,7 @@ class SchedulesView extends StatelessWidget {
                     Icons.edit,
                   ),
                   onPressed: () {
-                    Get.to(EditSchedulesView(schedule: schedule));
+                    Get.to(EditSchedulesView()); //schedule: schedule
                   },
                 ),
               ],

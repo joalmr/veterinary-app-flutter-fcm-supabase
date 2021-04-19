@@ -180,6 +180,16 @@ class Schedule {
         saturday: Day.fromJson(json["saturday"]),
         sunday: Day.fromJson(json["sunday"]),
       );
+
+  Map<String, dynamic> toJson() => {
+        "monday": monday,
+        "tuesday": tuesday,
+        "wednesday": wednesday,
+        "thursday": thursday,
+        "friday": friday,
+        "saturday": saturday,
+        "sunday": sunday,
+      };
 }
 
 class Day {
@@ -198,4 +208,10 @@ class Day {
         timeStart: json["time_start"] == null ? '' : json["time_start"],
         timeEnd: json["time_end"] == null ? '' : json["time_end"],
       );
+
+  Map<String, dynamic> toJson() => {
+        "switch": daySwitch,
+        "time_start": timeStart,
+        "time_end": timeEnd,
+      };
 }

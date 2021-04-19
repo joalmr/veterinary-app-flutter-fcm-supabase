@@ -18,10 +18,6 @@ class CheckHorario extends StatelessWidget {
     @required this.endController,
   });
 
-  // final iniciaController = TextEditingController();
-  // final finController = TextEditingController();
-  // final vetControlller = Get.find<CreateVetController>();
-
   @override
   Widget build(BuildContext context) {
     TimeOfDay pickedTime = TimeOfDay.now();
