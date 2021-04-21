@@ -134,11 +134,11 @@ class ContentReprograma extends StatelessWidget {
               SizedBox(height: 25),
               Text('Fecha'),
               SizedBox(height: 5),
-              dateForm(onChanged: (val) => _.fecha = val),
+              dateForm(onChanged: (val) => _.fecha.value = val),
               SizedBox(height: 10),
               Text('Hora'),
               SizedBox(height: 5),
-              timeForm(onChanged: (val) => _.hora = val),
+              timeForm(onChanged: (val) => _.hora.value = val),
               SizedBox(height: 30),
               Center(
                 child: btnSecondary(
@@ -147,7 +147,7 @@ class ContentReprograma extends StatelessWidget {
                   onPressed: () => _.reprogramar(bookingId),
                 ),
               ),
-              _.errorDateTime
+              _.errorDateTime.value
                   ? FadeIn(
                       child: Center(
                         child: Container(
@@ -169,11 +169,11 @@ class ContentReprograma extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  _.msgfecha,
+                                  _.msgfecha.value,
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 Text(
-                                  _.msghora,
+                                  _.msghora.value,
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],

@@ -12,51 +12,32 @@ class ReprogramarController extends GetxController {
   final bookingRepository = BookingRepository();
   final HomeController _homeController = Get.find();
 
-  RxBool _reprogramando = false.obs;
-  bool get reprogramando => _reprogramando.value;
-  set reprogramando(bool value) => _reprogramando.value = value;
+  RxBool reprogramando = false.obs;
+  RxBool reprogramaBlock = false.obs;
+  RxBool errorDateTime = false.obs;
 
-  RxBool _reprogramaBlock = false.obs;
-  bool get reprogramaBlock => _reprogramaBlock.value;
-  set reprogramaBlock(bool value) => _reprogramaBlock.value = value;
-
-  RxBool _errorDateTime = false.obs;
-  bool get errorDateTime => _errorDateTime.value;
-  set errorDateTime(bool value) => _errorDateTime.value = value;
-
-  RxString _fecha = "".obs;
-  String get fecha => _fecha.value;
-  set fecha(String value) => _fecha.value = value;
-
-  RxString _hora = "".obs;
-  String get hora => _hora.value;
-  set hora(String value) => _hora.value = value;
-
-  RxString _msgfecha = "".obs;
-  String get msgfecha => _msgfecha.value;
-  set msgfecha(String value) => _msgfecha.value = value;
-
-  RxString _msghora = "".obs;
-  String get msghora => _msghora.value;
-  set msghora(String value) => _msghora.value = value;
+  RxString fecha = "".obs;
+  RxString hora = "".obs;
+  RxString msgfecha = "".obs;
+  RxString msghora = "".obs;
 ////////////////////////////////////////////////////////////////////////////////
 
   reprogramar(idBooking) => _reprogramar(idBooking);
 
   Future<void> _reprogramar(String idBooking) async {
-    reprogramando = true;
+    reprogramando.value = true;
 
-    final date = validaDate(fecha);
-    final hour = validateTime(hora);
+    final date = validaDate(fecha.value);
+    final hour = validateTime(hora.value);
 
-    if (date != null) msgfecha = date;
-    if (hour != null) msghora = hour;
+    if (date != null) msgfecha.value = date;
+    if (hour != null) msghora.value = hour;
 
     if (date != null || hour != null) {
-      errorDateTime = true;
+      errorDateTime.value = true;
       Timer(
         Duration(milliseconds: 7500),
-        () => errorDateTime = false,
+        () => errorDateTime.value = false,
       );
     } else {
       String datetime = formatDateOut(
@@ -68,12 +49,12 @@ class ReprogramarController extends GetxController {
       var resp = await bookingRepository.reschedule(idBooking, datetime);
 
       if (resp == 200) {
-        reprogramando = false;
+        reprogramando.value = false;
         _homeController.getAll();
 
         Navigator.popUntil(Get.context, ModalRoute.withName(NameRoutes.home));
       }
     }
-    reprogramando = false;
+    reprogramando.value = false;
   }
 }
