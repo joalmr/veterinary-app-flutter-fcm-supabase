@@ -1,41 +1,74 @@
 // To parse this JSON data, do
 //
-//     final workersModal = workersModalFromJson(jsonString);
+//     final workersModalInvitado = workersModalInvitadoFromJson(jsonString);
 
 import 'dart:convert';
 
-List<WorkersModalInvitado> workersModalInvitadoFromJson(String str) =>
-    List<WorkersModalInvitado>.from(
-        json.decode(str).map((x) => WorkersModalInvitado.fromJson(x)));
+WorkersModalInvitado workersModalInvitadoFromJson(String str) =>
+    WorkersModalInvitado.fromJson(json.decode(str));
 
-String workersModalInvitadoToJson(List<WorkersModalInvitado> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String workersModalInvitadoToJson(WorkersModalInvitado data) =>
+    json.encode(data.toJson());
 
 class WorkersModalInvitado {
   WorkersModalInvitado({
-    this.id,
-    this.createdAt,
-    this.email,
-    this.establishment,
+    this.message,
+    this.result,
   });
 
-  String id;
-  String createdAt;
-  String email;
-  String establishment;
+  String message;
+  List<WorkerInvitation> result;
 
   factory WorkersModalInvitado.fromJson(Map<String, dynamic> json) =>
       WorkersModalInvitado(
+        message: json["message"],
+        result: List<WorkerInvitation>.from(
+            json["result"].map((x) => WorkerInvitation.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "message": message,
+        "result": List<dynamic>.from(result.map((x) => x.toJson())),
+      };
+}
+
+class WorkerInvitation {
+  WorkerInvitation({
+    this.id,
+    this.establishmentId,
+    this.userId,
+    this.email,
+    this.token,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  String id;
+  String establishmentId;
+  String userId;
+  String email;
+  String token;
+  DateTime createdAt;
+  DateTime updatedAt;
+
+  factory WorkerInvitation.fromJson(Map<String, dynamic> json) =>
+      WorkerInvitation(
         id: json["id"],
-        createdAt: json["created_at"],
+        establishmentId: json["establishment_id"],
+        userId: json["user_id"],
         email: json["email"],
-        establishment: json["establishment"],
+        token: json["token"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "created_at": createdAt,
+        "establishment_id": establishmentId,
+        "user_id": userId,
         "email": email,
-        "establishment": establishment,
+        "token": token,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
       };
 }

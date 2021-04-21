@@ -11,10 +11,10 @@ class BookingRepository extends BookingInterface {
     return _api.confirm(idBooking);
   }
 
-  @override
-  Future<List<ReservaModel>> getAll(String idVet) {
-    return _api.getAll(idVet);
-  }
+  // @override
+  // Future<List<ReservaModel>> getAll(String idVet) {
+  //   return _api.getAll(idVet);
+  // }
 
   @override
   Future<ReservaModel> getId(String idBooking) {
@@ -27,22 +27,22 @@ class BookingRepository extends BookingInterface {
   }
 
   @override
-  Future<List<ResultBooking>> getIncoming(String idVet) {
+  Future<BookingModel> getIncoming(String idVet) {
     return _api.getIncoming(idVet);
   }
 
   @override
-  Future<List<ResultBooking>> getOverdue(String idVet) {
+  Future<BookingModel> getOverdue(String idVet) {
     return _api.getOverdue(idVet);
   }
 
   @override
-  Future<List<ResultBooking>> getToday(String idVet) {
+  Future<BookingModel> getToday(String idVet) {
     return _api.getToday(idVet);
   }
 
   @override
-  Future<List<ResultBooking>> getUnconfirmed(String idVet) {
+  Future<BookingModel> getUnconfirmed(String idVet) {
     return _api.getUnconfirmed(idVet);
   }
 }

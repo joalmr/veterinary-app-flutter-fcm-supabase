@@ -50,7 +50,7 @@ class ReprogramarController extends GetxController {
 
       if (resp == 200) {
         reprogramando.value = false;
-        _homeController.getAll();
+        _homeController.getAllBookings();
 
         Navigator.popUntil(Get.context, ModalRoute.withName(NameRoutes.home));
       }

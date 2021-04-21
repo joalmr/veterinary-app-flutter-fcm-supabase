@@ -26,14 +26,14 @@ class Unconfirmed extends StatelessWidget {
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
-                    : _.reservas.length == 0
+                    : _.unconfirmed.length == 0
                         ? Center(
                             child: Text('No tiene reservas por confirmar'),
                           )
                         : ListView.builder(
-                            itemCount: _.reservas.length,
+                            itemCount: _.unconfirmed.length,
                             itemBuilder: (BuildContext context, int index) {
-                              ReservaModel booking = _.reservas[index];
+                              final booking = _.unconfirmed[index];
                               return RowUnconfirmed(
                                 bookingId: booking.id,
                                 petImg: booking.petPicture,
@@ -46,7 +46,7 @@ class Unconfirmed extends StatelessWidget {
                                 userName: booking.user,
                                 userPhone: 'Ejm -> 993926739',
                                 types: 'Ejm -> Consulta, antipulgas, baño',
-                                observation: 'Ejm -> cojo',
+                                observation: booking.observation,
                               );
                             },
                           ),

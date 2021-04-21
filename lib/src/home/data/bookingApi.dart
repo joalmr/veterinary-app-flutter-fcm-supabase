@@ -39,19 +39,19 @@ class BookingApi extends BookingInterface {
     return ReservaModel.fromJson(json.decode(response.body));
   }
 
+  // @override
+  // Future<List<ReservaModel>> getAll(String idVet) async {
+  //   final url = Uri.https(urlBase, '/api/client/establishment/$idVet/bookings');
+
+  //   http.Response response = await http.get(url, headers: headersToken());
+
+  //   return List<ReservaModel>.from(
+  //     json.decode(response.body).map((x) => ReservaModel.fromJson(x)),
+  //   );
+  // }
+
   @override
-  Future<List<ReservaModel>> getAll(String idVet) async {
-    final url = Uri.https(urlBase, '/api/client/establishment/$idVet/bookings');
-
-    http.Response response = await http.get(url, headers: headersToken());
-
-    return List<ReservaModel>.from(
-      json.decode(response.body).map((x) => ReservaModel.fromJson(x)),
-    );
-  }
-
-  @override
-  Future<List<ResultBooking>> getUnconfirmed(String idVet) async {
+  Future<BookingModel> getUnconfirmed(String idVet) async {
     final url = Uri.https(
       urlBase,
       '/api/client/establishment/$idVet/bookings',
@@ -60,13 +60,11 @@ class BookingApi extends BookingInterface {
 
     http.Response response = await http.get(url, headers: headersToken());
 
-    return List<ResultBooking>.from(
-      json.decode(response.body).map((x) => ResultBooking.fromJson(x)),
-    );
+    return bookingModelFromJson(response.body);
   }
 
   @override
-  Future<List<ResultBooking>> getOverdue(String idVet) async {
+  Future<BookingModel> getOverdue(String idVet) async {
     final url = Uri.https(
       urlBase,
       '/api/client/establishment/$idVet/bookings',
@@ -75,13 +73,11 @@ class BookingApi extends BookingInterface {
 
     http.Response response = await http.get(url, headers: headersToken());
 
-    return List<ResultBooking>.from(
-      json.decode(response.body).map((x) => ResultBooking.fromJson(x)),
-    );
+    return bookingModelFromJson(response.body);
   }
 
   @override
-  Future<List<ResultBooking>> getToday(String idVet) async {
+  Future<BookingModel> getToday(String idVet) async {
     final url = Uri.https(
       urlBase,
       '/api/client/establishment/$idVet/bookings',
@@ -90,19 +86,19 @@ class BookingApi extends BookingInterface {
 
     http.Response response = await http.get(url, headers: headersToken());
 
-    return List<ResultBooking>.from(
-      json.decode(response.body).map((x) => ResultBooking.fromJson(x)),
-    );
+    return bookingModelFromJson(response.body);
   }
 
   @override
-  Future<List<ResultBooking>> getIncoming(String idVet) async {
-    final url = Uri.https(urlBase, '/api/client/establishment/$idVet/bookings');
+  Future<BookingModel> getIncoming(String idVet) async {
+    final url = Uri.https(
+      urlBase,
+      '/api/client/establishment/$idVet/bookings',
+      {"status": "incoming"},
+    );
 
     http.Response response = await http.get(url, headers: headersToken());
 
-    return List<ResultBooking>.from(
-      json.decode(response.body).map((x) => ResultBooking.fromJson(x)),
-    );
+    return bookingModelFromJson(response.body);
   }
 }

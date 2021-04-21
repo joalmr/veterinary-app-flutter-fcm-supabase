@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/resources/utils/headerHttp.dart';
 import 'package:vet_app/src/workers/data/model/workerModelnvitado.dart';
@@ -7,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class WorkersApi extends WorkersInterface {
   @override
-  Future<List<WorkersModal>> getWorkers(String establishmentId) async {
+  Future<WorkersModal> getWorkers(String establishmentId) async {
     final url = Uri.https(
       urlBase,
       '/api/client/establishment/$establishmentId/workers',
@@ -19,7 +21,7 @@ class WorkersApi extends WorkersInterface {
   }
 
   @override
-  Future<List<WorkersModalInvitado>> getWorkersInvitado(
+  Future<WorkersModalInvitado> getWorkersInvitado(
       String establishmentId) async {
     final url = Uri.https(
       urlBase,
@@ -40,8 +42,9 @@ class WorkersApi extends WorkersInterface {
     http.Response response = await http.post(
       url,
       headers: headersToken(),
-      body: dataBooking,
+      body: jsonEncode(dataBooking),
     );
+    print("invitacion");
 
     return response.statusCode;
   }

@@ -2,11 +2,11 @@ import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/home/data/bookingRepository.dart';
-import 'package:vet_app/src/home/data/model/reservaModel.dart';
+import 'package:vet_app/src/home/data/model/bookingModel.dart';
 
 class HomeController extends GetxController {
   final establishmentService = EstablishmentRepository();
-  final bookingService = BookingRepository();
+  final _repoBooking = BookingRepository();
 
   RxBool _carga = true.obs;
   bool get carga => _carga.value;
@@ -21,7 +21,12 @@ class HomeController extends GetxController {
   String get nameVet => _nameVet.value;
   set nameVet(String value) => _nameVet.value = value;
 
-  RxList<ReservaModel> reservas = <ReservaModel>[].obs;
+  // RxList<ReservaModel> reservas = <ReservaModel>[].obs;
+
+  RxList<Booking> unconfirmed = <Booking>[].obs;
+  RxList<Booking> overdue = <Booking>[].obs;
+  RxList<Booking> today = <Booking>[].obs;
+  RxList<Booking> incoming = <Booking>[].obs;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -29,7 +34,8 @@ class HomeController extends GetxController {
   void onInit() {
     carga = true;
     print(prefUser.vetId);
-    getAll();
+    getUnconfirmed();
+    getVet();
     super.onInit();
   }
 
@@ -38,36 +44,61 @@ class HomeController extends GetxController {
   Future<Null> _refreshUnconfirmed() async {
     carga = true;
     await Future.delayed(Duration(milliseconds: 2));
-    getAll();
+    getUnconfirmed();
     return null;
   }
 
-  getAll() => _getAll();
+  getVet() {
+    nameVet = prefUser.vetName;
+  }
 
-  Future<List<ReservaModel>> _getAll() async {
-    reservas.clear();
-    var misReservas = await bookingService.getAll(prefUser.vetId);
-    reservas.addAll(misReservas);
-
-    getVet();
+  //!   listas bookings
+  //
+  getUnconfirmed() => _getUnconfirmed();
+  _getUnconfirmed() async {
+    final response = await _repoBooking.getUnconfirmed(prefUser.vetId);
+    unconfirmed.clear();
+    unconfirmed.addAll(response.result);
     carga = false;
-
-    return reservas;
   }
 
-  getVet() => _getVet();
-
-  Future<void> _getVet() async {
-    final veterinary = await establishmentService.getById(prefUser.vetId);
-    nameVet = veterinary.name;
+  getOverdue() => _getOverdue();
+  _getOverdue() async {
+    final response = await _repoBooking.getOverdue(prefUser.vetId);
+    overdue.clear();
+    overdue.addAll(response.result);
   }
 
+  getToday() => _getToday();
+  _getToday() async {
+    final response = await _repoBooking.getToday(prefUser.vetId);
+    today.clear();
+    today.addAll(response.result);
+  }
+
+  getIncoming() => _getIncoming();
+  _getIncoming() async {
+    final response = await _repoBooking.getIncoming(prefUser.vetId);
+    incoming.clear();
+    incoming.addAll(response.result);
+  }
+
+  getAllBookings() {
+    getUnconfirmed();
+    getToday();
+    getIncoming();
+    getOverdue();
+  }
+
+  //!   confirmar
+  //
   confirm(idBooking) => _confirm(idBooking);
-
   Future<void> _confirm(idBooking) async {
     carga = true;
-    int resp = await bookingService.confirm(idBooking);
-    if (resp == 200) getAll();
+    int resp = await _repoBooking.confirm(idBooking);
+    if (resp == 200) {
+      getAllBookings();
+    }
     cargaConfirmar = false;
   }
 }

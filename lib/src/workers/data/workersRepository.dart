@@ -7,13 +7,12 @@ class WorkersRepository extends WorkersInterface {
   final _api = WorkersApi();
 
   @override
-  Future<List<WorkersModal>> getWorkers(String establishmentId) {
+  Future<WorkersModal> getWorkers(String establishmentId) {
     return _api.getWorkers(establishmentId);
   }
 
   @override
-  Future<List<WorkersModalInvitado>> getWorkersInvitado(
-      String establishmentId) {
+  Future<WorkersModalInvitado> getWorkersInvitado(String establishmentId) {
     return _api.getWorkersInvitado(establishmentId);
   }
 

@@ -23,7 +23,7 @@ class HomePageApp extends StatelessWidget {
                 )
               : DefaultTabController(
                   length: 2,
-                  initialIndex: _.reservas.length > 0 ? 1 : 0,
+                  initialIndex: _.unconfirmed.length > 0 ? 1 : 0,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,

@@ -17,7 +17,7 @@ class CardBooking extends StatelessWidget {
   final String userName;
   final String userPhone;
   final Color color;
-  final String types;
+  final List<String> bookingServices;
   final String observation;
 
   const CardBooking({
@@ -32,16 +32,25 @@ class CardBooking extends StatelessWidget {
     this.userName,
     this.userPhone,
     this.color,
-    this.types,
+    this.bookingServices,
     this.observation,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final HomeController _home = Get.find();
-
-    // String petImage = 'https://danger.proypet.com/' +
-    //     petImg.split('http://18.188.214.204/')[1];
+    String stringTypes = "";
+    for (var i = 0; i < bookingServices.length; i++) {
+      final element = bookingServices[i];
+      if (bookingServices.length == 1) {
+        stringTypes = element;
+      } else {
+        if (i < bookingServices.length - 1)
+          stringTypes += element + ", ";
+        else
+          stringTypes += element;
+      }
+    }
 
     return Card(
       margin: EdgeInsets.only(bottom: 10),
@@ -71,11 +80,9 @@ class CardBooking extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(5.0),
                                   child: Image(
-                                    fit: BoxFit.cover,
-                                    image: petImg != null
-                                        ? CachedNetworkImageProvider(petImg)
-                                        : AssetImage('assets/images/dog.jpg'),
-                                  ),
+                                      fit: BoxFit.cover,
+                                      image:
+                                          CachedNetworkImageProvider(petImg)),
                                 ),
                               ),
                             ),
@@ -158,7 +165,7 @@ class CardBooking extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              types,
+                              stringTypes,
                               style: TextStyle(),
                             ),
                             SizedBox(height: 5),

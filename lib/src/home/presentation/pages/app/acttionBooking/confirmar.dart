@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
-import 'package:vet_app/src/home/data/model/reservaModel.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';
 import 'package:vet_app/src/home/presentation/pages/app/widgets/cardBooking.dart';
 
@@ -14,15 +13,15 @@ class ConfirmarView extends StatelessWidget {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : _.reservas.length == 0
+            : _.unconfirmed.length == 0
                 ? Center(
                     child: Text('No tiene reservas por confirmar'),
                   )
                 : ListView.builder(
                     padding: EdgeInsets.only(left: 10, right: 10, top: 15),
-                    itemCount: _.reservas.length,
+                    itemCount: _.unconfirmed.length,
                     itemBuilder: (BuildContext context, int i) {
-                      ReservaModel booking = _.reservas[i];
+                      final booking = _.unconfirmed[i];
                       return CardBooking(
                         bookingId: booking.id,
                         petImg: booking.petPicture,
@@ -34,8 +33,9 @@ class ConfirmarView extends StatelessWidget {
                         time: booking.bookingTime.substring(0, 5),
                         userName: booking.user,
                         userPhone: 'Ejm -> 993926739',
-                        types: 'Ejm -> Consulta, antipulgas, baño',
-                        observation: 'Ejm -> cojo',
+                        // types: 'Ejm -> Consulta, antipulgas, baño',
+                        bookingServices: booking.bookingServices,
+                        observation: booking.observation,
                       );
                     },
                   );
