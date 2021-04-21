@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/establishments/domain/establishmentsController.dart';
 
@@ -105,9 +106,10 @@ class CardEstablecimiento extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: btnAltern(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      btnAltern(
                         text: 'Eliminar',
                         color: colorRed,
                         bold: true,
@@ -136,9 +138,19 @@ class CardEstablecimiento extends StatelessWidget {
                               ],
                             ),
                           );
-                          // Get.dialog(
-                          // );
-                        }),
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.star_rounded,
+                          color: prefUser.vetId == id ? colorMain : null,
+                          size: 32,
+                        ),
+                        onPressed: () {
+                          _.favoriteVet(id, name, image);
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
