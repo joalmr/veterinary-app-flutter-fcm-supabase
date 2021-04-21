@@ -1,6 +1,7 @@
 import 'bookingApi.dart';
 import '_bookingInterface.dart';
 import 'model/bookingModel.dart';
+import 'model/reservaModel.dart';
 
 class BookingRepository extends BookingInterface {
   final _api = BookingApi();
@@ -23,5 +24,25 @@ class BookingRepository extends BookingInterface {
   @override
   Future<int> reschedule(String idBooking, String bookingAt) {
     return _api.reschedule(idBooking, bookingAt);
+  }
+
+  @override
+  Future<List<ResultBooking>> getIncoming(String idVet) {
+    return _api.getIncoming(idVet);
+  }
+
+  @override
+  Future<List<ResultBooking>> getOverdue(String idVet) {
+    return _api.getOverdue(idVet);
+  }
+
+  @override
+  Future<List<ResultBooking>> getToday(String idVet) {
+    return _api.getToday(idVet);
+  }
+
+  @override
+  Future<List<ResultBooking>> getUnconfirmed(String idVet) {
+    return _api.getUnconfirmed(idVet);
   }
 }
