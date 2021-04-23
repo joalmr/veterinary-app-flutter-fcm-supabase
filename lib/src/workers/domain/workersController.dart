@@ -7,8 +7,8 @@ import 'package:vet_app/src/workers/data/workersRepository.dart';
 class WorkersController extends GetxController {
   final _repo = WorkersRepository();
 
-  RxList<Trabajador> workers = <Trabajador>[].obs;
-  RxList<WorkerInvitation> workersInvitation = <WorkerInvitation>[].obs;
+  RxList<WorkerApp> workers = <WorkerApp>[].obs;
+  RxList<Invitation> workersInvitation = <Invitation>[].obs;
 
   @override
   void onInit() {
@@ -23,7 +23,7 @@ class WorkersController extends GetxController {
   _getWorkers() async {
     workers.clear();
     final response = await _repo.getWorkers(prefUser.vetId);
-    final lista = response.result;
+    final lista = response.result.workers;
     print("workers");
     workers.addAll(lista);
   }
@@ -34,7 +34,7 @@ class WorkersController extends GetxController {
   _getInvitados() async {
     workersInvitation.clear();
     final response = await _repo.getWorkersInvitado(prefUser.vetId);
-    final lista = response.result;
+    final lista = response.result.invitations;
     print("workers invitados");
     workersInvitation.addAll(lista);
   }

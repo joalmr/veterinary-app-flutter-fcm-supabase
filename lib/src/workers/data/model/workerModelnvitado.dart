@@ -17,58 +17,65 @@ class WorkersModalInvitado {
   });
 
   String message;
-  List<WorkerInvitation> result;
+  Result result;
 
   factory WorkersModalInvitado.fromJson(Map<String, dynamic> json) =>
       WorkersModalInvitado(
         message: json["message"],
-        result: List<WorkerInvitation>.from(
-            json["result"].map((x) => WorkerInvitation.fromJson(x))),
+        result: Result.fromJson(json["result"]),
       );
 
   Map<String, dynamic> toJson() => {
         "message": message,
-        "result": List<dynamic>.from(result.map((x) => x.toJson())),
+        "result": result.toJson(),
       };
 }
 
-class WorkerInvitation {
-  WorkerInvitation({
+class Result {
+  Result({
+    this.invitations,
+  });
+
+  List<Invitation> invitations;
+
+  factory Result.fromJson(Map<String, dynamic> json) => Result(
+        invitations: List<Invitation>.from(
+            json["invitations"].map((x) => Invitation.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "invitations": List<dynamic>.from(invitations.map((x) => x.toJson())),
+      };
+}
+
+class Invitation {
+  Invitation({
     this.id,
     this.establishmentId,
-    this.userId,
+    this.establishmentName,
     this.email,
-    this.token,
     this.createdAt,
-    this.updatedAt,
   });
 
   String id;
   String establishmentId;
-  String userId;
+  String establishmentName;
   String email;
-  String token;
   DateTime createdAt;
-  DateTime updatedAt;
 
-  factory WorkerInvitation.fromJson(Map<String, dynamic> json) =>
-      WorkerInvitation(
+  factory Invitation.fromJson(Map<String, dynamic> json) => Invitation(
         id: json["id"],
         establishmentId: json["establishment_id"],
-        userId: json["user_id"],
+        establishmentName: json["establishment_name"],
         email: json["email"],
-        token: json["token"],
         createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "establishment_id": establishmentId,
-        "user_id": userId,
+        "establishment_name": establishmentName,
         "email": email,
-        "token": token,
         "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
       };
 }

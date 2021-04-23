@@ -16,22 +16,38 @@ class WorkersModal {
   });
 
   String message;
-  List<Trabajador> result;
+  Result result;
 
   factory WorkersModal.fromJson(Map<String, dynamic> json) => WorkersModal(
         message: json["message"],
-        result: List<Trabajador>.from(
-            json["result"].map((x) => Trabajador.fromJson(x))),
+        result: Result.fromJson(json["result"]),
       );
 
   Map<String, dynamic> toJson() => {
         "message": message,
-        "result": List<dynamic>.from(result.map((x) => x.toJson())),
+        "result": result.toJson(),
       };
 }
 
-class Trabajador {
-  Trabajador({
+class Result {
+  Result({
+    this.workers,
+  });
+
+  List<WorkerApp> workers;
+
+  factory Result.fromJson(Map<String, dynamic> json) => Result(
+        workers: List<WorkerApp>.from(
+            json["workers"].map((x) => WorkerApp.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "workers": List<dynamic>.from(workers.map((x) => x.toJson())),
+      };
+}
+
+class WorkerApp {
+  WorkerApp({
     this.id,
     this.name,
     this.email,
@@ -43,7 +59,7 @@ class Trabajador {
   String email;
   String establishment;
 
-  factory Trabajador.fromJson(Map<String, dynamic> json) => Trabajador(
+  factory WorkerApp.fromJson(Map<String, dynamic> json) => WorkerApp(
         id: json["id"],
         name: json["name"],
         email: json["email"],

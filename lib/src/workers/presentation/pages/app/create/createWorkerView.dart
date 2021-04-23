@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/workers/domain/workersController.dart';
 
 class CreaWorkerView extends StatelessWidget {
@@ -66,7 +67,7 @@ class CreaWorkerView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  workerInvitation.createdAt.toString(),
+                                  formatDate(workerInvitation.createdAt),
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -83,7 +84,7 @@ class CreaWorkerView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  workerInvitation.establishmentId,
+                                  workerInvitation.establishmentName,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
