@@ -22,7 +22,7 @@ class ChartUsersState extends State<ChartUsers> {
   }
 
   Widget _chartBar(List<DataUsuario> listData) {
-    double numeromayor = 0;
+    int numeromayor = 0;
     for (int i = 0; i < listData.length && i < listData.length; i++) {
       if (listData[i].value > numeromayor) {
         numeromayor = listData[i].value;
@@ -43,7 +43,7 @@ class ChartUsersState extends State<ChartUsers> {
     );
   }
 
-  Widget _barUsuario(String day, double value, double mayor) {
+  Widget _barUsuario(String day, int value, int mayor) {
     double valorY = (value * 150) / mayor;
     // double ancho = (400 - (40 * 2)) / 3;
 

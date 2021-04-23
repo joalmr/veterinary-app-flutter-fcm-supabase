@@ -1,0 +1,19 @@
+{
+    "message": "",
+    "result": {
+        "users_month": [
+            {
+                "name": "Enero",
+                "value": 30
+            },
+            {
+                "name": "Febrero",
+                "value": 40
+            },
+            {
+                "name": "Marzo",
+                "value": 8
+            }
+        ]
+    }
+}

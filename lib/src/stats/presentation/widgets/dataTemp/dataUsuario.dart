@@ -1,6 +1,6 @@
 class DataUsuario {
   String name;
-  double value;
+  int value;
 
   DataUsuario({
     this.name,
@@ -9,7 +9,7 @@ class DataUsuario {
 }
 
 var dataUsuario = [
-  DataUsuario(name: "Enero", value: 30.0),
-  DataUsuario(name: "Febrero", value: 40.0),
-  DataUsuario(name: "Marzo", value: 8.0),
+  DataUsuario(name: "Enero", value: 30),
+  DataUsuario(name: "Febrero", value: 40),
+  DataUsuario(name: "Marzo", value: 8),
 ];
