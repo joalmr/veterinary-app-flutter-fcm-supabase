@@ -27,7 +27,10 @@ class CreaWorkerView extends StatelessWidget {
               children: [
                 EasyRichText(
                   "Invitar administrador para ${prefUser.vetName}",
-                  defaultStyle: TextStyle(fontWeight: FontWeight.bold),
+                  defaultStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black38,
+                  ),
                   patternList: [
                     EasyRichTextPattern(
                       targetString: '${prefUser.vetName}',

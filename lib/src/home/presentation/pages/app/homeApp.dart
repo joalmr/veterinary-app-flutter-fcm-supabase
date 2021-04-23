@@ -15,7 +15,7 @@ class HomePageApp extends StatelessWidget {
         return Scaffold(
           drawer: MenuDrawer(),
           appBar: AppBar(
-            title: FadeIn(child: Text(_.nameVet)),
+            title: FadeIn(child: Text(_.nameVet.value)),
           ),
           body: _.carga
               ? Center(

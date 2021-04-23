@@ -16,12 +16,7 @@ class HomeController extends GetxController {
   bool get cargaConfirmar => _cargaConfirmar.value;
   set cargaConfirmar(bool value) => _cargaConfirmar.value = value;
 
-  RxString _nameVet = "".obs;
-
-  String get nameVet => _nameVet.value;
-  set nameVet(String value) => _nameVet.value = value;
-
-  // RxList<ReservaModel> reservas = <ReservaModel>[].obs;
+  RxString nameVet = "".obs;
 
   RxList<Booking> unconfirmed = <Booking>[].obs;
   RxList<Booking> overdue = <Booking>[].obs;
@@ -32,10 +27,8 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    carga = true;
-    print(prefUser.vetId);
-    getUnconfirmed();
     getVet();
+    getAllBookings();
     super.onInit();
   }
 
@@ -49,45 +42,47 @@ class HomeController extends GetxController {
   }
 
   getVet() {
-    nameVet = prefUser.vetName;
+    nameVet.value = prefUser.vetName;
   }
 
   //!   listas bookings
   //
   getUnconfirmed() => _getUnconfirmed();
   _getUnconfirmed() async {
-    final response = await _repoBooking.getUnconfirmed(prefUser.vetId);
     unconfirmed.clear();
+    final response = await _repoBooking.getUnconfirmed(prefUser.vetId);
     unconfirmed.addAll(response.result);
-    carga = false;
   }
 
   getOverdue() => _getOverdue();
   _getOverdue() async {
-    final response = await _repoBooking.getOverdue(prefUser.vetId);
     overdue.clear();
+    final response = await _repoBooking.getOverdue(prefUser.vetId);
     overdue.addAll(response.result);
   }
 
   getToday() => _getToday();
   _getToday() async {
-    final response = await _repoBooking.getToday(prefUser.vetId);
     today.clear();
+    final response = await _repoBooking.getToday(prefUser.vetId);
     today.addAll(response.result);
   }
 
   getIncoming() => _getIncoming();
   _getIncoming() async {
-    final response = await _repoBooking.getIncoming(prefUser.vetId);
     incoming.clear();
+    final response = await _repoBooking.getIncoming(prefUser.vetId);
     incoming.addAll(response.result);
   }
 
-  getAllBookings() {
-    getUnconfirmed();
-    getToday();
-    getIncoming();
-    getOverdue();
+  getAllBookings() => _getAllBookings();
+  _getAllBookings() async {
+    carga = true;
+    await getUnconfirmed();
+    await getToday();
+    await getIncoming();
+    await getOverdue();
+    carga = false;
   }
 
   //!   confirmar

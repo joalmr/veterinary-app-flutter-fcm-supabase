@@ -22,7 +22,7 @@ class PreferenciasUsuario {
   vetDataHas() => box.hasData('vetData');
   vetDataDel() => box.remove('vetData');
 
-  get vetId => vetStorageFromJson(vetData).vetId;
-  get vetName => vetStorageFromJson(vetData).vetName;
-  get vetLogo => vetStorageFromJson(vetData).vetLogo;
+  String get vetId => vetStorageFromJson(vetData).vetId;
+  String get vetName => vetStorageFromJson(vetData).vetName;
+  String get vetLogo => vetStorageFromJson(vetData).vetLogo;
 }
