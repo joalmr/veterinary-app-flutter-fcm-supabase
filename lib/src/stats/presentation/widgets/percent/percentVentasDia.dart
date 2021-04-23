@@ -32,7 +32,7 @@ Widget _percent(List<DataDay> listDay) {
     children: listDay
         .map(
           (e) => wValuePercent(
-            color: colorGreen.withAlpha(60),
+            color: colorGreen.withAlpha(50),
             colorData: colorGreen,
             count: 'S/ ${e.value.toStringAsFixed(2)}',
             name: e.name,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataService.dart';
 
 import '../designGraph.dart';
@@ -30,8 +31,8 @@ Widget _percent(List<DataService> listService) {
     children: listService
         .map(
           (e) => wValuePercent(
-            color: e.color.withAlpha(60), //colorGreen,
-            colorData: e.color,
+            color: e.color.withAlpha(50), //colorGreen,
+            colorData: colorGreen,
             count: e.value.toStringAsFixed(0),
             name: e.name,
             progress: double.parse((e.value / valueTotal).toStringAsFixed(2)),
