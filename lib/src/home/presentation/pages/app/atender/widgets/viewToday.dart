@@ -10,27 +10,31 @@ class ViewToday extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<HomeController>(
       builder: (_) {
-        return Expanded(
-          child: ListView.builder(
-            itemCount: _.today.length,
-            padding: EdgeInsets.only(left: 10, right: 10),
-            itemBuilder: (BuildContext context, int index) {
-              final today = _.today[index];
-              return CardAttention(
-                petName: today.petName,
-                petBreed: today.petBreed,
-                color: colorGreen,
-                status: today.bookingStatus,
-                date: formatDate(today.bookingDate),
-                time: today.bookingTime,
-                userName: today.user,
-                userPhone: 'Ej -> 993926739',
-                types: 'xc -> Consulta, antipulgas, baño',
-                observation: today.observation,
+        return _.today.length == 0
+            ? Center(
+                child: Text('No tiene atenciones el día de hoy'),
+              )
+            : Expanded(
+                child: ListView.builder(
+                  itemCount: _.today.length,
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  itemBuilder: (BuildContext context, int index) {
+                    final today = _.today[index];
+                    return CardAttention(
+                      petName: today.petName,
+                      petBreed: today.petBreed,
+                      color: colorGreen,
+                      status: today.bookingStatus,
+                      date: formatDate(today.bookingDate),
+                      time: today.bookingTime,
+                      userName: today.user,
+                      userPhone: 'Ej -> 993926739',
+                      types: 'xc -> Consulta, antipulgas, baño',
+                      observation: today.observation,
+                    );
+                  },
+                ),
               );
-            },
-          ),
-        );
       },
     );
   }

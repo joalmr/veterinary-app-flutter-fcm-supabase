@@ -10,27 +10,31 @@ class ViewFuture extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<HomeController>(
       builder: (_) {
-        return Expanded(
-          child: ListView.builder(
-            itemCount: _.incoming.length,
-            padding: EdgeInsets.only(left: 10, right: 10),
-            itemBuilder: (BuildContext context, int index) {
-              final incoming = _.incoming[index];
-              return CardAttention(
-                petName: incoming.petName,
-                petBreed: incoming.petBreed,
-                color: colorGreen,
-                status: incoming.bookingStatus,
-                date: formatDate(incoming.bookingDate),
-                time: incoming.bookingTime,
-                userName: incoming.user,
-                userPhone: 'Ej -> 993926739',
-                types: 'xc -> Consulta, antipulgas, baño',
-                observation: incoming.observation,
+        return _.incoming.length == 0
+            ? Center(
+                child: Text('No tiene próximas atenciones'),
+              )
+            : Expanded(
+                child: ListView.builder(
+                  itemCount: _.incoming.length,
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  itemBuilder: (BuildContext context, int index) {
+                    final incoming = _.incoming[index];
+                    return CardAttention(
+                      petName: incoming.petName,
+                      petBreed: incoming.petBreed,
+                      color: colorGreen,
+                      status: incoming.bookingStatus,
+                      date: formatDate(incoming.bookingDate),
+                      time: incoming.bookingTime,
+                      userName: incoming.user,
+                      userPhone: 'Ej -> 993926739',
+                      types: 'xc -> Consulta, antipulgas, baño',
+                      observation: incoming.observation,
+                    );
+                  },
+                ),
               );
-            },
-          ),
-        );
       },
     );
   }

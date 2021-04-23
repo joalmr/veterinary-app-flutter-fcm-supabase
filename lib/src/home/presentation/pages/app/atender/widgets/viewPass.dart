@@ -10,27 +10,31 @@ class ViewPass extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<HomeController>(
       builder: (_) {
-        return Expanded(
-          child: ListView.builder(
-            itemCount: _.overdue.length,
-            padding: EdgeInsets.only(left: 10, right: 10),
-            itemBuilder: (BuildContext context, int index) {
-              final overdue = _.overdue[index];
-              return CardAttention(
-                petName: overdue.petName,
-                petBreed: overdue.petBreed,
-                color: colorGreen,
-                status: overdue.bookingStatus,
-                date: formatDate(overdue.bookingDate),
-                time: overdue.bookingTime,
-                userName: overdue.user,
-                userPhone: 'Ej -> 993926739',
-                types: 'xc -> Consulta, antipulgas, baño',
-                observation: overdue.observation,
+        return _.overdue.length == 0
+            ? Center(
+                child: Text('No tiene atenciones vencidas'),
+              )
+            : Expanded(
+                child: ListView.builder(
+                  itemCount: _.overdue.length,
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  itemBuilder: (BuildContext context, int index) {
+                    final overdue = _.overdue[index];
+                    return CardAttention(
+                      petName: overdue.petName,
+                      petBreed: overdue.petBreed,
+                      color: colorGreen,
+                      status: overdue.bookingStatus,
+                      date: formatDate(overdue.bookingDate),
+                      time: overdue.bookingTime,
+                      userName: overdue.user,
+                      userPhone: 'Ej -> 993926739',
+                      types: 'xc -> Consulta, antipulgas, baño',
+                      observation: overdue.observation,
+                    );
+                  },
+                ),
               );
-            },
-          ),
-        );
       },
     );
   }
