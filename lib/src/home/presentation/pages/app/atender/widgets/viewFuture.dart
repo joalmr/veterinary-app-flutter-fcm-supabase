@@ -26,7 +26,7 @@ class ViewFuture extends StatelessWidget {
                       color: colorGreen,
                       status: incoming.bookingStatus,
                       date: formatDate(incoming.bookingDate),
-                      time: incoming.bookingTime,
+                      time: incoming.bookingTime.substring(0, 5),
                       userName: incoming.user,
                       userPhone: 'Ej -> 993926739',
                       types: 'xc -> Consulta, antipulgas, baño',

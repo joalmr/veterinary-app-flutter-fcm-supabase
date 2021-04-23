@@ -26,7 +26,7 @@ class ViewPass extends StatelessWidget {
                       color: colorGreen,
                       status: overdue.bookingStatus,
                       date: formatDate(overdue.bookingDate),
-                      time: overdue.bookingTime,
+                      time: overdue.bookingTime.substring(0, 5),
                       userName: overdue.user,
                       userPhone: 'Ej -> 993926739',
                       types: 'xc -> Consulta, antipulgas, baño',

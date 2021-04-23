@@ -31,7 +31,7 @@ Widget _percent(List<DataService> listService) {
     children: listService
         .map(
           (e) => wValuePercent(
-            color: e.color.withAlpha(50), //colorGreen,
+            color: colorGreen.withAlpha(50), //colorGreen,
             colorData: colorGreen,
             count: e.value.toStringAsFixed(0),
             name: e.name,

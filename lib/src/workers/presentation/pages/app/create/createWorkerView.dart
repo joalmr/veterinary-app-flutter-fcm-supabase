@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/workers/domain/workersController.dart';
+import 'package:easy_rich_text/easy_rich_text.dart';
 
 class CreaWorkerView extends StatelessWidget {
   const CreaWorkerView({Key key}) : super(key: key);
@@ -23,6 +25,17 @@ class CreaWorkerView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                EasyRichText(
+                  "Invitar administrador para ${prefUser.vetName}",
+                  defaultStyle: TextStyle(fontWeight: FontWeight.bold),
+                  patternList: [
+                    EasyRichTextPattern(
+                      targetString: '${prefUser.vetName}',
+                      style: TextStyle(color: colorMain),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5),
                 TextFormField(
                   controller: emailText,
                   decoration: InputDecoration(

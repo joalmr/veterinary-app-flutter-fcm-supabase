@@ -26,7 +26,7 @@ class ViewToday extends StatelessWidget {
                       color: colorGreen,
                       status: today.bookingStatus,
                       date: formatDate(today.bookingDate),
-                      time: today.bookingTime,
+                      time: today.bookingTime.substring(0, 5),
                       userName: today.user,
                       userPhone: 'Ej -> 993926739',
                       types: 'xc -> Consulta, antipulgas, baño',
