@@ -26,7 +26,7 @@ class CreaWorkerView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 EasyRichText(
-                  "Invitar administrador para ${prefUser.vetName}",
+                  "Invitar administrador a ${prefUser.vetName}",
                   defaultStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black38,

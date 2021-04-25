@@ -10,17 +10,19 @@ class ViewPass extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<HomeController>(
       builder: (_) {
-        return _.overdue.length == 0
-            ? Center(
-                child: Text('No tiene atenciones vencidas'),
-              )
-            : Expanded(
-                child: ListView.builder(
+        return Expanded(
+          child: _.overdue.length == 0
+              ? Center(
+                  child: Text('No tiene atenciones vencidas'),
+                )
+              : ListView.builder(
                   itemCount: _.overdue.length,
                   padding: EdgeInsets.only(left: 10, right: 10),
                   itemBuilder: (BuildContext context, int index) {
                     final overdue = _.overdue[index];
                     return CardAttention(
+                      bookingId: overdue.id,
+                      petImg: overdue.petPicture,
                       petName: overdue.petName,
                       petBreed: overdue.petBreed,
                       color: colorGreen,
@@ -29,12 +31,14 @@ class ViewPass extends StatelessWidget {
                       time: overdue.bookingTime.substring(0, 5),
                       userName: overdue.user,
                       userPhone: 'Ej -> 993926739',
-                      types: 'xc -> Consulta, antipulgas, baño',
+                      bookingServices: overdue.bookingServices,
                       observation: overdue.observation,
+                      address: overdue.options.address,
+                      delivery: overdue.options.delivery,
                     );
                   },
                 ),
-              );
+        );
       },
     );
   }

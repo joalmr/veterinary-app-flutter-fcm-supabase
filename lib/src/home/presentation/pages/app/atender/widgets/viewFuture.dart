@@ -10,17 +10,19 @@ class ViewFuture extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<HomeController>(
       builder: (_) {
-        return _.incoming.length == 0
-            ? Center(
-                child: Text('No tiene próximas atenciones'),
-              )
-            : Expanded(
-                child: ListView.builder(
+        return Expanded(
+          child: _.incoming.length == 0
+              ? Center(
+                  child: Text('No tiene próximas atenciones'),
+                )
+              : ListView.builder(
                   itemCount: _.incoming.length,
                   padding: EdgeInsets.only(left: 10, right: 10),
                   itemBuilder: (BuildContext context, int index) {
                     final incoming = _.incoming[index];
                     return CardAttention(
+                      bookingId: incoming.id,
+                      petImg: incoming.petPicture,
                       petName: incoming.petName,
                       petBreed: incoming.petBreed,
                       color: colorGreen,
@@ -29,12 +31,14 @@ class ViewFuture extends StatelessWidget {
                       time: incoming.bookingTime.substring(0, 5),
                       userName: incoming.user,
                       userPhone: 'Ej -> 993926739',
-                      types: 'xc -> Consulta, antipulgas, baño',
+                      bookingServices: incoming.bookingServices,
                       observation: incoming.observation,
+                      address: incoming.options.address,
+                      delivery: incoming.options.delivery,
                     );
                   },
                 ),
-              );
+        );
       },
     );
   }

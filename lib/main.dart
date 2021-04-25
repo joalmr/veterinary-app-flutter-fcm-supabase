@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Proypet',
       theme: temaClaro,
+      themeMode: ThemeMode.light,
       getPages: AppPages.pages,
       initialRoute: NameRoutes.splash,
       defaultTransition: Transition.fadeIn,

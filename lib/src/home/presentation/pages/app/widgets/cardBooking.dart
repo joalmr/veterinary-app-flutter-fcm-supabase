@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';
 import 'package:vet_app/src/home/presentation/pages/app/acttionBooking/reprogramar.dart';
 
@@ -19,22 +20,25 @@ class CardBooking extends StatelessWidget {
   final Color color;
   final List<String> bookingServices;
   final String observation;
+  final String address;
+  final String delivery;
 
   const CardBooking({
-    Key key,
-    this.bookingId,
-    this.petImg,
-    this.petName,
-    this.petBreed,
-    this.status,
-    this.date,
-    this.time,
-    this.userName,
-    this.userPhone,
-    this.color,
-    this.bookingServices,
-    this.observation,
-  }) : super(key: key);
+    @required this.bookingId,
+    @required this.petImg,
+    @required this.petName,
+    @required this.petBreed,
+    @required this.status,
+    @required this.date,
+    @required this.time,
+    @required this.userName,
+    @required this.userPhone,
+    @required this.color,
+    @required this.bookingServices,
+    @required this.observation,
+    @required this.address,
+    @required this.delivery,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -176,10 +180,25 @@ class CardBooking extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              observation,
+                              observation == "" ? "-" : observation,
                               style: TextStyle(),
                               maxLines: 5,
                             ),
+                            SizedBox(height: 5),
+                            delivery != "" && address != ""
+                                ? Card(
+                                    color: Colors.grey[300],
+                                    child: Column(
+                                      children: [
+                                        Icon(IconProypet.delivery),
+                                        SizedBox(height: 5),
+                                        Text(delivery),
+                                        SizedBox(height: 5),
+                                        Text(address),
+                                      ],
+                                    ),
+                                  )
+                                : SizedBox(height: 0)
                           ],
                         ),
                       ),

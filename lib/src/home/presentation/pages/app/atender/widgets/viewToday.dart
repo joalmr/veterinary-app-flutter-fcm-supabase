@@ -10,17 +10,19 @@ class ViewToday extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<HomeController>(
       builder: (_) {
-        return _.today.length == 0
-            ? Center(
-                child: Text('No tiene atenciones el día de hoy'),
-              )
-            : Expanded(
-                child: ListView.builder(
+        return Expanded(
+          child: _.today.length == 0
+              ? Center(
+                  child: Text('No tiene atenciones el día de hoy'),
+                )
+              : ListView.builder(
                   itemCount: _.today.length,
                   padding: EdgeInsets.only(left: 10, right: 10),
                   itemBuilder: (BuildContext context, int index) {
                     final today = _.today[index];
                     return CardAttention(
+                      bookingId: today.id,
+                      petImg: today.petPicture,
                       petName: today.petName,
                       petBreed: today.petBreed,
                       color: colorGreen,
@@ -29,12 +31,14 @@ class ViewToday extends StatelessWidget {
                       time: today.bookingTime.substring(0, 5),
                       userName: today.user,
                       userPhone: 'Ej -> 993926739',
-                      types: 'xc -> Consulta, antipulgas, baño',
+                      bookingServices: today.bookingServices,
                       observation: today.observation,
+                      address: today.options.address,
+                      delivery: today.options.delivery,
                     );
                   },
                 ),
-              );
+        );
       },
     );
   }

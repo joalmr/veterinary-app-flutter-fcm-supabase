@@ -21,21 +21,22 @@ class ConfirmarView extends StatelessWidget {
                     padding: EdgeInsets.only(left: 10, right: 10, top: 15),
                     itemCount: _.unconfirmed.length,
                     itemBuilder: (BuildContext context, int i) {
-                      final booking = _.unconfirmed[i];
+                      final unconfirmed = _.unconfirmed[i];
                       return CardBooking(
-                        bookingId: booking.id,
-                        petImg: booking.petPicture,
-                        petName: booking.petName,
-                        petBreed: booking.petBreed,
+                        bookingId: unconfirmed.id,
+                        petImg: unconfirmed.petPicture,
+                        petName: unconfirmed.petName,
+                        petBreed: unconfirmed.petBreed,
                         color: Colors.deepPurple[200],
-                        status: booking.bookingStatus,
-                        date: formatDate(booking.bookingDate),
-                        time: booking.bookingTime.substring(0, 5),
-                        userName: booking.user,
+                        status: unconfirmed.bookingStatus,
+                        date: formatDate(unconfirmed.bookingDate),
+                        time: unconfirmed.bookingTime.substring(0, 5),
+                        userName: unconfirmed.user,
                         userPhone: 'Ejm -> 993926739',
-                        // types: 'Ejm -> Consulta, antipulgas, baño',
-                        bookingServices: booking.bookingServices,
-                        observation: booking.observation,
+                        bookingServices: unconfirmed.bookingServices,
+                        observation: unconfirmed.observation,
+                        address: unconfirmed.options.address,
+                        delivery: unconfirmed.options.delivery,
                       );
                     },
                   );

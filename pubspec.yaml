@@ -36,17 +36,18 @@ dependencies:
   animate_do: ^2.0.0
   animated_text_kit: ^4.0.0
   cached_network_image: ^2.5.0
+  country_code_picker: ^2.0.1 #banderas y codigos de telefono
   day_night_time_picker: ^0.4.0
   easy_rich_text: ^0.5.4 #color y estilo a textos
-  flutter_conditional_rendering:
+  flutter_conditional_rendering: ^2.0.0
   flutter_linear_datepicker: ^1.1.2
   flutter_sparkline: ^0.1.0
-  google_maps_flutter: 
+  google_maps_flutter: ^2.0.3
   image_picker: ^0.7.3
   intl: ^0.17.0
   lottie: ^1.0.1
   percent_indicator: ^2.1.9+1
-  simple_autocomplete_formfield:
+  simple_autocomplete_formfield: ^0.3.0
   scrollable_positioned_list: ^0.1.10
   url_launcher: ^6.0.2
   url_strategy: ^0.2.0

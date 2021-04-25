@@ -90,7 +90,7 @@ class Booking {
 
 class Options {
   String address;
-  dynamic delivery;
+  String delivery;
   String typeId;
 
   Options({

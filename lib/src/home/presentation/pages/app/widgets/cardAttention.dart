@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/resources/icons/proypet_icons.dart';
 
 class CardAttention extends StatefulWidget {
   final String bookingId;
@@ -14,22 +15,26 @@ class CardAttention extends StatefulWidget {
   final String userName;
   final String userPhone;
   final Color color;
-  final String types;
+  final List<String> bookingServices;
   final String observation;
+  final String address;
+  final String delivery;
 
   CardAttention({
-    this.bookingId,
-    this.petImg,
-    this.petName,
-    this.petBreed,
-    this.status,
-    this.date,
-    this.time,
-    this.userName,
-    this.userPhone,
-    this.color,
-    this.types,
-    this.observation,
+    @required this.bookingId,
+    @required this.petImg,
+    @required this.petName,
+    @required this.petBreed,
+    @required this.status,
+    @required this.date,
+    @required this.time,
+    @required this.userName,
+    @required this.userPhone,
+    @required this.color,
+    @required this.bookingServices,
+    @required this.observation,
+    @required this.address,
+    @required this.delivery,
   });
 
   @override
@@ -41,6 +46,19 @@ class _CardAttentionState extends State<CardAttention> {
 
   @override
   Widget build(BuildContext context) {
+    String stringTypes = "";
+    for (var i = 0; i < widget.bookingServices.length; i++) {
+      final element = widget.bookingServices[i];
+      if (widget.bookingServices.length == 1) {
+        stringTypes = element;
+      } else {
+        if (i < widget.bookingServices.length - 1)
+          stringTypes += element + ", ";
+        else
+          stringTypes += element;
+      }
+    }
+
     return Card(
       margin: EdgeInsets.only(bottom: 20),
       child: Column(
@@ -72,11 +90,8 @@ class _CardAttentionState extends State<CardAttention> {
                                       borderRadius: BorderRadius.circular(5.0),
                                       child: Image(
                                         fit: BoxFit.cover,
-                                        image: widget.petImg != null
-                                            ? CachedNetworkImageProvider(
-                                                widget.petImg)
-                                            : AssetImage(
-                                                'assets/images/dog.jpg'),
+                                        image: CachedNetworkImageProvider(
+                                            widget.petImg),
                                       ),
                                     ),
                                   ),
@@ -164,7 +179,7 @@ class _CardAttentionState extends State<CardAttention> {
                                   ),
                                 ),
                                 Text(
-                                  widget.types,
+                                  stringTypes,
                                   style: TextStyle(),
                                 ),
                                 SizedBox(height: 5),
@@ -175,10 +190,27 @@ class _CardAttentionState extends State<CardAttention> {
                                   ),
                                 ),
                                 Text(
-                                  widget.observation,
+                                  widget.observation == ""
+                                      ? "-"
+                                      : widget.observation,
                                   style: TextStyle(),
                                   maxLines: 5,
                                 ),
+                                SizedBox(height: 5),
+                                widget.delivery != "" && widget.address != ""
+                                    ? Card(
+                                        color: Colors.grey[300],
+                                        child: Column(
+                                          children: [
+                                            Icon(IconProypet.delivery),
+                                            SizedBox(height: 5),
+                                            Text(widget.delivery),
+                                            SizedBox(height: 5),
+                                            Text(widget.address),
+                                          ],
+                                        ),
+                                      )
+                                    : SizedBox(height: 0)
                               ],
                             ),
                           ),
