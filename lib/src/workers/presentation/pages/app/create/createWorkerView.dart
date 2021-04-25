@@ -54,6 +54,7 @@ class CreaWorkerView extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Divider(),
+                Text("Invitaciones pendientes",style: TextStyle(fontWeight: FontWeight.bold),),
                 Expanded(
                   child: ListView.builder(
                     itemCount: _.workersInvitation.length,
