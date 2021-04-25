@@ -200,14 +200,27 @@ class _CardAttentionState extends State<CardAttention> {
                                 widget.delivery != "" && widget.address != ""
                                     ? Card(
                                         color: Colors.grey[300],
-                                        child: Column(
-                                          children: [
-                                            Icon(IconProypet.delivery),
-                                            SizedBox(height: 5),
-                                            Text(widget.delivery),
-                                            SizedBox(height: 5),
-                                            Text(widget.address),
-                                          ],
+                                        child: Container(
+                                          padding: EdgeInsets.all(8),
+                                          width: double.maxFinite,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Icon(IconProypet.delivery),
+                                              SizedBox(height: 5),
+                                              Text(
+                                                widget.delivery,
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              SizedBox(height: 5),
+                                              Text(widget.address),
+                                            ],
+                                          ),
                                         ),
                                       )
                                     : SizedBox(height: 0)

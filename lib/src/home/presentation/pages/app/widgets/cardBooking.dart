@@ -188,14 +188,26 @@ class CardBooking extends StatelessWidget {
                             delivery != "" && address != ""
                                 ? Card(
                                     color: Colors.grey[300],
-                                    child: Column(
-                                      children: [
-                                        Icon(IconProypet.delivery),
-                                        SizedBox(height: 5),
-                                        Text(delivery),
-                                        SizedBox(height: 5),
-                                        Text(address),
-                                      ],
+                                    child: Container(
+                                      padding: EdgeInsets.all(8),
+                                      width: double.maxFinite,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Icon(IconProypet.delivery),
+                                          SizedBox(height: 5),
+                                          Text(
+                                            delivery,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(height: 5),
+                                          Text(address),
+                                        ],
+                                      ),
                                     ),
                                   )
                                 : SizedBox(height: 0)
