@@ -187,7 +187,7 @@ class CardBooking extends StatelessWidget {
                             SizedBox(height: 5),
                             delivery != "" && address != ""
                                 ? Card(
-                                    color: Colors.grey[300],
+                                    color: Colors.grey[200],
                                     child: Container(
                                       padding: EdgeInsets.all(8),
                                       width: double.maxFinite,

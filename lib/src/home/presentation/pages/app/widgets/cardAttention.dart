@@ -199,7 +199,7 @@ class _CardAttentionState extends State<CardAttention> {
                                 SizedBox(height: 5),
                                 widget.delivery != "" && widget.address != ""
                                     ? Card(
-                                        color: Colors.grey[300],
+                                        color: Colors.grey[200],
                                         child: Container(
                                           padding: EdgeInsets.all(8),
                                           width: double.maxFinite,
