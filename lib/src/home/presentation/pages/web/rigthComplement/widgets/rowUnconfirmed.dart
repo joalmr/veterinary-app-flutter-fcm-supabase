@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/childRegion.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';
 import 'contentReprograma.dart';
 
@@ -50,8 +51,6 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
   bool hovReprograma = false;
   bool activeReprogramar = false;
 
-  // final _rowKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     String stringTypes = "";
@@ -75,31 +74,30 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
               Container(
                 padding: EdgeInsets.all(10.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(width: 5.0),
                     Container(
                       height: 38.0,
                       width: 38.0,
                       decoration: BoxDecoration(
-                        color: Colors.deepPurple[200],
+                        // color: Colors.deepPurple[200],
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       child: Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(2.5),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(5.0),
-                            child: CachedNetworkImage(
-                              imageUrl: widget.petImg,
-                              fit: BoxFit.cover,
-                              placeholder: (context, url) => Container(
-                                color: Colors.grey.shade200,
-                                alignment: Alignment.center,
-                                child: CircularProgressIndicator(),
-                              ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5.0),
+                          child: CachedNetworkImage(
+                            imageUrl: widget.petImg,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Container(
+                              color: Colors.grey.shade200,
+                              alignment: Alignment.center,
+                              child: CircularProgressIndicator(),
                             ),
-                            // Image.network(widget.petImg)
                           ),
+                          // Image.network(widget.petImg)
                         ),
                       ),
                     ),
@@ -120,14 +118,14 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                             widget.petBreed,
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
-                              fontSize: 12.0,
+                              fontSize: 10.0,
                             ),
                           ),
                           Text(
                             widget.date,
                             style: TextStyle(
                               fontSize: 12.0,
-                              color: Colors.black45,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
@@ -135,7 +133,6 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                             style: TextStyle(
                               fontSize: 12.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black45,
                             ),
                           ),
                           Text(
@@ -145,9 +142,35 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
+                              color: colorMain,
                               fontSize: 10.0,
                             ),
                           ),
+                          Text(
+                            "Observaciones: ${widget.observation}",
+                            maxLines: 7,
+                            textAlign: TextAlign.left,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 10.0),
+                          ),
+                          widget.delivery != "" && widget.address != ""
+                        ? Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.delivery,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10.0,
+                              ),
+                            ),
+                            Text(widget.address,
+                              style: TextStyle(fontSize: 10.0),
+                            ),
+                          ],
+                        )
+                        : SizedBox(height: 0)
                         ],
                       ),
                     ),
