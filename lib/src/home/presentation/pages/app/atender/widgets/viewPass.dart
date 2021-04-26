@@ -13,7 +13,7 @@ class ViewPass extends StatelessWidget {
         return Expanded(
           child: _.overdue.length == 0
               ? Center(
-                  child: Text('No tiene atenciones vencidas'),
+                  child: Text('No tiene atenciones pasadas'),
                 )
               : ListView.builder(
                   itemCount: _.overdue.length,

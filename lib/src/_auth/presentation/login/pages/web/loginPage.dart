@@ -36,13 +36,6 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 2.5),
-                            Text(
-                              'Proveedores',
-                              style: TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
                           ],
                         ),
                         SizedBox(height: 30),

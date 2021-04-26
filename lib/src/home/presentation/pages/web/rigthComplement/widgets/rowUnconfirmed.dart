@@ -18,22 +18,26 @@ class RowUnconfirmed extends StatefulWidget {
   final String userName;
   final String userPhone;
   final Color color;
-  final String types;
+  final List<String> bookingServices;
   final String observation;
+  final String address;
+  final String delivery;
 
   RowUnconfirmed({
-    this.bookingId,
-    this.petName,
-    this.petBreed,
-    this.date,
-    this.time,
-    this.types,
-    this.petImg,
-    this.status,
-    this.userName,
-    this.userPhone,
-    this.color,
-    this.observation,
+    @required this.bookingId,
+    @required this.petImg,
+    @required this.petName,
+    @required this.petBreed,
+    @required this.status,
+    @required this.date,
+    @required this.time,
+    @required this.userName,
+    @required this.userPhone,
+    @required this.color,
+    @required this.bookingServices,
+    @required this.observation,
+    @required this.address,
+    @required this.delivery,
   });
 
   @override
@@ -50,6 +54,18 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
 
   @override
   Widget build(BuildContext context) {
+    String stringTypes = "";
+    for (var i = 0; i < widget.bookingServices.length; i++) {
+      final element = widget.bookingServices[i];
+      if (widget.bookingServices.length == 1) {
+        stringTypes = element;
+      } else {
+        if (i < widget.bookingServices.length - 1)
+          stringTypes += element + ", ";
+        else
+          stringTypes += element;
+      }
+    }
     return GetBuilder<HomeController>(
       builder: (_) {
         return ChildRegion(
@@ -123,7 +139,7 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                             ),
                           ),
                           Text(
-                            widget.types,
+                            stringTypes,
                             maxLines: 7,
                             textAlign: TextAlign.left,
                             overflow: TextOverflow.ellipsis,

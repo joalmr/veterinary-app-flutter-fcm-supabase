@@ -32,20 +32,22 @@ class Unconfirmed extends StatelessWidget {
                         : ListView.builder(
                             itemCount: _.unconfirmed.length,
                             itemBuilder: (BuildContext context, int index) {
-                              final booking = _.unconfirmed[index];
+                              final unconfirmed = _.unconfirmed[index];
                               return RowUnconfirmed(
-                                bookingId: booking.id,
-                                petImg: booking.petPicture,
-                                petName: booking.petName,
-                                petBreed: booking.petBreed,
+                                bookingId: unconfirmed.id,
+                                petImg: unconfirmed.petPicture,
+                                petName: unconfirmed.petName,
+                                petBreed: unconfirmed.petBreed,
                                 color: Colors.deepPurple[200],
-                                status: booking.bookingStatus,
-                                date: formatDate(booking.bookingDate),
-                                time: booking.bookingTime.substring(0, 5),
-                                userName: booking.user,
-                                userPhone: 'Ejm -> 993926739',
-                                types: 'Ejm -> Consulta, antipulgas, baño',
-                                observation: booking.observation,
+                                status: unconfirmed.bookingStatus,
+                                date: formatDate(unconfirmed.bookingDate),
+                                time: unconfirmed.bookingTime.substring(0, 5),
+                                userName: unconfirmed.user,
+                                userPhone: 'Ej -> 993926739',
+                                bookingServices: unconfirmed.bookingServices,
+                                observation: unconfirmed.observation,
+                                address: unconfirmed.options.address,
+                                delivery: unconfirmed.options.delivery,
                               );
                             },
                           ),

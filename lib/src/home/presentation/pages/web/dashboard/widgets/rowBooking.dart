@@ -1,7 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/src/home/domain/homeController.dart';
 
 class RowBooking extends StatefulWidget {
+  final String bookingId;
+  final String petImg;
   final String petName;
   final String petBreed;
   final String status;
@@ -10,20 +15,26 @@ class RowBooking extends StatefulWidget {
   final String userName;
   final String userPhone;
   final Color color;
-  final String types;
+  final List<String> bookingServices;
   final String observation;
+  final String address;
+  final String delivery;
 
   RowBooking({
-    this.petName,
-    this.petBreed,
-    this.status,
-    this.date,
-    this.time,
-    this.userName,
-    this.userPhone,
-    this.color,
-    this.types,
-    this.observation,
+    @required this.bookingId,
+    @required this.petImg,
+    @required this.petName,
+    @required this.petBreed,
+    @required this.status,
+    @required this.date,
+    @required this.time,
+    @required this.userName,
+    @required this.userPhone,
+    @required this.color,
+    @required this.bookingServices,
+    @required this.observation,
+    @required this.address,
+    @required this.delivery,
   });
 
   @override
@@ -34,6 +45,20 @@ class _RowBookingState extends State<RowBooking> {
   bool hovered = false;
   @override
   Widget build(BuildContext context) {
+    // final HomeController _home = Get.find();
+    String stringTypes = "";
+    for (var i = 0; i < widget.bookingServices.length; i++) {
+      final element = widget.bookingServices[i];
+      if (widget.bookingServices.length == 1) {
+        stringTypes = element;
+      } else {
+        if (i < widget.bookingServices.length - 1)
+          stringTypes += element + ", ";
+        else
+          stringTypes += element;
+      }
+    }
+    
     return MouseRegion(
       onEnter: (value) {
         setState(() {
@@ -80,7 +105,7 @@ class _RowBookingState extends State<RowBooking> {
                             borderRadius: BorderRadius.circular(5.0),
                             child: Image(
                               fit: BoxFit.cover,
-                              image: AssetImage('assets/images/dog.jpg'),
+                              image: CachedNetworkImageProvider(widget.petImg),
                             ),
                           ),
                         ),
@@ -247,7 +272,7 @@ class _RowBookingState extends State<RowBooking> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.types,
+                      stringTypes,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 12.0,

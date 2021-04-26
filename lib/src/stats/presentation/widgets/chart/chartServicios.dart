@@ -8,9 +8,9 @@ class ChartServicios extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
-      width: Get.context.width,
-      margin: EdgeInsets.all(10.0),
+      // height: 250,
+      // width: Get.context.width,
+      // margin: EdgeInsets.all(10.0),
       child: chartDesign(
         title: 'Servicios atendidos',
         widget: Container(

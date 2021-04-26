@@ -20,8 +20,6 @@ class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
     String pageSelected = ModalRoute.of(context).settings.name;
-    // String stringSelected = pageSelected.split('/')[0];
-    // print(stringSelected);
 
     return Align(
       alignment: Alignment.centerLeft,

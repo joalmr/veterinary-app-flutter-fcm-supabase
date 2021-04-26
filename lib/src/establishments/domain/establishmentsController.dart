@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/resources/utils/preferences/preferencesModel.dart';
+import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/establishmentModelLite.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/showVet.dart';
+import 'package:vet_app/src/home/presentation/pages/home.dart';
 
 class EstablishmentsController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
@@ -23,6 +25,7 @@ class EstablishmentsController extends GetxController {
 
   @override
   void onReady() {
+    // getAll();
     super.onReady();
   }
 
@@ -74,5 +77,19 @@ class EstablishmentsController extends GetxController {
     prefUser.vetData = vetStorageToJson(forStorage);
 
     getAll();
+  }
+
+  favoriteVetToInit(id, name, logo) {
+    prefUser.vetDataDel();
+
+    VetStorage forStorage = VetStorage();
+    forStorage.vetId = id;
+    forStorage.vetName = name;
+    forStorage.vetLogo = logo;
+
+    prefUser.vetData = vetStorageToJson(forStorage);
+
+    getAll();
+    Get.offNamedUntil(NameRoutes.home, (route) => false);
   }
 }

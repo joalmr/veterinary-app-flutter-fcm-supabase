@@ -1,29 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/src/home/domain/homeController.dart';
 
 import 'rowBooking.dart';
 
 class RowPass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 3,
-        itemBuilder: (BuildContext context, int index) {
-          return RowBooking(
-            petName: 'Elmer',
-            petBreed: 'Cocker',
-            color: colorBlue,
-            status: 'Atendiendo',
-            date: '20-02-2021',
-            time: '14:00',
-            userName: 'Alonso',
-            userPhone: '993926739',
-            types: 'Consulta, antipulgas, baño',
-            observation: '-',
-          );
-        },
-      ),
+    return GetX<HomeController>(
+        builder: (_) {
+        return Expanded(
+          child: 
+          _.overdue.length == 0
+          ? Center(
+              child: Text('No tiene atenciones pasadas'),
+            )
+          : ListView.builder(
+            itemCount: _.overdue.length,
+            itemBuilder: (BuildContext context, int index) {
+              final overdue = _.overdue[index];
+              return RowBooking(
+                bookingId: overdue.id,
+                petImg: overdue.petPicture,
+                petName: overdue.petName,
+                petBreed: overdue.petBreed,
+                color: colorGreen,
+                status: overdue.bookingStatus,
+                date: formatDate(overdue.bookingDate),
+                time: overdue.bookingTime.substring(0, 5),
+                userName: overdue.user,
+                userPhone: 'Ej -> 993926739',
+                bookingServices: overdue.bookingServices,
+                observation: overdue.observation,
+                address: overdue.options.address,
+                delivery: overdue.options.delivery,
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }
