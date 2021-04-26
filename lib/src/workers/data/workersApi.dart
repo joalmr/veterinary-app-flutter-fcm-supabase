@@ -58,7 +58,8 @@ class WorkersApi extends WorkersInterface {
       url,
       headers: headersToken(),
     );
-
+    print(response.statusCode);
+    print(response.body);
     return response.statusCode;
   }
 }

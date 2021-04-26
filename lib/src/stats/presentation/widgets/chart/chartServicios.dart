@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataService.dart';
 
 import '../designGraph.dart';

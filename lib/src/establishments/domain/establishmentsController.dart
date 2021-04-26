@@ -5,7 +5,6 @@ import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/establishmentModelLite.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/showVet.dart';
-import 'package:vet_app/src/home/presentation/pages/home.dart';
 
 class EstablishmentsController extends GetxController {
   final establishmentRepo = EstablishmentRepository();

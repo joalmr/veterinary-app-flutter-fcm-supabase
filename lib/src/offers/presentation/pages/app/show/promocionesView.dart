@@ -112,35 +112,36 @@ class PromocionesView extends StatelessWidget {
                               ),
                               SizedBox(height: 5),
                               btnAltern(
-                                  text: 'Eliminar',
-                                  color: colorRed,
-                                  bold: true,
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                        title: Text('Eliminar'),
-                                        content: Text(
-                                            'Seguro que desea eliminar la promoción?'),
-                                        actions: <Widget>[
-                                          btnAltern(
-                                            text: 'Sí, eliminar',
-                                            bold: true,
-                                            color: colorRed,
-                                            onPressed: () {
-                                              _.delete(forDelete);
-                                              Get.back();
-                                            },
-                                          ),
-                                          btnAltern(
-                                            text: 'Cancelar',
-                                            bold: true,
-                                            onPressed: () => Get.back(),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }),
+                                text: 'Eliminar',
+                                color: colorRed,
+                                bold: true,
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      title: Text('Eliminar'),
+                                      content: Text(
+                                          'Seguro que desea eliminar la promoción?'),
+                                      actions: <Widget>[
+                                        btnAltern(
+                                          text: 'Sí, eliminar',
+                                          bold: true,
+                                          color: colorRed,
+                                          onPressed: () {
+                                            _.delete(forDelete);
+                                            Get.back();
+                                          },
+                                        ),
+                                        btnAltern(
+                                          text: 'Cancelar',
+                                          bold: true,
+                                          onPressed: () => Get.back(),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
                             ],
                           ),
                         ),

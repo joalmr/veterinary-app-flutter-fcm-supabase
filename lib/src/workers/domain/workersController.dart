@@ -7,16 +7,23 @@ import 'package:vet_app/src/workers/data/workersRepository.dart';
 class WorkersController extends GetxController {
   final _repo = WorkersRepository();
 
+  RxBool carga=false.obs;
   RxList<WorkerApp> workers = <WorkerApp>[].obs;
   RxList<Invitation> workersInvitation = <Invitation>[].obs;
 
   @override
   void onInit() {
-    getWorkers();
-    getInvitados();
+    init();
     super.onInit();
   }
 
+  init()=>_init();
+  _init() async {
+    carga.value=true;
+    await getWorkers();
+    await getInvitados();
+    carga.value=false;
+  }
   //!   mis administradores
   //
   getWorkers() => _getWorkers();

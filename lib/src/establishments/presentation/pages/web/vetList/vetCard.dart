@@ -143,14 +143,37 @@ class VetCard extends StatelessWidget {
                       ),
                       InkWell(
                       onTap: () {
-                        _.favoriteVetToInit(id, name, image);
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text('Establecimiento'),
+                            content: Text(
+                                'Seguro que desea cambiar de establecimiento?'),
+                            actions: <Widget>[
+                              btnAltern(
+                                text: 'Sí, cambiar',
+                                bold: true,
+                                color: colorMain,
+                                onPressed: () {
+                                  _.favoriteVetToInit(id, name, image);
+                                  // Get.back();
+                                },
+                              ),
+                              btnAltern(
+                                text: 'Cancelar',
+                                bold: true,
+                                onPressed: () => Get.back(),
+                              ),
+                            ],
+                          ),
+                        );
                       },
                       borderRadius: BorderRadius.circular(5.0),
                       child: Container(
                         height: 32.0,
                         width: 40.0,
                         decoration: BoxDecoration(
-                          color: prefUser.vetId == id ? colorMain : Colors.grey,
+                          color: prefUser.vetId == id ? colorMain : Colors.grey[300],
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: Icon(

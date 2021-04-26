@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/web/navbar/navigationBar.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/config/domain/configController.dart';
@@ -44,7 +45,32 @@ class ConfigPage extends StatelessWidget {
                               // fontSize: 20,
                             ),
                           ),
-                          onPressed: _.logOut,
+                          onPressed: (){
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('Eliminar'),
+                                content: Text(
+                                    'Seguro que desea cerrar sesión?'),
+                                actions: <Widget>[
+                                  btnAltern(
+                                    text: 'Sí, cerrar',
+                                    bold: true,
+                                    color: colorRed,
+                                    onPressed: () {
+                                      _.logOut();
+                                      Get.back();
+                                    },
+                                  ),
+                                  btnAltern(
+                                    text: 'Cancelar',
+                                    bold: true,
+                                    onPressed: () => Get.back(),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.symmetric(
                               vertical: 10.0,

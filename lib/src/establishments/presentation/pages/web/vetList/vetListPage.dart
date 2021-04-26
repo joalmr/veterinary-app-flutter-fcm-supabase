@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/src/establishments/domain/establishmentsController.dart';
-import 'package:vet_app/src/establishments/presentation/pages/app/establecimientos/components/CardVet.dart';
 
 import 'vetCard.dart';
 

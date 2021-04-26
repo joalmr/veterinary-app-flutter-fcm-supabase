@@ -25,7 +25,13 @@ class FeedbackContent extends StatelessWidget {
               subHeader(title: 'Comentarios'),
               SizedBox(height: 10.0),
               Expanded(
-                child: ListView.builder(
+                child: 
+                _.statComments.length == 0
+                ? Center(
+                    child: Text('No tiene comentarios de usuarios'),
+                  )
+                : 
+                ListView.builder(
                   itemCount: _.statComments.length,
                   itemBuilder: (BuildContext context, int index) {
                     final comment = _.statComments[index];

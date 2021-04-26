@@ -147,7 +147,30 @@ class CardEstablecimiento extends StatelessWidget {
                           size: 32,
                         ),
                         onPressed: () {
-                          _.favoriteVet(id, name, image);
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text('Establecimiento'),
+                              content: Text(
+                                  'Seguro que desea cambiar de establecimiento?'),
+                              actions: <Widget>[
+                                btnAltern(
+                                  text: 'Sí, cambiar',
+                                  bold: true,
+                                  color: colorMain,
+                                  onPressed: () {
+                                    _.favoriteVet(id, name, image);
+                                    Get.back();
+                                  },
+                                ),
+                                btnAltern(
+                                  text: 'Cancelar',
+                                  bold: true,
+                                  onPressed: () => Get.back(),
+                                ),
+                              ],
+                            ),
+                          );
                         },
                       ),
                     ],

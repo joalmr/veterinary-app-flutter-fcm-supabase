@@ -20,7 +20,6 @@ class OffersPageApp extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add_rounded),
             onPressed: () {
-              print(_.promociones.length);
               if (_.promociones.length >= 5) {
                 Get.snackbar(
                   'Advertencia',
