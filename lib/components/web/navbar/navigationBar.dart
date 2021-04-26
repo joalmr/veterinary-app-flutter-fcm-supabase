@@ -45,7 +45,7 @@ class _NavigationBarState extends State<NavigationBar> {
                     ),
                   ),
                 ),
-                radius: 20,
+                radius: 25,
               ),
             ),
             Padding(
@@ -60,29 +60,29 @@ class _NavigationBarState extends State<NavigationBar> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Ingresos',
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.white54,
-                    ),
-                  ),
-                  Text(
-                    'S/ 5000',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white54,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(bottom: 20),
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.start,
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       Text(
+            //         'Ingresos',
+            //         style: TextStyle(
+            //           fontSize: 10,
+            //           color: Colors.white54,
+            //         ),
+            //       ),
+            //       Text(
+            //         'S/ 5000',
+            //         style: TextStyle(
+            //           fontWeight: FontWeight.bold,
+            //           color: Colors.white54,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(

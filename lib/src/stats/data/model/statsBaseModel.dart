@@ -10,6 +10,12 @@ StatBaseModel statBaseModelFromJson(String str) =>
 String statBaseModelToJson(StatBaseModel data) => json.encode(data.toJson());
 
 class StatBaseModel {
+  int nonAttendedPercentage;
+  int dogs;
+  int cats;
+  String stars;
+  int votes;
+
   StatBaseModel({
     this.nonAttendedPercentage,
     this.dogs,
@@ -17,12 +23,6 @@ class StatBaseModel {
     this.stars,
     this.votes,
   });
-
-  int nonAttendedPercentage;
-  int dogs;
-  int cats;
-  String stars;
-  int votes;
 
   factory StatBaseModel.fromJson(Map<String, dynamic> json) => StatBaseModel(
         nonAttendedPercentage: json["nonAttendedPercentage"],

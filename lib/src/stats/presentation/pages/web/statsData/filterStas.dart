@@ -8,11 +8,11 @@ class FilterStat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 30, right: 30, bottom: 40),
+      margin: EdgeInsets.only(bottom: 40),
       padding: EdgeInsets.all(20),
       width: double.maxFinite,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(0),
         color: Colors.white,
       ),
       child: Column(
@@ -65,6 +65,7 @@ class FilterStat extends StatelessWidget {
                 SizedBox(width: 20),
                 Container(
                   width: 200,
+                  margin: EdgeInsets.only(top:5),
                   child: SizedBox(
                     width: double.infinity,
                     child: btnPrimary(

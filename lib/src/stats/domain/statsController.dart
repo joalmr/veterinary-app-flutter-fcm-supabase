@@ -7,7 +7,7 @@ import 'package:vet_app/src/stats/data/statsRepository.dart';
 class StatsController extends GetxController {
   final _repo = StatsRepository();
 
-  StatBaseModel statBase = StatBaseModel();
+  var statBase = StatBaseModel().obs;
   List<StatCommentModel> statComments = <StatCommentModel>[];
 
   RxBool cargaBase = false.obs;
@@ -28,7 +28,7 @@ class StatsController extends GetxController {
 
   _getBase() async {
     cargaBase.value = true;
-    statBase =
+    statBase.value =
         await _repo.getStatsBase(prefUser.vetId, '2020-01-22', '2021-03-22');
     cargaBase.value = false;
   }
