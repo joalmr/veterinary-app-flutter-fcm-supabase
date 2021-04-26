@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/home/domain/homeController.dart';
+import 'package:vet_app/resources/icons/proypet_icons.dart';
 
 class RowBooking extends StatefulWidget {
   final String bookingId;
@@ -72,7 +71,7 @@ class _RowBookingState extends State<RowBooking> {
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 275),
-        margin: EdgeInsets.only(bottom: 10.0, left: 40.0, right: 15.0),
+        margin: EdgeInsets.only(bottom: 10.0, left: 10.0, right: 5.0),
         padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
             color: Colors.white,
@@ -285,6 +284,33 @@ class _RowBookingState extends State<RowBooking> {
                         fontSize: 12.0,
                       ),
                     ),
+                    SizedBox(height: 5),
+                    widget.delivery != "" && widget.address != ""
+                        ? Card(
+                          color: Colors.grey[200],
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            width: double.maxFinite,
+                            child: Column(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.start,
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                              children: [
+                                Icon(IconProypet.delivery),
+                                SizedBox(height: 5),
+                                Text(
+                                  widget.delivery,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 5),
+                                Text(widget.address),
+                              ],
+                            ),
+                          ),
+                        )
+                        : SizedBox(height: 0)
                   ],
                 ),
               ),

@@ -16,7 +16,7 @@ class HomePageWeb extends StatelessWidget {
             child: DashBoard(),
           ),
           Container(
-            width: 250,
+            width: 300,
             height: double.maxFinite,
             child: Unconfirmed(),
           ),
