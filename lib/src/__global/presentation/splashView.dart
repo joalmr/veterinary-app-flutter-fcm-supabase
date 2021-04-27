@@ -16,7 +16,7 @@ class SplashView extends StatelessWidget {
                 placeholder: AssetImage(imgEmpty),
                 height: 70,
                 image: AssetImage(imgLogoProypet),
-                fadeInDuration: Duration(milliseconds: 1000),
+                fadeInDuration: Duration(milliseconds: 400),
                 fadeOutDuration: Duration(milliseconds: 800),
               ),
             ),
