@@ -18,6 +18,9 @@ class StatsController extends GetxController {
 
   RxBool cargaBase = false.obs;
   RxBool cargaComments = false.obs;
+  RxBool cargaServices = false.obs;
+  RxBool cargaSalesDay = false.obs;
+  RxBool cargaSalesMonth = false.obs;
 
   @override
   void onInit() {
@@ -26,8 +29,11 @@ class StatsController extends GetxController {
   }
 
   inicial() async {
-    await getBase();
-    await getComments();
+    getBase();
+    getComments();
+    getStatsService();
+    getStatsDaily();
+    getStatsMonthly();
   }
 
   getBase() => _getBase();
@@ -45,5 +51,29 @@ class StatsController extends GetxController {
     var values = await _repo.getStatsComment(prefUser.vetId, '2020-01-22', '2021-03-22');
     statComments.addAll(values);
     cargaComments.value = false;
+  }
+
+  getStatsService()=>_getStatsService();
+  _getStatsService() async {
+    cargaServices.value = true;
+    var values = await _repo.getStatsService(prefUser.vetId, '2020-01-22', '2021-03-22');
+    services.addAll(values.result.services);
+    cargaServices.value = false;
+  }
+
+  getStatsDaily()=>_getStatsDaily();
+  _getStatsDaily() async {
+    cargaSalesDay.value = true;
+    var values = await _repo.getStatsDaily(prefUser.vetId);
+    salesDay.addAll(values.result.salesDay);
+    cargaSalesDay.value = false;
+  }
+
+  getStatsMonthly()=>_getStatsMonthly();
+  _getStatsMonthly() async {
+    cargaSalesMonth.value = true;
+    var values = await _repo.getStatsMonthly(prefUser.vetId);
+    salesMonth.addAll(values.result.salesMonth);
+    cargaSalesMonth.value = false;
   }
 }

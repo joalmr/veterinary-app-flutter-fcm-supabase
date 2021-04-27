@@ -4,6 +4,8 @@ import 'package:vet_app/src/stats/data/model/statCommentModel.dart';
 import 'package:vet_app/src/stats/data/model/statsServiceModel.dart';
 
 import '_statsInterface.dart';
+import 'model/statsSalesDailyModel.dart';
+import 'model/statsSalesMonthlyModel.dart';
 import 'statsApi.dart';
 
 class StatsRepository extends StatsInterface {
@@ -26,12 +28,12 @@ class StatsRepository extends StatsInterface {
     return _api.getStatsService(establecimientoId, from, to);
   }
   @override
-  Future<StatsServiceModel> getStatsDaily(String establecimientoId, String type) {
-    return _api.getStatsDaily(establecimientoId, type);
+  Future<StatsSalesDailyModel> getStatsDaily(String establecimientoId) {
+    return _api.getStatsDaily(establecimientoId);
   }
   
   @override
-  Future<StatsServiceModel> getStatsMonthly(String establecimientoId, String type) {
-    return _api.getStatsMonthly(establecimientoId, type);
+  Future<StatsSalesMonthlyModel> getStatsMonthly(String establecimientoId) {
+    return _api.getStatsMonthly(establecimientoId);
   }
 }

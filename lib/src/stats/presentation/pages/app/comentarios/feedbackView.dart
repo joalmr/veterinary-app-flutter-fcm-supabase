@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
 
 class FeedbackView extends StatelessWidget {
@@ -55,8 +56,8 @@ class FeedbackView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      comment.date.toIso8601String(),
-                                      style: TextStyle(fontSize: 8),
+                                      formatDateTime(comment.date),
+                                      style: TextStyle(fontSize: 10),
                                     ),
                                     Text(
                                       comment.comment,

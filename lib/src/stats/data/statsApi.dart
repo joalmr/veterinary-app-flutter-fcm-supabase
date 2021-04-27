@@ -6,13 +6,14 @@ import 'package:http/http.dart' as http;
 import 'package:vet_app/src/stats/data/model/statsServiceModel.dart';
 
 import '_statsInterface.dart';
+import 'model/statsSalesDailyModel.dart';
+import 'model/statsSalesMonthlyModel.dart';
 
 class StatsApi extends StatsInterface {
   @override
   Future<StatBaseModel> getStatsBase(
       String establecimientoId, String from, String to) async {
     print('getStatsBase');
-
     final url = Uri.https(
       urlBase,
       '$pathBase/establishment/$establecimientoId/stats',
@@ -33,7 +34,6 @@ class StatsApi extends StatsInterface {
   Future<List<StatCommentModel>> getStatsComment(
       String establecimientoId, String from, String to) async {
     print('getStatsComment');
-
     final url = Uri.https(
       urlBase,
       '$pathBase/establishment/$establecimientoId/comments',
@@ -51,20 +51,54 @@ class StatsApi extends StatsInterface {
   }
 
   @override
-  Future<StatsServiceModel> getStatsService(String establecimientoId, String from, String to) {
-    // TODO: implement getStatsService
-    throw UnimplementedError();
+  Future<StatsServiceModel> getStatsService(String establecimientoId, String from, String to) async {
+    print('getStatsService');
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/stats/services',
+      {
+        "from": from,
+        "to": to,
+      },
+    );
+
+    http.Response response = await http.get(url, headers: headersToken());
+    final statsService = statsServiceModelFromJson(response.body);
+
+    return statsService;
   }
 
   @override
-  Future<StatsServiceModel> getStatsDaily(String establecimientoId, String type) {
-    // TODO: implement getStatsDaily
-    throw UnimplementedError();
+  Future<StatsSalesDailyModel> getStatsDaily(String establecimientoId) async {
+    print('getStatsDaily');
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/stats/sales',
+      {
+        "type": "daily",
+      },
+    );
+
+    http.Response response = await http.get(url, headers: headersToken());
+    final salesDaily = statsSalesDailyModelFromJson(response.body);
+
+    return salesDaily;
   }
   
   @override
-  Future<StatsServiceModel> getStatsMonthly(String establecimientoId, String type) {
-    // TODO: implement getStatsMonthly
-    throw UnimplementedError();
+  Future<StatsSalesMonthlyModel> getStatsMonthly(String establecimientoId) async {
+    print('getStatsMonthly');
+    final url = Uri.https(
+      urlBase,
+      '$pathBase/establishment/$establecimientoId/stats/sales',
+      {
+        "type": "monthly",
+      },
+    );
+
+    http.Response response = await http.get(url, headers: headersToken());
+    final salesMonthly = statsSalesMonthlyModelFromJson(response.body);
+
+    return salesMonthly;
   }  
 }
