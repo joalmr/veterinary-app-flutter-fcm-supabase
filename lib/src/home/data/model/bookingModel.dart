@@ -40,6 +40,7 @@ class Booking {
   String petBreed;
   String petPicture;
   String user;
+  String userPhone;
   Options options;
   String observation;
 
@@ -53,6 +54,7 @@ class Booking {
     this.petBreed,
     this.petPicture,
     this.user,
+    this.userPhone,
     this.options,
     this.observation,
   });
@@ -68,6 +70,7 @@ class Booking {
         petBreed: json["pet_breed"],
         petPicture: json["pet_picture"],
         user: json["user"],
+        userPhone: json["user_phone"],
         options: Options.fromJson(json["options"]),
         observation: json["observation"] == null ? "" : json["observation"],
       );
@@ -83,6 +86,7 @@ class Booking {
         "pet_breed": petBreed,
         "pet_picture": petPicture,
         "user": user,
+        "user_phone": userPhone,
         "options": options.toJson(),
         "observation": observation,
       };

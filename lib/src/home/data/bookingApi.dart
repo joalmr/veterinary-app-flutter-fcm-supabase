@@ -31,12 +31,12 @@ class BookingApi extends BookingInterface {
   }
 
   @override
-  Future<ReservaModel> getId(String idBooking) async {
+  Future<BookingModel> getId(String idBooking) async {
     final url = Uri.https(urlBase, '/api/client/booking/$idBooking');
 
     http.Response response = await http.get(url, headers: headersToken());
 
-    return ReservaModel.fromJson(json.decode(response.body));
+    return BookingModel.fromJson(json.decode(response.body));
   }
 
   // @override

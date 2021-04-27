@@ -1,7 +1,6 @@
 import 'bookingApi.dart';
 import '_bookingInterface.dart';
 import 'model/bookingModel.dart';
-import 'model/reservaModel.dart';
 
 class BookingRepository extends BookingInterface {
   final _api = BookingApi();
@@ -17,7 +16,7 @@ class BookingRepository extends BookingInterface {
   // }
 
   @override
-  Future<ReservaModel> getId(String idBooking) {
+  Future<BookingModel> getId(String idBooking) {
     return _api.getId(idBooking);
   }
 

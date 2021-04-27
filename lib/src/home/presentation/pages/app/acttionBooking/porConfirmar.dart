@@ -32,7 +32,7 @@ class ConfirmarView extends StatelessWidget {
                         date: formatDate(unconfirmed.bookingDate),
                         time: unconfirmed.bookingTime.substring(0, 5),
                         userName: unconfirmed.user,
-                        userPhone: 'Ejm -> 993926739',
+                        userPhone: unconfirmed.userPhone,
                         bookingServices: unconfirmed.bookingServices,
                         observation: unconfirmed.observation,
                         address: unconfirmed.options.address,

@@ -31,7 +31,7 @@ class ViewFuture extends StatelessWidget {
                       date: formatDate(incoming.bookingDate),
                       time: incoming.bookingTime.substring(0, 5),
                       userName: incoming.user,
-                      userPhone: 'Ej -> 993926739',
+                      userPhone: incoming.userPhone,
                       bookingServices: incoming.bookingServices,
                       observation: incoming.observation,
                       address: incoming.options.address,
