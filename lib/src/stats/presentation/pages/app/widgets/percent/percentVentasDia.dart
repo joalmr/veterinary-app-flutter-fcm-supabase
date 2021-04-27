@@ -14,7 +14,17 @@ class PercentVentasDia extends StatelessWidget {
         colorFondo: Colors.transparent,
         widget: Container(
           padding: EdgeInsets.all(5.0),
-          child: _percent(dataVentasDia),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Text('Promedio de ventas por día'),
+              ),
+              _percent(dataVentasDia),
+            ],
+          ),
         ),
       ),
     );

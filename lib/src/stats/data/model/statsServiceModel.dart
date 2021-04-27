@@ -33,10 +33,10 @@ class Result {
         this.services,
     });
 
-    List<Service> services;
+    List<Services> services;
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
-        services: List<Service>.from(json["services"].map((x) => Service.fromJson(x))),
+        services: List<Services>.from(json["services"].map((x) => Services.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -44,8 +44,8 @@ class Result {
     };
 }
 
-class Service {
-    Service({
+class Services {
+    Services({
         this.name,
         this.value,
     });
@@ -53,7 +53,7 @@ class Service {
     String name;
     int value;
 
-    factory Service.fromJson(Map<String, dynamic> json) => Service(
+    factory Services.fromJson(Map<String, dynamic> json) => Services(
         name: json["name"],
         value: json["value"],
     );

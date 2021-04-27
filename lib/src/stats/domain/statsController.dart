@@ -2,13 +2,19 @@ import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/src/stats/data/model/statCommentModel.dart';
 import 'package:vet_app/src/stats/data/model/statsBaseModel.dart';
+import 'package:vet_app/src/stats/data/model/statsSalesDailyModel.dart';
+import 'package:vet_app/src/stats/data/model/statsSalesMonthlyModel.dart';
+import 'package:vet_app/src/stats/data/model/statsServiceModel.dart';
 import 'package:vet_app/src/stats/data/statsRepository.dart';
 
 class StatsController extends GetxController {
   final _repo = StatsRepository();
 
   var statBase = StatBaseModel().obs;
-  List<StatCommentModel> statComments = <StatCommentModel>[];
+  var statComments = <StatCommentModel>[].obs;
+  var services = <Services>[].obs;
+  var salesDay = <SalesDay>[].obs;
+  var salesMonth = <SalesMonth>[].obs;
 
   RxBool cargaBase = false.obs;
   RxBool cargaComments = false.obs;
@@ -28,8 +34,7 @@ class StatsController extends GetxController {
 
   _getBase() async {
     cargaBase.value = true;
-    statBase.value =
-        await _repo.getStatsBase(prefUser.vetId, '2020-01-22', '2021-03-22');
+    statBase.value = await _repo.getStatsBase(prefUser.vetId, '2020-01-22', '2021-03-22');
     cargaBase.value = false;
   }
 
@@ -37,8 +42,8 @@ class StatsController extends GetxController {
 
   _getComments() async {
     cargaComments.value = true;
-    statComments =
-        await _repo.getStatsComment(prefUser.vetId, '2020-01-22', '2021-03-22');
+    var values = await _repo.getStatsComment(prefUser.vetId, '2020-01-22', '2021-03-22');
+    statComments.addAll(values);
     cargaComments.value = false;
   }
 }
