@@ -52,9 +52,9 @@ dependencies:
   url_launcher: ^6.0.2
   url_strategy: ^0.2.0
   
+  currency_text_input_formatter: ^2.0.0
   easy_mask: ^1.1.5
   flutter_masked_text: ^0.8.0 #use controller
-  currency_text_input_formatter: ^2.0.0
 
   # mockito: ^4.1.4 # + -
   # badges: ^1.1.6 # -

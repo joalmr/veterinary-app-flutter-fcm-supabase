@@ -3,6 +3,7 @@ import 'package:vet_app/resources/utils/headerHttp.dart';
 import 'package:vet_app/src/stats/data/model/statsBaseModel.dart';
 import 'package:vet_app/src/stats/data/model/statCommentModel.dart';
 import 'package:http/http.dart' as http;
+import 'package:vet_app/src/stats/data/model/statsServiceModel.dart';
 
 import '_statsInterface.dart';
 
@@ -48,4 +49,22 @@ class StatsApi extends StatsInterface {
 
     return statsComment;
   }
+
+  @override
+  Future<StatsServiceModel> getStatsService(String establecimientoId, String from, String to) {
+    // TODO: implement getStatsService
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<StatsServiceModel> getStatsDaily(String establecimientoId, String type) {
+    // TODO: implement getStatsDaily
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<StatsServiceModel> getStatsMonthly(String establecimientoId, String type) {
+    // TODO: implement getStatsMonthly
+    throw UnimplementedError();
+  }  
 }
