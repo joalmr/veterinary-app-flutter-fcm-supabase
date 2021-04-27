@@ -31,7 +31,6 @@ class WorkersController extends GetxController {
     workers.clear();
     final response = await _repo.getWorkers(prefUser.vetId);
     final lista = response.result.workers;
-    print("workers");
     workers.addAll(lista);
   }
 
@@ -48,7 +47,13 @@ class WorkersController extends GetxController {
 
   setInvita(email) => _setInvita(email);
   _setInvita(email) async {
-    await _repo.setInvita(prefUser.vetId, email);
+    var value = await _repo.setInvita(prefUser.vetId, email);
+    if(!value.result){
+      Get.snackbar('Error', value.message);
+    }
+    else{
+      getInvitados();
+    }
   }
 
   deleteInvita(invitationId) => _deleteInvita(invitationId);

@@ -1,6 +1,7 @@
 import 'package:vet_app/src/workers/data/model/workerModelnvitado.dart';
 import 'package:vet_app/src/workers/data/model/workerModel.dart';
 import '_workersInterface.dart';
+import 'model/invitationModel.dart';
 import 'workersApi.dart';
 
 class WorkersRepository extends WorkersInterface {
@@ -17,7 +18,7 @@ class WorkersRepository extends WorkersInterface {
   }
 
   @override
-  Future<int> setInvita(String establishmentId, String mail) {
+  Future<InvitationModel> setInvita(String establishmentId, String mail) {
     return _api.setInvita(establishmentId, mail);
   }
 

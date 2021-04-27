@@ -7,6 +7,8 @@ import 'package:vet_app/src/workers/data/model/workerModel.dart';
 import '_workersInterface.dart';
 import 'package:http/http.dart' as http;
 
+import 'model/invitationModel.dart';
+
 class WorkersApi extends WorkersInterface {
   @override
   Future<WorkersModal> getWorkers(String establishmentId) async {
@@ -34,7 +36,7 @@ class WorkersApi extends WorkersInterface {
   }
 
   @override
-  Future<int> setInvita(String establishmentId, String mail) async {
+  Future<InvitationModel> setInvita(String establishmentId, String mail) async {
     final url = Uri.https(urlBase,
         '/api/client/establishment/$establishmentId/worker/invitation');
     final dataBooking = {"email": mail};
@@ -44,9 +46,9 @@ class WorkersApi extends WorkersInterface {
       headers: headersToken(),
       body: jsonEncode(dataBooking),
     );
-    print("invitacion");
+    
 
-    return response.statusCode;
+    return invitationModelFromJson(response.body);
   }
 
   @override
