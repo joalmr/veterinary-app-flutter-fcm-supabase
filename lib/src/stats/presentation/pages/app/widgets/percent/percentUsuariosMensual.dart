@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataUsuario.dart';
+import 'package:vet_app/src/stats/presentation/widgets/designGraph.dart';
 
-import '../designGraph.dart';
 import '../wValuePercent.dart';
 
 class PercentUsuariosMensual extends StatelessWidget {

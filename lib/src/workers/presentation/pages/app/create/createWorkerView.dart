@@ -57,7 +57,13 @@ class CreaWorkerView extends StatelessWidget {
                 Text("Invitaciones pendientes",style: TextStyle(fontWeight: FontWeight.bold),),
                 SizedBox(height: 5),
                 Expanded(
-                  child: ListView.builder(
+                  child:
+                  _.workersInvitation.length == 0
+                ? Center(
+                    child: Text('No tiene invitaciones pendientes de respuesta'),
+                  )
+                :
+                   ListView.builder(
                     itemCount: _.workersInvitation.length,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     itemBuilder: (BuildContext context, int index) {

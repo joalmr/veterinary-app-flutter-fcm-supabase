@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataService.dart';
 
-import '../designGraph.dart';
+import '../../../../widgets/designGraph.dart';
 
 class ChartServicios extends StatelessWidget {
   @override

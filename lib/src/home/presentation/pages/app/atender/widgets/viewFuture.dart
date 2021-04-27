@@ -21,6 +21,7 @@ class ViewFuture extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final incoming = _.incoming[index];
                     return CardAttention(
+                      attentionType: 3,
                       bookingId: incoming.id,
                       petImg: incoming.petPicture,
                       petName: incoming.petName,

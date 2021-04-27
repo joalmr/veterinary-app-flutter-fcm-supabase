@@ -4,10 +4,10 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
 import 'package:vet_app/src/stats/presentation/pages/web/components/statContent.dart';
-import 'package:vet_app/src/stats/presentation/widgets/chart/chartServicios.dart';
-import 'package:vet_app/src/stats/presentation/widgets/chart/chartUsuarios.dart';
-import 'package:vet_app/src/stats/presentation/widgets/chart/chartVentaMensual.dart';
-import 'package:vet_app/src/stats/presentation/widgets/chart/chartVentasDia.dart';
+import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chartServicios.dart';
+import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chartUsuarios.dart';
+import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chartVentaMensual.dart';
+import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chartVentasDia.dart';
 
 import 'filterStas.dart';
 

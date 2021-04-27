@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataVentasDia.dart';
 
-import '../designGraph.dart';
+import '../../../../widgets/designGraph.dart';
 
 class ChartVentasDia extends StatelessWidget {
   @override

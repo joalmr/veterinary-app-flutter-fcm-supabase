@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataVentaMensual.dart';
+import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataVentasDia.dart';
+import 'package:vet_app/src/stats/presentation/widgets/designGraph.dart';
 
-import '../designGraph.dart';
 import '../wValuePercent.dart';
 
-class PercentVentaMensual extends StatelessWidget {
+class PercentVentasDia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: chartDesign(
-        title: 'Venta Mensual',
+        title: 'Ventas por día',
         colorFondo: Colors.transparent,
         widget: Container(
           padding: EdgeInsets.all(5.0),
-          child: _percent(dataVentaMensual),
+          child: _percent(dataVentasDia),
         ),
       ),
     );
   }
 }
 
-Widget _percent(List<DataVentaMensual> listData) {
+Widget _percent(List<DataDay> listDay) {
   double valueTotal = 0;
 
-  for (int i = 0; i < listData.length && i < listData.length; i++) {
-    valueTotal = valueTotal + listData[i].value;
+  for (int i = 0; i < listDay.length && i < listDay.length; i++) {
+    valueTotal = valueTotal + listDay[i].value;
   }
 
   return Column(
-    children: listData
+    children: listDay
         .map(
           (e) => wValuePercent(
             color: colorGreen.withAlpha(50),

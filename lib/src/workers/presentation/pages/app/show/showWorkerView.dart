@@ -10,7 +10,15 @@ class ShowWorkerView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<WorkersController>(
       builder: (_) {
-        return ListView.builder(
+        return
+        _.carga.value
+              ? Center(child: CircularProgressIndicator())
+              : _.workers.length == 0
+                ? Center(
+                    child: Text('No tiene administradores'),
+                  )
+                : 
+         ListView.builder(
           itemCount: _.workers.length,
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           itemBuilder: (BuildContext context, int index) {

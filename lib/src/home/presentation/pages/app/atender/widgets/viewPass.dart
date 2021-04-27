@@ -21,6 +21,7 @@ class ViewPass extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final overdue = _.overdue[index];
                     return CardAttention(
+                      attentionType: 1,
                       bookingId: overdue.id,
                       petImg: overdue.petPicture,
                       petName: overdue.petName,

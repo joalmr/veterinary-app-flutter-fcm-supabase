@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Widget chartDesign({
   @required String title,
@@ -13,7 +14,12 @@ Widget chartDesign({
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+      children:
+       Get.context.width < 900
+        ?
+        <Widget>[widget]
+        :
+       <Widget>[
         Padding(
           padding: EdgeInsets.only(left: 15, top: 15),
           child: Text(

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/src/workers/data/model/invitationModel.dart';
 import 'package:vet_app/src/workers/data/model/workerModel.dart';
 import 'package:vet_app/src/workers/data/model/workerModelnvitado.dart';
 import 'package:vet_app/src/workers/data/workersRepository.dart';
@@ -47,9 +49,13 @@ class WorkersController extends GetxController {
 
   setInvita(email) => _setInvita(email);
   _setInvita(email) async {
-    var value = await _repo.setInvita(prefUser.vetId, email);
+    print('send mail');
+    print(prefUser.vetId);
+    print(email);
+    InvitationModel value = await _repo.setInvita(prefUser.vetId, email);
+    print(value.result);
     if(!value.result){
-      Get.snackbar('Error', value.message);
+      Get.snackbar('Error', value.message,backgroundColor: colorRed);
     }
     else{
       getInvitados();

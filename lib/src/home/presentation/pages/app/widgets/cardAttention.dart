@@ -19,6 +19,7 @@ class CardAttention extends StatefulWidget {
   final String observation;
   final String address;
   final String delivery;
+  final int attentionType;
 
   CardAttention({
     @required this.bookingId,
@@ -35,6 +36,7 @@ class CardAttention extends StatefulWidget {
     @required this.observation,
     @required this.address,
     @required this.delivery,
+    @required this.attentionType,
   });
 
   @override
@@ -229,6 +231,9 @@ class _CardAttentionState extends State<CardAttention> {
                           ),
                           Row(
                             children: [
+                              //* tipo de atencion
+                              widget.attentionType==3?
+                              SizedBox(width: 0):
                               Expanded(
                                 child: Padding(
                                   padding:

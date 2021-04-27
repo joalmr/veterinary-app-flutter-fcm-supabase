@@ -21,6 +21,7 @@ class ViewToday extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final today = _.today[index];
                     return CardAttention(
+                      attentionType: 2,
                       bookingId: today.id,
                       petImg: today.petPicture,
                       petName: today.petName,
