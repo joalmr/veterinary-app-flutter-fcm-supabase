@@ -14,7 +14,7 @@ class OffersPageWeb extends StatelessWidget {
         children: [
           NavigationBar(),
           Expanded(
-            flex: 4,
+            flex: 2,
             child: VerOfertas(),
           ),
           Expanded(

@@ -25,6 +25,7 @@ class OffersPageApp extends StatelessWidget {
                   'Advertencia',
                   'Alcanzaste el límite de promociones, hasta 5 promociones',
                   backgroundColor: colorYellow,
+                  colorText: colorBrown1,
                 );
               } else {
                 Get.to(CreaPromocionView());

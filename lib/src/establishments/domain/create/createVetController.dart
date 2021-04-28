@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-// import 'package:vet_app/config/variablesGlobal.dart';
-// import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/days/diaSemana.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
@@ -254,6 +252,7 @@ class CreateVetController extends GetxController {
         'Error',
         'Llene todos los campos',
         backgroundColor: colorRed,
+        colorText: colorWhite,
       );
     } else {
       if (selected < 4) selected++;
@@ -266,6 +265,7 @@ class CreateVetController extends GetxController {
         'Error',
         'Llene los campos',
         backgroundColor: colorRed,
+        colorText: colorWhite,
       );
     } else {
       if (selected < 4) selected++;
@@ -303,6 +303,7 @@ class CreateVetController extends GetxController {
         'Error',
         'Llene los campos',
         backgroundColor: colorRed,
+        colorText: colorWhite,
       );
     } else if (diaError != "" || diaHoraError != "") {
       if (diaError != "")
@@ -310,12 +311,14 @@ class CreateVetController extends GetxController {
           'Error',
           'Complete los datos de $diaError',
           backgroundColor: colorRed,
+          colorText: colorWhite,
         );
       if (diaHoraError != "")
         Get.snackbar(
           'Error',
           '$diaHoraError',
           backgroundColor: colorRed,
+          colorText: colorWhite,
         );
     } else {
       if (selected < 4) selected++;
@@ -328,6 +331,7 @@ class CreateVetController extends GetxController {
         'Error',
         'Llene los campos',
         backgroundColor: colorRed,
+        colorText: colorWhite,
       );
     } else {
       checked = true;

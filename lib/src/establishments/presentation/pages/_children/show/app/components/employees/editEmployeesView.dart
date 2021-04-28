@@ -84,6 +84,7 @@ class EditEmployeesView extends StatelessWidget {
                                     'Advertencia',
                                     'No puede ser eliminado, debe tener al menos un empleado',
                                     backgroundColor: colorYellow,
+                                    colorText: colorBrown1,
                                   )
                                 : showDialog(
                                     context: context,

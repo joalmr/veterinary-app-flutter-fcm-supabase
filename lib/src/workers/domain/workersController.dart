@@ -55,7 +55,12 @@ class WorkersController extends GetxController {
     InvitationModel value = await _repo.setInvita(prefUser.vetId, email);
     print(value.result);
     if(!value.result){
-      Get.snackbar('Error', value.message,backgroundColor: colorRed);
+      Get.snackbar(
+        'Error', 
+        value.message,
+        backgroundColor: colorRed,
+        colorText: colorWhite,
+      );
     }
     else{
       getInvitados();

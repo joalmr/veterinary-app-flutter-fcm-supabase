@@ -66,9 +66,9 @@ class CreateOfferController extends GetxController {
     cargando = false;
   }
 
-  create() => _create();
-
-  _create() async {
+  
+  create(String dispositivo) => _create(dispositivo);
+  _create(String dispositivo) async {
     String type = '';
     type = selectValue == 0
         ? 'Amount'
@@ -76,7 +76,10 @@ class CreateOfferController extends GetxController {
             ? 'Percentage'
             : 'Total';
 
-    if (description.text.trim() != "" && moneyController.numberValue > 0) {
+    var datos = double.tryParse(moneyController.numberValue.toString())??0.00;
+    print(datos);
+    
+    if (description.text.trim() != "" && moneyController.text.trim() != "" && moneyController.numberValue > 0) {
       Offer offer = Offer();
       offer.description = description.text;
       offer.type = type;
@@ -86,20 +89,36 @@ class CreateOfferController extends GetxController {
 
       await _repo.create(offer, prefUser.vetId);
       _padre.getAll();
-      Get.back();
-    } else {
+      if(dispositivo=='app'){
+        Get.back();
+      }
+    } 
+    else{
       if (description.text.trim() == "")
         Get.snackbar(
           'Error',
           'Debe agregar una descripción',
           backgroundColor: colorRed,
+          colorText: colorWhite,
         );
-      if (moneyController.numberValue < 1)
+      else
         Get.snackbar(
           'Error',
-          'El monto debe ser mayor a 0',
+          'Debe ingresar el monto y ser mayor a 0',
           backgroundColor: colorRed,
+          colorText: colorWhite,
         );
     }
+
+    // try{}
+    // catch(e){
+    //   Get.snackbar(
+    //     'Error',
+    //     'Debe ingresar el monto y ser mayor a 0',
+    //     backgroundColor: colorRed,
+    //     colorText: colorWhite,
+    //   );
+    // }
+    
   }
 }

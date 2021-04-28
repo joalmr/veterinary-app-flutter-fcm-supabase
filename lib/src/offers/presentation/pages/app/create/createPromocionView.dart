@@ -97,7 +97,7 @@ class CreaPromocionView extends StatelessWidget {
                         width: double.infinity,
                         child: btnPrimary(
                           text: 'Crear',
-                          onPressed: _.create,
+                          onPressed: () => _.create('app'),
                         ),
                       ),
                     ),

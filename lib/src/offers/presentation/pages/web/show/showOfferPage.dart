@@ -48,6 +48,8 @@ class VerOfertas extends StatelessWidget {
                       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: EdgeInsets.all(5),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             flex: 1,
@@ -55,99 +57,108 @@ class VerOfertas extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  promocion.serviceName,
-                                  style: TextStyle(fontSize: 12),
-                                ),
                                 Text.rich(
                                   TextSpan(
                                     text: 'Creado: ',
-                                    style: TextStyle(fontSize: 10),
                                     children: <TextSpan>[
                                       TextSpan(
                                         text: _.promociones[index].date.toString(),
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 8,
-                                        ),
+                                        style: TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
                                 ),
+                                Text.rich(
+                                  TextSpan(
+                                    text: 'Tipo: ',
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: promocion.serviceName,
+                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Text.rich(
+                                  TextSpan(
+                                    text: promocion.type == 'Amount'
+                                      ? 'Monto de descuento'
+                                      : promocion.type == 'Percentage'
+                                          ? 'Porcentaje de descuento'
+                                          : 'Precio promocional',
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: promocion.type == 'Amount'
+                                          ? ' S/ -${promocion.discount}'
+                                          : promocion.type == 'Percentage'
+                                              ? ' ${promocion.discount}%'
+                                              : ' S/ ${promocion.discount}',
+                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                InkWell(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  child: Container(
+                                    height: 38.0,
+                                    width: 38.0,
+                                    decoration: BoxDecoration(
+                                      color: colorRed,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    child: Icon(
+                                      Icons.delete_forever_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        title: Text('Eliminar'),
+                                        content: Text(
+                                            'Seguro que desea eliminar la promoción?'),
+                                        actions: <Widget>[
+                                          btnAltern(
+                                            text: 'Sí, eliminar',
+                                            bold: true,
+                                            color: colorRed,
+                                            onPressed: () {
+                                              _.delete(forDelete);
+                                              Get.back();
+                                            },
+                                          ),
+                                          btnAltern(
+                                            text: 'Cancelar',
+                                            bold: true,
+                                            onPressed: () => Get.back(),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
                               ],
                             ),
                           ),
-                          SizedBox(width: 10),
                           Expanded(
                             flex: 3,
-                            child: Text(
-                              promocion.description,
-                              maxLines: 10,
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Text(
-                              promocion.type == 'Amount'
-                                ? 'Monto de descuento'
-                                : promocion.type == 'Percentage'
-                                    ? 'Porcentaje de descuento'
-                                    : 'Precio promocional',
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Text(
-                              promocion.type == 'Amount'
-                                ? 'S/ -${promocion.discount}'
-                                : promocion.type == 'Percentage'
-                                    ? '${promocion.discount}%'
-                                    : 'S/ ${promocion.discount}',
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          InkWell(
-                            borderRadius: BorderRadius.circular(5.0),
                             child: Container(
-                              height: 38.0,
-                              width: 38.0,
-                              decoration: BoxDecoration(
-                                color: colorRed,
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: Icon(
-                                Icons.delete_forever_rounded,
-                                color: Colors.white,
+                              padding: EdgeInsets.only(left: 30),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Descripción'),
+                                  Text(
+                                    promocion.description,
+                                    maxLines: 10,
+                                  ),
+                                ],
                               ),
                             ),
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  title: Text('Eliminar'),
-                                  content: Text(
-                                      'Seguro que desea eliminar la promoción?'),
-                                  actions: <Widget>[
-                                    btnAltern(
-                                      text: 'Sí, eliminar',
-                                      bold: true,
-                                      color: colorRed,
-                                      onPressed: () {
-                                        _.delete(forDelete);
-                                        Get.back();
-                                      },
-                                    ),
-                                    btnAltern(
-                                      text: 'Cancelar',
-                                      bold: true,
-                                      onPressed: () => Get.back(),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
                           ),
                         ],
                       ),

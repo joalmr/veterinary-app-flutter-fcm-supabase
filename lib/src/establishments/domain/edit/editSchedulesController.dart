@@ -128,12 +128,14 @@ class EditSchedulesController extends GetxController {
           'Error',
           'Complete los datos de $diaError',
           backgroundColor: colorRed,
+          colorText: colorWhite,
         );
       if (diaHoraError != "")
         Get.snackbar(
           'Error',
           '$diaHoraError',
           backgroundColor: colorRed,
+          colorText: colorWhite,
         );
       response = true;
     }

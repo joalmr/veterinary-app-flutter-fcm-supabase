@@ -37,6 +37,7 @@ class EditSlidesView extends StatelessWidget {
                                 'Advertencia',
                                 'Alcanzaste el límite de imágenes',
                                 backgroundColor: colorYellow,
+                                colorText: colorBrown1,
                               )
                           : _.seleccionarSlide,
                     ),
