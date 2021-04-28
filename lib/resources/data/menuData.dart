@@ -14,7 +14,7 @@ List<dynamic> dataMenu = [
   },
   {
     'icon': Icons.book_rounded,
-    'name': 'Atenciones',
+    'name': 'Registro de atenciones',
     'page': NameRoutes.attentions,
   },
   {

@@ -11,7 +11,7 @@ class AttentionView extends StatelessWidget {
     return Scaffold(
       drawer: MenuDrawer(),
       appBar: AppBar(
-        title: Text('Atenciones'),
+        title: Text('Registro de atenciones'),
         actions: [
           IconButton(
             icon: Icon(Icons.filter_alt_rounded),

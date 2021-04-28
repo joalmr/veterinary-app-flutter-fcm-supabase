@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:vet_app/config/variablesGlobal.dart';
+// import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/days/diaSemana.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
@@ -66,16 +68,6 @@ class CreateVetController extends GetxController {
     });
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   _getService() async {
     var lista = await _repo.getServiceVet();
     servicesVet.clear();
@@ -96,6 +88,18 @@ class CreateVetController extends GetxController {
       }
     }
   }
+
+  // buscaDireccion(String filter)=>_buscaDireccion(filter);
+  // _buscaDireccion(String filter) async {
+  //   print(filter);
+  //   String ruta =
+  //       "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter";
+  //   Uri url = Uri.parse(ruta);
+  //   var response = await http.get(url);
+  //   print(response.body);
+  //   var models = addressFromJson(response.body);
+  //   return models.predictions;
+  // }
 
   gpsDireccion(Prediction data) {
     _searchandNavigate(data);
