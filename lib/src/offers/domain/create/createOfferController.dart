@@ -88,11 +88,16 @@ class CreateOfferController extends GetxController {
       offer.serviceId = '$serviceNum';
       offer.serviceName = textMap[serviceNum];
 
-      await _repo.create(offer, prefUser.vetId);
-      _padre.getAll();
-      if(dispositivo=='app'){
-        Get.back();
+      var response = await _repo.create(offer, prefUser.vetId);
+      if(response==200){
+        description.text="";
+        moneyController.text="0.00";
+        _padre.getAll();
+        if(dispositivo=='app'){
+          Get.back();
+        }
       }
+      
     } 
     else{
       if (description.text.trim() == "")

@@ -19,11 +19,6 @@ class FooterCreateVet extends StatelessWidget {
             1: (BuildContext context) => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // btnAltern(
-                    //   bold: true,
-                    //   text: 'Salir',
-                    //   onPressed: () => Get.back(),
-                    // ),
                     SizedBox(width: 0),
                     btnAltern(
                       bold: true,

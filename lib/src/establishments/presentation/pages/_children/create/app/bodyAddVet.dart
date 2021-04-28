@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/components/bodyStep.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/components/headerStep.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/components/rowFooter.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/bodyStep.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/headerStep.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/rowFooter.dart';
 
 class BodyAddVet extends StatelessWidget {
   @override
@@ -22,7 +22,9 @@ class BodyAddVet extends StatelessWidget {
                 ],
               ),
             ),
-            BodyStep(selected: _.selected),
+            Expanded(
+              child: BodyStep(selected: _.selected),
+            ),
             FooterCreateVet(),
           ],
         );

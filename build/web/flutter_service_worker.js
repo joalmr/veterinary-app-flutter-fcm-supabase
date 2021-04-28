@@ -4,14 +4,14 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "c35b41e943a190f5ef95131ab9f019ff",
-"index.html": "408d276bc2efe479caf38b04b0e4a13a",
-"/": "408d276bc2efe479caf38b04b0e4a13a",
-"main.dart.js": "9f3712d7f38a9f181bd51112bf8eaa90",
+"index.html": "c5b9716eb6e20de0b115bfe17f3d8d23",
+"/": "c5b9716eb6e20de0b115bfe17f3d8d23",
+"main.dart.js": "b62de6cc70f1c9d73c072108740e57aa",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "manifest.json": "acefdfc29fdc72d96b1d1d980fe1fa4b",
-"assets/AssetManifest.json": "3b308c78ae62f76d2b368128f408a2dc",
+"assets/AssetManifest.json": "6405ea7bcf7d899c3fb659736194e2e6",
 "assets/NOTICES": "ff8f4293e8f42fabd13b05080ff4709d",
 "assets/FontManifest.json": "6d47c1519ef0aff1f4172a4d6f8a91e3",
 "assets/packages/day_night_time_picker/assets/moon.png": "71137650ab728a466a50fa4fa78fb2b9",
@@ -357,8 +357,8 @@ const RESOURCES = {
 "assets/assets/images/cat-pr.png": "c2332fe9e6c85b2586f8eea562bc7023",
 "assets/assets/images/logo.jpg": "75db3d34baf1a44fb0f994f990e7caf6",
 "assets/assets/images/cat-btn.png": "9649960ad0d1a1454b73023435907116",
-"assets/assets/images/lottie/loading.json": "33853a21fef98d429f0fb01291dc6471",
 "assets/assets/images/lottie/check.json": "7e0a1eaea721e81b0d8773d69a224d68",
+"assets/assets/images/lottie/loading-circulo.json": "01c2fdebdd3b355a101d71fa22b370b0",
 "assets/assets/fonts/IconProypet.ttf": "fcd29f624dde5d30e39b69ffeeab2dea"
 };
 

@@ -5,7 +5,7 @@ import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 import 'package:http/http.dart' as http;
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/components/map.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/map.dart';
 
 class Step2 extends StatelessWidget {
   @override

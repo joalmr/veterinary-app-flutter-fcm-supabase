@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 import 'package:vet_app/src/establishments/domain/edit/editEmployeesController.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/steps/dataTipo.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/dataTipo.dart';
 
 class SetEmployee extends StatelessWidget {
   final Employee employee;

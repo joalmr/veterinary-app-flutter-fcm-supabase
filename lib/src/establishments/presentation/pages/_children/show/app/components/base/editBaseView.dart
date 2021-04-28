@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/src/establishments/domain/edit/editBaseController.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/steps/dataTipo.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/dataTipo.dart';
 
 import 'dirBase.dart';
 

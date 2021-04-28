@@ -149,37 +149,46 @@ class CreateVetController extends GetxController {
     entity.latitude = lat;
     entity.longitude = lng;
     entity.services = servicesVetSet;
-    entity.reference = "Cerca";
+    entity.reference = "";
 
     // var resp =
     _repo.setNew(entity).then((value) async {
-      idVet = value[1];
-      print(idVet);
-      await _setEmployee();
-      await _setSchedule();
-      await _setPrices();
-      await _setDescription();
-      establishmentController.getAll();
+      if(value[0]!=200){
+        Get.snackbar(
+          'Error',
+          'No se creó el establecimiento',
+          backgroundColor: colorRed,
+          colorText: colorWhite,
+        );
+      }
+      else{
+        idVet = value[1];
+        await _setEmployee(idVet);
+        await _setSchedule(idVet);
+        await _setPrices(idVet);
+        await _setDescription(idVet);
+        establishmentController.getAll();
+      }
     });
   }
 
-  _setEmployee() async {
+  _setEmployee(String idVeterinaria) async {
     int type = int.parse(personalType);
     String name = v.personalNameVet.text;
     String code = v.personalCodeVet.text;
-    await _repo.setEmployee(idVet, type, name, code);
+    await _repo.setEmployee(idVeterinaria, type, name, code);
   }
 
-  _setPrices() async {
+  _setPrices(String idVeterinaria) async {
     prices.consultationPriceFrom = v.moneyConsulta.numberValue;
     prices.dewormingPriceFrom = v.moneyDesparasita.numberValue;
     prices.groomingPriceFrom = v.moneyGrooming.numberValue;
     prices.vaccinationPriceFrom = v.moneyVacuna.numberValue;
 
-    await _repo.setPrices(idVet, prices);
+    await _repo.setPrices(idVeterinaria, prices);
   }
 
-  _setSchedule() async {
+  _setSchedule(String idVeterinaria) async {
     var schedule = {
       "monday": {
         "switch": v.checkDay[0],
@@ -218,11 +227,11 @@ class CreateVetController extends GetxController {
       },
     };
 
-    await _repo.setSchedule(idVet, schedule);
+    await _repo.setSchedule(idVeterinaria, schedule);
   }
 
-  _setDescription() async {
-    await _repo.setDescription(idVet, description);
+  _setDescription(String idVeterinaria) async {
+    await _repo.setDescription(idVeterinaria, description);
   }
 
   setFinaliza() => _newEstablishment();

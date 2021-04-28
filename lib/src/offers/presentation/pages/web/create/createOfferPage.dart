@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/subheader.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:vet_app/resources/utils/icons_map.dart';
 import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 import 'package:vet_app/src/offers/domain/create/createOfferController.dart';
@@ -10,14 +9,6 @@ import 'package:vet_app/src/offers/domain/create/createOfferController.dart';
 class CreaOferta extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // var moneyController = new MoneyMaskedTextController(
-    //   initialValue: 0,
-    //   decimalSeparator: '.',
-    //   thousandSeparator: '',
-    //   precision: 2,
-    //   leftSymbol: 'S/ ',
-    // );
-
     return GetX<CreateOfferController>(
       init: CreateOfferController(),
       builder: (_) {
