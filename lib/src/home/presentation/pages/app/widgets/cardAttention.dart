@@ -243,6 +243,9 @@ class _CardAttentionState extends State<CardAttention> {
                                   child: btnSecondary(
                                       text: 'Atender', onPressed: () {
                                         Get.toNamed(NameRoutes.atenderBooking);
+                                        // if(Get.isBottomSheetOpen){
+                                        //   Get.back();
+                                        // }
                                       }),
                                 ),
                               ),

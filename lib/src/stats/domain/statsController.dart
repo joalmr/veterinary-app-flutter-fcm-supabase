@@ -104,7 +104,14 @@ class StatsController extends GetxController {
   getBase() => _getBase();
   _getBase() async {
     cargaBase.value = true;
-    statBase.value = await _repo.getStatsBase(prefUser.vetId, fechaIn.text, fechaOut.text);
+    var response = await _repo.getStatsBase(prefUser.vetId, fechaIn.text, fechaOut.text);
+    statBase.update((val) {
+      val.stars = response.stars;
+      val.votes = response.votes;
+      val.dogs = response.dogs;
+      val.cats = response.cats;
+      val.nonAttendedPercentage = response.nonAttendedPercentage;
+    });
     cargaBase.value = false;
   }
 

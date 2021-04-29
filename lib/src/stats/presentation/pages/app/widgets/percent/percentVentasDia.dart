@@ -30,7 +30,7 @@ class PercentVentasDia extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 5),
-                    child: Text('Promedio de ventas por día'),
+                    child: Text('Promedio de los últimos 3 meses'),
                   ),
                   _percent(_.salesDay),
                 ],

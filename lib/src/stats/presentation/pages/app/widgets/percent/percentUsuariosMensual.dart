@@ -14,7 +14,17 @@ class PercentUsuariosMensual extends StatelessWidget {
         colorFondo: Colors.transparent,
         widget: Container(
           padding: EdgeInsets.all(5.0),
-          child: _percent(dataUsuario),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Text('Últimos 3 meses'),
+              ),
+              _percent(dataUsuario),
+            ],
+          ),
         ),
       ),
     );

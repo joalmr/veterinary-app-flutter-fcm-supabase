@@ -4,6 +4,7 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/src/bookings/domain/bookingController.dart';
+import 'package:vet_app/src/bookings/presentation/pages/atender/app/components/condicionLista.dart';
 
 import 'components/tiposAtencionList.dart';
 
@@ -14,6 +15,7 @@ class AtenderView extends StatelessWidget {
     return GetBuilder<BookingController>(
       init: BookingController(),
       builder: (_) {
+        print(condicionLista.length);
         return Scaffold(
           appBar: AppBar(
             title: Text('Atención'),
@@ -22,9 +24,13 @@ class AtenderView extends StatelessWidget {
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 5),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Card(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
@@ -72,27 +78,44 @@ class AtenderView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 5),
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Peso',
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Peso',
+                      fillColor: Colors.white,
+                    ),
+                    keyboardType: TextInputType.number,
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 5),
-                //   child: formularioText(
-                //     icon: IconProypet.peso,
-                //     hintText: 'Ingrese peso',
-                //     boardType: TextInputType.number,
-                //     // boardType: TextInputType.numberWithOptions(
-                //     //     signed: false, decimal: true),
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 5),
-                //   child: ddlMain(context, _.condicion, condicionLista, (opt) {
-                //     _.condicion = opt.toString();
-                //   }),
-                // ),
+                SizedBox(height: 5),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: Text('Condición'),
+                ),
+                Material(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(5),
+                  // child: Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 5),
+                  //   child: DropdownButtonHideUnderline(
+                  //     child: DropdownButton(
+                  //       isExpanded: true,
+                  //       value: _.condicion,
+                  //       items: condicionLista.map((value) {
+                  //         return new DropdownMenuItem<String>(
+                  //           value: value.id,
+                  //           child: Text(value.name),
+                  //         );
+                  //       }).toList(),
+                  //       onChanged: (val) {
+                  //         print(val);
+                  //         // _.condicion.value = val.toString();
+                  //       },
+                  //     ),
+                  //   ),
+                  // ),
+                ),
                 SizedBox(height: 5),
                 Expanded(
                   child: ListView(
@@ -102,16 +125,17 @@ class AtenderView extends StatelessWidget {
                       tipoAtencion(IconProypet.desparasitacion,'Desparasitación', 'desparasitacion', ''),
                       tipoAtencion(IconProypet.grooming, 'Grooming', 'grooming', '50'),
                       tipoAtencion(IconProypet.vacuna, 'Vacuna', 'vacuna', '30'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 30,bottom: 10,left: 5,right: 5),
+                        child: btnPrimary(
+                          text: 'Finalizar atención',
+                          onPressed: (){}
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10,bottom: 10),
-                  child: btnPrimary(
-                    text: 'Finalizar atención',
-                    onPressed: (){}
-                  ),
-                ),
+                
               ],
             ),
           ),
