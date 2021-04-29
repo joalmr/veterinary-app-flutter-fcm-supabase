@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
+import 'package:vet_app/src/bookings/presentation/pages/app/reprogramar/reprogramar.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';
-import 'package:vet_app/src/home/presentation/pages/app/acttionBooking/reprogramar.dart';
+
 
 class CardBooking extends StatelessWidget {
   final String bookingId;

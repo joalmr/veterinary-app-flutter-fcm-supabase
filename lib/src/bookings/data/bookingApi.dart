@@ -38,17 +38,6 @@ class BookingApi extends BookingInterface {
     return BookingModel.fromJson(json.decode(response.body));
   }
 
-  // @override
-  // Future<List<ReservaModel>> getAll(String idVet) async {
-  //   final url = Uri.https(urlBase, '/api/client/establishment/$idVet/bookings');
-
-  //   http.Response response = await http.get(url, headers: headersToken());
-
-  //   return List<ReservaModel>.from(
-  //     json.decode(response.body).map((x) => ReservaModel.fromJson(x)),
-  //   );
-  // }
-
   @override
   Future<BookingModel> getUnconfirmed(String idVet) async {
     final url = Uri.https(

@@ -6,7 +6,7 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/forms/dateForm.dart';
 import 'package:vet_app/components/forms/timeForm.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/home/domain/reprogramar/reprogramarController.dart';
+import 'package:vet_app/src/bookings/domain/reprogramar/reprogramarController.dart';
 
 class ContentReprograma extends StatelessWidget {
   final String bookingId;

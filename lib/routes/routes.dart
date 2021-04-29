@@ -75,7 +75,6 @@ abstract class AppPages {
         GetPage(
           name: '/create',
           page: () => CreateVetMain(),
-          // binding:
         ),
         GetPage(
           name: '/show',

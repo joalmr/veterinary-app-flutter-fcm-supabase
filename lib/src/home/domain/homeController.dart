@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/src/bookings/data/bookingRepository.dart';
+import 'package:vet_app/src/bookings/data/model/bookingModel.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
-import 'package:vet_app/src/home/data/bookingRepository.dart';
-import 'package:vet_app/src/home/data/model/bookingModel.dart';
+
 
 class HomeController extends GetxController {
   final establishmentService = EstablishmentRepository();
