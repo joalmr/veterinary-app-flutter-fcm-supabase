@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
+import 'package:vet_app/routes/routes.dart';
 
 class CardAttention extends StatefulWidget {
   final String bookingId;
@@ -239,7 +241,9 @@ class _CardAttentionState extends State<CardAttention> {
                                   padding:
                                       EdgeInsets.only(left: 20, right: 7.5),
                                   child: btnSecondary(
-                                      text: 'Atender', onPressed: () {}),
+                                      text: 'Atender', onPressed: () {
+                                        Get.toNamed(NameRoutes.atenderBooking);
+                                      }),
                                 ),
                               ),
                               Expanded(
@@ -273,9 +277,7 @@ class _CardAttentionState extends State<CardAttention> {
                   borderRadius: BorderRadius.circular(5.0),
                   child: Image(
                     fit: BoxFit.cover,
-                    image: widget.petImg != null
-                        ? CachedNetworkImageProvider(widget.petImg)
-                        : AssetImage('assets/images/dog.jpg'),
+                    image: CachedNetworkImageProvider(widget.petImg)
                   ),
                 ),
               ),

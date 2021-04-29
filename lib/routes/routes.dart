@@ -3,6 +3,7 @@ import 'package:vet_app/middleware/globalMiddleware.dart';
 import 'package:vet_app/src/__global/presentation/splashView.dart';
 import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
 import 'package:vet_app/src/_auth/presentation/register/pages/register.dart';
+import 'package:vet_app/src/bookings/presentation/pages/atender/atenderMain.dart';
 import 'package:vet_app/src/calendar/presentation/pages/calendar.dart';
 import 'package:vet_app/src/config/presentation/pages/configMain.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/creaVet.dart';
@@ -26,6 +27,8 @@ class NameRoutes {
   static final String establishments = '/establishments';
   static final String workers = '/workers';
   static final String config = '/config';
+
+  static final String atenderBooking = '/booking';
 }
 
 abstract class AppPages {
@@ -45,6 +48,11 @@ abstract class AppPages {
     GetPage(
       name: NameRoutes.home,
       page: () => HomeMain(),
+      middlewares: [GlobalMiddleware()],
+    ),
+    GetPage(
+      name: NameRoutes.atenderBooking, //atender reserva
+      page: () => AtenderMain(),
       middlewares: [GlobalMiddleware()],
     ),
     GetPage(
