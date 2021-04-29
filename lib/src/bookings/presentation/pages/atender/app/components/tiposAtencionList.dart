@@ -8,7 +8,7 @@ Widget tipoAtencion(IconData icon, String nombre, String vista, String monto) {
       ? Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: InkWell(
-            onTap: () => Get.toNamed(vista),
+            onTap: (){},// => Get.toNamed(vista),
             child: Card(
               child: Container(
                 height: 65,
@@ -45,7 +45,7 @@ Widget tipoAtencion(IconData icon, String nombre, String vista, String monto) {
       : Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: InkWell(
-            onTap: () => Get.toNamed(vista),
+            onTap: (){},// => Get.toNamed(vista),
             child: Dismissible(
               key: UniqueKey(),
               background: Container(color: colorRed),
