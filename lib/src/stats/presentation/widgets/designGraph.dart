@@ -16,10 +16,8 @@ Widget chartDesign({
       crossAxisAlignment: CrossAxisAlignment.start,
       children:
        Get.context.width < 900
-        ?
-        <Widget>[widget]
-        :
-       <Widget>[
+        ? <Widget>[widget]
+        : <Widget>[
         Padding(
           padding: EdgeInsets.only(left: 15, top: 15),
           child: Text(

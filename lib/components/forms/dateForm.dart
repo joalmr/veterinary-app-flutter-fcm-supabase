@@ -4,8 +4,9 @@ import 'package:intl/intl.dart';
 // import 'package:intl/intl.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
-Widget dateForm({Function(String) onChanged}) {
+Widget dateForm({Function(String) onChanged, TextEditingController controller}) {
   return TextFormField(
+    controller: controller,
     keyboardType: TextInputType.number,
     decoration: InputDecoration(
       hintText: 'dd-mm-yyyy',
@@ -24,6 +25,7 @@ Widget dateForm({Function(String) onChanged}) {
   );
 }
 
+//! para utilizar en los controladores
 String validaDate(String texto) {
   if (texto.isEmpty) return 'Ingrese fecha';
   if (texto.length < 10) return 'Complete fecha';
