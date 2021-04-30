@@ -7,7 +7,7 @@ import 'establecimientos/vetsView.dart';
 class EstablishmentsPageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetX<EstablishmentsController>(
+    return GetBuilder<EstablishmentsController>(
       builder: (_) {
         return Scaffold(
           drawer: MenuDrawer(),
@@ -18,11 +18,10 @@ class EstablishmentsPageApp extends StatelessWidget {
             child: Icon(Icons.add_rounded),
             onPressed: () => Get.toNamed('/establishments/create'),
           ),
-          body: 
-          _.carga 
-          ? Center(child: CircularProgressIndicator())
-          :
-          VetsView(),
+          body: VetsView(),
+          // _.carga 
+          // ? Center(child: CircularProgressIndicator())
+          // : VetsView(),
         );
       },
     );

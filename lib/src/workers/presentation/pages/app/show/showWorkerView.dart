@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/workers/domain/workersController.dart';
 
@@ -87,7 +88,32 @@ class ShowWorkerView extends StatelessWidget {
                   ),
                   SizedBox(height: 5.0),
                   InkWell(
-                    onTap: () {},
+                    onTap: (){
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text('Eliminar'),
+                          content: Text(
+                              'Seguro que desea eliminar al administrador?'),
+                          actions: <Widget>[
+                            btnAltern(
+                              text: 'Sí, eliminar',
+                              bold: true,
+                              color: colorRed,
+                              onPressed: () {
+                                _.deleteWorker(worker.id);
+                                Get.back();
+                              },
+                            ),
+                            btnAltern(
+                              text: 'Cancelar',
+                              bold: true,
+                              onPressed: () => Get.back(),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                     borderRadius: BorderRadius.circular(5.0),
                     child: Container(
                       height: 32.0,

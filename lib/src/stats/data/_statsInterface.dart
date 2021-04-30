@@ -4,6 +4,7 @@ import 'model/statCommentModel.dart';
 import 'model/statsBaseModel.dart';
 import 'model/statsSalesDailyModel.dart';
 import 'model/statsServiceModel.dart';
+import 'model/statsUserModel.dart';
 
 abstract class StatsInterface {
   Future<StatBaseModel> getStatsBase(String establecimientoId, String from, String to);
@@ -11,4 +12,5 @@ abstract class StatsInterface {
   Future<StatsServiceModel> getStatsService(String establecimientoId, String from, String to);
   Future<StatsSalesDailyModel> getStatsDaily(String establecimientoId);
   Future<StatsSalesMonthlyModel> getStatsMonthly(String establecimientoId);
+  Future<StatsUserModel> getStatsUser(String establecimientoId);
 }

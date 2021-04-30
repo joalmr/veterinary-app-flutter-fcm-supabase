@@ -64,4 +64,18 @@ class WorkersApi extends WorkersInterface {
     print(response.body);
     return response.statusCode;
   }
+
+  @override
+  Future<int> deleteWorker(String establishmentId, String workerId) async {
+    final url = Uri.https(urlBase,
+        '/api/client/establishment/$establishmentId/worker/$workerId');
+
+    http.Response response = await http.delete(
+      url,
+      headers: headersToken(),
+    );
+    print(response.statusCode);
+    print(response.body);
+    return response.statusCode;
+  }
 }

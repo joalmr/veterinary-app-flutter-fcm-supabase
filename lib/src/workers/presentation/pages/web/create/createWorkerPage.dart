@@ -12,7 +12,8 @@ class CreaAdmin extends StatelessWidget {
   //! mensaje cuando ya no puede invitar a un administrador
   @override
   Widget build(BuildContext context) {
-    final emailText = TextEditingController();
+    // final passwordFocusNode = FocusNode();
+
     return GetX<WorkersController>(
       builder: (_) {
         return Container(
@@ -20,8 +21,7 @@ class CreaAdmin extends StatelessWidget {
           child: 
           _.carga.value
           ? Center(child: CircularProgressIndicator())
-          :
-          Column(
+          : Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -35,15 +35,20 @@ class CreaAdmin extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
-                      controller: emailText,
+                      controller: _.emailText,
                       decoration: InputDecoration(labelText: 'Email del administrador a invitar'),
+                      // focusNode: passwordFocusNode,
                     ),
                     SizedBox(height: 10.0),
                     SizedBox(
                       width: double.infinity,
                       child: btnPrimary(
                         text: 'Enviar invitación',
-                        onPressed: () => _.setInvita(emailText.text),
+                        onPressed: (){
+                          // passwordFocusNode.unfocus();
+                          FocusScope.of(context).unfocus();
+                          _.setInvita();
+                        } 
                       ),
                     ),
                   ],

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
@@ -9,6 +10,8 @@ import 'package:vet_app/src/workers/data/workersRepository.dart';
 class WorkersController extends GetxController {
   final _repo = WorkersRepository();
 
+  final emailText = TextEditingController();
+  
   RxBool carga=false.obs;
   RxList<WorkerApp> workers = <WorkerApp>[].obs;
   RxList<Invitation> workersInvitation = <Invitation>[].obs;
@@ -43,16 +46,12 @@ class WorkersController extends GetxController {
     workersInvitation.clear();
     final response = await _repo.getWorkersInvitado(prefUser.vetId);
     final lista = response.result.invitations;
-    print("workers invitados");
     workersInvitation.addAll(lista);
   }
 
-  setInvita(email) => _setInvita(email);
-  _setInvita(email) async {
-    print('send mail');
-    print(prefUser.vetId);
-    print(email);
-    InvitationModel value = await _repo.setInvita(prefUser.vetId, email);
+  setInvita() => _setInvita();
+  _setInvita() async {
+    InvitationModel value = await _repo.setInvita(prefUser.vetId, emailText.text);
     print(value.result);
     if(!value.result){
       Get.snackbar(
@@ -63,6 +62,7 @@ class WorkersController extends GetxController {
       );
     }
     else{
+      emailText.clear();
       getInvitados();
     }
   }
@@ -70,6 +70,12 @@ class WorkersController extends GetxController {
   deleteInvita(invitationId) => _deleteInvita(invitationId);
   _deleteInvita(invitationId) async {
     await _repo.deleteInvita(prefUser.vetId, invitationId);
+    getInvitados();
+  }
+
+  deleteWorker(workerId) => _deleteWorker(workerId);
+  _deleteWorker(workerId) async {
+    await _repo.deleteWorker(prefUser.vetId, workerId);
     getInvitados();
   }
 }

@@ -28,34 +28,34 @@ class EstablishmentsController extends GetxController {
     super.onReady();
   }
 
-  refresh() => _refresh();
+  void refresh() => _refresh();
   Future<Null> _refresh() async {
     await Future.delayed(Duration(milliseconds: 2));
     getAll();
     return null;
   }
 
-  getAll() => _getAll();
+  void getAll() => _getAll();
   _getAll() async {
     carga = true;
-    final lista = await establishmentRepo.getAll();
     establecimientos.clear();
+    final lista = await establishmentRepo.getAll();
     establecimientos.addAll(lista);
     carga = false;
   }
 
-  deldete(String id) => _deldete(id);
+  void deldete(String id) => _deldete(id);
   _deldete(String id) async {
     await establishmentRepo.deleteEstablishmetn(id);
     getAll();
   }
 
-  go2Show(String id) => _go2Show(id);
+  void go2Show(String id) => _go2Show(id);
   _go2Show(String id) {
     Get.to(ShowVetMain(), arguments: id);
   }
 
-  favoriteVet(id, name, logo) {
+  void favoriteVet(id, name, logo) {
     prefUser.vetDataDel();
     VetStorage forStorage = VetStorage();
     forStorage.vetId = id;
@@ -67,7 +67,7 @@ class EstablishmentsController extends GetxController {
     getAll();
   }
 
-  favoriteVetToInit(id, name, logo) {
+  void favoriteVetToInit(id, name, logo) {
     prefUser.vetDataDel();
     VetStorage forStorage = VetStorage();
     forStorage.vetId = id;

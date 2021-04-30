@@ -12,7 +12,6 @@ class CreaWorkerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final emailText = TextEditingController();
     return GetX<WorkersController>(
       builder: (_) {
         return Scaffold(
@@ -40,7 +39,7 @@ class CreaWorkerView extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 TextFormField(
-                  controller: emailText,
+                  controller: _.emailText,
                   decoration: InputDecoration(
                       labelText: 'Email del administrador a invitar'),
                 ),
@@ -49,7 +48,7 @@ class CreaWorkerView extends StatelessWidget {
                   width: double.infinity,
                   child: btnPrimary(
                     text: 'Enviar invitación',
-                    onPressed: () => _.setInvita(emailText.text),
+                    onPressed: () => _.setInvita(),
                   ),
                 ),
                 SizedBox(height: 5),
@@ -133,7 +132,32 @@ class CreaWorkerView extends StatelessWidget {
                             ),
                             SizedBox(height: 10),
                             InkWell(
-                              onTap: () => _.deleteInvita(workerInvitation.id),
+                              onTap: (){
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: Text('Eliminar'),
+                                    content: Text(
+                                        'Seguro que desea eliminar la invitación?'),
+                                    actions: <Widget>[
+                                      btnAltern(
+                                        text: 'Sí, eliminar',
+                                        bold: true,
+                                        color: colorRed,
+                                        onPressed: () {
+                                          _.deleteInvita(workerInvitation.id);
+                                          Get.back();
+                                        },
+                                      ),
+                                      btnAltern(
+                                        text: 'Cancelar',
+                                        bold: true,
+                                        onPressed: () => Get.back(),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                               borderRadius: BorderRadius.circular(5.0),
                               child: Container(
                                 height: 32.0,

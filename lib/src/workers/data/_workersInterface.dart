@@ -7,4 +7,5 @@ abstract class WorkersInterface {
   Future<WorkersModalInvitado> getWorkersInvitado(String establishmentId);
   Future<InvitationModel> setInvita(String establishmentId, String mail);
   Future<int> deleteInvita(String establishmentId, String invitationId);
+  Future<int> deleteWorker(String establishmentId, String workerId);
 }

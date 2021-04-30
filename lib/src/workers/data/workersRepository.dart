@@ -26,4 +26,9 @@ class WorkersRepository extends WorkersInterface {
   Future<int> deleteInvita(String establishmentId, String invitationId) {
     return _api.deleteInvita(establishmentId, invitationId);
   }
+
+  @override
+  Future<int> deleteWorker(String establishmentId, String workerId) {
+    return _api.deleteWorker(establishmentId, workerId);
+  }
 }
