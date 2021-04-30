@@ -28,7 +28,7 @@ class NameRoutes {
   static final String workers = '/workers';
   static final String config = '/config';
 
-  static final String atenderBooking = '/booking';
+  static final String atenderBooking = '/booking'; //atender *
 }
 
 abstract class AppPages {
