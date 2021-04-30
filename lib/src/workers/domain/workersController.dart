@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
@@ -51,20 +52,30 @@ class WorkersController extends GetxController {
 
   setInvita() => _setInvita();
   _setInvita() async {
-    InvitationModel value = await _repo.setInvita(prefUser.vetId, emailText.text);
-    print(value.result);
-    if(!value.result){
+    if(!EmailValidator.validate(emailText.text)){
       Get.snackbar(
         'Error', 
-        value.message,
+        'El formato del email es invalido',
         backgroundColor: colorRed,
         colorText: colorWhite,
       );
     }
     else{
-      emailText.clear();
-      getInvitados();
+      InvitationModel value = await _repo.setInvita(prefUser.vetId, emailText.text);
+      if(!value.result){
+        Get.snackbar(
+          'Error', 
+          value.message,
+          backgroundColor: colorRed,
+          colorText: colorWhite,
+        );
+      }
+      else{
+        emailText.clear();
+        getInvitados();
+      }
     }
+    
   }
 
   deleteInvita(invitationId) => _deleteInvita(invitationId);
