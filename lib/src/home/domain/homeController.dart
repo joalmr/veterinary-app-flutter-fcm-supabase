@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/src/bookings/data/bookingRepository.dart';
 import 'package:vet_app/src/bookings/data/model/bookingModel.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 
 class HomeController extends GetxController {
@@ -31,6 +33,14 @@ class HomeController extends GetxController {
     getVet();
     getAllBookings();
     super.onInit();
+  }
+
+  launchWhatsApp(String phone, String user, String petName, String date, String time) async {
+    final link = WhatsAppUnilink(
+      phoneNumber: '+51$phone',
+      text: "Hola $user somos de ${prefUser.vetName}, nos comunicamos por la reserva de $petName\nFecha: $date\nHora: $time",
+    );
+    await launch('$link');
   }
 
   refreshUnconfirmed() => _refreshUnconfirmed();

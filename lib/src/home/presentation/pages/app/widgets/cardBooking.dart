@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
@@ -92,48 +93,64 @@ class CardBooking extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 10),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  petName,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(petBreed),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: color,
-                                        borderRadius:
-                                            BorderRadius.circular(100.0),
-                                      ),
-                                      height: 7.5,
-                                      width: 7.5,
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    petName,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      status,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 12.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  '$date $time',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
                                   ),
-                                ),
-                              ],
+                                  Text(petBreed),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: color,
+                                          borderRadius:
+                                              BorderRadius.circular(100.0),
+                                        ),
+                                        height: 7.5,
+                                        width: 7.5,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        status,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    '$date $time',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
+                            IconButton(
+                              icon: Icon(LineAwesomeIcons.whatsapp),
+                              color: colorMain,
+                              iconSize: 40,
+                              onPressed: (){
+                                _home.launchWhatsApp(
+                                  userPhone,
+                                  userName,
+                                  petName,
+                                  date,
+                                  time,
+                                );
+                              },
+                            )
                           ],
                         ),
                       ),
