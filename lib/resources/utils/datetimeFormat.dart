@@ -10,6 +10,7 @@ String formatDate(DateTime dateTime) {
   String formattedDate = DateFormat('dd-MM-yyyy').format(dateTime);
   return formattedDate;
 }
+
 String formatDateBasic(DateTime dateTime) {
   String formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
   return formattedDate;
@@ -35,6 +36,7 @@ DateTime toDate(String valor) {
   DateTime tempDate = new DateFormat("dd-MM-yyyy").parse(valor);
   return tempDate;
 }
+
 DateTime toDateBasic(String valor) {
   DateTime tempDate = new DateFormat("yyyy-MM-dd").parse(valor);
   return tempDate;

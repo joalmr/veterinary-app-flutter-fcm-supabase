@@ -1,8 +1,10 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/src/__global/presentation/colorGenerate.dart';
 import 'package:vet_app/src/stats/data/model/statCommentModel.dart';
 import 'package:vet_app/src/stats/data/model/statsBaseModel.dart';
 import 'package:vet_app/src/stats/data/model/statsSalesDailyModel.dart';
@@ -124,12 +126,28 @@ class StatsController extends GetxController {
     cargaComments.value = false;
   }
 
+  var paiChartList = <PieChartSectionData>[].obs;
+  var radiusPie = 25.obs;
   getStatsService()=>_getStatsService();
   _getStatsService() async {
     cargaServices.value = true;
+    
     services.clear();
+    paiChartList.clear();
+
     var values = await _repo.getStatsService(prefUser.vetId, fechaIn.text, fechaOut.text);
     services.addAll(values.result.services);
+
+    services.forEach((element) {
+      PieChartSectionData temp = new PieChartSectionData(
+        color: UniqueColorGenerator.getColor().withOpacity(0.7),
+        value: element.value.toDouble(),
+        showTitle: false,
+        radius: 25,
+      );
+      paiChartList.add(temp);
+    });
+
     cargaServices.value = false;
   }
 

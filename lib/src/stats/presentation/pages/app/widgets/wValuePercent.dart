@@ -31,7 +31,7 @@ Widget wValuePercent({
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
-                  color: colorData,
+                  // color: colorData,
                 ),
               ),
               Text(
@@ -39,7 +39,7 @@ Widget wValuePercent({
                 style: TextStyle(
                   fontSize: 13.0,
                   fontWeight: FontWeight.w500,
-                  color: colorData,
+                  // color: colorData,
                 ),
               ),
               SizedBox(height: 8.0),
