@@ -30,7 +30,7 @@ class CalendarController extends GetxController {
     calendarBookings.clear();
     final response = await _repo.getCalendarBookings(prefUser.vetId, dateString.value);
     calendarBookings.addAll(response.result);
-    print(calendarBookings.length);
+    print('bookings ${calendarBookings.length}');
   }
 
   getCalendarNextdates()=>_getCalendarNextdates();
@@ -38,7 +38,7 @@ class CalendarController extends GetxController {
     calendarNextdates.clear();
     final response = await _repo.getCalendarNextdates(prefUser.vetId, dateString.value);
     calendarNextdates.addAll(response.result);
-    print(calendarNextdates.length);
+    print('nextdates ${calendarNextdates.length}');
   }
 
   getCalendarEvents()=>_getCalendarEvents();
@@ -46,7 +46,7 @@ class CalendarController extends GetxController {
     calendarEvents.clear();
     final response = await _repo.getCalendarEvents(prefUser.vetId, dateString.value);
     calendarEvents.addAll(response.result);
-    print(calendarEvents.length);
+    print('events ${calendarEvents.length}');
   }
 
 }
