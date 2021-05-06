@@ -1,18 +1,52 @@
 import 'package:get/get.dart';
+import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/src/calendar/data/calendarRepository.dart';
+import 'package:vet_app/src/calendar/data/model/calendarBookingModel.dart';
+import 'package:vet_app/src/calendar/data/model/calendarEventModel.dart';
+import 'package:vet_app/src/calendar/data/model/calendarNextdateModel.dart';
 
 class CalendarController extends GetxController {
+  final _repo = CalendarRepository();
+
+  var calendarBookings = <CalendarBooking>[].obs;
+  var calendarNextdates = <CalendarNextdate>[].obs;
+  var calendarEvents = <CalendarEvent>[].obs;
+
+  var today = DateTime.now();
+  var dateString = ''.obs;
+
   @override
   void onInit() {
     super.onInit();
+    dateString.value = formatDateBasic(today);
+    getCalendarBookings();
+    getCalendarNextdates();
+    getCalendarEvents();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  getCalendarBookings()=>_getCalendarBookings();
+  _getCalendarBookings() async {
+    calendarBookings.clear();
+    final response = await _repo.getCalendarBookings(prefUser.vetId, dateString.value);
+    calendarBookings.addAll(response.result);
+    print(calendarBookings.length);
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  getCalendarNextdates()=>_getCalendarNextdates();
+  _getCalendarNextdates() async {
+    calendarNextdates.clear();
+    final response = await _repo.getCalendarNextdates(prefUser.vetId, dateString.value);
+    calendarNextdates.addAll(response.result);
+    print(calendarNextdates.length);
   }
+
+  getCalendarEvents()=>_getCalendarEvents();
+  _getCalendarEvents() async {
+    calendarEvents.clear();
+    final response = await _repo.getCalendarEvents(prefUser.vetId, dateString.value);
+    calendarEvents.addAll(response.result);
+    print(calendarEvents.length);
+  }
+
 }
