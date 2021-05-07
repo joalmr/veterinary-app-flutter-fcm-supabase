@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vet_app/src/calendar/domain/calendarController.dart';
 import '../event/eventNextDate.dart';
 
 class EventsNextDate extends StatelessWidget {
@@ -6,21 +8,26 @@ class EventsNextDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 7,
-        itemBuilder: (BuildContext context, int index) {
-          return EventNextDate(
-            image: 'assets/images/dog.jpg',
-            petName: 'Fido',
-            petBreed: 'Cocker',
-            motivo: 'Consulta',
-            userName: 'Alonso Massa',
-            firstPush: true,
-            secondPush: false,
-          );
-        },
-      ),
+    return GetX<CalendarController>(
+      builder: (_){
+        return Expanded(
+          child: ListView.builder(
+            itemCount: _.calendarNextdates.length,
+            itemBuilder: (BuildContext context, int index) {
+              final nextDate = _.calendarNextdates[index];
+              return EventNextDate(
+                image: nextDate.petPicture,
+                petName: nextDate.petName,
+                petBreed: nextDate.petBreed,
+                motivo: nextDate.reason,
+                userName: nextDate.userName,
+                firstPush: true,
+                secondPush: false,
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

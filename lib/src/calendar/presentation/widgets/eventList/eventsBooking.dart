@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/src/calendar/domain/calendarController.dart';
 import '../event/eventBooking.dart';
 
 class EventsBooking extends StatelessWidget {
@@ -7,21 +9,26 @@ class EventsBooking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 7,
-        itemBuilder: (BuildContext context, int index) {
-          return EventBooking(
-            color: colorBlue,
-            image: 'assets/images/dog.jpg',
-            petName: 'Fido',
-            petBreed: 'Cocker',
-            time: '14:00',
-            userName: 'Alonso Massa',
-            status: 'Atendiendo',
-          );
-        },
-      ),
+    return GetX<CalendarController>(
+      builder: (_){
+        return Expanded(
+          child: ListView.builder(
+            itemCount: _.calendarBookings.length,
+            itemBuilder: (BuildContext context, int index) {
+              final booking = _.calendarBookings[index];
+              return EventBooking(
+                color: colorBlue,
+                image: booking.petPicture,
+                petName: booking.petName,
+                petBreed: booking.petBreed,
+                time: '14:00',
+                userName: booking.userName,
+                status: booking.bookingStatus,
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

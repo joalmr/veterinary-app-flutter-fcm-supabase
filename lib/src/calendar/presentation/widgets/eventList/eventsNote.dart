@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vet_app/src/calendar/domain/calendarController.dart';
 import '../event/eventNote.dart';
 
 class EventsNote extends StatelessWidget {
@@ -6,20 +8,24 @@ class EventsNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: 7,
-        itemBuilder: (BuildContext context, int index) {
-          return EventNote(
-            color: Colors.blueGrey,
-            title: 'Visitar a pakito',
-            time: '14:00',
-            members: 'Alonso, Luda y etc',
-            description:
-                'Esta es la descripcion del card bla bla bla bla, Esta es la descripcion del card bla bla bla bla, Esta es la descripcion del card bla bla bla bla',
-          );
-        },
-      ),
+    return GetX<CalendarController>(
+      builder: (_){
+        return Expanded(
+          child: ListView.builder(
+            itemCount: _.calendarEvents.length,
+            itemBuilder: (BuildContext context, int index) {
+              final event = _.calendarEvents[index];
+              return EventNote(
+                color: Colors.blueGrey,
+                title: event.title,
+                time: event.time,
+                members: event.members,
+                description: event.description,
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

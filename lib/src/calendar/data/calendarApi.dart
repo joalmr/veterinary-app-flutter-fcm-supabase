@@ -15,40 +15,37 @@ class CalendarApi extends CalendarInterface {
       '/api/client/establishment/$idEstablishment/calendar/bookings',
       {"date": date},
     );
-
+    
     http.Response response = await http.get(url, headers: headersToken());
-
     return calendarBookingModelFromJson(response.body);
   }
   
-    @override
-    Future<CalendarEventModel> getCalendarEvents(String idEstablishment, String date) async {
-      final url = Uri.https(
-        urlBase, 
-        '/api/client/establishment/$idEstablishment/calendar/events',
-        {"date": date},
-      );
+  @override
+  Future<CalendarEventModel> getCalendarEvents(String idEstablishment, String date) async {
+    final url = Uri.https(
+      urlBase, 
+      '/api/client/establishment/$idEstablishment/calendar/events',
+      {"date": date},
+    );
 
-      http.Response response = await http.get(url, headers: headersToken());
+    http.Response response = await http.get(url, headers: headersToken());
+    return calendarEventModelFromJson(response.body);
+  }
 
-      return calendarEventModelFromJson(response.body);
-    }
+  @override
+  Future<CalendarNextdateModel> getCalendarNextdates(String idEstablishment, String date) async {
+    final url = Uri.https(
+      urlBase, 
+      '/api/client/establishment/$idEstablishment/calendar/nextdate',
+      {"date": date},
+    );
+
+    http.Response response = await http.get(url, headers: headersToken());
+    return calendarNextdateModelFromJson(response.body);
+  }
   
-    @override
-    Future<CalendarNextdateModel> getCalendarNextdates(String idEstablishment, String date) async {
-      final url = Uri.https(
-        urlBase, 
-        '/api/client/establishment/$idEstablishment/calendar/nextdate',
-        {"date": date},
-      );
-
-      http.Response response = await http.get(url, headers: headersToken());
-
-      return calendarNextdateModelFromJson(response.body);
-    }
-  
-    @override
-    Future<CalendarEventResponse> newCalendarEvent(String idEstablishment, CalendarEvent newEvent) async {
+  @override
+  Future<CalendarEventResponse> newCalendarEvent(String idEstablishment, CalendarEvent newEvent) async {
     // TODO: implement newCalendarEvent
     throw UnimplementedError();
   }

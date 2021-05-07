@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:vet_app/components/childRegion.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
@@ -98,7 +100,7 @@ class EventNextDate extends StatelessWidget {
                     ),
                     IconButton(
                       splashRadius: 10,
-                      icon: Icon(Icons.email_rounded),
+                      icon: Icon(LineAwesomeIcons.whatsapp),
                       onPressed: () {},
                     ),
                   ],

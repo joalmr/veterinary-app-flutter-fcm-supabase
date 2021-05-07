@@ -44,9 +44,8 @@ class CalendarController extends GetxController {
   getCalendarEvents()=>_getCalendarEvents();
   _getCalendarEvents() async {
     calendarEvents.clear();
-    final response = await _repo.getCalendarEvents(prefUser.vetId, dateString.value);
+    final response = await _repo.getCalendarEvents(prefUser.vetId, '2021-05-15');
     calendarEvents.addAll(response.result);
     print('events ${calendarEvents.length}');
   }
-
 }
