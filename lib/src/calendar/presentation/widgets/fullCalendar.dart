@@ -4,7 +4,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/calendar/domain/calendarController.dart';
 
-import 'eventList/dayDetail.dart';
+import '../pages/app/dayDetail.dart';
 
 int numWeekDay(year, month, day) {
   return DateTime(year, month, day).weekday;
@@ -63,7 +63,7 @@ class FullCalendar extends StatelessWidget {
                 for (var i = 1; i < numWeekDay(_.valueYear.value, _.valueMonth.value, 1); i++)
                   Container(
                     width: (context.width ) / 7,
-                    height: 95,
+                    height: 100,
                     child: Container(
                       color: Colors.grey[200],
                     ),
@@ -93,7 +93,7 @@ class FullCalendar extends StatelessWidget {
                     },
                     child: Container(
                       width: (context.width ) / 7,
-                      height: 95,
+                      height: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey[200]),
                       ),
@@ -110,7 +110,6 @@ class FullCalendar extends StatelessWidget {
                             SizedBox(height: 2.5),
                             Container(
                               width: double.maxFinite,
-                              padding: EdgeInsets.only(right: 5),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -118,17 +117,29 @@ class FullCalendar extends StatelessWidget {
                                   _.listCalendarBooking[i] == null
                                     ? SizedBox()
                                     : _.listCalendarBooking[i].length > 0 
-                                      ? itemDay(_.listCalendarBooking[i].length,colorMain)
+                                      ? itemDay(
+                                        'Atenciones',
+                                        _.listCalendarBooking[i].length,
+                                        colorMain,
+                                      )
                                       : SizedBox(),
                                   _.listCalendarNextDate[i] == null
                                     ? SizedBox()
                                     : _.listCalendarNextDate[i].length > 0 
-                                      ? itemDay(_.listCalendarNextDate[i].length,Colors.pinkAccent)
+                                      ? itemDay(
+                                        'Próx.citas',
+                                        _.listCalendarNextDate[i].length,
+                                        Colors.pinkAccent,
+                                      )
                                       : SizedBox(),
                                   _.listCalendarEvent[i] == null
                                     ? SizedBox()
                                     : _.listCalendarEvent[i].length > 0 
-                                      ? itemDay(_.listCalendarEvent[i].length,Colors.blueGrey)
+                                      ? itemDay(
+                                        'Eventos',
+                                        _.listCalendarEvent[i].length,
+                                        Colors.blueGrey,
+                                      )
                                       : SizedBox(),
                                 ],
                               ),
@@ -147,25 +158,35 @@ class FullCalendar extends StatelessWidget {
   }
 }
 
-Widget itemDay(int count, Color color){
-  return Padding(
-    padding: EdgeInsets.only(left: 5,bottom: 2),
-    child: Container(
-      height: 20,
-      width: 20,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        color: color,
-      ),
-      child: Center(
-        child: Text(
+Widget itemDay(String tipo, int count, Color color){
+  return Container(
+    margin: EdgeInsets.all(1.5),
+    padding: EdgeInsets.only(top: 1, bottom: 2),
+    width: double.maxFinite,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(5),
+      color: color,
+    ),
+    child: 
+    Column(
+      children: [
+        Text(
+          tipo,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 8,
+          ),
+        ),
+        SizedBox(height: .5),
+        Text(
           count>99 ? '99+' : '$count',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 10,
+            fontSize: 8,
+            fontWeight: FontWeight.bold
           ),
         ),
-      ),
+      ],
     ),
   );
 }

@@ -5,7 +5,6 @@ import 'package:vet_app/src/calendar/data/calendarRepository.dart';
 import 'package:vet_app/src/calendar/data/model/calendarBookingModel.dart';
 import 'package:vet_app/src/calendar/data/model/calendarEventModel.dart';
 import 'package:vet_app/src/calendar/data/model/calendarNextdateModel.dart';
-import 'package:vet_app/src/calendar/data/model/listBookingsModel.dart';
 
 class CalendarController extends GetxController {
   final _repo = CalendarRepository();
@@ -22,9 +21,11 @@ class CalendarController extends GetxController {
 
   var daysPerMonth = 0.obs;
   
-  var listCalendarBooking= List<dynamic>(32).obs;
-  var listCalendarNextDate= List<dynamic>(32).obs;
-  var listCalendarEvent= List<dynamic>(32).obs;
+  var listCalendarBooking= <dynamic>[].obs;
+  var listCalendarNextDate= <dynamic>[].obs;
+  var listCalendarEvent= <dynamic>[].obs;
+
+  var cargando = true.obs;
 
   @override
   void onInit() {
@@ -32,9 +33,7 @@ class CalendarController extends GetxController {
     dateString.value = formatDateBasic(today);
     daysPerMonth.value = DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
 
-    listCalendarBookings(today);
-    listCalendarNextdate(today);
-    listCalendarEvents(today);
+    listasCalendario(today);
   }
 
   monthMore(){
@@ -49,9 +48,7 @@ class CalendarController extends GetxController {
     }
 
     var dateC = DateTime(valueYear.value, valueMonth.value, 1);
-    listCalendarBookings(dateC);
-    listCalendarNextdate(dateC);
-    listCalendarEvents(dateC);
+    listasCalendario(dateC);
   }
 
   monthLess(){
@@ -66,9 +63,15 @@ class CalendarController extends GetxController {
     }
 
     var dateC = DateTime(valueYear.value, valueMonth.value, 1);
-    listCalendarBookings(dateC);
-    listCalendarNextdate(dateC);
-    listCalendarEvents(dateC);
+    listasCalendario(dateC);
+  }
+
+  listasCalendario(dateC) async {
+    cargando.value = true;
+    await listCalendarBookings(dateC);
+    await listCalendarNextdate(dateC);
+    await listCalendarEvents(dateC);
+    cargando.value = false;
   }
 
   listCalendarBookings(date)=>_listCalendarBookings(date);

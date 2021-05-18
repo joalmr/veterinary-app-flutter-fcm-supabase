@@ -79,6 +79,7 @@ class DayDetail extends StatelessWidget {
                             petBreed: nextDate.petBreed,
                             motivo: nextDate.reason,
                             userName: nextDate.userName,
+                            userPhone: nextDate.userPhone,
                             firstPush: true,
                             secondPush: false,
                           )

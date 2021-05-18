@@ -9,7 +9,12 @@ class CalendarEventView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<CalendarController>(
       builder: (_){
-        return Container(
+        return 
+        _.cargando.value
+         ? Center(
+            child: CircularProgressIndicator(),
+          )
+         : Container(
           child: SingleChildScrollView(
             child: Column(
               children: [

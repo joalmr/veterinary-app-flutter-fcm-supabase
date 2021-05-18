@@ -34,6 +34,7 @@ class Result {
         this.petBreed,
         this.petName,
         this.userName,
+        this.userPhone,
         this.nextdate,
         this.reason,
         this.type,
@@ -43,6 +44,7 @@ class Result {
     String petBreed;
     String petName;
     String userName;
+    String userPhone;
     DateTime nextdate;
     String reason;
     String type;
@@ -52,6 +54,7 @@ class Result {
         petBreed: json["pet_breed"],
         petName: json["pet_name"],
         userName: json["user_name"],
+        userPhone: json["user_phone"],
         nextdate: DateTime.parse(json["nextdate"]),
         reason: json["reason"],
         type: json["type"],
@@ -62,6 +65,7 @@ class Result {
         "pet_breed": petBreed,
         "pet_name": petName,
         "user_name": userName,
+        "user_phone": userPhone,
         "nextdate": "${nextdate.year.toString().padLeft(4, '0')}-${nextdate.month.toString().padLeft(2, '0')}-${nextdate.day.toString().padLeft(2, '0')}",
         "reason": reason,
         "type": type,

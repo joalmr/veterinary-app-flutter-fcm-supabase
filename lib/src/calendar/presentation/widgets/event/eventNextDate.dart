@@ -2,8 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vet_app/components/childRegion.dart';
+import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 class EventNextDate extends StatelessWidget {
   final String image;
@@ -11,6 +14,7 @@ class EventNextDate extends StatelessWidget {
   final String petBreed;
   final String motivo;
   final String userName;
+  final String userPhone;
   final bool firstPush;
   final bool secondPush;
 
@@ -21,10 +25,19 @@ class EventNextDate extends StatelessWidget {
     @required this.petBreed,
     @required this.motivo,
     @required this.userName,
+    @required this.userPhone,
     @required this.firstPush,
     @required this.secondPush,
   }) : super(key: key);
 
+  launchWhatsApp() async {
+    final link = WhatsAppUnilink(
+      phoneNumber: '+51$userPhone',
+      text: "Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendiente de $petName, no olvide reserva por medio de la app Proypet",
+    );
+    await launch('$link');
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,7 +92,8 @@ class EventNextDate extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     print('wsp');
-                    // Get.back();
+                    print(userPhone);
+                    launchWhatsApp();
                   }, 
                   child: Icon(
                     LineAwesomeIcons.whatsapp,

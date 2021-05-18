@@ -21,6 +21,7 @@ class EventsNextDate extends StatelessWidget {
                 petBreed: nextDate.petBreed,
                 motivo: nextDate.reason,
                 userName: nextDate.userName,
+                userPhone: '99999999',
                 firstPush: true,
                 secondPush: false,
               );

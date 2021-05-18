@@ -1,9 +1,7 @@
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/resources/utils/headerHttp.dart';
-import 'package:vet_app/src/calendar/data/model/calendarNextdateModel.dart';
 import 'package:vet_app/src/calendar/data/model/calendarEventResponse.dart';
 import 'package:vet_app/src/calendar/data/model/calendarEventModel.dart';
-import 'package:vet_app/src/calendar/data/model/calendarBookingModel.dart';
 import 'package:vet_app/src/calendar/data/model/listBookingsModel.dart';
 import 'package:vet_app/src/calendar/data/model/listNextdateModel.dart';
 import 'package:vet_app/src/calendar/data/model/listEventsModel.dart';

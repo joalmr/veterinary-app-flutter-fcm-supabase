@@ -9,7 +9,7 @@ class FiltroAtenciones extends StatefulWidget {
 }
 
 class _FiltroAtencionesState extends State<FiltroAtenciones> {
-  double _currentSliderValue = 500;
+  // double _currentSliderValue = 500;
 
   @override
   Widget build(BuildContext context) {
