@@ -69,46 +69,46 @@ class FullCalendar extends StatelessWidget {
                     ),
                   ),
                 for (var i = 1; i <= _.daysPerMonth.value; i++)
-                  Container(
-                    width: (context.width ) / 7,
-                    height: 95,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey[200]),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 5),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 5),
-                            child: Text(('$i')),
-                          ),
-                          SizedBox(height: 2.5),
-                          InkWell(
-                            onTap: (){
-                              var listaBooking = [];
-                              var listaEvent = [];
-                              var listaNextDate = [];
-                              var dateDet = DateTime(_.valueYear.value, _.valueMonth.value,i);
-                              if(_.listCalendarBooking[i] != null){
-                                listaBooking.addAll(_.listCalendarBooking[i]);
-                              }
-                              if(_.listCalendarNextDate[i] != null){
-                                listaNextDate.addAll(_.listCalendarNextDate[i]);
-                              }
-                              if(_.listCalendarEvent[i] != null){
-                                listaEvent.addAll(_.listCalendarEvent[i]);
-                              }
-                              Get.to(DayDetail(
-                                day: formatDate(dateDet),
-                                listaBooking: listaBooking,
-                                listaNextDate: listaNextDate,
-                                listaEvent: listaEvent,
-                              ));
-                            },
-                            child: Container(
+                  InkWell(
+                    onTap: (){
+                      var listaBooking = [];
+                      var listaEvent = [];
+                      var listaNextDate = [];
+                      var dateDet = DateTime(_.valueYear.value, _.valueMonth.value,i);
+                      if(_.listCalendarBooking[i] != null){
+                        listaBooking.addAll(_.listCalendarBooking[i]);
+                      }
+                      if(_.listCalendarNextDate[i] != null){
+                        listaNextDate.addAll(_.listCalendarNextDate[i]);
+                      }
+                      if(_.listCalendarEvent[i] != null){
+                        listaEvent.addAll(_.listCalendarEvent[i]);
+                      }
+                      Get.to(DayDetail(
+                        day: formatDate(dateDet),
+                        listaBooking: listaBooking,
+                        listaNextDate: listaNextDate,
+                        listaEvent: listaEvent,
+                      ));
+                    },
+                    child: Container(
+                      width: (context.width ) / 7,
+                      height: 95,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey[200]),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 5),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(left: 5),
+                              child: Text(('$i')),
+                            ),
+                            SizedBox(height: 2.5),
+                            Container(
                               width: double.maxFinite,
                               padding: EdgeInsets.only(right: 5),
                               child: Column(
@@ -133,8 +133,8 @@ class FullCalendar extends StatelessWidget {
                                 ],
                               ),
                             ),
-                          )
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   )

@@ -76,35 +76,40 @@ class EventNextDate extends StatelessWidget {
                   ),
                 ),
                 Text(userName),
-                Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(right: 75),
-                      child: Row(
-                        children: [
-                          Icon(
-                            firstPush
-                                ? Icons.notifications_active_rounded
-                                : Icons.notifications_off_rounded,
-                            color: firstPush ? colorGreen : null,
-                          ),
-                          SizedBox(width: 5),
-                          Icon(
-                            secondPush
-                                ? Icons.notifications_active_rounded
-                                : Icons.notifications_off_rounded,
-                            color: secondPush ? colorGreen : null,
-                          ),
-                        ],
-                      ),
-                    ),
-                    IconButton(
-                      splashRadius: 10,
-                      icon: Icon(LineAwesomeIcons.whatsapp),
-                      onPressed: () {},
-                    ),
-                  ],
+                TextButton(
+                  onPressed: () {
+                    print('wsp');
+                    // Get.back();
+                  }, 
+                  child: Icon(
+                    LineAwesomeIcons.whatsapp,
+                    size: 32,
+                  ),
                 ),
+                // Row(
+                //   children: [
+                //     Container(
+                //       margin: EdgeInsets.only(right: 75),
+                //       child: Row(
+                //         children: [
+                //           Icon(
+                //             firstPush
+                //                 ? Icons.notifications_active_rounded
+                //                 : Icons.notifications_off_rounded,
+                //             color: firstPush ? colorGreen : null,
+                //           ),
+                //           SizedBox(width: 5),
+                //           Icon(
+                //             secondPush
+                //                 ? Icons.notifications_active_rounded
+                //                 : Icons.notifications_off_rounded,
+                //             color: secondPush ? colorGreen : null,
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ],

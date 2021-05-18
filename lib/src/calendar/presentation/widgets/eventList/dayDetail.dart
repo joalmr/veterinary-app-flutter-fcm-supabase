@@ -46,7 +46,7 @@ class DayDetail extends StatelessWidget {
                       children: [
                         listaBooking.length == 0 
                         ? Padding(
-                          padding: EdgeInsets.only(top: 10),
+                          padding: EdgeInsets.only(top: 20),
                           child: Center(child: Text('No tiene registros')),
                         )
                         : SizedBox(height: 0),
@@ -68,7 +68,7 @@ class DayDetail extends StatelessWidget {
                       children: [
                         listaNextDate.length == 0 
                         ? Padding(
-                          padding: EdgeInsets.only(top: 10),
+                          padding: EdgeInsets.only(top: 20),
                           child: Center(child: Text('No tiene registros')),
                         )
                         : SizedBox(height: 0),
@@ -90,7 +90,7 @@ class DayDetail extends StatelessWidget {
                       children: [
                         listaEvent.length == 0 
                         ? Padding(
-                          padding: EdgeInsets.only(top: 10),
+                          padding: EdgeInsets.only(top: 20),
                           child: Center(child: Text('No tiene registros')),
                         )
                         : SizedBox(height: 0),

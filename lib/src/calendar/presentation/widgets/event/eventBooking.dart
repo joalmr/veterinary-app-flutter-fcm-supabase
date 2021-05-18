@@ -26,6 +26,21 @@ class EventBooking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color colorStatus = Colors.lightGreen;
+    switch (status) {
+      case 'Atendido':
+        colorStatus = Colors.black;
+        break;
+      case 'Confirmado':
+        colorStatus = colorMain;
+        break;
+      case 'Por confirmar':
+        colorStatus = Colors.deepPurple[200];
+        break;
+      default:
+        colorStatus = Colors.lightGreen;
+        break;
+    }
     return Container(
       margin: EdgeInsets.only(
         left: context.width > 900 ? 40 : 15,
@@ -35,7 +50,7 @@ class EventBooking extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: color,
+        color: colorStatus,
       ),
       child: ChildRegion(
         margin: EdgeInsets.only(left: 10),
@@ -66,9 +81,7 @@ class EventBooking extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                Text(
-                  petBreed,
-                ),
+                Text(petBreed),
                 Text(
                   time,
                   style: TextStyle(
@@ -76,14 +89,12 @@ class EventBooking extends StatelessWidget {
                     color: colorMain,
                   ),
                 ),
-                Text(
-                  userName,
-                ),
+                Text(userName),
                 Row(
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: color,
+                        color: colorStatus,
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       height: 7.5,

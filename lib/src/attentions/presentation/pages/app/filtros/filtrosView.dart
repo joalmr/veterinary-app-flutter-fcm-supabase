@@ -36,53 +36,53 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
                   ),
                   dateForm(),
                   SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Precio hasta',
-                      ),
-                      Text(
-                        '$_currentSliderValue',
-                      ),
-                    ],
-                  ),
-                  SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      trackShape: RoundedRectSliderTrackShape(),
-                      trackHeight: 4.0,
-                      thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 8.0),
-                      overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 12.0),
-                      tickMarkShape: RoundSliderTickMarkShape(),
-                      valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-                      valueIndicatorTextStyle: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    child: Slider(
-                      value: _currentSliderValue,
-                      min: 0,
-                      max: 500,
-                      divisions: 50,
-                      label: _currentSliderValue.round().toString(),
-                      onChanged: (double value) {
-                        setState(() {
-                          _currentSliderValue = value;
-                        });
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 15),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     Text(
+                  //       'Precio hasta',
+                  //     ),
+                  //     Text(
+                  //       '$_currentSliderValue',
+                  //     ),
+                  //   ],
+                  // ),
+                  // SliderTheme(
+                  //   data: SliderTheme.of(context).copyWith(
+                  //     trackShape: RoundedRectSliderTrackShape(),
+                  //     trackHeight: 4.0,
+                  //     thumbShape:
+                  //         RoundSliderThumbShape(enabledThumbRadius: 8.0),
+                  //     overlayShape:
+                  //         RoundSliderOverlayShape(overlayRadius: 12.0),
+                  //     tickMarkShape: RoundSliderTickMarkShape(),
+                  //     valueIndicatorShape: PaddleSliderValueIndicatorShape(),
+                  //     valueIndicatorTextStyle: TextStyle(
+                  //       color: Colors.white,
+                  //     ),
+                  //   ),
+                  //   child: Slider(
+                  //     value: _currentSliderValue,
+                  //     min: 0,
+                  //     max: 500,
+                  //     divisions: 50,
+                  //     label: _currentSliderValue.round().toString(),
+                  //     onChanged: (double value) {
+                  //       setState(() {
+                  //         _currentSliderValue = value;
+                  //       });
+                  //     },
+                  //   ),
+                  // ),
+                  // SizedBox(height: 15),
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Nombre de usuario'),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 10),
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Nombre de mascota'),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 10),
                   Text('Especies'),
                   CheckFiltro(title: 'Perros'),
                   CheckFiltro(title: 'Gatos'),
