@@ -52,7 +52,7 @@ class EventNextDate extends StatelessWidget {
                 height: context.width > 900 ? 80 : 75,
                 width: context.width > 900 ? 80 : 55,
                 fit: BoxFit.cover,
-                image: AssetImage(image),
+                image: CachedNetworkImageProvider(image),
               ),
             ),
             SizedBox(width: context.width > 900 ? 20 : 10),

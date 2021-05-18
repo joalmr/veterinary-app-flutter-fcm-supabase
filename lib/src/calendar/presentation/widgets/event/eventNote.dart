@@ -40,28 +40,31 @@ class EventNote extends StatelessWidget {
           top: 10,
           bottom: 10,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+        child: Container(
+          width: double.maxFinite,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
-            ),
-            Text(
-              time,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: colorMain,
+              Text(
+                time,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: colorMain,
+                ),
               ),
-            ),
-            Text(members),
-            SizedBox(height: 5),
-            Text(description),
-          ],
+              Text(members),
+              SizedBox(height: 5),
+              Text(description),
+            ],
+          ),
         ),
       ),
     );

@@ -16,6 +16,11 @@ String formatDateBasic(DateTime dateTime) {
   return formattedDate;
 }
 
+String formatDateYM(DateTime dateTime) {
+  String formattedDate = DateFormat('yyyy-MM').format(dateTime);
+  return formattedDate;
+}
+
 String formatTime(DateTime dateTime) {
   String formattedDate = DateFormat('HH:mm').format(dateTime);
   return formattedDate;
