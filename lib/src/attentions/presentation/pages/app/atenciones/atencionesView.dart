@@ -1,4 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/src/attentions/domain/attentionsController.dart';
 import 'package:vet_app/src/attentions/presentation/pages/app/widgets/cardAtencion.dart';
 
 class AtencionesView extends StatelessWidget {
@@ -6,16 +10,22 @@ class AtencionesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      padding: EdgeInsets.only(left: 10, right: 10),
-      itemBuilder: (BuildContext context, int index) {
-        return CardAtencion(
-          image: AssetImage('assets/images/dog.jpg'),
-          petName: 'Fido',
-          petBreed: 'Labrador',
-          date: '20-02-2021',
-          time: '14:00',
+    return GetX<AttentionsController>(
+      builder: (_){
+        return ListView.builder(
+          itemCount: _.listaReg.length,
+          padding: EdgeInsets.only(left: 10, right: 10),
+          itemBuilder: (BuildContext context, int index) {
+            final reg = _.listaReg[index];
+            return CardAtencion(
+              image: CachedNetworkImageProvider(reg.petPicture) ,//AssetImage('assets/images/dog.jpg'),
+              petName: reg.petName,
+              petBreed: reg.petBreed,
+              date: formatDate(reg.attentionDate),
+              time: formatTime(reg.attentionDate),
+              userName: reg.userName,
+            );
+          },
         );
       },
     );

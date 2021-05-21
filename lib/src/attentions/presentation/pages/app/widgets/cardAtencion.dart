@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vet_app/design/styles/styles.dart';
 
 class CardAtencion extends StatelessWidget {
   final ImageProvider<Object> image;
@@ -6,15 +7,16 @@ class CardAtencion extends StatelessWidget {
   final String petBreed;
   final String date;
   final String time;
+  final String userName;
 
   const CardAtencion({
-    Key key,
     @required this.image,
     @required this.petName,
     @required this.petBreed,
     @required this.date,
     @required this.time,
-  }) : super(key: key);
+    @required this.userName,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +57,14 @@ class CardAtencion extends StatelessWidget {
                       petBreed,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontSize: 12.0,
+                      ),
+                    ),
+                    Text(
+                      userName,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        color: colorMain,
                         fontSize: 12.0,
                       ),
                     ),
