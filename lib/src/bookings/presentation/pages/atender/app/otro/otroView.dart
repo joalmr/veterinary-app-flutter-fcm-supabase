@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:vet_app/src/establishments/data/model/prediction.dart';
+import 'package:vet_app/src/bookings/data/model/otherServModel.dart';
 
 class OtroView extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class _OtroViewState extends State<OtroView> {
   bool recomendaciones = false;
   
   final otroController = TextEditingController();
-  var listaOtro = [];
+  var listaOtro = <OtherServModel>[];
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +29,33 @@ class _OtroViewState extends State<OtroView> {
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 8),
               children: [
-                TypeAheadField<Prediction>(
+                TypeAheadField<OtherServModel>(
                   hideOnLoading: true,
                   suggestionsCallback: (filter) async {
-                    String ruta = "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter";
-                    Uri url = Uri.parse(ruta);
+                    final url = Uri.https(
+                      urlBase,
+                      '/autocomplete/others',
+                      {"q": filter},
+                    );
                     var response = await http.get(url);
-                    print(response.body);
-                    var models = addressFromJson(response.body);
-                    return models.predictions;
+                    var models = otherServModelFromJson(response.body);
+                    return filter.trim()==''
+                      ? []
+                      : models;
                   },
-                  onSuggestionSelected: (Prediction data) {
-                    print('id: ${data.placeId}');
-                    setState(() {
-                      listaOtro.add(data.name);
+                  onSuggestionSelected: (OtherServModel data) {
+                    var doble = false;
+                    listaOtro.forEach((element) {
+                      if(element.id==data.id)
+                        doble=true;
                     });
-                    otroController.clear();
+                    if(!doble){
+                      setState(() {
+                        print(jsonEncode(data));
+                        listaOtro.add(data);
+                      });
+                      otroController.clear();
+                    }
                   },
                   textFieldConfiguration: TextFieldConfiguration(
                     controller: otroController,
@@ -76,7 +89,7 @@ class _OtroViewState extends State<OtroView> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(item, style: TextStyle(fontWeight: FontWeight.bold),),
+                                Text(item.name, style: TextStyle(fontWeight: FontWeight.bold),),
                               ],
                             ),
                           ),
@@ -95,7 +108,7 @@ class _OtroViewState extends State<OtroView> {
                       ),
                   ],
                 ),
-                // SizedBox(height: 10),
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

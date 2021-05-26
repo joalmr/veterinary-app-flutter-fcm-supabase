@@ -1,11 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
-import 'package:vet_app/src/establishments/data/model/prediction.dart';
-
+import 'package:vet_app/src/bookings/data/model/diagnosesModel.dart';
 import 'radioConsulta.dart';
 
 class ConsultaView extends StatefulWidget {
@@ -18,7 +19,7 @@ class _ConsultaViewState extends State<ConsultaView> {
   bool recomendaciones = false;
   
   final diagnosticoController = TextEditingController();
-  var listaDiagnostico = [];
+  var listaDiagnostico = <DiagnosesModel>[];
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +31,33 @@ class _ConsultaViewState extends State<ConsultaView> {
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 8),
               children: [
-                TypeAheadField<Prediction>(
-                  hideOnLoading: true,
+                TypeAheadField<DiagnosesModel>(
+                  // hideOnLoading: true,
                   suggestionsCallback: (filter) async {
-                    String ruta = "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter";
-                    Uri url = Uri.parse(ruta);
+                    final url = Uri.https(
+                      urlBase,
+                      '/autocomplete/diagnoses',
+                      {"q": filter},
+                    );
                     var response = await http.get(url);
-                    print(response.body);
-                    var models = addressFromJson(response.body);
-                    return models.predictions;
+                    var models = diagnosesModelFromJson(response.body);
+                    return filter.trim()==''
+                      ? []
+                      : models;
                   },
-                  onSuggestionSelected: (Prediction data) {
-                    print('id: ${data.placeId}');
-                    setState(() {
-                      listaDiagnostico.add(data.name);
+                  onSuggestionSelected: (DiagnosesModel data) {
+                    var doble = false;
+                    listaDiagnostico.forEach((element) {
+                      if(element.id==data.id)
+                        doble=true;
                     });
-                    diagnosticoController.clear();
+                    if(!doble){
+                      setState(() {
+                        print(jsonEncode(data));
+                        listaDiagnostico.add(data);
+                      });
+                      diagnosticoController.clear();
+                    }
                   },
                   textFieldConfiguration: TextFieldConfiguration(
                     controller: diagnosticoController,
@@ -55,10 +67,10 @@ class _ConsultaViewState extends State<ConsultaView> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text('No se encontró'),
                   ),
-                  itemBuilder: (context, address) => Padding(
+                  itemBuilder: (context, dato) => Padding(
                     padding: EdgeInsets.all(8),
                     child: Text(
-                      address.name,
+                      dato.name,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -79,8 +91,8 @@ class _ConsultaViewState extends State<ConsultaView> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(item, style: TextStyle(fontWeight: FontWeight.bold),),
-                                RadioConsulta(),
+                                Text(item.name, style: TextStyle(fontWeight: FontWeight.bold),),
+                                RadioConsulta(selectValue: item.diagnoses,),
                               ],
                             ),
                           ),
@@ -99,6 +111,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                       ),
                   ],
                 ),
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

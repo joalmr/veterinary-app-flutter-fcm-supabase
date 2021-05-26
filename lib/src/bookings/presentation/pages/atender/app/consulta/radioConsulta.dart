@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class RadioConsulta extends StatefulWidget {
+  final int selectValue;
+
+  RadioConsulta({@required this.selectValue});
 
   @override
-  _RadioConsultaState createState() => _RadioConsultaState();
+  _RadioConsultaState createState() => _RadioConsultaState(selectValue: selectValue);
 }
 
 class _RadioConsultaState extends State<RadioConsulta> {
-  int selectValue = 0;
+  int selectValue;
+  _RadioConsultaState({@required this.selectValue});
   
   @override
   Widget build(BuildContext context) {
