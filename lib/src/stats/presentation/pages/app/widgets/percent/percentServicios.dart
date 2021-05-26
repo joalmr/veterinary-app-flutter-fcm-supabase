@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/stats/data/model/statsServiceModel.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
 import 'package:vet_app/src/stats/presentation/widgets/designGraph.dart';
@@ -17,9 +18,18 @@ class PercentServicios extends StatelessWidget {
               child: chartDesign(
                 title: 'Servicios atendidos',
                 colorFondo: Colors.transparent,
-                widget: Container(
-                  padding: EdgeInsets.all(5.0),
-                  child: _percent(_.services, _.paiChartList, context),
+                widget: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, top: 5),
+                      child: Text('${formatDate(_.initialIn)} a ${formatDate(_.initialOut)}'),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(5.0),
+                      child: _percent(_.services, _.paiChartList, context),
+                    ),
+                  ],
                 ),
               ),
             );

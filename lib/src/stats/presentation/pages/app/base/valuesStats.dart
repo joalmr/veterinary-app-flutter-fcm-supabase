@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
 import 'package:vet_app/src/stats/presentation/pages/app/components/statCard.dart';
 
@@ -17,7 +18,12 @@ class ValuesStats extends StatelessWidget {
               )
             : SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, top: 5),
+                      child: Text('${formatDate(_.initialIn)} a ${formatDate(_.initialOut)}'),
+                    ),
                     StatCard(
                       icon: Icons.star_rounded,
                       text: 'Estrellas',

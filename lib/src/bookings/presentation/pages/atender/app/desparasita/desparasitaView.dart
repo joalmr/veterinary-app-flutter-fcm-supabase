@@ -31,7 +31,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
               padding: EdgeInsets.symmetric(horizontal: 8),
               children: [
                 TypeAheadField<DewormingsModel>(
-                  hideOnLoading: true,
+                  // hideOnLoading: true,
                   suggestionsCallback: (filter) async {
                     final url = Uri.https(
                       urlBase,

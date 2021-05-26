@@ -31,7 +31,7 @@ class _VacunaViewState extends State<VacunaView> {
               padding: EdgeInsets.symmetric(horizontal: 8),
               children: [
                 TypeAheadField<VaccinesModel>(
-                  hideOnLoading: true,
+                  // hideOnLoading: true,
                   suggestionsCallback: (filter) async {
                     final url = Uri.https(
                       urlBase,

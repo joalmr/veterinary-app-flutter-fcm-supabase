@@ -30,7 +30,7 @@ class _OtroViewState extends State<OtroView> {
               padding: EdgeInsets.symmetric(horizontal: 8),
               children: [
                 TypeAheadField<OtherServModel>(
-                  hideOnLoading: true,
+                  // hideOnLoading: true,
                   suggestionsCallback: (filter) async {
                     final url = Uri.https(
                       urlBase,

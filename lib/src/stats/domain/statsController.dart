@@ -74,6 +74,7 @@ class StatsController extends GetxController {
     }
     else{
       cargaStats();
+      Get.back(); //TODO: para app
     }
   }
 
