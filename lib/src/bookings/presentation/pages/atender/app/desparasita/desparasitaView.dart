@@ -47,7 +47,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                   },
                   textFieldConfiguration: TextFieldConfiguration(
                     controller: desparasitaController,
-                    decoration: InputDecoration(labelText: 'Diagnósticos'),
+                    decoration: InputDecoration(labelText: 'Busque desparasitación'),
                   ),
                   noItemsFoundBuilder: (context)=>Padding(
                     padding: const EdgeInsets.all(8.0),

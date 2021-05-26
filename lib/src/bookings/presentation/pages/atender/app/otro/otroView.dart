@@ -6,22 +6,21 @@ import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 
-class VacunaView extends StatefulWidget {
+class OtroView extends StatefulWidget {
   @override
-  _VacunaViewState createState() => _VacunaViewState();
+  _OtroViewState createState() => _OtroViewState();
 }
 
-class _VacunaViewState extends State<VacunaView> {
-  bool anamnesis = false;
+class _OtroViewState extends State<OtroView> {
   bool recomendaciones = false;
   
-  final vacunaController = TextEditingController();
-  var listaVacuna = [];
+  final otroController = TextEditingController();
+  var listaOtro = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Vacuna'),),
+      appBar: AppBar(title: Text('Otros'),),
       body: Column(
         children: [
           Expanded(
@@ -41,13 +40,13 @@ class _VacunaViewState extends State<VacunaView> {
                   onSuggestionSelected: (Prediction data) {
                     print('id: ${data.placeId}');
                     setState(() {
-                      listaVacuna.add(data.name);
+                      listaOtro.add(data.name);
                     });
-                    vacunaController.clear();
+                    otroController.clear();
                   },
                   textFieldConfiguration: TextFieldConfiguration(
-                    controller: vacunaController,
-                    decoration: InputDecoration(labelText: 'Busque vacuna'),
+                    controller: otroController,
+                    decoration: InputDecoration(labelText: 'Busque otro servicio'),
                   ),
                   noItemsFoundBuilder: (context)=>Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -66,7 +65,7 @@ class _VacunaViewState extends State<VacunaView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (var item in listaVacuna) 
+                    for (var item in listaOtro) 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +85,7 @@ class _VacunaViewState extends State<VacunaView> {
                             child: InkWell(
                               onTap: (){
                                 setState(() {
-                                  listaVacuna.remove(item);
+                                  listaOtro.remove(item);
                                 });
                               },
                               child: Icon(Icons.delete_rounded),
@@ -126,7 +125,7 @@ class _VacunaViewState extends State<VacunaView> {
               children: [
                 TextFormField(
                   decoration: InputDecoration(
-                    labelText: 'Monto vacuna',
+                    labelText: 'Monto otros',
                   ),
                 ),
                 SizedBox(height: 10),

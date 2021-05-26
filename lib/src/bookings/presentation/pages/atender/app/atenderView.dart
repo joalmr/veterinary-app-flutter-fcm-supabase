@@ -10,6 +10,8 @@ import 'cirugia/cirugiaView.dart';
 import 'components/tiposAtencionList.dart';
 import 'consulta/consultaView.dart';
 import 'desparasita/desparasitaView.dart';
+import 'grooming/groomingView.dart';
+import 'otro/otroView.dart';
 import 'vacuna/vacunaView.dart';
 
 class AtenderView extends StatelessWidget {
@@ -127,8 +129,9 @@ class AtenderView extends StatelessWidget {
                       tipoAtencion(IconProypet.consulta, 'Consulta', 'consulta', '100', (){ Get.to(ConsultaView()); }),
                       tipoAtencion(IconProypet.cirugia, 'Cirugía', 'cirugia', '', (){ Get.to(CirugiaView()); }),
                       tipoAtencion(IconProypet.desparasitacion,'Desparasitación', 'desparasitacion', '', (){ Get.to(DesparasitaView()); }),
-                      tipoAtencion(IconProypet.grooming, 'Grooming', 'grooming', '50', (){}),
+                      tipoAtencion(IconProypet.grooming, 'Grooming', 'grooming', '50', (){ Get.to(GroomingView());  }),
                       tipoAtencion(IconProypet.vacuna, 'Vacuna', 'vacuna', '30', (){ Get.to(VacunaView()); }),
+                      tipoAtencion(IconProypet.farmacia, 'Otros', 'otro', '', (){ Get.to(OtroView()); }),
                       Padding(
                         padding: const EdgeInsets.only(top: 30,bottom: 10,left: 5,right: 5),
                         child: btnPrimary(

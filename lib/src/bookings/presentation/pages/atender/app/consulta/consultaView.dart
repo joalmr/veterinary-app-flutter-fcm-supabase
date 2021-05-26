@@ -49,7 +49,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                   },
                   textFieldConfiguration: TextFieldConfiguration(
                     controller: diagnosticoController,
-                    decoration: InputDecoration(labelText: 'Diagnósticos'),
+                    decoration: InputDecoration(labelText: 'Busque diagnósticos'),
                   ),
                   noItemsFoundBuilder: (context)=>Padding(
                     padding: const EdgeInsets.all(8.0),
