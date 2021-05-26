@@ -2,7 +2,7 @@
     package="com.example.vet_app">
    <application
         android:label="Proypet Partner"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
 
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAIU2POPaS1Lme5BXKIrHBm1Ohicmg9844" />
 
