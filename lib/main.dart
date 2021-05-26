@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(GlobalController());
-
+    
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Proypet',

@@ -6,7 +6,11 @@ import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/src/bookings/domain/bookingController.dart';
 import 'package:vet_app/src/bookings/presentation/pages/atender/app/components/condicionLista.dart';
 
+import 'cirugia/cirugiaView.dart';
 import 'components/tiposAtencionList.dart';
+import 'consulta/consultaView.dart';
+import 'desparasita/desparasitaView.dart';
+import 'vacuna/vacunaView.dart';
 
 class AtenderView extends StatelessWidget {
 
@@ -120,11 +124,11 @@ class AtenderView extends StatelessWidget {
                 Expanded(
                   child: ListView(
                     children: [
-                      tipoAtencion(IconProypet.consulta, 'Consulta', 'consulta', '100'),
-                      tipoAtencion(IconProypet.cirugia, 'Cirugía', 'cirugia', ''),
-                      tipoAtencion(IconProypet.desparasitacion,'Desparasitación', 'desparasitacion', ''),
-                      tipoAtencion(IconProypet.grooming, 'Grooming', 'grooming', '50'),
-                      tipoAtencion(IconProypet.vacuna, 'Vacuna', 'vacuna', '30'),
+                      tipoAtencion(IconProypet.consulta, 'Consulta', 'consulta', '100', (){ Get.to(ConsultaView()); }),
+                      tipoAtencion(IconProypet.cirugia, 'Cirugía', 'cirugia', '', (){ Get.to(CirugiaView()); }),
+                      tipoAtencion(IconProypet.desparasitacion,'Desparasitación', 'desparasitacion', '', (){ Get.to(DesparasitaView()); }),
+                      tipoAtencion(IconProypet.grooming, 'Grooming', 'grooming', '50', (){}),
+                      tipoAtencion(IconProypet.vacuna, 'Vacuna', 'vacuna', '30', (){ Get.to(VacunaView()); }),
                       Padding(
                         padding: const EdgeInsets.only(top: 30,bottom: 10,left: 5,right: 5),
                         child: btnPrimary(

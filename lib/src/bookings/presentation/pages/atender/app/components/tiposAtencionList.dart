@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
-Widget tipoAtencion(IconData icon, String nombre, String vista, String monto) {
+Widget tipoAtencion(IconData icon, String nombre, String vista, String monto, Function onTap) {
   return monto == ''
       ? Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: InkWell(
-            onTap: (){},// => Get.toNamed(vista),
+            onTap: onTap,// => Get.toNamed(vista),
             child: Card(
               child: Container(
                 height: 65,
@@ -45,7 +45,7 @@ Widget tipoAtencion(IconData icon, String nombre, String vista, String monto) {
       : Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: InkWell(
-            onTap: (){},// => Get.toNamed(vista),
+            onTap: onTap,// => Get.toNamed(vista),
             child: Dismissible(
               key: UniqueKey(),
               background: Container(color: colorRed),
