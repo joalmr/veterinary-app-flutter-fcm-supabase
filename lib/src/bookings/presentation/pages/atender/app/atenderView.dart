@@ -1,10 +1,8 @@
-import 'dart:convert';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/components/forms/dateForm.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
@@ -49,7 +47,7 @@ class AtenderView extends StatelessWidget {
                         child: Image(
                           height: 100,
                           width: 100,
-                          image: AssetImage('assets/images/dog.jpg'),
+                          image: CachedNetworkImageProvider(_.image),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -62,7 +60,7 @@ class AtenderView extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  'Pipo',
+                                  _.name,
                                   style: Get.textTheme.subtitle1
                                       .apply(fontWeightDelta: 2),
                                 ),
@@ -77,7 +75,7 @@ class AtenderView extends StatelessWidget {
                             SizedBox(height: 5),
                             Text('Edad: 2 años 3 meses'),
                             Text('Tipo: Perro'),
-                            Text('Raza: Mestizo mediano'),
+                            Text('Raza: ${_.breed}'),
                           ],
                         ),
                       ),

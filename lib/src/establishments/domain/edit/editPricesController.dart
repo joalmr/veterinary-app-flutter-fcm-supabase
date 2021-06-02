@@ -13,28 +13,28 @@ class EditPricesController extends GetxController {
     decimalSeparator: '.',
     thousandSeparator: ',',
     precision: 2,
-    leftSymbol: 'S/ ',
+    leftSymbol: '',
   );
   final desparasitaControl = new MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
     precision: 2,
-    leftSymbol: 'S/ ',
+    leftSymbol: '',
   );
   final vacunaControl = new MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
     precision: 2,
-    leftSymbol: 'S/ ',
+    leftSymbol: '',
   );
   final groomingControl = new MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
     precision: 2,
-    leftSymbol: 'S/ ',
+    leftSymbol: '',
   );
 
   PriceEstablecimientoEntity prices = new PriceEstablecimientoEntity();

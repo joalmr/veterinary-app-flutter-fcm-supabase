@@ -242,7 +242,17 @@ class _CardAttentionState extends State<CardAttention> {
                                       EdgeInsets.only(left: 20, right: 7.5),
                                   child: btnSecondary(
                                       text: 'Atender', onPressed: () {
-                                        Get.toNamed(NameRoutes.atenderBooking);
+                                        Get.toNamed(
+                                          NameRoutes.atenderBooking,
+                                          arguments: {
+                                            'petId'     : '-',
+                                            'specie'    : '-',
+                                            'breed'     : widget.petBreed,
+                                            'name'      : widget.petName,
+                                            'image'     : widget.petImg,
+                                            'birthday'  : '-'
+                                          }
+                                        );
                                         // if(Get.isBottomSheetOpen){
                                         //   Get.back();
                                         // }

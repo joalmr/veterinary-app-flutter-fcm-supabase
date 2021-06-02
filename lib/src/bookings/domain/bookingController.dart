@@ -14,6 +14,24 @@ class BookingController extends GetxController {
   RxList<dynamic> listSet = <dynamic>[].obs;
   RxList<DataNextdate> listNextdate = <DataNextdate>[].obs;
 
+  String petId;
+  String specie;
+  String breed;
+  String name;
+  String image;
+  String birthday;
+
+  @override
+    void onInit() {
+      super.onInit();
+      petId = Get.arguments['petId'];
+      specie = Get.arguments['specie'];
+      breed = Get.arguments['breed'];
+      name = Get.arguments['name'];
+      image = Get.arguments['image'];
+      birthday = Get.arguments['birthday'];
+      print(name);
+    }
   @override
   void onClose() {
     if(Get.context.width<900)

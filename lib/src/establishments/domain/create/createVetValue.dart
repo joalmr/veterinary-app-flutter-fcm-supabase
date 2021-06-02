@@ -68,27 +68,27 @@ class CreateVetValue {
     decimalSeparator: '.',
     thousandSeparator: ',',
     precision: 2,
-    leftSymbol: 'S/ ',
+    leftSymbol: '',
   );
   final moneyDesparasita = new MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
     precision: 2,
-    leftSymbol: 'S/ ',
+    leftSymbol: '',
   );
   final moneyVacuna = new MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
     precision: 2,
-    leftSymbol: 'S/ ',
+    leftSymbol: '',
   );
   final moneyGrooming = new MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
     precision: 2,
-    leftSymbol: 'S/ ',
+    leftSymbol: '',
   );
 }

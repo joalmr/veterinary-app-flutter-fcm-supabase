@@ -19,7 +19,7 @@ Widget tipoAtencion(IconData icon, String nombre, String monto, Function onTap) 
                       height: 45,
                       width: 45,
                       decoration: BoxDecoration(
-                        color: colorMain,
+                        color: Colors.black38,
                         borderRadius: borderRadius,
                       ),
                       child: Icon(
@@ -32,8 +32,7 @@ Widget tipoAtencion(IconData icon, String nombre, String monto, Function onTap) 
                     Expanded(
                       child: Text(
                         nombre,
-                        style:
-                            Get.textTheme.subtitle1.apply(fontWeightDelta: 2),
+                        style: Get.textTheme.subtitle1.apply(fontWeightDelta: 2),
                       ),
                     ),
                   ],
