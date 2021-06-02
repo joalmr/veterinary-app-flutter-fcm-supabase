@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vet_app/src/attentions/presentation/pages/web/widgets/rowAttention.dart';
+import 'package:vet_app/src/registros/presentation/pages/web/widgets/rowAttention.dart';
 
 class Registered extends StatefulWidget {
   @override

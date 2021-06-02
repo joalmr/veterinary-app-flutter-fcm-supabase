@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
-import 'package:vet_app/src/attentions/domain/attentionsController.dart';
-import 'package:vet_app/src/attentions/presentation/pages/app/widgets/cardAtencion.dart';
+import 'package:vet_app/src/registros/domain/attentionsController.dart';
+import 'package:vet_app/src/registros/presentation/pages/app/widgets/cardAtencion.dart';
 
 class AtencionesView extends StatelessWidget {
   const AtencionesView({Key key}) : super(key: key);

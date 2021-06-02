@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/subheader.dart';
 import 'package:vet_app/components/forms/dateForm.dart';
-import 'package:vet_app/src/attentions/presentation/widgets/checkFiltro.dart';
+import 'package:vet_app/src/registros/presentation/widgets/checkFiltro.dart';
 
 class MiniStatAttention extends StatefulWidget {
   @override
