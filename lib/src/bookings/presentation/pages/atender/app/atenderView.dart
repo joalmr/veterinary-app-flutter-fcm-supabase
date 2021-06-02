@@ -229,6 +229,7 @@ class AtenderView extends StatelessWidget {
                                       onChanged: (value) => item.observation = value,
                                       initialValue: item.observation,
                                       maxLines: 2,
+                                      textCapitalization: TextCapitalization.sentences,
                                     ),
                                   ],
                                 ),

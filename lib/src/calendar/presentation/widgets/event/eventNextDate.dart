@@ -19,7 +19,6 @@ class EventNextDate extends StatelessWidget {
   final bool secondPush;
 
   const EventNextDate({
-    Key key,
     @required this.image,
     @required this.petName,
     @required this.petBreed,
@@ -28,7 +27,7 @@ class EventNextDate extends StatelessWidget {
     @required this.userPhone,
     @required this.firstPush,
     @required this.secondPush,
-  }) : super(key: key);
+  });
 
   launchWhatsApp() async {
     final link = WhatsAppUnilink(
@@ -89,41 +88,37 @@ class EventNextDate extends StatelessWidget {
                   ),
                 ),
                 Text(userName),
-                TextButton(
-                  onPressed: () {
-                    print('wsp');
-                    print(userPhone);
-                    launchWhatsApp();
-                  }, 
-                  child: Icon(
-                    LineAwesomeIcons.whatsapp,
-                    size: 32,
-                  ),
+
+                
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(right: 75),
+                      child: Row(
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: Icon(Icons.book_rounded),
+                            style: TextButton.styleFrom(
+                              primary: Colors.black38
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              print('wsp');
+                              print(userPhone);
+                              launchWhatsApp();
+                            }, 
+                            child: Icon(
+                              LineAwesomeIcons.whatsapp,
+                              size: 32,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                // Row(
-                //   children: [
-                //     Container(
-                //       margin: EdgeInsets.only(right: 75),
-                //       child: Row(
-                //         children: [
-                //           Icon(
-                //             firstPush
-                //                 ? Icons.notifications_active_rounded
-                //                 : Icons.notifications_off_rounded,
-                //             color: firstPush ? colorGreen : null,
-                //           ),
-                //           SizedBox(width: 5),
-                //           Icon(
-                //             secondPush
-                //                 ? Icons.notifications_active_rounded
-                //                 : Icons.notifications_off_rounded,
-                //             color: secondPush ? colorGreen : null,
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ],
-                // ),
               ],
             ),
           ],
