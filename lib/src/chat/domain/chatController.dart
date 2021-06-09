@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:supabase/supabase.dart';
 import 'package:vet_app/_supabase/chatRepo.dart';
 import 'package:vet_app/_supabase/model/canalModel.dart';
@@ -20,10 +19,6 @@ class ChatController extends GetxController {
 
   // RealtimeSubscription subscription;
   final supabaseClient = SupabaseClient(urlSupa, keySupa);
-
-  final ItemScrollController itemScrollController = ItemScrollController();
-  final ItemPositionsListener itemPositionsListener = ItemPositionsListener.create();
-  int scrollInit = 0;
 
   @override
   Future<void> onInit() async {

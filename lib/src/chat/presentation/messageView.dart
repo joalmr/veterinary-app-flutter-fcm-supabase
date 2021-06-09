@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/chat/domain/chatController.dart';
 
@@ -19,14 +18,10 @@ class MessagesView extends StatelessWidget {
               Expanded(
                 child: 
                 _.mensajes.length == 0 
-                ?
-                Icon(Icons.chat_bubble_outline_rounded)
-                :
-                ScrollablePositionedList.builder(
+                ? Icon(Icons.chat_bubble_outline_rounded)
+                : ListView.builder(
                   itemCount: _.mensajes.length,
-                  initialScrollIndex: _.scrollInit,
-                  itemScrollController: _.itemScrollController,
-                  itemPositionsListener: _.itemPositionsListener,
+                  padding: EdgeInsets.symmetric(horizontal: 5),
                   itemBuilder: (BuildContext context, int index) {
                     final message = _.mensajes[index];
                     return Container(
