@@ -4,8 +4,6 @@ import 'package:vet_app/components/app/menu.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/chat/domain/chatController.dart';
 
-import 'messageView.dart';
-
 class ChatsView extends StatelessWidget {
   const ChatsView({Key key}) : super(key: key);
 
@@ -32,19 +30,19 @@ class ChatsView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
-                        children: [
-                          CircleAvatar(
-                            child: Icon(Icons.person, color: Colors.white),
-                            backgroundColor: colorMain.withOpacity(0.6),
-                          ),
-                          SizedBox(width: 10),
-                          Column(
-                            children: [
-                              Text(chat.petlover.name)
-                            ],
-                          )
-                        ],
-                      ),
+                      children: [
+                        CircleAvatar(
+                          child: Icon(Icons.person, color: Colors.white),
+                          backgroundColor: colorMain.withOpacity(0.6),
+                        ),
+                        SizedBox(width: 10),
+                        Column(
+                          children: [
+                            Text(chat.petlover.name)
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );
