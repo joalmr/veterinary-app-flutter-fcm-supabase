@@ -37,4 +37,9 @@ List<dynamic> dataMenu = [
     'name': 'Administradores',
     'page': NameRoutes.workers,
   },
+  {
+    'icon': Icons.chat_rounded,
+    'name': 'Chats',
+    'page': NameRoutes.chats,
+  },
 ];

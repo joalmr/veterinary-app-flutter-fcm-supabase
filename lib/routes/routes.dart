@@ -5,6 +5,7 @@ import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
 import 'package:vet_app/src/_auth/presentation/register/pages/register.dart';
 import 'package:vet_app/src/bookings/presentation/pages/atender/atenderMain.dart';
 import 'package:vet_app/src/calendar/presentation/pages/calendar.dart';
+import 'package:vet_app/src/chat/presentation/chatsView.dart';
 import 'package:vet_app/src/config/presentation/pages/configMain.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/creaVet.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/showVet.dart';
@@ -26,6 +27,7 @@ class NameRoutes {
   static final String offers = '/offers';
   static final String establishments = '/establishments';
   static final String workers = '/workers';
+  static final String chats = '/chats';
   static final String config = '/config';
 
   static final String atenderBooking = '/booking'; //atender *
@@ -93,6 +95,11 @@ abstract class AppPages {
     GetPage(
       name: NameRoutes.workers,
       page: () => WorkersMain(),
+      middlewares: [GlobalMiddleware()],
+    ),
+    GetPage(
+      name: NameRoutes.chats,
+      page: () => ChatsView(),//TODO: cambiar por main
       middlewares: [GlobalMiddleware()],
     ),
     GetPage(
