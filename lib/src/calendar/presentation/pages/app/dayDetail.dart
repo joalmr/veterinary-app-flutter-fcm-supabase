@@ -22,7 +22,11 @@ class DayDetail extends StatelessWidget {
       
       DefaultTabController(
         length: 3,
-        initialIndex: 0,
+        initialIndex: listaNextDate.length > 0
+          ? 1
+          : listaBooking.length > 0 
+            ? 0
+            : 2,
         child: Column(
           children: [
             TabBar(
@@ -33,6 +37,7 @@ class DayDetail extends StatelessWidget {
               unselectedLabelStyle:
                   TextStyle(fontWeight: FontWeight.normal),
               tabs: [
+                
                 Tab(text: "Atenciones"),
                 Tab(text: "Próximas citas"),
                 Tab(text: "Otros eventos"),

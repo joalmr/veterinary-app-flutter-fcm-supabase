@@ -19,9 +19,6 @@ class EstablishmentsPageApp extends StatelessWidget {
             onPressed: () => Get.toNamed('/establishments/create'),
           ),
           body: VetsView(),
-          // _.carga 
-          // ? Center(child: CircularProgressIndicator())
-          // : VetsView(),
         );
       },
     );

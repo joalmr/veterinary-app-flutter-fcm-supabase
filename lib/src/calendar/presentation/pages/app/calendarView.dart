@@ -13,16 +13,10 @@ class CalendarView extends StatelessWidget {
       builder: (_){
         return Scaffold(
           drawer: MenuDrawer(),
-          appBar: AppBar(
-            title: Text('Calendario'),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.add_circle_outline_rounded),
-                onPressed: () {
-                  Get.to(NewEventDate());
-                },
-              ),
-            ],
+          appBar: AppBar(title: Text('Calendario'),),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add_rounded),
+            onPressed: () => Get.to(NewEventDate()),
           ),
           body: CalendarEventView(),
         );

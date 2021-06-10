@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
@@ -27,6 +29,18 @@ class CalendarController extends GetxController {
 
   var cargando = true.obs;
 
+  ///
+  var tempDate;
+  ///
+  var pickedTime = TimeOfDay.now();
+
+  RxString titulo = ''.obs;
+  RxString fecha = ''.obs;
+  RxString hora = ''.obs;
+  RxString integrantes = ''.obs;
+  RxString descripcion = ''.obs;
+  ///
+
   @override
   void onInit() {
     super.onInit();
@@ -34,6 +48,7 @@ class CalendarController extends GetxController {
     daysPerMonth.value = DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
 
     listasCalendario(today);
+    tempDate = today;
   }
 
   monthMore(){
@@ -49,6 +64,7 @@ class CalendarController extends GetxController {
 
     var dateC = DateTime(valueYear.value, valueMonth.value, 1);
     listasCalendario(dateC);
+    tempDate = dateC;
   }
 
   monthLess(){
@@ -64,6 +80,7 @@ class CalendarController extends GetxController {
 
     var dateC = DateTime(valueYear.value, valueMonth.value, 1);
     listasCalendario(dateC);
+    tempDate = dateC;
   }
 
   listasCalendario(dateC) async {
@@ -114,5 +131,32 @@ class CalendarController extends GetxController {
         listCalendarEvent[toDateBasic(key).day] = value;
       });
     }
+  }
+
+  ///
+  ///
+  newCalendarEvent() => _newCalendarEvent();
+  _newCalendarEvent() async {
+    if(titulo.value.isEmpty || fecha.value.isEmpty || hora.value.isEmpty || integrantes.value.isEmpty || descripcion.value.isEmpty ){
+      print('Complete todos los campos');
+    }
+    else{
+      var tempEvent = CalendarEvent(
+        title: titulo.value,
+        date: fecha.value,
+        time: hora.value,
+        members: integrantes.value,
+        description: descripcion.value,
+      );
+
+      await _repo.newCalendarEvent(prefUser.vetId, tempEvent);
+
+      Timer(
+        Duration(milliseconds: 2000),
+        () {
+          Get.back();
+        },
+      );
+    } 
   }
 }
