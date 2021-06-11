@@ -11,7 +11,6 @@ class BookingApi extends BookingInterface {
     final url = Uri.https(urlBase, '/api/client/booking/$idBooking/confirm');
 
     http.Response response = await http.post(url, headers: headersToken());
-
     return response.statusCode;
   }
 
@@ -23,10 +22,17 @@ class BookingApi extends BookingInterface {
     http.Response response = await http.post(
       url,
       headers: headersToken(),
-      body: dataBooking,
+      body: jsonEncode(dataBooking),
     );
-
     return response.statusCode;
+  }
+
+  @override
+  Future<void> attend(String establishment, String booking) async {
+    final url = Uri.https(urlBase, '/api/client/establishment/$establishment/booking/$booking/attend');
+
+    http.Response response = await http.post(url, headers: headersToken());
+    print(response.body);
   }
 
   @override
@@ -34,7 +40,6 @@ class BookingApi extends BookingInterface {
     final url = Uri.https(urlBase, '/api/client/booking/$idBooking');
 
     http.Response response = await http.get(url, headers: headersToken());
-
     return BookingModel.fromJson(json.decode(response.body));
   }
 
@@ -47,7 +52,6 @@ class BookingApi extends BookingInterface {
     );
 
     http.Response response = await http.get(url, headers: headersToken());
-
     return bookingModelFromJson(response.body);
   }
 
@@ -60,7 +64,6 @@ class BookingApi extends BookingInterface {
     );
 
     http.Response response = await http.get(url, headers: headersToken());
-
     return bookingModelFromJson(response.body);
   }
 
@@ -73,7 +76,6 @@ class BookingApi extends BookingInterface {
     );
 
     http.Response response = await http.get(url, headers: headersToken());
-
     return bookingModelFromJson(response.body);
   }
 
@@ -86,7 +88,7 @@ class BookingApi extends BookingInterface {
     );
 
     http.Response response = await http.get(url, headers: headersToken());
-
     return bookingModelFromJson(response.body);
   }
+
 }

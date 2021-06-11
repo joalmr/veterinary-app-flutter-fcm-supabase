@@ -4,9 +4,11 @@ import 'package:vet_app/design/styles/styles.dart';
 
 class CheckFiltro extends StatefulWidget {
   final String title;
+  final Function() onTapFn;
 
   CheckFiltro({
     this.title,
+    this.onTapFn,
   });
 
   @override
@@ -22,6 +24,7 @@ class _CheckFiltroState extends State<CheckFiltro> {
       onTap: () {
         setState(() {
           valueCheck = !valueCheck;
+          widget.onTapFn();
         });
       },
       child: Padding(
@@ -56,16 +59,5 @@ class _CheckFiltroState extends State<CheckFiltro> {
         ),
       ),
     );
-
-    // CheckboxListTile(
-    //   controlAffinity: ListTileControlAffinity.leading,
-    //   title: Text(widget.title),
-    //   value: valueCheck,
-    //   onChanged: (bool value) {
-    //     setState(() {
-    //       valueCheck = value;
-    //     });
-    //   },
-    // );
   }
 }

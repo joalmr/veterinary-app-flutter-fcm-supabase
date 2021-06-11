@@ -1,6 +1,6 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/components/forms/dateForm.dart';
 
 class FilterStat extends StatelessWidget {
   const FilterStat({Key key}) : super(key: key);
@@ -37,12 +37,19 @@ class FilterStat extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Fecha desde',
-                        style: TextStyle(fontSize: 12),
-                      ),
+                      // Text(
+                      //   'Fecha desde',
+                      //   style: TextStyle(fontSize: 12),
+                      // ),
                       SizedBox(height: 5),
-                      dateForm(),
+                      // dateForm(),
+                      DateTimePicker(
+                        dateMask: 'dd-MM-yyyy',
+                        firstDate: DateTime(2020),
+                        lastDate: DateTime.now(),
+                        dateLabelText: 'Fecha desde',
+                        // onChanged: (val) => _.to.value = val,
+                      ),
                     ],
                   ),
                 ),
@@ -53,12 +60,19 @@ class FilterStat extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Fecha hasta',
-                        style: TextStyle(fontSize: 12),
-                      ),
+                      // Text(
+                      //   'Fecha hasta',
+                      //   style: TextStyle(fontSize: 12),
+                      // ),
                       SizedBox(height: 5),
-                      dateForm(),
+                      // dateForm(),
+                      DateTimePicker(
+                        dateMask: 'dd-MM-yyyy',
+                        firstDate: DateTime(2020),
+                        lastDate: DateTime.now(),
+                        dateLabelText: 'Fecha hasta',
+                        // onChanged: (val) => _.to.value = val,
+                      ),
                     ],
                   ),
                 ),

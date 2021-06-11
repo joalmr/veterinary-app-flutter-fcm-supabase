@@ -5,6 +5,7 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/routes/routes.dart';
+import 'package:vet_app/src/bookings/presentation/pages/reprogramar/app/reprogramar.dart';
 
 class CardAttention extends StatefulWidget {
   final String bookingId;
@@ -241,22 +242,21 @@ class _CardAttentionState extends State<CardAttention> {
                                   padding:
                                       EdgeInsets.only(left: 20, right: 7.5),
                                   child: btnSecondary(
-                                      text: 'Atender', onPressed: () {
-                                        Get.toNamed(
-                                          NameRoutes.atenderBooking,
-                                          arguments: {
-                                            'petId'     : '-',
-                                            'specie'    : '-',
-                                            'breed'     : widget.petBreed,
-                                            'name'      : widget.petName,
-                                            'image'     : widget.petImg,
-                                            'birthday'  : '-'
-                                          }
-                                        );
-                                        // if(Get.isBottomSheetOpen){
-                                        //   Get.back();
-                                        // }
-                                      }),
+                                    text: 'Atender', onPressed: () {
+                                      Get.toNamed(
+                                        NameRoutes.atenderBooking,
+                                        arguments: {
+                                          'bookingId' : widget.bookingId,
+                                          'petId'     : '-',
+                                          'specie'    : '-',
+                                          'breed'     : widget.petBreed,
+                                          'name'      : widget.petName,
+                                          'image'     : widget.petImg,
+                                          'birthday'  : '-'
+                                        }
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                               Expanded(
@@ -264,9 +264,28 @@ class _CardAttentionState extends State<CardAttention> {
                                   padding:
                                       EdgeInsets.only(left: 7.5, right: 20),
                                   child: btnSecondary(
-                                      text: 'Reprogramar',
-                                      color: Colors.grey[600],
-                                      onPressed: () {}),
+                                    text: 'Reprogramar',
+                                    color: Colors.grey[600],
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) {
+                                          return ReprogramarItem(
+                                            bookingId: widget.bookingId,
+                                            petImg: widget.petImg,
+                                            petName: widget.petName,
+                                            petBreed: widget.petBreed,
+                                            date: widget.date,
+                                            time: widget.time,
+                                            userName: widget.userName,
+                                            userPhone: widget.userPhone,
+                                            color: widget.color,
+                                            status: widget.status,
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                             ],

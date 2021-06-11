@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +14,6 @@ class FiltroAtenciones extends StatefulWidget {
 }
 
 class _FiltroAtencionesState extends State<FiltroAtenciones> {
-  // double _currentSliderValue = 500;
 
   @override
   Widget build(BuildContext context) {
@@ -54,26 +55,48 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
                       SizedBox(height: 10),
                       TextFormField(
                         decoration: InputDecoration(labelText: 'Nombre de usuario'),
+                        initialValue: _.userName.value,
+                        onChanged: (val) => _.userName.value = val,
                       ),
                       SizedBox(height: 10),
                       TextFormField(
                         decoration: InputDecoration(labelText: 'Nombre de mascota'),
+                        initialValue: _.petName.value,
+                        onChanged: (val) => _.petName.value = val,
                       ),
                       SizedBox(height: 10),
                       Text('Especies'),
-                      CheckFiltro(title: 'Perros'),
-                      CheckFiltro(title: 'Gatos'),
+                      CheckFiltro(
+                        title: 'Perros',
+                        onTapFn: (){
+                          bool hasSpecie = _.specie.contains(2);
+                          if(hasSpecie)
+                            _.specie.remove(2);
+                          else
+                            _.specie.add(2);
+                        },
+                      ),
+                      CheckFiltro(
+                        title: 'Gatos',
+                        onTapFn: (){
+                          bool hasSpecie = _.specie.contains(1);
+                          if(hasSpecie)
+                            _.specie.remove(1);
+                          else
+                            _.specie.add(1);
+                        },
+                      ),
                       SizedBox(height: 10),
-                      Text('Servicios'),
-                      SizedBox(height: 5),
-                      CheckFiltro(title: 'Consulta'),
-                      CheckFiltro(title: 'Cirugía'),
-                      CheckFiltro(title: 'Grooming'),
-                      CheckFiltro(title: 'Desparasitación'),
-                      CheckFiltro(title: 'Vacuna'),
-                      CheckFiltro(title: 'Examen'),
-                      CheckFiltro(title: 'Otros servicios'),
-                      SizedBox(height: 5),
+                      // Text('Servicios'),
+                      // SizedBox(height: 5),
+                      // CheckFiltro(title: 'Consulta'),
+                      // CheckFiltro(title: 'Cirugía'),
+                      // CheckFiltro(title: 'Grooming'),
+                      // CheckFiltro(title: 'Desparasitación'),
+                      // CheckFiltro(title: 'Vacuna'),
+                      // CheckFiltro(title: 'Examen'),
+                      // CheckFiltro(title: 'Otros servicios'),
+                      // SizedBox(height: 5),
                     ],
                   ),
                 ),

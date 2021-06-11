@@ -27,13 +27,10 @@ class ReprogramarController extends GetxController {
   Future<void> _reprogramar(String idBooking) async {
     reprogramando.value = true;
 
-    final date = validaDate(fecha.value);
-    final hour = validateTime(hora.value);
+    if (fecha.isEmpty != null) msgfecha.value = 'Ingrese fecha';
+    if (hora.isEmpty != null) msghora.value = 'Ingrese hora';
 
-    if (date != null) msgfecha.value = date;
-    if (hour != null) msghora.value = hour;
-
-    if (date != null || hour != null) {
+    if (fecha.isEmpty || hora.isEmpty) {
       errorDateTime.value = true;
       Timer(
         Duration(milliseconds: 7500),
@@ -42,7 +39,7 @@ class ReprogramarController extends GetxController {
     } else {
       String datetime = formatDateOut(
         valor: '$fecha $hora',
-        formatIn: "dd-MM-yyyy HH:mm",
+        formatIn: "yyyy-MM-dd HH:mm",
         formatOut: "yyyy-MM-dd HH:mm:00",
       );
 

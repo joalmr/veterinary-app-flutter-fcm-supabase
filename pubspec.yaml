@@ -32,7 +32,7 @@ dependencies:
 
   get: ^4.1.4
   get_storage: ^2.0.2
-  http: ^0.13.1
+  http: ^0.13.3
   supabase: ^0.0.1-dev.17
   
   # firebase_core: ^1.1.0

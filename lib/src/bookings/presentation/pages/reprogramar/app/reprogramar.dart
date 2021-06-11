@@ -1,10 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/components/forms/dateForm.dart';
-import 'package:vet_app/components/forms/timeForm.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/bookings/domain/reprogramar/reprogramarController.dart';
 
@@ -20,7 +22,7 @@ class ReprogramarItem extends StatelessWidget {
   final Color color;
   final String status;
 
-  const ReprogramarItem({
+  ReprogramarItem({
     Key key,
     this.bookingId,
     this.petImg,
@@ -36,6 +38,9 @@ class ReprogramarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final timeController = TextEditingController();
+    TimeOfDay pickedTime = TimeOfDay.now();
+
     return GetX<ReprogramarController>(
       init: ReprogramarController(),
       builder: (_) {
@@ -143,11 +148,45 @@ class ReprogramarItem extends StatelessWidget {
                       SizedBox(height: 25),
                       Text('Fecha'),
                       SizedBox(height: 5),
-                      dateForm(onChanged: (val) => _.fecha.value = val),
+                      DateTimePicker(
+                        dateMask: 'dd-MM-yyyy',
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime(DateTime.now().year+3),
+                        dateLabelText: 'Fecha',
+                        onChanged: (val) => _.fecha.value = val,
+                      ),
                       SizedBox(height: 10),
                       Text('Hora'),
                       SizedBox(height: 5),
-                      timeForm(onChanged: (val) => _.hora.value = val),
+                      TextFormField(
+                        decoration: InputDecoration(labelText: 'Hora'),
+                        enableInteractiveSelection: false,
+                        controller: timeController,
+                        readOnly: true,
+                        onTap: () {
+                          final format = DateFormat("HH:mm");
+                          Navigator.of(context).push(
+                            showPicker(
+                              context: context,
+                              value: pickedTime,
+                              onChange: (TimeOfDay newTime) => pickedTime = newTime,
+                              is24HrFormat: true,
+                              minuteInterval: MinuteInterval.TEN,
+                              maxMinute: 50,
+                              barrierDismissible: false,
+                              iosStylePicker: true,
+                              hourLabel: "horas",
+                              minuteLabel: "minutos",
+                              okText: 'Aceptar',
+                              cancelText: 'Cancelar',
+                              onChangeDateTime: (DateTime dateTime) {
+                                _.hora.value = format.format(dateTime);
+                                timeController.text = _.hora.value;
+                              },
+                            ),
+                          );
+                        },
+                      ),
                       SizedBox(height: 30),
                       Center(
                         child: btnSecondary(

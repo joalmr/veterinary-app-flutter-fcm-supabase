@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/src/bookings/data/bookingRepository.dart';
 import 'package:vet_app/src/bookings/presentation/widgets/dataNextdate.dart';
 
 class BookingController extends GetxController {
-
+  final _repo = BookingRepository();
   RxString condicion = "".obs;
 
   RxBool statusBooking = false.obs;
@@ -14,6 +16,7 @@ class BookingController extends GetxController {
   RxList<dynamic> listSet = <dynamic>[].obs;
   RxList<DataNextdate> listNextdate = <DataNextdate>[].obs;
 
+  String bookingId;
   String petId;
   String specie;
   String breed;
@@ -24,13 +27,17 @@ class BookingController extends GetxController {
   @override
     void onInit() {
       super.onInit();
+      bookingId = Get.arguments['bookingId'];
       petId = Get.arguments['petId'];
       specie = Get.arguments['specie'];
       breed = Get.arguments['breed'];
       name = Get.arguments['name'];
       image = Get.arguments['image'];
       birthday = Get.arguments['birthday'];
+      
       print(name);
+      //
+      _repo.attend(prefUser.vetId, bookingId);
     }
   @override
   void onClose() {

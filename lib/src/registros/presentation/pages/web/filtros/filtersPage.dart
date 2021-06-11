@@ -1,7 +1,7 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/subheader.dart';
-import 'package:vet_app/components/forms/dateForm.dart';
 import 'package:vet_app/src/registros/presentation/widgets/checkFiltro.dart';
 
 class MiniStatAttention extends StatefulWidget {
@@ -27,11 +27,26 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
             child: ListView(
               padding: EdgeInsets.only(left: 20, right: 10),
               children: [
-                Text('Fecha desde'),
-                dateForm(),
+                // Text('Fecha desde'),
+                // dateForm(),
+                DateTimePicker(
+                  dateMask: 'dd-MM-yyyy',
+                  firstDate: DateTime(2020),
+                  lastDate: DateTime.now(),
+                  dateLabelText: 'Fecha desde',
+                  // onChanged: (val) => _.to.value = val,
+                ),
+                
                 SizedBox(height: 10),
                 Text('Fecha hasta'),
-                dateForm(),
+                // dateForm(),
+                DateTimePicker(
+                  dateMask: 'dd-MM-yyyy',
+                  firstDate: DateTime(2020),
+                  lastDate: DateTime.now(),
+                  dateLabelText: 'Fecha hasta',
+                  // onChanged: (val) => _.to.value = val,
+                ),
                 SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
