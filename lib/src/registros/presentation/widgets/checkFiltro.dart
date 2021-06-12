@@ -5,25 +5,30 @@ import 'package:vet_app/design/styles/styles.dart';
 class CheckFiltro extends StatefulWidget {
   final String title;
   final Function() onTapFn;
+  final bool checkBool;
 
   CheckFiltro({
-    this.title,
-    this.onTapFn,
+    @required this.title,
+    @required this.onTapFn,
+    @required this.checkBool,
   });
 
   @override
-  _CheckFiltroState createState() => _CheckFiltroState();
+  _CheckFiltroState createState() => _CheckFiltroState(title: this.title, checkBool: this.checkBool, onTapFn: this.onTapFn) ;
 }
 
 class _CheckFiltroState extends State<CheckFiltro> {
-  bool valueCheck = false;
+  String title;
+  Function() onTapFn;
+  bool checkBool;
+  _CheckFiltroState({@required this.title,@required this.checkBool,@required this.onTapFn});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         setState(() {
-          valueCheck = !valueCheck;
+          checkBool = !checkBool;
           widget.onTapFn();
         });
       },
@@ -35,7 +40,7 @@ class _CheckFiltroState extends State<CheckFiltro> {
           children: [
             Padding(
               padding: const EdgeInsets.all(2.0),
-              child: valueCheck
+              child: checkBool
                   ? Icon(
                       Icons.check_box_rounded,
                       color: colorMain,

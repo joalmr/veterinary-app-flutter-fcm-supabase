@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,6 +66,7 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
                       Text('Especies'),
                       CheckFiltro(
                         title: 'Perros',
+                        checkBool: _.specie.contains(2) ? true : false,
                         onTapFn: (){
                           bool hasSpecie = _.specie.contains(2);
                           if(hasSpecie)
@@ -78,6 +77,7 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
                       ),
                       CheckFiltro(
                         title: 'Gatos',
+                        checkBool: _.specie.contains(1) ? true : false,
                         onTapFn: (){
                           bool hasSpecie = _.specie.contains(1);
                           if(hasSpecie)
