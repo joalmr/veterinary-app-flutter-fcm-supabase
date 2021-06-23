@@ -1,10 +1,12 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vet_app/resources/utils/preferences/userPreferences.dart';
 
 final prefUser = new PreferenciasUsuario();
 
-final urlGlobal = 'https://danger.proypet.com/api';
+final bool appPruebas = dotenv.env['TEST'] == '1' ? true : false;
 
-final keyMap = 'AIzaSyAIU2POPaS1Lme5BXKIrHBm1Ohicmg9844';
+final keyMap = dotenv.env['KEY_MAP'];
+final urlGlobal = dotenv.env['URL_API'];
 
-final urlBase = 'danger.proypet.com';
-final pathBase = '/api/client';
+final urlBase = dotenv.env['URL_BASE'];
+final pathBase = dotenv.env['PATH_BASE'];

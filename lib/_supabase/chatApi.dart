@@ -1,22 +1,19 @@
 import 'package:supabase/supabase.dart';
 import 'model/canalModel.dart';
 import 'model/messageModel.dart';
-import 'supabase_global.dart';
+import '../config/variablesSupabase.dart';
 
-class ChatApi{
+class ChatApi {
   final supabaseClient = SupabaseClient(urlSupa, keySupa);
 
   Future<int> addEstablishment(String uuid, String name) async {
-    final response = await supabaseClient
-      .from('establishment')
-      .insert([
-        {
-          'vet_id': uuid,
-          'name': name,
-        }
-      ])
-      .execute();
-    
+    final response = await supabaseClient.from('establishment').insert([
+      {
+        'vet_id': uuid,
+        'name': name,
+      }
+    ]).execute();
+
     print('addEstablishment');
     print(response.status);
     print(response.data);
@@ -29,20 +26,19 @@ class ChatApi{
     int idVet;
 
     final hasVet = await supabaseClient
-      .from('establishment')
-      .select()
-      .eq('vet_id', uuid)
-      .single()
-      .execute();
+        .from('establishment')
+        .select()
+        .eq('vet_id', uuid)
+        .single()
+        .execute();
 
     print('getEstablishment');
     print(hasVet.status);
     print(hasVet.data);
 
-    if(hasVet.data==null){
+    if (hasVet.data == null) {
       idVet = await addEstablishment(uuid, name);
-    }
-    else{
+    } else {
       idVet = hasVet.data['id'];
     }
 
@@ -52,22 +48,18 @@ class ChatApi{
   Future<List<CanalModel>> getCanal(int vetInt) async {
     List<CanalModel> canales = [];
 
-    final hasCanal = await supabaseClient
-      .from('canal')
-      .select('''
+    final hasCanal = await supabaseClient.from('canal').select('''
       *,
       petlover (
         *
       )
-      ''')
-      .eq('establishment_id', vetInt)
-      .execute();
-    
+      ''').eq('establishment_id', vetInt).execute();
+
     print('getCanal');
     print(hasCanal.status);
     print(hasCanal.data);
 
-    if(hasCanal.data!=null){
+    if (hasCanal.data != null) {
       final canalList = hasCanal.data as List;
       canales = canalList.map((e) => CanalModel.fromJson(e)).toList();
     }
@@ -77,18 +69,18 @@ class ChatApi{
 
   Future<List<MessageModel>> getMessages(int canalId) async {
     List<MessageModel> mensajes = [];
-    
+
     final messages = await supabaseClient
-      .from('message')
-      .select()
-      .eq('canal_id', canalId)
-      .execute();
+        .from('message')
+        .select()
+        .eq('canal_id', canalId)
+        .execute();
 
     print('getMessages');
     print(messages.status);
     print(messages.data);
 
-    if(messages.data!=null){
+    if (messages.data != null) {
       final messageList = messages.data as List;
       mensajes = messageList.map((e) => MessageModel.fromJson(e)).toList();
     }
@@ -97,16 +89,13 @@ class ChatApi{
   }
 
   Future<void> addMessage(int canalId, String message) async {
-    final response = await supabaseClient
-      .from('message')
-      .insert([
-        {
-          'canal_id': canalId,
-          'message': message,
-          'type': false,
-        }
-      ])
-      .execute();
+    final response = await supabaseClient.from('message').insert([
+      {
+        'canal_id': canalId,
+        'message': message,
+        'type': false,
+      }
+    ]).execute();
 
     print('addMessage');
     print(response.status);

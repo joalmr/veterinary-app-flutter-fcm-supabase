@@ -2,7 +2,6 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/subheader.dart';
-import 'package:vet_app/src/registros/presentation/widgets/checkFiltro.dart';
 
 class MiniStatAttention extends StatefulWidget {
   @override
@@ -36,7 +35,7 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
                   dateLabelText: 'Fecha desde',
                   // onChanged: (val) => _.to.value = val,
                 ),
-                
+
                 SizedBox(height: 10),
                 Text('Fecha hasta'),
                 // dateForm(),
@@ -90,18 +89,19 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
                 ),
                 SizedBox(height: 15),
                 Text('Especies'),
-                CheckFiltro(title: 'Perros'),
-                CheckFiltro(title: 'Gatos'),
-                SizedBox(height: 10),
-                Text('Servicios'),
-                SizedBox(height: 5),
-                CheckFiltro(title: 'Consulta'),
-                CheckFiltro(title: 'Cirugía'),
-                CheckFiltro(title: 'Grooming'),
-                CheckFiltro(title: 'Desparasitación'),
-                CheckFiltro(title: 'Vacuna'),
-                CheckFiltro(title: 'Examen'),
-                CheckFiltro(title: 'Otros servicios'),
+                // TODO: agregar onTapFn y checkBool
+                // CheckFiltro(title: 'Perros'),
+                // CheckFiltro(title: 'Gatos'),
+                // SizedBox(height: 10),
+                // Text('Servicios'),
+                // SizedBox(height: 5),
+                // CheckFiltro(title: 'Consulta'),
+                // CheckFiltro(title: 'Cirugía'),
+                // CheckFiltro(title: 'Grooming'),
+                // CheckFiltro(title: 'Desparasitación'),
+                // CheckFiltro(title: 'Vacuna'),
+                // CheckFiltro(title: 'Examen'),
+                // CheckFiltro(title: 'Otros servicios'),
                 SizedBox(height: 5),
               ],
             ),
