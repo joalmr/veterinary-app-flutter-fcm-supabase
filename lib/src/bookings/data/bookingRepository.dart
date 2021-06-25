@@ -1,3 +1,8 @@
+import 'package:vet_app/src/bookings/data/model/booking/consultationBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/vaccinationBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/surgeryBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/dewormingBooking.dart';
+
 import 'bookingApi.dart';
 import '_bookingInterface.dart';
 import 'model/bookingModel.dart';
@@ -16,7 +21,7 @@ class BookingRepository extends BookingInterface {
   }
 
   @override
-  Future<void> attend(String establishment, String booking) {
+  Future<dynamic> attend(String establishment, String booking) {
     return _api.attend(establishment, booking);
   }
 
@@ -43,5 +48,29 @@ class BookingRepository extends BookingInterface {
   @override
   Future<BookingModel> getUnconfirmed(String idVet) {
     return _api.getUnconfirmed(idVet);
+  }
+
+  @override
+  Future<ConsultationBooking> saveConsultation(
+      String establishment, String attention, ConsultationBooking data) {
+    return _api.saveConsultation(establishment, attention, data);
+  }
+
+  @override
+  Future<DewormingBooking> saveDeworming(
+      String establishment, String attention, DewormingBooking data) {
+    return _api.saveDeworming(establishment, attention, data);
+  }
+
+  @override
+  Future<SurgeryBooking> saveSurgery(
+      String establishment, String attention, SurgeryBooking data) {
+    return _api.saveSurgery(establishment, attention, data);
+  }
+
+  @override
+  Future<VaccinationBooking> saveVaccination(
+      String establishment, String attention, VaccinationBooking data) {
+    return _api.saveVaccination(establishment, attention, data);
   }
 }

@@ -8,7 +8,8 @@ import 'design/theme/theme.dart';
 import 'routes/routes.dart';
 import 'src/__global/domain/globalController.dart';
 
-main() async {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   await dotenv.load(fileName: ".env.dev");
   await GetStorage.init();

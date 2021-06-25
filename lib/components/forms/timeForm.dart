@@ -1,24 +1,3 @@
-
-// timeForm({Function(String) onChanged}) {
-//   return TextFormField(
-//     keyboardType: TextInputType.number,
-//     decoration: InputDecoration(
-//       hintText: 'HH:mm',
-//       prefixIcon: Icon(
-//         Icons.watch_later_outlined,
-//         color: colorMain,
-//       ),
-//       labelText: '24 horas',
-//     ),
-//     inputFormatters: [
-//       TextInputMask(
-//         mask: '99:99',
-//       )
-//     ],
-//     onChanged: onChanged,
-//   );
-// }
-
 String validateTime(String texto) {
   if (texto.isEmpty) return 'Ingrese hora';
   if (texto.length < 5) return 'Complete hora';

@@ -1,58 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-// import 'package:intl/intl.dart';
-import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/resources/utils/datetimeFormat.dart';
-
-// Widget dateForm({Function(String) onChanged, TextEditingController controller, String initialValue}) {
-//   return TextFormField(
-//     controller: controller,
-//     keyboardType: TextInputType.number,
-//     initialValue: initialValue,
-//     decoration: InputDecoration(
-//       hintText: 'dd-mm-yyyy',
-//       prefixIcon: Icon(
-//         Icons.calendar_today,
-//         color: colorMain,
-//       ),
-//       labelText: 'dd-mm-yyyy',
-//     ),
-//     inputFormatters: [
-//       TextInputMask(
-//         mask: '99-99-9999',
-//       )
-//     ],
-//     onChanged: onChanged,
-//   );
-// }
-
-Widget calendarForm({TextEditingController controller, Function(String) onChanged, DateTime initialDate}){
-  return TextFormField(
-    controller: controller,
-    enableInteractiveSelection: false,
-    readOnly: true,
-    decoration: InputDecoration(
-      prefixIcon: Icon(
-        Icons.calendar_today,
-        color: colorMain,
-      ),
-    ),
-    onTap: () async {
-      DateTime picked = await showDatePicker(
-        context: Get.context,
-        initialDate: initialDate,
-        firstDate: new DateTime(2020),
-        lastDate: new DateTime.now()
-      );
-      if(picked != null){
-        initialDate = picked;
-        controller.text = formatDateBasic(picked);
-      }
-    },
-    onChanged: onChanged,
-  );
-}
 
 //! para utilizar en los controladores
 String validaDate(String texto) {
@@ -80,3 +26,33 @@ String validaDate(String texto) {
   }
   return null;
 }
+
+// Widget calendarForm(
+//     {TextEditingController controller,
+//     Function(String) onChanged,
+//     DateTime initialDate}) {
+//   return TextFormField(
+//     controller: controller,
+//     enableInteractiveSelection: false,
+//     readOnly: true,
+//     decoration: InputDecoration(
+//       prefixIcon: Icon(
+//         Icons.calendar_today,
+//         color: colorMain,
+//       ),
+//     ),
+//     onTap: () async {
+//       DateTime picked = await showDatePicker(
+//           context: Get.context,
+//           initialDate: initialDate,
+//           firstDate: new DateTime(2020),
+//           lastDate: new DateTime.now());
+//       if (picked != null) {
+//         initialDate = picked;
+//         controller.text = formatDateBasic(picked);
+//       }
+//     },
+//     onChanged: onChanged,
+//   );
+// }
+
