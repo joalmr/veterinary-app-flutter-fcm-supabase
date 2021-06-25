@@ -9,29 +9,30 @@ class GroomingView extends StatefulWidget {
 
 class _GroomingViewState extends State<GroomingView> {
   bool recomendaciones = false;
-  
+
   final groomingController = TextEditingController();
   var listaGrooming = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Grooming'),),
+      appBar: AppBar(
+        title: Text('Grooming'),
+      ),
       body: Column(
         children: [
           Expanded(
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 8),
-              children: [
-
-              ],
+              children: [],
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10,  bottom: 5),
+            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
             child: Column(
               children: [
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'Monto grooming',
                   ),
@@ -39,7 +40,10 @@ class _GroomingViewState extends State<GroomingView> {
                 SizedBox(height: 10),
                 SizedBox(
                   width: double.maxFinite,
-                  child: btnPrimary(text: 'Guardar', onPressed: (){})
+                  child: btnPrimary(
+                    text: 'Guardar',
+                    onPressed: () {},
+                  ),
                 ),
               ],
             ),

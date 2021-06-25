@@ -36,6 +36,12 @@ class VaccinationBooking {
       };
 }
 
+List<Vaccine> vaccinesModelFromJson(String str) =>
+    List<Vaccine>.from(json.decode(str).map((x) => Vaccine.fromJson(x)));
+
+String vaccinesModelToJson(List<Vaccine> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class Vaccine {
   Vaccine({
     this.id,

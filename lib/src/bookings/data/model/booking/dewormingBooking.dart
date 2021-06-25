@@ -36,6 +36,12 @@ class DewormingBooking {
       };
 }
 
+List<Dewormer> dewormingsModelFromJson(String str) =>
+    List<Dewormer>.from(json.decode(str).map((x) => Dewormer.fromJson(x)));
+
+String dewormingsModelToJson(List<Dewormer> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class Dewormer {
   Dewormer({
     this.id,

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
@@ -8,7 +7,11 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/bookings/data/bookingRepository.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultationBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/dewormingBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/othersBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgeryBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/testingBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/vaccinationBooking.dart';
 import 'package:vet_app/src/bookings/presentation/widgets/dataNextdate.dart';
 
 class BookingController extends GetxController {
@@ -85,9 +88,10 @@ class BookingController extends GetxController {
     Get.back();
   }
 
-  saveDesparasitacion() => _saveDesparasitacion();
-  _saveDesparasitacion() async {
-    print('jsonEncode(data)');
+  saveDesparasitacion(DewormingBooking data) => _saveDesparasitacion(data);
+  _saveDesparasitacion(DewormingBooking data) async {
+    print('desparasita');
+    await _repo.saveDeworming(prefUser.vetId, attentionId, data);
     ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Desparasitación',
@@ -99,9 +103,10 @@ class BookingController extends GetxController {
     Get.back();
   }
 
-  saveVacuna() => _saveVacuna();
-  _saveVacuna() {
-    print('jsonEncode(data)');
+  saveVacuna(VaccinationBooking data) => _saveVacuna(data);
+  _saveVacuna(VaccinationBooking data) async {
+    print('vacuna');
+    await _repo.saveVaccination(prefUser.vetId, attentionId, data);
     ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Vacuna',
@@ -115,7 +120,7 @@ class BookingController extends GetxController {
 
   saveGrooming() => _saveGrooming();
   _saveGrooming() {
-    print('jsonEncode(data)');
+    print('grooming');
     ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Grooming',
@@ -127,9 +132,10 @@ class BookingController extends GetxController {
     Get.back();
   }
 
-  saveExamenes() => _saveExamenes();
-  _saveExamenes() {
-    print('jsonEncode(data)');
+  saveExamenes(TestingBooking data) => _saveExamenes(data);
+  _saveExamenes(TestingBooking data) async {
+    print('examen');
+    await _repo.saveTesting(prefUser.vetId, attentionId, data);
     ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Exámenes',
@@ -141,9 +147,10 @@ class BookingController extends GetxController {
     Get.back();
   }
 
-  saveOtro() => _saveOtro();
-  _saveOtro() {
-    print('jsonEncode(data)');
+  saveOtro(OthersBooking data) => _saveOtro(data);
+  _saveOtro(OthersBooking data) async {
+    print('otros');
+    await _repo.saveOthers(prefUser.vetId, attentionId, data);
     ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Otros',

@@ -1,6 +1,8 @@
 import 'model/booking/consultationBooking.dart';
 import 'model/booking/dewormingBooking.dart';
+import 'model/booking/othersBooking.dart';
 import 'model/booking/surgeryBooking.dart';
+import 'model/booking/testingBooking.dart';
 import 'model/booking/vaccinationBooking.dart';
 import 'model/bookingModel.dart';
 
@@ -22,4 +24,8 @@ abstract class BookingInterface {
       String establishment, String attention, DewormingBooking data);
   Future<VaccinationBooking> saveVaccination(
       String establishment, String attention, VaccinationBooking data);
+  Future<TestingBooking> saveTesting(
+      String establishment, String attention, TestingBooking data);
+  Future<OthersBooking> saveOthers(
+      String establishment, String attention, OthersBooking data);
 }

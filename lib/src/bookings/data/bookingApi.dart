@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/headerHttp.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultationBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/testingBooking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/othersBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/vaccinationBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgeryBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/dewormingBooking.dart';
@@ -182,6 +184,50 @@ class BookingApi extends BookingInterface {
     print(response.statusCode);
     print(response.body);
     final dataResponse = vaccinationBookingFromJson(response.body);
+    return dataResponse;
+  }
+
+  @override
+  Future<TestingBooking> saveTesting(
+      String establishment, String attention, TestingBooking data) async {
+    final url = Uri.https(
+      urlBase,
+      '/api/client/establishment/$establishment/attention/$attention/testing',
+    );
+
+    print(testingBookingToJson(data));
+
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: testingBookingToJson(data),
+    );
+
+    print(response.statusCode);
+    print(response.body);
+    final dataResponse = testingBookingFromJson(response.body);
+    return dataResponse;
+  }
+
+  @override
+  Future<OthersBooking> saveOthers(
+      String establishment, String attention, OthersBooking data) async {
+    final url = Uri.https(
+      urlBase,
+      '/api/client/establishment/$establishment/attention/$attention/other',
+    );
+
+    print(othersBookingToJson(data));
+
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: othersBookingToJson(data),
+    );
+
+    print(response.statusCode);
+    print(response.body);
+    final dataResponse = othersBookingFromJson(response.body);
     return dataResponse;
   }
 }

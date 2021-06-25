@@ -27,82 +27,88 @@ class _CirugiaViewState extends State<CirugiaView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Cirugía'),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return GetBuilder<BookingController>(
+      builder: (_book) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Cirugía'),
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
                   children: [
-                    Text(
-                      'Recomendaciones',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Recomendaciones',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        IconButton(
+                            icon: Icon(!recomendaciones
+                                ? Icons.add_circle_rounded
+                                : Icons.remove_circle_rounded),
+                            onPressed: () {
+                              setState(() {
+                                recomendaciones = !recomendaciones;
+                              });
+                            }),
+                      ],
                     ),
-                    IconButton(
-                        icon: Icon(!recomendaciones
-                            ? Icons.add_circle_rounded
-                            : Icons.remove_circle_rounded),
-                        onPressed: () {
-                          setState(() {
-                            recomendaciones = !recomendaciones;
-                          });
-                        }),
+                    recomendaciones
+                        ? TextFormField(
+                            maxLines: 5,
+                            controller: recomendationController,
+                          )
+                        : SizedBox(height: 0),
                   ],
                 ),
-                recomendaciones
-                    ? TextFormField(
-                        maxLines: 5,
-                        controller: recomendationController,
-                      )
-                    : SizedBox(height: 0),
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
-            child: Column(
-              children: [
-                TextFormField(
-                  controller: amountController,
-                  decoration: InputDecoration(
-                    labelText: 'Monto cirugía',
-                  ),
+              ),
+              Container(
+                padding:
+                    EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: amountController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        labelText: 'Monto cirugía',
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      width: double.maxFinite,
+                      child: btnPrimary(
+                        text: 'Guardar',
+                        onPressed: () {
+                          print('llega cirugia');
+                          if (amountController.numberValue > 0) {
+                            final temp = SurgeryBooking(
+                              amount: amountController.numberValue,
+                              recommendations: recomendationController.text,
+                            );
+                            _book.saveCirugia(temp);
+                          } else {
+                            ScaffoldMessenger.of(Get.context)
+                                .showSnackBar(SnackBar(
+                              content: Text('Ingrese monto'),
+                              duration: Duration(seconds: 3),
+                              backgroundColor: Colors.black.withOpacity(0.85),
+                            ));
+                          }
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 10),
-                SizedBox(
-                  width: double.maxFinite,
-                  child: btnPrimary(
-                    text: 'Guardar',
-                    onPressed: () {
-                      final _book = Get.find<BookingController>();
-                      print('llega cirugia');
-                      if (amountController.numberValue > 0) {
-                        final temp = SurgeryBooking(
-                          amount: amountController.numberValue,
-                          recommendations: recomendationController.text,
-                        );
-                        _book.saveCirugia(temp);
-                      } else {
-                        ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
-                          content: Text('Ingrese monto'),
-                          duration: Duration(seconds: 3),
-                          backgroundColor: Colors.black.withOpacity(0.85),
-                        ));
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
