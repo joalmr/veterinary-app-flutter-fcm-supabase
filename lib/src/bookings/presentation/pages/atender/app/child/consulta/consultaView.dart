@@ -53,7 +53,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                     );
                     var response = await http.get(url);
                     var models = diagnosesModelFromJson(response.body);
-                    return filter.trim() == '' ? [] : models;
+                    return models; //filter.trim() == '' ? [] : models;
                   },
                   onSuggestionSelected: (Diagnosis data) {
                     var doble = false;

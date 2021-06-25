@@ -15,14 +15,16 @@ class OtroView extends StatefulWidget {
 
 class _OtroViewState extends State<OtroView> {
   bool recomendaciones = false;
-  
+
   final otroController = TextEditingController();
   var listaOtro = <OtherServModel>[];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Otros'),),
+      appBar: AppBar(
+        title: Text('Otros'),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -30,7 +32,6 @@ class _OtroViewState extends State<OtroView> {
               padding: EdgeInsets.symmetric(horizontal: 8),
               children: [
                 TypeAheadField<OtherServModel>(
-                  // hideOnLoading: true,
                   suggestionsCallback: (filter) async {
                     final url = Uri.https(
                       urlBase,
@@ -39,17 +40,14 @@ class _OtroViewState extends State<OtroView> {
                     );
                     var response = await http.get(url);
                     var models = otherServModelFromJson(response.body);
-                    return filter.trim()==''
-                      ? []
-                      : models;
+                    return models; //filter.trim() == '' ? [] : models;
                   },
                   onSuggestionSelected: (OtherServModel data) {
                     var doble = false;
                     listaOtro.forEach((element) {
-                      if(element.id==data.id)
-                        doble=true;
+                      if (element.id == data.id) doble = true;
                     });
-                    if(!doble){
+                    if (!doble) {
                       setState(() {
                         print(jsonEncode(data));
                         listaOtro.add(data);
@@ -59,9 +57,10 @@ class _OtroViewState extends State<OtroView> {
                   },
                   textFieldConfiguration: TextFieldConfiguration(
                     controller: otroController,
-                    decoration: InputDecoration(labelText: 'Busque otro servicio'),
+                    decoration:
+                        InputDecoration(labelText: 'Busque otro servicio'),
                   ),
-                  noItemsFoundBuilder: (context)=>Padding(
+                  noItemsFoundBuilder: (context) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text('No se encontró'),
                   ),
@@ -78,25 +77,30 @@ class _OtroViewState extends State<OtroView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (var item in listaOtro) 
+                    for (var item in listaOtro)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: (MediaQuery.of(context).size.width-16)*(7/8),
+                            width: (MediaQuery.of(context).size.width - 16) *
+                                (7 / 8),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(item.name, style: TextStyle(fontWeight: FontWeight.bold),),
+                                Text(
+                                  item.name,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ],
                             ),
                           ),
                           Container(
-                            width: (MediaQuery.of(context).size.width-16)*(1/8),
+                            width: (MediaQuery.of(context).size.width - 16) *
+                                (1 / 8),
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 setState(() {
                                   listaOtro.remove(item);
                                 });
@@ -112,28 +116,31 @@ class _OtroViewState extends State<OtroView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Recomendaciones', style: TextStyle(fontWeight: FontWeight.bold),),
-                    IconButton(icon: Icon(
-                      ! recomendaciones 
-                      ? Icons.add_circle_rounded
-                      : Icons.remove_circle_rounded), onPressed: (){
-                      setState(() {
-                        recomendaciones = !recomendaciones;
-                      });
-                    }),
+                    Text(
+                      'Recomendaciones',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        icon: Icon(!recomendaciones
+                            ? Icons.add_circle_rounded
+                            : Icons.remove_circle_rounded),
+                        onPressed: () {
+                          setState(() {
+                            recomendaciones = !recomendaciones;
+                          });
+                        }),
                   ],
                 ),
-                recomendaciones 
-                ? TextFormField(
-                  maxLines: 5,
-                )
-                : SizedBox(height: 0),
-                
+                recomendaciones
+                    ? TextFormField(
+                        maxLines: 5,
+                      )
+                    : SizedBox(height: 0),
               ],
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10,  bottom: 5),
+            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
             child: Column(
               children: [
                 TextFormField(
@@ -143,9 +150,8 @@ class _OtroViewState extends State<OtroView> {
                 ),
                 SizedBox(height: 10),
                 SizedBox(
-                  width: double.maxFinite,
-                  child: btnPrimary(text: 'Guardar', onPressed: (){})
-                ),
+                    width: double.maxFinite,
+                    child: btnPrimary(text: 'Guardar', onPressed: () {})),
               ],
             ),
           ),

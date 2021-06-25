@@ -16,14 +16,16 @@ class VacunaView extends StatefulWidget {
 class _VacunaViewState extends State<VacunaView> {
   bool anamnesis = false;
   bool recomendaciones = false;
-  
+
   final vacunaController = TextEditingController();
   var listaVacuna = <VaccinesModel>[];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Vacuna'),),
+      appBar: AppBar(
+        title: Text('Vacuna'),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -40,17 +42,15 @@ class _VacunaViewState extends State<VacunaView> {
                     );
                     var response = await http.get(url);
                     var models = vaccinesModelFromJson(response.body);
-                    return filter.trim()==''
-                      ? []
-                      : models;
+                    return models;
+                    // filter.trim()=='' ? [] : models;
                   },
                   onSuggestionSelected: (VaccinesModel data) {
                     var doble = false;
                     listaVacuna.forEach((element) {
-                      if(element.id==data.id)
-                        doble=true;
+                      if (element.id == data.id) doble = true;
                     });
-                    if(!doble){
+                    if (!doble) {
                       setState(() {
                         print(jsonEncode(data));
                         listaVacuna.add(data);
@@ -62,7 +62,7 @@ class _VacunaViewState extends State<VacunaView> {
                     controller: vacunaController,
                     decoration: InputDecoration(labelText: 'Busque vacuna'),
                   ),
-                  noItemsFoundBuilder: (context)=>Padding(
+                  noItemsFoundBuilder: (context) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text('No se encontró'),
                   ),
@@ -79,25 +79,30 @@ class _VacunaViewState extends State<VacunaView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (var item in listaVacuna) 
+                    for (var item in listaVacuna)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: (MediaQuery.of(context).size.width-16)*(7/8),
+                            width: (MediaQuery.of(context).size.width - 16) *
+                                (7 / 8),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(item.name, style: TextStyle(fontWeight: FontWeight.bold),),
+                                Text(
+                                  item.name,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ],
                             ),
                           ),
                           Container(
-                            width: (MediaQuery.of(context).size.width-16)*(1/8),
+                            width: (MediaQuery.of(context).size.width - 16) *
+                                (1 / 8),
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 setState(() {
                                   listaVacuna.remove(item);
                                 });
@@ -113,28 +118,31 @@ class _VacunaViewState extends State<VacunaView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Recomendaciones', style: TextStyle(fontWeight: FontWeight.bold),),
-                    IconButton(icon: Icon(
-                      ! recomendaciones 
-                      ? Icons.add_circle_rounded
-                      : Icons.remove_circle_rounded), onPressed: (){
-                      setState(() {
-                        recomendaciones = !recomendaciones;
-                      });
-                    }),
+                    Text(
+                      'Recomendaciones',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        icon: Icon(!recomendaciones
+                            ? Icons.add_circle_rounded
+                            : Icons.remove_circle_rounded),
+                        onPressed: () {
+                          setState(() {
+                            recomendaciones = !recomendaciones;
+                          });
+                        }),
                   ],
                 ),
-                recomendaciones 
-                ? TextFormField(
-                  maxLines: 5,
-                )
-                : SizedBox(height: 0),
-                
+                recomendaciones
+                    ? TextFormField(
+                        maxLines: 5,
+                      )
+                    : SizedBox(height: 0),
               ],
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10,  bottom: 5),
+            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
             child: Column(
               children: [
                 TextFormField(
@@ -144,9 +152,8 @@ class _VacunaViewState extends State<VacunaView> {
                 ),
                 SizedBox(height: 10),
                 SizedBox(
-                  width: double.maxFinite,
-                  child: btnPrimary(text: 'Guardar', onPressed: (){})
-                ),
+                    width: double.maxFinite,
+                    child: btnPrimary(text: 'Guardar', onPressed: () {})),
               ],
             ),
           ),

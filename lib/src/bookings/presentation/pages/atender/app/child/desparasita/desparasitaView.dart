@@ -16,14 +16,16 @@ class DesparasitaView extends StatefulWidget {
 class _DesparasitaViewState extends State<DesparasitaView> {
   bool anamnesis = false;
   bool recomendaciones = false;
-  
+
   final desparasitaController = TextEditingController();
   var listaDesparasita = <DewormingsModel>[];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Desparasitación'),),
+      appBar: AppBar(
+        title: Text('Desparasitación'),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -40,17 +42,15 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                     );
                     var response = await http.get(url);
                     var models = dewormingsModelFromJson(response.body);
-                    return filter.trim()==''
-                      ? []
-                      : models;
+                    return models;
+                    // filter.trim()=='' ? [] : models;
                   },
                   onSuggestionSelected: (DewormingsModel data) {
                     var doble = false;
                     listaDesparasita.forEach((element) {
-                      if(element.id==data.id)
-                        doble=true;
+                      if (element.id == data.id) doble = true;
                     });
-                    if(!doble){
+                    if (!doble) {
                       setState(() {
                         print(jsonEncode(data));
                         listaDesparasita.add(data);
@@ -60,9 +60,10 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                   },
                   textFieldConfiguration: TextFieldConfiguration(
                     controller: desparasitaController,
-                    decoration: InputDecoration(labelText: 'Busque desparasitación'),
+                    decoration:
+                        InputDecoration(labelText: 'Busque desparasitación'),
                   ),
-                  noItemsFoundBuilder: (context)=>Padding(
+                  noItemsFoundBuilder: (context) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text('No se encontró'),
                   ),
@@ -79,25 +80,30 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (var item in listaDesparasita) 
+                    for (var item in listaDesparasita)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: (MediaQuery.of(context).size.width-16)*(7/8),
+                            width: (MediaQuery.of(context).size.width - 16) *
+                                (7 / 8),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(item.name, style: TextStyle(fontWeight: FontWeight.bold),),
+                                Text(
+                                  item.name,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ],
                             ),
                           ),
                           Container(
-                            width: (MediaQuery.of(context).size.width-16)*(1/8),
+                            width: (MediaQuery.of(context).size.width - 16) *
+                                (1 / 8),
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 setState(() {
                                   listaDesparasita.remove(item);
                                 });
@@ -113,28 +119,31 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Recomendaciones', style: TextStyle(fontWeight: FontWeight.bold),),
-                    IconButton(icon: Icon(
-                      ! recomendaciones 
-                      ? Icons.add_circle_rounded
-                      : Icons.remove_circle_rounded), onPressed: (){
-                      setState(() {
-                        recomendaciones = !recomendaciones;
-                      });
-                    }),
+                    Text(
+                      'Recomendaciones',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        icon: Icon(!recomendaciones
+                            ? Icons.add_circle_rounded
+                            : Icons.remove_circle_rounded),
+                        onPressed: () {
+                          setState(() {
+                            recomendaciones = !recomendaciones;
+                          });
+                        }),
                   ],
                 ),
-                recomendaciones 
-                ? TextFormField(
-                  maxLines: 5,
-                )
-                : SizedBox(height: 0),
-                
+                recomendaciones
+                    ? TextFormField(
+                        maxLines: 5,
+                      )
+                    : SizedBox(height: 0),
               ],
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10,  bottom: 5),
+            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
             child: Column(
               children: [
                 TextFormField(
@@ -144,9 +153,8 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                 ),
                 SizedBox(height: 10),
                 SizedBox(
-                  width: double.maxFinite,
-                  child: btnPrimary(text: 'Guardar', onPressed: (){})
-                ),
+                    width: double.maxFinite,
+                    child: btnPrimary(text: 'Guardar', onPressed: () {})),
               ],
             ),
           ),
