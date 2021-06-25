@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
-import 'package:vet_app/src/__global/presentation/colorGenerate.dart';
+import 'package:vet_app/components/colorGenerate.dart';
 import 'package:vet_app/src/stats/data/model/statCommentModel.dart';
 import 'package:vet_app/src/stats/data/model/statsBaseModel.dart';
 import 'package:vet_app/src/stats/data/model/statsSalesDailyModel.dart';
@@ -34,17 +34,16 @@ class StatsController extends GetxController {
   RxBool cargaSalesMonth = false.obs;
 
   final hoy = DateTime.now();
-  
+
   DateTime initialIn;
   DateTime initialOut;
 
   @override
   void onInit() {
-    
     initialIn = DateTime(hoy.year, (hoy.month - 1), hoy.day);
     initialOut = hoy;
-    
-    fechaIn.text = formatDateBasic(initialIn);//formatDate
+
+    fechaIn.text = formatDateBasic(initialIn); //formatDate
     fechaOut.text = formatDateBasic(initialOut);
 
     cargaStats();
@@ -59,20 +58,19 @@ class StatsController extends GetxController {
     getStatsMonthly();
   }
 
-  ejecStats(){
+  ejecStats() {
     var date1 = toDateBasic(fechaIn.text);
     var date2 = toDateBasic(fechaOut.text);
     var diffDate = date2.difference(date1);
 
-    if(diffDate.inDays<1){
+    if (diffDate.inDays < 1) {
       Get.snackbar(
-        'Error', 
+        'Error',
         'La "fecha desde" debe ser anterior a la "fecha hasta"',
         backgroundColor: colorRed,
         colorText: colorWhite,
       );
-    }
-    else{
+    } else {
       cargaStats();
       Get.back(); //TODO: para app
     }
@@ -83,10 +81,9 @@ class StatsController extends GetxController {
         context: context,
         initialDate: initialIn,
         firstDate: new DateTime(2020),
-        lastDate: initialOut.add(Duration(days: -1))
-    );
-    if(picked != null){
-      initialIn=picked;
+        lastDate: initialOut.add(Duration(days: -1)));
+    if (picked != null) {
+      initialIn = picked;
       fechaIn.text = formatDateBasic(picked);
     }
   }
@@ -96,10 +93,9 @@ class StatsController extends GetxController {
         context: context,
         initialDate: initialOut,
         firstDate: new DateTime(2020),
-        lastDate: new DateTime.now()
-    );
-    if(picked != null){
-      initialOut=picked;
+        lastDate: new DateTime.now());
+    if (picked != null) {
+      initialOut = picked;
       fechaOut.text = formatDateBasic(picked);
     }
   }
@@ -107,7 +103,8 @@ class StatsController extends GetxController {
   getBase() => _getBase();
   _getBase() async {
     cargaBase.value = true;
-    var response = await _repo.getStatsBase(prefUser.vetId, fechaIn.text, fechaOut.text);
+    var response =
+        await _repo.getStatsBase(prefUser.vetId, fechaIn.text, fechaOut.text);
     statBase.update((val) {
       val.stars = response.stars;
       val.votes = response.votes;
@@ -122,21 +119,23 @@ class StatsController extends GetxController {
   _getComments() async {
     cargaComments.value = true;
     statComments.clear();
-    var values = await _repo.getStatsComment(prefUser.vetId, fechaIn.text, fechaOut.text);
+    var values = await _repo.getStatsComment(
+        prefUser.vetId, fechaIn.text, fechaOut.text);
     statComments.addAll(values);
     cargaComments.value = false;
   }
 
   var paiChartList = <PieChartSectionData>[].obs;
   var radiusPie = 25.obs;
-  getStatsService()=>_getStatsService();
+  getStatsService() => _getStatsService();
   _getStatsService() async {
     cargaServices.value = true;
-    
+
     services.clear();
     paiChartList.clear();
 
-    var values = await _repo.getStatsService(prefUser.vetId, fechaIn.text, fechaOut.text);
+    var values = await _repo.getStatsService(
+        prefUser.vetId, fechaIn.text, fechaOut.text);
     services.addAll(values.result.services);
 
     services.forEach((element) {
@@ -152,7 +151,7 @@ class StatsController extends GetxController {
     cargaServices.value = false;
   }
 
-  getStatsDaily()=>_getStatsDaily();
+  getStatsDaily() => _getStatsDaily();
   _getStatsDaily() async {
     cargaSalesDay.value = true;
     salesDay.clear();
@@ -161,7 +160,7 @@ class StatsController extends GetxController {
     cargaSalesDay.value = false;
   }
 
-  getStatsMonthly()=>_getStatsMonthly();
+  getStatsMonthly() => _getStatsMonthly();
   _getStatsMonthly() async {
     cargaSalesMonth.value = true;
     salesMonth.clear();

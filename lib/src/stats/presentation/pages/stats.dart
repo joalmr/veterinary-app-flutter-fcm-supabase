@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/dontExit.dart';
 import '../../domain/statsController.dart';
 
 import 'app/statsApp.dart';
@@ -11,7 +12,9 @@ class StatsMain extends StatelessWidget {
     return GetBuilder<StatsController>(
       init: StatsController(),
       builder: (_) {
-        return context.width < 900 ? StatsPageApp() : StatsPageWeb();
+        return DontExit(
+          child: context.width < 900 ? StatsPageApp() : StatsPageWeb(),
+        );
       },
     );
   }

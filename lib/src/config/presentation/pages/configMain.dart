@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/dontExit.dart';
 import '../../domain/configController.dart';
 
 import 'app/configView.dart';
@@ -13,7 +14,9 @@ class ConfigMain extends StatelessWidget {
     return GetBuilder<ConfigController>(
       init: ConfigController(),
       builder: (_) {
-        return context.width < 900 ? ConfigView() : ConfigPage();
+        return DontExit(
+          child: context.width < 900 ? ConfigView() : ConfigPage(),
+        );
       },
     );
   }

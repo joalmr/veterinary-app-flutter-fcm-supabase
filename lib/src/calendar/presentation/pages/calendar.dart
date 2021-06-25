@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/dontExit.dart';
 import '../../domain/calendarController.dart';
 
 import 'app/calendarView.dart';
@@ -11,7 +12,9 @@ class CalendarMain extends StatelessWidget {
     return GetBuilder<CalendarController>(
       init: CalendarController(),
       builder: (_) {
-        return context.width < 900 ? CalendarView() : CalendarPageWeb();
+        return DontExit(
+          child: context.width < 900 ? CalendarView() : CalendarPageWeb(),
+        );
       },
     );
   }

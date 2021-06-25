@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/dontExit.dart';
 import 'package:vet_app/src/establishments/domain/establishmentsController.dart';
 
 import 'app/establishmentsApp.dart';
@@ -11,9 +12,11 @@ class EstablishmentsMain extends StatelessWidget {
     return GetBuilder<EstablishmentsController>(
       init: EstablishmentsController(),
       builder: (_) {
-        return context.width < 900
-            ? EstablishmentsPageApp()
-            : StablishmentsPage();
+        return DontExit(
+          child: context.width < 900
+              ? EstablishmentsPageApp()
+              : StablishmentsPage(),
+        );
       },
     );
   }

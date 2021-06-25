@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/dontExit.dart';
 import '../../domain/offersController.dart';
 
 import 'app/offersApp.dart';
@@ -11,7 +12,9 @@ class OffersMain extends StatelessWidget {
     return GetBuilder<OffersController>(
       init: OffersController(),
       builder: (_) {
-        return context.width < 900 ? OffersPageApp() : OffersPageWeb();
+        return DontExit(
+          child: context.width < 900 ? OffersPageApp() : OffersPageWeb(),
+        );
       },
     );
   }

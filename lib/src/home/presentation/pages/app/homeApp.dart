@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/app/menu.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';
 import 'acttionBooking/porConfirmar.dart';
 import 'atender/atender.dart';
@@ -16,6 +17,14 @@ class HomePageApp extends StatelessWidget {
           drawer: MenuDrawer(),
           appBar: AppBar(
             title: FadeIn(child: Text(_.nameVet.value)),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Get.offNamed(NameRoutes.establishments);
+                },
+                icon: Icon(Icons.star_rounded),
+              ),
+            ],
           ),
           body: _.carga
               ? Center(
