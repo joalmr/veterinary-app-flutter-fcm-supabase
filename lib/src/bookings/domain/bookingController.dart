@@ -30,7 +30,12 @@ class BookingController extends GetxController {
   String image;
   String birthday;
 
-  Rx<ConsultationBooking> consulta;
+  final consulta = Rxn<ConsultationBooking>();
+  final desparasita = Rxn<DewormingBooking>();
+  final otros = Rxn<OthersBooking>();
+  final cirugia = Rxn<SurgeryBooking>();
+  final examenes = Rxn<TestingBooking>();
+  final vacunas = Rxn<VaccinationBooking>();
 
   String attentionId;
 
