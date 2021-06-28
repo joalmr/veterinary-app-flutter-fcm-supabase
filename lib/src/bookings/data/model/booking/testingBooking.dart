@@ -16,12 +16,12 @@ class TestingBooking {
     this.recommendations,
   });
 
-  int amount;
+  double amount;
   List<Test> tests;
   String recommendations;
 
   factory TestingBooking.fromJson(Map<String, dynamic> json) => TestingBooking(
-        amount: json["amount"],
+        amount: json["amount"].toDouble() ?? 0.0,
         tests: List<Test>.from(json["tests"].map((x) => Test.fromJson(x))),
         recommendations: json["recommendations"] ?? '',
       );

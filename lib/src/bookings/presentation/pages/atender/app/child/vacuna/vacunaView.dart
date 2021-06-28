@@ -164,6 +164,7 @@ class _VacunaViewState extends State<VacunaView> {
                   children: [
                     TextFormField(
                       keyboardType: TextInputType.number,
+                      controller: amountController,
                       decoration: InputDecoration(
                         labelText: 'Monto vacuna',
                       ),

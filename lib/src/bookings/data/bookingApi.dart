@@ -170,7 +170,7 @@ class BookingApi extends BookingInterface {
       String establishment, String attention, VaccinationBooking data) async {
     final url = Uri.https(
       urlBase,
-      '/api/client/establishment/$establishment/attention/$attention/surgery',
+      '/api/client/establishment/$establishment/attention/$attention/vaccination',
     );
 
     print(vaccinationBookingToJson(data));

@@ -21,7 +21,7 @@ class OthersBooking {
   String recommendations;
 
   factory OthersBooking.fromJson(Map<String, dynamic> json) => OthersBooking(
-        amount: json["amount"],
+        amount: json["amount"].toDouble() ?? 0.0,
         others: List<OtherServ>.from(
             json["others"].map((x) => OtherServ.fromJson(x))),
         recommendations: json["recommendations"] ?? '',

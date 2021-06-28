@@ -23,7 +23,7 @@ class DewormingBooking {
 
   factory DewormingBooking.fromJson(Map<String, dynamic> json) =>
       DewormingBooking(
-        amount: json["amount"],
+        amount: json["amount"].toDouble() ?? 0.0,
         dewormers: List<Dewormer>.from(
             json["dewormers"].map((x) => Dewormer.fromJson(x))),
         recommendations: json["recommendations"] ?? '',

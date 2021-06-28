@@ -163,6 +163,7 @@ class _OtroViewState extends State<OtroView> {
                   children: [
                     TextFormField(
                       keyboardType: TextInputType.number,
+                      controller: amountController,
                       decoration: InputDecoration(
                         labelText: 'Monto otros',
                       ),
