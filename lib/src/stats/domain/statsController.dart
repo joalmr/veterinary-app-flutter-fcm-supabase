@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,7 +42,7 @@ class StatsController extends GetxController {
 
   @override
   void onInit() {
-    initialIn = DateTime(hoy.year, (hoy.month - 1), hoy.day);
+    initialIn = DateTime(hoy.year, (hoy.month - 2), hoy.day);
     initialOut = hoy;
 
     fechaIn.text = formatDateBasic(initialIn); //formatDate
@@ -165,6 +167,7 @@ class StatsController extends GetxController {
     cargaSalesMonth.value = true;
     salesMonth.clear();
     var values = await _repo.getStatsMonthly(prefUser.vetId);
+    
     salesMonth.addAll(values.result.salesMonth);
     cargaSalesMonth.value = false;
   }

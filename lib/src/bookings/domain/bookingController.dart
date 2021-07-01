@@ -15,6 +15,7 @@ import 'package:vet_app/src/bookings/data/model/booking/surgeryBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/testingBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/vaccinationBooking.dart';
 import 'package:vet_app/src/bookings/presentation/widgets/dataNextdate.dart';
+import 'package:vet_app/src/home/domain/homeController.dart';
 
 class BookingController extends GetxController {
   final _repo = BookingRepository();
@@ -40,6 +41,8 @@ class BookingController extends GetxController {
   String attentionId;
   String attentioAmount;
 
+  final _homeController = Get.find<HomeController>();
+
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -52,7 +55,9 @@ class BookingController extends GetxController {
     birthday = Get.arguments['birthday'];
     //
     final general = await _repo.attend(prefUser.vetId, bookingId);
+    _homeController.getAllBookings();
     print(jsonEncode(general));
+    
     attentionId = general.attentionId;
     cirugia.value = general.surgery;
     consulta.value = general.consultation;
@@ -275,17 +280,31 @@ class BookingController extends GetxController {
       }
     });
 
-    _repo.finalizeAttention(prefUser.vetId, attentionId, tempFinalize);
+    if(listNextdate.length>0){
+      _repo.finalizeAttention(prefUser.vetId, attentionId, tempFinalize);
 
-    ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
-      content: Text(
-        'Atencion finalizada',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
+      ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
+        content: Text(
+          'Atencion finalizada',
+          style: TextStyle(color: colorMain),
+        ),
+        duration: Duration(seconds: 3),
+        backgroundColor: Colors.black.withOpacity(0.85),
+      ));
+      Get.back();
+    }
+
+    else{
+      ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
+        content: Text(
+          'Debe registrar una atención',
+          style: TextStyle(color: colorRed),
+        ),
+        duration: Duration(seconds: 3),
+        backgroundColor: Colors.black.withOpacity(0.85),
+      ));
+    }
+    
     
   }
 

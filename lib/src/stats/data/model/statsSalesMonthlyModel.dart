@@ -51,11 +51,11 @@ class SalesMonth {
     });
 
     String name;
-    int value;
+    double value;
 
     factory SalesMonth.fromJson(Map<String, dynamic> json) => SalesMonth(
         name: json["name"],
-        value: json["value"],
+        value: json["value"].toDouble() ?? 0.0,
     );
 
     Map<String, dynamic> toJson() => {

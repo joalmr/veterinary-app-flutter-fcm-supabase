@@ -4,11 +4,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 
-import '../establishmentsController.dart';
+// import '../establishmentsController.dart';
 
 class ShowVetController extends GetxController {
   final _repo = EstablishmentRepository();
-  final vetController = Get.find<EstablishmentsController>();
+  // final vetController = Get.find<EstablishmentsController>();
 
   var establishment = EstablishmentModal().obs;
 
@@ -27,7 +27,7 @@ class ShowVetController extends GetxController {
 
   @override
   void onClose() {
-    vetController.getAll();
+    // vetController.getAll();
     super.onClose();
   }
 

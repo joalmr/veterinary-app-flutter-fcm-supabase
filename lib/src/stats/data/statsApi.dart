@@ -98,6 +98,7 @@ class StatsApi extends StatsInterface {
     );
 
     http.Response response = await http.get(url, headers: headersToken());
+    
     final salesMonthly = statsSalesMonthlyModelFromJson(response.body);
 
     return salesMonthly;
