@@ -8,9 +8,11 @@ import 'model/booking/testingBooking.dart';
 import 'model/booking/vaccinationBooking.dart';
 import 'model/bookingModel.dart';
 
+import 'package:http/http.dart' as http;
+
 abstract class BookingInterface {
   Future<int> confirm(String idBooking);
-  Future<int> reschedule(String idBooking, String bookingAt);
+  Future<http.Response> reschedule(String idBooking, String bookingAt);
   Future<GeneralBooking> attend(String establishment, String booking);
   Future<BookingModel> getId(String idBooking);
   Future<BookingModel> getUnconfirmed(String idVet);

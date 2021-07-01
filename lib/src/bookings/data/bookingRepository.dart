@@ -11,6 +11,8 @@ import '_bookingInterface.dart';
 import 'model/booking/_generalBooking.dart';
 import 'model/bookingModel.dart';
 
+import 'package:http/http.dart' as http;
+
 class BookingRepository extends BookingInterface {
   final _api = BookingApi();
 
@@ -20,7 +22,7 @@ class BookingRepository extends BookingInterface {
   }
 
   @override
-  Future<int> reschedule(String idBooking, String bookingAt) {
+  Future<http.Response> reschedule(String idBooking, String bookingAt) {
     return _api.reschedule(idBooking, bookingAt);
   }
 

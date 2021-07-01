@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
@@ -42,12 +44,27 @@ class ReprogramarController extends GetxController {
       );
 
       var resp = await bookingRepository.reschedule(idBooking, datetime);
-
-      if (resp == 200) {
+      print(resp.statusCode);
+      print(resp.body);
+      if (resp.statusCode == 200) {
         reprogramando.value = false;
-        _homeController.getAllBookings();
+        
 
-        Navigator.popUntil(Get.context, ModalRoute.withName(NameRoutes.home));
+        final Map message = jsonDecode(resp.body);
+        
+        if(message.containsKey('message')){
+          ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
+            content: Text(
+              message['message'],
+            ),
+            duration: Duration(seconds: 7),
+            backgroundColor: Colors.black.withOpacity(0.85),
+          ));
+        }
+        else{
+          _homeController.getAllBookings();
+          Navigator.popUntil(Get.context, ModalRoute.withName(NameRoutes.home));
+        }
       }
     }
     reprogramando.value = false;

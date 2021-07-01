@@ -10,7 +10,7 @@ class HomeMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-      init: HomeController(),
+      // init: HomeController(),
       builder: (_) {
         return DontExit(
           child: context.width < 900 ? HomePageApp() : HomePageWeb(),

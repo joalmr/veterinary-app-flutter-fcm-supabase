@@ -23,7 +23,7 @@ class BookingApi extends BookingInterface {
   }
 
   @override
-  Future<int> reschedule(String idBooking, String bookingAt) async {
+  Future<http.Response> reschedule(String idBooking, String bookingAt) async {
     final url = Uri.https(urlBase, '/api/client/booking/$idBooking/reschedule');
     final dataBooking = {"booking_at": bookingAt};
 
@@ -32,7 +32,7 @@ class BookingApi extends BookingInterface {
       headers: headersToken(),
       body: jsonEncode(dataBooking),
     );
-    return response.statusCode;
+    return response;
   }
 
   @override

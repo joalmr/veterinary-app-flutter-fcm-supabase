@@ -7,6 +7,7 @@ import 'config/variablesGlobal.dart';
 import 'design/theme/theme.dart';
 import 'routes/routes.dart';
 import 'src/__global/domain/globalController.dart';
+import 'src/home/domain/homeController.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(GlobalController());
+    Get.put(HomeController());
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: appPruebas,
