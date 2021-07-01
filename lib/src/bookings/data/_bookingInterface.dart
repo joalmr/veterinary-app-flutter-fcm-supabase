@@ -1,3 +1,4 @@
+import 'model/booking/_generalBooking.dart';
 import 'model/booking/consultationBooking.dart';
 import 'model/booking/dewormingBooking.dart';
 import 'model/booking/othersBooking.dart';
@@ -9,7 +10,7 @@ import 'model/bookingModel.dart';
 abstract class BookingInterface {
   Future<int> confirm(String idBooking);
   Future<int> reschedule(String idBooking, String bookingAt);
-  Future<dynamic> attend(String establishment, String booking);
+  Future<GeneralBooking> attend(String establishment, String booking);
   Future<BookingModel> getId(String idBooking);
   Future<BookingModel> getUnconfirmed(String idVet);
   Future<BookingModel> getOverdue(String idVet);

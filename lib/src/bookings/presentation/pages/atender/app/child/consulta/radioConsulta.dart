@@ -22,9 +22,10 @@ class _RadioConsultaState extends State<RadioConsulta> {
           child: Row(
             children: [
               Radio(
-                value: 'Presuntivo',
+                value: 'Presumptive',
                 groupValue: selectValue,
-                onChanged: (val) {
+                onChanged: 
+                (val) {
                   setState(() {
                     selectValue = val;
                   });
@@ -38,7 +39,7 @@ class _RadioConsultaState extends State<RadioConsulta> {
           child: Row(
             children: [
               Radio(
-                value: 'Confirmado',
+                value: 'Confirmed',
                 groupValue: selectValue,
                 onChanged: (val) {
                   setState(() {

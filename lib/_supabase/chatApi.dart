@@ -48,16 +48,10 @@ class ChatApi {
   Future<List<CanalModel>> getCanal(int vetInt) async {
     List<CanalModel> canales = [];
 
-    final hasCanal = await supabaseClient.from('canal').select('''
-      *,
-      petlover (
-        *
-      )
-      ''').eq('establishment_id', vetInt).execute();
-
-    print('getCanal');
-    print(hasCanal.status);
-    print(hasCanal.data);
+    final hasCanal = await supabaseClient.from('canal')
+    .select('''*,
+      petlover (*)''')
+      .eq('establishment_id', vetInt).execute();
 
     if (hasCanal.data != null) {
       final canalList = hasCanal.data as List;
@@ -75,10 +69,6 @@ class ChatApi {
         .select()
         .eq('canal_id', canalId)
         .execute();
-
-    print('getMessages');
-    print(messages.status);
-    print(messages.data);
 
     if (messages.data != null) {
       final messageList = messages.data as List;

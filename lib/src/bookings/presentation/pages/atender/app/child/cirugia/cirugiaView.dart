@@ -14,21 +14,24 @@ class _CirugiaViewState extends State<CirugiaView> {
   // bool anamnesis = false;
   bool recomendaciones = false;
 
-  final anamnesisController = TextEditingController();
-  final recomendationController = TextEditingController();
-
-  final amountController = new MoneyMaskedTextController(
-    initialValue: 0,
-    decimalSeparator: '.',
-    thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
-  );
+  
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BookingController>(
       builder: (_book) {
+        final recomendationController = TextEditingController(
+          text: _book.cirugia.value.recommendations ?? ''
+        );
+
+        final amountController = new MoneyMaskedTextController(
+          initialValue: _book.cirugia.value.amount ?? 0,
+          decimalSeparator: '.',
+          thousandSeparator: ',',
+          precision: 2,
+          leftSymbol: '',
+        );
+        
         return Scaffold(
           appBar: AppBar(
             title: Text('Cirugía'),

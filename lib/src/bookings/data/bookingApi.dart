@@ -9,6 +9,7 @@ import 'package:vet_app/src/bookings/data/model/booking/vaccinationBooking.dart'
 import 'package:vet_app/src/bookings/data/model/booking/surgeryBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/dewormingBooking.dart';
 import '_bookingInterface.dart';
+import 'model/booking/_generalBooking.dart';
 import 'model/bookingModel.dart';
 
 class BookingApi extends BookingInterface {
@@ -34,13 +35,13 @@ class BookingApi extends BookingInterface {
   }
 
   @override
-  Future<dynamic> attend(String establishment, String booking) async {
+  Future<GeneralBooking> attend(String establishment, String booking) async {
     final url = Uri.https(urlBase,
         '/api/client/establishment/$establishment/booking/$booking/attend');
 
     http.Response response = await http.post(url, headers: headersToken());
-    // print(response.body);
-    return response.body;
+    final dataResponse = generalBookingFromJson(response.body);
+    return dataResponse;
   }
 
   @override

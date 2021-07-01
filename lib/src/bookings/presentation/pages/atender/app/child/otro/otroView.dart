@@ -17,24 +17,26 @@ class OtroView extends StatefulWidget {
 
 class _OtroViewState extends State<OtroView> {
   bool recomendaciones = false;
-
   final otroController = TextEditingController();
-  var listaOtro = <OtherServ>[];
-
-  final recomendationController = TextEditingController();
-
-  final amountController = new MoneyMaskedTextController(
-    initialValue: 0,
-    decimalSeparator: '.',
-    thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
-  );
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BookingController>(
       builder: (_book) {
+        var listaOtro = _book.otros.value.others ?? <OtherServ>[];
+
+        final recomendationController = TextEditingController(
+          text: _book.otros.value.recommendations ?? ''
+        );
+
+        final amountController = new MoneyMaskedTextController(
+          initialValue: _book.otros.value.amount ?? 0,
+          decimalSeparator: '.',
+          thousandSeparator: ',',
+          precision: 2,
+          leftSymbol: '',
+        );
+
         return Scaffold(
           appBar: AppBar(
             title: Text('Otros'),
@@ -151,6 +153,7 @@ class _OtroViewState extends State<OtroView> {
                     recomendaciones
                         ? TextFormField(
                             maxLines: 5,
+                            controller: recomendationController,
                           )
                         : SizedBox(height: 0),
                   ],

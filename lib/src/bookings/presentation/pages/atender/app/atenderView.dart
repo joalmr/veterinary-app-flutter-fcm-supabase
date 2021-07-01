@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
@@ -7,70 +9,15 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/bookings/domain/bookingController.dart';
-import 'package:vet_app/src/bookings/domain/json/jsonProximaCita.dart';
 import 'package:vet_app/src/bookings/presentation/pages/atender/app/components/condicionLista.dart';
 import 'child/cirugia/cirugiaView.dart';
+import 'components/proximaCita/proximaCita.dart';
 import 'components/tiposAtencionList.dart';
 import 'child/consulta/consultaView.dart';
 import 'child/desparasita/desparasitaView.dart';
 import 'child/grooming/groomingView.dart';
 import 'child/otro/otroView.dart';
 import 'child/vacuna/vacunaView.dart';
-
-Widget itemCitas({String text, String slug}) {
-  final _book = Get.find<BookingController>();
-  return GestureDetector(
-    onTap: () {
-      Get.dialog(
-        AlertDialog(
-          scrollable: true,
-          content: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              for (var item in jsonProximaCita[slug])
-                ListTile(
-                  title: Text(item),
-                  onTap: () {
-                    _book.add2List(
-                      {
-                        'type': slug,
-                        'name': item,
-                      },
-                    );
-                  },
-                ),
-            ],
-          ),
-        ),
-      );
-    },
-    child: Container(
-      margin: EdgeInsets.only(top: 2.5, bottom: 2.5, left: 5, right: 5),
-      padding: EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 20,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black.withOpacity(0.15),
-            offset: const Offset(1.1, 1.1),
-            blurRadius: 10.0,
-          ),
-        ],
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ),
-  );
-}
 
 class AtenderView extends StatelessWidget {
   @override
@@ -192,37 +139,37 @@ class AtenderView extends StatelessWidget {
                                 tipoAtencion(
                                   IconProypet.consulta,
                                   'Consulta',
-                                  '100',
+                                  _.consulta.value!=null ?'${_.consulta.value.amount}':'',
                                   () => Get.to(ConsultaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.cirugia,
                                   'Cirugía',
-                                  '',
+                                  _.cirugia.value!=null ?'${_.cirugia.value.amount}':'',
                                   () => Get.to(CirugiaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.desparasitacion,
                                   'Desparasitación',
-                                  '',
+                                  _.desparasita.value!=null ?'${_.desparasita.value.amount}':'',
                                   () => Get.to(DesparasitaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.grooming,
                                   'Grooming',
-                                  '50',
+                                  '',
                                   () => Get.to(GroomingView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.vacuna,
                                   'Vacuna',
-                                  '30',
+                                  _.vacunas.value!=null ?'${_.vacunas.value.amount}':'',
                                   () => Get.to(VacunaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.farmacia,
                                   'Otros',
-                                  '',
+                                  _.otros.value!=null ?'${_.otros.value.amount}':'',
                                   () => Get.to(OtroView()),
                                 ),
                               ],
@@ -348,33 +295,39 @@ class AtenderView extends StatelessWidget {
                   child: SizedBox(
                     width: double.maxFinite,
                     child: !_.statusBooking.value
-                        ? btnPrimary(
-                            text: 'Continuar',
-                            onPressed: () {
-                              _.statusBooking.value = true;
-                            })
-                        : Row(
-                            children: [
-                              btnSecondary(
-                                  text: 'Volver',
-                                  onPressed: () {
-                                    _.statusBooking.value = false;
-                                  }),
-                              SizedBox(width: 5),
-                              Expanded(
-                                child: btnPrimary(
-                                    text: 'Finalizar atención',
+                        ? Padding(
+                          padding: Platform.isIOS ? EdgeInsets.only(bottom: 15) : EdgeInsets.zero,
+                          child: btnPrimary(
+                              text: 'Continuar',
+                              onPressed: () {
+                                _.statusBooking.value = true;
+                              }),
+                        )
+                        : Padding(
+                          padding: Platform.isIOS ? EdgeInsets.only(bottom: 15) : EdgeInsets.zero,
+                          child: Row(
+                              children: [
+                                btnSecondary(
+                                    text: 'Volver',
                                     onPressed: () {
-                                      _.listNextdate.forEach((element) {
-                                        print(element.type);
-                                        print(element.name);
-                                        print(element.date);
-                                        print(element.observation);
-                                      });
+                                      _.statusBooking.value = false;
                                     }),
-                              ),
-                            ],
-                          ),
+                                SizedBox(width: 5),
+                                Expanded(
+                                  child: btnPrimary(
+                                      text: 'Finalizar atención',
+                                      onPressed: () {
+                                        _.listNextdate.forEach((element) {
+                                          print(element.type);
+                                          print(element.name);
+                                          print(element.date);
+                                          print(element.observation);
+                                        });
+                                      }),
+                                ),
+                              ],
+                            ),
+                        ),
                   ),
                 ),
               ],

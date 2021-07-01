@@ -17,24 +17,26 @@ class DesparasitaView extends StatefulWidget {
 class _DesparasitaViewState extends State<DesparasitaView> {
   bool anamnesis = false;
   bool recomendaciones = false;
-
   final desparasitaController = TextEditingController();
-  var listaDesparasita = <Dewormer>[];
-
-  final recomendationController = TextEditingController();
-
-  final amountController = new MoneyMaskedTextController(
-    initialValue: 0,
-    decimalSeparator: '.',
-    thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
-  );
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BookingController>(
       builder: (_book) {
+        var listaDesparasita = _book.desparasita.value.dewormers ?? <Dewormer>[];
+
+        final recomendationController = TextEditingController(
+          text: _book.desparasita.value.recommendations ?? ''
+        );
+
+        final amountController = new MoneyMaskedTextController(
+          initialValue: _book.desparasita.value.amount ?? 0,
+          decimalSeparator: '.',
+          thousandSeparator: ',',
+          precision: 2,
+          leftSymbol: '',
+        );
+        
         return Scaffold(
           appBar: AppBar(
             title: Text('Desparasitación'),

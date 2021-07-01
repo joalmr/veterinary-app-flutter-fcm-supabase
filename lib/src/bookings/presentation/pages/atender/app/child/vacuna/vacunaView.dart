@@ -19,22 +19,26 @@ class _VacunaViewState extends State<VacunaView> {
   bool recomendaciones = false;
 
   final vacunaController = TextEditingController();
-  var listaVacuna = <Vaccine>[];
-
-  final recomendationController = TextEditingController();
-
-  final amountController = new MoneyMaskedTextController(
-    initialValue: 0,
-    decimalSeparator: '.',
-    thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
-  );
+  
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BookingController>(
       builder: (_book) {
+        var listaVacuna = _book.vacunas.value.vaccines ?? <Vaccine>[];
+
+        final recomendationController = TextEditingController(
+          text: _book.vacunas.value.recommendations ?? ''
+        );
+
+        final amountController = new MoneyMaskedTextController(
+          initialValue: _book.vacunas.value.amount ?? 0,
+          decimalSeparator: '.',
+          thousandSeparator: ',',
+          precision: 2,
+          leftSymbol: '',
+        );
+        
         return Scaffold(
           appBar: AppBar(
             title: Text('Vacuna'),
@@ -152,6 +156,7 @@ class _VacunaViewState extends State<VacunaView> {
                     recomendaciones
                         ? TextFormField(
                             maxLines: 5,
+                            controller: recomendationController,
                           )
                         : SizedBox(height: 0),
                   ],

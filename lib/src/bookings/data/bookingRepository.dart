@@ -7,6 +7,7 @@ import 'package:vet_app/src/bookings/data/model/booking/dewormingBooking.dart';
 
 import 'bookingApi.dart';
 import '_bookingInterface.dart';
+import 'model/booking/_generalBooking.dart';
 import 'model/bookingModel.dart';
 
 class BookingRepository extends BookingInterface {
@@ -23,7 +24,7 @@ class BookingRepository extends BookingInterface {
   }
 
   @override
-  Future<dynamic> attend(String establishment, String booking) {
+  Future<GeneralBooking> attend(String establishment, String booking) {
     return _api.attend(establishment, booking);
   }
 

@@ -17,25 +17,29 @@ class ConsultaView extends StatefulWidget {
 class _ConsultaViewState extends State<ConsultaView> {
   bool anamnesisBool = false;
   bool recomendacionesBool = false;
-
   final diagnosticoController = TextEditingController();
-  final anamnesisController = TextEditingController();
-  final recomendationController = TextEditingController();
-
-  var listaDiagnostico = <Diagnosis>[];
-
-  final amountController = new MoneyMaskedTextController(
-    initialValue: 0,
-    decimalSeparator: '.',
-    thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
-  );
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<BookingController>(
       builder: (_book) {
+        final anamnesisController = TextEditingController(
+          text: _book.consulta.value.anamnesis ?? ''
+        );
+        final recomendationController = TextEditingController(
+          text: _book.consulta.value.recommendations ?? ''
+        );
+
+        var listaDiagnostico = _book.consulta.value.diagnoses ?? <Diagnosis>[];
+
+        final amountController = new MoneyMaskedTextController(
+          initialValue: _book.consulta.value.amount ?? 0,
+          decimalSeparator: '.',
+          thousandSeparator: ',',
+          precision: 2,
+          leftSymbol: '',
+        );
+
         return Scaffold(
           appBar: AppBar(
             title: Text('Consulta'),
@@ -46,6 +50,14 @@ class _ConsultaViewState extends State<ConsultaView> {
                 child: ListView(
                   padding: EdgeInsets.symmetric(horizontal: 8),
                   children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Tipo',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
                     TypeAheadField<Diagnosis>(
                       suggestionsCallback: (filter) async {
                         final url = Uri.https(
@@ -109,7 +121,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                                     ),
                                     RadioConsulta(
                                       selectValue:
-                                          item.condition ?? 'Presuntivo',
+                                           item.condition ?? 'Presumptive',
                                     ),
                                   ],
                                 ),
