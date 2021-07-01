@@ -15,13 +15,13 @@ class ConsultaView extends StatefulWidget {
 }
 
 class _ConsultaViewState extends State<ConsultaView> {
-  bool anamnesisBool = false;
-  bool recomendacionesBool = false;
+  RxBool anamnesisBool = false.obs;
+  RxBool recomendacionesBool = false.obs;
   final diagnosticoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BookingController>(
+    return GetX<BookingController>(
       builder: (_book) {
         final anamnesisController = TextEditingController(
           text: _book.consulta.value.anamnesis ?? ''
@@ -39,6 +39,7 @@ class _ConsultaViewState extends State<ConsultaView> {
           precision: 2,
           leftSymbol: '',
         );
+
 
         return Scaffold(
           appBar: AppBar(
@@ -151,16 +152,16 @@ class _ConsultaViewState extends State<ConsultaView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                          icon: Icon(!anamnesisBool
+                          icon: Icon(!anamnesisBool.value
                               ? Icons.add_circle_rounded
                               : Icons.remove_circle_rounded),
                           onPressed: () {
-                            setState(() => anamnesisBool = !anamnesisBool);
+                            anamnesisBool.value = !anamnesisBool.value;
                           },
                         ),
                       ],
                     ),
-                    anamnesisBool
+                    anamnesisBool.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: anamnesisController,
@@ -175,20 +176,16 @@ class _ConsultaViewState extends State<ConsultaView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                          icon: Icon(!recomendacionesBool
+                          icon: Icon(!recomendacionesBool.value
                               ? Icons.add_circle_rounded
                               : Icons.remove_circle_rounded),
                           onPressed: () {
-                            setState(
-                              () {
-                                recomendacionesBool = !recomendacionesBool;
-                              },
-                            );
+                            recomendacionesBool.value = !recomendacionesBool.value;
                           },
                         ),
                       ],
                     ),
-                    recomendacionesBool
+                    recomendacionesBool.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: recomendationController,

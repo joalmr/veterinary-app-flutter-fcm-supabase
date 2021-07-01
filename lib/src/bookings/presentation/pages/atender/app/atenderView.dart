@@ -315,15 +315,9 @@ class AtenderView extends StatelessWidget {
                                 SizedBox(width: 5),
                                 Expanded(
                                   child: btnPrimary(
-                                      text: 'Finalizar atención',
-                                      onPressed: () {
-                                        _.listNextdate.forEach((element) {
-                                          print(element.type);
-                                          print(element.name);
-                                          print(element.date);
-                                          print(element.observation);
-                                        });
-                                      }),
+                                    text: 'Finalizar atención',
+                                    onPressed: () => _.saveFinalize(),
+                                  ),
                                 ),
                               ],
                             ),

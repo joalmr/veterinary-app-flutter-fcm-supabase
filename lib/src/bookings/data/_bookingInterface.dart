@@ -1,3 +1,4 @@
+import 'model/_finalizeAttention.dart';
 import 'model/booking/_generalBooking.dart';
 import 'model/booking/consultationBooking.dart';
 import 'model/booking/dewormingBooking.dart';
@@ -16,7 +17,7 @@ abstract class BookingInterface {
   Future<BookingModel> getOverdue(String idVet);
   Future<BookingModel> getToday(String idVet);
   Future<BookingModel> getIncoming(String idVet);
-
+  //
   Future<ConsultationBooking> saveConsultation(
       String establishment, String attention, ConsultationBooking data);
   Future<SurgeryBooking> saveSurgery(
@@ -29,4 +30,6 @@ abstract class BookingInterface {
       String establishment, String attention, TestingBooking data);
   Future<OthersBooking> saveOthers(
       String establishment, String attention, OthersBooking data);
+  //
+  Future<void> finalizeAttention(String establishment, String attention, FinalizeAttention finaliza);
 }

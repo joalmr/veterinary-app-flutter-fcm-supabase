@@ -1,3 +1,4 @@
+import 'package:vet_app/src/bookings/data/model/_finalizeAttention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultationBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/testingBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/othersBooking.dart';
@@ -87,5 +88,10 @@ class BookingRepository extends BookingInterface {
   Future<TestingBooking> saveTesting(
       String establishment, String attention, TestingBooking data) {
     return _api.saveTesting(establishment, attention, data);
+  }
+
+  @override
+  Future<void> finalizeAttention(String establishment, String attention, FinalizeAttention finaliza) {
+    return _api.finalizeAttention(establishment, attention, finaliza);
   }
 }

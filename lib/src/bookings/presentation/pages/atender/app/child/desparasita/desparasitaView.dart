@@ -15,13 +15,12 @@ class DesparasitaView extends StatefulWidget {
 }
 
 class _DesparasitaViewState extends State<DesparasitaView> {
-  bool anamnesis = false;
-  bool recomendaciones = false;
+  RxBool recomendaciones = false.obs;
   final desparasitaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BookingController>(
+    return GetX<BookingController>(
       builder: (_book) {
         var listaDesparasita = _book.desparasita.value.dewormers ?? <Dewormer>[];
 
@@ -36,6 +35,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
           precision: 2,
           leftSymbol: '',
         );
+
         
         return Scaffold(
           appBar: AppBar(
@@ -48,7 +48,6 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                   padding: EdgeInsets.symmetric(horizontal: 8),
                   children: [
                     TypeAheadField<Dewormer>(
-                      // hideOnLoading: true,
                       suggestionsCallback: (filter) async {
                         final url = Uri.https(
                           urlBase,
@@ -142,17 +141,15 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                            icon: Icon(!recomendaciones
+                            icon: Icon(!recomendaciones.value
                                 ? Icons.add_circle_rounded
                                 : Icons.remove_circle_rounded),
                             onPressed: () {
-                              setState(() {
-                                recomendaciones = !recomendaciones;
-                              });
+                              recomendaciones.value = !recomendaciones.value;
                             }),
                       ],
                     ),
-                    recomendaciones
+                    recomendaciones.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: recomendationController,

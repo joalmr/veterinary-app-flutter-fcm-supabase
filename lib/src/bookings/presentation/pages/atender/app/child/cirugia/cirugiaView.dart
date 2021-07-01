@@ -11,14 +11,13 @@ class CirugiaView extends StatefulWidget {
 }
 
 class _CirugiaViewState extends State<CirugiaView> {
-  // bool anamnesis = false;
-  bool recomendaciones = false;
+  RxBool recomendaciones = false.obs;
 
   
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BookingController>(
+    return GetX<BookingController>(
       builder: (_book) {
         final recomendationController = TextEditingController(
           text: _book.cirugia.value.recommendations ?? ''
@@ -31,6 +30,7 @@ class _CirugiaViewState extends State<CirugiaView> {
           precision: 2,
           leftSymbol: '',
         );
+
         
         return Scaffold(
           appBar: AppBar(
@@ -50,17 +50,15 @@ class _CirugiaViewState extends State<CirugiaView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                            icon: Icon(!recomendaciones
+                            icon: Icon(!recomendaciones.value
                                 ? Icons.add_circle_rounded
                                 : Icons.remove_circle_rounded),
                             onPressed: () {
-                              setState(() {
-                                recomendaciones = !recomendaciones;
-                              });
+                              recomendaciones.value = !recomendaciones.value;
                             }),
                       ],
                     ),
-                    recomendaciones
+                    recomendaciones.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: recomendationController,

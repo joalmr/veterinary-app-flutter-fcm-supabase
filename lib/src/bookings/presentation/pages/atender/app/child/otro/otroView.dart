@@ -16,12 +16,12 @@ class OtroView extends StatefulWidget {
 }
 
 class _OtroViewState extends State<OtroView> {
-  bool recomendaciones = false;
+  RxBool recomendaciones = false.obs;
   final otroController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BookingController>(
+    return GetX<BookingController>(
       builder: (_book) {
         var listaOtro = _book.otros.value.others ?? <OtherServ>[];
 
@@ -36,6 +36,7 @@ class _OtroViewState extends State<OtroView> {
           precision: 2,
           leftSymbol: '',
         );
+
 
         return Scaffold(
           appBar: AppBar(
@@ -74,7 +75,7 @@ class _OtroViewState extends State<OtroView> {
                       textFieldConfiguration: TextFieldConfiguration(
                         controller: otroController,
                         decoration:
-                            InputDecoration(labelText: 'Busque otro servicio'),
+                          InputDecoration(labelText: 'Busque otro servicio'),
                       ),
                       noItemsFoundBuilder: (context) => Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -140,17 +141,15 @@ class _OtroViewState extends State<OtroView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                            icon: Icon(!recomendaciones
+                            icon: Icon(!recomendaciones.value
                                 ? Icons.add_circle_rounded
                                 : Icons.remove_circle_rounded),
                             onPressed: () {
-                              setState(() {
-                                recomendaciones = !recomendaciones;
-                              });
+                              recomendaciones.value = !recomendaciones.value;
                             }),
                       ],
                     ),
-                    recomendaciones
+                    recomendaciones.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: recomendationController,

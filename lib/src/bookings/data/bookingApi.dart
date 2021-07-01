@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/headerHttp.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/src/bookings/data/model/_finalizeAttention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultationBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/testingBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/othersBooking.dart';
@@ -230,5 +231,24 @@ class BookingApi extends BookingInterface {
     print(response.body);
     final dataResponse = othersBookingFromJson(response.body);
     return dataResponse;
+  }
+
+  @override
+  Future<void> finalizeAttention(String establishment, String attention, FinalizeAttention data) async {
+    final url = Uri.https(
+      urlBase,
+      '/api/client/establishment/$establishment/attention/$attention/finalize',
+    );
+
+    print(finalizeAttentionToJson(data));
+
+    http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: finalizeAttentionToJson(data),
+    );
+
+    print(response.statusCode);
+    print(response.body);
   }
 }

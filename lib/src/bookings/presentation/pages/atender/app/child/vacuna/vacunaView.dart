@@ -15,15 +15,14 @@ class VacunaView extends StatefulWidget {
 }
 
 class _VacunaViewState extends State<VacunaView> {
-  bool anamnesis = false;
-  bool recomendaciones = false;
+  RxBool recomendaciones = false.obs;
 
   final vacunaController = TextEditingController();
   
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BookingController>(
+    return GetX<BookingController>(
       builder: (_book) {
         var listaVacuna = _book.vacunas.value.vaccines ?? <Vaccine>[];
 
@@ -38,6 +37,7 @@ class _VacunaViewState extends State<VacunaView> {
           precision: 2,
           leftSymbol: '',
         );
+        
         
         return Scaffold(
           appBar: AppBar(
@@ -143,17 +143,15 @@ class _VacunaViewState extends State<VacunaView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                            icon: Icon(!recomendaciones
+                            icon: Icon(!recomendaciones.value
                                 ? Icons.add_circle_rounded
                                 : Icons.remove_circle_rounded),
                             onPressed: () {
-                              setState(() {
-                                recomendaciones = !recomendaciones;
-                              });
+                              recomendaciones.value = !recomendaciones.value;
                             }),
                       ],
                     ),
-                    recomendaciones
+                    recomendaciones.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: recomendationController,

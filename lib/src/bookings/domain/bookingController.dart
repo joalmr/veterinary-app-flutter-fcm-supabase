@@ -7,6 +7,7 @@ import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/bookings/data/bookingRepository.dart';
+import 'package:vet_app/src/bookings/data/model/_finalizeAttention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultationBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/dewormingBooking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/othersBooking.dart';
@@ -36,8 +37,8 @@ class BookingController extends GetxController {
   final otros = Rxn<OthersBooking>();
   final vacunas = Rxn<VaccinationBooking>();
 
-  // final general = Rxn<GeneralBooking>();
   String attentionId;
+  String attentioAmount;
 
   @override
   Future<void> onInit() async {
@@ -51,6 +52,7 @@ class BookingController extends GetxController {
     birthday = Get.arguments['birthday'];
     //
     final general = await _repo.attend(prefUser.vetId, bookingId);
+    print(jsonEncode(general));
     attentionId = general.attentionId;
     cirugia.value = general.surgery;
     consulta.value = general.consultation;
@@ -58,24 +60,6 @@ class BookingController extends GetxController {
     examenes.value = general.testing;
     otros.value = general.other;
     vacunas.value = general.vaccination;
-
-    print('consulta');
-    print(jsonEncode(consulta));
-    print('cirugia');
-    print(jsonEncode(cirugia));
-    print('desparasitacion');
-    print(jsonEncode(desparasita));
-    print('examenes');
-    print(jsonEncode(examenes));
-    print('otros');
-    print(jsonEncode(otros));
-    print('vacunas');
-    print(jsonEncode(vacunas));
-
-    consulta.value.diagnoses.forEach((element) {
-      print(element.name);
-      print(element.condition);
-    });
   }
 
   @override
@@ -210,6 +194,7 @@ class BookingController extends GetxController {
         observation: '-',
       );
       listNextdate.add(temp);
+      print(jsonEncode(listNextdate));
       Get.back();
       // print(jsonEncode(listNextdate));
     }
@@ -238,4 +223,71 @@ class BookingController extends GetxController {
       ),
     );
   }
+
+  saveFinalize()=>_saveFinalize();
+  _saveFinalize() async {
+    print(attentionId);
+    // final general = await _repo.attend(prefUser.vetId, bookingId);
+    // print(general.total);
+
+    FinalizeAttention tempFinalize = new FinalizeAttention();
+
+    tempFinalize.weight = 6.15;
+    tempFinalize.bodyCondition = 'overweight';
+
+    listNextdate.forEach((element) {
+      switch (element.type) {
+        case 'consultation':
+          {
+            tempFinalize.consultationNotificationNextdate = element.date;
+            tempFinalize.consultationNotificationReason = element.name;
+            tempFinalize.consultationNotificationObservation = element.observation;
+          }
+          break;
+        case 'deworming':
+          {
+            tempFinalize.dewormingNotificationNextdate = element.date;
+            tempFinalize.dewormingNotificationReason = element.name;
+            tempFinalize.dewormingNotificationObservation = element.observation;
+          }
+          break;
+        case 'grooming':
+          {
+            tempFinalize.groomingNotificationNextdate = element.date;
+            tempFinalize.groomingNotificationReason = element.name;
+            tempFinalize.groomingNotificationObservation = element.observation;
+          }
+          break;
+        case 'vaccination':
+          {
+            tempFinalize.vaccinationNotificationNextdate = element.date;
+            tempFinalize.vaccinationNotificationReason = element.name;
+            tempFinalize.vaccinationNotificationObservation = element.observation;
+          }
+          break;
+        default: 
+          {
+            tempFinalize.consultationNotificationNextdate = element.date;
+            tempFinalize.consultationNotificationReason = element.name;
+            tempFinalize.consultationNotificationObservation = element.observation;
+          }
+          break;
+      }
+    });
+
+    _repo.finalizeAttention(prefUser.vetId, attentionId, tempFinalize);
+
+    ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
+      content: Text(
+        'Atencion finalizada',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+    
+  }
+
+  
 }
