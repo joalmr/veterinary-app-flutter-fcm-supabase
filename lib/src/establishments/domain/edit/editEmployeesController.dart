@@ -4,9 +4,12 @@ import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/app/components/employees/setEmployee.dart';
 
+import '../establishmentsController.dart';
+
 class EditEmployeeController extends GetxController {
   final _repo = EstablishmentRepository();
   final showVetController = Get.find<ShowVetController>();
+  final vetController = Get.find<EstablishmentsController>();
 
   var employees = <Employee>[].obs;
 
@@ -90,6 +93,7 @@ class EditEmployeeController extends GetxController {
     if (reponse == "200") {
       getEmployees();
       showVetController.getByid();
+      vetController.getAll();
       Get.back();
       showVetController.initialTab.value = 4;
     }

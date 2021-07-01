@@ -4,9 +4,12 @@ import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 import 'package:vet_app/src/establishments/data/request/establishmentRequest.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 
+import '../establishmentsController.dart';
+
 class EditServicesController extends GetxController {
   final _repo = EstablishmentRepository();
   final showVetController = Get.find<ShowVetController>();
+  final vetController = Get.find<EstablishmentsController>();
 
   var servicesVet = <ServiceVetModel>[].obs;
   var servicesVetSet = <int>[].obs;
@@ -65,6 +68,7 @@ class EditServicesController extends GetxController {
     await _repo.updateBase(entityBase.value, showVetController.argumentoId);
 
     showVetController.getByid();
+    vetController.getAll();
     Get.back();
     showVetController.initialTab.value = 0;
   }

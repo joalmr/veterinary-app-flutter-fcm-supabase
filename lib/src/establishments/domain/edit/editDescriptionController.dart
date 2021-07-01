@@ -3,10 +3,13 @@ import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 
+import '../establishmentsController.dart';
+
 class EditDescriptionController extends GetxController {
   final _repo = EstablishmentRepository();
   final descripcionControl = TextEditingController();
   final showVetController = Get.find<ShowVetController>();
+  final vetController = Get.find<EstablishmentsController>();
 
   @override
   void onInit() {
@@ -26,6 +29,7 @@ class EditDescriptionController extends GetxController {
     descripcionControl.text = "";
 
     showVetController.getByid();
+    vetController.getAll();
     showVetController.initialTab.value = 1;
     Get.back();
   }

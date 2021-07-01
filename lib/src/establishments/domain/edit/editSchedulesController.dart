@@ -5,9 +5,12 @@ import 'package:vet_app/resources/utils/days/diaSemana.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 
+import '../establishmentsController.dart';
+
 class EditSchedulesController extends GetxController {
   final _repo = EstablishmentRepository();
   final showVetController = Get.find<ShowVetController>();
+  final vetController = Get.find<EstablishmentsController>();
 
   var checkDay = <bool>[].obs;
   var iniDay = <String>[].obs;
@@ -186,6 +189,7 @@ class EditSchedulesController extends GetxController {
           showVetController.establishment.value.id, schedule);
 
       showVetController.getByid();
+      vetController.getAll();
       Get.back();
       showVetController.initialTab.value = 3;
     }

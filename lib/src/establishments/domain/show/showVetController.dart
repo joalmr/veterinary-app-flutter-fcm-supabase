@@ -8,7 +8,7 @@ import '../establishmentsController.dart';
 
 class ShowVetController extends GetxController {
   final _repo = EstablishmentRepository();
-  final establishmentController = Get.find<EstablishmentsController>();
+  final vetController = Get.find<EstablishmentsController>();
 
   var establishment = EstablishmentModal().obs;
 
@@ -27,7 +27,7 @@ class ShowVetController extends GetxController {
 
   @override
   void onClose() {
-    establishmentController.getAll();
+    vetController.getAll();
     super.onClose();
   }
 

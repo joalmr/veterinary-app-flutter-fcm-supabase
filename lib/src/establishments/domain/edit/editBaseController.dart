@@ -5,6 +5,8 @@ import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/data/request/establishmentRequest.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 
+import '../establishmentsController.dart';
+
 class EditBaseController extends GetxController {
   final _repo = EstablishmentRepository();
 
@@ -13,6 +15,7 @@ class EditBaseController extends GetxController {
   final addressControl = TextEditingController();
 
   final showVetController = Get.find<ShowVetController>();
+  final vetController = Get.find<EstablishmentsController>();
 
   RxString _vetTypeId = ''.obs;
   String get vetTypeId => _vetTypeId.value;
@@ -62,6 +65,7 @@ class EditBaseController extends GetxController {
     await _repo.updateBase(entityBase.value, showVetController.argumentoId);
 
     showVetController.getByid();
+    vetController.getAll();
     Get.back();
   }
 

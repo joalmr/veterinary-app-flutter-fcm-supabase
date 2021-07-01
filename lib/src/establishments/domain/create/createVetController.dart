@@ -19,7 +19,8 @@ class CreateVetController extends GetxController {
 
   EstablecimientoEntity entity = new EstablecimientoEntity();
   PriceEstablecimientoEntity prices = new PriceEstablecimientoEntity();
-  final EstablishmentsController establishmentController = Get.find();
+
+  final vetController = Get.find<EstablishmentsController>();
 
   RxBool _checked = false.obs;
   bool get checked => _checked.value;
@@ -167,7 +168,7 @@ class CreateVetController extends GetxController {
         await _setSchedule(idVet);
         await _setPrices(idVet);
         await _setDescription(idVet);
-        establishmentController.getAll();
+        vetController.getAll();
       }
     });
   }

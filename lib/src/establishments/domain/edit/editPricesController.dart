@@ -4,9 +4,12 @@ import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
 import 'package:vet_app/src/establishments/domain/show/showVetController.dart';
 
+import '../establishmentsController.dart';
+
 class EditPricesController extends GetxController {
   final _repo = EstablishmentRepository();
   final showVetController = Get.find<ShowVetController>();
+  final vetController = Get.find<EstablishmentsController>();
 
   final consultaControl = new MoneyMaskedTextController(
     initialValue: 0,
@@ -70,6 +73,7 @@ class EditPricesController extends GetxController {
     await _repo.setPrices(showVetController.argumentoId, prices);
 
     showVetController.getByid();
+    vetController.getAll();
     showVetController.initialTab.value = 2;
     Get.back();
   }
