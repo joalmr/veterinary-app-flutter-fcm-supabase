@@ -9,7 +9,8 @@ class AttentionsController extends GetxController {
   final _repo = AttentionRepository();
   var listaReg = <AttentionReg>[].obs;
 
-  RxString from = formatDateBasic(DateTime.now().subtract(Duration(days: 45))).obs;
+  RxString from = formatDateBasic(DateTime.now().subtract(Duration(days: 60))).obs;
+  
   RxString to = formatDateBasic(DateTime.now()).obs;
 
   RxString userName = "".obs;
