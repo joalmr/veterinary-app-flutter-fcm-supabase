@@ -4,9 +4,9 @@ import 'package:url_launcher/link.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 class CheckRegister extends StatefulWidget {
-  final String title;
-  final String link;
-  final String tipo;
+  final String? title;
+  final String? link;
+  final String? tipo;
 
   CheckRegister({
     this.title,
@@ -56,7 +56,7 @@ class _CheckRegisterState extends State<CheckRegister> {
             alignment: WrapAlignment.start,
             children: [
               Text(
-                widget.title,
+                widget.title!,
               ),
               Link(
                 uri: Uri.parse(
@@ -68,7 +68,7 @@ class _CheckRegisterState extends State<CheckRegister> {
                   return GestureDetector(
                     onTap: link,
                     child: Text(
-                      widget.link,
+                      widget.link!,
                       style: TextStyle(color: colorBlue),
                     ),
                   );

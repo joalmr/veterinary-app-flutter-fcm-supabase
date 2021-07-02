@@ -98,7 +98,7 @@ class EditEmployeesView extends StatelessWidget {
                                           bold: true,
                                           color: colorRed,
                                           onPressed: () {
-                                            _.deleteEmployee(employee.id);
+                                            _.deleteEmployee(employee.id!);
                                             Get.back();
                                           },
                                         ),

@@ -15,8 +15,8 @@ class DataMapModel {
     this.status,
   });
 
-  Result result;
-  String status;
+  Result? result;
+  String? status;
 
   factory DataMapModel.fromJson(Map<String, dynamic> json) => DataMapModel(
         result: Result.fromJson(json["result"]),
@@ -24,7 +24,7 @@ class DataMapModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "result": result.toJson(),
+        "result": result!.toJson(),
         "status": status,
       };
 }
@@ -38,11 +38,11 @@ class Result {
     this.placeId,
   });
 
-  List<AddressComponent> addressComponents;
-  String formattedAddress;
-  Geometry geometry;
-  String name;
-  String placeId;
+  List<AddressComponent>? addressComponents;
+  String? formattedAddress;
+  Geometry? geometry;
+  String? name;
+  String? placeId;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
         addressComponents: List<AddressComponent>.from(
@@ -56,9 +56,9 @@ class Result {
 
   Map<String, dynamic> toJson() => {
         "address_components":
-            List<dynamic>.from(addressComponents.map((x) => x.toJson())),
+            List<dynamic>.from(addressComponents!.map((x) => x.toJson())),
         "formatted_address": formattedAddress,
-        "geometry": geometry.toJson(),
+        "geometry": geometry!.toJson(),
         "name": name,
         "place_id": placeId,
       };
@@ -71,9 +71,9 @@ class AddressComponent {
     this.types,
   });
 
-  String longName;
-  String shortName;
-  List<String> types;
+  String? longName;
+  String? shortName;
+  List<String>? types;
 
   factory AddressComponent.fromJson(Map<String, dynamic> json) =>
       AddressComponent(
@@ -85,7 +85,7 @@ class AddressComponent {
   Map<String, dynamic> toJson() => {
         "long_name": longName,
         "short_name": shortName,
-        "types": List<dynamic>.from(types.map((x) => x)),
+        "types": List<dynamic>.from(types!.map((x) => x)),
       };
 }
 
@@ -95,8 +95,8 @@ class Geometry {
     this.viewport,
   });
 
-  Location location;
-  Viewport viewport;
+  Location? location;
+  Viewport? viewport;
 
   factory Geometry.fromJson(Map<String, dynamic> json) => Geometry(
         location: Location.fromJson(json["location"]),
@@ -104,8 +104,8 @@ class Geometry {
       );
 
   Map<String, dynamic> toJson() => {
-        "location": location.toJson(),
-        "viewport": viewport.toJson(),
+        "location": location!.toJson(),
+        "viewport": viewport!.toJson(),
       };
 }
 
@@ -115,8 +115,8 @@ class Location {
     this.lng,
   });
 
-  double lat;
-  double lng;
+  double? lat;
+  double? lng;
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
         lat: json["lat"].toDouble(),
@@ -135,8 +135,8 @@ class Viewport {
     this.southwest,
   });
 
-  Location northeast;
-  Location southwest;
+  Location? northeast;
+  Location? southwest;
 
   factory Viewport.fromJson(Map<String, dynamic> json) => Viewport(
         northeast: Location.fromJson(json["northeast"]),
@@ -144,7 +144,7 @@ class Viewport {
       );
 
   Map<String, dynamic> toJson() => {
-        "northeast": northeast.toJson(),
-        "southwest": southwest.toJson(),
+        "northeast": northeast!.toJson(),
+        "southwest": southwest!.toJson(),
       };
 }

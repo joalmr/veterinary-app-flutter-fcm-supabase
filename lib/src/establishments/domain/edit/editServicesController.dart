@@ -18,11 +18,11 @@ class EditServicesController extends GetxController {
   @override
   void onInit() {
     _getService();
-    showVetController.establishment.value.services.forEach((element) {
-      servicesVetSet.add(element.id);
+    showVetController.establishment.value.services!.forEach((element) {
+      servicesVetSet.add(element.id!);
     });
     entityBase.update((val) {
-      val.name = showVetController.establishment.value.name;
+      val!.name = showVetController.establishment.value.name;
       val.phone = showVetController.establishment.value.phone;
       val.ruc = showVetController.establishment.value.ruc;
       val.website = showVetController.establishment.value.website;
@@ -62,7 +62,7 @@ class EditServicesController extends GetxController {
 
   _updateServices() async {
     entityBase.update((val) {
-      val.services = servicesVetSet;
+      val!.services = servicesVetSet;
     });
 
     await _repo.updateBase(entityBase.value, showVetController.argumentoId);

@@ -28,7 +28,7 @@ class ChartLineArea extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                colorMain[400],
+                colorMain[400]!,
                 colorMain,
               ],
             ),
@@ -43,7 +43,7 @@ class ChartClipper extends CustomClipper<Path> {
   final double maxValue;
   final List<double> data;
 
-  ChartClipper({this.maxValue, this.data});
+  ChartClipper({required this.maxValue,required this.data});
 
   @override
   Path getClip(Size size) {

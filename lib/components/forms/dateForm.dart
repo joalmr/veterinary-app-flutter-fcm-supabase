@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 
 //! para utilizar en los controladores
-String validaDate(String texto) {
+String? validaDate(String texto) {
   if (texto.isEmpty) return 'Ingrese fecha';
   if (texto.length < 10) return 'Complete fecha';
 

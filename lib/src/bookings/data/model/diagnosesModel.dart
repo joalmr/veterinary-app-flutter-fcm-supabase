@@ -12,9 +12,9 @@ String diagnosesModelToJson(List<DiagnosesModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class DiagnosesModel {
-  int id;
-  String name;
-  int diagnoses;
+  int? id;
+  String? name;
+  int? diagnoses;
 
   DiagnosesModel({
     this.id,

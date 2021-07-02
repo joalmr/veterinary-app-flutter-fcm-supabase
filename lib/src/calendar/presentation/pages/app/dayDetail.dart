@@ -10,7 +10,7 @@ class DayDetail extends StatelessWidget {
   final List<dynamic> listaEvent;
   final List<dynamic> listaNextDate;
 
-  const DayDetail({this.day, this.listaBooking, this.listaEvent, this.listaNextDate});
+  const DayDetail({required this.day,required this.listaBooking,required this.listaEvent,required this.listaNextDate});
 
   @override
   Widget build(BuildContext context) {

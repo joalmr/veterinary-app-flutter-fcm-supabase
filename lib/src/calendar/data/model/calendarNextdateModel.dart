@@ -14,8 +14,8 @@ class CalendarNextdateModel {
         this.result,
     });
 
-    String message;
-    List<CalendarNextdate> result;
+    String? message;
+    List<CalendarNextdate>? result;
 
     factory CalendarNextdateModel.fromJson(Map<String, dynamic> json) => CalendarNextdateModel(
         message: json["message"],
@@ -24,7 +24,7 @@ class CalendarNextdateModel {
 
     Map<String, dynamic> toJson() => {
         "message": message,
-        "result": List<dynamic>.from(result.map((x) => x.toJson())),
+        "result": List<dynamic>.from(result!.map((x) => x.toJson())),
     };
 }
 
@@ -40,14 +40,14 @@ class CalendarNextdate {
         this.type,
     });
 
-    String petPicture;
-    String petBreed;
-    String petName;
-    String userName;
+    String? petPicture;
+    String? petBreed;
+    String? petName;
+    String? userName;
     // String userPhone;
-    DateTime nextdate;
-    String reason;
-    String type;
+    DateTime? nextdate;
+    String? reason;
+    String? type;
 
     factory CalendarNextdate.fromJson(Map<String, dynamic> json) => CalendarNextdate(
         petPicture: json["pet_picture"],
@@ -66,7 +66,7 @@ class CalendarNextdate {
         "pet_name": petName,
         "user_name": userName,
         // "user_phone": userPhone,
-        "nextdate": "${nextdate.year.toString().padLeft(4, '0')}-${nextdate.month.toString().padLeft(2, '0')}-${nextdate.day.toString().padLeft(2, '0')}",
+        "nextdate": "${nextdate!.year.toString().padLeft(4, '0')}-${nextdate!.month.toString().padLeft(2, '0')}-${nextdate!.day.toString().padLeft(2, '0')}",
         "reason": reason,
         "type": type,
     };

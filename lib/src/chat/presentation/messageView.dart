@@ -25,27 +25,27 @@ class MessagesView extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final message = _.mensajes[index];
                     return Container(
-                      margin: message.type 
+                      margin: message.type! 
                         ? EdgeInsets.only(left: 15,top: 5, bottom: 5, right: 5)
                         : EdgeInsets.only(right: 15,top: 5, bottom: 5, left: 5),
                       padding: EdgeInsets.only(left: 15,top: 10, bottom: 2.5, right: 5),
                       decoration: BoxDecoration(
-                        borderRadius: !message.type 
+                        borderRadius: !message.type!
                           ? BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25), bottomLeft: Radius.circular(25))
                           : BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25), bottomRight: Radius.circular(25)),
-                        color: !message.type ? colorMain.withOpacity(0.5) : colorBlue.withOpacity(0.5)
+                        color: !message.type! ? colorMain.withOpacity(0.5) : colorBlue.withOpacity(0.5)
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(message.message,
+                          Text(message.message!,
                             style: TextStyle(fontSize: 14),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 2.5),
                             child: Align(
-                              alignment: message.type 
+                              alignment: message.type!
                                 ? Alignment.bottomLeft
                                 : Alignment.bottomRight,
                               child: Text(message.sendAt.toString().split(' ')[0],

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/components/buttons.dart';
@@ -22,14 +22,14 @@ class _DesparasitaViewState extends State<DesparasitaView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        var listaDesparasita = _book.desparasita.value.dewormers ?? <Dewormer>[];
+        var listaDesparasita = _book.desparasita.value!.dewormers ?? <Dewormer>[];
 
         final recomendationController = TextEditingController(
-          text: _book.desparasita.value.recommendations ?? ''
+          text: _book.desparasita.value!.recommendations ?? ''
         );
 
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.desparasita.value.amount ?? 0,
+          initialValue: _book.desparasita.value!.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
@@ -50,7 +50,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                     TypeAheadField<Dewormer>(
                       suggestionsCallback: (filter) async {
                         final url = Uri.https(
-                          urlBase,
+                          urlBase!,
                           '/autocomplete/dewormings',
                           {"q": filter},
                         );
@@ -84,7 +84,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                       itemBuilder: (context, address) => Padding(
                         padding: EdgeInsets.all(8),
                         child: Text(
-                          address.name,
+                          address.name!,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -108,7 +108,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      item.name,
+                                      item.name!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -186,7 +186,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                             );
                             _book.saveDesparasitacion(temp);
                           } else {
-                            ScaffoldMessenger.of(Get.context)
+                            ScaffoldMessenger.of(Get.context!)
                                 .showSnackBar(SnackBar(
                               content: Text(
                                   'Falta ingresar desparasitación o monto'),

@@ -9,8 +9,8 @@ ListBookingsModel listBookingsModelFromJson(String str) => ListBookingsModel.fro
 String listBookingsModelToJson(ListBookingsModel data) => json.encode(data.toJson());
 
 class ListBookingsModel {
-  String message;
-  Map<String, List<Result>> result;
+  String? message;
+  Map<String, List<Result>>? result;
 
   ListBookingsModel({
     this.message,
@@ -24,7 +24,7 @@ class ListBookingsModel {
 
   Map<String, dynamic> toJson() => {
     "message": message,
-    "result": Map.from(result).map((k, v) => MapEntry<String, dynamic>(k, List<dynamic>.from(v.map((x) => x.toJson())))),
+    "result": Map.from(result!).map((k, v) => MapEntry<String, dynamic>(k, List<dynamic>.from(v.map((x) => x.toJson())))),
   };
 }
 
@@ -42,16 +42,16 @@ class Result {
     this.userId,
   });
 
-  String bookingStatus;
-  String bookingId;
-  DateTime date;
-  String petPicture;
-  String petBreed;
-  String petId;
-  String petName;
-  String time;
-  String userName;
-  String userId;
+  String? bookingStatus;
+  String? bookingId;
+  DateTime? date;
+  String? petPicture;
+  String? petBreed;
+  String? petId;
+  String? petName;
+  String? time;
+  String? userName;
+  String? userId;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
     bookingStatus: json["booking_status"],
@@ -69,7 +69,7 @@ class Result {
   Map<String, dynamic> toJson() => {
     "booking_status": bookingStatus,
     "booking_id": bookingId,
-    "date": "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+    "date": "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
     "pet_picture": petPicture,
     "pet_breed": petBreed,
     "pet_id": petId,

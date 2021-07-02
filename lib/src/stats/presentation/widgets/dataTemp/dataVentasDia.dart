@@ -1,6 +1,6 @@
 class DataDay {
-  String name;
-  double value;
+  String? name;
+  double? value;
 
   DataDay({
     this.name,

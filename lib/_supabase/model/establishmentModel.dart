@@ -5,9 +5,9 @@ class EstablishmentModel {
         this.name,
     });
 
-    int id;
-    String establishmentId;
-    String name;
+    int? id;
+    String? establishmentId;
+    String? name;
 
     factory EstablishmentModel.fromJson(Map<String, dynamic> json) => EstablishmentModel(
         id: json["id"],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgeryBooking.dart';
@@ -20,11 +21,11 @@ class _CirugiaViewState extends State<CirugiaView> {
     return GetX<BookingController>(
       builder: (_book) {
         final recomendationController = TextEditingController(
-          text: _book.cirugia.value.recommendations ?? ''
+          text: _book.cirugia.value!.recommendations ?? ''
         );
 
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.cirugia.value.amount ?? 0,
+          initialValue: _book.cirugia.value!.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
@@ -93,7 +94,7 @@ class _CirugiaViewState extends State<CirugiaView> {
                             );
                             _book.saveCirugia(temp);
                           } else {
-                            ScaffoldMessenger.of(Get.context)
+                            ScaffoldMessenger.of(Get.context!)
                                 .showSnackBar(SnackBar(
                               content: Text('Ingrese monto'),
                               duration: Duration(seconds: 3),

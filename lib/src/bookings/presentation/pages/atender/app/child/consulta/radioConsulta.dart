@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RadioConsulta extends StatefulWidget {
   final String selectValue;
 
-  RadioConsulta({@required this.selectValue});
+  RadioConsulta({required this.selectValue});
 
   @override
   _RadioConsultaState createState() =>
@@ -12,7 +12,7 @@ class RadioConsulta extends StatefulWidget {
 
 class _RadioConsultaState extends State<RadioConsulta> {
   String selectValue;
-  _RadioConsultaState({@required this.selectValue});
+  _RadioConsultaState({required this.selectValue});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,9 @@ class _RadioConsultaState extends State<RadioConsulta> {
                 value: 'Presumptive',
                 groupValue: selectValue,
                 onChanged: 
-                (val) {
+                (String? val) {
                   setState(() {
-                    selectValue = val;
+                    selectValue = val!;
                   });
                 },
               ),
@@ -41,9 +41,9 @@ class _RadioConsultaState extends State<RadioConsulta> {
               Radio(
                 value: 'Confirmed',
                 groupValue: selectValue,
-                onChanged: (val) {
+                onChanged: (String? val) {
                   setState(() {
-                    selectValue = val;
+                    selectValue = val!;
                   });
                 },
               ),

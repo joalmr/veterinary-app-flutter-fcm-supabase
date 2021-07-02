@@ -23,7 +23,7 @@ class PercentServicios extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 10, top: 5),
-                      child: Text('${formatDate(_.initialIn)} a ${formatDate(_.initialOut)}'),
+                      child: Text('${formatDate(_.initialIn!)} a ${formatDate(_.initialOut!)}'),
                     ),
                     Container(
                       padding: EdgeInsets.all(5.0),
@@ -43,7 +43,7 @@ Widget _percent(List<Services> listService, List<PieChartSectionData> paiChart, 
   double valueTotal = 0;
   
   for (int i = 0; i < listService.length && i < listService.length; i++) {
-    valueTotal = valueTotal + listService[i].value;
+    valueTotal = valueTotal + listService[i].value!;
   }
   
   return SingleChildScrollView(
@@ -68,7 +68,7 @@ Widget _percent(List<Services> listService, List<PieChartSectionData> paiChart, 
                     SizedBox(height: 16),
                     Text(
                       valueTotal.toStringAsFixed(0),
-                      style: Theme.of(context).textTheme.headline4.copyWith(
+                      style: Theme.of(context).textTheme.headline4!.copyWith(
                         // color: Colors.white,
                         fontWeight: FontWeight.w600,
                         height: 0.5,
@@ -85,9 +85,9 @@ Widget _percent(List<Services> listService, List<PieChartSectionData> paiChart, 
           wValuePercent(
             color: Colors.grey[200], //colorGreen.withAlpha(50)
             colorData: paiChart[i].color,
-            count: listService[i].value.toStringAsFixed(0),
-            name: listService[i].name,
-            progress: double.parse((listService[i].value / valueTotal).toStringAsFixed(2)),
+            count: listService[i].value!.toStringAsFixed(0),
+            name: listService[i].name!,
+            progress: double.parse((listService[i].value! / valueTotal).toStringAsFixed(2)),
           )
       ],
     ),

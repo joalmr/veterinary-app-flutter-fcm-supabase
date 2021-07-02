@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 Widget btnPrimary({
-  @required String text,
-  @required Function onPressed,
+  required String text,
+  required void Function()? onPressed,
 }) {
   return GestureDetector(
     onTap: onPressed,
@@ -50,8 +50,8 @@ Widget btnPrimary({
 }
 
 Widget btnSecondary({
-  @required String text,
-  @required Function onPressed,
+  required String text,
+  required void Function()? onPressed,
   Color color = colorMain,
 }) {
   return TextButton(
@@ -70,8 +70,8 @@ Widget btnSecondary({
 }
 
 Widget btnAltern({
-  @required String text,
-  @required Function onPressed,
+  required String text,
+  required void Function()? onPressed,
   Color color = Colors.black54,
   bool bold = false,
 }) {

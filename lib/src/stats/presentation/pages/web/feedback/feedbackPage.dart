@@ -50,7 +50,7 @@ class FeedbackContent extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5.0),
                                 child: Image(
                                   fit: BoxFit.cover,
-                                  image: CachedNetworkImageProvider(comment.petPicture),
+                                  image: CachedNetworkImageProvider(comment.petPicture!),
                                 ),
                               ),
                             ),
@@ -62,11 +62,11 @@ class FeedbackContent extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  comment.date.toIso8601String(),
+                                  comment.date!.toIso8601String(),
                                   style: TextStyle(fontSize: 8),
                                 ),
                                 Text(
-                                  comment.comment,
+                                  comment.comment!,
                                   maxLines: 3,
                                 ),
                               ],

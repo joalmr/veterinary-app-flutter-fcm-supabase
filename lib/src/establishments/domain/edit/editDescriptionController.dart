@@ -13,7 +13,7 @@ class EditDescriptionController extends GetxController {
 
   @override
   void onInit() {
-    descripcionControl.text = showVetController.establishment.value.description;
+    descripcionControl.text = showVetController.establishment.value.description!;
     super.onInit();
   }
 

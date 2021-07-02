@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:line_icons/line_icons.dart';
+// import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
@@ -26,20 +27,20 @@ class CardBooking extends StatelessWidget {
   final String delivery;
 
   const CardBooking({
-    @required this.bookingId,
-    @required this.petImg,
-    @required this.petName,
-    @required this.petBreed,
-    @required this.status,
-    @required this.date,
-    @required this.time,
-    @required this.userName,
-    @required this.userPhone,
-    @required this.color,
-    @required this.bookingServices,
-    @required this.observation,
-    @required this.address,
-    @required this.delivery,
+    required this.bookingId,
+    required this.petImg,
+    required this.petName,
+    required this.petBreed,
+    required this.status,
+    required this.date,
+    required this.time,
+    required this.userName,
+    required this.userPhone,
+    required this.color,
+    required this.bookingServices,
+    required this.observation,
+    required this.address,
+    required this.delivery,
   });
 
   @override
@@ -138,7 +139,10 @@ class CardBooking extends StatelessWidget {
                               ),
                             ),
                             IconButton(
-                              icon: Icon(LineAwesomeIcons.whatsapp),
+                              icon: Icon(
+                                LineIcons.whatSApp
+                                // LineAwesomeIcons.whatsapp
+                              ),
                               color: colorMain,
                               iconSize: 40,
                               onPressed: (){
@@ -251,7 +255,7 @@ class CardBooking extends StatelessWidget {
                               padding: EdgeInsets.only(left: 7.5, right: 20),
                               child: btnSecondary(
                                 text: 'Reprogramar',
-                                color: Colors.grey[600],
+                                color: Colors.grey[600]!,
                                 onPressed: () {
                                   Navigator.push(
                                     context,

@@ -5,9 +5,9 @@ class PetloverModel {
         this.name,
     });
 
-    int id;
-    String userId;
-    String name;
+    int? id;
+    String? userId;
+    String? name;
 
     factory PetloverModel.fromJson(Map<String, dynamic> json) => PetloverModel(
         id: json["id"],

@@ -95,7 +95,7 @@ class FullCalendar extends StatelessWidget {
                       width: (context.width ) / 7,
                       height: 100,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey[200]),
+                        border: Border.all(color: Colors.grey[200]!),
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(top: 5),

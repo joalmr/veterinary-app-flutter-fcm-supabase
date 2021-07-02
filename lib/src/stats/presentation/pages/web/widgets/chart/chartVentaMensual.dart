@@ -24,8 +24,8 @@ class ChartVentaMensualState extends State<ChartVentaMensual> {
   Widget _chartBar(List<DataVentaMensual> listData) {
     double numeromayor = 0;
     for (int i = 0; i < listData.length && i < listData.length; i++) {
-      if (listData[i].value > numeromayor) {
-        numeromayor = listData[i].value;
+      if (listData[i].value! > numeromayor) {
+        numeromayor = listData[i].value!;
       }
     }
 
@@ -34,8 +34,8 @@ class ChartVentaMensualState extends State<ChartVentaMensual> {
       children: listData
           .map(
             (e) => _barVenta(
-              e.name,
-              e.value,
+              e.name!,
+              e.value!,
               numeromayor,
             ),
           )

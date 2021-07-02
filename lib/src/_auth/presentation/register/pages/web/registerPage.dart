@@ -6,7 +6,7 @@ import 'package:vet_app/src/_auth/presentation/login/widgets/portada.dart';
 import 'package:vet_app/src/_auth/presentation/register/widgets/cardRegister.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key key}) : super(key: key);
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

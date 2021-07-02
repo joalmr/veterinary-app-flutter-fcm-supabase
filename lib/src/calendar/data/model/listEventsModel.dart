@@ -14,8 +14,8 @@ class ListEventsModel {
         this.result,
     });
 
-    String message;
-    Map<String, List<Result>> result;
+    String? message;
+    Map<String, List<Result>>? result;
 
     factory ListEventsModel.fromJson(Map<String, dynamic> json) => ListEventsModel(
         message: json["message"],
@@ -24,7 +24,7 @@ class ListEventsModel {
 
     Map<String, dynamic> toJson() => {
         "message": message,
-        "result": Map.from(result).map((k, v) => MapEntry<String, dynamic>(k, List<dynamic>.from(v.map((x) => x.toJson())))),
+        "result": Map.from(result!).map((k, v) => MapEntry<String, dynamic>(k, List<dynamic>.from(v.map((x) => x.toJson())))),
     };
 }
 
@@ -38,12 +38,12 @@ class Result {
         this.title,
     });
 
-    String id;
-    DateTime date;
-    String description;
-    String members;
-    String time;
-    String title;
+    String? id;
+    DateTime? date;
+    String? description;
+    String? members;
+    String? time;
+    String? title;
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
         id: json["id"],
@@ -56,7 +56,7 @@ class Result {
 
     Map<String, dynamic> toJson() => {
         "id": id,
-        "date": "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+        "date": "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
         "description": description,
         "members": members,
         "time": time,

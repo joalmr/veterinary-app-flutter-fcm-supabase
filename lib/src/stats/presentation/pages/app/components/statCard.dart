@@ -8,11 +8,11 @@ class StatCard extends StatelessWidget {
   final String value;
 
   const StatCard({
-    Key key,
-    @required this.color,
-    @required this.icon,
-    @required this.text,
-    @required this.value,
+    Key? key,
+    required this.color,
+    required this.icon,
+    required this.text,
+    required this.value,
   }) : super(key: key);
 
   @override

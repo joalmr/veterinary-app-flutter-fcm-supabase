@@ -28,22 +28,22 @@ class FinalizeAttention {
         this.vaccinationNotificationObservation
     });
 
-    double weight;
-    double temperature;
-    double heartRhythm;
-    String bodyCondition;
-    String consultationNotificationNextdate;
-    String consultationNotificationReason;
-    String consultationNotificationObservation;
-    String dewormingNotificationNextdate;
-    String dewormingNotificationReason;
-    String dewormingNotificationObservation;
-    String groomingNotificationNextdate;
-    String groomingNotificationReason;
-    String groomingNotificationObservation;
-    String vaccinationNotificationNextdate;
-    String vaccinationNotificationReason;
-    String vaccinationNotificationObservation;
+    double? weight;
+    double? temperature;
+    double? heartRhythm;
+    String? bodyCondition;
+    String? consultationNotificationNextdate;
+    String? consultationNotificationReason;
+    String? consultationNotificationObservation;
+    String? dewormingNotificationNextdate;
+    String? dewormingNotificationReason;
+    String? dewormingNotificationObservation;
+    String? groomingNotificationNextdate;
+    String? groomingNotificationReason;
+    String? groomingNotificationObservation;
+    String? vaccinationNotificationNextdate;
+    String? vaccinationNotificationReason;
+    String? vaccinationNotificationObservation;
 
     factory FinalizeAttention.fromJson(Map<String, dynamic> json) => FinalizeAttention(
         weight: json["weight"].toDouble(),

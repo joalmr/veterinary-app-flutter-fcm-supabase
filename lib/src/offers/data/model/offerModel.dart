@@ -10,9 +10,9 @@ List<OfferModal> offerModalFromJson(String str) =>
     List<OfferModal>.from(json.decode(str).map((x) => OfferModal.fromJson(x)));
 
 class OfferModal {
-  String id;
-  String date;
-  Offer offer;
+  String? id;
+  String? date;
+  Offer? offer;
 
   OfferModal({
     this.id,
@@ -40,11 +40,11 @@ class Offer {
     this.serviceName,
   });
 
-  String serviceId;
-  String description;
-  String type;
-  String discount;
-  String serviceName;
+  String? serviceId;
+  String? description;
+  String? type;
+  String? discount;
+  String? serviceName;
 
   factory Offer.fromJson(Map<String, dynamic> json) => Offer(
         serviceId: json["service_id"],

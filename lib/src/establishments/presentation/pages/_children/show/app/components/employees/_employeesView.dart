@@ -7,7 +7,7 @@ import 'editEmployeesView.dart';
 
 class EmployeesView extends StatelessWidget {
   final List<Employee> employees;
-  const EmployeesView({Key key, @required this.employees}) : super(key: key);
+  const EmployeesView({Key? key, required this.employees}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class EmployeesView extends StatelessWidget {
               children: [
                 Text(
                   "Empleados",
-                  style: Get.textTheme.subtitle2.apply(fontWeightDelta: 2),
+                  style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                 ),
                 IconButton(
                   splashRadius: 20,
@@ -51,9 +51,9 @@ class EmployeesView extends StatelessWidget {
               children: employees
                   .map(
                     (e) => employee(
-                      type: e.typeId,
-                      name: e.name,
-                      code: e.code,
+                      type: e.typeId!,
+                      name: e.name!,
+                      code: e.code!,
                     ),
                   )
                   .toList(),

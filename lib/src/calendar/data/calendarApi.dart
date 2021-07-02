@@ -14,7 +14,7 @@ class CalendarApi extends CalendarInterface {
   @override
   Future<CalendarEventResponse> newCalendarEvent(String idEstablishment, CalendarEvent newEvent) async {
     final url = Uri.https(
-      urlBase, 
+      urlBase!, 
       '/api/client/establishment/$idEstablishment/calendar/event',
     );
 
@@ -28,10 +28,10 @@ class CalendarApi extends CalendarInterface {
   }
 //?
   @override
-  Future<ListBookingsModel> listCalendarBookings(String idEstablishment, String date) async {
+  Future<ListBookingsModel?> listCalendarBookings(String idEstablishment, String date) async {
     try{
       final url = Uri.https(
-        urlBase, 
+        urlBase!, 
         '/api/client/establishment/$idEstablishment/calendar/bookings',
         {"date": date},
       );
@@ -46,10 +46,10 @@ class CalendarApi extends CalendarInterface {
   }
 
   @override
-  Future<ListEventsModel> listCalendarEvents(String idEstablishment, String date) async {
+  Future<ListEventsModel?> listCalendarEvents(String idEstablishment, String date) async {
     try{
       final url = Uri.https(
-        urlBase, 
+        urlBase!, 
         '/api/client/establishment/$idEstablishment/calendar/events',
         {"date": date},
       );
@@ -63,10 +63,10 @@ class CalendarApi extends CalendarInterface {
   }
 
   @override
-  Future<ListNextdateModel> listCalendarNextdate(String idEstablishment, String date) async {
+  Future<ListNextdateModel?> listCalendarNextdate(String idEstablishment, String date) async {
     try{
       final url = Uri.https(
-        urlBase, 
+        urlBase!, 
         '/api/client/establishment/$idEstablishment/calendar/nextdate',
         {"date": date},
       );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:http/http.dart' as http;
@@ -24,16 +24,16 @@ class _ConsultaViewState extends State<ConsultaView> {
     return GetX<BookingController>(
       builder: (_book) {
         final anamnesisController = TextEditingController(
-          text: _book.consulta.value.anamnesis ?? ''
+          text: _book.consulta.value!.anamnesis ?? ''
         );
         final recomendationController = TextEditingController(
-          text: _book.consulta.value.recommendations ?? ''
+          text: _book.consulta.value!.recommendations ?? ''
         );
 
-        var listaDiagnostico = _book.consulta.value.diagnoses ?? <Diagnosis>[];
+        var listaDiagnostico = _book.consulta.value!.diagnoses ?? <Diagnosis>[];
 
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.consulta.value.amount ?? 0,
+          initialValue: _book.consulta.value!.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
@@ -62,7 +62,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                     TypeAheadField<Diagnosis>(
                       suggestionsCallback: (filter) async {
                         final url = Uri.https(
-                          urlBase,
+                          urlBase!,
                           '/autocomplete/diagnoses',
                           {"q": filter},
                         );
@@ -92,7 +92,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                       itemBuilder: (context, dato) => Padding(
                         padding: EdgeInsets.all(8),
                         child: Text(
-                          dato.name,
+                          dato.name!,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -116,7 +116,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      item.name,
+                                      item.name!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -223,7 +223,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                             );
                             _book.saveConsulta(temp);
                           } else {
-                            ScaffoldMessenger.of(Get.context)
+                            ScaffoldMessenger.of(Get.context!)
                                 .showSnackBar(SnackBar(
                               content:
                                   Text('Falta ingresar diagnóstico o monto'),

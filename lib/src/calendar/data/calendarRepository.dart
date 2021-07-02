@@ -15,17 +15,17 @@ class CalendarRepository extends CalendarInterface{
   }
 
   @override
-  Future<ListBookingsModel> listCalendarBookings(String idEstablishment, String date) {
+  Future<ListBookingsModel?> listCalendarBookings(String idEstablishment, String date) {
     return _api.listCalendarBookings(idEstablishment, date);
   }
 
   @override
-  Future<ListEventsModel> listCalendarEvents(String idEstablishment, String date) {
+  Future<ListEventsModel?> listCalendarEvents(String idEstablishment, String date) {
     return _api.listCalendarEvents(idEstablishment, date);
   }
 
   @override
-  Future<ListNextdateModel> listCalendarNextdate(String idEstablishment, String date) {
+  Future<ListNextdateModel?> listCalendarNextdate(String idEstablishment, String date) {
     return _api.listCalendarNextdate(idEstablishment, date);
   }
 

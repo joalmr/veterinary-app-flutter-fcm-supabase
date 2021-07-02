@@ -6,7 +6,7 @@ import 'editDescriptionView.dart';
 
 class DescriptionView extends StatelessWidget {
   final String description;
-  const DescriptionView({Key key, @required this.description})
+  const DescriptionView({Key? key, required this.description})
       : super(key: key);
 
   @override
@@ -30,7 +30,7 @@ class DescriptionView extends StatelessWidget {
                   children: [
                     Text(
                       "Descripción",
-                      style: Get.textTheme.subtitle2.apply(fontWeightDelta: 2),
+                      style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                     ),
                     IconButton(
                       splashRadius: 20,

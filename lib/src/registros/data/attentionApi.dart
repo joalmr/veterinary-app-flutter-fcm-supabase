@@ -12,7 +12,7 @@ class AttentionApi extends AttentionInterface {
     print(jsonEncode(filtros));
 
     final url = Uri.https(
-      urlBase, 
+      urlBase!, 
       '/api/client/establishment/$idVet/attentions',
     );
     

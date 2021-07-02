@@ -14,8 +14,8 @@ class InvitationModel {
         this.result,
     });
 
-    String message;
-    bool result;
+    String? message;
+    bool? result;
 
     factory InvitationModel.fromJson(Map<String, dynamic> json) => InvitationModel(
         message: json["message"],

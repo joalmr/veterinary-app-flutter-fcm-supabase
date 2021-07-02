@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 Widget wValuePercent({
-  Color color,
-  @required String count,
-  @required String name,
-  @required double progress,
+  Color? color,
+  required String count,
+  required String name,
+  required double progress,
   Color colorData = Colors.white,
 }) {
   String porcentaje = (progress * 100).toStringAsFixed(0);

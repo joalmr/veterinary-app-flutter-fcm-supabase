@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 Widget chartDesign({
-  @required String title,
-  @required Widget widget,
+  required String title,
+  required Widget widget,
   Color colorFondo = Colors.white,
 }) {
   return Container(
@@ -15,7 +15,7 @@ Widget chartDesign({
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children:
-       Get.context.width < 900
+       Get.context!.width < 900
         ? <Widget>[widget]
         : <Widget>[
         Padding(

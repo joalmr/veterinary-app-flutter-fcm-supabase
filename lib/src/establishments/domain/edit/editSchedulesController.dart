@@ -38,56 +38,56 @@ class EditSchedulesController extends GetxController {
 
   initDays() {
     checkDay
-        .add(showVetController.establishment.value.schedule.monday.daySwitch);
-    iniDay.add(showVetController.establishment.value.schedule.monday.timeStart);
-    endDay.add(showVetController.establishment.value.schedule.monday.timeEnd);
+        .add(showVetController.establishment.value.schedule!.monday!.daySwitch!);
+    iniDay.add(showVetController.establishment.value.schedule!.monday!.timeStart!);
+    endDay.add(showVetController.establishment.value.schedule!.monday!.timeEnd!);
     iniController[0].text = iniDay[0];
     endController[0].text = endDay[0];
 
     checkDay
-        .add(showVetController.establishment.value.schedule.tuesday.daySwitch);
+        .add(showVetController.establishment.value.schedule!.tuesday!.daySwitch!);
     iniDay
-        .add(showVetController.establishment.value.schedule.tuesday.timeStart);
-    endDay.add(showVetController.establishment.value.schedule.tuesday.timeEnd);
+        .add(showVetController.establishment.value.schedule!.tuesday!.timeStart!);
+    endDay.add(showVetController.establishment.value.schedule!.tuesday!.timeEnd!);
     iniController[1].text = iniDay[1];
     endController[1].text = endDay[1];
 
     checkDay.add(
-        showVetController.establishment.value.schedule.wednesday.daySwitch);
+        showVetController.establishment.value.schedule!.wednesday!.daySwitch!);
     iniDay.add(
-        showVetController.establishment.value.schedule.wednesday.timeStart);
+        showVetController.establishment.value.schedule!.wednesday!.timeStart!);
     endDay
-        .add(showVetController.establishment.value.schedule.wednesday.timeEnd);
+        .add(showVetController.establishment.value.schedule!.wednesday!.timeEnd!);
     iniController[2].text = iniDay[2];
     endController[2].text = endDay[2];
 
     checkDay
-        .add(showVetController.establishment.value.schedule.thursday.daySwitch);
+        .add(showVetController.establishment.value.schedule!.thursday!.daySwitch!);
     iniDay
-        .add(showVetController.establishment.value.schedule.thursday.timeStart);
-    endDay.add(showVetController.establishment.value.schedule.thursday.timeEnd);
+        .add(showVetController.establishment.value.schedule!.thursday!.timeStart!);
+    endDay.add(showVetController.establishment.value.schedule!.thursday!.timeEnd!);
     iniController[3].text = iniDay[3];
     endController[3].text = endDay[3];
 
     checkDay
-        .add(showVetController.establishment.value.schedule.friday.daySwitch);
-    iniDay.add(showVetController.establishment.value.schedule.friday.timeStart);
-    endDay.add(showVetController.establishment.value.schedule.friday.timeEnd);
+        .add(showVetController.establishment.value.schedule!.friday!.daySwitch!);
+    iniDay.add(showVetController.establishment.value.schedule!.friday!.timeStart!);
+    endDay.add(showVetController.establishment.value.schedule!.friday!.timeEnd!);
     iniController[4].text = iniDay[4];
     endController[4].text = endDay[4];
 
     checkDay
-        .add(showVetController.establishment.value.schedule.saturday.daySwitch);
+        .add(showVetController.establishment.value.schedule!.saturday!.daySwitch!);
     iniDay
-        .add(showVetController.establishment.value.schedule.saturday.timeStart);
-    endDay.add(showVetController.establishment.value.schedule.saturday.timeEnd);
+        .add(showVetController.establishment.value.schedule!.saturday!.timeStart!);
+    endDay.add(showVetController.establishment.value.schedule!.saturday!.timeEnd!);
     iniController[5].text = iniDay[5];
     endController[5].text = endDay[5];
 
     checkDay
-        .add(showVetController.establishment.value.schedule.sunday.daySwitch);
-    iniDay.add(showVetController.establishment.value.schedule.sunday.timeStart);
-    endDay.add(showVetController.establishment.value.schedule.sunday.timeEnd);
+        .add(showVetController.establishment.value.schedule!.sunday!.daySwitch!);
+    iniDay.add(showVetController.establishment.value.schedule!.sunday!.timeStart!);
+    endDay.add(showVetController.establishment.value.schedule!.sunday!.timeEnd!);
     iniController[6].text = iniDay[6];
     endController[6].text = endDay[6];
   }
@@ -186,7 +186,7 @@ class EditSchedulesController extends GetxController {
     };
     if (!validate) {
       await _repo.setSchedule(
-          showVetController.establishment.value.id, schedule);
+          showVetController.establishment.value.id!, schedule);
 
       showVetController.getByid();
       vetController.getAll();

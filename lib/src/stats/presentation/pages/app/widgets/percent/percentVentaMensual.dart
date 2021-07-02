@@ -48,7 +48,7 @@ Widget _percent(List<SalesMonth> listData) {
   double valueTotal = 0;
 
   for (int i = 0; i < listData.length && i < listData.length; i++) {
-    valueTotal = valueTotal + listData[i].value;
+    valueTotal = valueTotal + listData[i].value!;
   }
 
   return Column(
@@ -57,9 +57,9 @@ Widget _percent(List<SalesMonth> listData) {
           (e) => wValuePercent(
             color: Colors.grey[200],//colorGreen.withAlpha(50),
             colorData: colorGreen,
-            count: 'S/ ${e.value.toStringAsFixed(2)}',
-            name: e.name,
-            progress: double.parse((e.value / valueTotal).toStringAsFixed(2)),
+            count: 'S/ ${e.value!.toStringAsFixed(2)}',
+            name: e.name!,
+            progress: double.parse((e.value! / valueTotal).toStringAsFixed(2)),
           ),
         )
         .toList(),

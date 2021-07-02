@@ -6,7 +6,7 @@ import 'package:vet_app/src/offers/data/model/offerModel.dart';
 import 'package:vet_app/src/offers/domain/offersController.dart';
 
 class PromocionesView extends StatelessWidget {
-  const PromocionesView({Key key}) : super(key: key);
+  const PromocionesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ class PromocionesView extends StatelessWidget {
                 : ListView.builder(
                     itemCount: _.promociones.length,
                     itemBuilder: (BuildContext context, int index) {
-                      String forDelete = _.promociones[index].id;
-                      Offer promocion = _.promociones[index].offer;
+                      String forDelete = _.promociones[index].id!;
+                      Offer promocion = _.promociones[index].offer!;
                       return Card(
                         margin:
                             EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -45,7 +45,7 @@ class PromocionesView extends StatelessWidget {
                                     style: TextStyle(color: colorMain),
                                   ),
                                   Text(
-                                    promocion.serviceName,
+                                    promocion.serviceName!,
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
@@ -103,7 +103,7 @@ class PromocionesView extends StatelessWidget {
                                     style: TextStyle(color: colorMain),
                                   ),
                                   Text(
-                                    promocion.description,
+                                    promocion.description!,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w300,
                                     ),

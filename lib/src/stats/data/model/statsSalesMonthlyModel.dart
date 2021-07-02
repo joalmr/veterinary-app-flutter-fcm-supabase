@@ -14,8 +14,8 @@ class StatsSalesMonthlyModel {
         this.result,
     });
 
-    String message;
-    Result result;
+    String? message;
+    Result? result;
 
     factory StatsSalesMonthlyModel.fromJson(Map<String, dynamic> json) => StatsSalesMonthlyModel(
         message: json["message"],
@@ -24,7 +24,7 @@ class StatsSalesMonthlyModel {
 
     Map<String, dynamic> toJson() => {
         "message": message,
-        "result": result.toJson(),
+        "result": result!.toJson(),
     };
 }
 
@@ -33,14 +33,14 @@ class Result {
         this.salesMonth,
     });
 
-    List<SalesMonth> salesMonth;
+    List<SalesMonth>? salesMonth;
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
         salesMonth: List<SalesMonth>.from(json["sales_month"].map((x) => SalesMonth.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "sales_month": List<dynamic>.from(salesMonth.map((x) => x.toJson())),
+        "sales_month": List<dynamic>.from(salesMonth!.map((x) => x.toJson())),
     };
 }
 
@@ -50,8 +50,8 @@ class SalesMonth {
         this.value,
     });
 
-    String name;
-    double value;
+    String? name;
+    double? value;
 
     factory SalesMonth.fromJson(Map<String, dynamic> json) => SalesMonth(
         name: json["name"],

@@ -14,7 +14,7 @@ import 'request/priceEstRequest.dart';
 class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<List<EstablecimientoModelLite>> getAll() async {
-    final url = Uri.https(urlBase, '$pathBase/establishments');
+    final url = Uri.https(urlBase!, '$pathBase/establishments');
     http.Response response = await http.get(url, headers: headersToken());
     final establecimientos = establecimientoModelLiteFromJson(response.body);
     return establecimientos;
@@ -22,7 +22,7 @@ class EstablishmentApi extends EstablishmentInterface {
 
   @override
   Future<EstablishmentModal> getById(String idVet) async {
-    final url = Uri.https(urlBase, '$pathBase/establishment/$idVet');
+    final url = Uri.https(urlBase!, '$pathBase/establishment/$idVet');
     http.Response response = await http.get(url, headers: headersToken());
 
     EstablishmentModal establecimiento =
@@ -33,7 +33,7 @@ class EstablishmentApi extends EstablishmentInterface {
 
   @override
   Future<EstablecimientoModelLite> getFirst() async {
-    final url = Uri.https(urlBase, '$pathBase/establishments');
+    final url = Uri.https(urlBase!, '$pathBase/establishments');
     http.Response response = await http.get(url, headers: headersToken());
     // List<EstablecimientoModelLite> establecimientos = List<EstablecimientoModelLite>.from(json.decode(response.body).map((x) => EstablecimientoModelLite.fromJson(x)));
     final establecimientos = establecimientoModelLiteFromJson(response.body);
@@ -43,7 +43,7 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<List<ServiceVetModel>> getServiceVet() async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/services',
     );
 
@@ -59,7 +59,7 @@ class EstablishmentApi extends EstablishmentInterface {
 
   @override
   Future<List<dynamic>> setNew(EstablecimientoEntity establecimiento) async {
-    final url = Uri.https(urlBase, '$pathBase/establishment');
+    final url = Uri.https(urlBase!, '$pathBase/establishment');
     var lista = [];
 
     http.Response response = await http.post(
@@ -80,7 +80,7 @@ class EstablishmentApi extends EstablishmentInterface {
   Future<String> setEmployee(
       String establecimientoId, int typeId, String name, String code) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/employee',
     );
 
@@ -106,7 +106,7 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<List<Employee>> getAllEmployees(String establecimientoId) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/employees',
     );
 
@@ -125,7 +125,7 @@ class EstablishmentApi extends EstablishmentInterface {
   Future<Employee> getEmployee(
       String establecimientoId, String employeeId) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/employee/$employeeId',
     );
 
@@ -144,7 +144,7 @@ class EstablishmentApi extends EstablishmentInterface {
   Future<String> updateEmployee(String establecimientoId, String employeeId,
       int typeId, String name, String code) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/employee',
     );
 
@@ -172,7 +172,7 @@ class EstablishmentApi extends EstablishmentInterface {
   Future<String> deleteEmployee(
       String establecimientoId, String employeeId) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/employee/$employeeId',
     );
 
@@ -193,7 +193,7 @@ class EstablishmentApi extends EstablishmentInterface {
     PriceEstablecimientoEntity precios,
   ) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/prices',
     );
 
@@ -215,7 +215,7 @@ class EstablishmentApi extends EstablishmentInterface {
     horarios,
   ) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/schedule',
     );
 
@@ -237,7 +237,7 @@ class EstablishmentApi extends EstablishmentInterface {
     String description,
   ) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/description',
     );
 
@@ -259,7 +259,7 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<void> deleteEstablishmetn(String establecimientoId) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId',
     );
 
@@ -275,7 +275,7 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<String> setLogo(String establecimientoId, File image) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/logo',
     );
 
@@ -300,7 +300,7 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<String> setSlides(String establecimientoId, File image) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/slide',
     );
 
@@ -326,7 +326,7 @@ class EstablishmentApi extends EstablishmentInterface {
   Future<String> updateBase(
       EstablecimientoEntity datosBase, String establecimientoId) async {
     final url =
-        Uri.https(urlBase, '$pathBase/establishment/$establecimientoId');
+        Uri.https(urlBase!, '$pathBase/establishment/$establecimientoId');
 
     http.Response response = await http.post(
       url,
@@ -362,7 +362,7 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<String> deleteSlide(String establecimientoId, String slide) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/slide',
     );
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
 
 class FilterStat extends StatelessWidget {
-  const FilterStat({Key key}) : super(key: key);
+  const FilterStat({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

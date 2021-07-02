@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget subHeader({@required title}) {
+Widget subHeader({required title}) {
   return Container(
     margin: EdgeInsets.only(
       left: 30.0,

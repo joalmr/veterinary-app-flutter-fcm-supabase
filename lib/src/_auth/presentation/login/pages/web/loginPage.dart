@@ -5,7 +5,7 @@ import 'package:vet_app/src/_auth/presentation/login/widgets/cardLogin.dart';
 import 'package:vet_app/src/_auth/presentation/login/widgets/portada.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

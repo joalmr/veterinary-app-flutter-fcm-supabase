@@ -8,12 +8,12 @@ String establecimientoModelLiteToJson(List<EstablecimientoModelLite> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class EstablecimientoModelLite {
-  String id;
-  String logo;
-  String name;
-  String ruc;
-  int type;
-  int status;
+  String? id;
+  String? logo;
+  String? name;
+  String? ruc;
+  int? type;
+  int? status;
 
   EstablecimientoModelLite({
     this.id,

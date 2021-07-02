@@ -11,18 +11,18 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/bookings/domain/reprogramar/reprogramarController.dart';
 
 class ContentReprograma extends StatelessWidget {
-  final String bookingId;
-  final String petImg;
-  final String petName;
-  final String petBreed;
-  final String date;
-  final String time;
-  final String userName;
-  final String userPhone;
-  final Color color;
-  final String status;
+  final String? bookingId;
+  final String? petImg;
+  final String? petName;
+  final String? petBreed;
+  final String? date;
+  final String? time;
+  final String? userName;
+  final String? userPhone;
+  final Color? color;
+  final String? status;
   const ContentReprograma({
-    Key key,
+    Key? key,
     this.bookingId,
     this.petImg,
     this.petName,
@@ -63,7 +63,7 @@ class ContentReprograma extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5.0),
                         child: CachedNetworkImage(
-                          imageUrl: petImg,
+                          imageUrl: petImg!,
                           fit: BoxFit.cover,
                           placeholder: (context, url) => Container(
                             color: Colors.grey.shade200,
@@ -80,14 +80,14 @@ class ContentReprograma extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        petName,
+                        petName!,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
                       Text(
-                        petBreed,
+                        petBreed!,
                         style: TextStyle(
                           fontSize: 14,
                         ),
@@ -112,7 +112,7 @@ class ContentReprograma extends StatelessWidget {
                           ),
                           SizedBox(width: 5),
                           Text(
-                            status,
+                            status!,
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 12.0,
@@ -121,13 +121,13 @@ class ContentReprograma extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        userName,
+                        userName!,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        userPhone,
+                        userPhone!,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -184,7 +184,7 @@ class ContentReprograma extends StatelessWidget {
               Center(
                 child: btnSecondary(
                   text: 'Reprogramar',
-                  color: Colors.grey[600],
+                  color: Colors.grey[600]!,
                   onPressed: () => _.reprogramar(bookingId),
                 ),
               ),

@@ -35,12 +35,12 @@ class Step3 extends StatelessWidget {
                       items: personalTipo.map((ItemService value) {
                         return new DropdownMenuItem<String>(
                           value: value.id,
-                          child: new Text(value.name),
+                          child: new Text(value.name!),
                         );
                       }).toList(),
-                      onChanged: (val) {
+                      onChanged: (String? val) {
                         print(val);
-                        _.personalType = val;
+                        _.personalType = val!;
                       },
                     ),
                   ),

@@ -14,8 +14,8 @@ class StatsUserModel {
         this.result,
     });
 
-    String message;
-    Result result;
+    String? message;
+    Result? result;
 
     factory StatsUserModel.fromJson(Map<String, dynamic> json) => StatsUserModel(
         message: json["message"],
@@ -24,7 +24,7 @@ class StatsUserModel {
 
     Map<String, dynamic> toJson() => {
         "message": message,
-        "result": result.toJson(),
+        "result": result!.toJson(),
     };
 }
 
@@ -33,14 +33,14 @@ class Result {
         this.usersMonth,
     });
 
-    List<UsersMonth> usersMonth;
+    List<UsersMonth>? usersMonth;
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
         usersMonth: List<UsersMonth>.from(json["users_month"].map((x) => UsersMonth.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "users_month": List<dynamic>.from(usersMonth.map((x) => x.toJson())),
+        "users_month": List<dynamic>.from(usersMonth!.map((x) => x.toJson())),
     };
 }
 
@@ -50,8 +50,8 @@ class UsersMonth {
         this.value,
     });
 
-    String name;
-    int value;
+    String? name;
+    int? value;
 
     factory UsersMonth.fromJson(Map<String, dynamic> json) => UsersMonth(
         name: json["name"],

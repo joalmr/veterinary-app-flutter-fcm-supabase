@@ -20,8 +20,8 @@ class ChartVentasDia extends StatelessWidget {
 Widget _chartBar(List<DataDay> listDay) {
   double numeromayor = 0;
   for (int i = 0; i < listDay.length && i < listDay.length; i++) {
-    if (listDay[i].value > numeromayor) {
-      numeromayor = listDay[i].value;
+    if (listDay[i].value! > numeromayor) {
+      numeromayor = listDay[i].value!;
     }
   }
 
@@ -30,8 +30,8 @@ Widget _chartBar(List<DataDay> listDay) {
     children: listDay
         .map(
           (e) => _barDay(
-            e.name,
-            e.value,
+            e.name!,
+            e.value!,
             numeromayor,
           ),
         )

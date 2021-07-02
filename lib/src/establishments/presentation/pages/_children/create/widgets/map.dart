@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 
 class MapVet extends StatelessWidget {
-  const MapVet({Key key}) : super(key: key);
+  const MapVet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

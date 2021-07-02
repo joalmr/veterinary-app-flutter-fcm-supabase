@@ -18,10 +18,10 @@ class ConsultationBooking {
     this.recommendations,
   });
 
-  double amount;
-  String anamnesis;
-  List<Diagnosis> diagnoses;
-  String recommendations;
+  double? amount;
+  String? anamnesis;
+  List<Diagnosis>? diagnoses;
+  String? recommendations;
 
   factory ConsultationBooking.fromJson(Map<String, dynamic> json) =>
       ConsultationBooking(
@@ -35,7 +35,7 @@ class ConsultationBooking {
   Map<String, dynamic> toJson() => {
         "amount": amount,
         "anamnesis": anamnesis,
-        "diagnoses": List<dynamic>.from(diagnoses.map((x) => x.toJson())),
+        "diagnoses": List<dynamic>.from(diagnoses!.map((x) => x.toJson())),
         "recommendations": recommendations,
       };
 }
@@ -53,9 +53,9 @@ class Diagnosis {
     this.condition,
   });
 
-  int id;
-  String name;
-  String condition;
+  int? id;
+  String? name;
+  String? condition;
 
   factory Diagnosis.fromJson(Map<String, dynamic> json) => Diagnosis(
         id: json["id"],

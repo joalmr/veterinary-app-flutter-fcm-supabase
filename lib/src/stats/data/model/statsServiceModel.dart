@@ -14,8 +14,8 @@ class StatsServiceModel {
         this.result,
     });
 
-    String message;
-    Result result;
+    String? message;
+    Result? result;
 
     factory StatsServiceModel.fromJson(Map<String, dynamic> json) => StatsServiceModel(
         message: json["message"],
@@ -24,7 +24,7 @@ class StatsServiceModel {
 
     Map<String, dynamic> toJson() => {
         "message": message,
-        "result": result.toJson(),
+        "result": result!.toJson(),
     };
 }
 
@@ -33,14 +33,14 @@ class Result {
         this.services,
     });
 
-    List<Services> services;
+    List<Services>? services;
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
         services: List<Services>.from(json["services"].map((x) => Services.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "services": List<dynamic>.from(services.map((x) => x.toJson())),
+        "services": List<dynamic>.from(services!.map((x) => x.toJson())),
     };
 }
 
@@ -50,8 +50,8 @@ class Services {
         this.value,
     });
 
-    String name;
-    int value;
+    String? name;
+    int? value;
 
     factory Services.fromJson(Map<String, dynamic> json) => Services(
         name: json["name"],

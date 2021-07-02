@@ -6,7 +6,7 @@ import 'package:vet_app/src/establishments/domain/establishmentsController.dart'
 import 'vetCard.dart';
 
 class VetList extends StatelessWidget {
-  const VetList({Key key}) : super(key: key);
+  const VetList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +47,12 @@ class VetList extends StatelessWidget {
                   children:[ 
                     for (var establecimiento in _.establecimientos) 
                     VetCard(
-                      id: establecimiento.id,
-                      image: establecimiento.logo,
-                      name: establecimiento.name,
-                      ruc: establecimiento.ruc,
-                      aprobado: establecimiento.status,
-                      tipo: establecimiento.type,
+                      id: establecimiento.id!,
+                      image: establecimiento.logo!,
+                      name: establecimiento.name!,
+                      ruc: establecimiento.ruc!,
+                      aprobado: establecimiento.status!,
+                      tipo: establecimiento.type!,
                     ),
                   ]
                 ),

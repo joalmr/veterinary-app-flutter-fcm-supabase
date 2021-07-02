@@ -1,6 +1,6 @@
-calculateAge(DateTime birthDate) {
+calculateAge(DateTime? birthDate) {
   if (birthDate == null) return "No definido";
-  String resp;
+  String? resp;
   int edad, mes, dia, diferencia;
   DateTime currentDate = DateTime.now();
   Duration difference = currentDate.difference(birthDate);

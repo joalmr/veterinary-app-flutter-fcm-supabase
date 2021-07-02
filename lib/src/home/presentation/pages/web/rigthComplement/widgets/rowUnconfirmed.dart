@@ -24,20 +24,20 @@ class RowUnconfirmed extends StatefulWidget {
   final String delivery;
 
   RowUnconfirmed({
-    @required this.bookingId,
-    @required this.petImg,
-    @required this.petName,
-    @required this.petBreed,
-    @required this.status,
-    @required this.date,
-    @required this.time,
-    @required this.userName,
-    @required this.userPhone,
-    @required this.color,
-    @required this.bookingServices,
-    @required this.observation,
-    @required this.address,
-    @required this.delivery,
+    required this.bookingId,
+    required this.petImg,
+    required this.petName,
+    required this.petBreed,
+    required this.status,
+    required this.date,
+    required this.time,
+    required this.userName,
+    required this.userPhone,
+    required this.color,
+    required this.bookingServices,
+    required this.observation,
+    required this.address,
+    required this.delivery,
   });
 
   @override

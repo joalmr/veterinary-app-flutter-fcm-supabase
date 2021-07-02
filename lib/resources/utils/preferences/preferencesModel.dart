@@ -12,9 +12,9 @@ class VetStorage {
     this.vetLogo,
   });
 
-  String vetId;
-  String vetName;
-  String vetLogo;
+  String? vetId;
+  String? vetName;
+  String? vetLogo;
 
   factory VetStorage.fromJson(Map<String, dynamic> json) => VetStorage(
         vetId: json["vetId"],

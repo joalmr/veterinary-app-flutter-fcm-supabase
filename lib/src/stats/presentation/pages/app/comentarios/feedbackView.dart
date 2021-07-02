@@ -5,7 +5,7 @@ import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
 
 class FeedbackView extends StatelessWidget {
-  const FeedbackView({Key key}) : super(key: key);
+  const FeedbackView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class FeedbackView extends StatelessWidget {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: 10, top: 5),
-                          child: Text('${formatDate(_.initialIn)} a ${formatDate(_.initialOut)}'),
+                          child: Text('${formatDate(_.initialIn!)} a ${formatDate(_.initialOut!)}'),
                         ),
                         for (var comment in _.statComments) 
                           Card(
@@ -49,7 +49,7 @@ class FeedbackView extends StatelessWidget {
                                           width: 52.0,
                                           fit: BoxFit.cover,
                                           image: CachedNetworkImageProvider(
-                                              comment.petPicture),
+                                              comment.petPicture!),
                                         ),
                                       ),
                                     ),
@@ -61,11 +61,11 @@ class FeedbackView extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          formatDateTime(comment.date),
+                                          formatDateTime(comment.date!),
                                           style: TextStyle(fontSize: 10),
                                         ),
                                         Text(
-                                          comment.comment,
+                                          comment.comment!,
                                         ),
                                       ],
                                     ),

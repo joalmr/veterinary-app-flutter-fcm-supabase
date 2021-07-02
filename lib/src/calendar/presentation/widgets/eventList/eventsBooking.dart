@@ -5,7 +5,7 @@ import 'package:vet_app/src/calendar/domain/calendarController.dart';
 import '../event/eventBooking.dart';
 
 class EventsBooking extends StatelessWidget {
-  const EventsBooking({Key key}) : super(key: key);
+  const EventsBooking({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +18,12 @@ class EventsBooking extends StatelessWidget {
               final booking = _.calendarBookings[index];
               return EventBooking(
                 color: colorBlue,
-                image: booking.petPicture,
-                petName: booking.petName,
-                petBreed: booking.petBreed,
+                image: booking.petPicture!,
+                petName: booking.petName!,
+                petBreed: booking.petBreed!,
                 time: '14:00',
-                userName: booking.userName,
-                status: booking.bookingStatus,
+                userName: booking.userName!,
+                status: booking.bookingStatus!,
               );
             },
           ),

@@ -16,9 +16,9 @@ class OthersBooking {
     this.recommendations,
   });
 
-  double amount;
-  List<OtherServ> others;
-  String recommendations;
+  double? amount;
+  List<OtherServ>? others;
+  String? recommendations;
 
   factory OthersBooking.fromJson(Map<String, dynamic> json) => OthersBooking(
         amount: json["amount"].toDouble() ?? 0.0,
@@ -29,7 +29,7 @@ class OthersBooking {
 
   Map<String, dynamic> toJson() => {
         "amount": amount,
-        "others": List<dynamic>.from(others.map((x) => x.toJson())),
+        "others": List<dynamic>.from(others!.map((x) => x.toJson())),
         "recommendations": recommendations,
       };
 }
@@ -46,8 +46,8 @@ class OtherServ {
     this.name,
   });
 
-  int id;
-  String name;
+  int? id;
+  String? name;
 
   factory OtherServ.fromJson(Map<String, dynamic> json) => OtherServ(
         id: json["id"],

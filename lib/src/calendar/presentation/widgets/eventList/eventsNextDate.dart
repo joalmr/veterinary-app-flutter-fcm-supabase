@@ -4,7 +4,7 @@ import 'package:vet_app/src/calendar/domain/calendarController.dart';
 import '../event/eventNextDate.dart';
 
 class EventsNextDate extends StatelessWidget {
-  const EventsNextDate({Key key}) : super(key: key);
+  const EventsNextDate({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +16,12 @@ class EventsNextDate extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               final nextDate = _.calendarNextdates[index];
               return EventNextDate(
-                image: nextDate.petPicture,
-                petName: nextDate.petName,
-                petBreed: nextDate.petBreed,
-                motivo: nextDate.reason,
-                userName: nextDate.userName,
-                userPhone: '99999999',
+                image: nextDate.petPicture!,
+                petName: nextDate.petName!,
+                petBreed: nextDate.petBreed!,
+                motivo: nextDate.reason!,
+                userName: nextDate.userName!,
+                userPhone: '??!!', //TODO: VERIFICAR
                 firstPush: true,
                 secondPush: false,
               );

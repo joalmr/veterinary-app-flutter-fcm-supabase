@@ -1,4 +1,4 @@
-String validateTime(String texto) {
+String? validateTime(String texto) {
   if (texto.isEmpty) return 'Ingrese hora';
   if (texto.length < 5) return 'Complete hora';
 

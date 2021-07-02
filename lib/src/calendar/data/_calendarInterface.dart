@@ -10,7 +10,7 @@ abstract class CalendarInterface {
   // Future<CalendarEventModel> getCalendarEvents(String idEstablishment, String date);
   Future<CalendarEventResponse> newCalendarEvent(String idEstablishment, CalendarEvent newEvent);
 
-  Future<ListBookingsModel> listCalendarBookings(String idEstablishment, String date);
-  Future<ListNextdateModel> listCalendarNextdate(String idEstablishment, String date);
-  Future<ListEventsModel> listCalendarEvents(String idEstablishment, String date);
+  Future<ListBookingsModel?> listCalendarBookings(String idEstablishment, String date);
+  Future<ListNextdateModel?> listCalendarNextdate(String idEstablishment, String date);
+  Future<ListEventsModel?> listCalendarEvents(String idEstablishment, String date);
 }

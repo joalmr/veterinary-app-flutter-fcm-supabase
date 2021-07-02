@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StatContent extends StatefulWidget {
-  final String text;
-  final IconData icon;
-  final String value;
-  final Color color;
+  final String? text;
+  final IconData? icon;
+  final String? value;
+  final Color? color;
 
   StatContent({
     this.text,
@@ -89,7 +89,7 @@ class _StatContentState extends State<StatContent> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.text,
+                          widget.text!,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 12.0,
@@ -97,7 +97,7 @@ class _StatContentState extends State<StatContent> {
                         ),
                         SizedBox(width: 5.0),
                         Text(
-                          widget.value,
+                          widget.value!,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 24.0,

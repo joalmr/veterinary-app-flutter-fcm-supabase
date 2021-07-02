@@ -11,12 +11,12 @@ class EventNote extends StatelessWidget {
   final String members;
 
   const EventNote({
-    Key key,
-    @required this.color,
-    @required this.title,
-    @required this.time,
-    @required this.description,
-    @required this.members,
+    Key? key,
+    required this.color,
+    required this.title,
+    required this.time,
+    required this.description,
+    required this.members,
   }) : super(key: key);
 
   @override

@@ -27,10 +27,10 @@ class ReprogramarController extends GetxController {
   Future<void> _reprogramar(String idBooking) async {
     reprogramando.value = true;
 
-    if (fecha.isEmpty != null) msgfecha.value = 'Ingrese fecha';
-    if (hora.isEmpty != null) msghora.value = 'Ingrese hora';
+    if (fecha.value.isEmpty) msgfecha.value = 'Ingrese fecha';
+    if (hora.value.isEmpty) msghora.value = 'Ingrese hora';
 
-    if (fecha.isEmpty || hora.isEmpty) {
+    if (fecha.value.isEmpty || hora.value.isEmpty) {
       errorDateTime.value = true;
       Timer(
         Duration(milliseconds: 7500),
@@ -53,7 +53,7 @@ class ReprogramarController extends GetxController {
         final Map message = jsonDecode(resp.body);
         
         if(message.containsKey('message')){
-          ScaffoldMessenger.of(Get.context).showSnackBar(SnackBar(
+          ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
             content: Text(
               message['message'],
             ),
@@ -63,7 +63,7 @@ class ReprogramarController extends GetxController {
         }
         else{
           _homeController.getAllBookings();
-          Navigator.popUntil(Get.context, ModalRoute.withName(NameRoutes.home));
+          Navigator.popUntil(Get.context!, ModalRoute.withName(NameRoutes.home));
         }
       }
     }

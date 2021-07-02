@@ -7,7 +7,7 @@ import 'editPricesView.dart';
 
 class PricesView extends StatelessWidget {
   final Prices prices;
-  const PricesView({Key key, @required this.prices}) : super(key: key);
+  const PricesView({Key? key, required this.prices}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class PricesView extends StatelessWidget {
               children: [
                 Text(
                   "Precios",
-                  style: Get.textTheme.subtitle2.apply(fontWeightDelta: 2),
+                  style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                 ),
                 IconButton(
                   splashRadius: 20,
@@ -47,22 +47,22 @@ class PricesView extends StatelessWidget {
             children: [
               precio(
                 'Consulta',
-                double.parse(prices.consultation.from).toStringAsFixed(2),
+                double.parse(prices.consultation!.from!).toStringAsFixed(2),
               ),
               precio(
                 'Grooming',
                 // prices.grooming.from.toString(),
-                double.parse(prices.grooming.from).toStringAsFixed(2),
+                double.parse(prices.grooming!.from!).toStringAsFixed(2),
               ),
               precio(
                 'Desparasitación',
                 // prices.deworming.from.toString(),
-                double.parse(prices.deworming.from).toStringAsFixed(2),
+                double.parse(prices.deworming!.from!).toStringAsFixed(2),
               ),
               precio(
                 'Vacunas',
                 // prices.vaccination.from.toString(),
-                double.parse(prices.vaccination.from).toStringAsFixed(2),
+                double.parse(prices.vaccination!.from!).toStringAsFixed(2),
               ),
             ],
           )

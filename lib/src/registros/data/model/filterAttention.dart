@@ -1,9 +1,9 @@
 class FilterAttention {
-  String from;
-  String to;
-  String userName;
-  String petName;
-  List<int> petSpecie;
+  String? from;
+  String? to;
+  String? userName;
+  String? petName;
+  List<int>? petSpecie;
   
     FilterAttention({
         this.from,
@@ -18,6 +18,6 @@ class FilterAttention {
         "to": to,
         "user_name": userName,
         "pet_name": petName,
-        "pet_specie": List<dynamic>.from(petSpecie.map((x) => x)),
+        "pet_specie": List<dynamic>.from(petSpecie!.map((x) => x)),
     };
 }

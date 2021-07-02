@@ -4,7 +4,7 @@ import 'package:vet_app/src/calendar/domain/calendarController.dart';
 import '../event/eventNote.dart';
 
 class EventsNote extends StatelessWidget {
-  const EventsNote({Key key}) : super(key: key);
+  const EventsNote({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +17,10 @@ class EventsNote extends StatelessWidget {
               final event = _.calendarEvents[index];
               return EventNote(
                 color: Colors.blueGrey,
-                title: event.title,
-                time: event.time,
-                members: event.members,
-                description: event.description,
+                title: event.title!,
+                time: event.time!,
+                members: event.members!,
+                description: event.description!,
               );
             },
           ),

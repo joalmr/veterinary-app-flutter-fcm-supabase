@@ -5,7 +5,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/workers/domain/workersController.dart';
 
 class ShowWorkerView extends StatelessWidget {
-  const ShowWorkerView({Key key}) : super(key: key);
+  const ShowWorkerView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class ShowWorkerView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        worker.name,
+                        worker.name!,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -63,7 +63,7 @@ class ShowWorkerView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        worker.email,
+                        worker.email!,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -80,7 +80,7 @@ class ShowWorkerView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        worker.establishment,
+                        worker.establishment!,
                         textAlign: TextAlign.center,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),

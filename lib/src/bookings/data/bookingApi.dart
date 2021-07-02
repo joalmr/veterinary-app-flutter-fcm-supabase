@@ -16,7 +16,7 @@ import 'model/bookingModel.dart';
 class BookingApi extends BookingInterface {
   @override
   Future<int> confirm(String idBooking) async {
-    final url = Uri.https(urlBase, '/api/client/booking/$idBooking/confirm');
+    final url = Uri.https(urlBase!, '/api/client/booking/$idBooking/confirm');
 
     http.Response response = await http.post(url, headers: headersToken());
     return response.statusCode;
@@ -24,7 +24,7 @@ class BookingApi extends BookingInterface {
 
   @override
   Future<http.Response> reschedule(String idBooking, String bookingAt) async {
-    final url = Uri.https(urlBase, '/api/client/booking/$idBooking/reschedule');
+    final url = Uri.https(urlBase!, '/api/client/booking/$idBooking/reschedule');
     final dataBooking = {"booking_at": bookingAt};
 
     http.Response response = await http.post(
@@ -37,17 +37,19 @@ class BookingApi extends BookingInterface {
 
   @override
   Future<GeneralBooking> attend(String establishment, String booking) async {
-    final url = Uri.https(urlBase,
+    final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishment/booking/$booking/attend');
 
     http.Response response = await http.post(url, headers: headersToken());
+
+    print(response.body);
     final dataResponse = generalBookingFromJson(response.body);
     return dataResponse;
   }
 
   @override
   Future<BookingModel> getId(String idBooking) async {
-    final url = Uri.https(urlBase, '/api/client/booking/$idBooking');
+    final url = Uri.https(urlBase!, '/api/client/booking/$idBooking');
 
     http.Response response = await http.get(url, headers: headersToken());
     return BookingModel.fromJson(json.decode(response.body));
@@ -56,7 +58,7 @@ class BookingApi extends BookingInterface {
   @override
   Future<BookingModel> getUnconfirmed(String idVet) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$idVet/bookings',
       {"status": "unconfirmed"},
     );
@@ -68,7 +70,7 @@ class BookingApi extends BookingInterface {
   @override
   Future<BookingModel> getOverdue(String idVet) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$idVet/bookings',
       {"status": "overdue"},
     );
@@ -80,7 +82,7 @@ class BookingApi extends BookingInterface {
   @override
   Future<BookingModel> getToday(String idVet) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$idVet/bookings',
       {"status": "today"},
     );
@@ -92,7 +94,7 @@ class BookingApi extends BookingInterface {
   @override
   Future<BookingModel> getIncoming(String idVet) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$idVet/bookings',
       {"status": "incoming"},
     );
@@ -105,7 +107,7 @@ class BookingApi extends BookingInterface {
   Future<ConsultationBooking> saveConsultation(
       String establishment, String attention, ConsultationBooking data) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/consultation',
     );
 
@@ -127,7 +129,7 @@ class BookingApi extends BookingInterface {
   Future<SurgeryBooking> saveSurgery(
       String establishment, String attention, SurgeryBooking data) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/surgery',
     );
 
@@ -149,7 +151,7 @@ class BookingApi extends BookingInterface {
   Future<DewormingBooking> saveDeworming(
       String establishment, String attention, DewormingBooking data) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/deworming',
     );
 
@@ -171,7 +173,7 @@ class BookingApi extends BookingInterface {
   Future<VaccinationBooking> saveVaccination(
       String establishment, String attention, VaccinationBooking data) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/vaccination',
     );
 
@@ -193,7 +195,7 @@ class BookingApi extends BookingInterface {
   Future<TestingBooking> saveTesting(
       String establishment, String attention, TestingBooking data) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/testing',
     );
 
@@ -215,7 +217,7 @@ class BookingApi extends BookingInterface {
   Future<OthersBooking> saveOthers(
       String establishment, String attention, OthersBooking data) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/other',
     );
 
@@ -236,7 +238,7 @@ class BookingApi extends BookingInterface {
   @override
   Future<void> finalizeAttention(String establishment, String attention, FinalizeAttention data) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/finalize',
     );
 

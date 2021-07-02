@@ -51,13 +51,13 @@ class CreaOferta extends StatelessWidget {
                                       size: 18,
                                     ),
                                     SizedBox(width: 10),
-                                    new Text(value.name),
+                                    new Text(value.name!),
                                   ],
                                 ),
                               );
                             }).toList(),
-                            onChanged: (val) {
-                              _.serviceNum = val;
+                            onChanged: (String? val) {
+                              _.serviceNum = val!;
                             },
                           ),
                         ),
@@ -77,21 +77,21 @@ class CreaOferta extends StatelessWidget {
                       contentPadding: EdgeInsets.zero,
                       value: 0,
                       groupValue: _.selectValue,
-                      onChanged: (val) => _.selectValue = val,
+                      onChanged: (int? val) => _.selectValue = val!,
                       title: Text('Monto de descuento'),
                     ),
                     RadioListTile(
                       contentPadding: EdgeInsets.zero,
                       value: 1,
                       groupValue: _.selectValue,
-                      onChanged: (val) => _.selectValue = val,
+                      onChanged: (int? val) => _.selectValue = val!,
                       title: Text('Porcentaje de descuento'),
                     ),
                     RadioListTile(
                       contentPadding: EdgeInsets.zero,
                       value: 2,
                       groupValue: _.selectValue,
-                      onChanged: (val) => _.selectValue = val,
+                      onChanged: (int? val) => _.selectValue = val!,
                       title: Text('Precio promocional'),
                     ),
                     SizedBox(height: 15),

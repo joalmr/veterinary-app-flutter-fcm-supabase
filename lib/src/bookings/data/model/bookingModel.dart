@@ -10,8 +10,8 @@ BookingModel bookingModelFromJson(String str) =>
 String bookingModelToJson(BookingModel data) => json.encode(data.toJson());
 
 class BookingModel {
-  List<Booking> result;
-  String message;
+  List<Booking>? result;
+  String? message;
 
   BookingModel({
     this.result,
@@ -25,24 +25,24 @@ class BookingModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "result": List<dynamic>.from(result.map((x) => x.toJson())),
+        "result": List<dynamic>.from(result!.map((x) => x.toJson())),
         "message": message,
       };
 }
 
 class Booking {
-  String id;
-  DateTime bookingDate;
-  String bookingTime;
-  List<String> bookingServices;
-  String bookingStatus;
-  String petName;
-  String petBreed;
-  String petPicture;
-  String user;
-  String userPhone;
-  Options options;
-  String observation;
+  String? id;
+  DateTime? bookingDate;
+  String? bookingTime;
+  List<String>? bookingServices;
+  String? bookingStatus;
+  String? petName;
+  String? petBreed;
+  String? petPicture;
+  String? user;
+  String? userPhone;
+  Options? options;
+  String? observation;
 
   Booking({
     this.id,
@@ -78,24 +78,24 @@ class Booking {
   Map<String, dynamic> toJson() => {
         "id": id,
         "booking_date":
-            "${bookingDate.year.toString().padLeft(4, '0')}-${bookingDate.month.toString().padLeft(2, '0')}-${bookingDate.day.toString().padLeft(2, '0')}",
+            "${bookingDate!.year.toString().padLeft(4, '0')}-${bookingDate!.month.toString().padLeft(2, '0')}-${bookingDate!.day.toString().padLeft(2, '0')}",
         "booking_time": bookingTime,
-        "booking_services": List<dynamic>.from(bookingServices.map((x) => x)),
+        "booking_services": List<dynamic>.from(bookingServices!.map((x) => x)),
         "booking_status": bookingStatus,
         "pet_name": petName,
         "pet_breed": petBreed,
         "pet_picture": petPicture,
         "user": user,
         "user_phone": userPhone,
-        "options": options.toJson(),
+        "options": options!.toJson(),
         "observation": observation,
       };
 }
 
 class Options {
-  String address;
-  String delivery;
-  String typeId;
+  String? address;
+  String? delivery;
+  String? typeId;
 
   Options({
     this.address,

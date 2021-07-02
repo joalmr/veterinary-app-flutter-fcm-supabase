@@ -7,11 +7,11 @@ class MessageModel {
       this.sendAt,
     });
 
-    int id;
-    int canalId;
-    String message;
-    bool type;
-    DateTime sendAt;
+    int? id;
+    int? canalId;
+    String? message;
+    bool? type;
+    DateTime? sendAt;
 
     factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
         id: json["id"],
@@ -26,6 +26,6 @@ class MessageModel {
         "canal_id": canalId,
         "message": message,
         "type": type,
-        "send_at": sendAt.toIso8601String(),
+        "send_at": sendAt!.toIso8601String(),
     };
 }

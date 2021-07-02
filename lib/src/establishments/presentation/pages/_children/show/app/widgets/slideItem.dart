@@ -6,9 +6,9 @@ import 'package:vet_app/design/styles/styles.dart';
 
 class SlideItem extends StatelessWidget {
   final String img;
-  final Function onPressedDelete;
+  final void Function()? onPressedDelete;
 
-  const SlideItem({@required this.img, @required this.onPressedDelete});
+  const SlideItem({required this.img, required this.onPressedDelete});
   @override
   Widget build(BuildContext context) {
     return Container(

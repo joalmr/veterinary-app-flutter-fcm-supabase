@@ -8,7 +8,7 @@ import 'package:vet_app/src/establishments/presentation/pages/_children/create/a
 class BodyStep extends StatelessWidget {
   final int selected;
   const BodyStep({
-    @required this.selected,
+    required this.selected,
   });
 
   @override

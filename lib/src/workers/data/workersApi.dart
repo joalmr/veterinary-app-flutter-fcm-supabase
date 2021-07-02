@@ -13,7 +13,7 @@ class WorkersApi extends WorkersInterface {
   @override
   Future<WorkersModal> getWorkers(String establishmentId) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishmentId/workers',
     );
 
@@ -26,7 +26,7 @@ class WorkersApi extends WorkersInterface {
   Future<WorkersModalInvitado> getWorkersInvitado(
       String establishmentId) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '/api/client/establishment/$establishmentId/worker/invitations',
     );
 
@@ -37,7 +37,7 @@ class WorkersApi extends WorkersInterface {
 
   @override
   Future<InvitationModel> setInvita(String establishmentId, String mail) async {
-    final url = Uri.https(urlBase,
+    final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishmentId/worker/invitation');
     final dataBooking = {"email": mail};
 
@@ -53,7 +53,7 @@ class WorkersApi extends WorkersInterface {
 
   @override
   Future<int> deleteInvita(String establishmentId, String invitationId) async {
-    final url = Uri.https(urlBase,
+    final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishmentId/worker/invitation/$invitationId');
 
     http.Response response = await http.delete(
@@ -67,7 +67,7 @@ class WorkersApi extends WorkersInterface {
 
   @override
   Future<int> deleteWorker(String establishmentId, String workerId) async {
-    final url = Uri.https(urlBase,
+    final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishmentId/worker/$workerId');
 
     http.Response response = await http.delete(

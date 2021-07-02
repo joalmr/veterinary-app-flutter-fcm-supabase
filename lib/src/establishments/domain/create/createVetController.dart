@@ -53,10 +53,10 @@ class CreateVetController extends GetxController {
 
   RxList<Marker> marcador = <Marker>[].obs;
 
-  String _mapStyle;
-  GoogleMapController _controller;
+  String? _mapStyle;
+  GoogleMapController? _controller;
 
-  String displayStringForOption(Prediction option) => option.name;
+  String displayStringForOption(Prediction option) => option.name!;
 
   @override
   void onInit() {
@@ -75,7 +75,7 @@ class CreateVetController extends GetxController {
 
   mapCreated(controller) {
     _controller = controller;
-    _controller.setMapStyle(_mapStyle);
+    _controller!.setMapStyle(_mapStyle);
   }
 
   void add2List(int numero) {
@@ -104,21 +104,21 @@ class CreateVetController extends GetxController {
     _searchandNavigate(data);
   }
 
-  double lat; //-12.045645176850693, -77.03056366799036
-  double lng;
+  double? lat; //-12.045645176850693, -77.03056366799036
+  double? lng;
 
   _searchandNavigate(Prediction dato) async {
     if (v.dirVet.text.trim() != "") {
       marcador.clear();
 
-      v.dirVet.text = dato.name;
+      v.dirVet.text = dato.name!;
       entity.address = dato.name;
 
-      final datoById = await _repo.getLatLngByPlaceId(dato.placeId);
-      final location = datoById.result.geometry.location;
-      lat = location.lat;
+      final datoById = await _repo.getLatLngByPlaceId(dato.placeId!);
+      final location = datoById.result!.geometry!.location;
+      lat = location!.lat;
       lng = location.lng;
-      final latlng = LatLng(location.lat, location.lng);
+      final latlng = LatLng(location.lat!, location.lng!);
 
       marcador.add(
         Marker(
@@ -132,7 +132,7 @@ class CreateVetController extends GetxController {
         ),
       );
       update(['xmap']);
-      _controller.animateCamera(
+      _controller!.animateCamera(
         CameraUpdate.newCameraPosition(
           CameraPosition(
             target: latlng,

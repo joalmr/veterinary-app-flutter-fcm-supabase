@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
@@ -88,7 +88,7 @@ class CreateOfferController extends GetxController {
       offer.serviceId = '$serviceNum';
       offer.serviceName = textMap[serviceNum];
 
-      var response = await _repo.create(offer, prefUser.vetId);
+      var response = await _repo.create(offer, prefUser.vetId!);
       if(response==200){
         description.text="";
         moneyController.text="0.00";

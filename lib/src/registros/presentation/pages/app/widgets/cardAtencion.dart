@@ -10,12 +10,12 @@ class CardAtencion extends StatelessWidget {
   final String userName;
 
   const CardAtencion({
-    @required this.image,
-    @required this.petName,
-    @required this.petBreed,
-    @required this.date,
-    @required this.time,
-    @required this.userName,
+    required this.image,
+    required this.petName,
+    required this.petBreed,
+    required this.date,
+    required this.time,
+    required this.userName,
   });
 
   @override

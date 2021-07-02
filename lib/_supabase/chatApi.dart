@@ -4,7 +4,7 @@ import 'model/messageModel.dart';
 import '../config/variablesSupabase.dart';
 
 class ChatApi {
-  final supabaseClient = SupabaseClient(urlSupa, keySupa);
+  final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
 
   Future<int> addEstablishment(String uuid, String name) async {
     final response = await supabaseClient.from('establishment').insert([

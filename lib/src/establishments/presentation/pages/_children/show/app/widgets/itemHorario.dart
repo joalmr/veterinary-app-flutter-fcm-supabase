@@ -10,7 +10,7 @@ class ItemHorario extends StatelessWidget {
   final String dayName;
   final int index;
 
-  const ItemHorario({this.dayName, this.index});
+  const ItemHorario({required this.dayName,required this.index});
 
   @override
   Widget build(BuildContext context) {

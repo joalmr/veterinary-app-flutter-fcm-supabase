@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget tabSelect({@required bool selected, @required String text}) {
+Widget tabSelect({required bool selected, required String text}) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 10),
     child: selected

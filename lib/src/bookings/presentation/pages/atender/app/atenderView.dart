@@ -47,7 +47,7 @@ class AtenderView extends StatelessWidget {
                         child: Image(
                           height: 100,
                           width: 100,
-                          image: CachedNetworkImageProvider(_.image),
+                          image: CachedNetworkImageProvider(_.image!),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -61,8 +61,8 @@ class AtenderView extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  _.name,
-                                  style: Get.textTheme.subtitle1
+                                  _.name!,
+                                  style: Get.textTheme.subtitle1!
                                       .apply(fontWeightDelta: 2),
                                 ),
                                 SizedBox(width: 5),
@@ -139,19 +139,19 @@ class AtenderView extends StatelessWidget {
                                 tipoAtencion(
                                   IconProypet.consulta,
                                   'Consulta',
-                                  _.consulta.value!=null ?'${_.consulta.value.amount}':'',
+                                  _.consulta.value!=null ?'${_.consulta.value!.amount}':'',
                                   () => Get.to(ConsultaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.cirugia,
                                   'Cirugía',
-                                  _.cirugia.value!=null ?'${_.cirugia.value.amount}':'',
+                                  _.cirugia.value!=null ?'${_.cirugia.value!.amount}':'',
                                   () => Get.to(CirugiaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.desparasitacion,
                                   'Desparasitación',
-                                  _.desparasita.value!=null ?'${_.desparasita.value.amount}':'',
+                                  _.desparasita.value!=null ?'${_.desparasita.value!.amount}':'',
                                   () => Get.to(DesparasitaView()),
                                 ),
                                 tipoAtencion(
@@ -163,13 +163,13 @@ class AtenderView extends StatelessWidget {
                                 tipoAtencion(
                                   IconProypet.vacuna,
                                   'Vacuna',
-                                  _.vacunas.value!=null ?'${_.vacunas.value.amount}':'',
+                                  _.vacunas.value!=null ?'${_.vacunas.value!.amount}':'',
                                   () => Get.to(VacunaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.farmacia,
                                   'Otros',
-                                  _.otros.value!=null ?'${_.otros.value.amount}':'',
+                                  _.otros.value!=null ?'${_.otros.value!.amount}':'',
                                   () => Get.to(OtroView()),
                                 ),
                               ],
@@ -237,7 +237,7 @@ class AtenderView extends StatelessWidget {
                                                             .spaceBetween,
                                                     children: [
                                                       Text(
-                                                        item.name,
+                                                        item.name!,
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight

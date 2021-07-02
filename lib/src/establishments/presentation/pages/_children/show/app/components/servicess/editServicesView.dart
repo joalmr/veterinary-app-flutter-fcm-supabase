@@ -31,7 +31,7 @@ class EditServicesView extends StatelessWidget {
                           margin: EdgeInsets.only(left: 2, right: 2, bottom: 8),
                           child: InkWell(
                             borderRadius: BorderRadius.circular(50),
-                            onTap: () => _.add2List(item.id),
+                            onTap: () => _.add2List(item.id!),
                             child: Container(
                               padding: EdgeInsets.all(8),
                               margin: EdgeInsets.all(1),
@@ -41,7 +41,7 @@ class EditServicesView extends StatelessWidget {
                                     ? colorGreen.withAlpha(225)
                                     : colorGreen.withAlpha(50),
                               ),
-                              child: Text(item.name),
+                              child: Text(item.name!),
                             ),
                           ),
                         ),

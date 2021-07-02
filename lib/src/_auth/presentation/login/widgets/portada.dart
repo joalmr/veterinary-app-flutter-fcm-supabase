@@ -5,7 +5,7 @@ import 'package:vet_app/resources/images/images.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 class Portada extends StatelessWidget {
-  const Portada({Key key}) : super(key: key);
+  const Portada({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

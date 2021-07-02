@@ -40,8 +40,8 @@ class VerOfertas extends StatelessWidget {
                 itemCount: _.promociones.length,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 itemBuilder: (BuildContext context, int index) {
-                  String forDelete = _.promociones[index].id;
-                  Offer promocion = _.promociones[index].offer;
+                  String forDelete = _.promociones[index].id!;
+                  Offer promocion = _.promociones[index].offer!;
                   return ChildRegion(
                     margin: EdgeInsets.all(10),
                     child: Container(
@@ -153,7 +153,7 @@ class VerOfertas extends StatelessWidget {
                                 children: [
                                   Text('Descripción'),
                                   Text(
-                                    promocion.description,
+                                    promocion.description!,
                                     maxLines: 10,
                                   ),
                                 ],

@@ -93,13 +93,13 @@ class CalendarController extends GetxController {
 
   listCalendarBookings(date)=>_listCalendarBookings(date);
   _listCalendarBookings(date) async {
-    final response = await _repo.listCalendarBookings(prefUser.vetId, formatDateYM(date));
+    final response = await _repo.listCalendarBookings(prefUser.vetId!, formatDateYM(date));
     
     listCalendarBooking.clear();
     listCalendarBooking.length = 32;
     
     if(response!=null){
-      response.result.forEach((key,value){
+      response.result!.forEach((key,value){
         listCalendarBooking[toDateBasic(key).day] = value;
       });
     }
@@ -107,13 +107,13 @@ class CalendarController extends GetxController {
 
   listCalendarNextdate(date)=>_listCalendarNextdate(date);
   _listCalendarNextdate(date) async {
-    final response = await _repo.listCalendarNextdate(prefUser.vetId, formatDateYM(date));
+    final response = await _repo.listCalendarNextdate(prefUser.vetId!, formatDateYM(date));
     
     listCalendarNextDate.clear();
     listCalendarNextDate.length = 32;
     
     if(response!=null){
-      response.result.forEach((key,value){
+      response.result!.forEach((key,value){
         listCalendarNextDate[toDateBasic(key).day] = value;
       });
     }
@@ -121,13 +121,13 @@ class CalendarController extends GetxController {
 
   listCalendarEvents(date)=>_listCalendarEvents(date);
   _listCalendarEvents(date) async {
-    final response = await _repo.listCalendarEvents(prefUser.vetId, formatDateYM(date));
+    final response = await _repo.listCalendarEvents(prefUser.vetId!, formatDateYM(date));
     
     listCalendarEvent.clear();
     listCalendarEvent.length = 32;
     
     if(response!=null){
-      response.result.forEach((key,value){
+      response.result!.forEach((key,value){
         listCalendarEvent[toDateBasic(key).day] = value;
       });
     }
@@ -149,7 +149,7 @@ class CalendarController extends GetxController {
         description: descripcion.value,
       );
 
-      await _repo.newCalendarEvent(prefUser.vetId, tempEvent);
+      await _repo.newCalendarEvent(prefUser.vetId!, tempEvent);
 
       Timer(
         Duration(milliseconds: 2000),

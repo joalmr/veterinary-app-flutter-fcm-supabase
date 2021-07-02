@@ -5,7 +5,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'checkRegister.dart';
 
 class CardRegister extends StatelessWidget {
-  const CardRegister({Key key}) : super(key: key);
+  const CardRegister({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

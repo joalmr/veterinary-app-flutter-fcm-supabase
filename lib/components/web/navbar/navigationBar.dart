@@ -8,7 +8,7 @@ import 'package:vet_app/routes/routes.dart';
 import 'navbarItem.dart';
 
 class NavigationBar extends StatefulWidget {
-  NavigationBar({Key key}) : super(key: key);
+  NavigationBar({Key? key}) : super(key: key);
 
   @override
   _NavigationBarState createState() => _NavigationBarState();
@@ -19,7 +19,7 @@ class NavigationBar extends StatefulWidget {
 class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
-    String pageSelected = ModalRoute.of(context).settings.name;
+    String? pageSelected = ModalRoute.of(context)!.settings.name;
 
     return Align(
       alignment: Alignment.centerLeft,
@@ -36,7 +36,7 @@ class _NavigationBarState extends State<NavigationBar> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: CachedNetworkImage(
-                    imageUrl: prefUser.vetLogo,
+                    imageUrl: prefUser.vetLogo!,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => Container(
                       color: Colors.grey.shade200,
@@ -51,7 +51,7 @@ class _NavigationBarState extends State<NavigationBar> {
             Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
-                prefUser.vetName,
+                prefUser.vetName!,
                 maxLines: 1,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,

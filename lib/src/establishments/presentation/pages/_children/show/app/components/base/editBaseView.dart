@@ -53,11 +53,11 @@ class EditBaseView extends StatelessWidget {
                           items: itemTipo.map((ItemService value) {
                             return new DropdownMenuItem<String>(
                               value: value.id,
-                              child: new Text(value.name),
+                              child: new Text(value.name!),
                             );
                           }).toList(),
-                          onChanged: (val) {
-                            _.vetTypeId = val;
+                          onChanged: (String? val) {
+                            _.vetTypeId = val!;
                           },
                         ),
                       ),

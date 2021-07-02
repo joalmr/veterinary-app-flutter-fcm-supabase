@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/components/buttons.dart';
@@ -24,14 +24,14 @@ class _VacunaViewState extends State<VacunaView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        var listaVacuna = _book.vacunas.value.vaccines ?? <Vaccine>[];
+        var listaVacuna = _book.vacunas.value!.vaccines ?? <Vaccine>[];
 
         final recomendationController = TextEditingController(
-          text: _book.vacunas.value.recommendations ?? ''
+          text: _book.vacunas.value!.recommendations ?? ''
         );
 
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.vacunas.value.amount ?? 0,
+          initialValue: _book.vacunas.value!.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
@@ -53,7 +53,7 @@ class _VacunaViewState extends State<VacunaView> {
                       // hideOnLoading: true,
                       suggestionsCallback: (filter) async {
                         final url = Uri.https(
-                          urlBase,
+                          urlBase!,
                           '/autocomplete/vaccines',
                           {"q": filter},
                         );
@@ -86,7 +86,7 @@ class _VacunaViewState extends State<VacunaView> {
                       itemBuilder: (context, address) => Padding(
                         padding: EdgeInsets.all(8),
                         child: Text(
-                          address.name,
+                          address.name!,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -110,7 +110,7 @@ class _VacunaViewState extends State<VacunaView> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      item.name,
+                                      item.name!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -188,7 +188,7 @@ class _VacunaViewState extends State<VacunaView> {
                             );
                             _book.saveVacuna(temp);
                           } else {
-                            ScaffoldMessenger.of(Get.context)
+                            ScaffoldMessenger.of(Get.context!)
                                 .showSnackBar(SnackBar(
                               content: Text('Falta ingresar vacuna o monto'),
                               duration: Duration(seconds: 3),

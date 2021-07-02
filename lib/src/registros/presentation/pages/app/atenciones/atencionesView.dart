@@ -6,7 +6,7 @@ import 'package:vet_app/src/registros/domain/attentionsController.dart';
 import 'package:vet_app/src/registros/presentation/pages/app/widgets/cardAtencion.dart';
 
 class AtencionesView extends StatelessWidget {
-  const AtencionesView({Key key}) : super(key: key);
+  const AtencionesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +18,12 @@ class AtencionesView extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             final reg = _.listaReg[index];
             return CardAtencion(
-              image: CachedNetworkImageProvider(reg.petPicture) ,//AssetImage('assets/images/dog.jpg'),
-              petName: reg.petName,
-              petBreed: reg.petBreed,
-              date: formatDate(reg.attentionDate),
-              time: formatTime(reg.attentionDate),
-              userName: reg.userName,
+              image: CachedNetworkImageProvider(reg.petPicture!) ,//AssetImage('assets/images/dog.jpg'),
+              petName: reg.petName!,
+              petBreed: reg.petBreed!,
+              date: formatDate(reg.attentionDate!),
+              time: formatTime(reg.attentionDate!),
+              userName: reg.userName!,
             );
           },
         );

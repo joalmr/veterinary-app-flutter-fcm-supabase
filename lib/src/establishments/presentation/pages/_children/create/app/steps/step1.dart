@@ -58,12 +58,12 @@ class Step1 extends StatelessWidget {
                       items: itemTipo.map((ItemService value) {
                         return new DropdownMenuItem<String>(
                           value: value.id,
-                          child: new Text(value.name),
+                          child: new Text(value.name!),
                         );
                       }).toList(),
-                      onChanged: (val) {
+                      onChanged: (String? val) {
                         print(val);
-                        _.vetType = val;
+                        _.vetType = val!;
                       },
                     ),
                   ),
@@ -77,8 +77,8 @@ class Step1 extends StatelessWidget {
                       (item) => Container(
                         margin: EdgeInsets.symmetric(horizontal: 2),
                         child: TextButton(
-                          child: Text(item.name),
-                          onPressed: () => _.add2List(item.id),
+                          child: Text(item.name!),
+                          onPressed: () => _.add2List(item.id!),
                           style: TextButton.styleFrom(
                             textStyle: TextStyle(fontSize: 10),
                             padding: EdgeInsets.symmetric(

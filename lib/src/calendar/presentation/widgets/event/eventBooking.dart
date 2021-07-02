@@ -14,14 +14,14 @@ class EventBooking extends StatelessWidget {
   final String status;
 
   const EventBooking({
-    Key key,
-    @required this.color,
-    @required this.image,
-    @required this.petName,
-    @required this.petBreed,
-    @required this.time,
-    @required this.userName,
-    @required this.status,
+    Key? key,
+    required this.color,
+    required this.image,
+    required this.petName,
+    required this.petBreed,
+    required this.time,
+    required this.userName,
+    required this.status,
   }) : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class EventBooking extends StatelessWidget {
         colorStatus = colorMain;
         break;
       case 'Por confirmar':
-        colorStatus = Colors.deepPurple[200];
+        colorStatus = Colors.deepPurple[200]!;
         break;
       default:
         colorStatus = Colors.lightGreen;

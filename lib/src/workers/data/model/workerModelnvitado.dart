@@ -16,8 +16,8 @@ class WorkersModalInvitado {
     this.result,
   });
 
-  String message;
-  Result result;
+  String? message;
+  Result? result;
 
   factory WorkersModalInvitado.fromJson(Map<String, dynamic> json) =>
       WorkersModalInvitado(
@@ -27,7 +27,7 @@ class WorkersModalInvitado {
 
   Map<String, dynamic> toJson() => {
         "message": message,
-        "result": result.toJson(),
+        "result": result!.toJson(),
       };
 }
 
@@ -36,7 +36,7 @@ class Result {
     this.invitations,
   });
 
-  List<Invitation> invitations;
+  List<Invitation>? invitations;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
         invitations: List<Invitation>.from(
@@ -44,7 +44,7 @@ class Result {
       );
 
   Map<String, dynamic> toJson() => {
-        "invitations": List<dynamic>.from(invitations.map((x) => x.toJson())),
+        "invitations": List<dynamic>.from(invitations!.map((x) => x.toJson())),
       };
 }
 
@@ -57,11 +57,11 @@ class Invitation {
     this.createdAt,
   });
 
-  String id;
-  String establishmentId;
-  String establishmentName;
-  String email;
-  DateTime createdAt;
+  String? id;
+  String? establishmentId;
+  String? establishmentName;
+  String? email;
+  DateTime? createdAt;
 
   factory Invitation.fromJson(Map<String, dynamic> json) => Invitation(
         id: json["id"],
@@ -76,6 +76,6 @@ class Invitation {
         "establishment_id": establishmentId,
         "establishment_name": establishmentName,
         "email": email,
-        "created_at": createdAt.toIso8601String(),
+        "created_at": createdAt!.toIso8601String(),
       };
 }

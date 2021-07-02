@@ -19,10 +19,10 @@ class StatCommentModel {
     this.stars,
   });
 
-  String comment;
-  DateTime date;
-  String petPicture;
-  int stars;
+  String? comment;
+  DateTime? date;
+  String? petPicture;
+  int? stars;
 
   factory StatCommentModel.fromJson(Map<String, dynamic> json) =>
       StatCommentModel(
@@ -34,7 +34,7 @@ class StatCommentModel {
 
   Map<String, dynamic> toJson() => {
         "comment": comment,
-        "date": date.toIso8601String(),
+        "date": date!.toIso8601String(),
         "pet_picture": petPicture,
         "stars": stars,
       };

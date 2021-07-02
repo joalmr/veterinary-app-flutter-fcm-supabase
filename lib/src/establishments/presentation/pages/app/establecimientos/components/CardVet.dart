@@ -15,13 +15,13 @@ class CardEstablecimiento extends StatelessWidget {
   final int tipo;
 
   const CardEstablecimiento(
-      {Key key,
-      @required this.id,
-      @required this.image,
-      @required this.name,
-      @required this.ruc,
-      @required this.aprobado,
-      @required this.tipo})
+      {Key? key,
+      required this.id,
+      required this.image,
+      required this.name,
+      required this.ruc,
+      required this.aprobado,
+      required this.tipo})
       : super(key: key);
 
   @override

@@ -8,9 +8,9 @@ class CheckFiltro extends StatefulWidget {
   final bool checkBool;
 
   CheckFiltro({
-    @required this.title,
-    @required this.onTapFn,
-    @required this.checkBool,
+    required this.title,
+    required this.onTapFn,
+    required this.checkBool,
   });
 
   @override
@@ -21,7 +21,7 @@ class _CheckFiltroState extends State<CheckFiltro> {
   String title;
   Function() onTapFn;
   bool checkBool;
-  _CheckFiltroState({@required this.title,@required this.checkBool,@required this.onTapFn});
+  _CheckFiltroState({required this.title,required this.checkBool,required this.onTapFn});
 
   @override
   Widget build(BuildContext context) {

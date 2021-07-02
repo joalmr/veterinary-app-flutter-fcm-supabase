@@ -17,9 +17,9 @@ class VaccinationBooking {
     this.recommendations,
   });
 
-  double amount;
-  List<Vaccine> vaccines;
-  String recommendations;
+  double? amount;
+  List<Vaccine>? vaccines;
+  String? recommendations;
 
   factory VaccinationBooking.fromJson(Map<String, dynamic> json) =>
       VaccinationBooking(
@@ -31,7 +31,7 @@ class VaccinationBooking {
 
   Map<String, dynamic> toJson() => {
         "amount": amount,
-        "vaccines": List<dynamic>.from(vaccines.map((x) => x.toJson())),
+        "vaccines": List<dynamic>.from(vaccines!.map((x) => x.toJson())),
         "recommendations": recommendations,
       };
 }
@@ -50,10 +50,10 @@ class Vaccine {
     this.antigens,
   });
 
-  int id;
-  String name;
-  String laboratory;
-  List<String> antigens;
+  int? id;
+  String? name;
+  String? laboratory;
+  List<String>? antigens;
 
   factory Vaccine.fromJson(Map<String, dynamic> json) => Vaccine(
         id: json["id"],
@@ -66,6 +66,6 @@ class Vaccine {
         "id": id,
         "name": name,
         "laboratory": laboratory,
-        "antigens": List<dynamic>.from(antigens.map((x) => x)),
+        "antigens": List<dynamic>.from(antigens!.map((x) => x)),
       };
 }

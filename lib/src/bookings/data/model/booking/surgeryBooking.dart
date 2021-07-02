@@ -15,8 +15,8 @@ class SurgeryBooking {
     this.recommendations,
   });
 
-  double amount;
-  String recommendations;
+  double? amount;
+  String? recommendations;
 
   factory SurgeryBooking.fromJson(Map<String, dynamic> json) => SurgeryBooking(
         amount: json["amount"].toDouble() ?? 0.0,

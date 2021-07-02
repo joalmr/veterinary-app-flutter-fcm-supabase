@@ -1,4 +1,4 @@
-import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
@@ -45,16 +45,16 @@ class EditPricesController extends GetxController {
   @override
   void onInit() {
     consultaControl.text = double.parse(
-            showVetController.establishment.value.prices.consultation.from)
+            showVetController.establishment.value.prices!.consultation!.from!)
         .toStringAsFixed(2);
     desparasitaControl.text = double.parse(
-            showVetController.establishment.value.prices.deworming.from)
+            showVetController.establishment.value.prices!.deworming!.from!)
         .toStringAsFixed(2);
     vacunaControl.text = double.parse(
-            showVetController.establishment.value.prices.vaccination.from)
+            showVetController.establishment.value.prices!.vaccination!.from!)
         .toStringAsFixed(2);
     groomingControl.text =
-        double.parse(showVetController.establishment.value.prices.grooming.from)
+        double.parse(showVetController.establishment.value.prices!.grooming!.from!)
             .toStringAsFixed(2);
     super.onInit();
   }

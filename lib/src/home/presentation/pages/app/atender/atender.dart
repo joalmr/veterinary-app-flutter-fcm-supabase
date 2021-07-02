@@ -7,7 +7,7 @@ import 'widgets/viewPass.dart';
 import 'widgets/viewToday.dart';
 
 class AtenderView extends StatefulWidget {
-  const AtenderView({Key key}) : super(key: key);
+  const AtenderView({Key? key}) : super(key: key);
 
   @override
   _AtenderViewState createState() => _AtenderViewState();

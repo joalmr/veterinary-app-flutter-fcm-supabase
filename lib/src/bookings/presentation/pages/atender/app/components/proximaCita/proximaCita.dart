@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/src/bookings/domain/bookingController.dart';
 import 'package:vet_app/src/bookings/domain/json/jsonProximaCita.dart';
 
-Widget itemCitas({String text, String slug}) {
+Widget itemCitas({String? text, String? slug}) {
   final _book = Get.find<BookingController>();
   return GestureDetector(
     onTap: () {
@@ -14,7 +14,7 @@ Widget itemCitas({String text, String slug}) {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (var item in jsonProximaCita[slug])
+              for (var item in jsonProximaCita[slug]!)
                 ListTile(
                   title: Text(item),
                   onTap: () {
@@ -49,7 +49,7 @@ Widget itemCitas({String text, String slug}) {
         ],
       ),
       child: Text(
-        text,
+        text!,
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),

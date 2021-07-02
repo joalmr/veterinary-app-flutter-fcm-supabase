@@ -28,16 +28,16 @@ class EditBaseController extends GetxController {
   @override
   void onInit() {
     vetTypeId = showVetController.establishment.value.typeId.toString();
-    nameControl.text = showVetController.establishment.value.name;
-    addressControl.text = showVetController.establishment.value.address;
-    phoneControl.text = showVetController.establishment.value.phone;
+    nameControl.text = showVetController.establishment.value.name!;
+    addressControl.text = showVetController.establishment.value.address!;
+    phoneControl.text = showVetController.establishment.value.phone!;
 
-    showVetController.establishment.value.services.forEach((element) {
-      services.add(element.id);
+    showVetController.establishment.value.services!.forEach((element) {
+      services.add(element.id!);
     });
 
     entityBase.update((val) {
-      val.name = showVetController.establishment.value.name;
+      val!.name = showVetController.establishment.value.name;
       val.phone = showVetController.establishment.value.phone;
       val.ruc = showVetController.establishment.value.ruc;
       val.website = showVetController.establishment.value.website;
@@ -56,7 +56,7 @@ class EditBaseController extends GetxController {
 
   _updateBase() async {
     entityBase.update((val) {
-      val.name = nameControl.text;
+      val!.name = nameControl.text;
       val.phone = phoneControl.text;
       val.address = addressControl.text;
       val.typeId = int.parse(vetTypeId);
@@ -75,13 +75,13 @@ class EditBaseController extends GetxController {
 
   _searchandNavigate(Prediction dato) async {
     if (addressControl.text.trim() != "") {
-      addressControl.text = dato.name;
+      addressControl.text = dato.name!;
 
-      final datoById = await _repo.getLatLngByPlaceId(dato.placeId);
-      final location = datoById.result.geometry.location;
+      final datoById = await _repo.getLatLngByPlaceId(dato.placeId!);
+      final location = datoById.result!.geometry!.location;
 
       entityBase.update((val) {
-        val.latitude = location.lat;
+        val!.latitude = location!.lat;
         val.longitude = location.lng;
       });
     }

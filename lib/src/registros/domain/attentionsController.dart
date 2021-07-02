@@ -44,10 +44,10 @@ class AttentionsController extends GetxController {
       petSpecie: specie,
     );
     final response = await _repo.getAll(
-      prefUser.vetId, 
+      prefUser.vetId!, 
       temp,
     );
     listaReg.clear();
-    listaReg.addAll(response.result);
+    listaReg.addAll(response.result!);
   }
 }

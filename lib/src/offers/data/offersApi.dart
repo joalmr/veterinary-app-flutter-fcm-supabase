@@ -10,7 +10,7 @@ class OffersApi extends OffersInterface {
   @override
   Future<List<OfferModal>> getAll(String idVet) async {
     List<OfferModal> ofertas = [];
-    final url = Uri.https(urlBase, '/api/client/establishment/$idVet/offers');
+    final url = Uri.https(urlBase!, '/api/client/establishment/$idVet/offers');
 
     http.Response response = await http.get(url, headers: headersToken());
     ofertas = offerModalFromJson(response.body);
@@ -20,7 +20,7 @@ class OffersApi extends OffersInterface {
 
   @override
   Future<int> create(Offer offer, String idVet) async {
-    final url = Uri.https(urlBase, '/api/client/establishment/$idVet/offer');
+    final url = Uri.https(urlBase!, '/api/client/establishment/$idVet/offer');
 
     http.Response response = await http.post(
       url,
@@ -34,7 +34,7 @@ class OffersApi extends OffersInterface {
   @override
   Future<int> delete(String idVet, String idOffer) async {
     final url =
-        Uri.https(urlBase, '/api/client/establishment/$idVet/offer/$idOffer');
+        Uri.https(urlBase!, '/api/client/establishment/$idVet/offer/$idOffer');
 
     http.Response response = await http.delete(url, headers: headersToken());
 

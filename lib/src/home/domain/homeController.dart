@@ -53,7 +53,7 @@ class HomeController extends GetxController {
   }
 
   getVet() {
-    nameVet.value = prefUser.vetName;
+    nameVet.value = prefUser.vetName!;
   }
 
   //!   listas bookings
@@ -61,29 +61,29 @@ class HomeController extends GetxController {
   getUnconfirmed() => _getUnconfirmed();
   _getUnconfirmed() async {
     unconfirmed.clear();
-    final response = await _repoBooking.getUnconfirmed(prefUser.vetId);
-    unconfirmed.addAll(response.result);
+    final response = await _repoBooking.getUnconfirmed(prefUser.vetId!);
+    unconfirmed.addAll(response.result!);
   }
 
   getOverdue() => _getOverdue();
   _getOverdue() async {
     overdue.clear();
-    final response = await _repoBooking.getOverdue(prefUser.vetId);
-    overdue.addAll(response.result);
+    final response = await _repoBooking.getOverdue(prefUser.vetId!);
+    overdue.addAll(response.result!);
   }
 
   getToday() => _getToday();
   _getToday() async {
     today.clear();
-    final response = await _repoBooking.getToday(prefUser.vetId);
-    today.addAll(response.result);
+    final response = await _repoBooking.getToday(prefUser.vetId!);
+    today.addAll(response.result!);
   }
 
   getIncoming() => _getIncoming();
   _getIncoming() async {
     incoming.clear();
-    final response = await _repoBooking.getIncoming(prefUser.vetId);
-    incoming.addAll(response.result);
+    final response = await _repoBooking.getIncoming(prefUser.vetId!);
+    incoming.addAll(response.result!);
   }
 
   getAllBookings() => _getAllBookings();

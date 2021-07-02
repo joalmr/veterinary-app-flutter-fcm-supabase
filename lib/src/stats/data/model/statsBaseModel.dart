@@ -10,11 +10,11 @@ StatBaseModel statBaseModelFromJson(String str) =>
 String statBaseModelToJson(StatBaseModel data) => json.encode(data.toJson());
 
 class StatBaseModel {
-  int nonAttendedPercentage;
-  int dogs;
-  int cats;
-  String stars;
-  int votes;
+  int? nonAttendedPercentage;
+  int? dogs;
+  int? cats;
+  String? stars;
+  int? votes;
 
   StatBaseModel({
     this.nonAttendedPercentage,

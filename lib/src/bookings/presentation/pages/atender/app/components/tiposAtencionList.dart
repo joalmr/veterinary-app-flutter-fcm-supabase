@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
-Widget tipoAtencion(IconData icon, String nombre, String monto, Function onTap) {
+Widget tipoAtencion(IconData icon, String nombre, String monto, void Function()? onTap) {
   return monto == ''
       ? Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -32,7 +32,7 @@ Widget tipoAtencion(IconData icon, String nombre, String monto, Function onTap) 
                     Expanded(
                       child: Text(
                         nombre,
-                        style: Get.textTheme.subtitle1.apply(fontWeightDelta: 2),
+                        style: Get.textTheme.subtitle1!.apply(fontWeightDelta: 2),
                       ),
                     ),
                   ],
@@ -90,7 +90,7 @@ Widget tipoAtencion(IconData icon, String nombre, String monto, Function onTap) 
                         child: Text(
                           nombre,
                           style:
-                              Get.textTheme.subtitle1.apply(fontWeightDelta: 2),
+                              Get.textTheme.subtitle1!.apply(fontWeightDelta: 2),
                         ),
                       ),
                       Padding(
@@ -98,7 +98,7 @@ Widget tipoAtencion(IconData icon, String nombre, String monto, Function onTap) 
                         child: Text(
                           'S/ $monto',
                           style:
-                              Get.textTheme.subtitle2.apply(fontWeightDelta: 2),
+                              Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                         ),
                       ),
                       Icon(

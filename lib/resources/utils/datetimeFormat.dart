@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
 String formatDateTime(DateTime dateTime) {
@@ -27,9 +26,9 @@ String formatTime(DateTime dateTime) {
 }
 
 String formatDateOut({
-  @required String valor,
-  @required String formatIn,
-  @required String formatOut,
+  required String valor,
+  required String formatIn,
+  required String formatOut,
 }) {
   DateTime tempDate = DateFormat(formatIn).parse(valor);
   String tempDateString = DateFormat(formatOut).format(tempDate);

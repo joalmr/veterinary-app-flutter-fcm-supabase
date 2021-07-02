@@ -4,7 +4,7 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/src/establishments/domain/edit/editDescriptionController.dart';
 
 class EditDescriptionView extends StatelessWidget {
-  const EditDescriptionView({Key key}) : super(key: key);
+  const EditDescriptionView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

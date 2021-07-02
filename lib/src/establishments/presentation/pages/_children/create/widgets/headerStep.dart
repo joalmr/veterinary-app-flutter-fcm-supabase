@@ -4,8 +4,8 @@ import 'package:flutter_conditional_rendering/conditional_switch.dart';
 class HeaderStep extends StatelessWidget {
   final int selected;
   const HeaderStep({
-    Key key,
-    @required this.selected,
+    Key? key,
+    required this.selected,
   }) : super(key: key);
 
   @override

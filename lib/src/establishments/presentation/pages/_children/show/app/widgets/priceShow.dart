@@ -13,16 +13,16 @@ Widget precio(String tipo, String desde) {
         children: <Widget>[
           Text(
             tipo,
-            style: TextStyle(color: Get.textTheme.subtitle2.color),
+            style: TextStyle(color: Get.textTheme.subtitle2!.color),
           ),
           SizedBox(height: 5),
           Text(
             "desde",
-            style: TextStyle(color: Get.textTheme.subtitle2.color),
+            style: TextStyle(color: Get.textTheme.subtitle2!.color),
           ),
           Text(
             desde,
-            style: TextStyle(color: Get.textTheme.subtitle2.color),
+            style: TextStyle(color: Get.textTheme.subtitle2!.color),
           )
         ],
       ),

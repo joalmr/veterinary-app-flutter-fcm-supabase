@@ -6,7 +6,7 @@ import 'package:vet_app/components/dontExit.dart';
 import 'package:vet_app/src/chat/domain/chatController.dart';
 
 class ChatsView extends StatelessWidget {
-  const ChatsView({Key key}) : super(key: key);
+  const ChatsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ChatsView extends StatelessWidget {
                 return Container(
                   margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: InkWell(
-                    onTap: () => _.goToMessage(chat.id),
+                    onTap: () => _.goToMessage(chat.id!),
                     borderRadius: BorderRadius.circular(10),
                     child: Container(
                       padding: EdgeInsets.all(10),
@@ -41,7 +41,7 @@ class ChatsView extends StatelessWidget {
                           ),
                           SizedBox(width: 10),
                           Column(
-                            children: [Text(chat.petlover.name)],
+                            children: [Text(chat.petlover!.name!)],
                           )
                         ],
                       ),

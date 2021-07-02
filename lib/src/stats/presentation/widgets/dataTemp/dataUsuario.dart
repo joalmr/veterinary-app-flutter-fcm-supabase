@@ -1,6 +1,6 @@
 class DataUsuario {
-  String name;
-  int value;
+  String? name;
+  int? value;
 
   DataUsuario({
     this.name,

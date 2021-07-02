@@ -1,8 +1,8 @@
 class DataNextdate {
-  String type;
-  String name;
-  String date;
-  String observation;
+  String? type;
+  String? name;
+  String? date;
+  String? observation;
 
   DataNextdate({
     this.type,

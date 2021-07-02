@@ -5,7 +5,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
 
 class FilterStatView extends StatelessWidget {
-  const FilterStatView({Key key}) : super(key: key);
+  const FilterStatView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

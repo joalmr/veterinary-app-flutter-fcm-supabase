@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
+// import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vet_app/components/childRegion.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
@@ -19,14 +20,14 @@ class EventNextDate extends StatelessWidget {
   final bool secondPush;
 
   const EventNextDate({
-    @required this.image,
-    @required this.petName,
-    @required this.petBreed,
-    @required this.motivo,
-    @required this.userName,
-    @required this.userPhone,
-    @required this.firstPush,
-    @required this.secondPush,
+    required this.image,
+    required this.petName,
+    required this.petBreed,
+    required this.motivo,
+    required this.userName,
+    required this.userPhone,
+    required this.firstPush,
+    required this.secondPush,
   });
 
   launchWhatsApp() async {
@@ -110,7 +111,8 @@ class EventNextDate extends StatelessWidget {
                               launchWhatsApp();
                             }, 
                             child: Icon(
-                              LineAwesomeIcons.whatsapp,
+                              // LineAwesomeIcons.whatsapp,
+                              LineIcons.whatSApp,
                               size: 32,
                             ),
                           ),

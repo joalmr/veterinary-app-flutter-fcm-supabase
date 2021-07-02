@@ -5,8 +5,8 @@ Address addressFromJson(String str) => Address.fromJson(json.decode(str));
 String addressToJson(Address data) => json.encode(data.toJson());
 
 class Address {
-  List<Prediction> predictions;
-  String status;
+  List<Prediction>? predictions;
+  String? status;
 
   Address({
     this.predictions,
@@ -20,15 +20,15 @@ class Address {
       );
 
   Map<String, dynamic> toJson() => {
-        "predictions": List<dynamic>.from(predictions.map((x) => x.toJson())),
+        "predictions": List<dynamic>.from(predictions!.map((x) => x.toJson())),
         "status": status,
       };
 }
 
 class Prediction {
-  String name;
-  String id;
-  String placeId;
+  String? name;
+  String? id;
+  String? placeId;
 
   Prediction({
     this.name,
@@ -48,7 +48,7 @@ class Prediction {
       };
 
   @override
-  String toString() => name;
+  String toString() => name!;
 
   @override
   operator ==(o) => o is Prediction && o.id == id;

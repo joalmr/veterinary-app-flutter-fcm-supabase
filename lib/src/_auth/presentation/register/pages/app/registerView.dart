@@ -5,7 +5,7 @@ import 'package:vet_app/resources/images/images.dart';
 import 'package:vet_app/src/_auth/presentation/register/widgets/cardRegister.dart';
 
 class RegisterView extends StatelessWidget {
-  const RegisterView({Key key}) : super(key: key);
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

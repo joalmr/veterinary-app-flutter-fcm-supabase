@@ -1,6 +1,6 @@
 class DataVentaMensual {
-  String name;
-  double value;
+  String? name;
+  double? value;
 
   DataVentaMensual({
     this.name,

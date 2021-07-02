@@ -25,21 +25,21 @@ class CardAttention extends StatefulWidget {
   final int attentionType;
 
   CardAttention({
-    @required this.bookingId,
-    @required this.petImg,
-    @required this.petName,
-    @required this.petBreed,
-    @required this.status,
-    @required this.date,
-    @required this.time,
-    @required this.userName,
-    @required this.userPhone,
-    @required this.color,
-    @required this.bookingServices,
-    @required this.observation,
-    @required this.address,
-    @required this.delivery,
-    @required this.attentionType,
+    required this.bookingId,
+    required this.petImg,
+    required this.petName,
+    required this.petBreed,
+    required this.status,
+    required this.date,
+    required this.time,
+    required this.userName,
+    required this.userPhone,
+    required this.color,
+    required this.bookingServices,
+    required this.observation,
+    required this.address,
+    required this.delivery,
+    required this.attentionType,
   });
 
   @override
@@ -265,7 +265,7 @@ class _CardAttentionState extends State<CardAttention> {
                                       EdgeInsets.only(left: 7.5, right: 20),
                                   child: btnSecondary(
                                     text: 'Reprogramar',
-                                    color: Colors.grey[600],
+                                    color: Colors.grey[600]!,
                                     onPressed: () {
                                       Navigator.push(
                                         context,

@@ -27,15 +27,15 @@ class GeneralBooking {
         this.total,
     });
 
-    String attentionId;
-    ConsultationBooking consultation;
-    DewormingBooking deworming;
+    String? attentionId;
+    ConsultationBooking? consultation;
+    DewormingBooking? deworming;
     dynamic grooming;
-    OthersBooking other;
-    SurgeryBooking surgery;
+    OthersBooking? other;
+    SurgeryBooking? surgery;
     dynamic testing;
-    VaccinationBooking vaccination;
-    double total;
+    VaccinationBooking? vaccination;
+    double? total;
 
     factory GeneralBooking.fromJson(Map<String, dynamic> json) => GeneralBooking(
         attentionId: json["attention_id"],
@@ -51,13 +51,13 @@ class GeneralBooking {
 
     Map<String, dynamic> toJson() => {
         "attention_id": attentionId,
-        "consultation": consultation.toJson(),
-        "deworming": deworming.toJson(),
+        "consultation": consultation!.toJson(),
+        "deworming": deworming!.toJson(),
         "grooming": grooming,
-        "other": other.toJson(),
-        "surgery": surgery.toJson(),
+        "other": other!.toJson(),
+        "surgery": surgery!.toJson(),
         "testing": testing,
-        "vaccination": vaccination.toJson(),
+        "vaccination": vaccination!.toJson(),
         "total": total,
     };
 }

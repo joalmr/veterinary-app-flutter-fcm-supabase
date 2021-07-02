@@ -8,13 +8,13 @@ class CanalModel {
       this.petlover,
     });
 
-    int id;
-    int establishmentId;
-    int petloverId;
-    PetloverModel petlover;
+    int? id;
+    int? establishmentId;
+    int? petloverId;
+    PetloverModel? petlover;
     
-    String userId;
-    String petloverName;
+    // String userId;
+    // String petloverName;
     
     factory CanalModel.fromJson(Map<String, dynamic> json) => CanalModel(
       id: json['id'],
@@ -27,6 +27,6 @@ class CanalModel {
       "id": id,
       "petlover_id": petloverId,
       "establishment_id": establishmentId,
-      "petlover": petlover.toJson(),
+      "petlover": petlover!.toJson(),
     };
 }

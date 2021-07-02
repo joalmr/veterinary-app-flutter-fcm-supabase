@@ -38,8 +38,8 @@ class ChartServicios extends StatelessWidget {
                 children: dataServices
                     .map(
                       (e) => ChartLegend(
-                        e.name,
-                        e.color,
+                        e.name!,
+                        e.color!,
                       ),
                     )
                     .toList(),
@@ -55,8 +55,8 @@ class ChartServicios extends StatelessWidget {
 Widget _chartBar(List<DataService> listService) {
   double numeromayor = 0;
   for (int i = 0; i < listService.length && i < listService.length; i++) {
-    if (listService[i].value > numeromayor) {
-      numeromayor = listService[i].value;
+    if (listService[i].value! > numeromayor) {
+      numeromayor = listService[i].value!;
     }
   }
 
@@ -65,9 +65,9 @@ Widget _chartBar(List<DataService> listService) {
     children: listService
         .map(
           (e) => _barDay(
-            e.name,
-            e.value,
-            e.color,
+            e.name!,
+            e.value!,
+            e.color!,
             numeromayor,
           ),
         )

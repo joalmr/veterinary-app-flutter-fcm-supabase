@@ -12,7 +12,7 @@ import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chartVent
 import 'filterStas.dart';
 
 class StatsData extends StatefulWidget {
-  const StatsData({Key key}) : super(key: key);
+  const StatsData({Key? key}) : super(key: key);
 
   @override
   _StatsDataState createState() => _StatsDataState();

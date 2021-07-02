@@ -17,7 +17,7 @@ class AuthRepository extends AuthInterface {
 
   @override
   Future<int> login(String email, String password) async {
-    final url = Uri.https(urlBase, '/api/client/login');
+    final url = Uri.https(urlBase!, '/api/client/login');
     try {
       final loginData = {"email": email, "password": password};
 

@@ -6,7 +6,7 @@ import 'package:vet_app/src/establishments/domain/edit/editEmployeesController.d
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/dataTipo.dart';
 
 class SetEmployee extends StatelessWidget {
-  final Employee employee;
+  final Employee? employee;
 
   const SetEmployee({this.employee});
 
@@ -36,11 +36,11 @@ class SetEmployee extends StatelessWidget {
                           items: personalTipo.map((ItemService value) {
                             return new DropdownMenuItem<String>(
                               value: value.id,
-                              child: new Text(value.name),
+                              child: new Text(value.name!),
                             );
                           }).toList(),
-                          onChanged: (val) {
-                            _.personalType = val;
+                          onChanged: (String? val) {
+                            _.personalType = val!;
                             print(_.personalType);
                           },
                         ),

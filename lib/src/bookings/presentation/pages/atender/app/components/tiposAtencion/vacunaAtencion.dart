@@ -63,8 +63,8 @@ class VacunaPage extends StatelessWidget {
                         
                       },
                       controlsBuilder: (BuildContext context,{
-                          VoidCallback onStepContinue,
-                          VoidCallback onStepCancel
+                          VoidCallback? onStepContinue,
+                          VoidCallback? onStepCancel
                         }){
                         // _.stepContinue = onStepContinue;
                         // _.stepCancel = onStepCancel;
@@ -79,7 +79,7 @@ class VacunaPage extends StatelessWidget {
                     btnAltern(
                       text: 'Atras', 
                       onPressed: (){},
-                      color: Colors.grey[400],
+                      color: Colors.grey[400]!,
                     ),
                     btnAltern(
                       text: 'Siguiente', 

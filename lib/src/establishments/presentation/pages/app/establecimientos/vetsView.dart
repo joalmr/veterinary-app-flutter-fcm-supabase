@@ -14,12 +14,12 @@ class VetsView extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               final establecimiento = _.establecimientos[index];
               return CardEstablecimiento(
-                id: establecimiento.id,
-                image: establecimiento.logo,
-                name: establecimiento.name,
-                ruc: establecimiento.ruc,
-                aprobado: establecimiento.status,
-                tipo: establecimiento.type,
+                id: establecimiento.id!,
+                image: establecimiento.logo!,
+                name: establecimiento.name!,
+                ruc: establecimiento.ruc!,
+                aprobado: establecimiento.status!,
+                tipo: establecimiento.type!,
               );
             },
           );

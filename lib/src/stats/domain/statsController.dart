@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,16 +35,16 @@ class StatsController extends GetxController {
 
   final hoy = DateTime.now();
 
-  DateTime initialIn;
-  DateTime initialOut;
+  DateTime? initialIn;
+  DateTime? initialOut;
 
   @override
   void onInit() {
     initialIn = DateTime(hoy.year, (hoy.month - 2), hoy.day);
     initialOut = hoy;
 
-    fechaIn.text = formatDateBasic(initialIn); //formatDate
-    fechaOut.text = formatDateBasic(initialOut);
+    fechaIn.text = formatDateBasic(initialIn!); //formatDate
+    fechaOut.text = formatDateBasic(initialOut!);
 
     cargaStats();
     super.onInit();
@@ -79,11 +77,11 @@ class StatsController extends GetxController {
   }
 
   Future selectIn(BuildContext context) async {
-    DateTime picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
         context: context,
-        initialDate: initialIn,
+        initialDate: initialIn!,
         firstDate: new DateTime(2020),
-        lastDate: initialOut.add(Duration(days: -1)));
+        lastDate: initialOut!.add(Duration(days: -1)));
     if (picked != null) {
       initialIn = picked;
       fechaIn.text = formatDateBasic(picked);
@@ -91,9 +89,9 @@ class StatsController extends GetxController {
   }
 
   Future selectOut(BuildContext context) async {
-    DateTime picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
         context: context,
-        initialDate: initialOut,
+        initialDate: initialOut!,
         firstDate: new DateTime(2020),
         lastDate: new DateTime.now());
     if (picked != null) {
@@ -106,9 +104,9 @@ class StatsController extends GetxController {
   _getBase() async {
     cargaBase.value = true;
     var response =
-        await _repo.getStatsBase(prefUser.vetId, fechaIn.text, fechaOut.text);
+        await _repo.getStatsBase(prefUser.vetId!, fechaIn.text, fechaOut.text);
     statBase.update((val) {
-      val.stars = response.stars;
+      val!.stars = response.stars;
       val.votes = response.votes;
       val.dogs = response.dogs;
       val.cats = response.cats;
@@ -122,7 +120,7 @@ class StatsController extends GetxController {
     cargaComments.value = true;
     statComments.clear();
     var values = await _repo.getStatsComment(
-        prefUser.vetId, fechaIn.text, fechaOut.text);
+        prefUser.vetId!, fechaIn.text, fechaOut.text);
     statComments.addAll(values);
     cargaComments.value = false;
   }
@@ -137,13 +135,13 @@ class StatsController extends GetxController {
     paiChartList.clear();
 
     var values = await _repo.getStatsService(
-        prefUser.vetId, fechaIn.text, fechaOut.text);
-    services.addAll(values.result.services);
+        prefUser.vetId!, fechaIn.text, fechaOut.text);
+    services.addAll(values.result!.services!);
 
     services.forEach((element) {
       PieChartSectionData temp = new PieChartSectionData(
         color: UniqueColorGenerator.getColor().withOpacity(0.7),
-        value: element.value.toDouble(),
+        value: element.value!.toDouble(),
         showTitle: false,
         radius: 25,
       );
@@ -157,8 +155,8 @@ class StatsController extends GetxController {
   _getStatsDaily() async {
     cargaSalesDay.value = true;
     salesDay.clear();
-    var values = await _repo.getStatsDaily(prefUser.vetId);
-    salesDay.addAll(values.result.salesDay);
+    var values = await _repo.getStatsDaily(prefUser.vetId!);
+    salesDay.addAll(values.result!.salesDay!);
     cargaSalesDay.value = false;
   }
 
@@ -166,9 +164,9 @@ class StatsController extends GetxController {
   _getStatsMonthly() async {
     cargaSalesMonth.value = true;
     salesMonth.clear();
-    var values = await _repo.getStatsMonthly(prefUser.vetId);
+    var values = await _repo.getStatsMonthly(prefUser.vetId!);
     
-    salesMonth.addAll(values.result.salesMonth);
+    salesMonth.addAll(values.result!.salesMonth!);
     cargaSalesMonth.value = false;
   }
 }

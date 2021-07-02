@@ -8,7 +8,7 @@ import 'package:vet_app/src/workers/domain/workersController.dart';
 import 'package:easy_rich_text/easy_rich_text.dart';
 
 class CreaWorkerView extends StatelessWidget {
-  const CreaWorkerView({Key key}) : super(key: key);
+  const CreaWorkerView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,7 @@ class CreaWorkerView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  formatDate(workerInvitation.createdAt),
+                                  formatDate(workerInvitation.createdAt!),
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -107,7 +107,7 @@ class CreaWorkerView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  workerInvitation.establishmentName,
+                                  workerInvitation.establishmentName!,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
@@ -125,7 +125,7 @@ class CreaWorkerView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  workerInvitation.email,
+                                  workerInvitation.email!,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],

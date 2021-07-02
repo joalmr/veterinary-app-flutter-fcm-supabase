@@ -12,10 +12,10 @@ class CheckHorario extends StatelessWidget {
   final TextEditingController iniController;
   final TextEditingController endController;
   CheckHorario({
-    @required this.day,
-    @required this.index,
-    @required this.iniController,
-    @required this.endController,
+    required this.day,
+    required this.index,
+    required this.iniController,
+    required this.endController,
   });
 
   @override

@@ -35,9 +35,9 @@ class WorkersController extends GetxController {
   getWorkers() => _getWorkers();
   _getWorkers() async {
     workers.clear();
-    final response = await _repo.getWorkers(prefUser.vetId);
-    final lista = response.result.workers;
-    workers.addAll(lista);
+    final response = await _repo.getWorkers(prefUser.vetId!);
+    final lista = response.result!.workers;
+    workers.addAll(lista!);
   }
 
   //!   invitaciones
@@ -45,9 +45,9 @@ class WorkersController extends GetxController {
   getInvitados() => _getInvitados();
   _getInvitados() async {
     workersInvitation.clear();
-    final response = await _repo.getWorkersInvitado(prefUser.vetId);
-    final lista = response.result.invitations;
-    workersInvitation.addAll(lista);
+    final response = await _repo.getWorkersInvitado(prefUser.vetId!);
+    final lista = response.result!.invitations;
+    workersInvitation.addAll(lista!);
   }
 
   setInvita() => _setInvita();
@@ -61,11 +61,11 @@ class WorkersController extends GetxController {
       );
     }
     else{
-      InvitationModel value = await _repo.setInvita(prefUser.vetId, emailText.text);
-      if(!value.result){
+      InvitationModel value = await _repo.setInvita(prefUser.vetId!, emailText.text);
+      if(!value.result!){
         Get.snackbar(
           'Error', 
-          value.message,
+          value.message!,
           backgroundColor: colorRed,
           colorText: colorWhite,
         );
@@ -80,13 +80,13 @@ class WorkersController extends GetxController {
 
   deleteInvita(invitationId) => _deleteInvita(invitationId);
   _deleteInvita(invitationId) async {
-    await _repo.deleteInvita(prefUser.vetId, invitationId);
+    await _repo.deleteInvita(prefUser.vetId!, invitationId);
     getInvitados();
   }
 
   deleteWorker(workerId) => _deleteWorker(workerId);
   _deleteWorker(workerId) async {
-    await _repo.deleteWorker(prefUser.vetId, workerId);
+    await _repo.deleteWorker(prefUser.vetId!, workerId);
     getInvitados();
   }
 }

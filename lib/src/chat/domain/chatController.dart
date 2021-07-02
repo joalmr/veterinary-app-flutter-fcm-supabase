@@ -14,17 +14,17 @@ class ChatController extends GetxController {
   RxList<CanalModel> chats = <CanalModel>[].obs;
   RxList<MessageModel> mensajes = <MessageModel>[].obs;
 
-  int vetInt;
-  int canalId;
+  int? vetInt;
+  int? canalId;
 
-  RealtimeSubscription subscriptionMessage;
-  final supabaseClient = SupabaseClient(urlSupa, keySupa);
+  RealtimeSubscription? subscriptionMessage;
+  final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
 
   @override
   Future<void> onInit() async {
     super.onInit();
 
-    vetInt = await _repo.getEstablishment(prefUser.vetId, prefUser.vetName);
+    vetInt = await _repo.getEstablishment(prefUser.vetId!, prefUser.vetName!);
     
     runSubscription();
 
@@ -35,7 +35,7 @@ class ChatController extends GetxController {
 
   getChats() => _getChats();
   _getChats() async {
-    final response = await _repo.getCanal(vetInt);
+    final response = await _repo.getCanal(vetInt!);
 
     chats.clear();
     chats.addAll(response);
@@ -56,7 +56,7 @@ class ChatController extends GetxController {
 
   addMessage(String message) => _addMessage(message);
   _addMessage(String message) async {
-    await _repo.addMessage(canalId, message);
+    await _repo.addMessage(canalId!, message);
   }
 
   void runSubscription() {
@@ -64,12 +64,12 @@ class ChatController extends GetxController {
     subscriptionMessage = supabaseClient
     .from('message')//:canal_id=eq.$canalId'
     .on(SupabaseEventTypes.delete, (payload) {
-      _getMessage(canalId);
+      _getMessage(canalId!);
     })
     .on(SupabaseEventTypes.update, (payload) {
-      _getMessage(canalId);
+      _getMessage(canalId!);
     }).on(SupabaseEventTypes.insert, (payload) {
-      _getMessage(canalId);
+      _getMessage(canalId!);
     }).subscribe();
 
 

@@ -9,7 +9,7 @@ import 'package:vet_app/src/establishments/domain/edit/editBaseController.dart';
 class DirBase extends StatelessWidget {
   final String direccion;
   final TextEditingController controller;
-  const DirBase({@required this.direccion, @required this.controller});
+  const DirBase({required this.direccion, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,9 @@ class DirBase extends StatelessWidget {
             var response = await http.get(url);
             print(response.body);
             var models = addressFromJson(response.body);
-            return models.predictions;
+            return models.predictions!;
           },
-          onSuggestionSelected: (Prediction data) => (data != null) ? _.gpsDireccion(data) : null,
+          onSuggestionSelected: (Prediction? data) => (data != null) ? _.gpsDireccion(data) : null,
           textFieldConfiguration: TextFieldConfiguration(
             controller: controller,
             decoration: InputDecoration(labelText: 'Dirección'),
@@ -38,7 +38,7 @@ class DirBase extends StatelessWidget {
           itemBuilder: (context, address) => Padding(
             padding: EdgeInsets.all(8),
             child: Text(
-              address.name,
+              address.name!,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),

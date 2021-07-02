@@ -3,16 +3,16 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/cardContainer.dart';
 
 cardRegister({
-  @required String date,
-  @required List<Icon> icons,
-  @required petImage,
-  @required String petName,
-  @required String petYo,
-  @required String petBreed,
-  @required String petSpecie,
-  @required String petLover,
-  @required String amount,
-  @required Function onPressed,
+  required String date,
+  required List<Icon> icons,
+  required petImage,
+  required String petName,
+  required String petYo,
+  required String petBreed,
+  required String petSpecie,
+  required String petLover,
+  required String amount,
+  required void Function()?  onPressed,
 }) {
   return cardContainer(
     child: Container(

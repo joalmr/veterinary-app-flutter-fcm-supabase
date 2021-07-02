@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class DontExit extends StatelessWidget {
   final child;
 
-  const DontExit({@required this.child});
+  const DontExit({required this.child});
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        DateTime currentBackPressTime;
+        DateTime? currentBackPressTime;
         DateTime now = DateTime.now();
         if (currentBackPressTime == null ||
             now.difference(currentBackPressTime) > Duration(seconds: 2)) {

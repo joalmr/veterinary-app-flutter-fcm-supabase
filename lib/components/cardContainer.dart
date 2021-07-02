@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-cardContainer({@required Widget child}) {
+cardContainer({required Widget child}) {
   return Container(
     margin: EdgeInsets.symmetric(
       vertical: 5,

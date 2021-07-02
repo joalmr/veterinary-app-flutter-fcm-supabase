@@ -92,7 +92,7 @@ class CreaAdmin extends StatelessWidget {
                                 fontSize: 10,
                               ),
                             ),
-                            Text(formatDate(workerInvitation.createdAt),),
+                            Text(formatDate(workerInvitation.createdAt!),),
                             SizedBox(height: 2.5),
                             Text(
                               'Establecimiento',
@@ -101,7 +101,7 @@ class CreaAdmin extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              workerInvitation.establishmentName,
+                              workerInvitation.establishmentName!,
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 2.5),
@@ -111,7 +111,7 @@ class CreaAdmin extends StatelessWidget {
                                 fontSize: 10,
                               ),
                             ),
-                            Text(workerInvitation.email),
+                            Text(workerInvitation.email!),
                             SizedBox(height: 10),
                             InkWell(
                               onTap: () => _.deleteInvita(workerInvitation.id),

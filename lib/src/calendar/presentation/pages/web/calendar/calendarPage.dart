@@ -10,7 +10,7 @@ import 'package:vet_app/src/calendar/presentation/widgets/eventList/eventsNote.d
 import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tabSelect.dart';
 
 class CalendarPage extends StatefulWidget {
-  const CalendarPage({Key key}) : super(key: key);
+  const CalendarPage({Key? key}) : super(key: key);
 
   @override
   _CalendarPageState createState() => _CalendarPageState();

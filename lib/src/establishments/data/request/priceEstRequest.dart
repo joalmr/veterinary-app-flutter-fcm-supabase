@@ -21,12 +21,12 @@ class RxPriceEstablecimientoEntity {
 }
 
 class PriceEstablecimientoEntity {
-  double consultationPriceFrom;
-  double dewormingPriceFrom;
-  double groomingPriceFrom;
-  double vaccinationPriceFrom;
+  double? consultationPriceFrom;
+  double? dewormingPriceFrom;
+  double? groomingPriceFrom;
+  double? vaccinationPriceFrom;
 
-  RxPriceEstablecimientoEntity rx;
+  RxPriceEstablecimientoEntity? rx;
   PriceEstablecimientoEntity({
     this.consultationPriceFrom,
     this.dewormingPriceFrom,
@@ -34,10 +34,10 @@ class PriceEstablecimientoEntity {
     this.vaccinationPriceFrom,
   }) {
     rx = RxPriceEstablecimientoEntity(
-      consultationPriceFrom.obs,
-      dewormingPriceFrom.obs,
-      groomingPriceFrom.obs,
-      vaccinationPriceFrom.obs,
+      consultationPriceFrom!.obs,
+      dewormingPriceFrom!.obs,
+      groomingPriceFrom!.obs,
+      vaccinationPriceFrom!.obs,
     );
   }
 

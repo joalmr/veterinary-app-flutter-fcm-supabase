@@ -16,7 +16,7 @@ class StatsApi extends StatsInterface {
       String establecimientoId, String from, String to) async {
     print('getStatsBase');
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/stats',
       {
         "from": from,
@@ -36,7 +36,7 @@ class StatsApi extends StatsInterface {
       String establecimientoId, String from, String to) async {
     print('getStatsComment');
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/comments',
       {
         "from": from,
@@ -55,7 +55,7 @@ class StatsApi extends StatsInterface {
   Future<StatsServiceModel> getStatsService(String establecimientoId, String from, String to) async {
     print('getStatsService');
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/services',
       {
         "from": from,
@@ -73,7 +73,7 @@ class StatsApi extends StatsInterface {
   Future<StatsSalesDailyModel> getStatsDaily(String establecimientoId) async {
     print('getStatsDaily');
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/sales',
       {
         "type": "daily",
@@ -90,7 +90,7 @@ class StatsApi extends StatsInterface {
   Future<StatsSalesMonthlyModel> getStatsMonthly(String establecimientoId) async {
     print('getStatsMonthly');
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/sales',
       {
         "type": "monthly",
@@ -107,7 +107,7 @@ class StatsApi extends StatsInterface {
   @override
   Future<StatsUserModel> getStatsUser(String establecimientoId) async {
     final url = Uri.https(
-      urlBase,
+      urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/users',
     );
 

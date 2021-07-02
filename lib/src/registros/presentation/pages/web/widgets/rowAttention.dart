@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
 
 class RowAttention extends StatefulWidget {
-  final String petName;
-  final String petBreed;
-  final String date;
-  final String time;
-  final String userName;
+  final String? petName;
+  final String? petBreed;
+  final String? date;
+  final String? time;
+  final String? userName;
 
-  final String amount;
+  final String? amount;
 
   RowAttention({
     this.petName,
@@ -86,14 +86,14 @@ class _RowAttentionState extends State<RowAttention> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.petName,
+                          widget.petName!,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12.0,
                           ),
                         ),
                         Text(
-                          widget.petBreed,
+                          widget.petBreed!,
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 12.0,
@@ -158,7 +158,7 @@ class _RowAttentionState extends State<RowAttention> {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        widget.userName,
+                        widget.userName!,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 12.0,

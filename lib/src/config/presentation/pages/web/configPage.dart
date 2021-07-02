@@ -6,7 +6,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/config/domain/configController.dart';
 
 class ConfigPage extends StatelessWidget {
-  const ConfigPage({Key key}) : super(key: key);
+  const ConfigPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

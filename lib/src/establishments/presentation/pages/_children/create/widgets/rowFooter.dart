@@ -6,7 +6,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 
 class FooterCreateVet extends StatelessWidget {
-  const FooterCreateVet({Key key}) : super(key: key);
+  const FooterCreateVet({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

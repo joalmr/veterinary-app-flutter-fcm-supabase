@@ -4,25 +4,25 @@ EstablishmentModal establishmentModalFromJson(String str) =>
     EstablishmentModal.fromJson(json.decode(str));
 
 class EstablishmentModal {
-  String address;
-  String description;
-  List<Employee> employees;
-  String id;
-  double latitude;
-  String logo;
-  double longitude;
-  String name;
-  String phone;
-  Prices prices;
-  String reference;
-  String ruc;
-  Schedule schedule;
-  List<Service> services;
-  List<String> slides;
-  String stars;
-  String type;
-  int typeId;
-  String website;
+  String? address;
+  String? description;
+  List<Employee>? employees;
+  String? id;
+  double? latitude;
+  String? logo;
+  double? longitude;
+  String? name;
+  String? phone;
+  Prices? prices;
+  String? reference;
+  String? ruc;
+  Schedule? schedule;
+  List<Service>? services;
+  List<String>? slides;
+  String? stars;
+  String? type;
+  int? typeId;
+  String? website;
 
   EstablishmentModal({
     this.address,
@@ -73,11 +73,11 @@ class EstablishmentModal {
 }
 
 class Employee {
-  String id;
-  String establishmentId;
-  int typeId;
-  String name;
-  String code;
+  String? id;
+  String? establishmentId;
+  int? typeId;
+  String? name;
+  String? code;
 
   Employee({
     this.id,
@@ -102,8 +102,8 @@ class Service {
     this.name,
   });
 
-  int id;
-  String name;
+  int? id;
+  String? name;
 
   factory Service.fromJson(Map<String, dynamic> json) => Service(
         id: json["id"],
@@ -117,10 +117,10 @@ class Service {
 }
 
 class Prices {
-  Price consultation;
-  Price deworming;
-  Price vaccination;
-  Price grooming;
+  Price? consultation;
+  Price? deworming;
+  Price? vaccination;
+  Price? grooming;
 
   Prices({
     this.consultation,
@@ -143,8 +143,8 @@ class Price {
     this.to,
   });
 
-  String from;
-  String to;
+  String? from;
+  String? to;
 
   factory Price.fromJson(Map<String, dynamic> json) => Price(
         from: json["from"] == null ? null : json["from"].toString(),
@@ -163,13 +163,13 @@ class Schedule {
     this.sunday,
   });
 
-  Day monday;
-  Day tuesday;
-  Day wednesday;
-  Day thursday;
-  Day friday;
-  Day saturday;
-  Day sunday;
+  Day? monday;
+  Day? tuesday;
+  Day? wednesday;
+  Day? thursday;
+  Day? friday;
+  Day? saturday;
+  Day? sunday;
 
   factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
         monday: Day.fromJson(json["monday"]),
@@ -199,9 +199,9 @@ class Day {
     this.timeEnd,
   });
 
-  bool daySwitch;
-  String timeStart;
-  String timeEnd;
+  bool? daySwitch;
+  String? timeStart;
+  String? timeEnd;
 
   factory Day.fromJson(Map<String, dynamic> json) => Day(
         daySwitch: json["switch"] == null ? false : json["switch"],

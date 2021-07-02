@@ -6,7 +6,7 @@ import 'package:vet_app/src/stats/domain/statsController.dart';
 import 'package:vet_app/src/stats/presentation/pages/app/components/statCard.dart';
 
 class ValuesStats extends StatelessWidget {
-  const ValuesStats({Key key}) : super(key: key);
+  const ValuesStats({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +22,12 @@ class ValuesStats extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 10, top: 5),
-                      child: Text('${formatDate(_.initialIn)} a ${formatDate(_.initialOut)}'),
+                      child: Text('${formatDate(_.initialIn!)} a ${formatDate(_.initialOut!)}'),
                     ),
                     StatCard(
                       icon: Icons.star_rounded,
                       text: 'Estrellas',
-                      value: _.statBase.value.stars,
+                      value: _.statBase.value.stars!,
                       color: colorGreen,
                     ),
                     StatCard(

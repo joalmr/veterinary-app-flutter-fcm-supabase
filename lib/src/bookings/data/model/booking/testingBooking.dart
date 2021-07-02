@@ -16,9 +16,9 @@ class TestingBooking {
     this.recommendations,
   });
 
-  double amount;
-  List<Test> tests;
-  String recommendations;
+  double? amount;
+  List<Test>? tests;
+  String? recommendations;
 
   factory TestingBooking.fromJson(Map<String, dynamic> json) => TestingBooking(
         amount: json["amount"].toDouble() ?? 0.0,
@@ -28,7 +28,7 @@ class TestingBooking {
 
   Map<String, dynamic> toJson() => {
         "amount": amount,
-        "tests": List<dynamic>.from(tests.map((x) => x.toJson())),
+        "tests": List<dynamic>.from(tests!.map((x) => x.toJson())),
         "recommendations": recommendations,
       };
 }
@@ -39,8 +39,8 @@ class Test {
     this.name,
   });
 
-  int id;
-  String name;
+  int? id;
+  String? name;
 
   factory Test.fromJson(Map<String, dynamic> json) => Test(
         id: json["id"],

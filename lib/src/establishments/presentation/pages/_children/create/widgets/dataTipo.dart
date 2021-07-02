@@ -1,6 +1,6 @@
 class ItemService {
-  String id;
-  String name;
+  String? id;
+  String? name;
 
   ItemService({
     this.id,

@@ -4,7 +4,7 @@ import 'package:vet_app/resources/data/menuData.dart';
 import 'package:vet_app/resources/images/images.dart';
 
 class MenuDrawer extends StatelessWidget {
-  const MenuDrawer({Key key}) : super(key: key);
+  const MenuDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

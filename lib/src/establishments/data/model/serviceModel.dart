@@ -8,8 +8,8 @@ String serviceVetModelToJson(List<ServiceVetModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ServiceVetModel {
-  int id;
-  String name;
+  int? id;
+  String? name;
 
   ServiceVetModel({
     this.id,

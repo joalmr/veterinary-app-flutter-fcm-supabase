@@ -38,7 +38,7 @@ class EditEmployeeController extends GetxController {
   _getEmployees() async {
     employees.clear();
     var response =
-        await _repo.getAllEmployees(showVetController.establishment.value.id);
+        await _repo.getAllEmployees(showVetController.establishment.value.id!);
 
     employees.addAll(response);
   }
@@ -56,7 +56,7 @@ class EditEmployeeController extends GetxController {
   addEmployee() => _addEmployee();
   _addEmployee() async {
     var reponse = await _repo.setEmployee(
-      showVetController.establishment.value.id,
+      showVetController.establishment.value.id!,
       int.parse(personalType),
       name.value,
       code.value,
@@ -71,9 +71,9 @@ class EditEmployeeController extends GetxController {
 
   goToUpdate(Employee employee) {
     isNew.value = false;
-    employeeId.value = employee.id;
-    name.value = employee.name;
-    code.value = employee.code;
+    employeeId.value = employee.id!;
+    name.value = employee.name!;
+    code.value = employee.code!;
     personalType = employee.typeId.toString();
     Get.to(SetEmployee());
   }
@@ -84,7 +84,7 @@ class EditEmployeeController extends GetxController {
       code.value = "";
     }
     var reponse = await _repo.updateEmployee(
-      showVetController.establishment.value.id,
+      showVetController.establishment.value.id!,
       employeeId.value,
       int.parse(personalType),
       name.value,
@@ -102,7 +102,7 @@ class EditEmployeeController extends GetxController {
   deleteEmployee(String employeeId) => _deleteEmployee(employeeId);
   _deleteEmployee(String employeeId) async {
     await _repo.deleteEmployee(
-      showVetController.establishment.value.id,
+      showVetController.establishment.value.id!,
       employeeId,
     );
     getEmployees();

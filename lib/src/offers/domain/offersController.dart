@@ -34,7 +34,7 @@ class OffersController extends GetxController {
   _getAll() async {
     cargando = true;
     promociones.clear();
-    var response = await _repo.getAll(prefUser.vetId);
+    var response = await _repo.getAll(prefUser.vetId!);
     promociones.addAll(response);
     cargando = false;
   }
@@ -42,7 +42,7 @@ class OffersController extends GetxController {
   delete(String idOffer) => _delete(idOffer);
 
   _delete(String idOffer) async {
-    await _repo.delete(prefUser.vetId, idOffer);
+    await _repo.delete(prefUser.vetId!, idOffer);
     getAll();
   }
 }

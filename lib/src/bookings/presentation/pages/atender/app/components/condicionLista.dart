@@ -1,6 +1,6 @@
 class DataCondicion {
-  String id;
-  String name;
+  String? id;
+  String? name;
   DataCondicion({
     this.id,
     this.name,
