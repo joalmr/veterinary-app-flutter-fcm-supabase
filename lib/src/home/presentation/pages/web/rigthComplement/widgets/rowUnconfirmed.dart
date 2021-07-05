@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/components/childRegion.dart';
+import 'package:vet_app/components/child_region.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/bookings/presentation/pages/reprogramar/web/contentReprograma.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';

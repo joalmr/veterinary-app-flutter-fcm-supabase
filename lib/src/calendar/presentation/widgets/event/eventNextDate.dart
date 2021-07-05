@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 // import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:vet_app/components/childRegion.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/components/child_region.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 

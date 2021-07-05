@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vet_app/components/childRegion.dart';
+import 'package:vet_app/components/child_region.dart';
 
 class StatAttention extends StatefulWidget {
   final String? text;

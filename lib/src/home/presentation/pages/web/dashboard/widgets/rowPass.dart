@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';
 
 import 'rowBooking.dart';

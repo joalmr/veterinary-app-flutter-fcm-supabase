@@ -1,6 +1,6 @@
-import 'chatApi.dart';
-import 'model/canalModel.dart';
-import 'model/messageModel.dart';
+import 'chat_api.dart';
+import 'model/canal_model.dart';
+import 'model/message_model.dart';
 
 class ChatRepo {
   final _api = ChatApi();

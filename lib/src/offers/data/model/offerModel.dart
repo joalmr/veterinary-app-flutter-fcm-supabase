@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 
 List<OfferModal> offerModalFromJson(String str) =>
     List<OfferModal>.from(json.decode(str).map((x) => OfferModal.fromJson(x)));

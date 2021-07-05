@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:vet_app/config/variablesGlobal.dart';
-import 'package:vet_app/resources/utils/headerHttp.dart';
+import 'package:vet_app/config/variables_global.dart';
+import 'package:vet_app/resources/utils/header_http.dart';
 import 'package:vet_app/src/workers/data/model/worker_modelnvitado.dart';
 import 'package:vet_app/src/workers/data/model/worker_model.dart';
 import '_workers_interface.dart';

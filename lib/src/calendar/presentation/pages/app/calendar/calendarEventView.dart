@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/src/calendar/domain/calendarController.dart';
 import 'package:vet_app/src/calendar/presentation/widgets/fullCalendar.dart';
-import 'package:vet_app/resources/utils/monthsName.dart';
+import 'package:vet_app/resources/utils/months_name.dart';
 
 class CalendarEventView extends StatelessWidget {
   @override

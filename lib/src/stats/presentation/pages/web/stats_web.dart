@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vet_app/components/web/navbar/navigationBar.dart';
+import 'package:vet_app/components/web/navbar/navigation_bar.dart';
 
 import 'feedback/feedbackPage.dart';
 import 'statsData/statsPage.dart';

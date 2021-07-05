@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/components/dontExit.dart';
+import 'package:vet_app/components/dont_exit.dart';
 
 import 'app/user_clients_app.dart';
 import 'web/user_clients_web.dart';

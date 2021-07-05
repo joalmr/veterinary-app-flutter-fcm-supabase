@@ -1,7 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/workers/data/model/invitation_model.dart';
 import 'package:vet_app/src/workers/data/model/worker_model.dart';

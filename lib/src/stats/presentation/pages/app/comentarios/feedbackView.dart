@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
 
 class FeedbackView extends StatelessWidget {

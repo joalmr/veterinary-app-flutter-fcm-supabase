@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:vet_app/config/variablesGlobal.dart';
-import 'package:vet_app/resources/utils/headerHttp.dart';
+import 'package:vet_app/config/variables_global.dart';
+import 'package:vet_app/resources/utils/header_http.dart';
 import 'package:vet_app/src/registros/data/model/attentionRegModel.dart';
 import 'package:http/http.dart' as http;
 import '_attentionsInterface.dart';

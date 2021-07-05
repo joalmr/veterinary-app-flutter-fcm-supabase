@@ -1,6 +1,6 @@
 import 'package:get_storage/get_storage.dart';
 
-import 'preferencesModel.dart';
+import 'preferences_model.dart';
 
 class PreferenciasUsuario {
   GetStorage box = GetStorage();

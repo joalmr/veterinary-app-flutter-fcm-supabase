@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/workers/domain/workers_controller.dart';
 import 'package:easy_rich_text/easy_rich_text.dart';
 

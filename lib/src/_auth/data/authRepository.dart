@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'authInterface.dart';
 
 class AuthRepository extends AuthInterface {

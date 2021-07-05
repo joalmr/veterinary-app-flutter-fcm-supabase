@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
 import 'package:http/http.dart' as http;

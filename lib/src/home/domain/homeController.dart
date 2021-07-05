@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/bookings/data/bookingRepository.dart';
 import 'package:vet_app/src/bookings/data/model/bookingModel.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';

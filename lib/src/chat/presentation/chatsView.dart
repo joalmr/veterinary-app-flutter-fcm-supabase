@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/app/menu.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/components/dontExit.dart';
+import 'package:vet_app/components/dont_exit.dart';
 import 'package:vet_app/src/chat/domain/chatController.dart';
 
 class ChatsView extends StatelessWidget {

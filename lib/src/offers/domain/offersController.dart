@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/offers/data/model/offerModel.dart';
 import 'package:vet_app/src/offers/data/offersRepository.dart';
 

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:vet_app/middleware/globalMiddleware.dart';
+import 'package:vet_app/middleware/global_middleware.dart';
 import 'package:vet_app/src/__global/presentation/splashView.dart';
 import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
 import 'package:vet_app/src/_auth/presentation/register/pages/register.dart';

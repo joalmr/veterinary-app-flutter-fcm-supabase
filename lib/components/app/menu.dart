@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/resources/data/menuData.dart';
+import 'package:vet_app/resources/data/menu_data.dart';
 import 'package:vet_app/resources/images/images.dart';
 
 class MenuDrawer extends StatelessWidget {

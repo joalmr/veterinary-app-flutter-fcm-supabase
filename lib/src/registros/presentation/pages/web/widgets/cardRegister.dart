@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/components/cardContainer.dart';
+import 'package:vet_app/components/card_container.dart';
 
 Widget cardRegister({
   required String date,

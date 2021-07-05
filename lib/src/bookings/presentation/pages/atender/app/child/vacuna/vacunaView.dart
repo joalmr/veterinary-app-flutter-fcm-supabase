@@ -4,7 +4,7 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:vet_app/src/bookings/data/model/booking/vaccinationBooking.dart';
 import 'package:vet_app/src/bookings/domain/bookingController.dart';

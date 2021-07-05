@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart';
-import 'config/variablesGlobal.dart';
+import 'config/variables_global.dart';
 import 'design/theme/theme.dart';
 import 'routes/routes.dart';
 import 'src/__global/domain/globalController.dart';

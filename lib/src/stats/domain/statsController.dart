@@ -1,10 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/resources/utils/datetimeFormat.dart';
-import 'package:vet_app/components/colorGenerate.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
+import 'package:vet_app/components/color_generate.dart';
 import 'package:vet_app/src/stats/data/model/statCommentModel.dart';
 import 'package:vet_app/src/stats/data/model/statsBaseModel.dart';
 import 'package:vet_app/src/stats/data/model/statsSalesDailyModel.dart';

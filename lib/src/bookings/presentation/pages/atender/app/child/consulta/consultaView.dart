@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultationBooking.dart';
 import 'package:vet_app/src/bookings/domain/bookingController.dart';
 import 'radioConsulta.dart';

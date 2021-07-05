@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:vet_app/config/variablesGlobal.dart';
-import 'package:vet_app/resources/utils/headerHttp.dart';
+import 'package:vet_app/config/variables_global.dart';
+import 'package:vet_app/resources/utils/header_http.dart';
 import 'package:vet_app/src/calendar/data/model/calendarEventModel.dart';
 import 'package:vet_app/src/calendar/data/model/calendarEventResponse.dart';
 import 'package:vet_app/src/calendar/data/model/listBookingsModel.dart';

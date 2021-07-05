@@ -1,5 +1,5 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:vet_app/resources/utils/preferences/userPreferences.dart';
+import 'package:vet_app/resources/utils/preferences/user_preferences.dart';
 
 final prefUser = PreferenciasUsuario();
 

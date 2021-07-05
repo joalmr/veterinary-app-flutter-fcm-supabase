@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:supabase/supabase.dart';
-import 'package:vet_app/_supabase/chatRepo.dart';
-import 'package:vet_app/_supabase/model/canalModel.dart';
-import 'package:vet_app/_supabase/model/messageModel.dart';
-import 'package:vet_app/config/variablesSupabase.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/_supabase/chat_repo.dart';
+import 'package:vet_app/_supabase/model/canal_model.dart';
+import 'package:vet_app/_supabase/model/message_model.dart';
+import 'package:vet_app/config/variables_supabase.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/chat/presentation/messageView.dart';
 
 class ChatController extends GetxController {

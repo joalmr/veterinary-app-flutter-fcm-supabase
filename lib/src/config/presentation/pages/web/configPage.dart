@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/components/web/navbar/navigationBar.dart';
+import 'package:vet_app/components/web/navbar/navigation_bar.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/config/domain/configController.dart';
 
@@ -45,13 +45,13 @@ class ConfigPage extends StatelessWidget {
                               // fontSize: 20,
                             ),
                           ),
-                          onPressed: (){
+                          onPressed: () {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text('Eliminar'),
-                                content: Text(
-                                    'Seguro que desea cerrar sesión?'),
+                                content:
+                                    Text('Seguro que desea cerrar sesión?'),
                                 actions: <Widget>[
                                   btnAltern(
                                     text: 'Sí, cerrar',

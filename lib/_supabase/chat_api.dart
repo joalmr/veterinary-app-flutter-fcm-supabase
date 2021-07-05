@@ -1,8 +1,8 @@
 import 'package:supabase/supabase.dart';
 
-import '../config/variablesSupabase.dart';
-import 'model/canalModel.dart';
-import 'model/messageModel.dart';
+import '../config/variables_supabase.dart';
+import 'model/canal_model.dart';
+import 'model/message_model.dart';
 
 class ChatApi {
   final supabaseClient = SupabaseClient(urlSupa!, keySupa!);

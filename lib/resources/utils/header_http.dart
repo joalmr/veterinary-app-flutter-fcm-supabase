@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/config/variables_global.dart';
 
 headersToken() {
   return {

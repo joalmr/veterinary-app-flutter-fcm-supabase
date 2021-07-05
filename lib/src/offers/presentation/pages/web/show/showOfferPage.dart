@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/components/childRegion.dart';
+import 'package:vet_app/components/child_region.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/offers/data/model/offerModel.dart';
 import 'package:vet_app/src/offers/domain/offersController.dart';

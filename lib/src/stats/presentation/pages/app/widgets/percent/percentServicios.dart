@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/resources/utils/datetimeFormat.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/stats/data/model/statsServiceModel.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
 import 'package:vet_app/src/stats/presentation/widgets/design_graph.dart';

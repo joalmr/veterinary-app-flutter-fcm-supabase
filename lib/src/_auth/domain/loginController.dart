@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
-import 'package:vet_app/resources/utils/preferences/preferencesModel.dart';
+import 'package:vet_app/config/variables_global.dart';
+import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/_auth/data/authRepository.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';

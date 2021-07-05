@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:vet_app/resources/utils/headerHttp.dart';
-import 'package:vet_app/config/variablesGlobal.dart';
+import 'package:vet_app/resources/utils/header_http.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/establishments/data/model/dataMapModel.dart';
 import 'package:vet_app/src/establishments/data/model/establishmentModelLite.dart';
 import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
