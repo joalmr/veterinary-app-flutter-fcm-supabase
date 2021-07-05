@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/dont_exit.dart';
-import 'package:vet_app/src/establishments/domain/establishmentsController.dart';
+import 'package:vet_app/src/establishments/domain/establishments_controller.dart';
 
-import 'app/establishmentsApp.dart';
-import 'web/establishmentsPage.dart';
+import 'app/establishments_app.dart';
+import 'web/establishments_page.dart';
 
 class EstablishmentsMain extends StatelessWidget {
   @override

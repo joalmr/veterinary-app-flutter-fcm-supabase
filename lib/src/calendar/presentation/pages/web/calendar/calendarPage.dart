@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional_switch.dart';
 import 'package:vet_app/resources/utils/days/dia_semana_lite.dart';
-import 'package:vet_app/src/calendar/presentation/widgets/fullCalendar.dart';
+import 'package:vet_app/src/calendar/presentation/widgets/full_calendar.dart';
 import 'package:vet_app/resources/utils/months_name.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/calendar/presentation/widgets/eventList/eventsBooking.dart';
-import 'package:vet_app/src/calendar/presentation/widgets/eventList/eventsNextDate.dart';
-import 'package:vet_app/src/calendar/presentation/widgets/eventList/eventsNote.dart';
-import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tabSelect.dart';
+import 'package:vet_app/src/calendar/presentation/widgets/eventList/events_booking.dart';
+import 'package:vet_app/src/calendar/presentation/widgets/eventList/events_next_date.dart';
+import 'package:vet_app/src/calendar/presentation/widgets/eventList/events_note.dart';
+import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tab_select.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/resources/utils/days/dia_semana.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/checkHorario.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/dataTipo.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/check_horario.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/data_tipo.dart';
 
 class Step3 extends StatelessWidget {
   @override

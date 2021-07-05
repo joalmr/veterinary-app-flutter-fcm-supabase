@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/bookings/domain/reprogramar/reprogramarController.dart';
+import 'package:vet_app/src/bookings/domain/reprogramar/reprogramar_controller.dart';
 
 class ReprogramarItem extends StatelessWidget {
   final String? bookingId;

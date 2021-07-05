@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/dont_exit.dart';
-import '../../domain/calendarController.dart';
+import '../../domain/calendar_controller.dart';
 
-import 'app/calendarView.dart';
+import 'app/calendar_view.dart';
 import 'web/calendarWeb.dart';
 
 class CalendarMain extends StatelessWidget {

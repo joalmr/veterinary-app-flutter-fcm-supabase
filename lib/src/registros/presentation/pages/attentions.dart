@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../domain/attentionsController.dart';
-import 'app/attentionApp.dart';
-import 'web/attentionWeb.dart';
+import '../../domain/attentions_controller.dart';
+import 'app/attention_app.dart';
+import 'web/attention_web.dart';
 
 class AttentionsMain extends StatelessWidget {
   @override

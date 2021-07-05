@@ -6,8 +6,8 @@ import 'package:url_strategy/url_strategy.dart';
 import 'config/variables_global.dart';
 import 'design/theme/theme.dart';
 import 'routes/routes.dart';
-import 'src/__global/domain/globalController.dart';
-import 'src/home/domain/homeController.dart';
+import 'src/__global/domain/global_controller.dart';
+import 'src/home/domain/home_controller.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

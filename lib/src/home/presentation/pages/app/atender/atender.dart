@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional_switch.dart';
-import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tabSelect.dart';
+import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tab_select.dart';
 
-import 'widgets/viewFuture.dart';
-import 'widgets/viewPass.dart';
-import 'widgets/viewToday.dart';
+import 'widgets/view_future.dart';
+import 'widgets/view_pass.dart';
+import 'widgets/view_today.dart';
 
 class AtenderView extends StatefulWidget {
   const AtenderView({Key? key}) : super(key: key);

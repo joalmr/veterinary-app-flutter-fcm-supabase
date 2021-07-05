@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/dont_exit.dart';
-import '../../domain/statsController.dart';
+import '../../domain/stats_controller.dart';
 
-import 'app/statsApp.dart';
+import 'app/stats_app.dart';
 import 'web/stats_web.dart';
 
 class StatsMain extends StatelessWidget {

@@ -1,19 +1,19 @@
 import 'dart:async';
 
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/days/dia_semana.dart';
 import 'package:vet_app/routes/routes.dart';
-import 'package:vet_app/src/establishments/data/EstablishmentRepository.dart';
+import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
-import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
-import 'package:vet_app/src/establishments/data/request/establishmentRequest.dart';
+import 'package:vet_app/src/establishments/data/model/service_model.dart';
+import 'package:vet_app/src/establishments/data/request/establishment_request.dart';
 import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
 
-import '../establishmentsController.dart';
-import 'createVetValue.dart';
+import '../establishments_controller.dart';
+import 'create_vet_value.dart';
 
 class CreateVetController extends GetxController {
   final _repo = EstablishmentRepository();
@@ -48,12 +48,12 @@ class CreateVetController extends GetxController {
   String get personalType => _personalType.value;
   set personalType(String value) => _personalType.value = value;
 
-  RxList<ServiceVetModel> servicesVet = <ServiceVetModel>[].obs;
-  RxList<int> servicesVetSet = <int>[].obs;
+  final servicesVet = <ServiceVetModel>[].obs;
+  final servicesVetSet = <int>[].obs;
 
-  RxList<String> errorDays = <String>[].obs;
+  final errorDays = <String>[].obs;
 
-  RxList<Marker> marcador = <Marker>[].obs;
+  final marcador = <Marker>[].obs;
 
   String? _mapStyle;
   GoogleMapController? _controller;
@@ -70,7 +70,7 @@ class CreateVetController extends GetxController {
   }
 
   _getService() async {
-    var lista = await _repo.getServiceVet();
+    final lista = await _repo.getServiceVet();
     servicesVet.clear();
     servicesVet.addAll(lista);
   }

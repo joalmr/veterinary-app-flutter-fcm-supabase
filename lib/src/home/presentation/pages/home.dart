@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/dont_exit.dart';
-import 'package:vet_app/src/home/domain/homeController.dart';
+import 'package:vet_app/src/home/domain/home_controller.dart';
 
-import 'app/homeApp.dart';
-import 'web/homeWeb.dart';
+import 'app/home_app.dart';
+import 'web/home_web.dart';
 
 class HomeMain extends StatelessWidget {
   @override

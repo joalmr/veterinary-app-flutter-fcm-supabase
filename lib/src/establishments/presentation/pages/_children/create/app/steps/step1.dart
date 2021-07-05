@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/dataTipo.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/data_tipo.dart';
 
 class Step1 extends StatelessWidget {
   @override

@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'model/dataMapModel.dart';
-import 'model/establishmentModelLite.dart';
+import 'model/data_map_model.dart';
+import 'model/establishment_model_lite.dart';
 import 'model/establishmet.dart';
-import 'model/serviceModel.dart';
-import 'request/establishmentRequest.dart';
+import 'model/service_model.dart';
+import 'request/establishment_request.dart';
 import 'request/priceEstRequest.dart';
 
 abstract class EstablishmentInterface {

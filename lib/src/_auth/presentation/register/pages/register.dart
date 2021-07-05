@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../domain/registerController.dart';
+import '../../../domain/register_controller.dart';
 
-import 'app/registerView.dart';
-import 'web/registerPage.dart';
+import 'app/register_view.dart';
+import 'web/register_page.dart';
 
 class RegisterMain extends StatelessWidget {
   @override

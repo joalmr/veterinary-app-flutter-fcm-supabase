@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/src/_auth/domain/loginController.dart';
+import 'package:vet_app/src/_auth/domain/login_controller.dart';
 
-import 'app/loginView.dart';
-import 'web/loginPage.dart';
+import 'app/login_view.dart';
+import 'web/login_page.dart';
 
 class LoginMain extends StatelessWidget {
   @override
