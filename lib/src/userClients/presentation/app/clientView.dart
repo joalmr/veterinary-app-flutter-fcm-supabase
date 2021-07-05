@@ -4,6 +4,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'atenderMascota.dart';
 import 'components/containerStatClient.dart';
 import 'mascotaCliente.dart';
+import 'mascotaClienteAgregar.dart';
 
 class ClienteVista extends StatelessWidget {
   @override
@@ -76,6 +77,7 @@ class ClienteVista extends StatelessWidget {
                       borderRadius: BorderRadius.circular(100),
                       onTap: () {
                         print('agrega');
+                        Get.to(MascotaClienteAgregar());
                       },
                       child: CircleAvatar(
                         radius: 45,
