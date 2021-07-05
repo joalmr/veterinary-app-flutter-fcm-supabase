@@ -14,7 +14,7 @@ import 'package:vet_app/src/offers/presentation/pages/offers.dart';
 import 'package:vet_app/src/registros/presentation/pages/attentions.dart';
 import 'package:vet_app/src/establishments/presentation/pages/establishments.dart';
 import 'package:vet_app/src/stats/presentation/pages/stats.dart';
-import 'package:vet_app/src/userClients/presentation/userClients.dart';
+import 'package:vet_app/src/userClients/presentation/user_clients.dart';
 import 'package:vet_app/src/workers/presentation/pages/workers.dart';
 
 class NameRoutes {

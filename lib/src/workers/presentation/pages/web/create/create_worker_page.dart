@@ -6,7 +6,7 @@ import 'package:vet_app/components/subheader.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
-import 'package:vet_app/src/workers/domain/workersController.dart';
+import 'package:vet_app/src/workers/domain/workers_controller.dart';
 
 class CreaAdmin extends StatelessWidget {
   //! mensaje cuando ya no puede invitar a un administrador

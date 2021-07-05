@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/stats/data/model/statsServiceModel.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
-import 'package:vet_app/src/stats/presentation/widgets/designGraph.dart';
+import 'package:vet_app/src/stats/presentation/widgets/design_graph.dart';
 import '../wValuePercent.dart';
 
 class PercentServicios extends StatelessWidget {

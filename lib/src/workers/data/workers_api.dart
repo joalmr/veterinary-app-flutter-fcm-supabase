@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/resources/utils/headerHttp.dart';
-import 'package:vet_app/src/workers/data/model/workerModelnvitado.dart';
-import 'package:vet_app/src/workers/data/model/workerModel.dart';
-import '_workersInterface.dart';
+import 'package:vet_app/src/workers/data/model/worker_modelnvitado.dart';
+import 'package:vet_app/src/workers/data/model/worker_model.dart';
+import '_workers_interface.dart';
 import 'package:http/http.dart' as http;
 
-import 'model/invitationModel.dart';
+import 'model/invitation_model.dart';
 
 class WorkersApi extends WorkersInterface {
   @override

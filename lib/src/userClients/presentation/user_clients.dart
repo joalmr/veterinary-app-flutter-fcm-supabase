@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/dontExit.dart';
 
-import 'app/userClientsApp.dart';
-import 'web/userClientsWeb.dart';
+import 'app/user_clients_app.dart';
+import 'web/user_clients_web.dart';
 
 class UserClientsMain extends StatelessWidget {
   @override

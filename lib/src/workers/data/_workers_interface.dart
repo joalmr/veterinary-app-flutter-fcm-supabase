@@ -1,6 +1,6 @@
-import 'model/invitationModel.dart';
-import 'model/workerModel.dart';
-import 'model/workerModelnvitado.dart';
+import 'model/invitation_model.dart';
+import 'model/worker_model.dart';
+import 'model/worker_modelnvitado.dart';
 
 abstract class WorkersInterface {
   Future<WorkersModal> getWorkers(String establishmentId);

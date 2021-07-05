@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'atenderMascota.dart';
+import 'atender_mascota.dart';
 
 class MascotaCliente extends StatelessWidget {
   @override

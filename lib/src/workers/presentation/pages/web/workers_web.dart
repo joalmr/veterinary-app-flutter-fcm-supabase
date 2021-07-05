@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/components/web/navbar/navigationBar.dart';
 
-import 'create/createWorkerPage.dart';
-import 'show/showWorkerPage.dart';
+import 'create/create_worker_page.dart';
+import 'show/show_worker_page.dart';
 
 class WorkersPageWeb extends StatelessWidget {
   @override

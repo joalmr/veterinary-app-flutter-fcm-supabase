@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataUsuario.dart';
-import 'package:vet_app/src/stats/presentation/widgets/designGraph.dart';
+import 'package:vet_app/src/stats/presentation/widgets/dataTemp/data_usuario.dart';
+import 'package:vet_app/src/stats/presentation/widgets/design_graph.dart';
 
 import '../wValuePercent.dart';
 

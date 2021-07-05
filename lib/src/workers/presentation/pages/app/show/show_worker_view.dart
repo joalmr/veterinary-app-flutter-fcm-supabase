@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/workers/domain/workersController.dart';
+import 'package:vet_app/src/workers/domain/workers_controller.dart';
 
 class ShowWorkerView extends StatelessWidget {
   const ShowWorkerView({Key? key}) : super(key: key);

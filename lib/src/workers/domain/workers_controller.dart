@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/workers/data/model/invitationModel.dart';
-import 'package:vet_app/src/workers/data/model/workerModel.dart';
-import 'package:vet_app/src/workers/data/model/workerModelnvitado.dart';
-import 'package:vet_app/src/workers/data/workersRepository.dart';
+import 'package:vet_app/src/workers/data/model/invitation_model.dart';
+import 'package:vet_app/src/workers/data/model/worker_model.dart';
+import 'package:vet_app/src/workers/data/model/worker_modelnvitado.dart';
+import 'package:vet_app/src/workers/data/workers_repository.dart';
 
 class WorkersController extends GetxController {
   final _repo = WorkersRepository();

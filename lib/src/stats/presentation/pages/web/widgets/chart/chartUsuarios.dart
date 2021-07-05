@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataUsuario.dart';
+import 'package:vet_app/src/stats/presentation/widgets/dataTemp/data_usuario.dart';
 
-import '../../../../widgets/designGraph.dart';
+import '../../../../widgets/design_graph.dart';
 
 class ChartUsers extends StatefulWidget {
   @override

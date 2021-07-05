@@ -4,7 +4,7 @@ import 'package:vet_app/components/dontExit.dart';
 import '../../domain/statsController.dart';
 
 import 'app/statsApp.dart';
-import 'web/statsWeb.dart';
+import 'web/stats_web.dart';
 
 class StatsMain extends StatelessWidget {
   @override

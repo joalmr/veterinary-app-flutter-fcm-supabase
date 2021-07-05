@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/dontExit.dart';
-import '../../domain/workersController.dart';
+import '../../domain/workers_controller.dart';
 
-import 'app/workersApp.dart';
-import 'web/workersWeb.dart';
+import 'app/workers_app.dart';
+import 'web/workers_web.dart';
 
 class WorkersMain extends StatelessWidget {
   @override

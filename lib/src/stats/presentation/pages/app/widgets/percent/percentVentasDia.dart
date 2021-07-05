@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stats/data/model/statsSalesDailyModel.dart';
 import 'package:vet_app/src/stats/domain/statsController.dart';
-import 'package:vet_app/src/stats/presentation/widgets/designGraph.dart';
+import 'package:vet_app/src/stats/presentation/widgets/design_graph.dart';
 
 import '../wValuePercent.dart';
 

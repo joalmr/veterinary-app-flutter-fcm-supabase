@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/stats/presentation/widgets/dataTemp/dataVentasDia.dart';
+import 'package:vet_app/src/stats/presentation/widgets/dataTemp/data_ventas_dia.dart';
 
-import '../../../../widgets/designGraph.dart';
+import '../../../../widgets/design_graph.dart';
 
 class ChartVentasDia extends StatelessWidget {
   @override

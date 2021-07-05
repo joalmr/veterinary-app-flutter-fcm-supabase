@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'atenderMascota.dart';
-import 'components/containerStatClient.dart';
-import 'mascotaCliente.dart';
-import 'mascotaClienteAgregar.dart';
+import 'atender_mascota.dart';
+import 'components/container_stat_client.dart';
+import 'mascota_cliente.dart';
+import 'mascota_cliente_agregar.dart';
 
 class ClienteVista extends StatelessWidget {
   @override

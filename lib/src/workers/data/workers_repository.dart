@@ -1,8 +1,8 @@
-import 'package:vet_app/src/workers/data/model/workerModelnvitado.dart';
-import 'package:vet_app/src/workers/data/model/workerModel.dart';
-import '_workersInterface.dart';
-import 'model/invitationModel.dart';
-import 'workersApi.dart';
+import 'package:vet_app/src/workers/data/model/worker_modelnvitado.dart';
+import 'package:vet_app/src/workers/data/model/worker_model.dart';
+import '_workers_interface.dart';
+import 'model/invitation_model.dart';
+import 'workers_api.dart';
 
 class WorkersRepository extends WorkersInterface {
   final _api = WorkersApi();
