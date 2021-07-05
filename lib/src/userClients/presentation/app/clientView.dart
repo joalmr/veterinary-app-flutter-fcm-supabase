@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'atenderMascota.dart';
 import 'components/containerStatClient.dart';
+import 'mascotaCliente.dart';
 
 class ClienteVista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    int mascotas = 1;
     return Scaffold(
       appBar: AppBar(),
-      floatingActionButton: FloatingActionButton(
-        child: Image(
-          height: 30,
-          fit: BoxFit.cover,
-          image: AssetImage('assets/images/vote.png'),
-        ),
-        onPressed: () {},
-      ),
+      floatingActionButton: mascotas == 1
+          ? FloatingActionButton(
+              child: Image(
+                height: 30,
+                fit: BoxFit.cover,
+                image: AssetImage('assets/images/vote.png'),
+              ),
+              onPressed: () {
+                Get.to(AtenderMascota());
+              },
+            )
+          : null,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,13 +88,14 @@ class ClienteVista extends StatelessWidget {
                       ),
                     ),
                   ),
-                  for (var i = 0; i < 4; i++)
+                  for (var i = 0; i < mascotas.bitLength; i++)
                     Padding(
                       padding: EdgeInsets.all(4.0),
                       child: InkWell(
                         borderRadius: BorderRadius.circular(100),
                         onTap: () {
                           print('detalle mascota $i');
+                          Get.to(MascotaCliente());
                         },
                         child: CircleAvatar(
                           radius: 45,

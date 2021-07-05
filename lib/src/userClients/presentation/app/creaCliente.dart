@@ -16,20 +16,20 @@ class CreaCliente extends StatelessWidget {
               labelText: 'Nombre del cliente',
             ),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: 10),
           TextFormField(
             decoration: InputDecoration(
               labelText: 'Apellido del cliente',
             ),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               labelText: 'Email del cliente',
             ),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(

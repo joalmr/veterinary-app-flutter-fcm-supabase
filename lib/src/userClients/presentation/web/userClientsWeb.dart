@@ -13,13 +13,11 @@ class UserClientsWeb extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Container(
-              color: Colors.red,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.blue,
+              child: Column(
+                children: [
+                  Text('Para usar esta función descargue la app de su store.'),
+                ],
+              ),
             ),
           ),
         ],
