@@ -42,4 +42,9 @@ List<dynamic> dataMenu = [
     'name': 'Chats',
     'page': NameRoutes.chats,
   },
+  {
+    'icon': Icons.accessibility_new_rounded,
+    'name': 'Clientes',
+    'page': NameRoutes.clientes,
+  },
 ];

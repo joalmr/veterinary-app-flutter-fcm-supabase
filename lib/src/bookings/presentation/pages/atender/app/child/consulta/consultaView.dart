@@ -213,13 +213,14 @@ class ConsultaView extends StatelessWidget {
                             );
                             _.saveConsulta(temp);
                           } else {
-                            ScaffoldMessenger.of(Get.context!)
-                                .showSnackBar(SnackBar(
-                              content:
-                                  Text('Falta ingresar diagnóstico o monto'),
-                              duration: Duration(seconds: 3),
-                              backgroundColor: Colors.black.withOpacity(0.85),
-                            ));
+                            ScaffoldMessenger.of(Get.context!).showSnackBar(
+                              SnackBar(
+                                content:
+                                    Text('Falta ingresar diagnóstico o monto'),
+                                duration: Duration(seconds: 3),
+                                backgroundColor: Colors.black.withOpacity(0.85),
+                              ),
+                            );
                           }
                         },
                       ),
