@@ -37,8 +37,6 @@ class _CheckFiltroState extends State<CheckFiltro> {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 2.5),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(2.0),

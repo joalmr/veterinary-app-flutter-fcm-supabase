@@ -16,7 +16,6 @@ class FilterStat extends StatelessWidget {
         color: Colors.white,
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
@@ -31,7 +30,7 @@ class FilterStat extends StatelessWidget {
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: 200,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +52,7 @@ class FilterStat extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Container(
+                SizedBox(
                   width: 200,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

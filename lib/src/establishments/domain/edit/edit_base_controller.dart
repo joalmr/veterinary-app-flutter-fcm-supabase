@@ -17,11 +17,11 @@ class EditBaseController extends GetxController {
   final showVetController = Get.find<ShowVetController>();
   final vetController = Get.find<EstablishmentsController>();
 
-  RxString _vetTypeId = ''.obs;
+  final _vetTypeId = ''.obs;
   String get vetTypeId => _vetTypeId.value;
   set vetTypeId(String value) => _vetTypeId.value = value;
 
-  var entityBase = new EstablecimientoEntity().obs;
+  final entityBase = EstablecimientoEntity().obs;
 
   List<int> services = [];
 
@@ -73,7 +73,7 @@ class EditBaseController extends GetxController {
     _searchandNavigate(data);
   }
 
-  _searchandNavigate(Prediction dato) async {
+  Future<void> _searchandNavigate(Prediction dato) async {
     if (addressControl.text.trim() != '') {
       addressControl.text = dato.name!;
 

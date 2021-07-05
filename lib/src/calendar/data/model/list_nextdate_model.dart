@@ -21,7 +21,7 @@ class ListNextdateModel {
 
   factory ListNextdateModel.fromJson(Map<String, dynamic> json) =>
       ListNextdateModel(
-        message: json['message'],
+        message: json['message'] as String?,
         result: Map.from(json['result']).map((k, v) =>
             MapEntry<String, List<Result>>(
                 k, List<Result>.from(v.map((x) => Result.fromJson(x))))),
@@ -56,14 +56,14 @@ class Result {
   String? type;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
-        petPicture: json['pet_picture'],
-        petBreed: json['pet_breed'],
-        petName: json['pet_name'],
-        userName: json['user_name'],
-        userPhone: json['user_phone'],
-        nextdate: DateTime.parse(json['nextdate']),
-        reason: json['reason'],
-        type: json['type'],
+        petPicture: json['pet_picture'] as String?,
+        petBreed: json['pet_breed'] as String?,
+        petName: json['pet_name'] as String?,
+        userName: json['user_name'] as String?,
+        userPhone: json['user_phone'] as String?,
+        nextdate: DateTime?.parse(json['nextdate'] as String),
+        reason: json['reason'] as String?,
+        type: json['type'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

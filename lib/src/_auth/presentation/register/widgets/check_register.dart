@@ -8,7 +8,7 @@ class CheckRegister extends StatefulWidget {
   final String? link;
   final String? tipo;
 
-  CheckRegister({
+  const CheckRegister({
     this.title,
     this.link,
     this.tipo,
@@ -24,10 +24,8 @@ class _CheckRegisterState extends State<CheckRegister> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 8, right: 8, top: 2.5, bottom: 2.5),
+      padding: const EdgeInsets.only(left: 8, right: 8, top: 2.5, bottom: 2.5),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           InkWell(
             onTap: () {
@@ -37,23 +35,22 @@ class _CheckRegisterState extends State<CheckRegister> {
             },
             borderRadius: BorderRadius.circular(5),
             child: Padding(
-              padding: EdgeInsets.all(2.0),
+              padding: const EdgeInsets.all(2.0),
               child: valueCheck
-                  ? Icon(
+                  ? const Icon(
                       Icons.check_box_rounded,
                       color: colorMain,
                       size: 22,
                     )
-                  : Icon(
+                  : const Icon(
                       Icons.check_box_outline_blank_rounded,
                       color: colorMain,
                       size: 22,
                     ),
             ),
           ),
-          SizedBox(width: 7.5),
+          const SizedBox(width: 7.5),
           Wrap(
-            alignment: WrapAlignment.start,
             children: [
               Text(
                 widget.title!,
@@ -69,7 +66,7 @@ class _CheckRegisterState extends State<CheckRegister> {
                     onTap: link,
                     child: Text(
                       widget.link!,
-                      style: TextStyle(color: colorBlue),
+                      style: const TextStyle(color: colorBlue),
                     ),
                   );
                 },

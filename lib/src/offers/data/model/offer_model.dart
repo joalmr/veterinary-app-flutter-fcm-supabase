@@ -21,13 +21,13 @@ class OfferModal {
   });
 
   factory OfferModal.fromJson(Map<String, dynamic> json) => OfferModal(
-        id: json['id'],
+        id: json['id'] as String?,
         date: formatDateOut(
-          valor: json['date'],
+          valor: json['date'] as String,
           formatIn: 'yyyy-MM-dd',
           formatOut: 'dd-MM-yyyy',
         ),
-        offer: Offer.fromJson(json['offer']),
+        offer: Offer?.fromJson(json['offer'] as Map<String, dynamic>),
       );
 }
 
@@ -47,11 +47,11 @@ class Offer {
   String? serviceName;
 
   factory Offer.fromJson(Map<String, dynamic> json) => Offer(
-        serviceId: json['service_id'],
-        description: json['description'],
-        type: json['type'],
-        discount: json['discount'],
-        serviceName: json['service_name'],
+        serviceId: json['service_id'] as String?,
+        description: json['description'] as String?,
+        type: json['type'] as String?,
+        discount: json['discount'] as String?,
+        serviceName: json['service_name'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

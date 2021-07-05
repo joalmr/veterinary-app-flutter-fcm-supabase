@@ -21,8 +21,8 @@ class WorkersModalInvitado {
 
   factory WorkersModalInvitado.fromJson(Map<String, dynamic> json) =>
       WorkersModalInvitado(
-        message: json['message'],
-        result: Result.fromJson(json['result']),
+        message: json['message'] as String?,
+        result: Result?.fromJson(json['result'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
@@ -64,11 +64,11 @@ class Invitation {
   DateTime? createdAt;
 
   factory Invitation.fromJson(Map<String, dynamic> json) => Invitation(
-        id: json['id'],
-        establishmentId: json['establishment_id'],
-        establishmentName: json['establishment_name'],
-        email: json['email'],
-        createdAt: DateTime.parse(json['created_at']),
+        id: json['id'] as String?,
+        establishmentId: json['establishment_id'] as String?,
+        establishmentName: json['establishment_name'] as String?,
+        email: json['email'] as String?,
+        createdAt: DateTime?.parse(json['created_at'] as String),
       );
 
   Map<String, dynamic> toJson() => {

@@ -12,10 +12,10 @@ class DataNextdate {
   });
 
   factory DataNextdate.fromJson(Map<String, dynamic> json) => DataNextdate(
-        type: json['type'],
-        name: json['name'],
-        date: json['date'],
-        observation: json['observation'] == null ? '' : json['observation'],
+        type: json['type'] as String?,
+        name: json['name'] as String?,
+        date: json['date'] as String?,
+        observation: json['observation'] as String? ?? '',
       );
 
   Map<String, dynamic> toJson() => {

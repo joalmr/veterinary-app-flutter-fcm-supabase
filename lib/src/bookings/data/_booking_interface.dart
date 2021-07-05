@@ -1,3 +1,5 @@
+import 'package:http/http.dart' as http;
+
 import 'model/_finalize_attention.dart';
 import 'model/booking/_general_booking.dart';
 import 'model/booking/consultation_booking.dart';
@@ -7,8 +9,6 @@ import 'model/booking/surgery_booking.dart';
 import 'model/booking/testing_booking.dart';
 import 'model/booking/vaccination_booking.dart';
 import 'model/booking_model.dart';
-
-import 'package:http/http.dart' as http;
 
 abstract class BookingInterface {
   Future<int> confirm(String idBooking);

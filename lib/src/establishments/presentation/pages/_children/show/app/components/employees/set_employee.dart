@@ -20,7 +20,6 @@ class SetEmployee extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('Tipo'),
@@ -55,21 +54,21 @@ class SetEmployee extends StatelessWidget {
                     textCapitalization: TextCapitalization.words,
                   ),
                   const SizedBox(height: 15),
-                  _.personalType == '2'
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextFormField(
-                              initialValue: _.code.value,
-                              onChanged: (val) => _.code.value = val,
-                              decoration: const InputDecoration(
-                                  labelText: 'Código CMV'),
-                              keyboardType: TextInputType.number,
-                            ),
-                          ],
-                        )
-                      : const SizedBox(height: 0),
+                  if (_.personalType == '2')
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextFormField(
+                          initialValue: _.code.value,
+                          onChanged: (val) => _.code.value = val,
+                          decoration:
+                              const InputDecoration(labelText: 'Código CMV'),
+                          keyboardType: TextInputType.number,
+                        ),
+                      ],
+                    )
+                  else
+                    const SizedBox(height: 0),
                   const SizedBox(height: 20),
                   Center(
                     child: btnSecondary(

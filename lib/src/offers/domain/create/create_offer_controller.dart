@@ -31,11 +31,8 @@ class CreateOfferController extends GetxController {
 
   // TODO:  REVISAR OTRO TIPO DE MONEY CONTROLLER
   final moneyController = MoneyMaskedTextController(
-    initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
 
   final RxBool _cargando = true.obs;
@@ -50,7 +47,7 @@ class CreateOfferController extends GetxController {
 
   getService() => _getService();
 
-  _getService() async {
+  Future<void> _getService() async {
     servicesVet.clear();
     final response = await _establecimientoRepo.getServiceVet();
     servicesVet.addAll(response);
@@ -58,7 +55,7 @@ class CreateOfferController extends GetxController {
   }
 
   create(String dispositivo) => _create(dispositivo);
-  _create(String dispositivo) async {
+  Future<void> _create(String dispositivo) async {
     String type = '';
     type = selectValue == 0
         ? 'Amount'

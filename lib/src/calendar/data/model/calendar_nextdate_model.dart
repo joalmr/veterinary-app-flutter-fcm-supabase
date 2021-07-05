@@ -21,7 +21,7 @@ class CalendarNextdateModel {
 
   factory CalendarNextdateModel.fromJson(Map<String, dynamic> json) =>
       CalendarNextdateModel(
-        message: json['message'],
+        message: json['message'] as String?,
         result: List<CalendarNextdate>.from(
             json['result'].map((x) => CalendarNextdate.fromJson(x))),
       );
@@ -55,14 +55,14 @@ class CalendarNextdate {
 
   factory CalendarNextdate.fromJson(Map<String, dynamic> json) =>
       CalendarNextdate(
-        petPicture: json['pet_picture'],
-        petBreed: json['pet_breed'],
-        petName: json['pet_name'],
-        userName: json['user_name'],
+        petPicture: json['pet_picture'] as String?,
+        petBreed: json['pet_breed'] as String?,
+        petName: json['pet_name'] as String?,
+        userName: json['user_name'] as String?,
         // userPhone: json['user_phone'],
-        nextdate: DateTime.parse(json['nextdate']),
-        reason: json['reason'],
-        type: json['type'],
+        nextdate: DateTime?.parse(json['nextdate'] as String),
+        reason: json['reason'] as String?,
+        type: json['type'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

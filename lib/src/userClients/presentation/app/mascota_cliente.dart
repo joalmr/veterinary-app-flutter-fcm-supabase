@@ -21,7 +21,7 @@ class MascotaCliente extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
             width: double.maxFinite,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +71,6 @@ class MascotaCliente extends StatelessWidget {
               margin: const EdgeInsets.all(4),
               padding: const EdgeInsets.all(10),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text('Fecha ####'),

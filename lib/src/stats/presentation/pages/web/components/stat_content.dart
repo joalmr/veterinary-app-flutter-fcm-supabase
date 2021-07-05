@@ -51,7 +51,7 @@ class _StatContentState extends State<StatContent> {
                     ),
                   ]
                 : []),
-        child: Container(
+        child: SizedBox(
           width: 200,
           height: 80,
           child: Column(

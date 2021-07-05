@@ -103,7 +103,7 @@ class ShowWorkerView extends StatelessWidget {
                                         bold: true,
                                         color: colorRed,
                                         onPressed: () {
-                                          _.deleteWorker(worker.id);
+                                          _.deleteWorker(worker.id!);
                                           Get.back();
                                         },
                                       ),

@@ -28,14 +28,13 @@ class HomePageApp extends StatelessWidget {
           ),
           body: _.carga
               ? const Center(
-                  child: const CircularProgressIndicator(),
+                  child: CircularProgressIndicator(),
                 )
               : DefaultTabController(
                   length: 2,
                   initialIndex: _.unconfirmed.isNotEmpty ? 1 : 0,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const TabBar(
                         indicatorColor: colorMain,

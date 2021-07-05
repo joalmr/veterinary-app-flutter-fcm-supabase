@@ -22,7 +22,7 @@ class ReprogramarItem extends StatelessWidget {
   final Color? color;
   final String? status;
 
-  ReprogramarItem({
+  const ReprogramarItem({
     Key? key,
     this.bookingId,
     this.petImg,
@@ -47,18 +47,17 @@ class ReprogramarItem extends StatelessWidget {
         return Form(
           child: Scaffold(
             appBar: AppBar(
-              title: Text('Reprogramar'),
+              title: const Text('Reprogramar'),
             ),
             body: SafeArea(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
                 child: SingleChildScrollView(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
@@ -76,39 +75,36 @@ class ReprogramarItem extends StatelessWidget {
                                   placeholder: (context, url) => Container(
                                     color: Colors.grey.shade200,
                                     alignment: Alignment.center,
-                                    child: CircularProgressIndicator(),
+                                    child: const CircularProgressIndicator(),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 petName!,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
                               ),
                               Text(
                                 petBreed!,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14,
                                 ),
                               ),
                               Text(
                                 '$date $time',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
@@ -119,10 +115,10 @@ class ReprogramarItem extends StatelessWidget {
                                     height: 7.5,
                                     width: 7.5,
                                   ),
-                                  SizedBox(width: 5),
+                                  const SizedBox(width: 5),
                                   Text(
                                     status!,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.w300,
                                       fontSize: 12.0,
                                     ),
@@ -131,13 +127,13 @@ class ReprogramarItem extends StatelessWidget {
                               ),
                               Text(
                                 userName!,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 userPhone!,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -145,9 +141,9 @@ class ReprogramarItem extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 25),
-                      Text('Fecha'),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 25),
+                      const Text('Fecha'),
+                      const SizedBox(height: 5),
                       DateTimePicker(
                         dateMask: 'dd-MM-yyyy',
                         firstDate: DateTime.now(),
@@ -155,11 +151,11 @@ class ReprogramarItem extends StatelessWidget {
                         dateLabelText: 'Fecha',
                         onChanged: (val) => _.fecha.value = val,
                       ),
-                      SizedBox(height: 10),
-                      Text('Hora'),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 10),
+                      const Text('Hora'),
+                      const SizedBox(height: 5),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'Hora'),
+                        decoration: const InputDecoration(labelText: 'Hora'),
                         enableInteractiveSelection: false,
                         controller: timeController,
                         readOnly: true,
@@ -188,7 +184,7 @@ class ReprogramarItem extends StatelessWidget {
                           );
                         },
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Center(
                         child: btnSecondary(
                           text: 'Reprogramar',
@@ -196,38 +192,37 @@ class ReprogramarItem extends StatelessWidget {
                           onPressed: () => _.reprogramar(bookingId!),
                         ),
                       ),
-                      _.errorDateTime.value
-                          ? FadeIn(
-                              child: Container(
-                                margin: EdgeInsets.all(5),
-                                padding: EdgeInsets.all(5),
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                  color: colorRed,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 5),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        _.msgfecha.value,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      Text(
-                                        _.msghora.value,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ],
+                      if (_.errorDateTime.value)
+                        FadeIn(
+                          child: Container(
+                            margin: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
+                            width: double.maxFinite,
+                            decoration: BoxDecoration(
+                              color: colorRed,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    _.msgfecha.value,
+                                    style: const TextStyle(color: Colors.white),
                                   ),
-                                ),
+                                  Text(
+                                    _.msghora.value,
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                ],
                               ),
-                            )
-                          : SizedBox(height: 0),
+                            ),
+                          ),
+                        )
+                      else
+                        const SizedBox(height: 0),
                     ],
                   ),
                 ),

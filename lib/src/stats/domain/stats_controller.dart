@@ -101,7 +101,7 @@ class StatsController extends GetxController {
   }
 
   getBase() => _getBase();
-  _getBase() async {
+  Future<void> _getBase() async {
     cargaBase.value = true;
     final response =
         await _repo.getStatsBase(prefUser.vetId!, fechaIn.text, fechaOut.text);
@@ -116,7 +116,7 @@ class StatsController extends GetxController {
   }
 
   getComments() => _getComments();
-  _getComments() async {
+  Future<void> _getComments() async {
     cargaComments.value = true;
     statComments.clear();
     final values = await _repo.getStatsComment(
@@ -128,7 +128,7 @@ class StatsController extends GetxController {
   final paiChartList = <PieChartSectionData>[].obs;
   final radiusPie = 25.obs;
   getStatsService() => _getStatsService();
-  _getStatsService() async {
+  Future<void> _getStatsService() async {
     cargaServices.value = true;
 
     services.clear();
@@ -152,7 +152,7 @@ class StatsController extends GetxController {
   }
 
   getStatsDaily() => _getStatsDaily();
-  _getStatsDaily() async {
+  Future<void> _getStatsDaily() async {
     cargaSalesDay.value = true;
     salesDay.clear();
     final values = await _repo.getStatsDaily(prefUser.vetId!);
@@ -161,7 +161,7 @@ class StatsController extends GetxController {
   }
 
   getStatsMonthly() => _getStatsMonthly();
-  _getStatsMonthly() async {
+  Future<void> _getStatsMonthly() async {
     cargaSalesMonth.value = true;
     salesMonth.clear();
     final values = await _repo.getStatsMonthly(prefUser.vetId!);

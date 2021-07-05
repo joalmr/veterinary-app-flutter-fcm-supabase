@@ -16,7 +16,7 @@ Widget navbarItem(
         padding: const EdgeInsets.symmetric(vertical: 3.0),
         child: Row(
           children: [
-            Container(
+            SizedBox(
               height: 60.0,
               width: 80.0,
               child: Row(

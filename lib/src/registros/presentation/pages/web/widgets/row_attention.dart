@@ -50,11 +50,10 @@ class _RowAttentionState extends State<RowAttention> {
                     const BoxShadow(
                       color: Colors.black12,
                       blurRadius: 13.0,
-                      spreadRadius: 0.0,
                     ),
                   ]
                 : []),
-        child: Container(
+        child: SizedBox(
           child: Row(
             children: [
               Expanded(
@@ -82,7 +81,6 @@ class _RowAttentionState extends State<RowAttention> {
                       width: 15.0,
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -113,7 +111,6 @@ class _RowAttentionState extends State<RowAttention> {
                 ),
               ),
               Expanded(
-                flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
@@ -142,12 +139,10 @@ class _RowAttentionState extends State<RowAttention> {
                 ),
               ),
               Expanded(
-                flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Text(
                         'Usuario',
@@ -170,7 +165,6 @@ class _RowAttentionState extends State<RowAttention> {
                 ),
               ),
               Expanded(
-                flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
@@ -196,7 +190,6 @@ class _RowAttentionState extends State<RowAttention> {
                 ),
               ),
               Expanded(
-                flex: 1,
                 child: btnPrimary(
                   text: 'Ver',
                   onPressed: () {},

@@ -11,7 +11,7 @@ class LoginMain extends StatelessWidget {
     return GetBuilder<LoginController>(
       init: LoginController(),
       builder: (_) {
-        return context.width < 900 ? LoginView() : LoginPage();
+        return context.width < 900 ? LoginView() : const LoginPage();
       },
     );
   }

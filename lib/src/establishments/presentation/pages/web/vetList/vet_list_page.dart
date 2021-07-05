@@ -12,16 +12,14 @@ class VetList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<EstablishmentsController>(
       builder: (_) {
-        return Container(
+        return SizedBox(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 margin:
                     const EdgeInsets.only(left: 30.0, top: 25.0, bottom: 20.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(

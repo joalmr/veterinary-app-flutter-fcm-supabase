@@ -11,8 +11,7 @@ class VacunaPage extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Vacuna'),
-            actions: null,
+            title: const Text('Vacuna'),
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -24,10 +23,10 @@ class VacunaPage extends StatelessWidget {
                       currentStep: 0,
                       steps: [
                         Step(
-                          title: Text('Ingresar vacuna'),
+                          title: const Text('Ingresar vacuna'),
                           content: Column(
-                            children: <Widget>[
-                              Text('blabla'),
+                            children: [
+                              const Text('blabla'),
                               // _.buscaVacuna(),
                               // Wrap(
                               //   direction: Axis.vertical,
@@ -41,16 +40,16 @@ class VacunaPage extends StatelessWidget {
                           ),
                         ),
                         Step(
-                          title: Text('Monto'),
+                          title: const Text('Monto'),
                           content: Column(
                             children: <Widget>[
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Monto',
                                 ),
                                 keyboardType: TextInputType.number,
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               btnPrimary(
                                   text: 'Guardar vacuna', onPressed: () {}),
                             ],
@@ -64,7 +63,7 @@ class VacunaPage extends StatelessWidget {
                           VoidCallback? onStepCancel}) {
                         // _.stepContinue = onStepContinue;
                         // _.stepCancel = onStepCancel;
-                        return SizedBox.shrink();
+                        return const SizedBox.shrink();
                       },
                     ),
                   ),

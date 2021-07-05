@@ -18,74 +18,74 @@ class CardRegister extends StatelessWidget {
             children: [
               FadeInLeft(
                 from: 50,
-                duration: Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 400),
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Nombre',
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               FadeInLeft(
                 from: 50,
-                duration: Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 400),
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Apellido',
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               FadeInLeft(
                 from: 50,
-                duration: Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 400),
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Correo electrónico',
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               FadeInLeft(
                 from: 50,
-                duration: Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 400),
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Contraseña',
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               FadeInLeft(
                 from: 50,
-                duration: Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 400),
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Repetir contraseña',
                     ),
                   ),
                 ),
               ),
-              CheckRegister(
+              const CheckRegister(
                 title: 'Acepto los ',
                 link: 'Terminos y Condiciones',
                 tipo: 'tyc',
               ),
-              CheckRegister(
+              const CheckRegister(
                 title: 'Acepto las ',
                 link:
                     'Políticas de Privacidad y Protección de Datos Personales',
@@ -93,14 +93,14 @@ class CardRegister extends StatelessWidget {
               ),
               FadeInLeft(
                 from: 50,
-                duration: Duration(milliseconds: 700),
+                duration: const Duration(milliseconds: 700),
                 child: Container(
                   height: 45,
                   width: double.maxFinite,
-                  margin: EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [
                         colorGreen,
                         colorMain,
@@ -110,7 +110,7 @@ class CardRegister extends StatelessWidget {
                   child: InkWell(
                     onTap: () {},
                     borderRadius: BorderRadius.circular(5),
-                    child: SizedBox.expand(
+                    child: const SizedBox.expand(
                       child: Center(
                         child: Text(
                           'Registrar',
@@ -127,8 +127,8 @@ class CardRegister extends StatelessWidget {
               ),
               FadeInLeft(
                 from: 50,
-                duration: Duration(milliseconds: 550),
-                child: Align(
+                duration: const Duration(milliseconds: 550),
+                child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
@@ -139,7 +139,7 @@ class CardRegister extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
             ],
           ),
         ),

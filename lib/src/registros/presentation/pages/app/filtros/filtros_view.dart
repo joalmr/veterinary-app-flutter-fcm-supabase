@@ -20,9 +20,8 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
           appBar: AppBar(
             title: const Text('Filtro de atenciones'),
           ),
-          body: Container(
+          body: SizedBox(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(

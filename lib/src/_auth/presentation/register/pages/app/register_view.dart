@@ -18,17 +18,17 @@ class RegisterView extends StatelessWidget {
         ),
         children: [
           FadeIn(
-            duration: Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 700),
             child: JelloIn(
-              duration: Duration(milliseconds: 600),
+              duration: const Duration(milliseconds: 600),
               child: Column(
                 children: [
                   Image(
                     height: Get.height * 0.18,
                     image: AssetImage(imgLogoProypet),
                   ),
-                  SizedBox(height: 2.5),
-                  Text(
+                  const SizedBox(height: 2.5),
+                  const Text(
                     'Proveedores',
                     style: TextStyle(
                       fontSize: 28,
@@ -39,7 +39,7 @@ class RegisterView extends StatelessWidget {
               ),
             ),
           ),
-          CardRegister(),
+          const CardRegister(),
         ],
       ),
     );

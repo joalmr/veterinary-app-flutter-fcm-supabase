@@ -6,16 +6,19 @@ import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/establishments/data/model/data_map_model.dart';
 import 'package:vet_app/src/establishments/data/model/establishment_model_lite.dart';
 import 'package:vet_app/src/establishments/data/model/service_model.dart';
-import '_establishmentInterface.dart';
+import '_establishment_interface.dart';
 import 'model/establishmet.dart';
 import 'request/establishment_request.dart';
-import 'request/priceEstRequest.dart';
+import 'request/price_est_request.dart';
 
 class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<List<EstablecimientoModelLite>> getAll() async {
     final url = Uri.https(urlBase!, '$pathBase/establishments');
-    final http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(
+      url,
+      headers: headersToken(),
+    );
     final establecimientos = establecimientoModelLiteFromJson(response.body);
     return establecimientos;
   }
@@ -23,7 +26,10 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<EstablishmentModal> getById(String idVet) async {
     final url = Uri.https(urlBase!, '$pathBase/establishment/$idVet');
-    final http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(
+      url,
+      headers: headersToken(),
+    );
 
     final EstablishmentModal establecimiento =
         EstablishmentModal.fromJson(json.decode(response.body));
@@ -34,7 +40,10 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<EstablecimientoModelLite> getFirst() async {
     final url = Uri.https(urlBase!, '$pathBase/establishments');
-    final http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(
+      url,
+      headers: headersToken(),
+    );
 
     final establecimientos = establecimientoModelLiteFromJson(response.body);
     return establecimientos.first;
@@ -52,7 +61,7 @@ class EstablishmentApi extends EstablishmentInterface {
       headers: headersToken(),
     );
 
-    var data = serviceVetModelFromJson(response.body);
+    final data = serviceVetModelFromJson(response.body);
 
     return data;
   }
@@ -62,7 +71,7 @@ class EstablishmentApi extends EstablishmentInterface {
     final url = Uri.https(urlBase!, '$pathBase/establishment');
     var lista = [];
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(establecimiento),
@@ -90,7 +99,7 @@ class EstablishmentApi extends EstablishmentInterface {
       'code': code,
     };
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(employee),
@@ -110,7 +119,7 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/employees',
     );
 
-    http.Response response = await http.get(
+    final http.Response response = await http.get(
       url,
       headers: headersToken(),
     );
@@ -129,12 +138,13 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/employee/$employeeId',
     );
 
-    http.Response response = await http.get(
+    final http.Response response = await http.get(
       url,
       headers: headersToken(),
     );
 
-    final data = Employee.fromJson(jsonDecode(response.body));
+    final data =
+        Employee.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
 
     return data;
   }
@@ -155,7 +165,7 @@ class EstablishmentApi extends EstablishmentInterface {
       'code': code,
     };
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(employee),
@@ -176,7 +186,7 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/employee/$employeeId',
     );
 
-    http.Response response = await http.delete(
+    final http.Response response = await http.delete(
       url,
       headers: headersToken(),
     );
@@ -197,7 +207,7 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/prices',
     );
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(precios),
@@ -216,7 +226,7 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/schedule',
     );
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(horarios),
@@ -265,7 +275,7 @@ class EstablishmentApi extends EstablishmentInterface {
       headers: headersToken(),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
     print(data);
   }
 
@@ -276,8 +286,8 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/logo',
     );
 
-    var request = http.MultipartRequest('POST', url);
-    var pic = await http.MultipartFile.fromPath('logo', image.path);
+    final request = http.MultipartRequest('POST', url);
+    final pic = await http.MultipartFile.fromPath('logo', image.path);
 
     request.headers['Content-Type'] = 'application/json; charset=UTF-8';
     request.headers['Authorization'] = 'Bearer ${prefUser.token}';

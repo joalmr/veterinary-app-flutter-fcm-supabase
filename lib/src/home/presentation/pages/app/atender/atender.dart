@@ -23,7 +23,6 @@ class _AtenderViewState extends State<AtenderView> {
         Container(
           margin: const EdgeInsets.only(left: 20.0, top: 15, bottom: 5),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
                 borderRadius: BorderRadius.circular(20.0),

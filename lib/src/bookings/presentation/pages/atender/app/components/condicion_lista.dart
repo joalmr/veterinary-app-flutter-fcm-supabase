@@ -7,7 +7,7 @@ class DataCondicion {
   });
 }
 
-var condicionLista = [
+List<DataCondicion> condicionLista = [
   DataCondicion(id: '', name: 'Seleccione condición corporal..'),
   DataCondicion(id: '1', name: 'Muy delgado'),
   DataCondicion(id: '2', name: 'Bajo peso'),

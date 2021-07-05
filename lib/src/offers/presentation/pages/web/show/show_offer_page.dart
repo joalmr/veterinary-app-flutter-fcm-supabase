@@ -12,7 +12,6 @@ class VerOfertas extends StatelessWidget {
     return GetX<OffersController>(
       builder: (_) {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
@@ -49,13 +48,10 @@ class VerOfertas extends StatelessWidget {
                                     vertical: 10, horizontal: 20),
                                 padding: const EdgeInsets.all(5),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Expanded(
                                       child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
@@ -166,8 +162,6 @@ class VerOfertas extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 30),
                                         child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [

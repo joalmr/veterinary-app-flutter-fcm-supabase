@@ -17,7 +17,7 @@ class CardLogin extends StatelessWidget {
           // key: _formKey,
           child: Card(
             child: Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 left: 20,
                 right: 20,
                 top: 20,
@@ -26,21 +26,21 @@ class CardLogin extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Ingrese email',
                       ),
                       onChanged: (val) => _.email = val,
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Container(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       // textInputAction: TextInputAction.unspecified,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Ingrese contraseña',
                       ),
                       obscureText: true,
@@ -50,7 +50,7 @@ class CardLogin extends StatelessWidget {
                   Container(
                     height: 45,
                     width: double.maxFinite,
-                    margin: EdgeInsets.all(8.0),
+                    margin: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       gradient: LinearGradient(
@@ -71,16 +71,16 @@ class CardLogin extends StatelessWidget {
                       child: SizedBox.expand(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            _.btnLogIn.value
-                                ? SizedBox(width: 0)
-                                : Container(
-                                    margin: EdgeInsets.only(right: 2.0),
-                                    padding: EdgeInsets.all(5.0),
-                                    child: CircularProgressIndicator(),
-                                  ),
-                            Text(
+                            if (_.btnLogIn.value)
+                              const SizedBox(width: 0)
+                            else
+                              Container(
+                                margin: const EdgeInsets.only(right: 2.0),
+                                padding: const EdgeInsets.all(5.0),
+                                child: const CircularProgressIndicator(),
+                              ),
+                            const Text(
                               'Ingresar',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -93,7 +93,7 @@ class CardLogin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
@@ -103,28 +103,29 @@ class CardLogin extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0),
-                  _.errorLogIn.value
-                      ? FadeIn(
-                          child: Container(
-                            margin: EdgeInsets.all(5),
-                            padding: EdgeInsets.all(5),
-                            width: double.maxFinite,
-                            decoration: BoxDecoration(
-                              color: colorRed,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 5),
-                              child: Text(
-                                'Usuario o clave incorrecto',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
+                  const SizedBox(height: 10.0),
+                  if (_.errorLogIn.value)
+                    FadeIn(
+                      child: Container(
+                        margin: const EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
+                        width: double.maxFinite,
+                        decoration: BoxDecoration(
+                          color: colorRed,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: const Padding(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                          child: Text(
+                            'Usuario o clave incorrecto',
+                            style: TextStyle(color: Colors.white),
                           ),
-                        )
-                      : SizedBox(height: 0),
+                        ),
+                      ),
+                    )
+                  else
+                    const SizedBox(height: 0),
                 ],
               ),
             ),

@@ -43,14 +43,12 @@ class ContentReprograma extends StatelessWidget {
     return GetX<ReprogramarController>(
       init: ReprogramarController(),
       builder: (_) {
-        return Container(
+        return SizedBox(
           width: 300,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -68,39 +66,36 @@ class ContentReprograma extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             color: Colors.grey.shade200,
                             alignment: Alignment.center,
-                            child: CircularProgressIndicator(),
+                            child: const CircularProgressIndicator(),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         petName!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
                       Text(
                         petBreed!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14,
                         ),
                       ),
                       Text(
                         '$date $time',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
                             decoration: BoxDecoration(
@@ -110,10 +105,10 @@ class ContentReprograma extends StatelessWidget {
                             height: 7.5,
                             width: 7.5,
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Text(
                             status!,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 12.0,
                             ),
@@ -122,13 +117,13 @@ class ContentReprograma extends StatelessWidget {
                       ),
                       Text(
                         userName!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
                         userPhone!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -136,9 +131,9 @@ class ContentReprograma extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
-              Text('Fecha'),
-              SizedBox(height: 5),
+              const SizedBox(height: 25),
+              const Text('Fecha'),
+              const SizedBox(height: 5),
               // dateForm(onChanged: (val) => _.fecha.value = val),
               DateTimePicker(
                 dateMask: 'dd-MM-yyyy',
@@ -147,12 +142,12 @@ class ContentReprograma extends StatelessWidget {
                 dateLabelText: 'Fecha hasta',
                 onChanged: (val) => _.fecha.value = val,
               ),
-              SizedBox(height: 10),
-              Text('Hora'),
-              SizedBox(height: 5),
+              const SizedBox(height: 10),
+              const Text('Hora'),
+              const SizedBox(height: 5),
               // timeForm(onChanged: (val) => _.hora.value = val),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Hora'),
+                decoration: const InputDecoration(labelText: 'Hora'),
                 enableInteractiveSelection: false,
                 controller: timeController,
                 readOnly: true,
@@ -180,7 +175,7 @@ class ContentReprograma extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Center(
                 child: btnSecondary(
                   text: 'Reprogramar',
@@ -188,42 +183,42 @@ class ContentReprograma extends StatelessWidget {
                   onPressed: () => _.reprogramar(bookingId!),
                 ),
               ),
-              _.errorDateTime.value
-                  ? FadeIn(
-                      child: Center(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 10,
-                          ),
-                          padding: EdgeInsets.all(5),
-                          width: 250,
-                          decoration: BoxDecoration(
-                            color: colorRed,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 5),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  _.msgfecha.value,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                Text(
-                                  _.msghora.value,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
+              if (_.errorDateTime.value)
+                FadeIn(
+                  child: Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 5,
+                        vertical: 10,
+                      ),
+                      padding: const EdgeInsets.all(5),
+                      width: 250,
+                      decoration: BoxDecoration(
+                        color: colorRed,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              _.msgfecha.value,
+                              style: const TextStyle(color: Colors.white),
                             ),
-                          ),
+                            Text(
+                              _.msghora.value,
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
                       ),
-                    )
-                  : SizedBox(height: 0),
+                    ),
+                  ),
+                )
+              else
+                const SizedBox(height: 0),
             ],
           ),
         );

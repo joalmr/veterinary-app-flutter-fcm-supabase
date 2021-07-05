@@ -23,9 +23,9 @@ class DiagnosesModel {
   });
 
   factory DiagnosesModel.fromJson(Map<String, dynamic> json) => DiagnosesModel(
-        id: json['id'],
-        name: json['name'],
-        diagnoses: json['diagnoses'] == null ? 0 : json['diagnoses'],
+        id: json['id'] as int?,
+        name: json['name'] as String?,
+        diagnoses: json['diagnoses'] as int? ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

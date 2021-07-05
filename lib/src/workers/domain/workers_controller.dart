@@ -77,14 +77,14 @@ class WorkersController extends GetxController {
     }
   }
 
-  deleteInvita(invitationId) => _deleteInvita(invitationId);
-  _deleteInvita(invitationId) async {
+  deleteInvita(String invitationId) => _deleteInvita(invitationId);
+  _deleteInvita(String invitationId) async {
     await _repo.deleteInvita(prefUser.vetId!, invitationId);
     getInvitados();
   }
 
-  deleteWorker(workerId) => _deleteWorker(workerId);
-  _deleteWorker(workerId) async {
+  deleteWorker(String workerId) => _deleteWorker(workerId);
+  _deleteWorker(String workerId) async {
     await _repo.deleteWorker(prefUser.vetId!, workerId);
     getInvitados();
   }

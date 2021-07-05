@@ -36,7 +36,6 @@ class FeedbackView extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 5),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
@@ -59,7 +58,6 @@ class FeedbackView extends StatelessWidget {
                             const SizedBox(width: 10),
                             Expanded(
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -77,7 +75,6 @@ class FeedbackView extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 10),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   const Icon(Icons.star_rounded),
                                   Text(

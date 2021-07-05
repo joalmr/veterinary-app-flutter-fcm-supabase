@@ -10,9 +10,9 @@ class PetloverModel {
   String? name;
 
   factory PetloverModel.fromJson(Map<String, dynamic> json) => PetloverModel(
-        id: json['id'],
-        userId: json['user_id'],
-        name: json['name'],
+        id: json['id'] as int?,
+        userId: json['user_id'] as String?,
+        name: json['name'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

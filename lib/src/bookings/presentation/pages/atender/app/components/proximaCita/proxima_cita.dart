@@ -11,7 +11,6 @@ Widget itemCitas({String? text, String? slug}) {
         AlertDialog(
           scrollable: true,
           content: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               for (var item in jsonProximaCita[slug]!)
@@ -32,8 +31,8 @@ Widget itemCitas({String? text, String? slug}) {
       );
     },
     child: Container(
-      margin: EdgeInsets.only(top: 2.5, bottom: 2.5, left: 5, right: 5),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.only(top: 2.5, bottom: 2.5, left: 5, right: 5),
+      padding: const EdgeInsets.symmetric(
         horizontal: 10,
         vertical: 20,
       ),
@@ -50,7 +49,7 @@ Widget itemCitas({String? text, String? slug}) {
       ),
       child: Text(
         text!,
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
         ),
       ),

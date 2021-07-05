@@ -14,7 +14,6 @@ class StatsApi extends StatsInterface {
   @override
   Future<StatBaseModel> getStatsBase(
       String establecimientoId, String from, String to) async {
-    print('getStatsBase');
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establecimientoId/stats',
@@ -24,7 +23,7 @@ class StatsApi extends StatsInterface {
       },
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
     print(response.statusCode);
     final statsBase = statBaseModelFromJson(response.body);
 
@@ -34,7 +33,6 @@ class StatsApi extends StatsInterface {
   @override
   Future<List<StatCommentModel>> getStatsComment(
       String establecimientoId, String from, String to) async {
-    print('getStatsComment');
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establecimientoId/comments',
@@ -44,7 +42,7 @@ class StatsApi extends StatsInterface {
       },
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
     print(response.statusCode);
     final statsComment = statCommentModelFromJson(response.body);
 
@@ -54,7 +52,6 @@ class StatsApi extends StatsInterface {
   @override
   Future<StatsServiceModel> getStatsService(
       String establecimientoId, String from, String to) async {
-    print('getStatsService');
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/services',
@@ -64,7 +61,7 @@ class StatsApi extends StatsInterface {
       },
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
     final statsService = statsServiceModelFromJson(response.body);
 
     return statsService;
@@ -72,7 +69,6 @@ class StatsApi extends StatsInterface {
 
   @override
   Future<StatsSalesDailyModel> getStatsDaily(String establecimientoId) async {
-    print('getStatsDaily');
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/sales',
@@ -81,7 +77,7 @@ class StatsApi extends StatsInterface {
       },
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
     final salesDaily = statsSalesDailyModelFromJson(response.body);
 
     return salesDaily;
@@ -90,7 +86,6 @@ class StatsApi extends StatsInterface {
   @override
   Future<StatsSalesMonthlyModel> getStatsMonthly(
       String establecimientoId) async {
-    print('getStatsMonthly');
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/sales',
@@ -99,7 +94,7 @@ class StatsApi extends StatsInterface {
       },
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
 
     final salesMonthly = statsSalesMonthlyModelFromJson(response.body);
 
@@ -113,7 +108,7 @@ class StatsApi extends StatsInterface {
       '$pathBase/establishment/$establecimientoId/stats/users',
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
     final statsUser = statsUserModelFromJson(response.body);
 
     return statsUser;

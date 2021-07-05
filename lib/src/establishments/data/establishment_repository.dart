@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:vet_app/src/establishments/data/model/data_map_model.dart';
 
-import '_establishmentInterface.dart';
+import '_establishment_interface.dart';
 import 'establishment_api.dart';
 import 'model/establishment_model_lite.dart';
 import 'model/establishmet.dart';
 import 'model/service_model.dart';
 import 'request/establishment_request.dart';
-import 'request/priceEstRequest.dart';
+import 'request/price_est_request.dart';
 
 class EstablishmentRepository extends EstablishmentInterface {
   final _api = EstablishmentApi();

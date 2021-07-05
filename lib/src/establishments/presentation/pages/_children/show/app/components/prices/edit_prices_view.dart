@@ -21,7 +21,6 @@ class EditPricesView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextFormField(
                     decoration: const InputDecoration(labelText: 'Consulta'),

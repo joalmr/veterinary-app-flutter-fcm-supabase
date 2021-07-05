@@ -10,25 +10,25 @@ class CalendarEventView extends StatelessWidget {
     return GetX<CalendarController>(
       builder: (_) {
         return _.cargando.value
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : Container(
+            : SizedBox(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           IconButton(
-                            icon: Icon(Icons.keyboard_arrow_left_rounded),
+                            icon: const Icon(Icons.keyboard_arrow_left_rounded),
                             onPressed: _.monthLess,
                           ),
                           Expanded(
                             child: Center(
                               child: Text(
                                 '''${monthsName[_.valueMonth.value]}, ${_.valueYear.value}''',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -36,13 +36,14 @@ class CalendarEventView extends StatelessWidget {
                             ),
                           ),
                           IconButton(
-                            icon: Icon(Icons.keyboard_arrow_right_rounded),
+                            icon:
+                                const Icon(Icons.keyboard_arrow_right_rounded),
                             onPressed: _.monthMore,
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                         ],
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       FullCalendar(),
                     ],
                   ),

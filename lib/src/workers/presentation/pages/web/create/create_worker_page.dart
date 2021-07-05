@@ -121,7 +121,7 @@ class CreaAdmin extends StatelessWidget {
                                         const SizedBox(height: 10),
                                         InkWell(
                                           onTap: () => _.deleteInvita(
-                                              workerInvitation.id),
+                                              workerInvitation.id!),
                                           borderRadius:
                                               BorderRadius.circular(5.0),
                                           child: Container(

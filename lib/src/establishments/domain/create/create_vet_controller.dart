@@ -10,7 +10,7 @@ import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/data/model/service_model.dart';
 import 'package:vet_app/src/establishments/data/request/establishment_request.dart';
-import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
+import 'package:vet_app/src/establishments/data/request/price_est_request.dart';
 
 import '../establishments_controller.dart';
 import 'create_vet_value.dart';
@@ -287,16 +287,16 @@ class CreateVetController extends GetxController {
     var diaError = '';
     var diaHoraError = '';
     for (var i = 0; i < 7; i++) {
-      String ini = v.iniController[i].text;
-      String end = v.endController[i].text;
+      final String ini = v.iniController[i].text;
+      final String end = v.endController[i].text;
       if (v.checkDay[i]) {
         if (ini.isEmpty || end.isEmpty) {
           diaError == ''
               ? diaError = diaError + diaSemana[i]
-              : diaError = diaError + ', ' + diaSemana[i];
+              : diaError = '$diaError, ${diaSemana[i]}';
         } else {
-          int iniNum = int.parse(ini.split(':')[0]);
-          int endNum = int.parse(end.split(':')[0]);
+          final int iniNum = int.parse(ini.split(':')[0]);
+          final int endNum = int.parse(end.split(':')[0]);
           if (iniNum >= endNum) {
             diaHoraError =
                 '''Hora seleccionada incorrecta el día ${diaSemana[i]}, la hora de inicio es mayor a la de fin''';

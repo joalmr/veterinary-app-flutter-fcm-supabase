@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RadioConsulta extends StatefulWidget {
   final String selectValue;
 
-  RadioConsulta({required this.selectValue});
+  const RadioConsulta({required this.selectValue});
 
   @override
   _RadioConsultaState createState() =>
@@ -18,24 +18,23 @@ class _RadioConsultaState extends State<RadioConsulta> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
+        SizedBox(
           child: Row(
             children: [
               Radio(
                 value: 'Presumptive',
                 groupValue: selectValue,
-                onChanged: 
-                (String? val) {
+                onChanged: (String? val) {
                   setState(() {
                     selectValue = val!;
                   });
                 },
               ),
-              Text('Presuntivo'),
+              const Text('Presuntivo'),
             ],
           ),
         ),
-        Container(
+        SizedBox(
           child: Row(
             children: [
               Radio(
@@ -47,7 +46,7 @@ class _RadioConsultaState extends State<RadioConsulta> {
                   });
                 },
               ),
-              Text('Confirmado'),
+              const Text('Confirmado'),
             ],
           ),
         ),

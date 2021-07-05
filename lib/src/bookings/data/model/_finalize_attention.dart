@@ -45,28 +45,33 @@ class FinalizeAttention {
   factory FinalizeAttention.fromJson(Map<String, dynamic> json) =>
       FinalizeAttention(
         weight: json['weight'] as double? ?? 0,
-        temperature: json['temperature'],
-        heartRhythm: json['heart_rhythm'],
-        bodyCondition: json['body_condition'],
+        temperature: json['temperature'] as double?,
+        heartRhythm: json['heart_rhythm'] as double?,
+        bodyCondition: json['body_condition'] as String?,
         consultationNotificationNextdate:
-            json['consultation_notification_nextdate'],
+            json['consultation_notification_nextdate'] as String?,
         consultationNotificationReason:
-            json['consultation_notification_reason'],
+            json['consultation_notification_reason'] as String?,
         consultationNotificationObservation:
-            json['consultation_notification_observation'],
-        dewormingNotificationNextdate: json['deworming_notification_nextdate'],
-        dewormingNotificationReason: json['deworming_notification_reason'],
+            json['consultation_notification_observation'] as String?,
+        dewormingNotificationNextdate:
+            json['deworming_notification_nextdate'] as String?,
+        dewormingNotificationReason:
+            json['deworming_notification_reason'] as String?,
         dewormingNotificationObservation:
-            json['deworming_notification_observation'],
-        groomingNotificationNextdate: json['grooming_notification_nextdate'],
-        groomingNotificationReason: json['grooming_notification_reason'],
+            json['deworming_notification_observation'] as String?,
+        groomingNotificationNextdate:
+            json['grooming_notification_nextdate'] as String?,
+        groomingNotificationReason:
+            json['grooming_notification_reason'] as String?,
         groomingNotificationObservation:
-            json['grooming_notification_observation'],
+            json['grooming_notification_observation'] as String?,
         vaccinationNotificationNextdate:
-            json['vaccination_notification_nextdate'],
-        vaccinationNotificationReason: json['vaccination_notification_reason'],
+            json['vaccination_notification_nextdate'] as String?,
+        vaccinationNotificationReason:
+            json['vaccination_notification_reason'] as String?,
         vaccinationNotificationObservation:
-            json['vaccination_notification_observation'],
+            json['vaccination_notification_observation'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

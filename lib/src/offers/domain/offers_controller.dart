@@ -20,7 +20,7 @@ class OffersController extends GetxController {
 
   getAll() => _getAll();
 
-  _getAll() async {
+  Future<void> _getAll() async {
     cargando = true;
     promociones.clear();
     final response = await _repo.getAll(prefUser.vetId!);
@@ -30,7 +30,7 @@ class OffersController extends GetxController {
 
   delete(String idOffer) => _delete(idOffer);
 
-  _delete(String idOffer) async {
+  Future<void> _delete(String idOffer) async {
     await _repo.delete(prefUser.vetId!, idOffer);
     getAll();
   }

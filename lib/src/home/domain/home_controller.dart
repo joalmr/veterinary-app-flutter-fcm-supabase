@@ -63,35 +63,35 @@ class HomeController extends GetxController {
   //!   listas bookings
   //
   getUnconfirmed() => _getUnconfirmed();
-  _getUnconfirmed() async {
+  Future<void> _getUnconfirmed() async {
     unconfirmed.clear();
     final response = await _repoBooking.getUnconfirmed(prefUser.vetId!);
     unconfirmed.addAll(response.result!);
   }
 
   getOverdue() => _getOverdue();
-  _getOverdue() async {
+  Future<void> _getOverdue() async {
     overdue.clear();
     final response = await _repoBooking.getOverdue(prefUser.vetId!);
     overdue.addAll(response.result!);
   }
 
   getToday() => _getToday();
-  _getToday() async {
+  Future<void> _getToday() async {
     today.clear();
     final response = await _repoBooking.getToday(prefUser.vetId!);
     today.addAll(response.result!);
   }
 
   getIncoming() => _getIncoming();
-  _getIncoming() async {
+  Future<void> _getIncoming() async {
     incoming.clear();
     final response = await _repoBooking.getIncoming(prefUser.vetId!);
     incoming.addAll(response.result!);
   }
 
   getAllBookings() => _getAllBookings();
-  _getAllBookings() async {
+  Future<void> _getAllBookings() async {
     carga = true;
     await getUnconfirmed();
     await getToday();

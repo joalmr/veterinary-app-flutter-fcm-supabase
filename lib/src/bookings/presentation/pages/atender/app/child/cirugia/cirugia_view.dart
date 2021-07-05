@@ -21,28 +21,26 @@ class _CirugiaViewState extends State<CirugiaView> {
         final recomendationController = TextEditingController(
             text: _book.cirugia.value?.recommendations ?? '');
 
-        final amountController = new MoneyMaskedTextController(
+        final amountController = MoneyMaskedTextController(
           initialValue: _book.cirugia.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
-          precision: 2,
-          leftSymbol: '',
         );
 
         return Scaffold(
           appBar: AppBar(
-            title: Text('Cirugía'),
+            title: const Text('Cirugía'),
           ),
           body: Column(
             children: [
               Expanded(
                 child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Recomendaciones',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -55,34 +53,34 @@ class _CirugiaViewState extends State<CirugiaView> {
                             }),
                       ],
                     ),
-                    recomendaciones.value
-                        ? TextFormField(
-                            maxLines: 5,
-                            controller: recomendationController,
-                          )
-                        : SizedBox(height: 0),
+                    if (recomendaciones.value)
+                      TextFormField(
+                        maxLines: 5,
+                        controller: recomendationController,
+                      )
+                    else
+                      const SizedBox(height: 0),
                   ],
                 ),
               ),
               Container(
-                padding:
-                    EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
+                padding: const EdgeInsets.only(
+                    top: 10, left: 10, right: 10, bottom: 5),
                 child: Column(
                   children: [
                     TextFormField(
                       controller: amountController,
                       keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Monto cirugía',
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     SizedBox(
                       width: double.maxFinite,
                       child: btnPrimary(
                         text: 'Guardar',
                         onPressed: () {
-                          print('llega cirugia');
                           if (amountController.numberValue > 0) {
                             final temp = SurgeryBooking(
                               amount: amountController.numberValue,
@@ -92,8 +90,8 @@ class _CirugiaViewState extends State<CirugiaView> {
                           } else {
                             ScaffoldMessenger.of(Get.context!)
                                 .showSnackBar(SnackBar(
-                              content: Text('Ingrese monto'),
-                              duration: Duration(seconds: 3),
+                              content: const Text('Ingrese monto'),
+                              duration: const Duration(seconds: 3),
                               backgroundColor: Colors.black.withOpacity(0.85),
                             ));
                           }

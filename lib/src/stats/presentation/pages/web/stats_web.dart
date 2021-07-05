@@ -15,7 +15,7 @@ class StatsPageWeb extends StatelessWidget {
           const Expanded(
             child: StatsData(),
           ),
-          Container(
+          SizedBox(
             width: 350,
             height: double.maxFinite,
             child: FeedbackContent(),

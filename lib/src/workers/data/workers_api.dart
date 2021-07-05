@@ -1,12 +1,12 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/header_http.dart';
-import 'package:vet_app/src/workers/data/model/worker_modelnvitado.dart';
 import 'package:vet_app/src/workers/data/model/worker_model.dart';
-import '_workers_interface.dart';
-import 'package:http/http.dart' as http;
+import 'package:vet_app/src/workers/data/model/worker_modelnvitado.dart';
 
+import '_workers_interface.dart';
 import 'model/invitation_model.dart';
 
 class WorkersApi extends WorkersInterface {
@@ -17,7 +17,7 @@ class WorkersApi extends WorkersInterface {
       '/api/client/establishment/$establishmentId/workers',
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
 
     return workersModalFromJson(response.body);
   }
@@ -30,7 +30,10 @@ class WorkersApi extends WorkersInterface {
       '/api/client/establishment/$establishmentId/worker/invitations',
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(
+      url,
+      headers: headersToken(),
+    );
 
     return workersModalInvitadoFromJson(response.body);
   }
@@ -41,13 +44,13 @@ class WorkersApi extends WorkersInterface {
         '/api/client/establishment/$establishmentId/worker/invitation');
     final dataBooking = {'email': mail};
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(dataBooking),
     );
-    print(response.body);
-    var respuesta = invitationModelFromJson(response.body);
+
+    final respuesta = invitationModelFromJson(response.body);
     return respuesta;
   }
 
@@ -56,12 +59,11 @@ class WorkersApi extends WorkersInterface {
     final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishmentId/worker/invitation/$invitationId');
 
-    http.Response response = await http.delete(
+    final http.Response response = await http.delete(
       url,
       headers: headersToken(),
     );
-    print(response.statusCode);
-    print(response.body);
+
     return response.statusCode;
   }
 
@@ -70,12 +72,11 @@ class WorkersApi extends WorkersInterface {
     final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishmentId/worker/$workerId');
 
-    http.Response response = await http.delete(
+    final http.Response response = await http.delete(
       url,
       headers: headersToken(),
     );
-    print(response.statusCode);
-    print(response.body);
+
     return response.statusCode;
   }
 }

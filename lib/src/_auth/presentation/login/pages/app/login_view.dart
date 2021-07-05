@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
                   image: AssetImage(imgLogoProypet),
                 ),
               ),
-              SizedBox(height: 2.5),
+              const SizedBox(height: 2.5),
             ],
           ),
           CardLogin(),

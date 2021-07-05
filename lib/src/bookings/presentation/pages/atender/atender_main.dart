@@ -11,7 +11,7 @@ class AtenderMain extends StatelessWidget {
     return GetBuilder<BookingController>(
       init: BookingController(),
       builder: (_) {
-        return context.width < 900 ? AtenderView() : AtenderWeb();
+        return context.width < 900 ? AtenderView() : const AtenderWeb();
       },
     );
   }

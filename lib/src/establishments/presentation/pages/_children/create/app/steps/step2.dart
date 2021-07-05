@@ -3,7 +3,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
-import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
+import 'package:vet_app/src/establishments/domain/create/create_vet_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/map.dart';
 

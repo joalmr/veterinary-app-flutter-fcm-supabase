@@ -1,4 +1,4 @@
-var diaSemanaLite = [
+List<String> diaSemanaLite = [
   'Lun',
   'Mar',
   'Mie',

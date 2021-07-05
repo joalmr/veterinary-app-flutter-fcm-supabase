@@ -156,7 +156,7 @@ class CreaWorkerView extends StatelessWidget {
                                               color: colorRed,
                                               onPressed: () {
                                                 _.deleteInvita(
-                                                    workerInvitation.id);
+                                                    workerInvitation.id!);
                                                 Get.back();
                                               },
                                             ),

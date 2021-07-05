@@ -53,13 +53,12 @@ class EventBooking extends StatelessWidget {
         color: colorStatus,
       ),
       child: ChildRegion(
-        margin: EdgeInsets.only(left: 10),
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        margin: const EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(5.0),
               child: Image(
@@ -71,12 +70,11 @@ class EventBooking extends StatelessWidget {
             ),
             SizedBox(width: context.width > 900 ? 20 : 10),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   petName,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -84,7 +82,7 @@ class EventBooking extends StatelessWidget {
                 Text(petBreed),
                 Text(
                   time,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: colorMain,
                   ),
@@ -100,10 +98,10 @@ class EventBooking extends StatelessWidget {
                       height: 7.5,
                       width: 7.5,
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Text(
                       status,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w300,
                       ),
                     ),

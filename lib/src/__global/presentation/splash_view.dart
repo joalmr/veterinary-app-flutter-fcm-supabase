@@ -10,14 +10,14 @@ class SplashView extends StatelessWidget {
     return GetBuilder<GlobalController>(
       builder: (_) {
         return Scaffold(
-          body: Container(
+          body: SizedBox(
             child: Center(
               child: FadeInImage(
                 placeholder: AssetImage(imgEmpty),
                 height: 70,
                 image: AssetImage(imgLogoProypet),
-                fadeInDuration: Duration(milliseconds: 400),
-                fadeOutDuration: Duration(milliseconds: 800),
+                fadeInDuration: const Duration(milliseconds: 400),
+                fadeOutDuration: const Duration(milliseconds: 800),
               ),
             ),
           ),

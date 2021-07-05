@@ -15,12 +15,13 @@ class AttentionApi extends AttentionInterface {
       '/api/client/establishment/$idVet/attentions',
     );
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(filtros),
     );
 
-    return AttentionRegModel.fromJson(json.decode(response.body));
+    return AttentionRegModel.fromJson(
+        json.decode(response.body) as Map<String, String>);
   }
 }

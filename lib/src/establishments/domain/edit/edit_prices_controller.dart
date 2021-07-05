@@ -1,7 +1,7 @@
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
-import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
+import 'package:vet_app/src/establishments/data/request/price_est_request.dart';
 import 'package:vet_app/src/establishments/domain/show/show_vet_controller.dart';
 
 import '../establishments_controller.dart';
@@ -11,36 +11,24 @@ class EditPricesController extends GetxController {
   final showVetController = Get.find<ShowVetController>();
   final vetController = Get.find<EstablishmentsController>();
 
-  final consultaControl = new MoneyMaskedTextController(
-    initialValue: 0,
+  final consultaControl = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
-  final desparasitaControl = new MoneyMaskedTextController(
-    initialValue: 0,
+  final desparasitaControl = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
-  final vacunaControl = new MoneyMaskedTextController(
-    initialValue: 0,
+  final vacunaControl = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
-  final groomingControl = new MoneyMaskedTextController(
-    initialValue: 0,
+  final groomingControl = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
 
-  PriceEstablecimientoEntity prices = new PriceEstablecimientoEntity();
+  PriceEstablecimientoEntity prices = PriceEstablecimientoEntity();
 
   @override
   void onInit() {
@@ -59,13 +47,8 @@ class EditPricesController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   editPrecios() => _editPrices();
-  _editPrices() async {
+  Future<void> _editPrices() async {
     prices.consultationPriceFrom = consultaControl.numberValue;
     prices.dewormingPriceFrom = desparasitaControl.numberValue;
     prices.groomingPriceFrom = groomingControl.numberValue;

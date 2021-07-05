@@ -47,7 +47,6 @@ class _ChildRegionState extends State<ChildRegion> {
                     const BoxShadow(
                       color: Colors.black12,
                       blurRadius: 13.0,
-                      spreadRadius: 0.0,
                     ),
                   ]
                 : []),

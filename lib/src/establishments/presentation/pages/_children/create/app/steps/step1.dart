@@ -2,7 +2,7 @@ import 'package:easy_mask/easy_mask.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
+import 'package:vet_app/src/establishments/domain/create/create_vet_controller.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/data_tipo.dart';
 
 class Step1 extends StatelessWidget {

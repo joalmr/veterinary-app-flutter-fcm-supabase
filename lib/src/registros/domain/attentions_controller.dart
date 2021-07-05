@@ -25,7 +25,7 @@ class AttentionsController extends GetxController {
   }
 
   getAll() => _getAll();
-  _getAll() async {
+  Future<void> _getAll() async {
     final temp = FilterAttention(
       from: from.value,
       to: to.value,

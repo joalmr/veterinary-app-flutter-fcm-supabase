@@ -22,7 +22,7 @@ class OffersApi extends OffersInterface {
   Future<int> create(Offer offer, String idVet) async {
     final url = Uri.https(urlBase!, '/api/client/establishment/$idVet/offer');
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(offer),
@@ -36,7 +36,8 @@ class OffersApi extends OffersInterface {
     final url =
         Uri.https(urlBase!, '/api/client/establishment/$idVet/offer/$idOffer');
 
-    http.Response response = await http.delete(url, headers: headersToken());
+    final http.Response response =
+        await http.delete(url, headers: headersToken());
 
     return response.statusCode;
   }

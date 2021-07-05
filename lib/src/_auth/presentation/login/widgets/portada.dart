@@ -23,23 +23,22 @@ class Portada extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            SizedBox(width: 25.0),
-            Text(
+            const SizedBox(width: 25.0),
+            const Text(
               'Be',
               style: TextStyle(
                 fontSize: 62,
                 fontWeight: FontWeight.w900,
               ),
             ),
-            SizedBox(width: 20.0),
+            const SizedBox(width: 20.0),
             RotateAnimatedTextKit(
               repeatForever: true,
               text: ['Carefull', 'Happy', 'Proypet'],
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 fontSize: 62,
                 fontWeight: FontWeight.w900,
               ),
-              textAlign: TextAlign.start,
             ),
           ],
         ),

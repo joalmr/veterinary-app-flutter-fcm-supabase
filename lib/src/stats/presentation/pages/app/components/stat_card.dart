@@ -26,8 +26,6 @@ class StatCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(width: 5.0),
               Container(
@@ -53,7 +51,6 @@ class StatCard extends StatelessWidget {
               ),
               const SizedBox(width: 20.0),
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 7.5),

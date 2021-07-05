@@ -33,19 +33,19 @@ class ChatController extends GetxController {
   }
 
   getChats() => _getChats();
-  _getChats() async {
+  Future<void> _getChats() async {
     final response = await _repo.getCanal(vetInt!);
 
     chats.clear();
     chats.addAll(response);
   }
 
-  goToMessage(int canal) {
+  void goToMessage(int canal) {
     Get.to(MessagesView());
     _getMessage(canal);
   }
 
-  _getMessage(int canal) async {
+  Future<void> _getMessage(int canal) async {
     canalId = canal;
     final response = await _repo.getMessages(canal);
 
@@ -54,7 +54,7 @@ class ChatController extends GetxController {
   }
 
   addMessage(String message) => _addMessage(message);
-  _addMessage(String message) async {
+  Future<void> _addMessage(String message) async {
     await _repo.addMessage(canalId!, message);
   }
 

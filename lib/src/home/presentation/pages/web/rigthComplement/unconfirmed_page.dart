@@ -14,7 +14,6 @@ class Unconfirmed extends StatelessWidget {
         return Container(
           color: const Color(0xffF7F7FF),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 30.0),

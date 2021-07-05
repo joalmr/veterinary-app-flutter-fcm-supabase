@@ -1,13 +1,13 @@
-calculateAge(DateTime? birthDate) {
+String? calculateAge(DateTime? birthDate) {
   if (birthDate == null) return 'No definido';
   String? resp;
   int edad, mes, dia, diferencia;
-  DateTime currentDate = DateTime.now();
-  Duration difference = currentDate.difference(birthDate);
+  final DateTime currentDate = DateTime.now();
+  final Duration difference = currentDate.difference(birthDate);
   diferencia = difference.inDays;
   edad = diferencia ~/ 365;
   mes = (diferencia ~/ 30) % 12;
-  dia = ((diferencia % 365) % 30);
+  dia = (diferencia % 365) % 30;
 
   String rAnio = ' años';
   String rMes = ' meses';

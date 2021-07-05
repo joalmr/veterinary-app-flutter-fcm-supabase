@@ -49,7 +49,9 @@ class ChatApi {
 
     if (hasCanal.data != null) {
       final canalList = hasCanal.data as List;
-      canales = canalList.map((e) => CanalModel.fromJson(e)).toList();
+      canales = canalList
+          .map((e) => CanalModel.fromJson(e as Map<String, dynamic>))
+          .toList();
     }
 
     return canales;
@@ -66,23 +68,21 @@ class ChatApi {
 
     if (messages.data != null) {
       final messageList = messages.data as List;
-      mensajes = messageList.map((e) => MessageModel.fromJson(e)).toList();
+      mensajes = messageList
+          .map((e) => MessageModel.fromJson(e as Map<String, dynamic>))
+          .toList();
     }
 
     return mensajes;
   }
 
   Future<void> addMessage(int canalId, String message) async {
-    final response = await supabaseClient.from('message').insert([
+    await supabaseClient.from('message').insert([
       {
         'canal_id': canalId,
         'message': message,
         'type': false,
       }
     ]).execute();
-
-    print('addMessage');
-    print(response.status);
-    print(response.data);
   }
 }

@@ -26,7 +26,7 @@ class DewormingBooking {
         amount: json['amount'] as double? ?? 0.0,
         dewormers: List<Dewormer>.from(
             json['dewormers'].map((x) => Dewormer.fromJson(x))),
-        recommendations: json['recommendations'] ?? '',
+        recommendations: json['recommendations'] as String? ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -57,9 +57,9 @@ class Dewormer {
   List<String>? types;
 
   factory Dewormer.fromJson(Map<String, dynamic> json) => Dewormer(
-        id: json['id'],
-        name: json['name'],
-        laboratory: json['laboratory'],
+        id: json['id'] as int?,
+        name: json['name'] as String?,
+        laboratory: json['laboratory'] as String?,
         types: List<String>.from(json['types'].map((x) => x)),
       );
 

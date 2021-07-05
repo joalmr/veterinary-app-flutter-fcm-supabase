@@ -12,18 +12,16 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Portada(),
+          const Portada(),
           Expanded(
-            child: Container(
+            child: SizedBox(
               child: Center(
-                child: Container(
+                child: SizedBox(
                   width: 500,
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Column(
                           children: [
@@ -34,10 +32,10 @@ class LoginPage extends StatelessWidget {
                                 image: AssetImage(imgLogoProypet),
                               ),
                             ),
-                            SizedBox(height: 2.5),
+                            const SizedBox(height: 2.5),
                           ],
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         CardLogin(),
                       ],
                     ),

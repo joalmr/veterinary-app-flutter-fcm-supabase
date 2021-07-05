@@ -49,13 +49,13 @@ class DayDetail extends StatelessWidget {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        listaBooking.length == 0
-                            ? Padding(
-                                padding: EdgeInsets.only(top: 20),
-                                child:
-                                    Center(child: Text('No tiene registros')),
-                              )
-                            : SizedBox(height: 0),
+                        if (listaBooking.isEmpty)
+                          const Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: Center(child: Text('No tiene registros')),
+                          )
+                        else
+                          const SizedBox(height: 0),
                         for (var booking in listaBooking)
                           EventBooking(
                             color:
@@ -73,13 +73,13 @@ class DayDetail extends StatelessWidget {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        listaNextDate.length == 0
-                            ? const Padding(
-                                padding: EdgeInsets.only(top: 20),
-                                child:
-                                    Center(child: Text('No tiene registros')),
-                              )
-                            : const SizedBox(height: 0),
+                        if (listaNextDate.isEmpty)
+                          const Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: Center(child: Text('No tiene registros')),
+                          )
+                        else
+                          const SizedBox(height: 0),
                         for (var nextDate in listaNextDate)
                           EventNextDate(
                             image: nextDate.petPicture as String,
@@ -97,13 +97,13 @@ class DayDetail extends StatelessWidget {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        listaEvent.length == 0
-                            ? const Padding(
-                                padding: EdgeInsets.only(top: 20),
-                                child:
-                                    Center(child: Text('No tiene registros')),
-                              )
-                            : const SizedBox(height: 0),
+                        if (listaEvent.isEmpty)
+                          const Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: Center(child: Text('No tiene registros')),
+                          )
+                        else
+                          const SizedBox(height: 0),
                         for (var event in listaEvent)
                           EventNote(
                             color: Colors.blueGrey,

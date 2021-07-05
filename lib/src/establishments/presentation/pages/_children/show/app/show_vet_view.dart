@@ -31,16 +31,16 @@ class ShowVetView extends StatelessWidget {
                   automaticallyImplyLeading: false,
                   flexibleSpace: Stack(
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         height: double.maxFinite,
                         width: double.maxFinite,
                         child: PageView(
-                          scrollDirection: Axis.horizontal,
+                          // scrollDirection: Axis.horizontal,
                           children: [
                             for (var item in _.establishment.value.slides!)
                               AspectRatio(
                                 aspectRatio: 16 / 9,
-                                child: Container(
+                                child: SizedBox(
                                   width: double.infinity,
                                   child: Image(
                                     fit: BoxFit.cover,
@@ -139,11 +139,10 @@ class ShowVetView extends StatelessWidget {
                     initialIndex: _.initialTab.value,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(),
-                          child: Container(
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width,
                             child: ListTile(
                               contentPadding:
@@ -151,7 +150,6 @@ class ShowVetView extends StatelessWidget {
                               minVerticalPadding: 0,
                               title: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Container(
                                     margin: EdgeInsets.zero,
@@ -181,7 +179,7 @@ class ShowVetView extends StatelessWidget {
                                   style: const TextStyle(fontSize: 12)),
                               trailing: Stack(
                                 children: <Widget>[
-                                  Container(height: 56.0, width: 60.0),
+                                  const SizedBox(height: 56.0, width: 60.0),
                                   Container(
                                     height: 50.0,
                                     width: 50.0,

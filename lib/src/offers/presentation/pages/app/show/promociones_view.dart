@@ -32,7 +32,6 @@ class PromocionesView extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 10, right: 10, top: 10),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
@@ -96,7 +95,6 @@ class PromocionesView extends StatelessWidget {
                               const SizedBox(height: 5),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   const Text(
                                     'Descripción',

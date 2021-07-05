@@ -21,7 +21,7 @@ class ListEventsModel {
 
   factory ListEventsModel.fromJson(Map<String, dynamic> json) =>
       ListEventsModel(
-        message: json['message'],
+        message: json['message'] as String?,
         result: Map.from(json['result']).map((k, v) =>
             MapEntry<String, List<Result>>(
                 k, List<Result>.from(v.map((x) => Result.fromJson(x))))),
@@ -52,12 +52,12 @@ class Result {
   String? title;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
-        id: json['id'],
-        date: DateTime.parse(json['date']),
-        description: json['description'],
-        members: json['members'],
-        time: json['time'],
-        title: json['title'],
+        id: json['id'] as String?,
+        date: DateTime?.parse(json['date'] as String),
+        description: json['description'] as String?,
+        members: json['members'] as String?,
+        time: json['time'] as String?,
+        title: json['title'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

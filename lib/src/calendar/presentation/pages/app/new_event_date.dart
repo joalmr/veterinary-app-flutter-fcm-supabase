@@ -16,19 +16,19 @@ class NewEventDate extends StatelessWidget {
       builder: (_) {
         return Scaffold(
             appBar: AppBar(
-              title: Text(
+              title: const Text(
                 'Agregar evento',
               ),
             ),
             body: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               children: [
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Título'),
+                  decoration: const InputDecoration(labelText: 'Título'),
                   textCapitalization: TextCapitalization.sentences,
                   onChanged: (val) => _.titulo.value = val,
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 DateTimePicker(
                   dateMask: 'dd-MM-yyyy',
                   firstDate: DateTime.now(),
@@ -36,9 +36,9 @@ class NewEventDate extends StatelessWidget {
                   dateLabelText: 'Fecha',
                   onChanged: (val) => _.fecha.value = val,
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Hora'),
+                  decoration: const InputDecoration(labelText: 'Hora'),
                   enableInteractiveSelection: false,
                   controller: timeController,
                   readOnly: true,
@@ -66,21 +66,21 @@ class NewEventDate extends StatelessWidget {
                     );
                   },
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Integrantes'),
+                  decoration: const InputDecoration(labelText: 'Integrantes'),
                   textCapitalization: TextCapitalization.words,
                   onChanged: (val) => _.integrantes.value = val,
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Descripción'),
+                  decoration: const InputDecoration(labelText: 'Descripción'),
                   textCapitalization: TextCapitalization.sentences,
                   onChanged: (val) => _.descripcion.value = val,
                   maxLength: 150,
                   maxLines: 5,
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 SizedBox(
                   width: double.infinity,
                   child: btnPrimary(
@@ -88,7 +88,7 @@ class NewEventDate extends StatelessWidget {
                     onPressed: _.newCalendarEvent,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
             ));
       },

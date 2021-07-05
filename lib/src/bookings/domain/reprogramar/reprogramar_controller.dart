@@ -22,8 +22,7 @@ class ReprogramarController extends GetxController {
   RxString msghora = ''.obs;
 ////////////////////////////////////////////////////////////////////////////////
 
-  reprogramar(String idBooking) => _reprogramar(idBooking);
-
+  void reprogramar(String idBooking) => _reprogramar(idBooking);
   Future<void> _reprogramar(String idBooking) async {
     reprogramando.value = true;
 

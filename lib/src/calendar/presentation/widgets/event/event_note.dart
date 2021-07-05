@@ -33,35 +33,34 @@ class EventNote extends StatelessWidget {
         color: color,
       ),
       child: ChildRegion(
-        margin: EdgeInsets.only(left: 10),
-        padding: EdgeInsets.only(
+        margin: const EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.only(
           left: 20,
           right: 5,
           top: 10,
           bottom: 10,
         ),
-        child: Container(
+        child: SizedBox(
           width: double.maxFinite,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),
               ),
               Text(
                 time,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: colorMain,
                 ),
               ),
               Text(members),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Text(description),
             ],
           ),

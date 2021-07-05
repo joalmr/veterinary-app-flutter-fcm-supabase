@@ -63,9 +63,10 @@ class EditEmployeesView extends StatelessWidget {
                               ),
                             ),
                             Text(employee.name!),
-                            employee.code != null
-                                ? Text(employee.code!)
-                                : const SizedBox(height: 0),
+                            if (employee.code != null)
+                              Text(employee.code!)
+                            else
+                              const SizedBox(height: 0),
                           ],
                         ),
                       ],

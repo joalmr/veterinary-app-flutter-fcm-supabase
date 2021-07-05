@@ -13,7 +13,7 @@ Widget tipoAtencion(
             child: Card(
               child: Container(
                 height: 65,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   children: [
                     Container(
@@ -29,7 +29,7 @@ Widget tipoAtencion(
                         size: 20,
                       ),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: Text(
                         nombre,
@@ -53,8 +53,9 @@ Widget tipoAtencion(
               direction: DismissDirection.endToStart,
               confirmDismiss: (fn) => Get.dialog(
                 AlertDialog(
-                  title: Text('Eliminar'),
-                  content: Text('Seguro que desea eliminar esta atención?'),
+                  title: const Text('Eliminar'),
+                  content:
+                      const Text('Seguro que desea eliminar esta atención?'),
                   actions: <Widget>[
                     btnAltern(
                       text: 'Cancelar',
@@ -71,7 +72,7 @@ Widget tipoAtencion(
               child: Card(
                 child: Container(
                   height: 65,
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Row(
                     children: [
                       Container(
@@ -87,7 +88,7 @@ Widget tipoAtencion(
                           size: 20,
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           nombre,
@@ -96,14 +97,14 @@ Widget tipoAtencion(
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Text(
                           'S/ $monto',
                           style: Get.textTheme.subtitle2!
                               .apply(fontWeightDelta: 2),
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.arrow_left_rounded,
                         size: 14,
                         color: colorRed,

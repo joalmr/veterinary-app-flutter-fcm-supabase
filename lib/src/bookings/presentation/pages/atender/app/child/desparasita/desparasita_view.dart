@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
@@ -22,29 +21,27 @@ class _DesparasitaViewState extends State<DesparasitaView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        var listaDesparasita =
+        final listaDesparasita =
             _book.desparasita.value?.dewormers ?? <Dewormer>[];
 
         final recomendationController = TextEditingController(
             text: _book.desparasita.value?.recommendations ?? '');
 
-        final amountController = new MoneyMaskedTextController(
+        final amountController = MoneyMaskedTextController(
           initialValue: _book.desparasita.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
-          precision: 2,
-          leftSymbol: '',
         );
 
         return Scaffold(
           appBar: AppBar(
-            title: Text('Desparasitación'),
+            title: const Text('Desparasitación'),
           ),
           body: Column(
             children: [
               Expanded(
                 child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   children: [
                     TypeAheadField<Dewormer>(
                       suggestionsCallback: (filter) async {
@@ -53,8 +50,8 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                           '/autocomplete/dewormings',
                           {'q': filter},
                         );
-                        var response = await http.get(url);
-                        var models = dewormingsModelFromJson(response.body);
+                        final response = await http.get(url);
+                        final models = dewormingsModelFromJson(response.body);
                         return models;
                         // filter.trim()=='' ? [] : models;
                       },
@@ -65,7 +62,6 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                         });
                         if (!doble) {
                           setState(() {
-                            print(jsonEncode(data));
                             listaDesparasita.add(data);
                           });
                           desparasitaController.clear();
@@ -73,48 +69,45 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                       },
                       textFieldConfiguration: TextFieldConfiguration(
                         controller: desparasitaController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             labelText: 'Busque desparasitación'),
                       ),
-                      noItemsFoundBuilder: (context) => Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      noItemsFoundBuilder: (context) => const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Text('No se encontró'),
                       ),
                       itemBuilder: (context, address) => Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Text(
                           address.name!,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         for (var item in listaDesparasita)
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
+                              SizedBox(
                                 width:
                                     (MediaQuery.of(context).size.width - 16) *
                                         (7 / 8),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       item.name!,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width:
                                     (MediaQuery.of(context).size.width - 16) *
                                         (1 / 8),
@@ -124,18 +117,18 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                                       listaDesparasita.remove(item);
                                     });
                                   },
-                                  child: Icon(Icons.delete_rounded),
+                                  child: const Icon(Icons.delete_rounded),
                                 ),
                               )
                             ],
                           ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Recomendaciones',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -148,35 +141,35 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                             }),
                       ],
                     ),
-                    recomendaciones.value
-                        ? TextFormField(
-                            maxLines: 5,
-                            controller: recomendationController,
-                          )
-                        : SizedBox(height: 0),
+                    if (recomendaciones.value)
+                      TextFormField(
+                        maxLines: 5,
+                        controller: recomendationController,
+                      )
+                    else
+                      const SizedBox(height: 0),
                   ],
                 ),
               ),
               Container(
-                padding:
-                    EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
+                padding: const EdgeInsets.only(
+                    top: 10, left: 10, right: 10, bottom: 5),
                 child: Column(
                   children: [
                     TextFormField(
                       keyboardType: TextInputType.number,
                       controller: amountController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Monto desparasitación',
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     SizedBox(
                       width: double.maxFinite,
                       child: btnPrimary(
                         text: 'Guardar',
                         onPressed: () {
-                          print('llega desparasita');
-                          if (listaDesparasita.length > 0 &&
+                          if (listaDesparasita.isNotEmpty &&
                               amountController.numberValue > 0) {
                             final temp = DewormingBooking(
                               amount: amountController.numberValue,
@@ -187,9 +180,9 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                           } else {
                             ScaffoldMessenger.of(Get.context!)
                                 .showSnackBar(SnackBar(
-                              content: Text(
+                              content: const Text(
                                   'Falta ingresar desparasitación o monto'),
-                              duration: Duration(seconds: 3),
+                              duration: const Duration(seconds: 3),
                               backgroundColor: Colors.black.withOpacity(0.85),
                             ));
                           }

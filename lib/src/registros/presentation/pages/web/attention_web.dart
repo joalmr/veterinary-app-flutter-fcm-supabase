@@ -9,14 +9,13 @@ class AttentionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const NavigationBar(),
           Expanded(
             child: Registered(),
           ),
-          Container(
+          SizedBox(
             width: 250,
             height: double.maxFinite,
             child: MiniStatAttention(),

@@ -39,8 +39,10 @@ class CalendarApi extends CalendarInterface {
         {'date': date},
       );
 
-      final http.Response response =
-          await http.get(url, headers: headersToken());
+      final http.Response response = await http.get(
+        url,
+        headers: headersToken(),
+      );
 
       return listBookingsModelFromJson(response.body);
     } catch (e) {
@@ -58,8 +60,10 @@ class CalendarApi extends CalendarInterface {
         {'date': date},
       );
 
-      final http.Response response =
-          await http.get(url, headers: headersToken());
+      final http.Response response = await http.get(
+        url,
+        headers: headersToken(),
+      );
       return listEventsModelFromJson(response.body);
     } catch (e) {
       return null;
@@ -76,8 +80,10 @@ class CalendarApi extends CalendarInterface {
         {'date': date},
       );
 
-      final http.Response response =
-          await http.get(url, headers: headersToken());
+      final http.Response response = await http.get(
+        url,
+        headers: headersToken(),
+      );
       return listNextdateModelFromJson(response.body);
     } catch (e) {
       return null;

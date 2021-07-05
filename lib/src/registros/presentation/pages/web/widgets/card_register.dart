@@ -5,7 +5,7 @@ import 'package:vet_app/components/card_container.dart';
 Widget cardRegister({
   required String date,
   required List<Icon> icons,
-  required petImage,
+  required ImageProvider<Object> petImage,
   required String petName,
   required String petYo,
   required String petBreed,
@@ -16,19 +16,18 @@ Widget cardRegister({
 }) {
   return cardContainer(
     child: Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         vertical: 10,
         horizontal: 5,
       ),
       child: Row(
         children: [
           Expanded(
-            flex: 1,
             child: Column(
               children: [
                 Text(
                   date,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
@@ -55,12 +54,11 @@ Widget cardRegister({
                   ),
                 ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       petName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -68,13 +66,13 @@ Widget cardRegister({
                     Text(petYo),
                     Text(
                       petBreed,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 12,
                       ),
                     ),
                     Text(
                       petSpecie,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                       ),
@@ -85,28 +83,24 @@ Widget cardRegister({
             ),
           ),
           Expanded(
-            flex: 1,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.person,
                   size: 16,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(petLover),
               ],
             ),
           ),
           Expanded(
-            flex: 1,
             child: Center(
               child: Text('S/ $amount'),
             ),
           ),
           Expanded(
-            flex: 1,
             child: Center(
               child: btnPrimary(
                 text: 'Ver',

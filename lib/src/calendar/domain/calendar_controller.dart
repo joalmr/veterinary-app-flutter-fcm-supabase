@@ -15,7 +15,7 @@ class CalendarController extends GetxController {
   final calendarNextdates = <CalendarNextdate>[].obs;
   final calendarEvents = <CalendarEvent>[].obs;
 
-  var today = DateTime.now();
+  DateTime today = DateTime.now();
   final dateString = ''.obs;
 
   final valueMonth = DateTime.now().month.obs;
@@ -30,10 +30,10 @@ class CalendarController extends GetxController {
   final cargando = true.obs;
 
   ///
-  var tempDate;
+  DateTime? tempDate;
 
   ///
-  var pickedTime = TimeOfDay.now();
+  TimeOfDay pickedTime = TimeOfDay.now();
 
   RxString titulo = ''.obs;
   RxString fecha = ''.obs;
@@ -47,14 +47,13 @@ class CalendarController extends GetxController {
   void onInit() {
     super.onInit();
     dateString.value = formatDateBasic(today);
-    daysPerMonth.value =
-        DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
+    daysPerMonth.value = DateTime(valueYear.value, valueMonth.value + 1, 0).day;
 
     listasCalendario(today);
     tempDate = today;
   }
 
-  monthMore() {
+  void monthMore() {
     if (valueMonth.value < 12) {
       valueMonth.value = valueMonth.value + 1;
       daysPerMonth.value =
@@ -66,12 +65,12 @@ class CalendarController extends GetxController {
           DateTime(valueYear.value, valueMonth.value + 1, 0).day;
     }
 
-    final dateC = DateTime(valueYear.value, valueMonth.value, 1);
+    final dateC = DateTime(valueYear.value, valueMonth.value);
     listasCalendario(dateC);
     tempDate = dateC;
   }
 
-  monthLess() {
+  void monthLess() {
     if (valueMonth.value > 1) {
       valueMonth.value = valueMonth.value - 1;
       daysPerMonth.value =
@@ -83,12 +82,12 @@ class CalendarController extends GetxController {
           DateTime(valueYear.value, valueMonth.value + 1, 0).day;
     }
 
-    var dateC = DateTime(valueYear.value, valueMonth.value, 1);
+    final dateC = DateTime(valueYear.value, valueMonth.value);
     listasCalendario(dateC);
     tempDate = dateC;
   }
 
-  listasCalendario(dateC) async {
+  Future<void> listasCalendario(DateTime dateC) async {
     cargando.value = true;
     await listCalendarBookings(dateC);
     await listCalendarNextdate(dateC);
@@ -96,8 +95,8 @@ class CalendarController extends GetxController {
     cargando.value = false;
   }
 
-  listCalendarBookings(date) => _listCalendarBookings(date);
-  _listCalendarBookings(date) async {
+  listCalendarBookings(DateTime date) => _listCalendarBookings(date);
+  Future<void> _listCalendarBookings(DateTime date) async {
     final response =
         await _repo.listCalendarBookings(prefUser.vetId!, formatDateYM(date));
 
@@ -111,8 +110,8 @@ class CalendarController extends GetxController {
     }
   }
 
-  listCalendarNextdate(date) => _listCalendarNextdate(date);
-  _listCalendarNextdate(date) async {
+  listCalendarNextdate(DateTime date) => _listCalendarNextdate(date);
+  Future<void> _listCalendarNextdate(DateTime date) async {
     final response =
         await _repo.listCalendarNextdate(prefUser.vetId!, formatDateYM(date));
 
@@ -126,8 +125,8 @@ class CalendarController extends GetxController {
     }
   }
 
-  listCalendarEvents(date) => _listCalendarEvents(date);
-  _listCalendarEvents(date) async {
+  listCalendarEvents(DateTime date) => _listCalendarEvents(date);
+  Future<void> _listCalendarEvents(DateTime date) async {
     final response =
         await _repo.listCalendarEvents(prefUser.vetId!, formatDateYM(date));
 
@@ -144,7 +143,7 @@ class CalendarController extends GetxController {
   ///
   ///
   newCalendarEvent() => _newCalendarEvent();
-  _newCalendarEvent() async {
+  Future<void> _newCalendarEvent() async {
     if (titulo.value.isEmpty ||
         fecha.value.isEmpty ||
         hora.value.isEmpty ||

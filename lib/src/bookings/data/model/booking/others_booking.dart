@@ -50,8 +50,8 @@ class OtherServ {
   String? name;
 
   factory OtherServ.fromJson(Map<String, dynamic> json) => OtherServ(
-        id: json['id'],
-        name: json['name'],
+        id: json['id'] as int?,
+        name: json['name'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

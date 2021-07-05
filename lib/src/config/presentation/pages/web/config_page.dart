@@ -14,20 +14,18 @@ class ConfigPage extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           body: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NavigationBar(),
+              const NavigationBar(),
               Expanded(
-                child: Container(
+                child: SizedBox(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(
+                        margin: const EdgeInsets.only(
                             left: 30.0, top: 25.0, bottom: 10.0),
-                        child: Text(
+                        child: const Text(
                           'Configuración',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -36,22 +34,15 @@ class ConfigPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 32.0),
+                        margin: const EdgeInsets.only(left: 32.0),
                         child: TextButton(
-                          child: Text(
-                            'Cerrar sesión',
-                            style: TextStyle(
-                              color: colorRed,
-                              // fontSize: 20,
-                            ),
-                          ),
                           onPressed: () {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: Text('Eliminar'),
-                                content:
-                                    Text('Seguro que desea cerrar sesión?'),
+                                title: const Text('Eliminar'),
+                                content: const Text(
+                                    'Seguro que desea cerrar sesión?'),
                                 actions: <Widget>[
                                   btnAltern(
                                     text: 'Sí, cerrar',
@@ -72,13 +63,20 @@ class ConfigPage extends StatelessWidget {
                             );
                           },
                           style: TextButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               vertical: 10.0,
                               horizontal: 20.0,
                             ),
                             alignment: Alignment.center,
-                            side: BorderSide(
+                            side: const BorderSide(
                               color: colorRed,
+                            ),
+                          ),
+                          child: const Text(
+                            'Cerrar sesión',
+                            style: TextStyle(
+                              color: colorRed,
+                              // fontSize: 20,
                             ),
                           ),
                         ),

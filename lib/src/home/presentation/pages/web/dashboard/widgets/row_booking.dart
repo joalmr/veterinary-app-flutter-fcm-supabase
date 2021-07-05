@@ -85,7 +85,7 @@ class _RowBookingState extends State<RowBooking> {
                     ),
                   ]
                 : []),
-        child: Container(
+        child: SizedBox(
           child: ExpansionTile(
             title: Row(
               children: [
@@ -111,7 +111,6 @@ class _RowBookingState extends State<RowBooking> {
                       ),
                       const SizedBox(width: 10.0),
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -154,12 +153,10 @@ class _RowBookingState extends State<RowBooking> {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           widget.userName,
@@ -171,7 +168,6 @@ class _RowBookingState extends State<RowBooking> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const Icon(
                               Icons.phone_android,
@@ -193,7 +189,6 @@ class _RowBookingState extends State<RowBooking> {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Column(
@@ -266,7 +261,6 @@ class _RowBookingState extends State<RowBooking> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -291,7 +285,6 @@ class _RowBookingState extends State<RowBooking> {
                           padding: const EdgeInsets.all(8),
                           width: double.maxFinite,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Icon(IconProypet.delivery),

@@ -19,7 +19,6 @@ class CreaOferta extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 )
               : Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 30.0),

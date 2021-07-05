@@ -1,17 +1,16 @@
+import 'package:http/http.dart' as http;
 import 'package:vet_app/src/bookings/data/model/_finalize_attention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultation_booking.dart';
-import 'package:vet_app/src/bookings/data/model/booking/testing_booking.dart';
-import 'package:vet_app/src/bookings/data/model/booking/others_booking.dart';
-import 'package:vet_app/src/bookings/data/model/booking/vaccination_booking.dart';
-import 'package:vet_app/src/bookings/data/model/booking/surgery_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/deworming_booking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/others_booking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/surgery_booking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/testing_booking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/vaccination_booking.dart';
 
-import 'booking_api.dart';
 import '_booking_interface.dart';
+import 'booking_api.dart';
 import 'model/booking/_general_booking.dart';
 import 'model/booking_model.dart';
-
-import 'package:http/http.dart' as http;
 
 class BookingRepository extends BookingInterface {
   final _api = BookingApi();

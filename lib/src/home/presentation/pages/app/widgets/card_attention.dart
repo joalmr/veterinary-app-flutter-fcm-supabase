@@ -74,11 +74,10 @@ class _CardAttentionState extends State<CardAttention> {
               showModalBottomSheet<void>(
                 context: context,
                 builder: (BuildContext context) {
-                  return Container(
+                  return SizedBox(
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
@@ -104,7 +103,6 @@ class _CardAttentionState extends State<CardAttention> {
                                 ),
                                 const SizedBox(width: 10),
                                 Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
@@ -117,10 +115,6 @@ class _CardAttentionState extends State<CardAttention> {
                                       widget.petBreed,
                                     ),
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
@@ -159,7 +153,6 @@ class _CardAttentionState extends State<CardAttention> {
                               bottom: 20,
                             ),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
@@ -200,8 +193,6 @@ class _CardAttentionState extends State<CardAttention> {
                                       padding: const EdgeInsets.all(8),
                                       width: double.maxFinite,
                                       child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
@@ -226,30 +217,30 @@ class _CardAttentionState extends State<CardAttention> {
                           Row(
                             children: [
                               //* tipo de atencion
-                              widget.attentionType == 3
-                                  ? const SizedBox(width: 0)
-                                  : Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            left: 20, right: 7.5),
-                                        child: btnSecondary(
-                                          text: 'Atender',
-                                          onPressed: () {
-                                            Get.toNamed(
-                                                NameRoutes.atenderBooking,
-                                                arguments: {
-                                                  'bookingId': widget.bookingId,
-                                                  'petId': '-',
-                                                  'specie': '-',
-                                                  'breed': widget.petBreed,
-                                                  'name': widget.petName,
-                                                  'image': widget.petImg,
-                                                  'birthday': '-'
-                                                });
-                                          },
-                                        ),
-                                      ),
+                              if (widget.attentionType == 3)
+                                const SizedBox(width: 0)
+                              else
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 20, right: 7.5),
+                                    child: btnSecondary(
+                                      text: 'Atender',
+                                      onPressed: () {
+                                        Get.toNamed(NameRoutes.atenderBooking,
+                                            arguments: {
+                                              'bookingId': widget.bookingId,
+                                              'petId': '-',
+                                              'specie': '-',
+                                              'breed': widget.petBreed,
+                                              'name': widget.petName,
+                                              'image': widget.petImg,
+                                              'birthday': '-'
+                                            });
+                                      },
                                     ),
+                                  ),
+                                ),
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.only(
@@ -305,7 +296,6 @@ class _CardAttentionState extends State<CardAttention> {
               ),
             ),
             title: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -316,8 +306,6 @@ class _CardAttentionState extends State<CardAttention> {
                 ),
                 Text(widget.petBreed),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       decoration: BoxDecoration(
@@ -360,7 +348,6 @@ class _CardAttentionState extends State<CardAttention> {
             ),
             trailing: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   widget.date,

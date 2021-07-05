@@ -73,7 +73,7 @@ class FeedbackContent extends StatelessWidget {
                                         ),
                                       ),
                                       const SizedBox(width: 10),
-                                      Container(
+                                      SizedBox(
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,

@@ -6,7 +6,6 @@ Widget employee({int? type, String? name, String? code}) {
     margin: const EdgeInsets.only(bottom: 5, left: 5),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
           type == 1 ? 'Groomer' : 'Veterinario/a',

@@ -11,7 +11,9 @@ class RegisterMain extends StatelessWidget {
     return GetBuilder<RegisterController>(
       init: RegisterController(),
       builder: (_) {
-        return context.width < 900 ? RegisterView() : RegisterPage();
+        return context.width < 900
+            ? const RegisterView()
+            : const RegisterPage();
       },
     );
   }

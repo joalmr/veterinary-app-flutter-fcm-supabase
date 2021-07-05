@@ -40,7 +40,7 @@ class LoginController extends GetxController {
   Future<void> initHome() async {
     if (prefUser.vetDataHas() == false) {
       final temp = await stablishmentService.getFirst();
-      VetStorage forStorage = VetStorage();
+      final VetStorage forStorage = VetStorage();
       forStorage.vetId = temp.id;
       forStorage.vetName = temp.name;
       forStorage.vetLogo = temp.logo;

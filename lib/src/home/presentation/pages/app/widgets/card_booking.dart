@@ -66,11 +66,10 @@ class CardBooking extends StatelessWidget {
           showModalBottomSheet<void>(
             context: context,
             builder: (BuildContext context) {
-              return Container(
+              return SizedBox(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
@@ -96,7 +95,6 @@ class CardBooking extends StatelessWidget {
                             const SizedBox(width: 10),
                             Expanded(
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -107,9 +105,6 @@ class CardBooking extends StatelessWidget {
                                   ),
                                   Text(petBreed),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
                                     children: [
                                       Container(
                                         decoration: BoxDecoration(
@@ -165,7 +160,6 @@ class CardBooking extends StatelessWidget {
                           bottom: 20,
                         ),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
@@ -203,7 +197,6 @@ class CardBooking extends StatelessWidget {
                                   padding: const EdgeInsets.all(8),
                                   width: double.maxFinite,
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -294,7 +287,6 @@ class CardBooking extends StatelessWidget {
           ),
         ),
         title: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -305,8 +297,6 @@ class CardBooking extends StatelessWidget {
             ),
             Text(petBreed),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   decoration: BoxDecoration(
@@ -349,7 +339,6 @@ class CardBooking extends StatelessWidget {
         ),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               date,

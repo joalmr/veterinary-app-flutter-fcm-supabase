@@ -34,7 +34,7 @@ class GeneralBooking {
   double total;
 
   factory GeneralBooking.fromJson(Map<String, dynamic> json) => GeneralBooking(
-        attentionId: json['attention_id'],
+        attentionId: json['attention_id'] as String?,
         consultation: json['consultation'] == null
             ? null
             : ConsultationBooking.fromJson(json['consultation']),
@@ -52,18 +52,18 @@ class GeneralBooking {
         vaccination: json['vaccination'] == null
             ? null
             : VaccinationBooking.fromJson(json['vaccination']),
-        total: json['total'],
+        total: json['total'] as double? ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {
         'attention_id': attentionId,
-        'consultation': consultation?.toJson() ?? null,
-        'deworming': deworming?.toJson() ?? null,
+        'consultation': consultation?.toJson(),
+        'deworming': deworming?.toJson(),
         'grooming': grooming,
-        'other': other?.toJson() ?? null,
-        'surgery': surgery?.toJson() ?? null,
+        'other': other?.toJson(),
+        'surgery': surgery?.toJson(),
         'testing': testing,
-        'vaccination': vaccination?.toJson() ?? null,
+        'vaccination': vaccination?.toJson(),
         'total': total,
       };
 }

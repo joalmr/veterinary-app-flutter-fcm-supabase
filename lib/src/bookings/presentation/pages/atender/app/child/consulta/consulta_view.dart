@@ -23,26 +23,24 @@ class ConsultaView extends StatelessWidget {
           text: _.consulta.value?.recommendations ?? '',
         );
 
-        final amountController = new MoneyMaskedTextController(
+        final amountController = MoneyMaskedTextController(
           initialValue: _.consulta.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
-          precision: 2,
-          leftSymbol: '',
         );
 
         return Scaffold(
           appBar: AppBar(
-            title: Text('Consulta'),
+            title: const Text('Consulta'),
           ),
           body: Column(
             children: [
               Expanded(
                 child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           'Tipo',
                           style: TextStyle(fontWeight: FontWeight.bold),
@@ -56,8 +54,8 @@ class ConsultaView extends StatelessWidget {
                           '/autocomplete/diagnoses',
                           {'q': filter},
                         );
-                        var response = await http.get(url);
-                        var models = diagnosesModelFromJson(response.body);
+                        final response = await http.get(url);
+                        final models = diagnosesModelFromJson(response.body);
                         return models; //filter.trim() == '' ? [] : models;
                       },
                       onSuggestionSelected: (Diagnosis data) {
@@ -72,42 +70,39 @@ class ConsultaView extends StatelessWidget {
                       },
                       textFieldConfiguration: TextFieldConfiguration(
                         controller: diagnosticoController,
-                        decoration:
-                            InputDecoration(labelText: 'Busque diagnósticos'),
+                        decoration: const InputDecoration(
+                            labelText: 'Busque diagnósticos'),
                       ),
-                      noItemsFoundBuilder: (context) => Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      noItemsFoundBuilder: (context) => const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Text('No se encontró'),
                       ),
                       itemBuilder: (context, dato) => Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Text(
                           dato.name!,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         for (var item in _.listaDiagnostico)
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
+                              SizedBox(
                                 width:
                                     (MediaQuery.of(context).size.width - 16) *
                                         (7 / 8),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       item.name!,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
                                     RadioConsulta(
@@ -117,7 +112,7 @@ class ConsultaView extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width:
                                     (MediaQuery.of(context).size.width - 16) *
                                         (1 / 8),
@@ -125,18 +120,18 @@ class ConsultaView extends StatelessWidget {
                                   onTap: () {
                                     _.listaDiagnostico.remove(item);
                                   },
-                                  child: Icon(Icons.delete_rounded),
+                                  child: const Icon(Icons.delete_rounded),
                                 ),
                               )
                             ],
                           ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Anamnesis',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -151,17 +146,18 @@ class ConsultaView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    _.anamnesisBoolConsulta.value
-                        ? TextFormField(
-                            maxLines: 5,
-                            controller: anamnesisController,
-                          )
-                        : SizedBox(height: 0),
+                    if (_.anamnesisBoolConsulta.value)
+                      TextFormField(
+                        maxLines: 5,
+                        controller: anamnesisController,
+                      )
+                    else
+                      const SizedBox(height: 0),
                     // SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Recomendaciones',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -176,34 +172,35 @@ class ConsultaView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    _.recomendacionesBoolConsulta.value
-                        ? TextFormField(
-                            maxLines: 5,
-                            controller: recomendationController,
-                          )
-                        : SizedBox(height: 0),
+                    if (_.recomendacionesBoolConsulta.value)
+                      TextFormField(
+                        maxLines: 5,
+                        controller: recomendationController,
+                      )
+                    else
+                      const SizedBox(height: 0),
                   ],
                 ),
               ),
               Container(
-                padding:
-                    EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
+                padding: const EdgeInsets.only(
+                    top: 10, left: 10, right: 10, bottom: 5),
                 child: Column(
                   children: [
                     TextFormField(
                       controller: amountController,
                       keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Monto consulta',
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     SizedBox(
                       width: double.maxFinite,
                       child: btnPrimary(
                         text: 'Guardar',
                         onPressed: () {
-                          if (_.listaDiagnostico.length > 0 &&
+                          if (_.listaDiagnostico.isNotEmpty &&
                               amountController.numberValue > 0) {
                             final temp = ConsultationBooking(
                               amount: amountController.numberValue,
@@ -215,9 +212,9 @@ class ConsultaView extends StatelessWidget {
                           } else {
                             ScaffoldMessenger.of(Get.context!).showSnackBar(
                               SnackBar(
-                                content:
-                                    Text('Falta ingresar diagnóstico o monto'),
-                                duration: Duration(seconds: 3),
+                                content: const Text(
+                                    'Falta ingresar diagnóstico o monto'),
+                                duration: const Duration(seconds: 3),
                                 backgroundColor: Colors.black.withOpacity(0.85),
                               ),
                             );

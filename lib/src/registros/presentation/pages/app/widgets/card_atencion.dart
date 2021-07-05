@@ -28,7 +28,7 @@ class CardAtencion extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Container(
+              SizedBox(
                 height: 50.0,
                 width: 50.0,
                 child: Center(
@@ -44,7 +44,6 @@ class CardAtencion extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -73,7 +72,6 @@ class CardAtencion extends StatelessWidget {
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     date,

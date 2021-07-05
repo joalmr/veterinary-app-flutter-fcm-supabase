@@ -21,7 +21,6 @@ class EditServicesView extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Wrap(
                   alignment: WrapAlignment.spaceEvenly,
@@ -54,8 +53,7 @@ class EditServicesView extends StatelessWidget {
                 Center(
                   child: btnSecondary(
                     text: 'Guardar',
-                    onPressed:
-                        _.servicesVet.length == 0 ? null : _.updateServices,
+                    onPressed: _.servicesVet.isEmpty ? null : _.updateServices,
                   ),
                 ),
               ],

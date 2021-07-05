@@ -87,13 +87,12 @@ class _NavigationBarState extends State<NavigationBar> {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: dataMenu
                       .map(
                         (e) => navbarItem(
                           active: e['page'] == pageSelected,
-                          icon: e['icon'],
-                          onTap: () => Get.toNamed(e['page']),
+                          icon: e['icon'] as IconData,
+                          onTap: () => Get.toNamed(e['page'] as String),
                         ),
                       )
                       .toList(),

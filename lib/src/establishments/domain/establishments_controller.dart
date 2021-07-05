@@ -9,7 +9,7 @@ import 'package:vet_app/src/establishments/presentation/pages/_children/show/sho
 class EstablishmentsController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
 
-  RxBool _carga = true.obs;
+  final _carga = true.obs;
   bool get carga => _carga.value;
   set carga(bool value) => _carga.value = value;
 
@@ -22,21 +22,15 @@ class EstablishmentsController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    // getAll();
-    super.onReady();
-  }
-
   void refresh() => _refresh();
   Future<Null> _refresh() async {
-    await Future.delayed(Duration(milliseconds: 2));
+    await Future.delayed(const Duration(milliseconds: 2));
     getAll();
     return null;
   }
 
   void getAll() => _getAll();
-  _getAll() async {
+  Future<void> _getAll() async {
     carga = true;
     establecimientos.clear();
     final lista = await establishmentRepo.getAll();
@@ -45,19 +39,19 @@ class EstablishmentsController extends GetxController {
   }
 
   void deldete(String id) => _deldete(id);
-  _deldete(String id) async {
+  Future<void> _deldete(String id) async {
     await establishmentRepo.deleteEstablishmetn(id);
     getAll();
   }
 
   void go2Show(String id) => _go2Show(id);
-  _go2Show(String id) {
+  void _go2Show(String id) {
     Get.to(ShowVetMain(), arguments: id);
   }
 
-  void favoriteVet(id, name, logo) {
+  void favoriteVet(String? id, String? name, String? logo) {
     prefUser.vetDataDel();
-    VetStorage forStorage = VetStorage();
+    final VetStorage forStorage = VetStorage();
     forStorage.vetId = id;
     forStorage.vetName = name;
     forStorage.vetLogo = logo;
@@ -67,9 +61,9 @@ class EstablishmentsController extends GetxController {
     getAll();
   }
 
-  void favoriteVetToInit(id, name, logo) {
+  void favoriteVetToInit(String? id, String? name, String? logo) {
     prefUser.vetDataDel();
-    VetStorage forStorage = VetStorage();
+    final VetStorage forStorage = VetStorage();
     forStorage.vetId = id;
     forStorage.vetName = name;
     forStorage.vetLogo = logo;

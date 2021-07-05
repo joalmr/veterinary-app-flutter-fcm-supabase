@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
@@ -8,14 +9,15 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
+
 import 'child/cirugia/cirugia_view.dart';
-import 'components/proximaCita/proxima_cita.dart';
-import 'components/tipos_atencion_list.dart';
 import 'child/consulta/consulta_view.dart';
 import 'child/desparasita/desparasita_view.dart';
 import 'child/grooming/grooming_view.dart';
 import 'child/otro/otro_view.dart';
 import 'child/vacuna/vacuna_view.dart';
+import 'components/proximaCita/proxima_cita.dart';
+import 'components/tipos_atencion_list.dart';
 
 class AtenderView extends StatelessWidget {
   @override
@@ -25,18 +27,15 @@ class AtenderView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Atención'),
-            actions: null,
+            title: const Text('Atención'),
           ),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Card(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
@@ -48,13 +47,12 @@ class AtenderView extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             Row(
                               children: [
                                 Text(
@@ -62,43 +60,43 @@ class AtenderView extends StatelessWidget {
                                   style: Get.textTheme.subtitle1!
                                       .apply(fontWeightDelta: 2),
                                 ),
-                                SizedBox(width: 5),
-                                Icon(
+                                const SizedBox(width: 5),
+                                const Icon(
                                   Icons.pets_rounded,
                                   size: 18,
                                   color: colorMain,
                                 ),
                               ],
                             ),
-                            SizedBox(height: 5),
-                            Text('Edad: ¡¡??'),
-                            Text('Tipo: ¡¡??'),
+                            const SizedBox(height: 5),
+                            const Text('Edad: ¡¡??'),
+                            const Text('Tipo: ¡¡??'),
                             Text('Raza: ${_.breed}'),
                           ],
                         ),
                       ),
                       IconButton(
-                        icon: Icon(Icons.book_rounded),
+                        icon: const Icon(Icons.book_rounded),
                         onPressed: () {},
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                     ],
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: TextFormField(
                     controller: _.pesoController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Peso',
                       fillColor: Colors.white,
                     ),
                     keyboardType: TextInputType.number,
                   ),
                 ),
-                SizedBox(height: 5),
-                Padding(
+                const SizedBox(height: 5),
+                const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5),
                   child: Text('Condición'),
                 ),
@@ -125,13 +123,12 @@ class AtenderView extends StatelessWidget {
                   //   ),
                   // ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Expanded(
-                  child: Container(
+                  child: SizedBox(
                     child: SingleChildScrollView(
                       child: !_.statusBooking.value
                           ? Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 tipoAtencion(
@@ -173,10 +170,9 @@ class AtenderView extends StatelessWidget {
                               ],
                             )
                           : Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
+                                const Padding(
                                   padding: EdgeInsets.only(left: 10, top: 5),
                                   child: Text(
                                     'Próximas citas',
@@ -201,101 +197,96 @@ class AtenderView extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                _.listNextdate.length == 0
-                                    ? Center(
-                                        child: Padding(
-                                        padding: EdgeInsets.only(top: 35),
-                                        child: Text('Sin próximas citas'),
-                                      ))
-                                    : Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          for (var item in _.listNextdate)
-                                            Container(
-                                              width: double.maxFinite,
-                                              margin: EdgeInsets.all(5),
-                                              padding: EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              child: Column(
+                                if (_.listNextdate.isEmpty)
+                                  const Center(
+                                      child: Padding(
+                                    padding: EdgeInsets.only(top: 35),
+                                    child: Text('Sin próximas citas'),
+                                  ))
+                                else
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      for (var item in _.listNextdate)
+                                        Container(
+                                          width: double.maxFinite,
+                                          margin: const EdgeInsets.all(5),
+                                          padding: const EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Text(
-                                                        item.name!,
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                      IconButton(
-                                                        onPressed: () =>
-                                                            _.removeList(item),
-                                                        icon: Icon(
-                                                          Icons
-                                                              .delete_forever_rounded,
-                                                        ),
-                                                      )
-                                                    ],
+                                                  Text(
+                                                    item.name!,
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
-                                                  SizedBox(height: 5),
-                                                  DateTimePicker(
-                                                    dateMask: 'dd-MM-yyyy',
-                                                    initialValue: formatDate(
-                                                        DateTime.now()),
-                                                    firstDate: DateTime.now(),
-                                                    lastDate: DateTime.now()
-                                                        .add(Duration(
-                                                            days: 730)),
-                                                    dateLabelText: 'Fecha',
-                                                    onChanged: (val) =>
-                                                        item.date = val,
-                                                  ),
-                                                  SizedBox(height: 5),
-                                                  TextFormField(
-                                                    decoration: InputDecoration(
-                                                      labelText: 'Observación',
+                                                  IconButton(
+                                                    onPressed: () =>
+                                                        _.removeList(item),
+                                                    icon: const Icon(
+                                                      Icons
+                                                          .delete_forever_rounded,
                                                     ),
-                                                    onChanged: (value) => item
-                                                        .observation = value,
-                                                    initialValue:
-                                                        item.observation,
-                                                    maxLines: 2,
-                                                    textCapitalization:
-                                                        TextCapitalization
-                                                            .sentences,
-                                                  ),
+                                                  )
                                                 ],
                                               ),
-                                            ),
-                                        ],
-                                      ),
+                                              const SizedBox(height: 5),
+                                              DateTimePicker(
+                                                dateMask: 'dd-MM-yyyy',
+                                                initialValue:
+                                                    formatDate(DateTime.now()),
+                                                firstDate: DateTime.now(),
+                                                lastDate: DateTime.now().add(
+                                                    const Duration(days: 730)),
+                                                dateLabelText: 'Fecha',
+                                                onChanged: (val) =>
+                                                    item.date = val,
+                                              ),
+                                              const SizedBox(height: 5),
+                                              TextFormField(
+                                                decoration:
+                                                    const InputDecoration(
+                                                  labelText: 'Observación',
+                                                ),
+                                                onChanged: (value) =>
+                                                    item.observation = value,
+                                                initialValue: item.observation,
+                                                maxLines: 2,
+                                                textCapitalization:
+                                                    TextCapitalization
+                                                        .sentences,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                               ],
                             ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 5),
+                  padding: const EdgeInsets.only(bottom: 5),
                   child: SizedBox(
                     width: double.maxFinite,
                     child: !_.statusBooking.value
                         ? Padding(
                             padding: Platform.isIOS
-                                ? EdgeInsets.only(bottom: 15)
+                                ? const EdgeInsets.only(bottom: 15)
                                 : EdgeInsets.zero,
                             child: btnPrimary(
                               text: 'Continuar',
@@ -306,7 +297,7 @@ class AtenderView extends StatelessWidget {
                           )
                         : Padding(
                             padding: Platform.isIOS
-                                ? EdgeInsets.only(bottom: 15)
+                                ? const EdgeInsets.only(bottom: 15)
                                 : EdgeInsets.zero,
                             child: Row(
                               children: [
@@ -316,7 +307,7 @@ class AtenderView extends StatelessWidget {
                                     _.statusBooking.value = false;
                                   },
                                 ),
-                                SizedBox(width: 5),
+                                const SizedBox(width: 5),
                                 Expanded(
                                   child: btnPrimary(
                                     text: 'Finalizar atención',

@@ -18,8 +18,8 @@ class ServiceVetModel {
 
   factory ServiceVetModel.fromJson(Map<String, dynamic> json) =>
       ServiceVetModel(
-        id: json['id'],
-        name: json['name'],
+        id: json['id'] as int?,
+        name: json['name'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

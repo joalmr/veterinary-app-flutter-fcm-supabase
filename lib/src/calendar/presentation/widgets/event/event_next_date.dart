@@ -53,13 +53,12 @@ Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendien
         color: Colors.pinkAccent,
       ),
       child: ChildRegion(
-        margin: EdgeInsets.only(left: 10),
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        margin: const EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(5.0),
               child: Image(
@@ -71,12 +70,11 @@ Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendien
             ),
             SizedBox(width: context.width > 900 ? 20 : 10),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   petName,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -84,7 +82,7 @@ Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendien
                 Text(petBreed),
                 Text(
                   motivo,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: colorMain,
                   ),
@@ -93,22 +91,20 @@ Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendien
                 Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(right: 75),
+                      margin: const EdgeInsets.only(right: 75),
                       child: Row(
                         children: [
                           TextButton(
                             onPressed: () {},
-                            child: Icon(Icons.book_rounded),
                             style:
                                 TextButton.styleFrom(primary: Colors.black38),
+                            child: const Icon(Icons.book_rounded),
                           ),
                           TextButton(
                             onPressed: () {
-                              print('wsp');
-                              print(userPhone);
                               launchWhatsApp();
                             },
-                            child: Icon(
+                            child: const Icon(
                               // LineAwesomeIcons.whatsapp,
                               LineIcons.whatSApp,
                               size: 32,

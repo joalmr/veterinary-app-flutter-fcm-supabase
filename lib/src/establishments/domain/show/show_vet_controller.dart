@@ -36,7 +36,7 @@ class ShowVetController extends GetxController {
 
   getByid() => _getByid();
 
-  _getByid() async {
+  Future<void> _getByid() async {
     cargando.value = true;
     establishment.value = await _repo.getById(argumentoId!);
     cargando.value = false;
@@ -46,9 +46,9 @@ class ShowVetController extends GetxController {
     await _procesarLogo(argumentoId!, ImageSource.gallery);
   }
 
-  _procesarLogo(String id, ImageSource origen) async {
+  Future<void> _procesarLogo(String id, ImageSource origen) async {
     File _image;
-    var pickedFile =
+    final pickedFile =
         await ImagePicker().getImage(source: origen, imageQuality: 80);
     if (pickedFile != null) {
       _image = File(pickedFile.path);
@@ -59,11 +59,11 @@ class ShowVetController extends GetxController {
     }
   }
 
-  seleccionarSlide() async {
+  Future<void> seleccionarSlide() async {
     await _procesarSlide(argumentoId!, ImageSource.gallery);
   }
 
-  _procesarSlide(String id, ImageSource origen) async {
+  Future<void> _procesarSlide(String id, ImageSource origen) async {
     File _image;
     final pickedFile =
         await ImagePicker().getImage(source: origen, imageQuality: 80);
@@ -78,7 +78,7 @@ class ShowVetController extends GetxController {
   }
 
   void eliminarSlide(String slide) => _eliminarSlide(slide);
-  _eliminarSlide(String slide) async {
+  Future<void> _eliminarSlide(String slide) async {
     final shortSlide = slide.split('/storage/')[1];
 
     await _repo.deleteSlide(argumentoId!, shortSlide);

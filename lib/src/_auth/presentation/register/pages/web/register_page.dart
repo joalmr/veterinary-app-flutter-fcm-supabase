@@ -13,31 +13,29 @@ class RegisterPage extends StatelessWidget {
     return Scaffold(
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Portada(),
+          const Portada(),
           Expanded(
-            child: Container(
+            child: SizedBox(
               child: Center(
-                child: Container(
+                child: SizedBox(
                   width: 500,
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         FadeIn(
-                          duration: Duration(milliseconds: 700),
+                          duration: const Duration(milliseconds: 700),
                           child: JelloIn(
-                            duration: Duration(milliseconds: 600),
+                            duration: const Duration(milliseconds: 600),
                             child: Column(
                               children: [
                                 Image(
                                   height: Get.height * 0.18,
                                   image: AssetImage(imgLogoProypet),
                                 ),
-                                SizedBox(height: 2.5),
-                                Text(
+                                const SizedBox(height: 2.5),
+                                const Text(
                                   'Proveedores',
                                   style: TextStyle(
                                     fontSize: 28,
@@ -48,8 +46,8 @@ class RegisterPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 30),
-                        CardRegister(),
+                        const SizedBox(height: 30),
+                        const CardRegister(),
                       ],
                     ),
                   ),

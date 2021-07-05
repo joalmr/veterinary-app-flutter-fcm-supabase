@@ -107,29 +107,25 @@ class EditSchedulesController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   bool get validate {
     bool response = false;
     var diaError = '';
     var diaHoraError = '';
     for (var i = 0; i < 7; i++) {
-      String ini = iniController[i].text;
-      String end = endController[i].text;
+      final String ini = iniController[i].text;
+      final String end = endController[i].text;
       if (checkDay[i]) {
         if (ini.isEmpty || end.isEmpty) {
           diaError == ''
               ? diaError = diaError + diaSemana[i]
               : diaError = '$diaError, ${diaSemana[i]}';
         } else {
-          int iniNum = int.parse(ini.split(':')[0]);
-          int endNum = int.parse(end.split(':')[0]);
-          if (iniNum >= endNum)
+          final int iniNum = int.parse(ini.split(':')[0]);
+          final int endNum = int.parse(end.split(':')[0]);
+          if (iniNum >= endNum) {
             diaHoraError =
                 '''Hora seleccionada incorrecta el día ${diaSemana[i]}, la hora de inicio es mayor a la de fin''';
+          }
         }
       }
     }
@@ -157,7 +153,7 @@ class EditSchedulesController extends GetxController {
   }
 
   setSchedule() => _setSchedule();
-  _setSchedule() async {
+  Future<void> _setSchedule() async {
     final schedule = {
       'monday': {
         'switch': checkDay[0],

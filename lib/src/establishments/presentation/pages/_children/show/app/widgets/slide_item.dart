@@ -18,7 +18,7 @@ class SlideItem extends StatelessWidget {
         aspectRatio: 16 / 9,
         child: Stack(
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),

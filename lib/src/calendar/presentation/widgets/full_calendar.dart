@@ -62,7 +62,7 @@ class FullCalendar extends StatelessWidget {
                 for (var i = 1;
                     i < numWeekDay(_.valueYear.value, _.valueMonth.value, 1);
                     i++)
-                  Container(
+                  SizedBox(
                     width: (context.width) / 7,
                     height: 100,
                     child: Container(
@@ -78,13 +78,16 @@ class FullCalendar extends StatelessWidget {
                       var dateDet =
                           DateTime(_.valueYear.value, _.valueMonth.value, i);
                       if (_.listCalendarBooking[i] != null) {
-                        listaBooking.addAll(_.listCalendarBooking[i]);
+                        listaBooking.addAll(
+                            _.listCalendarBooking[i] as Iterable<dynamic>);
                       }
                       if (_.listCalendarNextDate[i] != null) {
-                        listaNextDate.addAll(_.listCalendarNextDate[i]);
+                        listaNextDate.addAll(
+                            _.listCalendarNextDate[i] as Iterable<dynamic>);
                       }
                       if (_.listCalendarEvent[i] != null) {
-                        listaEvent.addAll(_.listCalendarEvent[i]);
+                        listaEvent.addAll(
+                            _.listCalendarEvent[i] as Iterable<dynamic>);
                       }
                       Get.to(DayDetail(
                         day: formatDate(dateDet),
@@ -102,47 +105,52 @@ class FullCalendar extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
                               padding: const EdgeInsets.only(left: 5),
-                              child: Text(('$i')),
+                              child: Text('$i'),
                             ),
                             const SizedBox(height: 2.5),
-                            Container(
+                            SizedBox(
                               width: double.maxFinite,
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  _.listCalendarBooking[i] == null
-                                      ? SizedBox()
-                                      : _.listCalendarBooking[i].length > 0
-                                          ? itemDay(
-                                              'Atenciones',
-                                              _.listCalendarBooking[i].length,
-                                              colorMain,
-                                            )
-                                          : SizedBox(),
-                                  _.listCalendarNextDate[i] == null
-                                      ? SizedBox()
-                                      : _.listCalendarNextDate[i].length > 0
-                                          ? itemDay(
-                                              'Próx.citas',
-                                              _.listCalendarNextDate[i].length,
-                                              Colors.pinkAccent,
-                                            )
-                                          : SizedBox(),
-                                  _.listCalendarEvent[i] == null
-                                      ? const SizedBox()
-                                      : _.listCalendarEvent[i].length > 0
-                                          ? itemDay(
-                                              'Eventos',
-                                              _.listCalendarEvent[i].length,
-                                              Colors.blueGrey,
-                                            )
-                                          : const SizedBox(),
+                                  if (_.listCalendarBooking[i] == null)
+                                    const SizedBox()
+                                  else
+                                    _.listCalendarBooking[i].length as int > 0
+                                        ? itemDay(
+                                            'Atenciones',
+                                            _.listCalendarBooking[i].length
+                                                as int,
+                                            colorMain,
+                                          )
+                                        : const SizedBox(),
+                                  if (_.listCalendarNextDate[i] == null)
+                                    const SizedBox()
+                                  else
+                                    (_.listCalendarNextDate[i].length as int >
+                                            0)
+                                        ? itemDay(
+                                            'Próx.citas',
+                                            _.listCalendarNextDate[i].length
+                                                as int,
+                                            Colors.pinkAccent,
+                                          )
+                                        : const SizedBox(),
+                                  if (_.listCalendarEvent[i] == null)
+                                    const SizedBox()
+                                  else
+                                    _.listCalendarEvent[i].length as int > 0
+                                        ? itemDay(
+                                            'Eventos',
+                                            _.listCalendarEvent[i].length
+                                                as int,
+                                            Colors.blueGrey,
+                                          )
+                                        : const SizedBox(),
                                 ],
                               ),
                             ),
@@ -173,7 +181,7 @@ Widget itemDay(String tipo, int count, Color color) {
       children: [
         Text(
           tipo,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 8,
           ),
@@ -181,7 +189,7 @@ Widget itemDay(String tipo, int count, Color color) {
         const SizedBox(height: .5),
         Text(
           count > 99 ? '99+' : '$count',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 8,
             fontWeight: FontWeight.bold,

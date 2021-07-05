@@ -74,7 +74,6 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
               Container(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(width: 5.0),
@@ -102,9 +101,8 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                       ),
                     ),
                     const SizedBox(width: 5.0),
-                    Container(
+                    SizedBox(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -155,7 +153,6 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                           ),
                           if (widget.delivery != '' && widget.address != '')
                             Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(

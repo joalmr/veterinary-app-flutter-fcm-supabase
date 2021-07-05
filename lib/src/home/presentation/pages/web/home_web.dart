@@ -8,14 +8,13 @@ class HomePageWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const NavigationBar(),
           Expanded(
             child: DashBoard(),
           ),
-          Container(
+          SizedBox(
             width: 300,
             height: double.maxFinite,
             child: Unconfirmed(),

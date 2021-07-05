@@ -49,9 +49,9 @@ class EditServicesController extends GetxController {
   }
 
   void add2List(int numero) {
-    if (!servicesVetSet.contains(numero))
+    if (!servicesVetSet.contains(numero)) {
       servicesVetSet.add(numero);
-    else {
+    } else {
       if (servicesVetSet.length > 1) {
         servicesVetSet.remove(numero);
       }

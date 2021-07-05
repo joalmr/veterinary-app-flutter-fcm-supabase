@@ -63,32 +63,20 @@ class CreateVetValue {
   final descriptionVet = TextEditingController();
   // final inputDireccionController = new TextEditingController();
 
-  final moneyConsulta = new MoneyMaskedTextController(
-    initialValue: 0,
+  final moneyConsulta = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
-  final moneyDesparasita = new MoneyMaskedTextController(
-    initialValue: 0,
+  final moneyDesparasita = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
-  final moneyVacuna = new MoneyMaskedTextController(
-    initialValue: 0,
+  final moneyVacuna = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
-  final moneyGrooming = new MoneyMaskedTextController(
-    initialValue: 0,
+  final moneyGrooming = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',
-    precision: 2,
-    leftSymbol: '',
   );
 }

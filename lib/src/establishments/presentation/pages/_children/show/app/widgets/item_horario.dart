@@ -19,12 +19,10 @@ class ItemHorario extends StatelessWidget {
 
     return GetX<EditSchedulesController>(
       builder: (_) {
-        return Container(
+        return SizedBox(
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   InkWell(
                     onTap: () {
@@ -50,77 +48,76 @@ class ItemHorario extends StatelessWidget {
                   Text(dayName),
                 ],
               ),
-              _.checkDay[index]
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextFormField(
-                          decoration:
-                              const InputDecoration(labelText: 'Inicio'),
-                          enableInteractiveSelection: false,
-                          controller: _.iniController[index],
-                          readOnly: true,
-                          onTap: () {
-                            final format = DateFormat('HH:mm');
-                            Navigator.of(context).push(
-                              showPicker(
-                                context: context,
-                                value: pickedTime,
-                                onChange: (TimeOfDay newTime) =>
-                                    pickedTime = newTime,
-                                is24HrFormat: true,
-                                minuteInterval: MinuteInterval.TEN,
-                                maxMinute: 50,
-                                barrierDismissible: false,
-                                iosStylePicker: true,
-                                hourLabel: 'horas',
-                                minuteLabel: 'minutos',
-                                okText: 'Aceptar',
-                                cancelText: 'Cancelar',
-                                onChangeDateTime: (DateTime dateTime) {
-                                  _.iniDay[index] = format.format(dateTime);
-                                  _.iniController[index].text = _.iniDay[index];
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                        const SizedBox(height: 15),
-                        TextFormField(
-                          decoration: const InputDecoration(labelText: 'Fin'),
-                          enableInteractiveSelection: false,
-                          controller: _.endController[index],
-                          readOnly: true,
-                          onTap: () {
-                            final format = DateFormat('HH:mm');
-                            Navigator.of(context).push(
-                              showPicker(
-                                context: context,
-                                value: pickedTimeEnd,
-                                onChange: (TimeOfDay newTime) =>
-                                    pickedTimeEnd = newTime,
-                                is24HrFormat: true,
-                                minuteInterval: MinuteInterval.TEN,
-                                maxMinute: 50,
-                                barrierDismissible: false,
-                                iosStylePicker: true,
-                                hourLabel: 'horas',
-                                minuteLabel: 'minutos',
-                                okText: 'Aceptar',
-                                cancelText: 'Cancelar',
-                                onChangeDateTime: (DateTime dateTime) {
-                                  _.endDay[index] = format.format(dateTime);
-                                  _.endController[index].text = _.endDay[index];
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                        const SizedBox(height: 5),
-                      ],
-                    )
-                  : const SizedBox(height: 0),
+              if (_.checkDay[index])
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextFormField(
+                      decoration: const InputDecoration(labelText: 'Inicio'),
+                      enableInteractiveSelection: false,
+                      controller: _.iniController[index],
+                      readOnly: true,
+                      onTap: () {
+                        final format = DateFormat('HH:mm');
+                        Navigator.of(context).push(
+                          showPicker(
+                            context: context,
+                            value: pickedTime,
+                            onChange: (TimeOfDay newTime) =>
+                                pickedTime = newTime,
+                            is24HrFormat: true,
+                            minuteInterval: MinuteInterval.TEN,
+                            maxMinute: 50,
+                            barrierDismissible: false,
+                            iosStylePicker: true,
+                            hourLabel: 'horas',
+                            minuteLabel: 'minutos',
+                            okText: 'Aceptar',
+                            cancelText: 'Cancelar',
+                            onChangeDateTime: (DateTime dateTime) {
+                              _.iniDay[index] = format.format(dateTime);
+                              _.iniController[index].text = _.iniDay[index];
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 15),
+                    TextFormField(
+                      decoration: const InputDecoration(labelText: 'Fin'),
+                      enableInteractiveSelection: false,
+                      controller: _.endController[index],
+                      readOnly: true,
+                      onTap: () {
+                        final format = DateFormat('HH:mm');
+                        Navigator.of(context).push(
+                          showPicker(
+                            context: context,
+                            value: pickedTimeEnd,
+                            onChange: (TimeOfDay newTime) =>
+                                pickedTimeEnd = newTime,
+                            is24HrFormat: true,
+                            minuteInterval: MinuteInterval.TEN,
+                            maxMinute: 50,
+                            barrierDismissible: false,
+                            iosStylePicker: true,
+                            hourLabel: 'horas',
+                            minuteLabel: 'minutos',
+                            okText: 'Aceptar',
+                            cancelText: 'Cancelar',
+                            onChangeDateTime: (DateTime dateTime) {
+                              _.endDay[index] = format.format(dateTime);
+                              _.endController[index].text = _.endDay[index];
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 5),
+                  ],
+                )
+              else
+                const SizedBox(height: 0),
             ],
           ),
         );

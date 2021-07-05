@@ -12,13 +12,13 @@ class CalendarView extends StatelessWidget {
     return GetBuilder<CalendarController>(
       builder: (_) {
         return Scaffold(
-          drawer: MenuDrawer(),
+          drawer: const MenuDrawer(),
           appBar: AppBar(
-            title: Text('Calendario'),
+            title: const Text('Calendario'),
           ),
           floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add_rounded),
             onPressed: () => Get.to(NewEventDate()),
+            child: const Icon(Icons.add_rounded),
           ),
           body: CalendarEventView(),
         );

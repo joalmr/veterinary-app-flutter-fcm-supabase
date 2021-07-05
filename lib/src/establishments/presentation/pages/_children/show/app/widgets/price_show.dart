@@ -8,7 +8,6 @@ Widget precio(String tipo, String desde) {
       width: (Get.width / 2) - 20,
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(

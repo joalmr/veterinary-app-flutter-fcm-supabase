@@ -26,10 +26,10 @@ class ConsultationBooking {
   factory ConsultationBooking.fromJson(Map<String, dynamic> json) =>
       ConsultationBooking(
         amount: json['amount'] as double? ?? 0.0,
-        anamnesis: json['anamnesis'],
+        anamnesis: json['anamnesis'] as String?,
         diagnoses: List<Diagnosis>.from(
             json['diagnoses'].map((x) => Diagnosis.fromJson(x))),
-        recommendations: json['recommendations'],
+        recommendations: json['recommendations'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -59,9 +59,9 @@ class Diagnosis {
   String? condition;
 
   factory Diagnosis.fromJson(Map<String, dynamic> json) => Diagnosis(
-        id: json['id'],
-        name: json['name'],
-        condition: json['condition'],
+        id: json['id'] as int?,
+        name: json['name'] as String?,
+        condition: json['condition'] as String?,
       );
 
   Map<String, dynamic> toJson() => {

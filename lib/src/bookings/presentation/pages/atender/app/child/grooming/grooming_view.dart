@@ -17,27 +17,28 @@ class _GroomingViewState extends State<GroomingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Grooming'),
+        title: const Text('Grooming'),
       ),
       body: Column(
         children: [
           Expanded(
             child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               children: [],
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
+            padding:
+                const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
             child: Column(
               children: [
                 TextFormField(
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Monto grooming',
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 SizedBox(
                   width: double.maxFinite,
                   child: btnPrimary(

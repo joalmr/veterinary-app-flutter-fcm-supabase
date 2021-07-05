@@ -23,7 +23,7 @@ Widget tabSelect({required bool selected, required String text}) {
               ),
             ),
           )
-        : Container(
+        : SizedBox(
             height: 25.0,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),

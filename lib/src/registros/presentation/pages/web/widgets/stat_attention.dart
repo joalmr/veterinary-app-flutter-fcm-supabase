@@ -40,7 +40,7 @@ class _StatAttentionState extends State<StatAttention> {
       },
       child: ChildRegion(
         margin: const EdgeInsets.only(bottom: 15.0, left: 5, right: 5),
-        child: Container(
+        child: SizedBox(
           width: 200,
           height: 65,
           child: Column(
@@ -75,7 +75,6 @@ class _StatAttentionState extends State<StatAttention> {
                     ),
                     const SizedBox(width: 20.0),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(

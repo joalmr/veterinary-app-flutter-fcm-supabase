@@ -15,7 +15,6 @@ class PercentUsuariosMensual extends StatelessWidget {
         widget: Container(
           padding: const EdgeInsets.all(5.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(

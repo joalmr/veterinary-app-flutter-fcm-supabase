@@ -18,13 +18,8 @@ class EditDescriptionController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   editDescripcion() => _editDescription();
-  _editDescription() async {
+  Future<void> _editDescription() async {
     await _repo.setDescription(
         showVetController.argumentoId!, descripcionControl.text);
     descripcionControl.text = '';

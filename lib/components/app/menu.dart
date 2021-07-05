@@ -35,10 +35,10 @@ class MenuDrawer extends StatelessWidget {
                   children: dataMenu
                       .map(
                         (e) => ListTile(
-                          leading: Icon(e['icon']),
-                          title: Text(e['name']),
+                          leading: Icon(e['icon'] as IconData),
+                          title: Text(e['name'] as String),
                           onTap: () {
-                            Get.offNamed(e['page']);
+                            Get.offNamed(e['page'] as String);
                           },
                         ),
                       )

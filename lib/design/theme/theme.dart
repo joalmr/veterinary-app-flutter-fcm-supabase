@@ -52,11 +52,7 @@ ThemeData temaClaro = ThemeData(
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5.0),
-      borderSide: const BorderSide(
-        style: BorderStyle.solid,
-        color: colorMain,
-        width: 1,
-      ),
+      borderSide: const BorderSide(color: colorMain),
     ),
   ),
   textTheme: const TextTheme(

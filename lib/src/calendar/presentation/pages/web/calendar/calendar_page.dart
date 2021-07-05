@@ -20,35 +20,32 @@ int valueDay = DateTime.now().day;
 int valueMonth = DateTime.now().month; //DateTime(2021, 4, 0).month;
 int valueYear = DateTime.now().year;
 
-var daysPerMonth = DateTime(valueYear, (valueMonth + 1), 0).day;
+int daysPerMonth = DateTime(valueYear, valueMonth + 1, 0).day;
 int selected = 0;
 
 class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Row(
             children: [
-              SizedBox(width: 50),
+              const SizedBox(width: 50),
               IconButton(
-                icon: Icon(Icons.keyboard_arrow_left_rounded),
+                icon: const Icon(Icons.keyboard_arrow_left_rounded),
                 onPressed: () {
                   setState(() {
                     if (valueMonth > 1) {
                       valueMonth = valueMonth - 1;
-                      daysPerMonth =
-                          DateTime(valueYear, (valueMonth + 1), 0).day;
+                      daysPerMonth = DateTime(valueYear, valueMonth + 1, 0).day;
                       valueDay = 1;
                     } else {
                       valueYear = valueYear - 1;
                       valueMonth = 12;
-                      daysPerMonth =
-                          DateTime(valueYear, (valueMonth + 1), 0).day;
+                      daysPerMonth = DateTime(valueYear, valueMonth + 1, 0).day;
                     }
                   });
                 },
@@ -57,7 +54,7 @@ class _CalendarPageState extends State<CalendarPage> {
                 child: Center(
                   child: Text(
                     '${monthsName[valueMonth]}, $valueYear',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
@@ -65,41 +62,40 @@ class _CalendarPageState extends State<CalendarPage> {
                 ),
               ),
               IconButton(
-                icon: Icon(Icons.keyboard_arrow_right_rounded),
+                icon: const Icon(Icons.keyboard_arrow_right_rounded),
                 onPressed: () {
                   setState(() {
                     if (valueMonth < 12) {
                       valueMonth = valueMonth + 1;
-                      daysPerMonth = DateTime(2021, (valueMonth + 1), 0).day;
+                      daysPerMonth = DateTime(2021, valueMonth + 1, 0).day;
                       valueDay = 1;
                     } else {
                       valueYear = valueYear + 1;
                       valueMonth = 1;
-                      daysPerMonth =
-                          DateTime(valueYear, (valueMonth + 1), 0).day;
+                      daysPerMonth = DateTime(valueYear, valueMonth + 1, 0).day;
                     }
                   });
                 },
               ),
-              SizedBox(width: 50),
+              const SizedBox(width: 50),
             ],
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Container(
             // key: _keyBody,
             height: 80,
-            margin: EdgeInsets.symmetric(horizontal: 20),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
             child: ListView.builder(
               itemCount: daysPerMonth,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                int dayNum = numWeekDay(valueYear, valueMonth, (index + 1));
+                final int dayNum = numWeekDay(valueYear, valueMonth, index + 1);
 
-                bool daySelected = valueDay ==
-                    DateTime(valueYear, valueMonth, (index + 1)).day;
+                final bool daySelected =
+                    valueDay == DateTime(valueYear, valueMonth, index + 1).day;
                 return Container(
                   width: 40,
-                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     color: daySelected ? colorGreen : Colors.grey[200],
                     borderRadius: BorderRadius.circular(50),
@@ -108,13 +104,11 @@ class _CalendarPageState extends State<CalendarPage> {
                     onTap: () {
                       setState(() {
                         valueDay = index + 1;
-                        print(valueDay);
                       });
                     },
                     borderRadius: BorderRadius.circular(50),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           diaSemanaLite[dayNum - 1],
@@ -123,9 +117,9 @@ class _CalendarPageState extends State<CalendarPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Text(
-                          '${(index + 1)}',
+                          '${index + 1}',
                           style: TextStyle(
                             color: daySelected ? Colors.white : null,
                             fontWeight: FontWeight.bold,
@@ -138,10 +132,10 @@ class _CalendarPageState extends State<CalendarPage> {
               },
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             children: [
-              SizedBox(width: 50),
+              const SizedBox(width: 50),
               InkWell(
                 borderRadius: BorderRadius.circular(20.0),
                 onTap: () {
@@ -154,7 +148,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   text: 'Reservas',
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               InkWell(
                 borderRadius: BorderRadius.circular(20.0),
                 onTap: () {
@@ -167,7 +161,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   text: 'Próximas citas',
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               InkWell(
                 borderRadius: BorderRadius.circular(20.0),
                 onTap: () {
@@ -182,16 +176,16 @@ class _CalendarPageState extends State<CalendarPage> {
               ),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ConditionalSwitch.single<int>(
             context: context,
             valueBuilder: (BuildContext context) => selected,
             caseBuilders: {
-              0: (BuildContext context) => EventsBooking(),
-              1: (BuildContext context) => EventsNextDate(),
-              2: (BuildContext context) => EventsNote(),
+              0: (BuildContext context) => const EventsBooking(),
+              1: (BuildContext context) => const EventsNextDate(),
+              2: (BuildContext context) => const EventsNote(),
             },
-            fallbackBuilder: (BuildContext context) => EventsBooking(),
+            fallbackBuilder: (BuildContext context) => const EventsBooking(),
           ),
         ],
       ),

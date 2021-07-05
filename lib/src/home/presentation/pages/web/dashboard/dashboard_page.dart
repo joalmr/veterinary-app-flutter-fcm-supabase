@@ -17,9 +17,8 @@ int selected = 1;
 class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -36,7 +35,6 @@ class _DashBoardState extends State<DashBoard> {
           Container(
             margin: const EdgeInsets.only(left: 32.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 InkWell(
                   borderRadius: BorderRadius.circular(20.0),
