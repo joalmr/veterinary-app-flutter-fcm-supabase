@@ -21,7 +21,7 @@ class _AtenderViewState extends State<AtenderView> {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.only(left: 20.0, top: 15, bottom: 5),
+          margin: const EdgeInsets.only(left: 20.0, top: 15, bottom: 5),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -64,7 +64,7 @@ class _AtenderViewState extends State<AtenderView> {
             ],
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ConditionalSwitch.single<int>(
           context: context,
           valueBuilder: (BuildContext context) => selected,

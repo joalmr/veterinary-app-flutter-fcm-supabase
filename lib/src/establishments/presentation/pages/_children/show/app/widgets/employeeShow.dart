@@ -3,7 +3,7 @@ import 'package:vet_app/design/styles/styles.dart';
 
 Widget employee({int? type, String? name, String? code}) {
   return Container(
-    margin: EdgeInsets.only(bottom: 5, left: 5),
+    margin: const EdgeInsets.only(bottom: 5, left: 5),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -17,8 +17,8 @@ Widget employee({int? type, String? name, String? code}) {
             decorationThickness: 2,
           ),
         ),
-        Text('$name'),
-        code != null ? Text('$code') : SizedBox(height: 0),
+        Text(name ?? ''),
+        if (code != null) Text(code) else const SizedBox(height: 0),
       ],
     ),
   );

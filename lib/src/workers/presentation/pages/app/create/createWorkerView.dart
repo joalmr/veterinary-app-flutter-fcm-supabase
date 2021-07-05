@@ -16,34 +16,33 @@ class CreaWorkerView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Invitar administrador'),
+            title: const Text('Invitar administrador'),
           ),
           body: Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 EasyRichText(
-                  "Invitar administrador a ${prefUser.vetName}",
-                  defaultStyle: TextStyle(
+                  'Invitar administrador a ${prefUser.vetName}',
+                  defaultStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black38,
                   ),
                   patternList: [
                     EasyRichTextPattern(
-                      targetString: '${prefUser.vetName}',
-                      style: TextStyle(color: colorMain),
+                      targetString: prefUser.vetName ?? '',
+                      style: const TextStyle(color: colorMain),
                     ),
                   ],
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 TextFormField(
                   controller: _.emailText,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: 'Email del administrador a invitar'),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 SizedBox(
                   width: double.infinity,
                   child: btnPrimary(
@@ -51,132 +50,145 @@ class CreaWorkerView extends StatelessWidget {
                     onPressed: () => _.setInvita(),
                   ),
                 ),
-                SizedBox(height: 5),
-                Divider(),
-                Text("Invitaciones pendientes",style: TextStyle(fontWeight: FontWeight.bold),),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
+                const Divider(),
+                const Text(
+                  'Invitaciones pendientes',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 5),
                 Expanded(
-                  child:
-                  _.workersInvitation.length == 0
-                ? Center(
-                    child: Text('No tiene invitaciones pendientes de respuesta'),
-                  )
-                :
-                   ListView.builder(
-                    itemCount: _.workersInvitation.length,
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    itemBuilder: (BuildContext context, int index) {
-                      final workerInvitation = _.workersInvitation[index];
-                      return Container(
-                        margin: EdgeInsets.symmetric(vertical: 10),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Fecha de invitación',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                  ),
-                                ),
-                                Text(
-                                  formatDate(workerInvitation.createdAt!),
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5.0),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Establecimiento',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                  ),
-                                ),
-                                Text(
-                                  workerInvitation.establishmentName!,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5.0),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Correo electrónico',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                  ),
-                                ),
-                                Text(
-                                  workerInvitation.email!,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            InkWell(
-                              onTap: (){
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                    title: Text('Eliminar'),
-                                    content: Text(
-                                        'Seguro que desea eliminar la invitación?'),
-                                    actions: <Widget>[
-                                      btnAltern(
-                                        text: 'Sí, eliminar',
-                                        bold: true,
-                                        color: colorRed,
-                                        onPressed: () {
-                                          _.deleteInvita(workerInvitation.id);
-                                          Get.back();
-                                        },
+                  child: _.workersInvitation.isEmpty
+                      ? const Center(
+                          child: Text(
+                              'No tiene invitaciones pendientes de respuesta'),
+                        )
+                      : ListView.builder(
+                          itemCount: _.workersInvitation.length,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          itemBuilder: (BuildContext context, int index) {
+                            final workerInvitation = _.workersInvitation[index];
+                            return Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Fecha de invitación',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                        ),
                                       ),
-                                      btnAltern(
-                                        text: 'Cancelar',
-                                        bold: true,
-                                        onPressed: () => Get.back(),
+                                      Text(
+                                        formatDate(workerInvitation.createdAt!),
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
-                                );
-                              },
-                              borderRadius: BorderRadius.circular(5.0),
-                              child: Container(
-                                height: 32.0,
-                                width: 40.0,
-                                decoration: BoxDecoration(
-                                  color: colorRed,
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                                child: Icon(
-                                  Icons.delete_forever_rounded,
-                                  color: Colors.white,
-                                ),
+                                  const SizedBox(height: 5.0),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Establecimiento',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                      Text(
+                                        workerInvitation.establishmentName!,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 5.0),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Correo electrónico',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                      Text(
+                                        workerInvitation.email!,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          title: const Text('Eliminar'),
+                                          content: const Text(
+                                              '''Seguro que desea eliminar la invitación?'''),
+                                          actions: <Widget>[
+                                            btnAltern(
+                                              text: 'Sí, eliminar',
+                                              bold: true,
+                                              color: colorRed,
+                                              onPressed: () {
+                                                _.deleteInvita(
+                                                    workerInvitation.id);
+                                                Get.back();
+                                              },
+                                            ),
+                                            btnAltern(
+                                              text: 'Cancelar',
+                                              bold: true,
+                                              onPressed: () => Get.back(),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    child: Container(
+                                      height: 32.0,
+                                      width: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: colorRed,
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                      child: const Icon(
+                                        Icons.delete_forever_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
                 ),
               ],
             ),

@@ -61,8 +61,8 @@ class _CheckRegisterState extends State<CheckRegister> {
               Link(
                 uri: Uri.parse(
                   widget.tipo == 'tyc'
-                      ? "http://danger.proypet.com/terminos"
-                      : "http://danger.proypet.com/politicas",
+                      ? 'http://danger.proypet.com/terminos'
+                      : 'http://danger.proypet.com/politicas',
                 ),
                 builder: (_, link) {
                   return GestureDetector(

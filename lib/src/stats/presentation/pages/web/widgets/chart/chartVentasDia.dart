@@ -10,7 +10,7 @@ class ChartVentasDia extends StatelessWidget {
     return chartDesign(
       title: 'Ventas por día',
       widget: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: _chartBar(dataVentasDia),
       ),
     );
@@ -40,16 +40,16 @@ Widget _chartBar(List<DataDay> listDay) {
 }
 
 Widget _barDay(String day, double value, double mayor) {
-  double valorY = (value * 150) / mayor;
+  final double valorY = (value * 150) / mayor;
   // double ancho = (400 - (10 * 2)) / 7;
 
   return Column(
     children: [
       Container(
-        margin: EdgeInsets.symmetric(horizontal: 2.5),
+        margin: const EdgeInsets.symmetric(horizontal: 2.5),
         height: 150,
         width: 40.0,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xffF6F6FC),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(50),
@@ -60,7 +60,7 @@ Widget _barDay(String day, double value, double mayor) {
         child: Container(
           height: valorY,
           width: 35.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: colorGreen,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50),
@@ -68,12 +68,12 @@ Widget _barDay(String day, double value, double mayor) {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 10),
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Text(
                 value.toString(),
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 10,
                 ),
@@ -87,10 +87,10 @@ Widget _barDay(String day, double value, double mayor) {
       //   width: ancho,
       //   color: Colors.red,
       // ),
-      SizedBox(height: 5),
+      const SizedBox(height: 5),
       Text(
         day.substring(0, 3),
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 12,
         ),

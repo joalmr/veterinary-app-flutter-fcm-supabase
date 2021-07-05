@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/resources/utils/days/diaSemana.dart';
+import 'package:vet_app/resources/utils/days/dia_semana.dart';
 import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 import '../../widgets/scheduleShow.dart';
 import 'editSchedulesView.dart';
@@ -18,22 +18,21 @@ class SchedulesView extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 10.0,
-              right: 0.0,
               bottom: 5.0,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Horarios",
+                  'Horarios',
                   style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                 ),
                 IconButton(
                   splashRadius: 20,
                   iconSize: 18,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.edit,
                   ),
                   onPressed: () {

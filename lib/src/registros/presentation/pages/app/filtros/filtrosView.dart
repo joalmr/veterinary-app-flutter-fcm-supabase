@@ -12,14 +12,13 @@ class FiltroAtenciones extends StatefulWidget {
 }
 
 class _FiltroAtencionesState extends State<FiltroAtenciones> {
-
   @override
   Widget build(BuildContext context) {
     return GetX<AttentionsController>(
-      builder: (_){
+      builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Filtro de atenciones'),
+            title: const Text('Filtro de atenciones'),
           ),
           body: Container(
             child: Column(
@@ -28,9 +27,9 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
               children: [
                 Expanded(
                   child: ListView(
-                    padding: EdgeInsets.only(left: 20, right: 10),
+                    padding: const EdgeInsets.only(left: 20, right: 10),
                     children: [
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       DateTimePicker(
                         dateMask: 'dd-MM-yyyy',
                         initialDate: toDateBasic(_.from.value),
@@ -40,7 +39,7 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
                         dateLabelText: 'Fecha desde',
                         onChanged: (val) => _.from.value = val,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       DateTimePicker(
                         dateMask: 'dd-MM-yyyy',
                         initialDate: toDateBasic(_.to.value),
@@ -50,43 +49,47 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
                         dateLabelText: 'Fecha hasta',
                         onChanged: (val) => _.to.value = val,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'Nombre de usuario'),
+                        decoration: const InputDecoration(
+                            labelText: 'Nombre de usuario'),
                         initialValue: _.userName.value,
                         onChanged: (val) => _.userName.value = val,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'Nombre de mascota'),
+                        decoration: const InputDecoration(
+                            labelText: 'Nombre de mascota'),
                         initialValue: _.petName.value,
                         onChanged: (val) => _.petName.value = val,
                       ),
-                      SizedBox(height: 10),
-                      Text('Especies'),
+                      const SizedBox(height: 10),
+                      const Text('Especies'),
                       CheckFiltro(
                         title: 'Perros',
                         checkBool: _.specie.contains(2) ? true : false,
-                        onTapFn: (){
-                          bool hasSpecie = _.specie.contains(2);
-                          if(hasSpecie)
+                        onTapFn: () {
+                          final bool hasSpecie = _.specie.contains(2);
+                          if (hasSpecie) {
                             _.specie.remove(2);
-                          else
+                          } else {
                             _.specie.add(2);
+                          }
                         },
                       ),
                       CheckFiltro(
                         title: 'Gatos',
                         checkBool: _.specie.contains(1) ? true : false,
-                        onTapFn: (){
-                          bool hasSpecie = _.specie.contains(1);
-                          if(hasSpecie)
+                        onTapFn: () {
+                          final bool hasSpecie = _.specie.contains(1);
+                          if (hasSpecie) {
                             _.specie.remove(1);
-                          else
+                          } else {
                             _.specie.add(1);
+                          }
                         },
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       // Text('Servicios'),
                       // SizedBox(height: 5),
                       // CheckFiltro(title: 'Consulta'),
@@ -101,7 +104,7 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: 10,
                     right: 10,
                     top: 10,

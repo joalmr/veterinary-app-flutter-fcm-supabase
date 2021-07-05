@@ -18,18 +18,20 @@ class BookingApi extends BookingInterface {
   Future<int> confirm(String idBooking) async {
     final url = Uri.https(urlBase!, '/api/client/booking/$idBooking/confirm');
 
-    http.Response response = await http.post(url, headers: headersToken());
+    final http.Response response =
+        await http.post(url, headers: headersToken() as Map<String, String>);
     return response.statusCode;
   }
 
   @override
   Future<http.Response> reschedule(String idBooking, String bookingAt) async {
-    final url = Uri.https(urlBase!, '/api/client/booking/$idBooking/reschedule');
-    final dataBooking = {"booking_at": bookingAt};
+    final url =
+        Uri.https(urlBase!, '/api/client/booking/$idBooking/reschedule');
+    final dataBooking = {'booking_at': bookingAt};
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
-      headers: headersToken(),
+      headers: headersToken() as Map<String, String>,
       body: jsonEncode(dataBooking),
     );
     return response;
@@ -40,9 +42,11 @@ class BookingApi extends BookingInterface {
     final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishment/booking/$booking/attend');
 
-    http.Response response = await http.post(url, headers: headersToken());
+    final http.Response response = await http.post(
+      url,
+      headers: headersToken() as Map<String, String>,
+    );
 
-    print(response.body);
     final dataResponse = generalBookingFromJson(response.body);
     return dataResponse;
   }
@@ -51,8 +55,12 @@ class BookingApi extends BookingInterface {
   Future<BookingModel> getId(String idBooking) async {
     final url = Uri.https(urlBase!, '/api/client/booking/$idBooking');
 
-    http.Response response = await http.get(url, headers: headersToken());
-    return BookingModel.fromJson(json.decode(response.body));
+    final http.Response response = await http.get(
+      url,
+      headers: headersToken() as Map<String, String>,
+    );
+    return BookingModel.fromJson(
+        json.decode(response.body) as Map<String, String>);
   }
 
   @override
@@ -60,10 +68,11 @@ class BookingApi extends BookingInterface {
     final url = Uri.https(
       urlBase!,
       '/api/client/establishment/$idVet/bookings',
-      {"status": "unconfirmed"},
+      {'status': 'unconfirmed'},
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response =
+        await http.get(url, headers: headersToken() as Map<String, String>);
     return bookingModelFromJson(response.body);
   }
 
@@ -72,10 +81,11 @@ class BookingApi extends BookingInterface {
     final url = Uri.https(
       urlBase!,
       '/api/client/establishment/$idVet/bookings',
-      {"status": "overdue"},
+      {'status': 'overdue'},
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response =
+        await http.get(url, headers: headersToken() as Map<String, String>);
     return bookingModelFromJson(response.body);
   }
 
@@ -84,10 +94,11 @@ class BookingApi extends BookingInterface {
     final url = Uri.https(
       urlBase!,
       '/api/client/establishment/$idVet/bookings',
-      {"status": "today"},
+      {'status': 'today'},
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response =
+        await http.get(url, headers: headersToken() as Map<String, String>);
     return bookingModelFromJson(response.body);
   }
 
@@ -96,10 +107,11 @@ class BookingApi extends BookingInterface {
     final url = Uri.https(
       urlBase!,
       '/api/client/establishment/$idVet/bookings',
-      {"status": "incoming"},
+      {'status': 'incoming'},
     );
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response =
+        await http.get(url, headers: headersToken() as Map<String, String>);
     return bookingModelFromJson(response.body);
   }
 
@@ -111,16 +123,12 @@ class BookingApi extends BookingInterface {
       '/api/client/establishment/$establishment/attention/$attention/consultation',
     );
 
-    print(consultationBookingToJson(data));
-
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
-      headers: headersToken(),
+      headers: headersToken() as Map<String, String>,
       body: consultationBookingToJson(data),
     );
 
-    print(response.statusCode);
-    print(response.body);
     final dataResponse = consultationBookingFromJson(response.body);
     return dataResponse;
   }
@@ -133,16 +141,12 @@ class BookingApi extends BookingInterface {
       '/api/client/establishment/$establishment/attention/$attention/surgery',
     );
 
-    print(surgeryBookingToJson(data));
-
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
-      headers: headersToken(),
+      headers: headersToken() as Map<String, String>,
       body: surgeryBookingToJson(data),
     );
 
-    print(response.statusCode);
-    print(response.body);
     final dataResponse = surgeryBookingFromJson(response.body);
     return dataResponse;
   }
@@ -155,16 +159,12 @@ class BookingApi extends BookingInterface {
       '/api/client/establishment/$establishment/attention/$attention/deworming',
     );
 
-    print(dewormingBookingToJson(data));
-
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
-      headers: headersToken(),
+      headers: headersToken() as Map<String, String>,
       body: dewormingBookingToJson(data),
     );
 
-    print(response.statusCode);
-    print(response.body);
     final dataResponse = dewormingBookingFromJson(response.body);
     return dataResponse;
   }
@@ -177,16 +177,12 @@ class BookingApi extends BookingInterface {
       '/api/client/establishment/$establishment/attention/$attention/vaccination',
     );
 
-    print(vaccinationBookingToJson(data));
-
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
-      headers: headersToken(),
+      headers: headersToken() as Map<String, String>,
       body: vaccinationBookingToJson(data),
     );
 
-    print(response.statusCode);
-    print(response.body);
     final dataResponse = vaccinationBookingFromJson(response.body);
     return dataResponse;
   }
@@ -199,16 +195,12 @@ class BookingApi extends BookingInterface {
       '/api/client/establishment/$establishment/attention/$attention/testing',
     );
 
-    print(testingBookingToJson(data));
-
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
-      headers: headersToken(),
+      headers: headersToken() as Map<String, String>,
       body: testingBookingToJson(data),
     );
 
-    print(response.statusCode);
-    print(response.body);
     final dataResponse = testingBookingFromJson(response.body);
     return dataResponse;
   }
@@ -221,32 +213,27 @@ class BookingApi extends BookingInterface {
       '/api/client/establishment/$establishment/attention/$attention/other',
     );
 
-    print(othersBookingToJson(data));
-
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
-      headers: headersToken(),
+      headers: headersToken() as Map<String, String>,
       body: othersBookingToJson(data),
     );
 
-    print(response.statusCode);
-    print(response.body);
     final dataResponse = othersBookingFromJson(response.body);
     return dataResponse;
   }
 
   @override
-  Future<void> finalizeAttention(String establishment, String attention, FinalizeAttention data) async {
+  Future<void> finalizeAttention(
+      String establishment, String attention, FinalizeAttention data) async {
     final url = Uri.https(
       urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/finalize',
     );
 
-    print(finalizeAttentionToJson(data));
-
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
-      headers: headersToken(),
+      headers: headersToken() as Map<String, String>,
       body: finalizeAttentionToJson(data),
     );
 

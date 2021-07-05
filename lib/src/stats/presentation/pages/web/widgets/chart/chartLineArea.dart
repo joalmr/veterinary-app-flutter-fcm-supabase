@@ -1,6 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'dart:math';
 
 class ChartLineArea extends StatelessWidget {
   // final List<double> data;
@@ -11,7 +12,7 @@ class ChartLineArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
@@ -23,7 +24,8 @@ class ChartLineArea extends StatelessWidget {
         ),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(5)),
+            borderRadius:
+                const BorderRadius.vertical(bottom: Radius.circular(5)),
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -43,13 +45,13 @@ class ChartClipper extends CustomClipper<Path> {
   final double maxValue;
   final List<double> data;
 
-  ChartClipper({required this.maxValue,required this.data});
+  ChartClipper({required this.maxValue, required this.data});
 
   @override
   Path getClip(Size size) {
-    double sectionWidth = size.width / (data.length - 1);
+    final double sectionWidth = size.width / (data.length - 1);
 
-    Path path = Path();
+    final Path path = Path();
     // path.lineTo(0, size.height);
     // path.relativeMoveTo(0, size.height);
     path.moveTo(0, size.height);

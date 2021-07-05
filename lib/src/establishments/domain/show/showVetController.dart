@@ -16,26 +16,20 @@ class ShowVetController extends GetxController {
 
   RxBool cargando = true.obs;
 
-  var argumentoId;
+  String? argumentoId;
 
   @override
   void onInit() {
-    argumentoId = Get.arguments;
+    argumentoId = Get.arguments as String?;
     getByid();
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    // vetController.getAll();
-    super.onClose();
   }
 
   Future refresh() => _refresh();
 
   Future<Null> _refresh() async {
     cargando.value = true;
-    await Future.delayed(Duration(milliseconds: 2));
+    await Future.delayed(const Duration(milliseconds: 2));
     getByid();
     return null;
   }
@@ -44,12 +38,12 @@ class ShowVetController extends GetxController {
 
   _getByid() async {
     cargando.value = true;
-    establishment.value = await _repo.getById(argumentoId);
+    establishment.value = await _repo.getById(argumentoId!);
     cargando.value = false;
   }
 
   seleccionarLogo() async {
-    await _procesarLogo(argumentoId, ImageSource.gallery);
+    await _procesarLogo(argumentoId!, ImageSource.gallery);
   }
 
   _procesarLogo(String id, ImageSource origen) async {
@@ -66,12 +60,12 @@ class ShowVetController extends GetxController {
   }
 
   seleccionarSlide() async {
-    await _procesarSlide(argumentoId, ImageSource.gallery);
+    await _procesarSlide(argumentoId!, ImageSource.gallery);
   }
 
   _procesarSlide(String id, ImageSource origen) async {
     File _image;
-    var pickedFile =
+    final pickedFile =
         await ImagePicker().getImage(source: origen, imageQuality: 80);
     if (pickedFile != null) {
       _image = File(pickedFile.path);
@@ -86,8 +80,8 @@ class ShowVetController extends GetxController {
   void eliminarSlide(String slide) => _eliminarSlide(slide);
   _eliminarSlide(String slide) async {
     final shortSlide = slide.split('/storage/')[1];
-    print(shortSlide);
-    await _repo.deleteSlide(argumentoId, shortSlide);
+
+    await _repo.deleteSlide(argumentoId!, shortSlide);
     getByid();
     Get.close(2);
   }

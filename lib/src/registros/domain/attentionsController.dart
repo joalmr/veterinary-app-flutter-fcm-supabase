@@ -7,14 +7,15 @@ import 'package:vet_app/src/registros/data/model/filterAttention.dart';
 
 class AttentionsController extends GetxController {
   final _repo = AttentionRepository();
-  var listaReg = <AttentionReg>[].obs;
+  final listaReg = <AttentionReg>[].obs;
 
-  RxString from = formatDateBasic(DateTime.now().subtract(Duration(days: 60))).obs;
-  
-  RxString to = formatDateBasic(DateTime.now()).obs;
+  final from =
+      formatDateBasic(DateTime.now().subtract(const Duration(days: 60))).obs;
 
-  RxString userName = "".obs;
-  RxString petName = "".obs;
+  final to = formatDateBasic(DateTime.now()).obs;
+
+  final userName = ''.obs;
+  final petName = ''.obs;
   RxList<int> specie = <int>[].obs;
 
   @override
@@ -23,29 +24,17 @@ class AttentionsController extends GetxController {
     getAll();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    // userName.value = "";
-    // petName.value = "";
-  }
-
-  getAll()=>_getAll();
+  getAll() => _getAll();
   _getAll() async {
-    var temp = FilterAttention(
+    final temp = FilterAttention(
       from: from.value,
       to: to.value,
-      userName: userName.value.trim() == "" ? null : userName.value,
-      petName: petName.value.trim() == "" ? null : petName.value,
+      userName: userName.value.trim() == '' ? null : userName.value,
+      petName: petName.value.trim() == '' ? null : petName.value,
       petSpecie: specie,
     );
     final response = await _repo.getAll(
-      prefUser.vetId!, 
+      prefUser.vetId!,
       temp,
     );
     listaReg.clear();

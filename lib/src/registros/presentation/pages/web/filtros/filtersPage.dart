@@ -14,17 +14,17 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffF7F7FF),
+      color: const Color(0xffF7F7FF),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 30.0),
+          const SizedBox(height: 30.0),
           subHeader(title: 'Filtros'),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Expanded(
             child: ListView(
-              padding: EdgeInsets.only(left: 20, right: 10),
+              padding: const EdgeInsets.only(left: 20, right: 10),
               children: [
                 // Text('Fecha desde'),
                 // dateForm(),
@@ -36,8 +36,8 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
                   // onChanged: (val) => _.to.value = val,
                 ),
 
-                SizedBox(height: 10),
-                Text('Fecha hasta'),
+                const SizedBox(height: 10),
+                const Text('Fecha hasta'),
                 // dateForm(),
                 DateTimePicker(
                   dateMask: 'dd-MM-yyyy',
@@ -46,29 +46,31 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
                   dateLabelText: 'Fecha hasta',
                   // onChanged: (val) => _.to.value = val,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Precio hasta'),
+                    const Text('Precio hasta'),
                     Text('$_currentSliderValue'),
                   ],
                 ),
                 SliderTheme(
                   data: SliderTheme.of(context).copyWith(
-                    trackShape: RoundedRectSliderTrackShape(),
+                    trackShape: const RoundedRectSliderTrackShape(),
                     trackHeight: 4.0,
-                    thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8.0),
-                    overlayShape: RoundSliderOverlayShape(overlayRadius: 12.0),
-                    tickMarkShape: RoundSliderTickMarkShape(),
-                    valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-                    valueIndicatorTextStyle: TextStyle(
+                    thumbShape:
+                        const RoundSliderThumbShape(enabledThumbRadius: 8.0),
+                    overlayShape:
+                        const RoundSliderOverlayShape(overlayRadius: 12.0),
+                    tickMarkShape: const RoundSliderTickMarkShape(),
+                    valueIndicatorShape:
+                        const PaddleSliderValueIndicatorShape(),
+                    valueIndicatorTextStyle: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                   child: Slider(
                     value: _currentSliderValue,
-                    min: 0,
                     max: 500,
                     divisions: 50,
                     label: _currentSliderValue.round().toString(),
@@ -79,16 +81,18 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
                     },
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Nombre de usuario'),
+                  decoration:
+                      const InputDecoration(labelText: 'Nombre de usuario'),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Nombre de mascota'),
+                  decoration:
+                      const InputDecoration(labelText: 'Nombre de mascota'),
                 ),
-                SizedBox(height: 15),
-                Text('Especies'),
+                const SizedBox(height: 15),
+                const Text('Especies'),
                 // TODO: agregar onTapFn y checkBool
                 // CheckFiltro(title: 'Perros'),
                 // CheckFiltro(title: 'Gatos'),
@@ -102,12 +106,12 @@ class _MiniStatAttentionState extends State<MiniStatAttention> {
                 // CheckFiltro(title: 'Vacuna'),
                 // CheckFiltro(title: 'Examen'),
                 // CheckFiltro(title: 'Otros servicios'),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
               ],
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: SizedBox(
               width: double.infinity,
               child: btnPrimary(

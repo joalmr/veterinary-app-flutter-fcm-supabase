@@ -21,14 +21,14 @@ class CalendarEventModel {
 
   factory CalendarEventModel.fromJson(Map<String, dynamic> json) =>
       CalendarEventModel(
-        message: json["message"],
+        message: json['message'],
         result: List<CalendarEvent>.from(
-            json["result"].map((x) => CalendarEvent.fromJson(x))),
+            json['result'].map((x) => CalendarEvent.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "message": message,
-        "result": List<dynamic>.from(result?.map((x) => x.toJson()) ?? []),
+        'message': message,
+        'result': List<dynamic>.from(result?.map((x) => x.toJson()) ?? []),
       };
 }
 
@@ -48,18 +48,18 @@ class CalendarEvent {
   String? title;
 
   factory CalendarEvent.fromJson(Map<String, dynamic> json) => CalendarEvent(
-        date: json["date"],
-        description: json["description"],
-        members: json["members"],
-        time: json["time"],
-        title: json["title"],
+        date: json['date'],
+        description: json['description'],
+        members: json['members'],
+        time: json['time'],
+        title: json['title'],
       );
 
   Map<String, dynamic> toJson() => {
-        "date": date,
-        "description": description,
-        "members": members,
-        "time": time,
-        "title": title,
+        'date': date,
+        'description': description,
+        'members': members,
+        'time': time,
+        'title': title,
       };
 }

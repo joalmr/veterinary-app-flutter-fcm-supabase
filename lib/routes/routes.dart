@@ -18,21 +18,21 @@ import 'package:vet_app/src/userClients/presentation/userClients.dart';
 import 'package:vet_app/src/workers/presentation/pages/workers.dart';
 
 class NameRoutes {
-  static final String splash = '/';
-  static final String register = '/register';
-  static final String login = '/login';
-  static final String home = '/home';
-  static final String calendar = '/calendar';
-  static final String attentions = '/attentions';
-  static final String stats = '/stats';
-  static final String offers = '/offers';
-  static final String establishments = '/establishments';
-  static final String workers = '/workers';
-  static final String chats = '/chats';
-  static final String clientes = '/clients';
-  static final String config = '/config';
+  static const String splash = '/';
+  static const String register = '/register';
+  static const String login = '/login';
+  static const String home = '/home';
+  static const String calendar = '/calendar';
+  static const String attentions = '/attentions';
+  static const String stats = '/stats';
+  static const String offers = '/offers';
+  static const String establishments = '/establishments';
+  static const String workers = '/workers';
+  static const String chats = '/chats';
+  static const String clientes = '/clients';
+  static const String config = '/config';
 
-  static final String atenderBooking = '/booking'; //atender *
+  static const String atenderBooking = '/booking'; //atender *
 }
 
 abstract class AppPages {

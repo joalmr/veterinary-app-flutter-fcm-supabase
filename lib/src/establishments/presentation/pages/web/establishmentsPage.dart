@@ -10,7 +10,7 @@ class StablishmentsPage extends StatelessWidget {
       body: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: const [
           NavigationBar(),
           Expanded(
             child: VetList(),

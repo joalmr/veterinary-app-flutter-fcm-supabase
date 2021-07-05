@@ -52,7 +52,7 @@ class _VacunaViewState extends State<VacunaView> {
                         final url = Uri.https(
                           urlBase!,
                           '/autocomplete/vaccines',
-                          {"q": filter},
+                          {'q': filter},
                         );
                         var response = await http.get(url);
                         var models = vaccinesModelFromJson(response.body);

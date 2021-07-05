@@ -23,17 +23,17 @@ class DewormingBooking {
 
   factory DewormingBooking.fromJson(Map<String, dynamic> json) =>
       DewormingBooking(
-        amount: json["amount"].toDouble() ?? 0.0,
+        amount: json['amount'] as double? ?? 0.0,
         dewormers: List<Dewormer>.from(
-            json["dewormers"].map((x) => Dewormer.fromJson(x))),
-        recommendations: json["recommendations"] ?? '',
+            json['dewormers'].map((x) => Dewormer.fromJson(x))),
+        recommendations: json['recommendations'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
-        "amount": amount,
-        "dewormers":
+        'amount': amount,
+        'dewormers':
             List<dynamic>.from(dewormers?.map((x) => x.toJson()) ?? []),
-        "recommendations": recommendations,
+        'recommendations': recommendations,
       };
 }
 
@@ -57,16 +57,16 @@ class Dewormer {
   List<String>? types;
 
   factory Dewormer.fromJson(Map<String, dynamic> json) => Dewormer(
-        id: json["id"],
-        name: json["name"],
-        laboratory: json["laboratory"],
-        types: List<String>.from(json["types"].map((x) => x)),
+        id: json['id'],
+        name: json['name'],
+        laboratory: json['laboratory'],
+        types: List<String>.from(json['types'].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "laboratory": laboratory,
-        "types": List<dynamic>.from(types?.map((x) => x) ?? []),
+        'id': id,
+        'name': name,
+        'laboratory': laboratory,
+        'types': List<dynamic>.from(types?.map((x) => x) ?? []),
       };
 }

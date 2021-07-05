@@ -10,12 +10,12 @@ class VerAdmins extends StatelessWidget {
     return GetX<WorkersController>(
       builder: (_) {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(left: 30.0, top: 25.0, bottom: 10.0),
-              child: Text(
+              margin:
+                  const EdgeInsets.only(left: 30.0, top: 25.0, bottom: 10.0),
+              child: const Text(
                 'Administradores',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -24,106 +24,103 @@ class VerAdmins extends StatelessWidget {
               ),
             ),
             Expanded(
-              child:
-              _.carga.value
-              ? Center(child: CircularProgressIndicator())
-              : _.workers.length == 0
-                ? Center(
-                    child: Text('No tiene administradores'),
-                  )
-                : 
-               ListView.builder(
-                itemCount: _.workers.length,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                itemBuilder: (BuildContext context, int index) {
-                  final worker = _.workers[index];
-                  return ChildRegion(
-                    margin: EdgeInsets.all(10),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                      padding: EdgeInsets.all(5),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Nombre',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                  ),
+              child: _.carga.value
+                  ? const Center(child: CircularProgressIndicator())
+                  : _.workers.isEmpty
+                      ? const Center(
+                          child: Text('No tiene administradores'),
+                        )
+                      : ListView.builder(
+                          itemCount: _.workers.length,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          itemBuilder: (BuildContext context, int index) {
+                            final worker = _.workers[index];
+                            return ChildRegion(
+                              margin: const EdgeInsets.all(10),
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 20),
+                                padding: const EdgeInsets.all(5),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            'Nombre',
+                                            style: TextStyle(
+                                              fontSize: 10,
+                                            ),
+                                          ),
+                                          Text(worker.name!),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            'Correo electrónico',
+                                            style: TextStyle(
+                                              fontSize: 10,
+                                            ),
+                                          ),
+                                          Text(worker.email!),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            'Establecimiento',
+                                            style: TextStyle(
+                                              fontSize: 10,
+                                            ),
+                                          ),
+                                          Text(
+                                            worker.establishment!,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    InkWell(
+                                      onTap: () {},
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      child: Container(
+                                        height: 32.0,
+                                        width: 40.0,
+                                        decoration: BoxDecoration(
+                                          color: colorRed,
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        child: const Icon(
+                                          Icons.delete_forever_rounded,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(worker.name!),
-                              ],
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                            flex: 1,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Correo electrónico',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                  ),
-                                ),
-                                Text(worker.email!),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Establecimiento',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                  ),
-                                ),
-                                Text(
-                                  worker.establishment!,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          InkWell(
-                            onTap: () {},
-                            borderRadius: BorderRadius.circular(5.0),
-                            child: Container(
-                              height: 32.0,
-                              width: 40.0,
-                              decoration: BoxDecoration(
-                                color: colorRed,
-                                borderRadius: BorderRadius.circular(5.0),
                               ),
-                              child: Icon(
-                                Icons.delete_forever_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
+                            );
+                          },
+                        ),
             ),
           ],
         );
       },
     );
-    
   }
 }

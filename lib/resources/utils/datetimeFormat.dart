@@ -1,27 +1,27 @@
 import 'package:intl/intl.dart';
 
 String formatDateTime(DateTime dateTime) {
-  String formattedDate = DateFormat('dd-MM-yyyy HH:mm').format(dateTime);
+  final String formattedDate = DateFormat('dd-MM-yyyy HH:mm').format(dateTime);
   return formattedDate;
 }
 
 String formatDate(DateTime dateTime) {
-  String formattedDate = DateFormat('dd-MM-yyyy').format(dateTime);
+  final String formattedDate = DateFormat('dd-MM-yyyy').format(dateTime);
   return formattedDate;
 }
 
 String formatDateBasic(DateTime dateTime) {
-  String formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
+  final String formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
   return formattedDate;
 }
 
 String formatDateYM(DateTime dateTime) {
-  String formattedDate = DateFormat('yyyy-MM').format(dateTime);
+  final String formattedDate = DateFormat('yyyy-MM').format(dateTime);
   return formattedDate;
 }
 
 String formatTime(DateTime dateTime) {
-  String formattedDate = DateFormat('HH:mm').format(dateTime);
+  final String formattedDate = DateFormat('HH:mm').format(dateTime);
   return formattedDate;
 }
 
@@ -30,18 +30,18 @@ String formatDateOut({
   required String formatIn,
   required String formatOut,
 }) {
-  DateTime tempDate = DateFormat(formatIn).parse(valor);
-  String tempDateString = DateFormat(formatOut).format(tempDate);
+  final DateTime tempDate = DateFormat(formatIn).parse(valor);
+  final String tempDateString = DateFormat(formatOut).format(tempDate);
 
   return tempDateString;
 }
 
 DateTime toDate(String valor) {
-  DateTime tempDate = new DateFormat("dd-MM-yyyy").parse(valor);
+  final DateTime tempDate = DateFormat('dd-MM-yyyy').parse(valor);
   return tempDate;
 }
 
 DateTime toDateBasic(String valor) {
-  DateTime tempDate = new DateFormat("yyyy-MM-dd").parse(valor);
+  final DateTime tempDate = DateFormat('yyyy-MM-dd').parse(valor);
   return tempDate;
 }

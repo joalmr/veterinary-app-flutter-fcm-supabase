@@ -10,7 +10,7 @@ class RowAttention extends StatefulWidget {
 
   final String? amount;
 
-  RowAttention({
+  const RowAttention({
     this.petName,
     this.petBreed,
     this.date,
@@ -39,15 +39,15 @@ class _RowAttentionState extends State<RowAttention> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 275),
-        margin: EdgeInsets.only(bottom: 10.0, left: 40.0, right: 15.0),
-        padding: EdgeInsets.all(10.0),
+        duration: const Duration(milliseconds: 275),
+        margin: const EdgeInsets.only(bottom: 10.0, left: 40.0, right: 15.0),
+        padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: hovered
                 ? [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.black12,
                       blurRadius: 13.0,
                       spreadRadius: 0.0,
@@ -61,7 +61,7 @@ class _RowAttentionState extends State<RowAttention> {
                 flex: 2,
                 child: Row(
                   children: [
-                    SizedBox(width: 15.0),
+                    const SizedBox(width: 15.0),
                     Container(
                       height: 38.0,
                       width: 38.0,
@@ -71,14 +71,14 @@ class _RowAttentionState extends State<RowAttention> {
                       child: Center(
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5.0),
-                          child: Image(
+                          child: const Image(
                             fit: BoxFit.cover,
                             image: AssetImage('assets/images/dog.jpg'),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15.0,
                     ),
                     Column(
@@ -87,21 +87,21 @@ class _RowAttentionState extends State<RowAttention> {
                       children: [
                         Text(
                           widget.petName!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12.0,
                           ),
                         ),
                         Text(
                           widget.petBreed!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 12.0,
                           ),
                         ),
                         Text(
                           '${widget.date} ${widget.time}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 11.0,
                             color: Colors.black45,
@@ -115,19 +115,19 @@ class _RowAttentionState extends State<RowAttention> {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         'Servicios',
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 10.0,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Wrap(
-                        children: [
+                        children: const [
                           Icon(Icons.home, size: 16),
                           Icon(Icons.home, size: 16),
                           Icon(Icons.home, size: 16),
@@ -149,17 +149,17 @@ class _RowAttentionState extends State<RowAttention> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Usuario',
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 10.0,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         widget.userName!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 12.0,
                           color: Colors.black45,
@@ -172,20 +172,20 @@ class _RowAttentionState extends State<RowAttention> {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         'Precio',
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 10.0,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         'S/ ${widget.amount}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 12.0,
                           color: Colors.black45,

@@ -21,14 +21,14 @@ class CalendarNextdateModel {
 
   factory CalendarNextdateModel.fromJson(Map<String, dynamic> json) =>
       CalendarNextdateModel(
-        message: json["message"],
+        message: json['message'],
         result: List<CalendarNextdate>.from(
-            json["result"].map((x) => CalendarNextdate.fromJson(x))),
+            json['result'].map((x) => CalendarNextdate.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "message": message,
-        "result": List<dynamic>.from(result?.map((x) => x.toJson()) ?? []),
+        'message': message,
+        'result': List<dynamic>.from(result?.map((x) => x.toJson()) ?? []),
       };
 }
 
@@ -55,25 +55,25 @@ class CalendarNextdate {
 
   factory CalendarNextdate.fromJson(Map<String, dynamic> json) =>
       CalendarNextdate(
-        petPicture: json["pet_picture"],
-        petBreed: json["pet_breed"],
-        petName: json["pet_name"],
-        userName: json["user_name"],
-        // userPhone: json["user_phone"],
-        nextdate: DateTime.parse(json["nextdate"]),
-        reason: json["reason"],
-        type: json["type"],
+        petPicture: json['pet_picture'],
+        petBreed: json['pet_breed'],
+        petName: json['pet_name'],
+        userName: json['user_name'],
+        // userPhone: json['user_phone'],
+        nextdate: DateTime.parse(json['nextdate']),
+        reason: json['reason'],
+        type: json['type'],
       );
 
   Map<String, dynamic> toJson() => {
-        "pet_picture": petPicture,
-        "pet_breed": petBreed,
-        "pet_name": petName,
-        "user_name": userName,
-        // "user_phone": userPhone,
-        "nextdate":
-            "${nextdate!.year.toString().padLeft(4, '0')}-${nextdate!.month.toString().padLeft(2, '0')}-${nextdate!.day.toString().padLeft(2, '0')}",
-        "reason": reason,
-        "type": type,
+        'pet_picture': petPicture,
+        'pet_breed': petBreed,
+        'pet_name': petName,
+        'user_name': userName,
+        // 'user_phone': userPhone,
+        'nextdate':
+            '''${nextdate!.year.toString().padLeft(4, '0')}-${nextdate!.month.toString().padLeft(2, '0')}-${nextdate!.day.toString().padLeft(2, '0')}''',
+        'reason': reason,
+        'type': type,
       };
 }

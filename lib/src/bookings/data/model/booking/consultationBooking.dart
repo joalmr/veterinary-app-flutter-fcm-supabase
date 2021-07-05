@@ -5,7 +5,7 @@
 import 'dart:convert';
 
 ConsultationBooking consultationBookingFromJson(String str) =>
-    ConsultationBooking.fromJson(json.decode(str));
+    ConsultationBooking.fromJson(json.decode(str) as Map<String, String>);
 
 String consultationBookingToJson(ConsultationBooking data) =>
     json.encode(data.toJson());
@@ -25,19 +25,19 @@ class ConsultationBooking {
 
   factory ConsultationBooking.fromJson(Map<String, dynamic> json) =>
       ConsultationBooking(
-        amount: json["amount"].toDouble() ?? 0.0,
-        anamnesis: json["anamnesis"],
+        amount: json['amount'] as double? ?? 0.0,
+        anamnesis: json['anamnesis'],
         diagnoses: List<Diagnosis>.from(
-            json["diagnoses"].map((x) => Diagnosis.fromJson(x))),
-        recommendations: json["recommendations"] ?? '',
+            json['diagnoses'].map((x) => Diagnosis.fromJson(x))),
+        recommendations: json['recommendations'],
       );
 
   Map<String, dynamic> toJson() => {
-        "amount": amount,
-        "anamnesis": anamnesis,
-        "diagnoses":
+        'amount': amount,
+        'anamnesis': anamnesis,
+        'diagnoses':
             List<dynamic>.from(diagnoses?.map((x) => x.toJson()) ?? []),
-        "recommendations": recommendations,
+        'recommendations': recommendations,
       };
 }
 
@@ -59,14 +59,14 @@ class Diagnosis {
   String? condition;
 
   factory Diagnosis.fromJson(Map<String, dynamic> json) => Diagnosis(
-        id: json["id"],
-        name: json["name"],
-        condition: json["condition"],
+        id: json['id'],
+        name: json['name'],
+        condition: json['condition'],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "condition": condition,
+        'id': id,
+        'name': name,
+        'condition': condition,
       };
 }

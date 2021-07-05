@@ -8,11 +8,11 @@ Widget wValuePercent({
   required double progress,
   Color colorData = Colors.white,
 }) {
-  String porcentaje = (progress * 100).toStringAsFixed(0);
+  final String porcentaje = (progress * 100).toStringAsFixed(0);
 
   return Container(
-    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-    padding: EdgeInsets.symmetric(horizontal: 20.0),
+    margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+    padding: const EdgeInsets.symmetric(horizontal: 20.0),
     height: 85.0,
     decoration: BoxDecoration(
       color: color,
@@ -28,7 +28,7 @@ Widget wValuePercent({
             children: [
               Text(
                 count,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   // color: colorData,
@@ -36,13 +36,13 @@ Widget wValuePercent({
               ),
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 13.0,
                   fontWeight: FontWeight.w500,
                   // color: colorData,
                 ),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               // Text(
               //   descriptions,
               //   style: TextStyle(

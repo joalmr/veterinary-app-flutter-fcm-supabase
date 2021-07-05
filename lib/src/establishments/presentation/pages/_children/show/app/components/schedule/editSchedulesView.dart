@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
-import 'package:vet_app/resources/utils/days/diaSemana.dart';
+import 'package:vet_app/resources/utils/days/dia_semana.dart';
 import 'package:vet_app/src/establishments/domain/edit/editSchedulesController.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/app/widgets/itemHorario.dart';
 
@@ -13,10 +13,10 @@ class EditSchedulesView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Editar horarios'),
+            title: const Text('Editar horarios'),
           ),
           body: Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 10,
               vertical: 10,
             ),
@@ -60,7 +60,7 @@ class EditSchedulesView extends StatelessWidget {
                     index: 6,
                     // day: _.horarios.value.sunday,
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Center(
                     child: btnSecondary(
                       text: 'Guardar',

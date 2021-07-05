@@ -18,20 +18,20 @@ class StatsController extends GetxController {
   final fechaIn = TextEditingController();
   final fechaOut = TextEditingController();
 
-  RxString msgfechaIn = "".obs;
-  RxString msgfechaOut = "".obs;
+  RxString msgfechaIn = ''.obs;
+  RxString msgfechaOut = ''.obs;
 
-  var statBase = StatBaseModel().obs;
-  var statComments = <StatCommentModel>[].obs;
-  var services = <Services>[].obs;
-  var salesDay = <SalesDay>[].obs;
-  var salesMonth = <SalesMonth>[].obs;
+  final statBase = StatBaseModel().obs;
+  final statComments = <StatCommentModel>[].obs;
+  final services = <Services>[].obs;
+  final salesDay = <SalesDay>[].obs;
+  final salesMonth = <SalesMonth>[].obs;
 
-  RxBool cargaBase = false.obs;
-  RxBool cargaComments = false.obs;
-  RxBool cargaServices = false.obs;
-  RxBool cargaSalesDay = false.obs;
-  RxBool cargaSalesMonth = false.obs;
+  final cargaBase = false.obs;
+  final cargaComments = false.obs;
+  final cargaServices = false.obs;
+  final cargaSalesDay = false.obs;
+  final cargaSalesMonth = false.obs;
 
   final hoy = DateTime.now();
 
@@ -40,7 +40,7 @@ class StatsController extends GetxController {
 
   @override
   void onInit() {
-    initialIn = DateTime(hoy.year, (hoy.month - 2), hoy.day);
+    initialIn = DateTime(hoy.year, hoy.month - 2, hoy.day);
     initialOut = hoy;
 
     fechaIn.text = formatDateBasic(initialIn!); //formatDate
@@ -59,9 +59,9 @@ class StatsController extends GetxController {
   }
 
   ejecStats() {
-    var date1 = toDateBasic(fechaIn.text);
-    var date2 = toDateBasic(fechaOut.text);
-    var diffDate = date2.difference(date1);
+    final date1 = toDateBasic(fechaIn.text);
+    final date2 = toDateBasic(fechaOut.text);
+    final diffDate = date2.difference(date1);
 
     if (diffDate.inDays < 1) {
       Get.snackbar(
@@ -77,11 +77,11 @@ class StatsController extends GetxController {
   }
 
   Future selectIn(BuildContext context) async {
-    DateTime? picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: initialIn!,
-        firstDate: new DateTime(2020),
-        lastDate: initialOut!.add(Duration(days: -1)));
+        firstDate: DateTime(2020),
+        lastDate: initialOut!.add(const Duration(days: -1)));
     if (picked != null) {
       initialIn = picked;
       fechaIn.text = formatDateBasic(picked);
@@ -89,11 +89,11 @@ class StatsController extends GetxController {
   }
 
   Future selectOut(BuildContext context) async {
-    DateTime? picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: initialOut!,
-        firstDate: new DateTime(2020),
-        lastDate: new DateTime.now());
+        firstDate: DateTime(2020),
+        lastDate: DateTime.now());
     if (picked != null) {
       initialOut = picked;
       fechaOut.text = formatDateBasic(picked);
@@ -103,7 +103,7 @@ class StatsController extends GetxController {
   getBase() => _getBase();
   _getBase() async {
     cargaBase.value = true;
-    var response =
+    final response =
         await _repo.getStatsBase(prefUser.vetId!, fechaIn.text, fechaOut.text);
     statBase.update((val) {
       val!.stars = response.stars;
@@ -119,14 +119,14 @@ class StatsController extends GetxController {
   _getComments() async {
     cargaComments.value = true;
     statComments.clear();
-    var values = await _repo.getStatsComment(
+    final values = await _repo.getStatsComment(
         prefUser.vetId!, fechaIn.text, fechaOut.text);
     statComments.addAll(values);
     cargaComments.value = false;
   }
 
-  var paiChartList = <PieChartSectionData>[].obs;
-  var radiusPie = 25.obs;
+  final paiChartList = <PieChartSectionData>[].obs;
+  final radiusPie = 25.obs;
   getStatsService() => _getStatsService();
   _getStatsService() async {
     cargaServices.value = true;
@@ -134,12 +134,12 @@ class StatsController extends GetxController {
     services.clear();
     paiChartList.clear();
 
-    var values = await _repo.getStatsService(
+    final values = await _repo.getStatsService(
         prefUser.vetId!, fechaIn.text, fechaOut.text);
     services.addAll(values.result!.services!);
 
     services.forEach((element) {
-      PieChartSectionData temp = new PieChartSectionData(
+      final PieChartSectionData temp = PieChartSectionData(
         color: UniqueColorGenerator.getColor().withOpacity(0.7),
         value: element.value!.toDouble(),
         showTitle: false,
@@ -155,7 +155,7 @@ class StatsController extends GetxController {
   _getStatsDaily() async {
     cargaSalesDay.value = true;
     salesDay.clear();
-    var values = await _repo.getStatsDaily(prefUser.vetId!);
+    final values = await _repo.getStatsDaily(prefUser.vetId!);
     salesDay.addAll(values.result!.salesDay!);
     cargaSalesDay.value = false;
   }
@@ -164,8 +164,8 @@ class StatsController extends GetxController {
   _getStatsMonthly() async {
     cargaSalesMonth.value = true;
     salesMonth.clear();
-    var values = await _repo.getStatsMonthly(prefUser.vetId!);
-    
+    final values = await _repo.getStatsMonthly(prefUser.vetId!);
+
     salesMonth.addAll(values.result!.salesMonth!);
     cargaSalesMonth.value = false;
   }

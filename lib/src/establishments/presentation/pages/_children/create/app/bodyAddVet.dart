@@ -13,11 +13,11 @@ class BodyAddVet extends StatelessWidget {
         return Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
+              padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   HeaderStep(selected: _.selected),
                 ],
               ),
@@ -25,7 +25,7 @@ class BodyAddVet extends StatelessWidget {
             Expanded(
               child: BodyStep(selected: _.selected),
             ),
-            FooterCreateVet(),
+            const FooterCreateVet(),
           ],
         );
       },

@@ -8,8 +8,8 @@ class DataUsuario {
   });
 }
 
-var dataUsuario = [
-  DataUsuario(name: "Enero", value: 30),
-  DataUsuario(name: "Febrero", value: 40),
-  DataUsuario(name: "Marzo", value: 8),
+List<DataUsuario> dataUsuario = [
+  DataUsuario(name: 'Enero', value: 30),
+  DataUsuario(name: 'Febrero', value: 40),
+  DataUsuario(name: 'Marzo', value: 8),
 ];

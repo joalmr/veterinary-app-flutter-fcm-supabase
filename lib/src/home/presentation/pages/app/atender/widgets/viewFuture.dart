@@ -11,13 +11,13 @@ class ViewFuture extends StatelessWidget {
     return GetX<HomeController>(
       builder: (_) {
         return Expanded(
-          child: _.incoming.length == 0
-              ? Center(
+          child: _.incoming.isEmpty
+              ? const Center(
                   child: Text('No tiene próximas atenciones'),
                 )
               : ListView.builder(
                   itemCount: _.incoming.length,
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding: const EdgeInsets.only(left: 10, right: 10),
                   itemBuilder: (BuildContext context, int index) {
                     final incoming = _.incoming[index];
                     return CardAttention(

@@ -25,12 +25,11 @@ class ChatController extends GetxController {
     super.onInit();
 
     vetInt = await _repo.getEstablishment(prefUser.vetId!, prefUser.vetName!);
-    
+
     runSubscription();
 
     await getChats();
     cargando.value = false;
-    
   }
 
   getChats() => _getChats();
@@ -61,24 +60,21 @@ class ChatController extends GetxController {
 
   void runSubscription() {
     //TODO: revisar si funciona especifico
-    subscriptionMessage = supabaseClient
-    .from('message')//:canal_id=eq.$canalId'
-    .on(SupabaseEventTypes.delete, (payload) {
+    subscriptionMessage =
+        supabaseClient.from('message') //:canal_id=eq.$canalId'
+            .on(SupabaseEventTypes.delete, (payload) {
       _getMessage(canalId!);
-    })
-    .on(SupabaseEventTypes.update, (payload) {
+    }).on(SupabaseEventTypes.update, (payload) {
       _getMessage(canalId!);
     }).on(SupabaseEventTypes.insert, (payload) {
       _getMessage(canalId!);
     }).subscribe();
 
-
-    subscriptionMessage = supabaseClient
-    .from('canal')//:establishment_id=eq.$vetInt
-    .on(SupabaseEventTypes.delete, (payload) {
+    subscriptionMessage =
+        supabaseClient.from('canal') //:establishment_id=eq.$vetInt
+            .on(SupabaseEventTypes.delete, (payload) {
       getChats();
-    })
-    .on(SupabaseEventTypes.update, (payload) {
+    }).on(SupabaseEventTypes.update, (payload) {
       getChats();
     }).on(SupabaseEventTypes.insert, (payload) {
       getChats();

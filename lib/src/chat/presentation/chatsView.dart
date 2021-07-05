@@ -6,8 +6,6 @@ import 'package:vet_app/components/dontExit.dart';
 import 'package:vet_app/src/chat/domain/chatController.dart';
 
 class ChatsView extends StatelessWidget {
-  const ChatsView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetX<ChatController>(

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
-Widget horario({required String day,required  bool daySwitch,required  String timeStart,required  String timeEnd}) {
+Widget horario(
+    {required String day,
+    required bool daySwitch,
+    required String timeStart,
+    required String timeEnd}) {
   return Container(
-    margin: EdgeInsets.only(bottom: 5, left: 5),
+    margin: const EdgeInsets.only(bottom: 5, left: 5),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
           day,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         Row(
           children: [

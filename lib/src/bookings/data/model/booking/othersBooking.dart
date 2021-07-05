@@ -21,16 +21,16 @@ class OthersBooking {
   String? recommendations;
 
   factory OthersBooking.fromJson(Map<String, dynamic> json) => OthersBooking(
-        amount: json["amount"].toDouble() ?? 0.0,
+        amount: json['amount'] as double? ?? 0.0,
         others: List<OtherServ>.from(
-            json["others"].map((x) => OtherServ.fromJson(x))),
-        recommendations: json["recommendations"] ?? '',
+            json['others'].map((x) => OtherServ.fromJson(x))),
+        recommendations: json['recommendations'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
-        "amount": amount,
-        "others": List<dynamic>.from(others?.map((x) => x.toJson()) ?? []),
-        "recommendations": recommendations,
+        'amount': amount,
+        'others': List<dynamic>.from(others?.map((x) => x.toJson()) ?? []),
+        'recommendations': recommendations,
       };
 }
 
@@ -50,12 +50,12 @@ class OtherServ {
   String? name;
 
   factory OtherServ.fromJson(Map<String, dynamic> json) => OtherServ(
-        id: json["id"],
-        name: json["name"],
+        id: json['id'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
+        'id': id,
+        'name': name,
       };
 }

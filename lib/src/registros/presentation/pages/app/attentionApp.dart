@@ -9,17 +9,17 @@ class AttentionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MenuDrawer(),
+      drawer: const MenuDrawer(),
       appBar: AppBar(
-        title: Text('Registros'),
+        title: const Text('Registros'),
         actions: [
           IconButton(
-            icon: Icon(Icons.filter_alt_rounded),
+            icon: const Icon(Icons.filter_alt_rounded),
             onPressed: () => Get.to(FiltroAtenciones()),
           ),
         ],
       ),
-      body: AtencionesView(),
+      body: const AtencionesView(),
     );
   }
 }

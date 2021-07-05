@@ -12,21 +12,21 @@ class Unconfirmed extends StatelessWidget {
     return GetX<HomeController>(
       builder: (_) {
         return Container(
-          color: Color(0xffF7F7FF),
+          color: const Color(0xffF7F7FF),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30.0),
+              const SizedBox(height: 30.0),
               subHeader(title: 'Reservas por confirmar'),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               Expanded(
                 child: _.carga
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator(),
                       )
-                    : _.unconfirmed.length == 0
-                        ? Center(
+                    : _.unconfirmed.isEmpty
+                        ? const Center(
                             child: Text('No tiene reservas por confirmar'),
                           )
                         : ListView.builder(

@@ -9,16 +9,14 @@ class WorkersPageWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NavigationBar(),
+          const NavigationBar(),
           Expanded(
             flex: 2,
             child: VerAdmins(),
           ),
           Expanded(
-            flex: 1,
             child: CreaAdmin(),
           ),
         ],

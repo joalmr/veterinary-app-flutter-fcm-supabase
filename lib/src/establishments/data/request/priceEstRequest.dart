@@ -42,9 +42,9 @@ class PriceEstablecimientoEntity {
   }
 
   Map<String, dynamic> toJson() => {
-        "consultation_price_from": consultationPriceFrom,
-        "deworming_price_from": dewormingPriceFrom,
-        "grooming_price_from": groomingPriceFrom,
-        "vaccination_price_from": vaccinationPriceFrom,
+        'consultation_price_from': consultationPriceFrom,
+        'deworming_price_from': dewormingPriceFrom,
+        'grooming_price_from': groomingPriceFrom,
+        'vaccination_price_from': vaccinationPriceFrom,
       };
 }

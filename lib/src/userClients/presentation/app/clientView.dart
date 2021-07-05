@@ -9,32 +9,30 @@ import 'mascotaClienteAgregar.dart';
 class ClienteVista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    int mascotas = 1;
+    const int mascotas = 1;
     return Scaffold(
       appBar: AppBar(),
       floatingActionButton: mascotas == 1
           ? FloatingActionButton(
-              child: Image(
+              onPressed: () {
+                Get.to(AtenderMascota());
+              },
+              child: const Image(
                 height: 30,
                 fit: BoxFit.cover,
                 image: AssetImage('assets/images/vote.png'),
               ),
-              onPressed: () {
-                Get.to(AtenderMascota());
-              },
             )
           : null,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
             width: double.maxFinite,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Carlos Perez',
                   style: TextStyle(
                     fontSize: 36,
@@ -43,8 +41,7 @@ class ClienteVista extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+                  children: const [
                     Icon(Icons.phone_android_rounded),
                     Text(
                       '993932999',
@@ -58,28 +55,27 @@ class ClienteVista extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
               'Mascotas',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.w200),
             ),
           ),
-          Container(
+          SizedBox(
             width: double.maxFinite,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(100),
                       onTap: () {
-                        print('agrega');
                         Get.to(MascotaClienteAgregar());
                       },
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         radius: 45,
                         backgroundColor: colorMain,
                         child: Icon(
@@ -92,14 +88,13 @@ class ClienteVista extends StatelessWidget {
                   ),
                   for (var i = 0; i < mascotas.bitLength; i++)
                     Padding(
-                      padding: EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: InkWell(
                         borderRadius: BorderRadius.circular(100),
                         onTap: () {
-                          print('detalle mascota $i');
                           Get.to(MascotaCliente());
                         },
-                        child: CircleAvatar(
+                        child: const CircleAvatar(
                           radius: 45,
                           backgroundImage: AssetImage('assets/images/dog.jpg'),
                         ),
@@ -109,7 +104,7 @@ class ClienteVista extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Center(
             child: contStatClient(
               context: context,
@@ -117,7 +112,7 @@ class ClienteVista extends StatelessWidget {
               titulo: 'atenciones',
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Center(
             child: contStatClient(
               context: context,
@@ -125,7 +120,7 @@ class ClienteVista extends StatelessWidget {
               titulo: 'soles',
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );

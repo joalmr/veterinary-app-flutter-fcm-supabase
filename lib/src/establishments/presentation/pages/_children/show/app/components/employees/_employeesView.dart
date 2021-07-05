@@ -14,26 +14,24 @@ class EmployeesView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 10.0,
-              right: 0.0,
               bottom: 5.0,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Empleados",
+                  'Empleados',
                   style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                 ),
                 IconButton(
                   splashRadius: 20,
                   iconSize: 18,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.edit,
                   ),
                   onPressed: () {
@@ -47,13 +45,12 @@ class EmployeesView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: employees
                   .map(
                     (e) => employee(
-                      type: e.typeId!,
-                      name: e.name!,
-                      code: e.code!,
+                      type: e.typeId,
+                      name: e.name,
+                      code: e.code,
                     ),
                   )
                   .toList(),

@@ -14,7 +14,7 @@ class MapVet extends StatelessWidget {
       id: 'xmap',
       builder: (_) {
         return GoogleMap(
-          myLocationEnabled: false,
+          // myLocationEnabled: false,
           myLocationButtonEnabled: false,
           compassEnabled: false,
           mapToolbarEnabled: false,
@@ -27,10 +27,10 @@ class MapVet extends StatelessWidget {
                 () => VerticalDragGestureRecognizer())),
           rotateGesturesEnabled: false,
           scrollGesturesEnabled: false,
-          zoomGesturesEnabled: true,
-          tiltGesturesEnabled: true,
-          mapType: MapType.normal,
-          initialCameraPosition: CameraPosition(
+          // zoomGesturesEnabled: true,
+          // tiltGesturesEnabled: true,
+          // mapType: MapType.normal,
+          initialCameraPosition: const CameraPosition(
             target: LatLng(-12.045645176850693, -77.03056366799036),
             zoom: 16,
           ),

@@ -13,13 +13,12 @@ class ChartServicios extends StatelessWidget {
       child: chartDesign(
         title: 'Servicios atendidos',
         widget: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.all(5.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Column(
                   children: [
                     _chartBar(dataServices),
@@ -31,7 +30,7 @@ class ChartServicios extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,13 +75,13 @@ Widget _chartBar(List<DataService> listService) {
 }
 
 Widget _barDay(String day, double value, Color color, double mayor) {
-  double valorY = (value * 150) / mayor;
+  final double valorY = (value * 150) / mayor;
 
   return Container(
-    margin: EdgeInsets.symmetric(horizontal: 2.5),
+    margin: const EdgeInsets.symmetric(horizontal: 2.5),
     height: 150,
     width: 30.0,
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Color(0xffF6F6FC),
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(50),
@@ -95,18 +94,18 @@ Widget _barDay(String day, double value, Color color, double mayor) {
       width: 25.0,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(50),
           topRight: Radius.circular(50),
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.only(bottom: 10),
         child: Align(
           alignment: Alignment.bottomCenter,
           child: Text(
             value.toString(),
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 10,
             ),
@@ -120,7 +119,7 @@ Widget _barDay(String day, double value, Color color, double mayor) {
 class ChartLegend extends StatelessWidget {
   final String type;
   final Color color;
-  ChartLegend(this.type, this.color);
+  const ChartLegend(this.type, this.color);
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +133,7 @@ class ChartLegend extends StatelessWidget {
             color: color,
           ),
         ),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
         Text(type)
       ],
     );

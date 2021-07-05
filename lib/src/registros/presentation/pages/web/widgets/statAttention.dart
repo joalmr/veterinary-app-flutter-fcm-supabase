@@ -8,7 +8,7 @@ class StatAttention extends StatefulWidget {
   final IconData? icon;
   final Color? color;
 
-  StatAttention({
+  const StatAttention({
     this.text,
     this.value,
     this.icon,
@@ -39,7 +39,7 @@ class _StatAttentionState extends State<StatAttention> {
         });
       },
       child: ChildRegion(
-        margin: EdgeInsets.only(bottom: 15.0, left: 5, right: 5),
+        margin: const EdgeInsets.only(bottom: 15.0, left: 5, right: 5),
         child: Container(
           width: 200,
           height: 65,
@@ -47,10 +47,10 @@ class _StatAttentionState extends State<StatAttention> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 5.0,
                     ),
                     Container(
@@ -64,7 +64,7 @@ class _StatAttentionState extends State<StatAttention> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5.0),
                           child: Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Icon(
                               widget.icon,
                               color: Colors.white,
@@ -73,22 +73,22 @@ class _StatAttentionState extends State<StatAttention> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 20.0),
+                    const SizedBox(width: 20.0),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           widget.text!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 12.0,
                           ),
                         ),
-                        SizedBox(width: 5.0),
+                        const SizedBox(width: 5.0),
                         Text(
                           widget.value!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 24.0,
                           ),

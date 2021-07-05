@@ -9,15 +9,15 @@ class WorkersPageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MenuDrawer(),
+      drawer: const MenuDrawer(),
       appBar: AppBar(
-        title: Text('Administradores'),
+        title: const Text('Administradores'),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_rounded),
-        onPressed: () => Get.to(CreaWorkerView()),
+        onPressed: () => Get.to(const CreaWorkerView()),
+        child: const Icon(Icons.add_rounded),
       ),
-      body: ShowWorkerView(),
+      body: const ShowWorkerView(),
     );
   }
 }

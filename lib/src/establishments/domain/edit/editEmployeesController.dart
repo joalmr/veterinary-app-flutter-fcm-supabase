@@ -17,9 +17,9 @@ class EditEmployeeController extends GetxController {
   String get personalType => _personalType.value;
   set personalType(String value) => _personalType.value = value;
 
-  var employeeId = "".obs;
-  var name = "".obs;
-  var code = "".obs;
+  var employeeId = ''.obs;
+  var name = ''.obs;
+  var code = ''.obs;
 
   var isNew = true.obs;
 
@@ -45,10 +45,10 @@ class EditEmployeeController extends GetxController {
 
   goToNew() {
     isNew.value = false;
-    employeeId.value = "";
-    name.value = "";
-    code.value = "";
-    personalType = "2";
+    employeeId.value = '';
+    name.value = '';
+    code.value = '';
+    personalType = '2';
 
     Get.to(SetEmployee());
   }
@@ -61,7 +61,7 @@ class EditEmployeeController extends GetxController {
       name.value,
       code.value,
     );
-    if (reponse == "200") {
+    if (reponse == '200') {
       getEmployees();
       showVetController.getByid();
       Get.back();
@@ -80,8 +80,8 @@ class EditEmployeeController extends GetxController {
 
   updateEmployee() => _updateEmployee();
   _updateEmployee() async {
-    if (personalType == "1") {
-      code.value = "";
+    if (personalType == '1') {
+      code.value = '';
     }
     var reponse = await _repo.updateEmployee(
       showVetController.establishment.value.id!,
@@ -90,7 +90,7 @@ class EditEmployeeController extends GetxController {
       name.value,
       code.value,
     );
-    if (reponse == "200") {
+    if (reponse == '200') {
       getEmployees();
       showVetController.getByid();
       vetController.getAll();

@@ -13,10 +13,10 @@ class CreaVetView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             leading: NumStep(),
-            title: Text('Crea establecimiento'),
+            title: const Text('Crea establecimiento'),
           ),
           body: _.checked
-              ? Center(
+              ? const Center(
                   child: CircularProgressIndicator(),
                 )
               : BodyAddVet(),
@@ -25,7 +25,6 @@ class CreaVetView extends StatelessWidget {
     );
   }
 }
-
 
 //     Lottie.asset(
 //       lottieLoading,

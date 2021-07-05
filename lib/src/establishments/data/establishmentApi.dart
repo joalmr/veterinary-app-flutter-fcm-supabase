@@ -15,7 +15,7 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<List<EstablecimientoModelLite>> getAll() async {
     final url = Uri.https(urlBase!, '$pathBase/establishments');
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
     final establecimientos = establecimientoModelLiteFromJson(response.body);
     return establecimientos;
   }
@@ -23,9 +23,9 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<EstablishmentModal> getById(String idVet) async {
     final url = Uri.https(urlBase!, '$pathBase/establishment/$idVet');
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
 
-    EstablishmentModal establecimiento =
+    final EstablishmentModal establecimiento =
         EstablishmentModal.fromJson(json.decode(response.body));
 
     return establecimiento;
@@ -34,8 +34,8 @@ class EstablishmentApi extends EstablishmentInterface {
   @override
   Future<EstablecimientoModelLite> getFirst() async {
     final url = Uri.https(urlBase!, '$pathBase/establishments');
-    http.Response response = await http.get(url, headers: headersToken());
-    // List<EstablecimientoModelLite> establecimientos = List<EstablecimientoModelLite>.from(json.decode(response.body).map((x) => EstablecimientoModelLite.fromJson(x)));
+    final http.Response response = await http.get(url, headers: headersToken());
+
     final establecimientos = establecimientoModelLiteFromJson(response.body);
     return establecimientos.first;
   }
@@ -47,7 +47,7 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/services',
     );
 
-    http.Response response = await http.get(
+    final http.Response response = await http.get(
       url,
       headers: headersToken(),
     );
@@ -68,7 +68,7 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(establecimiento),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
     lista.add(response.statusCode);
     lista.add(data['id']);
@@ -85,9 +85,9 @@ class EstablishmentApi extends EstablishmentInterface {
     );
 
     final employee = {
-      "type_id": typeId,
-      "name": name,
-      "code": code,
+      'type_id': typeId,
+      'name': name,
+      'code': code,
     };
 
     http.Response response = await http.post(
@@ -96,7 +96,7 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(employee),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
     print(data);
     return 'asd';
@@ -114,7 +114,7 @@ class EstablishmentApi extends EstablishmentInterface {
       url,
       headers: headersToken(),
     );
-    List<Employee> data = List<Employee>.from(
+    final List<Employee> data = List<Employee>.from(
         json.decode(response.body).map((x) => Employee.fromJson(x)));
 
     return data;
@@ -134,7 +134,7 @@ class EstablishmentApi extends EstablishmentInterface {
       headers: headersToken(),
     );
 
-    var data = Employee.fromJson(jsonDecode(response.body));
+    final data = Employee.fromJson(jsonDecode(response.body));
 
     return data;
   }
@@ -149,10 +149,10 @@ class EstablishmentApi extends EstablishmentInterface {
     );
 
     final employee = {
-      "employee_id": employeeId,
-      "type_id": typeId,
-      "name": name,
-      "code": code,
+      'employee_id': employeeId,
+      'type_id': typeId,
+      'name': name,
+      'code': code,
     };
 
     http.Response response = await http.post(
@@ -161,7 +161,7 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(employee),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
     print(data);
     return response.statusCode.toString();
@@ -181,10 +181,10 @@ class EstablishmentApi extends EstablishmentInterface {
       headers: headersToken(),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
     print(data);
-    return "asd";
+    return 'asd';
   }
 
   @override
@@ -203,17 +203,14 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(precios),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
     print(data);
     return 'asd';
   }
 
   @override
-  Future<String> setSchedule(
-    String establecimientoId,
-    horarios,
-  ) async {
+  Future<String> setSchedule(String establecimientoId, horarios) async {
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establecimientoId/schedule',
@@ -225,7 +222,7 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(horarios),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
     print(data);
     return 'asd';
@@ -242,15 +239,15 @@ class EstablishmentApi extends EstablishmentInterface {
     );
 
     final descriptionData = {
-      "description": description,
+      'description': description,
     };
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(descriptionData),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
     print(data);
     return 'asd';
@@ -263,7 +260,7 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId',
     );
 
-    http.Response response = await http.delete(
+    final http.Response response = await http.delete(
       url,
       headers: headersToken(),
     );
@@ -279,22 +276,22 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/logo',
     );
 
-    var request = http.MultipartRequest("POST", url);
-    var pic = await http.MultipartFile.fromPath("logo", image.path);
+    var request = http.MultipartRequest('POST', url);
+    var pic = await http.MultipartFile.fromPath('logo', image.path);
 
     request.headers['Content-Type'] = 'application/json; charset=UTF-8';
     request.headers['Authorization'] = 'Bearer ${prefUser.token}';
     request.headers['X-Requested-With'] = 'XMLHttpRequest';
 
     request.files.add(pic);
-    var response = await request.send();
+    final response = await request.send();
 
-    var responseData = await response.stream.toBytes();
-    var responseString = String.fromCharCodes(responseData);
+    final responseData = await response.stream.toBytes();
+    final responseString = String.fromCharCodes(responseData);
 
-    var dato = jsonDecode(responseString);
+    final dato = jsonDecode(responseString);
 
-    return dato['logo'];
+    return dato['logo'] as String;
   }
 
   @override
@@ -304,22 +301,22 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/slide',
     );
 
-    var request = http.MultipartRequest("POST", url);
-    var pic = await http.MultipartFile.fromPath("slide", image.path);
+    final request = http.MultipartRequest('POST', url);
+    final pic = await http.MultipartFile.fromPath('slide', image.path);
 
     request.headers['Content-Type'] = 'application/json; charset=UTF-8';
     request.headers['Authorization'] = 'Bearer ${prefUser.token}';
     request.headers['X-Requested-With'] = 'XMLHttpRequest';
 
     request.files.add(pic);
-    var response = await request.send();
+    final response = await request.send();
 
-    var responseData = await response.stream.toBytes();
-    var responseString = String.fromCharCodes(responseData);
+    final responseData = await response.stream.toBytes();
+    final responseString = String.fromCharCodes(responseData);
 
-    var dato = jsonDecode(responseString);
+    final dato = jsonDecode(responseString);
     print(dato);
-    return "slide ok";
+    return 'slide ok';
   }
 
   @override
@@ -328,31 +325,31 @@ class EstablishmentApi extends EstablishmentInterface {
     final url =
         Uri.https(urlBase!, '$pathBase/establishment/$establecimientoId');
 
-    http.Response response = await http.post(
+    final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(datosBase),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
     print(data);
     return response.statusCode.toString();
   }
 
   @override
   Future<DataMapModel> getLatLngByPlaceId(String placeId) async {
-    final _urlBase = "maps.googleapis.com";
+    const _urlBase = 'maps.googleapis.com';
     final url = Uri.https(
       _urlBase,
       '/maps/api/place/details/json',
       {
-        "key": keyMap,
-        "language": "es",
-        "placeid": placeId,
+        'key': keyMap,
+        'language': 'es',
+        'placeid': placeId,
       },
     );
 
-    http.Response response = await http.get(url);
+    final http.Response response = await http.get(url);
 
     final byPlaceId = dataMapModelFromJson(response.body);
 
@@ -367,18 +364,18 @@ class EstablishmentApi extends EstablishmentInterface {
     );
 
     final jsonData = {
-      "slide": slide,
+      'slide': slide,
     };
 
-    http.Response response = await http.delete(
+    final http.Response response = await http.delete(
       url,
       headers: headersToken(),
       body: jsonEncode(jsonData),
     );
 
-    var data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
     print(data);
-    return "asd";
+    return 'asd';
   }
 }

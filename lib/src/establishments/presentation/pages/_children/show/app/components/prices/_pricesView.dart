@@ -18,22 +18,21 @@ class PricesView extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 10.0,
-              right: 0.0,
               bottom: 5.0,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Precios",
+                  'Precios',
                   style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                 ),
                 IconButton(
                   splashRadius: 20,
                   iconSize: 18,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.edit,
                   ),
                   onPressed: () {

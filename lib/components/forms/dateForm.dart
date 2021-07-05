@@ -11,16 +11,17 @@ String? validaDate(String texto) {
   final int day = int.parse(dateWrite[0]);
   final int lastday = DateTime(year, month + 1, 0).day;
 
-  if (day < 1 || day > 31 || month < 1 || month > 12)
+  if (day < 1 || day > 31 || month < 1 || month > 12) {
     return 'Formato de fecha invalido';
-  else {
+  } else {
     if (lastday < day) {
       return 'El día seleccionado no es correcto';
     } else {
-      DateTime dateNow = DateTime.now();
-      DateTime tempDate = new DateFormat("dd-MM-yyyy").parse(texto);
+      final DateTime dateNow = DateTime.now();
+      final dateFormat = DateFormat('dd-MM-yyyy');
+      final DateTime tempDate = dateFormat.parse(texto);
 
-      int diff = tempDate.difference(dateNow).inDays;
+      final int diff = tempDate.difference(dateNow).inDays;
       if (diff < 0) return 'Debe escribir una fecha mayor';
     }
   }
@@ -55,4 +56,3 @@ String? validaDate(String texto) {
 //     onChanged: onChanged,
 //   );
 // }
-

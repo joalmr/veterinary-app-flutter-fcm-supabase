@@ -14,11 +14,11 @@ class EditSlidesView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Editar imágenes'),
+            title: const Text('Editar imágenes'),
           ),
           body: SafeArea(
             child: Container(
-              padding: EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(top: 10),
               child: Column(
                 children: [
                   for (var i = 0; i < _.establishment.value.slides!.length; i++)
@@ -28,7 +28,7 @@ class EditSlidesView extends StatelessWidget {
                       ),
                       img: _.establishment.value.slides![i],
                     ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Center(
                     child: btnSecondary(
                       text: 'Subir imagen',

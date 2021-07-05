@@ -13,12 +13,11 @@ class OffersPageApp extends StatelessWidget {
     return GetBuilder<OffersController>(
       builder: (_) {
         return Scaffold(
-          drawer: MenuDrawer(),
+          drawer: const MenuDrawer(),
           appBar: AppBar(
-            title: Text('Promociones'),
+            title: const Text('Promociones'),
           ),
           floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add_rounded),
             onPressed: () {
               if (_.promociones.length >= 5) {
                 Get.snackbar(
@@ -31,8 +30,9 @@ class OffersPageApp extends StatelessWidget {
                 Get.to(CreaPromocionView());
               }
             },
+            child: const Icon(Icons.add_rounded),
           ),
-          body: PromocionesView(),
+          body: const PromocionesView(),
         );
       },
     );

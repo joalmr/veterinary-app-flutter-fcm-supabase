@@ -33,11 +33,12 @@ class EventNextDate extends StatelessWidget {
   launchWhatsApp() async {
     final link = WhatsAppUnilink(
       phoneNumber: '+51$userPhone',
-      text: "Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendiente de $petName, no olvide reserva por medio de la app Proypet",
+      text: '''
+Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendiente de $petName, no olvide reserva por medio de la app Proypet''',
     );
     await launch('$link');
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -89,8 +90,6 @@ class EventNextDate extends StatelessWidget {
                   ),
                 ),
                 Text(userName),
-
-                
                 Row(
                   children: [
                     Container(
@@ -100,16 +99,15 @@ class EventNextDate extends StatelessWidget {
                           TextButton(
                             onPressed: () {},
                             child: Icon(Icons.book_rounded),
-                            style: TextButton.styleFrom(
-                              primary: Colors.black38
-                            ),
+                            style:
+                                TextButton.styleFrom(primary: Colors.black38),
                           ),
                           TextButton(
                             onPressed: () {
                               print('wsp');
                               print(userPhone);
                               launchWhatsApp();
-                            }, 
+                            },
                             child: Icon(
                               // LineAwesomeIcons.whatsapp,
                               LineIcons.whatSApp,

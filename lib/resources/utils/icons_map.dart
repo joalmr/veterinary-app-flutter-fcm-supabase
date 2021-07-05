@@ -61,21 +61,21 @@ final iconNum = <int, IconData>{
 };
 
 final textMap = <int, String>{
-  1: "Grooming",
-  2: "Consulta",
-  3: "Cirugía",
-  4: "Vacunas",
-  5: "Movilidad", //Recojo/Entrega
-  6: "Electrocardiograma",
-  7: "Laboratorio",
-  8: "24 horas",
-  9: "Hospedaje",
-  10: "Petshop",
-  11: "Desparasitación",
-  12: "Ecografía",
-  13: "Rayos x",
-  14: "Resonancia",
-  15: "Farmacia",
-  16: "Hospitalización",
-  17: "Suplementación",
+  1: 'Grooming',
+  2: 'Consulta',
+  3: 'Cirugía',
+  4: 'Vacunas',
+  5: 'Movilidad', //Recojo/Entrega
+  6: 'Electrocardiograma',
+  7: 'Laboratorio',
+  8: '24 horas',
+  9: 'Hospedaje',
+  10: 'Petshop',
+  11: 'Desparasitación',
+  12: 'Ecografía',
+  13: 'Rayos x',
+  14: 'Resonancia',
+  15: 'Farmacia',
+  16: 'Hospitalización',
+  17: 'Suplementación',
 };

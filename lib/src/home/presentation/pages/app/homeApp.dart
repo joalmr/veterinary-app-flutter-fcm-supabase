@@ -14,7 +14,7 @@ class HomePageApp extends StatelessWidget {
     return GetX<HomeController>(
       builder: (_) {
         return Scaffold(
-          drawer: MenuDrawer(),
+          drawer: const MenuDrawer(),
           appBar: AppBar(
             title: FadeIn(child: Text(_.nameVet.value!)),
             actions: [
@@ -22,22 +22,22 @@ class HomePageApp extends StatelessWidget {
                 onPressed: () {
                   Get.offNamed(NameRoutes.establishments);
                 },
-                icon: Icon(Icons.star_rounded),
+                icon: const Icon(Icons.star_rounded),
               ),
             ],
           ),
           body: _.carga
-              ? Center(
-                  child: CircularProgressIndicator(),
+              ? const Center(
+                  child: const CircularProgressIndicator(),
                 )
               : DefaultTabController(
                   length: 2,
-                  initialIndex: _.unconfirmed.length > 0 ? 1 : 0,
+                  initialIndex: _.unconfirmed.isNotEmpty ? 1 : 0,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      TabBar(
+                      const TabBar(
                         indicatorColor: colorMain,
                         labelColor: colorMain,
                         labelStyle: TextStyle(fontWeight: FontWeight.bold),
@@ -45,14 +45,14 @@ class HomePageApp extends StatelessWidget {
                         unselectedLabelStyle:
                             TextStyle(fontWeight: FontWeight.normal),
                         tabs: [
-                          Tab(text: "Atender"),
-                          Tab(text: "Confirmar"),
+                          Tab(text: 'Atender'),
+                          Tab(text: 'Confirmar'),
                         ],
                       ),
                       Expanded(
                         child: TabBarView(
                           children: <Widget>[
-                            AtenderView(),
+                            const AtenderView(),
                             ConfirmarView(),
                           ],
                         ),

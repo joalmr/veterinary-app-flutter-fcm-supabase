@@ -11,7 +11,7 @@ class CheckHorario extends StatelessWidget {
   final int index;
   final TextEditingController iniController;
   final TextEditingController endController;
-  CheckHorario({
+  const CheckHorario({
     required this.day,
     required this.index,
     required this.iniController,
@@ -25,7 +25,8 @@ class CheckHorario extends StatelessWidget {
 
     return GetX<CreateVetController>(
       builder: (_) {
-        return Container(
+        const edgeInsets = EdgeInsets.all(2.0);
+        return SizedBox(
           child: Column(
             children: [
               Row(
@@ -35,25 +36,24 @@ class CheckHorario extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       _.v.checkDay[index] = !_.v.checkDay[index];
-                      print(_.v.checkDay[index]);
                     },
                     borderRadius: BorderRadius.circular(5),
                     child: Padding(
-                      padding: EdgeInsets.all(2.0),
+                      padding: edgeInsets,
                       child: _.v.checkDay[index]
-                          ? Icon(
+                          ? const Icon(
                               Icons.check_box_rounded,
                               color: colorMain,
                               size: 22,
                             )
-                          : Icon(
+                          : const Icon(
                               Icons.check_box_outline_blank_rounded,
                               color: colorMain,
                               size: 22,
                             ),
                     ),
                   ),
-                  SizedBox(width: 7.5),
+                  const SizedBox(width: 7.5),
                   Text(day),
                 ],
               ),
@@ -63,13 +63,14 @@ class CheckHorario extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormField(
-                          decoration: InputDecoration(labelText: 'Inicio'),
+                          decoration:
+                              const InputDecoration(labelText: 'Inicio'),
                           enableInteractiveSelection: false,
                           controller: iniController,
                           // initialValue: _.v.iniDay[index],
                           readOnly: true,
                           onTap: () {
-                            final format = DateFormat("HH:mm");
+                            final format = DateFormat('HH:mm');
                             Navigator.of(context).push(
                               showPicker(
                                 context: context,
@@ -82,8 +83,8 @@ class CheckHorario extends StatelessWidget {
                                 maxMinute: 50,
                                 barrierDismissible: false,
                                 iosStylePicker: true,
-                                hourLabel: "horas",
-                                minuteLabel: "minutos",
+                                hourLabel: 'horas',
+                                minuteLabel: 'minutos',
                                 okText: 'Aceptar',
                                 cancelText: 'Cancelar',
                                 onChangeDateTime: (DateTime dateTime) {
@@ -94,15 +95,15 @@ class CheckHorario extends StatelessWidget {
                             );
                           },
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         TextFormField(
-                          decoration: InputDecoration(labelText: 'Fin'),
+                          decoration: const InputDecoration(labelText: 'Fin'),
                           enableInteractiveSelection: false,
                           controller: endController,
                           // initialValue: _.v.endDay[index],
                           readOnly: true,
                           onTap: () {
-                            final format = DateFormat("HH:mm");
+                            final format = DateFormat('HH:mm');
                             Navigator.of(context).push(
                               showPicker(
                                 context: context,
@@ -115,8 +116,8 @@ class CheckHorario extends StatelessWidget {
                                 maxMinute: 50,
                                 barrierDismissible: false,
                                 iosStylePicker: true,
-                                hourLabel: "horas",
-                                minuteLabel: "minutos",
+                                hourLabel: 'horas',
+                                minuteLabel: 'minutos',
                                 okText: 'Aceptar',
                                 cancelText: 'Cancelar',
                                 onChangeDateTime: (DateTime dateTime) {
@@ -127,10 +128,10 @@ class CheckHorario extends StatelessWidget {
                             );
                           },
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                       ],
                     )
-                  : SizedBox(height: 0),
+                  : const SizedBox(height: 0),
             ],
           ),
         );

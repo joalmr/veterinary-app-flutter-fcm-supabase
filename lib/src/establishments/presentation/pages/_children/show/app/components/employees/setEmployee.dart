@@ -17,13 +17,13 @@ class SetEmployee extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(),
           body: Container(
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Tipo'),
+                  const Text('Tipo'),
                   Material(
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(5),
@@ -34,27 +34,27 @@ class SetEmployee extends StatelessWidget {
                           isExpanded: true,
                           value: _.personalType,
                           items: personalTipo.map((ItemService value) {
-                            return new DropdownMenuItem<String>(
+                            return DropdownMenuItem<String>(
                               value: value.id,
-                              child: new Text(value.name!),
+                              child: Text(value.name!),
                             );
                           }).toList(),
                           onChanged: (String? val) {
                             _.personalType = val!;
-                            print(_.personalType);
                           },
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   TextFormField(
                     initialValue: _.name.value,
                     onChanged: (val) => _.name.value = val,
-                    decoration: InputDecoration(labelText: 'Nombre y apellido'),
+                    decoration:
+                        const InputDecoration(labelText: 'Nombre y apellido'),
                     textCapitalization: TextCapitalization.words,
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   _.personalType == '2'
                       ? Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -63,14 +63,14 @@ class SetEmployee extends StatelessWidget {
                             TextFormField(
                               initialValue: _.code.value,
                               onChanged: (val) => _.code.value = val,
-                              decoration:
-                                  InputDecoration(labelText: 'Código CMV'),
+                              decoration: const InputDecoration(
+                                  labelText: 'Código CMV'),
                               keyboardType: TextInputType.number,
                             ),
                           ],
                         )
-                      : SizedBox(height: 0),
-                  SizedBox(height: 20),
+                      : const SizedBox(height: 0),
+                  const SizedBox(height: 20),
                   Center(
                     child: btnSecondary(
                       text: _.isNew.value ? 'Agregar' : 'Guardar',

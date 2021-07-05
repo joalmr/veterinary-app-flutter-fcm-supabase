@@ -151,7 +151,7 @@ class ReprogramarItem extends StatelessWidget {
                       DateTimePicker(
                         dateMask: 'dd-MM-yyyy',
                         firstDate: DateTime.now(),
-                        lastDate: DateTime(DateTime.now().year+3),
+                        lastDate: DateTime(DateTime.now().year + 3),
                         dateLabelText: 'Fecha',
                         onChanged: (val) => _.fecha.value = val,
                       ),
@@ -164,19 +164,20 @@ class ReprogramarItem extends StatelessWidget {
                         controller: timeController,
                         readOnly: true,
                         onTap: () {
-                          final format = DateFormat("HH:mm");
+                          final format = DateFormat('HH:mm');
                           Navigator.of(context).push(
                             showPicker(
                               context: context,
                               value: pickedTime,
-                              onChange: (TimeOfDay newTime) => pickedTime = newTime,
+                              onChange: (TimeOfDay newTime) =>
+                                  pickedTime = newTime,
                               is24HrFormat: true,
                               minuteInterval: MinuteInterval.TEN,
                               maxMinute: 50,
                               barrierDismissible: false,
                               iosStylePicker: true,
-                              hourLabel: "horas",
-                              minuteLabel: "minutos",
+                              hourLabel: 'horas',
+                              minuteLabel: 'minutos',
                               okText: 'Aceptar',
                               cancelText: 'Cancelar',
                               onChangeDateTime: (DateTime dateTime) {
@@ -192,7 +193,7 @@ class ReprogramarItem extends StatelessWidget {
                         child: btnSecondary(
                           text: 'Reprogramar',
                           color: Colors.grey[600]!,
-                          onPressed: () => _.reprogramar(bookingId),
+                          onPressed: () => _.reprogramar(bookingId!),
                         ),
                       ),
                       _.errorDateTime.value

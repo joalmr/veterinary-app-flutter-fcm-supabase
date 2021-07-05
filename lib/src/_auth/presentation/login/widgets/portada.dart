@@ -25,7 +25,7 @@ class Portada extends StatelessWidget {
           children: <Widget>[
             SizedBox(width: 25.0),
             Text(
-              "Be",
+              'Be',
               style: TextStyle(
                 fontSize: 62,
                 fontWeight: FontWeight.w900,
@@ -34,7 +34,7 @@ class Portada extends StatelessWidget {
             SizedBox(width: 20.0),
             RotateAnimatedTextKit(
               repeatForever: true,
-              text: ["Carefull", "Happy", "Proypet"],
+              text: ['Carefull', 'Happy', 'Proypet'],
               textStyle: TextStyle(
                 fontSize: 62,
                 fontWeight: FontWeight.w900,

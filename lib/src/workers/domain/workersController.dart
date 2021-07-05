@@ -12,8 +12,8 @@ class WorkersController extends GetxController {
   final _repo = WorkersRepository();
 
   final emailText = TextEditingController();
-  
-  RxBool carga=false.obs;
+
+  RxBool carga = false.obs;
   RxList<WorkerApp> workers = <WorkerApp>[].obs;
   RxList<Invitation> workersInvitation = <Invitation>[].obs;
 
@@ -23,13 +23,14 @@ class WorkersController extends GetxController {
     super.onInit();
   }
 
-  init()=>_init();
+  init() => _init();
   _init() async {
-    carga.value=true;
+    carga.value = true;
     await getWorkers();
     await getInvitados();
-    carga.value=false;
+    carga.value = false;
   }
+
   //!   mis administradores
   //
   getWorkers() => _getWorkers();
@@ -52,30 +53,28 @@ class WorkersController extends GetxController {
 
   setInvita() => _setInvita();
   _setInvita() async {
-    if(!EmailValidator.validate(emailText.text)){
+    if (!EmailValidator.validate(emailText.text)) {
       Get.snackbar(
-        'Error', 
+        'Error',
         'El formato del email es invalido',
         backgroundColor: colorRed,
         colorText: colorWhite,
       );
-    }
-    else{
-      InvitationModel value = await _repo.setInvita(prefUser.vetId!, emailText.text);
-      if(!value.result!){
+    } else {
+      InvitationModel value =
+          await _repo.setInvita(prefUser.vetId!, emailText.text);
+      if (!value.result!) {
         Get.snackbar(
-          'Error', 
+          'Error',
           value.message!,
           backgroundColor: colorRed,
           colorText: colorWhite,
         );
-      }
-      else{
+      } else {
         emailText.clear();
         getInvitados();
       }
     }
-    
   }
 
   deleteInvita(invitationId) => _deleteInvita(invitationId);

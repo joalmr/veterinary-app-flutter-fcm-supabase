@@ -10,13 +10,13 @@ class EstablishmentsPageApp extends StatelessWidget {
     return GetBuilder<EstablishmentsController>(
       builder: (_) {
         return Scaffold(
-          drawer: MenuDrawer(),
+          drawer: const MenuDrawer(),
           appBar: AppBar(
-            title: Text('Establecimientos'),
+            title: const Text('Establecimientos'),
           ),
           floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add_rounded),
             onPressed: () => Get.toNamed('/establishments/create'),
+            child: const Icon(Icons.add_rounded),
           ),
           body: VetsView(),
         );

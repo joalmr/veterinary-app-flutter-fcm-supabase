@@ -12,7 +12,7 @@ class OffersApi extends OffersInterface {
     List<OfferModal> ofertas = [];
     final url = Uri.https(urlBase!, '/api/client/establishment/$idVet/offers');
 
-    http.Response response = await http.get(url, headers: headersToken());
+    final http.Response response = await http.get(url, headers: headersToken());
     ofertas = offerModalFromJson(response.body);
     print(ofertas.length);
     return ofertas;

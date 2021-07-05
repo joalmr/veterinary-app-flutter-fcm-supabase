@@ -11,14 +11,15 @@ class AtencionesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetX<AttentionsController>(
-      builder: (_){
+      builder: (_) {
         return ListView.builder(
           itemCount: _.listaReg.length,
-          padding: EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           itemBuilder: (BuildContext context, int index) {
             final reg = _.listaReg[index];
             return CardAtencion(
-              image: CachedNetworkImageProvider(reg.petPicture!) ,//AssetImage('assets/images/dog.jpg'),
+              image: CachedNetworkImageProvider(
+                  reg.petPicture!), //AssetImage('assets/images/dog.jpg'),
               petName: reg.petName!,
               petBreed: reg.petBreed!,
               date: formatDate(reg.attentionDate!),

@@ -11,13 +11,13 @@ class ViewPass extends StatelessWidget {
     return GetX<HomeController>(
       builder: (_) {
         return Expanded(
-          child: _.overdue.length == 0
-              ? Center(
+          child: _.overdue.isEmpty
+              ? const Center(
                   child: Text('No tiene atenciones pasadas'),
                 )
               : ListView.builder(
                   itemCount: _.overdue.length,
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding: const EdgeInsets.only(left: 10, right: 10),
                   itemBuilder: (BuildContext context, int index) {
                     final overdue = _.overdue[index];
                     return CardAttention(

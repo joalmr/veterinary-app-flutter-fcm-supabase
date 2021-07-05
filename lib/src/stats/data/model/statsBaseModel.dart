@@ -25,18 +25,18 @@ class StatBaseModel {
   });
 
   factory StatBaseModel.fromJson(Map<String, dynamic> json) => StatBaseModel(
-        nonAttendedPercentage: json["nonAttendedPercentage"],
-        dogs: json["dogs"],
-        cats: json["cats"],
-        stars: json["stars"],
-        votes: json["votes"],
+        nonAttendedPercentage: json['nonAttendedPercentage'],
+        dogs: json['dogs'],
+        cats: json['cats'],
+        stars: json['stars'],
+        votes: json['votes'],
       );
 
   Map<String, dynamic> toJson() => {
-        "nonAttendedPercentage": nonAttendedPercentage,
-        "dogs": dogs,
-        "cats": cats,
-        "stars": stars,
-        "votes": votes,
+        'nonAttendedPercentage': nonAttendedPercentage,
+        'dogs': dogs,
+        'cats': cats,
+        'stars': stars,
+        'votes': votes,
       };
 }

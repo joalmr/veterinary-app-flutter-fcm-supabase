@@ -16,31 +16,28 @@ class PercentVentasDia extends StatelessWidget {
           child: chartDesign(
             title: 'Ventas por día',
             colorFondo: Colors.transparent,
-            widget: 
-            _.cargaSalesDay.value
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            :
-            Container(
-              padding: EdgeInsets.all(5.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: Text('Promedio de los últimos 3 meses'),
+            widget: _.cargaSalesDay.value
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Container(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 5),
+                          child: Text('Promedio de los últimos 3 meses'),
+                        ),
+                        _percent(_.salesDay),
+                      ],
+                    ),
                   ),
-                  _percent(_.salesDay),
-                ],
-              ),
-            ),
           ),
         );
       },
     );
-    
   }
 }
 
@@ -55,7 +52,7 @@ Widget _percent(List<SalesDay> listDay) {
     children: listDay
         .map(
           (e) => wValuePercent(
-            color: Colors.grey[200],//colorGreen.withAlpha(50),
+            color: Colors.grey[200], //colorGreen.withAlpha(50),
             colorData: colorGreen,
             count: 'S/ ${e.value!.toStringAsFixed(2)}',
             name: e.name!,

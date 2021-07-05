@@ -62,7 +62,7 @@ class EditBaseController extends GetxController {
       val.typeId = int.parse(vetTypeId);
     });
 
-    await _repo.updateBase(entityBase.value, showVetController.argumentoId);
+    await _repo.updateBase(entityBase.value, showVetController.argumentoId!);
 
     showVetController.getByid();
     vetController.getAll();
@@ -74,7 +74,7 @@ class EditBaseController extends GetxController {
   }
 
   _searchandNavigate(Prediction dato) async {
-    if (addressControl.text.trim() != "") {
+    if (addressControl.text.trim() != '') {
       addressControl.text = dato.name!;
 
       final datoById = await _repo.getLatLngByPlaceId(dato.placeId!);

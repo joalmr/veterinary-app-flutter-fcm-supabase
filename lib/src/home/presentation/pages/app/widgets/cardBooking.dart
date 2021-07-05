@@ -9,7 +9,6 @@ import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/src/bookings/presentation/pages/reprogramar/app/reprogramar.dart';
 import 'package:vet_app/src/home/domain/homeController.dart';
 
-
 class CardBooking extends StatelessWidget {
   final String bookingId;
   final String petImg;
@@ -46,21 +45,22 @@ class CardBooking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeController _home = Get.find();
-    String stringTypes = "";
+    String stringTypes = '';
     for (var i = 0; i < bookingServices.length; i++) {
       final element = bookingServices[i];
       if (bookingServices.length == 1) {
         stringTypes = element;
       } else {
-        if (i < bookingServices.length - 1)
-          stringTypes += element + ", ";
-        else
+        if (i < bookingServices.length - 1) {
+          stringTypes += '$element, ';
+        } else {
           stringTypes += element;
+        }
       }
     }
 
     return Card(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
         onTap: () {
           showModalBottomSheet<void>(
@@ -74,7 +74,7 @@ class CardBooking extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: Row(
                           children: [
                             Container(
@@ -93,7 +93,7 @@ class CardBooking extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Expanded(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -101,14 +101,15 @@ class CardBooking extends StatelessWidget {
                                 children: [
                                   Text(
                                     petName,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(petBreed),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Container(
                                         decoration: BoxDecoration(
@@ -119,10 +120,10 @@ class CardBooking extends StatelessWidget {
                                         height: 7.5,
                                         width: 7.5,
                                       ),
-                                      SizedBox(width: 5),
+                                      const SizedBox(width: 5),
                                       Text(
                                         status,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.w300,
                                           fontSize: 12.0,
                                         ),
@@ -131,7 +132,7 @@ class CardBooking extends StatelessWidget {
                                   ),
                                   Text(
                                     '$date $time',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -139,13 +140,12 @@ class CardBooking extends StatelessWidget {
                               ),
                             ),
                             IconButton(
-                              icon: Icon(
-                                LineIcons.whatSApp
-                                // LineAwesomeIcons.whatsapp
-                              ),
+                              icon: const Icon(LineIcons.whatSApp
+                                  // LineAwesomeIcons.whatsapp
+                                  ),
                               color: colorMain,
                               iconSize: 40,
-                              onPressed: (){
+                              onPressed: () {
                                 _home.launchWhatsApp(
                                   userPhone,
                                   userName,
@@ -159,80 +159,69 @@ class CardBooking extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           left: 20,
                           right: 20,
-                          top: 0,
                           bottom: 20,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Usuario',
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
                               ),
                             ),
-                            Text(
-                              userName,
-                              style: TextStyle(),
-                            ),
-                            Text(
-                              userPhone,
-                              style: TextStyle(),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
+                            Text(userName),
+                            Text(userPhone),
+                            const SizedBox(height: 5),
+                            const Text(
                               'Tipo',
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
                               ),
                             ),
-                            Text(
-                              stringTypes,
-                              style: TextStyle(),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
+                            Text(stringTypes),
+                            const SizedBox(height: 5),
+                            const Text(
                               'Observaciones',
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
                               ),
                             ),
                             Text(
-                              observation == "" ? "-" : observation,
-                              style: TextStyle(),
+                              observation == '' ? '-' : observation,
                               maxLines: 5,
                             ),
-                            SizedBox(height: 5),
-                            delivery != "" && address != ""
-                                ? Card(
-                                    color: Colors.grey[200],
-                                    child: Container(
-                                      padding: EdgeInsets.all(8),
-                                      width: double.maxFinite,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Icon(IconProypet.delivery),
-                                          SizedBox(height: 5),
-                                          Text(
-                                            delivery,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          SizedBox(height: 5),
-                                          Text(address),
-                                        ],
+                            const SizedBox(height: 5),
+                            if (delivery != '' && address != '')
+                              Card(
+                                color: Colors.grey[200],
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  width: double.maxFinite,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Icon(IconProypet.delivery),
+                                      const SizedBox(height: 5),
+                                      Text(
+                                        delivery,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                    ),
-                                  )
-                                : SizedBox(height: 0)
+                                      const SizedBox(height: 5),
+                                      Text(address),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            else
+                              const SizedBox(height: 0)
                           ],
                         ),
                       ),
@@ -240,7 +229,8 @@ class CardBooking extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.only(left: 20, right: 7.5),
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 7.5),
                               child: btnSecondary(
                                 text: 'Confirmar',
                                 onPressed: () {
@@ -252,7 +242,8 @@ class CardBooking extends StatelessWidget {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.only(left: 7.5, right: 20),
+                              padding:
+                                  const EdgeInsets.only(left: 7.5, right: 20),
                               child: btnSecondary(
                                 text: 'Reprogramar',
                                 color: Colors.grey[600]!,
@@ -308,7 +299,7 @@ class CardBooking extends StatelessWidget {
           children: [
             Text(
               petName,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -325,10 +316,10 @@ class CardBooking extends StatelessWidget {
                   height: 7.5,
                   width: 7.5,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   status,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w300,
                     fontSize: 12.0,
                   ),
@@ -336,9 +327,9 @@ class CardBooking extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(top: 5, bottom: 10),
+              padding: const EdgeInsets.only(top: 5, bottom: 10),
               child: Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.expand_more_rounded,
                     size: 14,
@@ -362,14 +353,14 @@ class CardBooking extends StatelessWidget {
           children: [
             Text(
               date,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 12.0,
               ),
             ),
             Text(
               time,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 12.0,
               ),

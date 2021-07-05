@@ -7,15 +7,13 @@ class AtenderMascota extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
             width: double.maxFinite,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+              children: const [
                 CircleAvatar(
                   radius: 45,
                   backgroundImage: AssetImage('assets/images/dog.jpg'),
@@ -37,7 +35,7 @@ class AtenderMascota extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
               'Atender',
@@ -45,7 +43,7 @@ class AtenderMascota extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             width: double.maxFinite,
             height: 100,
             decoration: BoxDecoration(
@@ -59,7 +57,7 @@ class AtenderMascota extends StatelessWidget {
                 ),
               ],
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 'Atender ahora',
                 style: TextStyle(
@@ -71,7 +69,7 @@ class AtenderMascota extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             width: double.maxFinite,
             height: 100,
             decoration: BoxDecoration(
@@ -85,7 +83,7 @@ class AtenderMascota extends StatelessWidget {
                 ),
               ],
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 'Programar atención',
                 style: TextStyle(

@@ -39,7 +39,7 @@ class ContentReprograma extends StatelessWidget {
   Widget build(BuildContext context) {
     final timeController = TextEditingController();
     TimeOfDay pickedTime = TimeOfDay.now();
-    
+
     return GetX<ReprogramarController>(
       init: ReprogramarController(),
       builder: (_) {
@@ -143,7 +143,7 @@ class ContentReprograma extends StatelessWidget {
               DateTimePicker(
                 dateMask: 'dd-MM-yyyy',
                 firstDate: DateTime.now(),
-                lastDate: DateTime(DateTime.now().year+3),
+                lastDate: DateTime(DateTime.now().year + 3),
                 dateLabelText: 'Fecha hasta',
                 onChanged: (val) => _.fecha.value = val,
               ),
@@ -157,7 +157,7 @@ class ContentReprograma extends StatelessWidget {
                 controller: timeController,
                 readOnly: true,
                 onTap: () {
-                  final format = DateFormat("HH:mm");
+                  final format = DateFormat('HH:mm');
                   Navigator.of(context).push(
                     showPicker(
                       context: context,
@@ -168,8 +168,8 @@ class ContentReprograma extends StatelessWidget {
                       maxMinute: 50,
                       barrierDismissible: false,
                       iosStylePicker: true,
-                      hourLabel: "horas",
-                      minuteLabel: "minutos",
+                      hourLabel: 'horas',
+                      minuteLabel: 'minutos',
                       okText: 'Aceptar',
                       cancelText: 'Cancelar',
                       onChangeDateTime: (DateTime dateTime) {
@@ -185,7 +185,7 @@ class ContentReprograma extends StatelessWidget {
                 child: btnSecondary(
                   text: 'Reprogramar',
                   color: Colors.grey[600]!,
-                  onPressed: () => _.reprogramar(bookingId),
+                  onPressed: () => _.reprogramar(bookingId!),
                 ),
               ),
               _.errorDateTime.value

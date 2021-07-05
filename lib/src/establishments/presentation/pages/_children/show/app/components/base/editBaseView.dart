@@ -15,10 +15,10 @@ class EditBaseView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Editar datos base'),
+            title: const Text('Editar datos base'),
           ),
           body: Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 10,
               vertical: 40,
             ),
@@ -29,18 +29,18 @@ class EditBaseView extends StatelessWidget {
                 children: [
                   TextFormField(
                     controller: _.nameControl,
-                    decoration: InputDecoration(labelText: 'Nombre'),
+                    decoration: const InputDecoration(labelText: 'Nombre'),
                     textCapitalization: TextCapitalization.sentences,
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   TextFormField(
                     controller: _.phoneControl,
-                    decoration: InputDecoration(labelText: 'Teléfono'),
+                    decoration: const InputDecoration(labelText: 'Teléfono'),
                     keyboardType: TextInputType.number,
                     inputFormatters: [TextInputMask(mask: '999-999-999')],
                   ),
-                  SizedBox(height: 15),
-                  Text('Tipo'),
+                  const SizedBox(height: 15),
+                  const Text('Tipo'),
                   Material(
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(5),
@@ -51,9 +51,9 @@ class EditBaseView extends StatelessWidget {
                           isExpanded: true,
                           value: _.vetTypeId,
                           items: itemTipo.map((ItemService value) {
-                            return new DropdownMenuItem<String>(
+                            return DropdownMenuItem<String>(
                               value: value.id,
-                              child: new Text(value.name!),
+                              child: Text(value.name!),
                             );
                           }).toList(),
                           onChanged: (String? val) {
@@ -63,12 +63,12 @@ class EditBaseView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   DirBase(
                     direccion: 'Direccion',
                     controller: _.addressControl,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Center(
                     child: btnSecondary(
                       text: 'Guardar',

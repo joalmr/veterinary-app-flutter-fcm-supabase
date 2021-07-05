@@ -9,15 +9,15 @@ class UserClientsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MenuDrawer(),
+      drawer: const MenuDrawer(),
       appBar: AppBar(
-        title: Text('Clientes'),
+        title: const Text('Clientes'),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_rounded),
         onPressed: () {
           Get.to(CreaCliente());
         },
+        child: const Icon(Icons.add_rounded),
       ),
       body: ListView.builder(
         itemCount: 10,
@@ -26,7 +26,7 @@ class UserClientsApp extends StatelessWidget {
             leading: CircleAvatar(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: Icon(
+                child: const Icon(
                   Icons.accessibility_new_rounded,
                   color: Colors.white,
                   size: 32,

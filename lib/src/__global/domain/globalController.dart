@@ -11,21 +11,13 @@ class GlobalController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  openApp() {
-    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
-      Timer(Duration(milliseconds: 2500), () => Get.offNamed(NameRoutes.home));
+  void openApp() {
+    if (prefUser.tokenHas() == true && prefUser.vetDataHas() == true) {
+      Timer(const Duration(milliseconds: 2500),
+          () => Get.offNamed(NameRoutes.home));
     } else {
-      Timer(Duration(milliseconds: 2500), () => Get.offNamed(NameRoutes.login));
+      Timer(const Duration(milliseconds: 2500),
+          () => Get.offNamed(NameRoutes.login));
     }
   }
 }

@@ -21,16 +21,16 @@ class CreateOfferController extends GetxController {
 
   final description = TextEditingController();
 
-  RxInt _selectValue = 0.obs;
+  final RxInt _selectValue = 0.obs;
   int get selectValue => _selectValue.value;
   set selectValue(int val) => _selectValue.value = val;
 
-  RxString _serviceNum = '1'.obs;
+  final RxString _serviceNum = '1'.obs;
   String get serviceNum => _serviceNum.value;
   set serviceNum(String value) => _serviceNum.value = value;
 
   // TODO:  REVISAR OTRO TIPO DE MONEY CONTROLLER
-  var moneyController = new MoneyMaskedTextController(
+  final moneyController = MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
@@ -38,7 +38,7 @@ class CreateOfferController extends GetxController {
     leftSymbol: '',
   );
 
-  RxBool _cargando = true.obs;
+  final RxBool _cargando = true.obs;
   bool get cargando => _cargando.value;
   set cargando(bool val) => _cargando.value = val;
 
@@ -48,26 +48,15 @@ class CreateOfferController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
   getService() => _getService();
 
   _getService() async {
     servicesVet.clear();
-    var response = await _establecimientoRepo.getServiceVet();
+    final response = await _establecimientoRepo.getServiceVet();
     servicesVet.addAll(response);
     cargando = false;
   }
 
-  
   create(String dispositivo) => _create(dispositivo);
   _create(String dispositivo) async {
     String type = '';
@@ -77,54 +66,45 @@ class CreateOfferController extends GetxController {
             ? 'Percentage'
             : 'Total';
 
-    var datos = double.tryParse(moneyController.numberValue.toString())??0.00;
+    final datos =
+        double.tryParse(moneyController.numberValue.toString()) ?? 0.00;
     print(datos);
-    
-    if (description.text.trim() != "" && moneyController.text.trim() != "" && moneyController.numberValue > 0) {
-      Offer offer = Offer();
+
+    if (description.text.trim() != '' &&
+        moneyController.text.trim() != '' &&
+        moneyController.numberValue > 0) {
+      final Offer offer = Offer();
       offer.description = description.text;
       offer.type = type;
       offer.discount = moneyController.numberValue.toStringAsFixed(2);
-      offer.serviceId = '$serviceNum';
+      offer.serviceId = serviceNum;
       offer.serviceName = textMap[serviceNum];
 
-      var response = await _repo.create(offer, prefUser.vetId!);
-      if(response==200){
-        description.text="";
-        moneyController.text="0.00";
+      final response = await _repo.create(offer, prefUser.vetId!);
+      if (response == 200) {
+        description.text = '';
+        moneyController.text = '0.00';
         _padre.getAll();
-        if(dispositivo=='app'){
+        if (dispositivo == 'app') {
           Get.back();
         }
       }
-      
-    } 
-    else{
-      if (description.text.trim() == "")
+    } else {
+      if (description.text.trim() == '') {
         Get.snackbar(
           'Error',
           'Debe agregar una descripción',
           backgroundColor: colorRed,
           colorText: colorWhite,
         );
-      else
+      } else {
         Get.snackbar(
           'Error',
           'Debe ingresar el monto y ser mayor a 0',
           backgroundColor: colorRed,
           colorText: colorWhite,
         );
+      }
     }
-
-    // try{}
-    // catch(e){
-    //   Get.snackbar(
-    //     'Error',
-    //     'Debe ingresar el monto y ser mayor a 0',
-    //     backgroundColor: colorRed,
-    //     colorText: colorWhite,
-    //   );
-    // }
-    
   }
 }

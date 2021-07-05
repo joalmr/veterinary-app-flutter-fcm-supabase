@@ -15,13 +15,13 @@ class Address {
 
   factory Address.fromJson(Map<String, dynamic> json) => Address(
         predictions: List<Prediction>.from(
-            json["predictions"].map((x) => Prediction.fromJson(x))),
-        status: json["status"],
+            json['predictions'].map((x) => Prediction.fromJson(x))),
+        status: json['status'],
       );
 
   Map<String, dynamic> toJson() => {
-        "predictions": List<dynamic>.from(predictions!.map((x) => x.toJson())),
-        "status": status,
+        'predictions': List<dynamic>.from(predictions!.map((x) => x.toJson())),
+        'status': status,
       };
 }
 
@@ -37,14 +37,14 @@ class Prediction {
   });
 
   factory Prediction.fromJson(Map<String, dynamic> json) => Prediction(
-        name: json["description"],
-        id: json["id"],
-        placeId: json["place_id"],
+        name: json['description'],
+        id: json['id'],
+        placeId: json['place_id'],
       );
 
   Map<String, dynamic> toJson() => {
-        "description": name,
-        "id": id,
+        'description': name,
+        'id': id,
       };
 
   @override

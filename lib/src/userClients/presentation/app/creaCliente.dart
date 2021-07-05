@@ -6,37 +6,37 @@ class CreaCliente extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crear cliente'),
+        title: const Text('Crear cliente'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         children: [
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Nombre del cliente',
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Apellido del cliente',
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Email del cliente',
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Telf. del cliente',
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           btnPrimary(
             text: 'Crear cliente',
             onPressed: () {},

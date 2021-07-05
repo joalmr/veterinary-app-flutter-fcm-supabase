@@ -18,21 +18,22 @@ class VetList extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 30.0, top: 25.0, bottom: 20.0),
+                margin:
+                    const EdgeInsets.only(left: 30.0, top: 25.0, bottom: 20.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Establecimientos',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Padding(
-                      padding: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 10),
                       child: btnSecondary(
                         text: 'Nuevo establecimiento',
                         onPressed: () => Get.toNamed('/establishments/create'),
@@ -42,10 +43,9 @@ class VetList extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 20, right: 10),
-                child: Wrap(
-                  children:[ 
-                    for (var establecimiento in _.establecimientos) 
+                margin: const EdgeInsets.only(left: 20, right: 10),
+                child: Wrap(children: [
+                  for (var establecimiento in _.establecimientos)
                     VetCard(
                       id: establecimiento.id!,
                       image: establecimiento.logo!,
@@ -54,8 +54,7 @@ class VetList extends StatelessWidget {
                       aprobado: establecimiento.status!,
                       tipo: establecimiento.type!,
                     ),
-                  ]
-                ),
+                ]),
               ),
             ],
           ),

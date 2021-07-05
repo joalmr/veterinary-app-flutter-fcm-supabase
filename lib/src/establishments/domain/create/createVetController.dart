@@ -1,48 +1,50 @@
 import 'dart:async';
+
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:vet_app/resources/utils/days/diaSemana.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/resources/utils/days/dia_semana.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/establishments/data/EstablishmentRepository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/data/model/serviceModel.dart';
 import 'package:vet_app/src/establishments/data/request/establishmentRequest.dart';
 import 'package:vet_app/src/establishments/data/request/priceEstRequest.dart';
+
 import '../establishmentsController.dart';
 import 'createVetValue.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class CreateVetController extends GetxController {
   final _repo = EstablishmentRepository();
   final v = CreateVetValue();
 
-  EstablecimientoEntity entity = new EstablecimientoEntity();
-  PriceEstablecimientoEntity prices = new PriceEstablecimientoEntity();
+  EstablecimientoEntity entity = EstablecimientoEntity();
+  PriceEstablecimientoEntity prices = PriceEstablecimientoEntity();
 
   final vetController = Get.find<EstablishmentsController>();
 
-  RxBool _checked = false.obs;
+  final _checked = false.obs;
   bool get checked => _checked.value;
   set checked(bool value) => _checked.value = value;
 
-  RxString _idVet = ''.obs;
+  final _idVet = ''.obs;
   String get idVet => _idVet.value;
   set idVet(String value) => _idVet.value = value;
 
-  RxInt _selected = 1.obs;
+  final _selected = 1.obs;
   int get selected => _selected.value;
   set selected(int value) => _selected.value = value;
 
-  RxString _description = ''.obs;
+  final _description = ''.obs;
   String get description => _description.value;
   set description(String value) => _description.value = value;
 
-  RxString _vetType = '1'.obs;
+  final RxString _vetType = '1'.obs;
   String get vetType => _vetType.value;
   set vetType(String value) => _vetType.value = value;
 
-  RxString _personalType = '2'.obs;
+  final RxString _personalType = '2'.obs;
   String get personalType => _personalType.value;
   set personalType(String value) => _personalType.value = value;
 
@@ -73,15 +75,15 @@ class CreateVetController extends GetxController {
     servicesVet.addAll(lista);
   }
 
-  mapCreated(controller) {
+  mapCreated(GoogleMapController? controller) {
     _controller = controller;
     _controller!.setMapStyle(_mapStyle);
   }
 
   void add2List(int numero) {
-    if (!servicesVetSet.contains(numero))
+    if (!servicesVetSet.contains(numero)) {
       servicesVetSet.add(numero);
-    else {
+    } else {
       if (servicesVetSet.length > 1) {
         servicesVetSet.remove(numero);
       }
@@ -92,7 +94,7 @@ class CreateVetController extends GetxController {
   // _buscaDireccion(String filter) async {
   //   print(filter);
   //   String ruta =
-  //       "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter";
+  //       'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter';
   //   Uri url = Uri.parse(ruta);
   //   var response = await http.get(url);
   //   print(response.body);
@@ -108,7 +110,7 @@ class CreateVetController extends GetxController {
   double? lng;
 
   _searchandNavigate(Prediction dato) async {
-    if (v.dirVet.text.trim() != "") {
+    if (v.dirVet.text.trim() != '') {
       marcador.clear();
 
       v.dirVet.text = dato.name!;
@@ -122,10 +124,10 @@ class CreateVetController extends GetxController {
 
       marcador.add(
         Marker(
-          markerId: MarkerId("1"),
+          markerId: const MarkerId('1'),
           position: latlng,
           draggable: true,
-          onDragEnd: ((value) {
+          onDragEnd: ((LatLng value) {
             lat = value.latitude;
             lng = value.longitude;
           }),
@@ -150,20 +152,19 @@ class CreateVetController extends GetxController {
     entity.latitude = lat;
     entity.longitude = lng;
     entity.services = servicesVetSet;
-    entity.reference = "";
+    entity.reference = '';
 
     // var resp =
     _repo.setNew(entity).then((value) async {
-      if(value[0]!=200){
+      if (value[0] != 200) {
         Get.snackbar(
           'Error',
           'No se creó el establecimiento',
           backgroundColor: colorRed,
           colorText: colorWhite,
         );
-      }
-      else{
-        idVet = value[1];
+      } else {
+        idVet = value[1] as String;
         await _setEmployee(idVet);
         await _setSchedule(idVet);
         await _setPrices(idVet);
@@ -174,9 +175,9 @@ class CreateVetController extends GetxController {
   }
 
   _setEmployee(String idVeterinaria) async {
-    int type = int.parse(personalType);
-    String name = v.personalNameVet.text;
-    String code = v.personalCodeVet.text;
+    final int type = int.parse(personalType);
+    final String name = v.personalNameVet.text;
+    final String code = v.personalCodeVet.text;
     await _repo.setEmployee(idVeterinaria, type, name, code);
   }
 
@@ -190,41 +191,41 @@ class CreateVetController extends GetxController {
   }
 
   _setSchedule(String idVeterinaria) async {
-    var schedule = {
-      "monday": {
-        "switch": v.checkDay[0],
-        "time_start": v.iniDay[0],
-        "time_end": v.endDay[0],
+    final schedule = {
+      'monday': {
+        'switch': v.checkDay[0],
+        'time_start': v.iniDay[0],
+        'time_end': v.endDay[0],
       },
-      "tuesday": {
-        "switch": v.checkDay[1],
-        "time_start": v.iniDay[1],
-        "time_end": v.endDay[1],
+      'tuesday': {
+        'switch': v.checkDay[1],
+        'time_start': v.iniDay[1],
+        'time_end': v.endDay[1],
       },
-      "wednesday": {
-        "switch": v.checkDay[2],
-        "time_start": v.iniDay[2],
-        "time_end": v.endDay[2],
+      'wednesday': {
+        'switch': v.checkDay[2],
+        'time_start': v.iniDay[2],
+        'time_end': v.endDay[2],
       },
-      "thursday": {
-        "switch": v.checkDay[3],
-        "time_start": v.iniDay[3],
-        "time_end": v.endDay[3],
+      'thursday': {
+        'switch': v.checkDay[3],
+        'time_start': v.iniDay[3],
+        'time_end': v.endDay[3],
       },
-      "friday": {
-        "switch": v.checkDay[4],
-        "time_start": v.iniDay[4],
-        "time_end": v.endDay[4],
+      'friday': {
+        'switch': v.checkDay[4],
+        'time_start': v.iniDay[4],
+        'time_end': v.endDay[4],
       },
-      "saturday": {
-        "switch": v.checkDay[5],
-        "time_start": v.iniDay[5],
-        "time_end": v.endDay[5],
+      'saturday': {
+        'switch': v.checkDay[5],
+        'time_start': v.iniDay[5],
+        'time_end': v.endDay[5],
       },
-      "sunday": {
-        "switch": v.checkDay[6],
-        "time_start": v.iniDay[6],
-        "time_end": v.endDay[6],
+      'sunday': {
+        'switch': v.checkDay[6],
+        'time_start': v.iniDay[6],
+        'time_end': v.endDay[6],
       },
     };
 
@@ -283,22 +284,23 @@ class CreateVetController extends GetxController {
   }
 
   validaStep3() {
-    var diaError = "";
-    var diaHoraError = "";
+    var diaError = '';
+    var diaHoraError = '';
     for (var i = 0; i < 7; i++) {
       String ini = v.iniController[i].text;
       String end = v.endController[i].text;
       if (v.checkDay[i]) {
         if (ini.isEmpty || end.isEmpty) {
-          diaError == ""
+          diaError == ''
               ? diaError = diaError + diaSemana[i]
-              : diaError = diaError + ", " + diaSemana[i];
+              : diaError = diaError + ', ' + diaSemana[i];
         } else {
           int iniNum = int.parse(ini.split(':')[0]);
           int endNum = int.parse(end.split(':')[0]);
-          if (iniNum >= endNum)
+          if (iniNum >= endNum) {
             diaHoraError =
-                "Hora seleccionada incorrecta el día ${diaSemana[i]}, la hora de inicio es mayor a la de fin";
+                '''Hora seleccionada incorrecta el día ${diaSemana[i]}, la hora de inicio es mayor a la de fin''';
+          }
         }
       }
     }
@@ -315,21 +317,23 @@ class CreateVetController extends GetxController {
         backgroundColor: colorRed,
         colorText: colorWhite,
       );
-    } else if (diaError != "" || diaHoraError != "") {
-      if (diaError != "")
+    } else if (diaError != '' || diaHoraError != '') {
+      if (diaError != '') {
         Get.snackbar(
           'Error',
           'Complete los datos de $diaError',
           backgroundColor: colorRed,
           colorText: colorWhite,
         );
-      if (diaHoraError != "")
+      }
+      if (diaHoraError != '') {
         Get.snackbar(
           'Error',
-          '$diaHoraError',
+          diaHoraError,
           backgroundColor: colorRed,
           colorText: colorWhite,
         );
+      }
     } else {
       if (selected < 4) selected++;
     }
@@ -347,7 +351,7 @@ class CreateVetController extends GetxController {
       checked = true;
       setFinaliza();
       Timer(
-        Duration(milliseconds: 3500),
+        const Duration(milliseconds: 3500),
         () {
           checked = false;
           Get.offNamed(NameRoutes.establishments);

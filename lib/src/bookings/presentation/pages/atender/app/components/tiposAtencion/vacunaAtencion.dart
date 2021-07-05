@@ -51,21 +51,17 @@ class VacunaPage extends StatelessWidget {
                                 keyboardType: TextInputType.number,
                               ),
                               SizedBox(height: 5),
-                              btnPrimary(text: 'Guardar vacuna', onPressed: () {}),
+                              btnPrimary(
+                                  text: 'Guardar vacuna', onPressed: () {}),
                             ],
                           ),
                         ),
                       ],
-                      onStepContinue: () {
-                        
-                      },
-                      onStepCancel: () {
-                        
-                      },
-                      controlsBuilder: (BuildContext context,{
-                          VoidCallback? onStepContinue,
-                          VoidCallback? onStepCancel
-                        }){
+                      onStepContinue: () {},
+                      onStepCancel: () {},
+                      controlsBuilder: (BuildContext context,
+                          {VoidCallback? onStepContinue,
+                          VoidCallback? onStepCancel}) {
                         // _.stepContinue = onStepContinue;
                         // _.stepCancel = onStepCancel;
                         return SizedBox.shrink();
@@ -77,13 +73,13 @@ class VacunaPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     btnAltern(
-                      text: 'Atras', 
-                      onPressed: (){},
+                      text: 'Atras',
+                      onPressed: () {},
                       color: Colors.grey[400]!,
                     ),
                     btnAltern(
-                      text: 'Siguiente', 
-                      onPressed: (){},
+                      text: 'Siguiente',
+                      onPressed: () {},
                       color: colorMain,
                     ),
                   ],

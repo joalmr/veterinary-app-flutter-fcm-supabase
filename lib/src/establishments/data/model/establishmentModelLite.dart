@@ -26,20 +26,20 @@ class EstablecimientoModelLite {
 
   factory EstablecimientoModelLite.fromJson(Map<String, dynamic> json) =>
       EstablecimientoModelLite(
-        id: json["id"],
-        logo: json["logo"],
-        name: json["name"],
-        ruc: json["ruc"],
-        type: json["type"],
-        status: json["status"],
+        id: json['id'],
+        logo: json['logo'],
+        name: json['name'],
+        ruc: json['ruc'],
+        type: json['type'],
+        status: json['status'],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "logo": logo,
-        "name": name,
-        "ruc": ruc,
-        "type": type,
-        "status": status,
+        'id': id,
+        'logo': logo,
+        'name': name,
+        'ruc': ruc,
+        'type': type,
+        'status': status,
       };
 }

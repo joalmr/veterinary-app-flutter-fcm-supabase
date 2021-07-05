@@ -26,16 +26,16 @@ class StatCommentModel {
 
   factory StatCommentModel.fromJson(Map<String, dynamic> json) =>
       StatCommentModel(
-        comment: json["comment"],
-        date: DateTime.parse(json["date"]),
-        petPicture: json["pet_picture"],
-        stars: json["stars"],
+        comment: json['comment'],
+        date: DateTime.parse(json['date']),
+        petPicture: json['pet_picture'],
+        stars: json['stars'],
       );
 
   Map<String, dynamic> toJson() => {
-        "comment": comment,
-        "date": date!.toIso8601String(),
-        "pet_picture": petPicture,
-        "stars": stars,
+        'comment': comment,
+        'date': date!.toIso8601String(),
+        'pet_picture': petPicture,
+        'stars': stars,
       };
 }

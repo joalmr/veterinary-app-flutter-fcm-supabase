@@ -13,41 +13,42 @@ class PercentServicios extends StatelessWidget {
     return GetX<StatsController>(
       builder: (_) {
         return _.cargaServices.value
-          ? Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              child: chartDesign(
-                title: 'Servicios atendidos',
-                colorFondo: Colors.transparent,
-                widget: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, top: 5),
-                      child: Text('${formatDate(_.initialIn!)} a ${formatDate(_.initialOut!)}'),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(5.0),
-                      child: _percent(_.services, _.paiChartList, context),
-                    ),
-                  ],
+            ? const Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                child: chartDesign(
+                  title: 'Servicios atendidos',
+                  colorFondo: Colors.transparent,
+                  widget: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, top: 5),
+                        child: Text(
+                            '''${formatDate(_.initialIn!)} a ${formatDate(_.initialOut!)}'''),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(5.0),
+                        child: _percent(_.services, _.paiChartList, context),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
       },
     );
-    
   }
 }
 
-Widget _percent(List<Services> listService, List<PieChartSectionData> paiChart, BuildContext context) {
+Widget _percent(List<Services> listService, List<PieChartSectionData> paiChart,
+    BuildContext context) {
   double valueTotal = 0;
-  
+
   for (int i = 0; i < listService.length && i < listService.length; i++) {
     valueTotal = valueTotal + listService[i].value!;
   }
-  
+
   return SingleChildScrollView(
-      child: Column(
+    child: Column(
       children: [
         SizedBox(
           height: 200,
@@ -65,48 +66,32 @@ Widget _percent(List<Services> listService, List<PieChartSectionData> paiChart, 
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       valueTotal.toStringAsFixed(0),
                       style: Theme.of(context).textTheme.headline4!.copyWith(
-                        // color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        height: 0.5,
-                      ),
+                            // color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            height: 0.5,
+                          ),
                     ),
-                    Text("servicios"),
+                    const Text('servicios'),
                   ],
                 ),
               ),
             ],
           ),
         ),
-        for (var i = 0; i < listService.length; i++) 
+        for (var i = 0; i < listService.length; i++)
           wValuePercent(
             color: Colors.grey[200], //colorGreen.withAlpha(50)
             colorData: paiChart[i].color,
             count: listService[i].value!.toStringAsFixed(0),
             name: listService[i].name!,
-            progress: double.parse((listService[i].value! / valueTotal).toStringAsFixed(2)),
+            progress: double.parse(
+                (listService[i].value! / valueTotal).toStringAsFixed(2)),
           )
       ],
     ),
   );
-  
-  // SingleChildScrollView(
-  //     child: Column(
-  //     children: [
-        
-  //       for (var e in listService)
-  //         wValuePercent(
-  //           color: Colors.grey[200], //colorGreen.withAlpha(50)
-  //           colorData: colorGreen,
-  //           count: e.value.toStringAsFixed(0),
-  //           name: e.name,
-  //           progress: double.parse((e.value / valueTotal).toStringAsFixed(2)),
-  //         )
-        
-  //     ],
-  //   ),
-  // );
 }

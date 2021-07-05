@@ -65,7 +65,7 @@ class EditServicesController extends GetxController {
       val!.services = servicesVetSet;
     });
 
-    await _repo.updateBase(entityBase.value, showVetController.argumentoId);
+    await _repo.updateBase(entityBase.value, showVetController.argumentoId!);
 
     showVetController.getByid();
     vetController.getAll();

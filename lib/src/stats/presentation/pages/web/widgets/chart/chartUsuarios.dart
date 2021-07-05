@@ -15,7 +15,7 @@ class ChartUsersState extends State<ChartUsers> {
     return chartDesign(
       title: 'Usuarios Mensual',
       widget: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
         child: _chartBar(dataUsuario),
       ),
     );
@@ -44,16 +44,16 @@ class ChartUsersState extends State<ChartUsers> {
   }
 
   Widget _barUsuario(String day, int value, int mayor) {
-    double valorY = (value * 150) / mayor;
+    final double valorY = (value * 150) / mayor;
     // double ancho = (400 - (40 * 2)) / 3;
 
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 2.5),
+          margin: const EdgeInsets.symmetric(horizontal: 2.5),
           height: 150,
           width: 60.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xffF6F6FC),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50),
@@ -64,7 +64,7 @@ class ChartUsersState extends State<ChartUsers> {
           child: Container(
             height: valorY,
             width: 55.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: colorGreen,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(50),
@@ -72,12 +72,12 @@ class ChartUsersState extends State<ChartUsers> {
               ),
             ),
             child: Padding(
-              padding: EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.only(bottom: 10),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Text(
                   value.toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 10,
                   ),
@@ -91,10 +91,10 @@ class ChartUsersState extends State<ChartUsers> {
         //   width: ancho,
         //   color: Colors.red,
         // ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Text(
           day.substring(0, 3),
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 12,
           ),

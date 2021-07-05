@@ -1,7 +1,8 @@
 import 'package:supabase/supabase.dart';
+
+import '../config/variablesSupabase.dart';
 import 'model/canalModel.dart';
 import 'model/messageModel.dart';
-import '../config/variablesSupabase.dart';
 
 class ChatApi {
   final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
@@ -14,12 +15,8 @@ class ChatApi {
       }
     ]).execute();
 
-    print('addEstablishment');
-    print(response.status);
-    print(response.data);
-
     final dato = response.data as List;
-    return dato.first['id'];
+    return dato.first['id'] as int;
   }
 
   Future<int> getEstablishment(String uuid, String name) async {
@@ -32,14 +29,10 @@ class ChatApi {
         .single()
         .execute();
 
-    print('getEstablishment');
-    print(hasVet.status);
-    print(hasVet.data);
-
     if (hasVet.data == null) {
       idVet = await addEstablishment(uuid, name);
     } else {
-      idVet = hasVet.data['id'];
+      idVet = hasVet.data['id'] as int;
     }
 
     return idVet;
@@ -48,10 +41,11 @@ class ChatApi {
   Future<List<CanalModel>> getCanal(int vetInt) async {
     List<CanalModel> canales = [];
 
-    final hasCanal = await supabaseClient.from('canal')
-    .select('''*,
-      petlover (*)''')
-      .eq('establishment_id', vetInt).execute();
+    final hasCanal = await supabaseClient
+        .from('canal')
+        .select('''*, petlover (*)''')
+        .eq('establishment_id', vetInt)
+        .execute();
 
     if (hasCanal.data != null) {
       final canalList = hasCanal.data as List;

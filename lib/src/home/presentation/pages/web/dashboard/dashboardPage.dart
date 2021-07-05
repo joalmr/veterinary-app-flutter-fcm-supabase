@@ -23,8 +23,8 @@ class _DashBoardState extends State<DashBoard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.only(left: 30.0, top: 25.0, bottom: 10.0),
-            child: Text(
+            margin: const EdgeInsets.only(left: 30.0, top: 25.0, bottom: 10.0),
+            child: const Text(
               'Dashboard',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -34,7 +34,7 @@ class _DashBoardState extends State<DashBoard> {
           ),
           subHeader(title: 'Reservas por atender'),
           Container(
-            margin: EdgeInsets.only(left: 32.0),
+            margin: const EdgeInsets.only(left: 32.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -77,7 +77,7 @@ class _DashBoardState extends State<DashBoard> {
               ],
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ConditionalSwitch.single<int>(
             context: context,
             valueBuilder: (BuildContext context) => selected,

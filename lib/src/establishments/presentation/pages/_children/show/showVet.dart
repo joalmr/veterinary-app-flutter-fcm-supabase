@@ -11,7 +11,7 @@ class ShowVetMain extends StatelessWidget {
     return GetBuilder<ShowVetController>(
       init: ShowVetController(),
       builder: (_) {
-        return context.width < 900 ? ShowVetView() : ShowVetPage();
+        return context.width < 900 ? ShowVetView() : const ShowVetPage();
       },
     );
   }

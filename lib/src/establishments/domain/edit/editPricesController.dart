@@ -53,9 +53,9 @@ class EditPricesController extends GetxController {
     vacunaControl.text = double.parse(
             showVetController.establishment.value.prices!.vaccination!.from!)
         .toStringAsFixed(2);
-    groomingControl.text =
-        double.parse(showVetController.establishment.value.prices!.grooming!.from!)
-            .toStringAsFixed(2);
+    groomingControl.text = double.parse(
+            showVetController.establishment.value.prices!.grooming!.from!)
+        .toStringAsFixed(2);
     super.onInit();
   }
 
@@ -70,7 +70,7 @@ class EditPricesController extends GetxController {
     prices.dewormingPriceFrom = desparasitaControl.numberValue;
     prices.groomingPriceFrom = groomingControl.numberValue;
     prices.vaccinationPriceFrom = vacunaControl.numberValue;
-    await _repo.setPrices(showVetController.argumentoId, prices);
+    await _repo.setPrices(showVetController.argumentoId!, prices);
 
     showVetController.getByid();
     vetController.getAll();

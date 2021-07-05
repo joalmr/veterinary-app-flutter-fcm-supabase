@@ -54,7 +54,7 @@ class ConsultaView extends StatelessWidget {
                         final url = Uri.https(
                           urlBase!,
                           '/autocomplete/diagnoses',
-                          {"q": filter},
+                          {'q': filter},
                         );
                         var response = await http.get(url);
                         var models = diagnosesModelFromJson(response.body);

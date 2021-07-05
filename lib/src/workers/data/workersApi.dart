@@ -39,7 +39,7 @@ class WorkersApi extends WorkersInterface {
   Future<InvitationModel> setInvita(String establishmentId, String mail) async {
     final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishmentId/worker/invitation');
-    final dataBooking = {"email": mail};
+    final dataBooking = {'email': mail};
 
     http.Response response = await http.post(
       url,

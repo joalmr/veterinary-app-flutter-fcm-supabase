@@ -7,12 +7,12 @@ class Step4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CreateVetController>(
       builder: (_) {
-        return Container(
+        return SizedBox(
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Descripción'),
+                decoration: const InputDecoration(labelText: 'Descripción'),
                 controller: _.v.descriptionVet,
                 onChanged: (val) => _.description = val,
                 textCapitalization: TextCapitalization.sentences,

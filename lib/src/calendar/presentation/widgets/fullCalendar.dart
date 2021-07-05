@@ -6,63 +6,64 @@ import 'package:vet_app/src/calendar/domain/calendarController.dart';
 
 import '../pages/app/dayDetail.dart';
 
-int numWeekDay(year, month, day) {
+int numWeekDay(int year, int month, int day) {
   return DateTime(year, month, day).weekday;
 }
 
 class FullCalendar extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return GetX<CalendarController>(
-      builder: (_){
+      builder: (_) {
         return Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: 10,bottom: 2.5),
+                  padding: const EdgeInsets.only(left: 10, bottom: 2.5),
                   width: (context.width) / 7,
-                  child: Text('Lun'),
+                  child: const Text('Lun'),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,bottom: 2.5),
+                  padding: const EdgeInsets.only(left: 10, bottom: 2.5),
                   width: (context.width) / 7,
-                  child: Text('Mar'),
+                  child: const Text('Mar'),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,bottom: 2.5),
+                  padding: const EdgeInsets.only(left: 10, bottom: 2.5),
                   width: (context.width) / 7,
-                  child: Text('Mie'),
+                  child: const Text('Mie'),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,bottom: 2.5),
+                  padding: const EdgeInsets.only(left: 10, bottom: 2.5),
                   width: (context.width) / 7,
-                  child: Text('Jue'),
+                  child: const Text('Jue'),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,bottom: 2.5),
+                  padding: const EdgeInsets.only(left: 10, bottom: 2.5),
                   width: (context.width) / 7,
-                  child: Text('Vie'),
+                  child: const Text('Vie'),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,bottom: 2.5),
+                  padding: const EdgeInsets.only(left: 10, bottom: 2.5),
                   width: (context.width) / 7,
-                  child: Text('Sáb'),
+                  child: const Text('Sáb'),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,bottom: 2.5),
+                  padding: const EdgeInsets.only(left: 10, bottom: 2.5),
                   width: (context.width) / 7,
-                  child: Text('Dom'),
+                  child: const Text('Dom'),
                 ),
               ],
             ),
             Wrap(
               children: [
-                for (var i = 1; i < numWeekDay(_.valueYear.value, _.valueMonth.value, 1); i++)
+                for (var i = 1;
+                    i < numWeekDay(_.valueYear.value, _.valueMonth.value, 1);
+                    i++)
                   Container(
-                    width: (context.width ) / 7,
+                    width: (context.width) / 7,
                     height: 100,
                     child: Container(
                       color: Colors.grey[200],
@@ -70,18 +71,19 @@ class FullCalendar extends StatelessWidget {
                   ),
                 for (var i = 1; i <= _.daysPerMonth.value; i++)
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       var listaBooking = [];
                       var listaEvent = [];
                       var listaNextDate = [];
-                      var dateDet = DateTime(_.valueYear.value, _.valueMonth.value,i);
-                      if(_.listCalendarBooking[i] != null){
+                      var dateDet =
+                          DateTime(_.valueYear.value, _.valueMonth.value, i);
+                      if (_.listCalendarBooking[i] != null) {
                         listaBooking.addAll(_.listCalendarBooking[i]);
                       }
-                      if(_.listCalendarNextDate[i] != null){
+                      if (_.listCalendarNextDate[i] != null) {
                         listaNextDate.addAll(_.listCalendarNextDate[i]);
                       }
-                      if(_.listCalendarEvent[i] != null){
+                      if (_.listCalendarEvent[i] != null) {
                         listaEvent.addAll(_.listCalendarEvent[i]);
                       }
                       Get.to(DayDetail(
@@ -92,55 +94,55 @@ class FullCalendar extends StatelessWidget {
                       ));
                     },
                     child: Container(
-                      width: (context.width ) / 7,
+                      width: (context.width) / 7,
                       height: 100,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey[200]!),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.only(top: 5),
+                        padding: const EdgeInsets.only(top: 5),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 5),
+                              padding: const EdgeInsets.only(left: 5),
                               child: Text(('$i')),
                             ),
-                            SizedBox(height: 2.5),
+                            const SizedBox(height: 2.5),
                             Container(
                               width: double.maxFinite,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [     
+                                children: [
                                   _.listCalendarBooking[i] == null
-                                    ? SizedBox()
-                                    : _.listCalendarBooking[i].length > 0 
-                                      ? itemDay(
-                                        'Atenciones',
-                                        _.listCalendarBooking[i].length,
-                                        colorMain,
-                                      )
-                                      : SizedBox(),
+                                      ? SizedBox()
+                                      : _.listCalendarBooking[i].length > 0
+                                          ? itemDay(
+                                              'Atenciones',
+                                              _.listCalendarBooking[i].length,
+                                              colorMain,
+                                            )
+                                          : SizedBox(),
                                   _.listCalendarNextDate[i] == null
-                                    ? SizedBox()
-                                    : _.listCalendarNextDate[i].length > 0 
-                                      ? itemDay(
-                                        'Próx.citas',
-                                        _.listCalendarNextDate[i].length,
-                                        Colors.pinkAccent,
-                                      )
-                                      : SizedBox(),
+                                      ? SizedBox()
+                                      : _.listCalendarNextDate[i].length > 0
+                                          ? itemDay(
+                                              'Próx.citas',
+                                              _.listCalendarNextDate[i].length,
+                                              Colors.pinkAccent,
+                                            )
+                                          : SizedBox(),
                                   _.listCalendarEvent[i] == null
-                                    ? SizedBox()
-                                    : _.listCalendarEvent[i].length > 0 
-                                      ? itemDay(
-                                        'Eventos',
-                                        _.listCalendarEvent[i].length,
-                                        Colors.blueGrey,
-                                      )
-                                      : SizedBox(),
+                                      ? const SizedBox()
+                                      : _.listCalendarEvent[i].length > 0
+                                          ? itemDay(
+                                              'Eventos',
+                                              _.listCalendarEvent[i].length,
+                                              Colors.blueGrey,
+                                            )
+                                          : const SizedBox(),
                                 ],
                               ),
                             ),
@@ -154,21 +156,20 @@ class FullCalendar extends StatelessWidget {
           ],
         );
       },
-    );  
+    );
   }
 }
 
-Widget itemDay(String tipo, int count, Color color){
+Widget itemDay(String tipo, int count, Color color) {
   return Container(
-    margin: EdgeInsets.all(1.5),
-    padding: EdgeInsets.only(top: 1, bottom: 2),
+    margin: const EdgeInsets.all(1.5),
+    padding: const EdgeInsets.only(top: 1, bottom: 2),
     width: double.maxFinite,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(5),
       color: color,
     ),
-    child: 
-    Column(
+    child: Column(
       children: [
         Text(
           tipo,
@@ -177,13 +178,13 @@ Widget itemDay(String tipo, int count, Color color){
             fontSize: 8,
           ),
         ),
-        SizedBox(height: .5),
+        const SizedBox(height: .5),
         Text(
-          count>99 ? '99+' : '$count',
+          count > 99 ? '99+' : '$count',
           style: TextStyle(
             color: Colors.white,
             fontSize: 8,
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.bold,
           ),
         ),
       ],

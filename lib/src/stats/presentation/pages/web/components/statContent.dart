@@ -7,7 +7,7 @@ class StatContent extends StatefulWidget {
   final String? value;
   final Color? color;
 
-  StatContent({
+  const StatContent({
     this.text,
     this.icon,
     this.value,
@@ -38,17 +38,16 @@ class _StatContentState extends State<StatContent> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 275),
-        margin: EdgeInsets.only(bottom: 15.0, left: 5, right: 5),
+        duration: const Duration(milliseconds: 275),
+        margin: const EdgeInsets.only(bottom: 15.0, left: 5, right: 5),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: hovered
                 ? [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.black12,
                       blurRadius: 13.0,
-                      spreadRadius: 0.0,
                     ),
                   ]
                 : []),
@@ -59,10 +58,10 @@ class _StatContentState extends State<StatContent> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: [
-                    SizedBox(width: 5.0),
+                    const SizedBox(width: 5.0),
                     Container(
                       height: 38.0,
                       width: 38.0,
@@ -74,7 +73,7 @@ class _StatContentState extends State<StatContent> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5.0),
                           child: Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Icon(
                               widget.icon,
                               color: Colors.white,
@@ -83,22 +82,21 @@ class _StatContentState extends State<StatContent> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 20.0),
+                    const SizedBox(width: 20.0),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           widget.text!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 12.0,
                           ),
                         ),
-                        SizedBox(width: 5.0),
+                        const SizedBox(width: 5.0),
                         Text(
                           widget.value!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 24.0,
                           ),

@@ -48,27 +48,27 @@ class EstablishmentModal {
 
   factory EstablishmentModal.fromJson(Map<String, dynamic> json) =>
       EstablishmentModal(
-        address: json["address"],
-        description: json["description"],
+        address: json['address'],
+        description: json['description'],
         employees: List<Employee>.from(
-            json["employees"].map((x) => Employee.fromJson(x))),
-        id: json["id"],
-        latitude: json["latitude"].toDouble(),
-        logo: json["logo"],
-        longitude: json["longitude"].toDouble(),
-        name: json["name"],
-        phone: json["phone"],
-        prices: Prices.fromJson(json["prices"]),
-        reference: json["reference"],
-        ruc: json["ruc"],
-        schedule: Schedule.fromJson(json["schedule"]),
+            json['employees'].map((x) => Employee.fromJson(x))),
+        id: json['id'],
+        latitude: json['latitude'].toDouble(),
+        logo: json['logo'],
+        longitude: json['longitude'].toDouble(),
+        name: json['name'],
+        phone: json['phone'],
+        prices: Prices.fromJson(json['prices']),
+        reference: json['reference'],
+        ruc: json['ruc'],
+        schedule: Schedule.fromJson(json['schedule']),
         services: List<Service>.from(
-            json["services"].map((x) => Service.fromJson(x))),
-        slides: List<String>.from(json["slides"].map((x) => x)),
-        stars: json["stars"],
-        type: json["type"],
-        typeId: json["type_id"],
-        website: json["website"],
+            json['services'].map((x) => Service.fromJson(x))),
+        slides: List<String>.from(json['slides'].map((x) => x)),
+        stars: json['stars'],
+        type: json['type'],
+        typeId: json['type_id'],
+        website: json['website'],
       );
 }
 
@@ -88,11 +88,11 @@ class Employee {
   });
 
   factory Employee.fromJson(Map<String, dynamic> json) => Employee(
-        id: json["id"],
-        establishmentId: json["establishment_id"],
-        typeId: json["type_id"],
-        name: json["name"],
-        code: json["code"] == null ? null : json["code"],
+        id: json['id'],
+        establishmentId: json['establishment_id'],
+        typeId: json['type_id'],
+        name: json['name'],
+        code: json['code'] == null ? null : json['code'],
       );
 }
 
@@ -106,13 +106,13 @@ class Service {
   String? name;
 
   factory Service.fromJson(Map<String, dynamic> json) => Service(
-        id: json["id"],
-        name: json["name"],
+        id: json['id'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
+        'id': id,
+        'name': name,
       };
 }
 
@@ -130,10 +130,10 @@ class Prices {
   });
 
   factory Prices.fromJson(Map<String, dynamic> json) => Prices(
-        consultation: Price.fromJson(json["consultation"]),
-        deworming: Price.fromJson(json["deworming"]),
-        vaccination: Price.fromJson(json["vaccination"]),
-        grooming: Price.fromJson(json["grooming"]),
+        consultation: Price.fromJson(json['consultation']),
+        deworming: Price.fromJson(json['deworming']),
+        vaccination: Price.fromJson(json['vaccination']),
+        grooming: Price.fromJson(json['grooming']),
       );
 }
 
@@ -147,8 +147,8 @@ class Price {
   String? to;
 
   factory Price.fromJson(Map<String, dynamic> json) => Price(
-        from: json["from"] == null ? null : json["from"].toString(),
-        to: json["to"],
+        from: json['from'] == null ? null : json['from'].toString(),
+        to: json['to'],
       );
 }
 
@@ -172,23 +172,23 @@ class Schedule {
   Day? sunday;
 
   factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
-        monday: Day.fromJson(json["monday"]),
-        tuesday: Day.fromJson(json["tuesday"]),
-        wednesday: Day.fromJson(json["wednesday"]),
-        thursday: Day.fromJson(json["thursday"]),
-        friday: Day.fromJson(json["friday"]),
-        saturday: Day.fromJson(json["saturday"]),
-        sunday: Day.fromJson(json["sunday"]),
+        monday: Day.fromJson(json['monday']),
+        tuesday: Day.fromJson(json['tuesday']),
+        wednesday: Day.fromJson(json['wednesday']),
+        thursday: Day.fromJson(json['thursday']),
+        friday: Day.fromJson(json['friday']),
+        saturday: Day.fromJson(json['saturday']),
+        sunday: Day.fromJson(json['sunday']),
       );
 
   Map<String, dynamic> toJson() => {
-        "monday": monday,
-        "tuesday": tuesday,
-        "wednesday": wednesday,
-        "thursday": thursday,
-        "friday": friday,
-        "saturday": saturday,
-        "sunday": sunday,
+        'monday': monday,
+        'tuesday': tuesday,
+        'wednesday': wednesday,
+        'thursday': thursday,
+        'friday': friday,
+        'saturday': saturday,
+        'sunday': sunday,
       };
 }
 
@@ -204,14 +204,14 @@ class Day {
   String? timeEnd;
 
   factory Day.fromJson(Map<String, dynamic> json) => Day(
-        daySwitch: json["switch"] == null ? false : json["switch"],
-        timeStart: json["time_start"] == null ? '' : json["time_start"],
-        timeEnd: json["time_end"] == null ? '' : json["time_end"],
+        daySwitch: json['switch'] == null ? false : json['switch'],
+        timeStart: json['time_start'] == null ? '' : json['time_start'],
+        timeEnd: json['time_end'] == null ? '' : json['time_end'],
       );
 
   Map<String, dynamic> toJson() => {
-        "switch": daySwitch,
-        "time_start": timeStart,
-        "time_end": timeEnd,
+        'switch': daySwitch,
+        'time_start': timeStart,
+        'time_end': timeEnd,
       };
 }

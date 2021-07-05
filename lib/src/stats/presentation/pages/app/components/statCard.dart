@@ -18,18 +18,18 @@ class StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 2.5),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 2.5),
       width: context.width,
       // height: 80,
       child: Card(
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         child: Padding(
-          padding: EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(5.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(width: 5.0),
+              const SizedBox(width: 5.0),
               Container(
                 height: 52.0,
                 width: 52.0,
@@ -41,7 +41,7 @@ class StatCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5.0),
                     child: Padding(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       child: Icon(
                         icon,
                         size: 28,
@@ -51,22 +51,22 @@ class StatCard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 20.0),
+              const SizedBox(width: 20.0),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 7.5),
+                  const SizedBox(height: 7.5),
                   Text(
                     text,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12.0,
                     ),
                   ),
-                  SizedBox(width: 2.5),
+                  const SizedBox(width: 2.5),
                   Text(
                     value,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 32.0,
                     ),

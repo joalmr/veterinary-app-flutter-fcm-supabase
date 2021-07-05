@@ -11,7 +11,7 @@ class CreaVetPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NavigationBar(),
+          const NavigationBar(),
           Expanded(
             child: AddVet(),
           ),

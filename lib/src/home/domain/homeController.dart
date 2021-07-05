@@ -10,11 +10,11 @@ class HomeController extends GetxController {
   final establishmentService = EstablishmentRepository();
   final _repoBooking = BookingRepository();
 
-  RxBool _carga = true.obs;
+  final RxBool _carga = true.obs;
   bool get carga => _carga.value;
   set carga(bool value) => _carga.value = value;
 
-  RxBool _cargaConfirmar = false.obs;
+  final RxBool _cargaConfirmar = false.obs;
   bool get cargaConfirmar => _cargaConfirmar.value;
   set cargaConfirmar(bool value) => _cargaConfirmar.value = value;
 
@@ -42,7 +42,7 @@ class HomeController extends GetxController {
     final link = WhatsAppUnilink(
       phoneNumber: '+51$phone',
       text:
-          "Hola $user somos de ${prefUser.vetName}, nos comunicamos por la reserva de $petName\nFecha: $date\nHora: $time",
+          '''Hola $user somos de ${prefUser.vetName}, nos comunicamos por la reserva de $petName\nFecha: $date\nHora: $time''',
     );
     await launch('$link');
   }
@@ -51,7 +51,7 @@ class HomeController extends GetxController {
 
   Future<Null> _refreshUnconfirmed() async {
     carga = true;
-    await Future.delayed(Duration(milliseconds: 2));
+    await Future.delayed(const Duration(milliseconds: 2));
     getUnconfirmed();
     return null;
   }
@@ -102,10 +102,10 @@ class HomeController extends GetxController {
 
   //!   confirmar
   //
-  confirm(idBooking) => _confirm(idBooking);
-  Future<void> _confirm(idBooking) async {
+  confirm(String idBooking) => _confirm(idBooking);
+  Future<void> _confirm(String idBooking) async {
     carga = true;
-    int resp = await _repoBooking.confirm(idBooking);
+    final int resp = await _repoBooking.confirm(idBooking);
     if (resp == 200) {
       getAllBookings();
     }

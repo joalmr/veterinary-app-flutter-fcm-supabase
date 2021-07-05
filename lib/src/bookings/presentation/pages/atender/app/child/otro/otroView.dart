@@ -51,7 +51,7 @@ class _OtroViewState extends State<OtroView> {
                         final url = Uri.https(
                           urlBase!,
                           '/autocomplete/others',
-                          {"q": filter},
+                          {'q': filter},
                         );
                         var response = await http.get(url);
                         var models = otherServModelFromJson(response.body);

@@ -13,20 +13,20 @@ class EditEmployeesView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Editar empleados'),
+            title: const Text('Editar empleados'),
           ),
           floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add_rounded),
             onPressed: () {
               _.goToNew();
             },
+            child: const Icon(Icons.add_rounded),
           ),
           body: ListView.builder(
             itemCount: _.employees.length,
             itemBuilder: (BuildContext context, int index) {
-              var employee = _.employees[index];
+              final employee = _.employees[index];
               return Container(
-                margin: EdgeInsets.only(bottom: 5, left: 5),
+                margin: const EdgeInsets.only(bottom: 5, left: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +44,7 @@ class EditEmployeesView extends StatelessWidget {
                             size: 18,
                           ),
                         ),
-                        SizedBox(width: 7.5),
+                        const SizedBox(width: 7.5),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -62,10 +62,10 @@ class EditEmployeesView extends StatelessWidget {
                                 decorationThickness: 2,
                               ),
                             ),
-                            Text('${employee.name}'),
+                            Text(employee.name!),
                             employee.code != null
-                                ? Text('${employee.code}')
-                                : SizedBox(height: 0),
+                                ? Text(employee.code!)
+                                : const SizedBox(height: 0),
                           ],
                         ),
                       ],
@@ -74,7 +74,7 @@ class EditEmployeesView extends StatelessWidget {
                       children: [
                         IconButton(
                           splashRadius: 20,
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.delete,
                             color: colorRed,
                           ),
@@ -82,16 +82,16 @@ class EditEmployeesView extends StatelessWidget {
                             _.employees.length <= 1
                                 ? Get.snackbar(
                                     'Advertencia',
-                                    'No puede ser eliminado, debe tener al menos un empleado',
+                                    '''No puede ser eliminado, debe tener al menos un empleado''',
                                     backgroundColor: colorYellow,
                                     colorText: colorBrown1,
                                   )
                                 : showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(
-                                      title: Text('Eliminar'),
-                                      content: Text(
-                                          'Seguro que desea eliminar al empleado?'),
+                                      title: const Text('Eliminar'),
+                                      content: const Text(
+                                          '''Seguro que desea eliminar al empleado?'''),
                                       actions: <Widget>[
                                         btnAltern(
                                           text: 'Sí, eliminar',
@@ -114,7 +114,7 @@ class EditEmployeesView extends StatelessWidget {
                         ),
                         IconButton(
                           splashRadius: 20,
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.edit,
                             color: colorBlue,
                           ),

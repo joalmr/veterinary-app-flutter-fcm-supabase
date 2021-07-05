@@ -12,13 +12,12 @@ class OffersPageWeb extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NavigationBar(),
+          const NavigationBar(),
           Expanded(
             flex: 2,
             child: VerOfertas(),
           ),
           Expanded(
-            flex: 1,
             child: CreaOferta(),
           ),
         ],

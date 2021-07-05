@@ -8,8 +8,8 @@ class FilterStat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 40),
-      padding: EdgeInsets.all(20),
+      margin: const EdgeInsets.only(bottom: 40),
+      padding: const EdgeInsets.all(20),
       width: double.maxFinite,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(0),
@@ -19,29 +19,28 @@ class FilterStat extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Filtros',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
-            padding: EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10),
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Container(
                   width: 200,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Text(
                       //   'Fecha desde',
                       //   style: TextStyle(fontSize: 12),
                       // ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       // dateForm(),
                       DateTimePicker(
                         dateMask: 'dd-MM-yyyy',
@@ -53,19 +52,13 @@ class FilterStat extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Container(
                   width: 200,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Text(
-                      //   'Fecha hasta',
-                      //   style: TextStyle(fontSize: 12),
-                      // ),
-                      SizedBox(height: 5),
-                      // dateForm(),
+                      const SizedBox(height: 5),
                       DateTimePicker(
                         dateMask: 'dd-MM-yyyy',
                         firstDate: DateTime(2020),
@@ -76,10 +69,10 @@ class FilterStat extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Container(
                   width: 200,
-                  margin: EdgeInsets.only(top:5),
+                  margin: const EdgeInsets.only(top: 5),
                   child: SizedBox(
                     width: double.infinity,
                     child: btnPrimary(

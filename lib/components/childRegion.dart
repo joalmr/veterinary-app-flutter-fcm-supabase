@@ -6,7 +6,7 @@ class ChildRegion extends StatefulWidget {
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
 
-  ChildRegion({
+  const ChildRegion({
     this.child,
     this.margin,
     this.padding,
@@ -36,7 +36,7 @@ class _ChildRegionState extends State<ChildRegion> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 275),
+        duration: const Duration(milliseconds: 275),
         margin: widget.margin,
         padding: widget.padding,
         decoration: BoxDecoration(
@@ -44,7 +44,7 @@ class _ChildRegionState extends State<ChildRegion> {
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: hovered
                 ? [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.black12,
                       blurRadius: 13.0,
                       spreadRadius: 0.0,

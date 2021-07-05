@@ -13,16 +13,16 @@ class CreaPromocionView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Crea promoción'),
+            title: const Text('Crea promoción'),
           ),
           body: _.cargando
-              ? Center(
+              ? const Center(
                   child: CircularProgressIndicator(),
                 )
               : ListView(
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding: const EdgeInsets.only(left: 10, right: 10),
                   children: [
-                    Text('Servicio'),
+                    const Text('Servicio'),
                     Material(
                       color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(5),
@@ -33,7 +33,7 @@ class CreaPromocionView extends StatelessWidget {
                             isExpanded: true,
                             value: _.serviceNum,
                             items: _.servicesVet.map((ServiceVetModel value) {
-                              return new DropdownMenuItem<String>(
+                              return DropdownMenuItem<String>(
                                 value: value.id.toString(),
                                 child: Row(
                                   children: [
@@ -41,8 +41,8 @@ class CreaPromocionView extends StatelessWidget {
                                       iconNum[value.id],
                                       size: 18,
                                     ),
-                                    SizedBox(width: 10),
-                                    new Text(value.name!),
+                                    const SizedBox(width: 10),
+                                    Text(value.name!),
                                   ],
                                 ),
                               );
@@ -54,45 +54,46 @@ class CreaPromocionView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     TextFormField(
-                      decoration: InputDecoration(labelText: 'Descripción'),
+                      decoration:
+                          const InputDecoration(labelText: 'Descripción'),
                       controller: _.description,
                       textCapitalization: TextCapitalization.sentences,
                       maxLength: 150,
                       maxLines: 5,
                     ),
-                    SizedBox(height: 15),
-                    Text('Tipo'),
+                    const SizedBox(height: 15),
+                    const Text('Tipo'),
                     RadioListTile(
                       contentPadding: EdgeInsets.zero,
                       value: 0,
                       groupValue: _.selectValue,
                       onChanged: (int? val) => _.selectValue = val!,
-                      title: Text('Monto de descuento'),
+                      title: const Text('Monto de descuento'),
                     ),
                     RadioListTile(
                       contentPadding: EdgeInsets.zero,
                       value: 1,
                       groupValue: _.selectValue,
                       onChanged: (int? val) => _.selectValue = val!,
-                      title: Text('Porcentaje de descuento'),
+                      title: const Text('Porcentaje de descuento'),
                     ),
                     RadioListTile(
                       contentPadding: EdgeInsets.zero,
                       value: 2,
                       groupValue: _.selectValue,
                       onChanged: (int? val) => _.selectValue = val!,
-                      title: Text('Precio promocional'),
+                      title: const Text('Precio promocional'),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     TextFormField(
-                      decoration: InputDecoration(labelText: 'Monto'),
+                      decoration: const InputDecoration(labelText: 'Monto'),
                       controller: _.moneyController,
                       keyboardType: TextInputType.number,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 30),
+                      padding: const EdgeInsets.only(top: 30),
                       child: SizedBox(
                         width: double.infinity,
                         child: btnPrimary(

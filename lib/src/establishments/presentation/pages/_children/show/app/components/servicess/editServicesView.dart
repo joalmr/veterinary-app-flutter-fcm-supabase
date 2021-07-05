@@ -12,10 +12,10 @@ class EditServicesView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Editar servicios'),
+            title: const Text('Editar servicios'),
           ),
           body: Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 10,
               vertical: 10,
             ),
@@ -28,13 +28,14 @@ class EditServicesView extends StatelessWidget {
                   children: _.servicesVet
                       .map(
                         (item) => Container(
-                          margin: EdgeInsets.only(left: 2, right: 2, bottom: 8),
+                          margin: const EdgeInsets.only(
+                              left: 2, right: 2, bottom: 8),
                           child: InkWell(
                             borderRadius: BorderRadius.circular(50),
                             onTap: () => _.add2List(item.id!),
                             child: Container(
-                              padding: EdgeInsets.all(8),
-                              margin: EdgeInsets.all(1),
+                              padding: const EdgeInsets.all(8),
+                              margin: const EdgeInsets.all(1),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
                                 color: _.servicesVetSet.contains(item.id)
@@ -49,7 +50,7 @@ class EditServicesView extends StatelessWidget {
                       .toList()
                       .cast<Widget>(),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Center(
                   child: btnSecondary(
                     text: 'Guardar',

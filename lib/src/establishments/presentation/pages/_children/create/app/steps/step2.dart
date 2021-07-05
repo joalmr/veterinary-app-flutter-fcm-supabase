@@ -12,50 +12,50 @@ class Step2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CreateVetController>(
       builder: (_) {
-        return Container(
+        return SizedBox(
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             children: [
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               TypeAheadField<Prediction>(
                 suggestionsCallback: (filter) async {
-                  String ruta =
-                      "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter";
-                  Uri url = Uri.parse(ruta);
-                  var response = await http.get(url);
-                  print(response.body);
-                  var models = addressFromJson(response.body);
+                  final String ruta =
+                      'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter';
+                  final Uri url = Uri.parse(ruta);
+                  final response = await http.get(url);
+
+                  final models = addressFromJson(response.body);
                   return models.predictions!;
                 },
-                onSuggestionSelected: (Prediction? data) => (data != null) ? _.gpsDireccion(data) : null,
+                onSuggestionSelected: (Prediction? data) =>
+                    (data != null) ? _.gpsDireccion(data) : null,
                 textFieldConfiguration: TextFieldConfiguration(
                   controller: _.v.dirVet,
-                  decoration: InputDecoration(labelText: 'Dirección'),
+                  decoration: const InputDecoration(labelText: 'Dirección'),
                 ),
-                noItemsFoundBuilder: (context)=>Padding(
-                  padding: const EdgeInsets.all(8.0),
+                noItemsFoundBuilder: (context) => const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text('No se encontró'),
                 ),
                 itemBuilder: (context, address) => Padding(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Text(
                     address.name!,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                
               ),
-              SizedBox(height: 5),
-              Container(
+              const SizedBox(height: 5),
+              const SizedBox(
                 height: 400,
                 child: MapVet(),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Referencia'),
+                decoration: const InputDecoration(labelText: 'Referencia'),
                 textCapitalization: TextCapitalization.sentences,
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
             ],
           ),
         );

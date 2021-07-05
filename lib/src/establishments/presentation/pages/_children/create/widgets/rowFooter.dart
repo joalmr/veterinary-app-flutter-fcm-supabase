@@ -19,7 +19,7 @@ class FooterCreateVet extends StatelessWidget {
             1: (BuildContext context) => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(width: 0),
+                    const SizedBox(width: 0),
                     btnAltern(
                       bold: true,
                       text: 'Continuar',
@@ -80,7 +80,7 @@ class FooterCreateVet extends StatelessWidget {
                   ],
                 ),
           },
-          fallbackBuilder: (BuildContext context) => SizedBox(height: 0),
+          fallbackBuilder: (BuildContext context) => const SizedBox(height: 0),
         );
       },
     );

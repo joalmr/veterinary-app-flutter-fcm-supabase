@@ -13,7 +13,8 @@ class EditDescriptionController extends GetxController {
 
   @override
   void onInit() {
-    descripcionControl.text = showVetController.establishment.value.description!;
+    descripcionControl.text =
+        showVetController.establishment.value.description!;
     super.onInit();
   }
 
@@ -25,8 +26,8 @@ class EditDescriptionController extends GetxController {
   editDescripcion() => _editDescription();
   _editDescription() async {
     await _repo.setDescription(
-        showVetController.argumentoId, descripcionControl.text);
-    descripcionControl.text = "";
+        showVetController.argumentoId!, descripcionControl.text);
+    descripcionControl.text = '';
 
     showVetController.getByid();
     vetController.getAll();

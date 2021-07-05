@@ -31,9 +31,9 @@ class CardEstablecimiento extends StatelessWidget {
         return InkWell(
           onTap: () => _.go2Show(id),
           child: Card(
-            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
                   Row(
@@ -50,31 +50,31 @@ class CardEstablecimiento extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             color: Colors.grey.shade200,
                             alignment: Alignment.center,
-                            child: CircularProgressIndicator(),
+                            child: const CircularProgressIndicator(),
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             name,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
                             maxLines: 2,
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Text(
                             ruc,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Row(
                             children: [
                               Icon(
@@ -83,20 +83,20 @@ class CardEstablecimiento extends StatelessWidget {
                                     : Icons.indeterminate_check_box_rounded,
                                 size: 14,
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 aprobado == 1 ? 'Aprobado' : 'En espera',
                               ),
                             ],
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.home_work_rounded,
                                 size: 14,
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 tipo == 1 ? 'Veterinaria' : 'Grooming',
                               ),
@@ -117,9 +117,9 @@ class CardEstablecimiento extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
-                              title: Text('Eliminar'),
-                              content: Text(
-                                  'Seguro que desea eliminar el establecimiento?'),
+                              title: const Text('Eliminar'),
+                              content: const Text(
+                                  '''Seguro que desea eliminar el establecimiento?'''),
                               actions: <Widget>[
                                 btnAltern(
                                   text: 'Sí, eliminar',
@@ -150,9 +150,9 @@ class CardEstablecimiento extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
-                              title: Text('Establecimiento'),
-                              content: Text(
-                                  'Seguro que desea cambiar de establecimiento?'),
+                              title: const Text('Establecimiento'),
+                              content: const Text(
+                                  '''Seguro que desea cambiar de establecimiento?'''),
                               actions: <Widget>[
                                 btnAltern(
                                   text: 'Sí, cambiar',

@@ -12,7 +12,7 @@ import 'src/home/domain/homeController.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
-  await dotenv.load(fileName: ".env.dev");
+  await dotenv.load(fileName: '.env.dev');
   await GetStorage.init();
   runApp(MyApp());
 }

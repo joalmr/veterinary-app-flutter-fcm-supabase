@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/cardContainer.dart';
 
-cardRegister({
+Widget cardRegister({
   required String date,
   required List<Icon> icons,
   required petImage,
@@ -12,7 +12,7 @@ cardRegister({
   required String petSpecie,
   required String petLover,
   required String amount,
-  required void Function()?  onPressed,
+  required void Function()? onPressed,
 }) {
   return cardContainer(
     child: Container(

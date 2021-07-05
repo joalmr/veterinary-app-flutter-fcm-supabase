@@ -19,11 +19,10 @@ class LoginController extends GetxController {
   RxBool errorLogIn = false.obs;
   RxBool btnLogIn = true.obs;
 
-  logIn() => _login();
-
+  void logIn() => _login();
   Future<void> _login() async {
     btnLogIn.value = false;
-    int logged = await authService.login(email, password);
+    final int logged = await authService.login(email, password);
     if (logged == 200) {
       await initHome();
       btnLogIn.value = true;
@@ -32,15 +31,15 @@ class LoginController extends GetxController {
       errorLogIn.value = true;
       btnLogIn.value = true;
       Timer(
-        Duration(milliseconds: 7500),
+        const Duration(milliseconds: 7500),
         () => errorLogIn.value = false,
       );
     }
   }
 
   Future<void> initHome() async {
-    if (!prefUser.vetDataHas()) {
-      var temp = await stablishmentService.getFirst();
+    if (prefUser.vetDataHas() == false) {
+      final temp = await stablishmentService.getFirst();
       VetStorage forStorage = VetStorage();
       forStorage.vetId = temp.id;
       forStorage.vetName = temp.name;

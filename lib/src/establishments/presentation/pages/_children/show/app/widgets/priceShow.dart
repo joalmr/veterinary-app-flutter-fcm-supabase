@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 
 Widget precio(String tipo, String desde) {
   return Card(
-    margin: EdgeInsets.all(8),
+    margin: const EdgeInsets.all(8),
     child: Container(
       width: (Get.width / 2) - 20,
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -15,9 +15,9 @@ Widget precio(String tipo, String desde) {
             tipo,
             style: TextStyle(color: Get.textTheme.subtitle2!.color),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
-            "desde",
+            'desde',
             style: TextStyle(color: Get.textTheme.subtitle2!.color),
           ),
           Text(

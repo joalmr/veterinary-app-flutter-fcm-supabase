@@ -6,15 +6,14 @@ class UserClientsWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NavigationBar(),
+          const NavigationBar(),
           Expanded(
             flex: 2,
             child: Container(
               child: Column(
-                children: [
+                children: const [
                   Text('Para usar esta función descargue la app de su store.'),
                 ],
               ),

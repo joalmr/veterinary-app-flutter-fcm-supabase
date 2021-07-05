@@ -17,34 +17,34 @@ class HeaderStep extends StatelessWidget {
         caseBuilders: {
           1: (BuildContext context) => Text(
                 'Step $selected',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
           2: (BuildContext context) => Text(
                 'Step $selected',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
           3: (BuildContext context) => Text(
                 'Step $selected',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
           4: (BuildContext context) => Text(
                 'Step $selected',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
         },
-        fallbackBuilder: (BuildContext context) => SizedBox(height: 0),
+        fallbackBuilder: (BuildContext context) => const SizedBox(height: 0),
       ),
     );
   }

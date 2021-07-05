@@ -24,15 +24,15 @@ class EstablecimientoEntity {
   });
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "phone": phone,
-        "ruc": ruc,
-        "website": website,
-        "type_id": typeId,
-        "address": address,
-        "reference": reference,
-        "latitude": latitude,
-        "longitude": longitude,
-        "services": services,
+        'name': name,
+        'phone': phone,
+        'ruc': ruc,
+        'website': website,
+        'type_id': typeId,
+        'address': address,
+        'reference': reference,
+        'latitude': latitude,
+        'longitude': longitude,
+        'services': services,
       };
 }

@@ -11,7 +11,7 @@ Widget contStatClient({
     width: MediaQuery.of(context).size.width / 1.5,
     decoration: BoxDecoration(
       color: colorMain,
-      borderRadius: BorderRadius.all(
+      borderRadius: const BorderRadius.all(
         Radius.circular(16.0),
       ),
       boxShadow: <BoxShadow>[
@@ -24,7 +24,6 @@ Widget contStatClient({
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           valor > 999999.99
@@ -32,7 +31,7 @@ Widget contStatClient({
               : valor > 9999.99
                   ? '${(valor / 1000).toStringAsFixed(2)}k'
                   : valor.toStringAsFixed(0),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w200,
             letterSpacing: 0.0,
@@ -42,7 +41,7 @@ Widget contStatClient({
         Text(
           titulo,
           textAlign: TextAlign.left,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
             // fontSize: 16.5,
             letterSpacing: 0.0,

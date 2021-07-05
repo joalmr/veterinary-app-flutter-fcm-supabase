@@ -7,8 +7,6 @@ import 'app/configView.dart';
 import 'web/configPage.dart';
 
 class ConfigMain extends StatelessWidget {
-  const ConfigMain({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ConfigController>(

@@ -6,8 +6,10 @@ import 'package:vet_app/routes/routes.dart';
 class GlobalMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
-    return prefUser.tokenHas() || route == '/login'
-        ? null
-        : RouteSettings(name: NameRoutes.login);
+    if (prefUser.tokenHas() == true || route == '/login') {
+      return null;
+    } else {
+      return RouteSettings(name: NameRoutes.login);
+    }
   }
 }

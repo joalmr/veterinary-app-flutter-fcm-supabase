@@ -16,13 +16,13 @@ class ReprogramarController extends GetxController {
   RxBool reprogramaBlock = false.obs;
   RxBool errorDateTime = false.obs;
 
-  RxString fecha = "".obs;
-  RxString hora = "".obs;
-  RxString msgfecha = "".obs;
-  RxString msghora = "".obs;
+  RxString fecha = ''.obs;
+  RxString hora = ''.obs;
+  RxString msgfecha = ''.obs;
+  RxString msghora = ''.obs;
 ////////////////////////////////////////////////////////////////////////////////
 
-  reprogramar(idBooking) => _reprogramar(idBooking);
+  reprogramar(String idBooking) => _reprogramar(idBooking);
 
   Future<void> _reprogramar(String idBooking) async {
     reprogramando.value = true;
@@ -33,37 +33,35 @@ class ReprogramarController extends GetxController {
     if (fecha.value.isEmpty || hora.value.isEmpty) {
       errorDateTime.value = true;
       Timer(
-        Duration(milliseconds: 7500),
+        const Duration(milliseconds: 7500),
         () => errorDateTime.value = false,
       );
     } else {
-      String datetime = formatDateOut(
+      final String datetime = formatDateOut(
         valor: '$fecha $hora',
-        formatIn: "yyyy-MM-dd HH:mm",
-        formatOut: "yyyy-MM-dd HH:mm:00",
+        formatIn: 'yyyy-MM-dd HH:mm',
+        formatOut: 'yyyy-MM-dd HH:mm:00',
       );
 
-      var resp = await bookingRepository.reschedule(idBooking, datetime);
-      print(resp.statusCode);
-      print(resp.body);
+      final resp = await bookingRepository.reschedule(idBooking, datetime);
+
       if (resp.statusCode == 200) {
         reprogramando.value = false;
-        
 
-        final Map message = jsonDecode(resp.body);
-        
-        if(message.containsKey('message')){
+        final Map message = jsonDecode(resp.body) as Map<dynamic, dynamic>;
+
+        if (message.containsKey('message')) {
           ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
             content: Text(
-              message['message'],
+              message['message'] as String,
             ),
-            duration: Duration(seconds: 7),
+            duration: const Duration(seconds: 7),
             backgroundColor: Colors.black.withOpacity(0.85),
           ));
-        }
-        else{
+        } else {
           _homeController.getAllBookings();
-          Navigator.popUntil(Get.context!, ModalRoute.withName(NameRoutes.home));
+          Navigator.popUntil(
+              Get.context!, ModalRoute.withName(NameRoutes.home));
         }
       }
     }

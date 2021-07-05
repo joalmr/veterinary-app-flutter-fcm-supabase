@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 //TODO: REVISAR LOS DEMAS FUNCTION
-Widget navbarItem({required bool active, required IconData icon, void Function()? onTap, Color? color}) {
+Widget navbarItem(
+    {required bool active,
+    required IconData icon,
+    void Function()? onTap,
+    Color? color}) {
   return Material(
     color: Colors.transparent,
     child: InkWell(
@@ -9,7 +13,7 @@ Widget navbarItem({required bool active, required IconData icon, void Function()
       splashColor: Colors.white,
       hoverColor: Colors.white12,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 3.0),
+        padding: const EdgeInsets.symmetric(vertical: 3.0),
         child: Row(
           children: [
             Container(
@@ -18,19 +22,19 @@ Widget navbarItem({required bool active, required IconData icon, void Function()
               child: Row(
                 children: [
                   AnimatedContainer(
-                    duration: Duration(milliseconds: 475),
+                    duration: const Duration(milliseconds: 475),
                     height: 35.0,
                     width: 5.0,
                     decoration: BoxDecoration(
                       color: active ? Colors.white : Colors.transparent,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(10.0),
                         bottomRight: Radius.circular(10.0),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 30.0),
+                    padding: const EdgeInsets.only(left: 30.0),
                     child: Icon(
                       icon,
                       color: color != null

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget tabSelect({required bool selected, required String text}) {
   return Padding(
-    padding: EdgeInsets.symmetric(horizontal: 10),
+    padding: const EdgeInsets.symmetric(horizontal: 10),
     child: selected
         ? Container(
             height: 25.0,
@@ -11,11 +11,11 @@ Widget tabSelect({required bool selected, required String text}) {
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Center(
                 child: Text(
                   text,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12.0,
                     color: Colors.white,
                   ),
@@ -26,11 +26,11 @@ Widget tabSelect({required bool selected, required String text}) {
         : Container(
             height: 25.0,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Center(
                 child: Text(
                   text,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12.0,
                   ),
                 ),

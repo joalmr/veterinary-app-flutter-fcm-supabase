@@ -11,10 +11,10 @@ class EditPricesView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Editar precios'),
+            title: const Text('Editar precios'),
           ),
           body: Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 10,
               vertical: 10,
             ),
@@ -24,29 +24,30 @@ class EditPricesView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Consulta'),
+                    decoration: const InputDecoration(labelText: 'Consulta'),
                     controller: _.consultaControl,
                     keyboardType: TextInputType.number,
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Desparasitación'),
+                    decoration:
+                        const InputDecoration(labelText: 'Desparasitación'),
                     controller: _.desparasitaControl,
                     keyboardType: TextInputType.number,
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Vacuna'),
+                    decoration: const InputDecoration(labelText: 'Vacuna'),
                     controller: _.vacunaControl,
                     keyboardType: TextInputType.number,
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Grooming'),
+                    decoration: const InputDecoration(labelText: 'Grooming'),
                     controller: _.groomingControl,
                     keyboardType: TextInputType.number,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Center(
                     child: btnSecondary(
                       text: 'Guardar',

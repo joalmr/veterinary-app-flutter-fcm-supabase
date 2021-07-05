@@ -51,7 +51,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                         final url = Uri.https(
                           urlBase!,
                           '/autocomplete/dewormings',
-                          {"q": filter},
+                          {'q': filter},
                         );
                         var response = await http.get(url);
                         var models = dewormingsModelFromJson(response.body);

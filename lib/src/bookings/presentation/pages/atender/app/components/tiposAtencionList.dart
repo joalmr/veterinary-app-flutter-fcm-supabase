@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
-Widget tipoAtencion(IconData icon, String nombre, String monto, void Function()? onTap) {
+Widget tipoAtencion(
+    IconData icon, String nombre, String monto, void Function()? onTap) {
   return monto == ''
       ? Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -32,7 +33,8 @@ Widget tipoAtencion(IconData icon, String nombre, String monto, void Function()?
                     Expanded(
                       child: Text(
                         nombre,
-                        style: Get.textTheme.subtitle1!.apply(fontWeightDelta: 2),
+                        style:
+                            Get.textTheme.subtitle1!.apply(fontWeightDelta: 2),
                       ),
                     ),
                   ],
@@ -55,12 +57,12 @@ Widget tipoAtencion(IconData icon, String nombre, String monto, void Function()?
                   content: Text('Seguro que desea eliminar esta atención?'),
                   actions: <Widget>[
                     btnAltern(
-                      text: 'Cancelar', 
+                      text: 'Cancelar',
                       onPressed: () => Get.back(),
                     ),
                     btnAltern(
-                      text: 'Eliminar', 
-                      onPressed: (){},
+                      text: 'Eliminar',
+                      onPressed: () {},
                       color: colorRed,
                     ),
                   ],
@@ -89,16 +91,16 @@ Widget tipoAtencion(IconData icon, String nombre, String monto, void Function()?
                       Expanded(
                         child: Text(
                           nombre,
-                          style:
-                              Get.textTheme.subtitle1!.apply(fontWeightDelta: 2),
+                          style: Get.textTheme.subtitle1!
+                              .apply(fontWeightDelta: 2),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 5),
                         child: Text(
                           'S/ $monto',
-                          style:
-                              Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
+                          style: Get.textTheme.subtitle2!
+                              .apply(fontWeightDelta: 2),
                         ),
                       ),
                       Icon(

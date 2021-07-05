@@ -21,15 +21,15 @@ class TestingBooking {
   String? recommendations;
 
   factory TestingBooking.fromJson(Map<String, dynamic> json) => TestingBooking(
-        amount: json["amount"].toDouble() ?? 0.0,
-        tests: List<Test>.from(json["tests"].map((x) => Test.fromJson(x))),
-        recommendations: json["recommendations"] ?? '',
+        amount: json['amount'] as double? ?? 0.0,
+        tests: List<Test>.from(json['tests'].map((x) => Test.fromJson(x))),
+        recommendations: json['recommendations'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
-        "amount": amount,
-        "tests": List<dynamic>.from(tests?.map((x) => x.toJson()) ?? []),
-        "recommendations": recommendations,
+        'amount': amount,
+        'tests': List<dynamic>.from(tests?.map((x) => x.toJson()) ?? []),
+        'recommendations': recommendations,
       };
 }
 
@@ -43,12 +43,12 @@ class Test {
   String? name;
 
   factory Test.fromJson(Map<String, dynamic> json) => Test(
-        id: json["id"],
-        name: json["name"],
+        id: json['id'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
+        'id': id,
+        'name': name,
       };
 }

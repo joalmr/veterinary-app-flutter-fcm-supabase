@@ -10,34 +10,33 @@ class AddVet extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<CreateVetController>(
       builder: (_) {
-        return 
-        _.checked
-        ? Center(
-            child: CircularProgressIndicator(),
-          )
-        :
-        Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 20, top: 15, bottom: 15),
-              child: Row(
+        return _.checked
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Column(
                 children: [
-                  SizedBox(width: 20),
-                  HeaderStep(selected: _.selected),
-                  SizedBox(width: 60),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 20, top: 15, bottom: 15),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 20),
+                        HeaderStep(selected: _.selected),
+                        const SizedBox(width: 60),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: BodyStep(selected: _.selected),
+                  ),
+                  Container(
+                    height: 80,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: const FooterCreateVet(),
+                  ),
                 ],
-              ),
-            ),
-            Expanded(
-              child: BodyStep(selected: _.selected),
-            ),
-            Container(
-              height: 80,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: FooterCreateVet(),
-            ),
-          ],
-        );
+              );
       },
     );
   }

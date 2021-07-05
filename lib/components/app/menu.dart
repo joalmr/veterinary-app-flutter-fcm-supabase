@@ -11,7 +11,7 @@ class MenuDrawer extends StatelessWidget {
     return Drawer(
       child: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             boxShadow: [BoxShadow(color: Colors.black45)],
           ),
@@ -22,7 +22,8 @@ class MenuDrawer extends StatelessWidget {
                 height: 60,
                 width: double.maxFinite,
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 15.0),
                   alignment: Alignment.centerLeft,
                   child: Image(
                     image: AssetImage(imgLogoProypet),
@@ -45,8 +46,8 @@ class MenuDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Configuración'),
+                leading: const Icon(Icons.settings),
+                title: const Text('Configuración'),
                 onTap: () => Get.toNamed('/config'),
               ),
             ],

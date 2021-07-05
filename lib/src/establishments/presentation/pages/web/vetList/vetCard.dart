@@ -16,27 +16,25 @@ class VetCard extends StatelessWidget {
   final int tipo;
 
   const VetCard(
-    {
-      required this.id,
+      {required this.id,
       required this.image,
       required this.name,
       required this.ruc,
       required this.aprobado,
-      required this.tipo
-    });
+      required this.tipo});
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EstablishmentsController>(
       builder: (_) {
         return ChildRegion(
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           child: InkWell(
             borderRadius: BorderRadius.circular(10),
             onTap: () {},
             child: Container(
               width: 280,
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Container(
@@ -56,25 +54,25 @@ class VetCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text(
                     ruc,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 10,
                     ),
                   ),
-                  SizedBox(height: 5),
-                  Divider(),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 5),
+                  const Divider(),
+                  const SizedBox(height: 10),
                   // SizedBox(height: 5),
                   Row(
                     children: [
@@ -83,19 +81,19 @@ class VetCard extends StatelessWidget {
                             ? Icons.check_box_rounded
                             : Icons.indeterminate_check_box_rounded,
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Text(aprobado == 1 ? 'Aprobado' : 'En espera'),
                     ],
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
-                      Icon(Icons.home_work_rounded),
-                      SizedBox(width: 10),
+                      const Icon(Icons.home_work_rounded),
+                      const SizedBox(width: 10),
                       Text(tipo == 1 ? 'Veterinaria' : 'Grooming'),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -104,9 +102,9 @@ class VetCard extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
-                              title: Text('Eliminar'),
-                              content: Text(
-                                  'Seguro que desea eliminar el establecimiento?'),
+                              title: const Text('Eliminar'),
+                              content: const Text(
+                                  '''Seguro que desea eliminar el establecimiento?'''),
                               actions: <Widget>[
                                 btnAltern(
                                   text: 'Sí, eliminar',
@@ -134,7 +132,7 @@ class VetCard extends StatelessWidget {
                             color: colorRed,
                             borderRadius: BorderRadius.circular(5.0),
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.delete_forever_rounded,
                             color: Colors.white,
                             size: 20,
@@ -142,47 +140,49 @@ class VetCard extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            title: Text('Establecimiento'),
-                            content: Text(
-                                'Seguro que desea cambiar de establecimiento?'),
-                            actions: <Widget>[
-                              btnAltern(
-                                text: 'Sí, cambiar',
-                                bold: true,
-                                color: colorMain,
-                                onPressed: () {
-                                  _.favoriteVetToInit(id, name, image);
-                                  // Get.back();
-                                },
-                              ),
-                              btnAltern(
-                                text: 'Cancelar',
-                                bold: true,
-                                onPressed: () => Get.back(),
-                              ),
-                            ],
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('Establecimiento'),
+                              content: const Text(
+                                  '''Seguro que desea cambiar de establecimiento?'''),
+                              actions: <Widget>[
+                                btnAltern(
+                                  text: 'Sí, cambiar',
+                                  bold: true,
+                                  color: colorMain,
+                                  onPressed: () {
+                                    _.favoriteVetToInit(id, name, image);
+                                    // Get.back();
+                                  },
+                                ),
+                                btnAltern(
+                                  text: 'Cancelar',
+                                  bold: true,
+                                  onPressed: () => Get.back(),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: Container(
+                          height: 32.0,
+                          width: 40.0,
+                          decoration: BoxDecoration(
+                            color: prefUser.vetId == id
+                                ? colorMain
+                                : Colors.grey[300],
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
-                        );
-                      },
-                      borderRadius: BorderRadius.circular(5.0),
-                      child: Container(
-                        height: 32.0,
-                        width: 40.0,
-                        decoration: BoxDecoration(
-                          color: prefUser.vetId == id ? colorMain : Colors.grey[300],
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Icon(
-                          Icons.star_rounded,
-                          color: Colors.white,
-                          size: 20,
+                          child: const Icon(
+                            Icons.star_rounded,
+                            color: Colors.white,
+                            size: 20,
+                          ),
                         ),
                       ),
-                    ),
                     ],
                   ),
                 ],
@@ -192,6 +192,5 @@ class VetCard extends StatelessWidget {
         );
       },
     );
-    
   }
 }

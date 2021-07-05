@@ -9,25 +9,23 @@ class MascotaCliente extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
-        child: Image(
+        onPressed: () {
+          Get.to(AtenderMascota());
+        },
+        child: const Image(
           height: 30,
           fit: BoxFit.cover,
           image: AssetImage('assets/images/vote.png'),
         ),
-        onPressed: () {
-          Get.to(AtenderMascota());
-        },
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: double.maxFinite,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+              children: const [
                 CircleAvatar(
                   radius: 45,
                   backgroundImage: AssetImage('assets/images/dog.jpg'),
@@ -49,7 +47,7 @@ class MascotaCliente extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
               'Historial',
@@ -70,12 +68,12 @@ class MascotaCliente extends StatelessWidget {
                   ),
                 ],
               ),
-              margin: EdgeInsets.all(4),
-              padding: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(4),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text('Fecha ####'),
                   Text('Serv ####'),
                 ],

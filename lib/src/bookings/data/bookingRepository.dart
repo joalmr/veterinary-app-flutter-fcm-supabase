@@ -93,7 +93,8 @@ class BookingRepository extends BookingInterface {
   }
 
   @override
-  Future<void> finalizeAttention(String establishment, String attention, FinalizeAttention finaliza) {
+  Future<void> finalizeAttention(
+      String establishment, String attention, FinalizeAttention finaliza) {
     return _api.finalizeAttention(establishment, attention, finaliza);
   }
 }

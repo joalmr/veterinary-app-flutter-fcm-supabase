@@ -19,8 +19,8 @@ class StatsApi extends StatsInterface {
       urlBase!,
       '$pathBase/establishment/$establecimientoId/stats',
       {
-        "from": from,
-        "to": to,
+        'from': from,
+        'to': to,
       },
     );
 
@@ -39,8 +39,8 @@ class StatsApi extends StatsInterface {
       urlBase!,
       '$pathBase/establishment/$establecimientoId/comments',
       {
-        "from": from,
-        "to": to,
+        'from': from,
+        'to': to,
       },
     );
 
@@ -52,14 +52,15 @@ class StatsApi extends StatsInterface {
   }
 
   @override
-  Future<StatsServiceModel> getStatsService(String establecimientoId, String from, String to) async {
+  Future<StatsServiceModel> getStatsService(
+      String establecimientoId, String from, String to) async {
     print('getStatsService');
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/services',
       {
-        "from": from,
-        "to": to,
+        'from': from,
+        'to': to,
       },
     );
 
@@ -76,7 +77,7 @@ class StatsApi extends StatsInterface {
       urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/sales',
       {
-        "type": "daily",
+        'type': 'daily',
       },
     );
 
@@ -85,20 +86,21 @@ class StatsApi extends StatsInterface {
 
     return salesDaily;
   }
-  
+
   @override
-  Future<StatsSalesMonthlyModel> getStatsMonthly(String establecimientoId) async {
+  Future<StatsSalesMonthlyModel> getStatsMonthly(
+      String establecimientoId) async {
     print('getStatsMonthly');
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establecimientoId/stats/sales',
       {
-        "type": "monthly",
+        'type': 'monthly',
       },
     );
 
     http.Response response = await http.get(url, headers: headersToken());
-    
+
     final salesMonthly = statsSalesMonthlyModelFromJson(response.body);
 
     return salesMonthly;
@@ -115,5 +117,5 @@ class StatsApi extends StatsInterface {
     final statsUser = statsUserModelFromJson(response.body);
 
     return statsUser;
-  }  
+  }
 }

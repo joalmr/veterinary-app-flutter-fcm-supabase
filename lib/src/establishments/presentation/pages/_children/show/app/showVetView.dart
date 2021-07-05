@@ -19,7 +19,7 @@ class ShowVetView extends StatelessWidget {
     return GetX<ShowVetController>(
       builder: (_) {
         return _.cargando.value
-            ? Scaffold(
+            ? const Scaffold(
                 body: Center(
                   child: CircularProgressIndicator(),
                 ),
@@ -55,7 +55,7 @@ class ShowVetView extends StatelessWidget {
                         top: 30,
                         left: 5,
                         child: IconButton(
-                          icon: Icon(Icons.arrow_back),
+                          icon: const Icon(Icons.arrow_back),
                           onPressed: () => Get.back(),
                         ),
                       ),
@@ -73,11 +73,11 @@ class ShowVetView extends StatelessWidget {
                             child: IconButton(
                               splashRadius: 20,
                               iconSize: 18,
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.edit,
                               ),
                               onPressed: () {
-                                Get.to(EditSlidesView());
+                                Get.to(const EditSlidesView());
                               },
                             ),
                           ),
@@ -117,7 +117,7 @@ class ShowVetView extends StatelessWidget {
                                   child: IconButton(
                                     splashRadius: 20,
                                     iconSize: 18,
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.edit,
                                     ),
                                     onPressed: () => _.seleccionarLogo(),
@@ -142,12 +142,12 @@ class ShowVetView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                          padding: const EdgeInsets.symmetric(),
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             child: ListTile(
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 10),
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               minVerticalPadding: 0,
                               title: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,13 +159,13 @@ class ShowVetView extends StatelessWidget {
                                       borderRadius: borderRadius,
                                       color: colorMain,
                                     ),
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                       vertical: 1.5,
                                       horizontal: 5,
                                     ),
                                     child: Text(
                                       _.establishment.value.type!,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 8,
                                           color: Colors.white),
@@ -178,15 +178,15 @@ class ShowVetView extends StatelessWidget {
                                 ],
                               ),
                               subtitle: Text(_.establishment.value.address!,
-                                  style: TextStyle(fontSize: 12)),
+                                  style: const TextStyle(fontSize: 12)),
                               trailing: Stack(
                                 children: <Widget>[
                                   Container(height: 56.0, width: 60.0),
                                   Container(
                                     height: 50.0,
                                     width: 50.0,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 5.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5.0),
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(100.0),
@@ -196,11 +196,11 @@ class ShowVetView extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Icon(Icons.star,
+                                          const Icon(Icons.star,
                                               color: Colors.white, size: 12.0),
                                           Text(
                                             _.establishment.value.stars!,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
@@ -225,7 +225,7 @@ class ShowVetView extends StatelessWidget {
                                         child: IconButton(
                                           splashRadius: 20,
                                           iconSize: 18,
-                                          icon: Icon(Icons.edit),
+                                          icon: const Icon(Icons.edit),
                                           onPressed: () {
                                             Get.to(EditBaseView());
                                           },
@@ -241,17 +241,18 @@ class ShowVetView extends StatelessWidget {
                         TabBar(
                           isScrollable: true,
                           indicatorColor: colorMain,
-                          labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                          labelStyle:
+                              const TextStyle(fontWeight: FontWeight.bold),
                           labelColor: colorMain,
                           unselectedLabelColor: Get.textTheme.subtitle2!.color,
                           unselectedLabelStyle:
-                              TextStyle(fontWeight: FontWeight.normal),
-                          tabs: [
-                            Tab(text: "Servicios"),
-                            Tab(text: "Descripción"),
-                            Tab(text: "Precios"),
-                            Tab(text: "Horarios"),
-                            Tab(text: "Empleados"),
+                              const TextStyle(fontWeight: FontWeight.normal),
+                          tabs: const [
+                            Tab(text: 'Servicios'),
+                            Tab(text: 'Descripción'),
+                            Tab(text: 'Precios'),
+                            Tab(text: 'Horarios'),
+                            Tab(text: 'Empleados'),
                           ],
                         ),
                         Expanded(

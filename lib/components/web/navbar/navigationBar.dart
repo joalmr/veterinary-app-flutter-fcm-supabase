@@ -8,7 +8,7 @@ import 'package:vet_app/routes/routes.dart';
 import 'navbarItem.dart';
 
 class NavigationBar extends StatefulWidget {
-  NavigationBar({Key? key}) : super(key: key);
+  const NavigationBar({Key? key}) : super(key: key);
 
   @override
   _NavigationBarState createState() => _NavigationBarState();
@@ -19,20 +19,21 @@ class NavigationBar extends StatefulWidget {
 class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
-    String? pageSelected = ModalRoute.of(context)?.settings.name ?? '';
+    final String pageSelected = ModalRoute.of(context)?.settings.name ?? '';
 
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
         height: MediaQuery.of(context).size.height,
         width: 100.0,
-        color: Color(0xff333951),
+        color: const Color(0xff333951),
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 10),
+              padding: const EdgeInsets.only(top: 20, bottom: 10),
               child: CircleAvatar(
                 backgroundColor: Colors.grey.withOpacity(0.3),
+                radius: 25,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: CachedNetworkImage(
@@ -41,11 +42,10 @@ class _NavigationBarState extends State<NavigationBar> {
                     placeholder: (context, url) => Container(
                       color: Colors.grey.shade200,
                       alignment: Alignment.center,
-                      child: CircularProgressIndicator(),
+                      child: const CircularProgressIndicator(),
                     ),
                   ),
                 ),
-                radius: 25,
               ),
             ),
             Padding(
@@ -53,7 +53,7 @@ class _NavigationBarState extends State<NavigationBar> {
               child: Text(
                 prefUser.vetName!,
                 maxLines: 1,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                   color: Colors.white54,

@@ -25,7 +25,7 @@ class CardAtencion extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: Card(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
               Container(
@@ -41,7 +41,7 @@ class CardAtencion extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -49,20 +49,20 @@ class CardAtencion extends StatelessWidget {
                   children: [
                     Text(
                       petName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       petBreed,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0,
                       ),
                     ),
                     Text(
                       userName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w300,
                         color: colorMain,
                         fontSize: 12.0,
@@ -77,14 +77,14 @@ class CardAtencion extends StatelessWidget {
                 children: [
                   Text(
                     date,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12.0,
                     ),
                   ),
                   Text(
                     time,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 12.0,
                     ),

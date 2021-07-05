@@ -1,5 +1,5 @@
 calculateAge(DateTime? birthDate) {
-  if (birthDate == null) return "No definido";
+  if (birthDate == null) return 'No definido';
   String? resp;
   int edad, mes, dia, diferencia;
   DateTime currentDate = DateTime.now();
@@ -27,7 +27,7 @@ calculateAge(DateTime? birthDate) {
     resp = edad.toString() + rAnio;
   }
   if (edad > 0 && mes > 0) {
-    resp = edad.toString() + rAnio + ' ' + mes.toString() + rMes;
+    resp = '$edad$rAnio $mes$rMes';
   }
 
   return resp;

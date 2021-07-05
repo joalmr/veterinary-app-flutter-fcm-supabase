@@ -18,22 +18,21 @@ class ServicesView extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 10.0,
-                  right: 0.0,
                   bottom: 5.0,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Servicios",
+                      'Servicios',
                       style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                     ),
                     IconButton(
                       splashRadius: 20,
                       iconSize: 18,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.edit,
                       ),
                       onPressed: () {
@@ -45,7 +44,8 @@ class ServicesView extends StatelessWidget {
               ),
               for (var i = 0; i < _.establishment.value.services!.length; i++)
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: Row(
                     children: <Widget>[
                       Container(
@@ -71,10 +71,10 @@ class ServicesView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       Text(
                         textMap[_.establishment.value.services![i].id]!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w300,
                         ),
                       )

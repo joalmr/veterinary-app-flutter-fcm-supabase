@@ -11,26 +11,27 @@ import 'package:vet_app/src/calendar/data/model/calendarNextdateModel.dart';
 class CalendarController extends GetxController {
   final _repo = CalendarRepository();
 
-  var calendarBookings = <CalendarBooking>[].obs;
-  var calendarNextdates = <CalendarNextdate>[].obs;
-  var calendarEvents = <CalendarEvent>[].obs;
+  final calendarBookings = <CalendarBooking>[].obs;
+  final calendarNextdates = <CalendarNextdate>[].obs;
+  final calendarEvents = <CalendarEvent>[].obs;
 
   var today = DateTime.now();
-  var dateString = ''.obs;
+  final dateString = ''.obs;
 
-  var valueMonth = DateTime.now().month.obs;
-  var valueYear = DateTime.now().year.obs;
+  final valueMonth = DateTime.now().month.obs;
+  final valueYear = DateTime.now().year.obs;
 
-  var daysPerMonth = 0.obs;
-  
-  var listCalendarBooking= <dynamic>[].obs;
-  var listCalendarNextDate= <dynamic>[].obs;
-  var listCalendarEvent= <dynamic>[].obs;
+  final daysPerMonth = 0.obs;
 
-  var cargando = true.obs;
+  final listCalendarBooking = <dynamic>[].obs;
+  final listCalendarNextDate = <dynamic>[].obs;
+  final listCalendarEvent = <dynamic>[].obs;
+
+  final cargando = true.obs;
 
   ///
   var tempDate;
+
   ///
   var pickedTime = TimeOfDay.now();
 
@@ -39,43 +40,47 @@ class CalendarController extends GetxController {
   RxString hora = ''.obs;
   RxString integrantes = ''.obs;
   RxString descripcion = ''.obs;
+
   ///
 
   @override
   void onInit() {
     super.onInit();
     dateString.value = formatDateBasic(today);
-    daysPerMonth.value = DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
+    daysPerMonth.value =
+        DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
 
     listasCalendario(today);
     tempDate = today;
   }
 
-  monthMore(){
+  monthMore() {
     if (valueMonth.value < 12) {
       valueMonth.value = valueMonth.value + 1;
-      daysPerMonth.value = DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
-      
+      daysPerMonth.value =
+          DateTime(valueYear.value, valueMonth.value + 1, 0).day;
     } else {
       valueYear.value = valueYear.value + 1;
       valueMonth.value = 1;
-      daysPerMonth.value = DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
+      daysPerMonth.value =
+          DateTime(valueYear.value, valueMonth.value + 1, 0).day;
     }
 
-    var dateC = DateTime(valueYear.value, valueMonth.value, 1);
+    final dateC = DateTime(valueYear.value, valueMonth.value, 1);
     listasCalendario(dateC);
     tempDate = dateC;
   }
 
-  monthLess(){
+  monthLess() {
     if (valueMonth.value > 1) {
       valueMonth.value = valueMonth.value - 1;
-      daysPerMonth.value = DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
-      
+      daysPerMonth.value =
+          DateTime(valueYear.value, valueMonth.value + 1, 0).day;
     } else {
       valueYear.value = valueYear.value - 1;
       valueMonth.value = 12;
-      daysPerMonth.value = DateTime(valueYear.value, (valueMonth.value + 1), 0).day;
+      daysPerMonth.value =
+          DateTime(valueYear.value, valueMonth.value + 1, 0).day;
     }
 
     var dateC = DateTime(valueYear.value, valueMonth.value, 1);
@@ -91,43 +96,46 @@ class CalendarController extends GetxController {
     cargando.value = false;
   }
 
-  listCalendarBookings(date)=>_listCalendarBookings(date);
+  listCalendarBookings(date) => _listCalendarBookings(date);
   _listCalendarBookings(date) async {
-    final response = await _repo.listCalendarBookings(prefUser.vetId!, formatDateYM(date));
-    
+    final response =
+        await _repo.listCalendarBookings(prefUser.vetId!, formatDateYM(date));
+
     listCalendarBooking.clear();
     listCalendarBooking.length = 32;
-    
-    if(response!=null){
-      response.result!.forEach((key,value){
+
+    if (response != null) {
+      response.result!.forEach((key, value) {
         listCalendarBooking[toDateBasic(key).day] = value;
       });
     }
   }
 
-  listCalendarNextdate(date)=>_listCalendarNextdate(date);
+  listCalendarNextdate(date) => _listCalendarNextdate(date);
   _listCalendarNextdate(date) async {
-    final response = await _repo.listCalendarNextdate(prefUser.vetId!, formatDateYM(date));
-    
+    final response =
+        await _repo.listCalendarNextdate(prefUser.vetId!, formatDateYM(date));
+
     listCalendarNextDate.clear();
     listCalendarNextDate.length = 32;
-    
-    if(response!=null){
-      response.result!.forEach((key,value){
+
+    if (response != null) {
+      response.result!.forEach((key, value) {
         listCalendarNextDate[toDateBasic(key).day] = value;
       });
     }
   }
 
-  listCalendarEvents(date)=>_listCalendarEvents(date);
+  listCalendarEvents(date) => _listCalendarEvents(date);
   _listCalendarEvents(date) async {
-    final response = await _repo.listCalendarEvents(prefUser.vetId!, formatDateYM(date));
-    
+    final response =
+        await _repo.listCalendarEvents(prefUser.vetId!, formatDateYM(date));
+
     listCalendarEvent.clear();
     listCalendarEvent.length = 32;
-    
-    if(response!=null){
-      response.result!.forEach((key,value){
+
+    if (response != null) {
+      response.result!.forEach((key, value) {
         listCalendarEvent[toDateBasic(key).day] = value;
       });
     }
@@ -137,11 +145,14 @@ class CalendarController extends GetxController {
   ///
   newCalendarEvent() => _newCalendarEvent();
   _newCalendarEvent() async {
-    if(titulo.value.isEmpty || fecha.value.isEmpty || hora.value.isEmpty || integrantes.value.isEmpty || descripcion.value.isEmpty ){
+    if (titulo.value.isEmpty ||
+        fecha.value.isEmpty ||
+        hora.value.isEmpty ||
+        integrantes.value.isEmpty ||
+        descripcion.value.isEmpty) {
       print('Complete todos los campos');
-    }
-    else{
-      var tempEvent = CalendarEvent(
+    } else {
+      final tempEvent = CalendarEvent(
         title: titulo.value,
         date: fecha.value,
         time: hora.value,
@@ -152,11 +163,11 @@ class CalendarController extends GetxController {
       await _repo.newCalendarEvent(prefUser.vetId!, tempEvent);
 
       Timer(
-        Duration(milliseconds: 2000),
+        const Duration(milliseconds: 2000),
         () {
           Get.back();
         },
       );
-    } 
+    }
   }
 }

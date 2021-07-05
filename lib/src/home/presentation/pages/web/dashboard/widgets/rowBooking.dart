@@ -19,7 +19,7 @@ class RowBooking extends StatefulWidget {
   final String address;
   final String delivery;
 
-  RowBooking({
+  const RowBooking({
     required this.bookingId,
     required this.petImg,
     required this.petName,
@@ -45,19 +45,20 @@ class _RowBookingState extends State<RowBooking> {
   @override
   Widget build(BuildContext context) {
     // final HomeController _home = Get.find();
-    String stringTypes = "";
+    String stringTypes = '';
     for (var i = 0; i < widget.bookingServices.length; i++) {
       final element = widget.bookingServices[i];
       if (widget.bookingServices.length == 1) {
         stringTypes = element;
       } else {
-        if (i < widget.bookingServices.length - 1)
-          stringTypes += element + ", ";
-        else
+        if (i < widget.bookingServices.length - 1) {
+          stringTypes += '$element, ';
+        } else {
           stringTypes += element;
+        }
       }
     }
-    
+
     return MouseRegion(
       onEnter: (value) {
         setState(() {
@@ -70,18 +71,17 @@ class _RowBookingState extends State<RowBooking> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 275),
-        margin: EdgeInsets.only(bottom: 10.0, left: 10.0, right: 5.0),
-        padding: EdgeInsets.all(10.0),
+        duration: const Duration(milliseconds: 275),
+        margin: const EdgeInsets.only(bottom: 10.0, left: 10.0, right: 5.0),
+        padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: hovered
                 ? [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.black12,
                       blurRadius: 13.0,
-                      spreadRadius: 0.0,
                     ),
                   ]
                 : []),
@@ -109,21 +109,21 @@ class _RowBookingState extends State<RowBooking> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 10.0),
+                      const SizedBox(width: 10.0),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             widget.petName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 12.0,
                             ),
                           ),
                           Text(
                             widget.petBreed,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 12.0,
                             ),
@@ -138,10 +138,10 @@ class _RowBookingState extends State<RowBooking> {
                                 height: 7.5,
                                 width: 7.5,
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Text(
                                 widget.status,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.w300,
                                   fontSize: 12.0,
                                 ),
@@ -156,14 +156,14 @@ class _RowBookingState extends State<RowBooking> {
                 Expanded(
                   flex: 1,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           widget.userName,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12.0,
                             color: Colors.black45,
@@ -173,14 +173,14 @@ class _RowBookingState extends State<RowBooking> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.phone_android,
                               color: colorMain,
                               size: 10,
                             ),
                             Text(
                               widget.userPhone,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11.0,
                                 color: Colors.black45,
@@ -195,12 +195,12 @@ class _RowBookingState extends State<RowBooking> {
                 Expanded(
                   flex: 1,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Column(
                       children: [
                         Text(
                           widget.date,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black45,
                             fontSize: 12.0,
@@ -208,7 +208,7 @@ class _RowBookingState extends State<RowBooking> {
                         ),
                         Text(
                           widget.time,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w900,
                             color: Colors.black45,
                             fontSize: 12.5,
@@ -219,19 +219,35 @@ class _RowBookingState extends State<RowBooking> {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
                   child: PopupMenuButton<int>(
                     tooltip: 'Atender a ${widget.petName}',
+                    onSelected: (value) {
+                      if (value == 1) {
+                        print('atiendo');
+                      } else {
+                        print('reprogramo');
+                      }
+                    },
+                    itemBuilder: (context) => const [
+                      PopupMenuItem(
+                        value: 1,
+                        child: Text('Atender ahora'),
+                      ),
+                      PopupMenuItem(
+                        value: 2,
+                        child: Text('Reprogramar'),
+                      ),
+                    ],
                     child: Container(
                       decoration: BoxDecoration(
                         color: colorMain,
                         borderRadius: BorderRadius.circular(5.0),
                       ),
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 7.5,
                         horizontal: 10,
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Atender',
                           style: TextStyle(
@@ -241,23 +257,6 @@ class _RowBookingState extends State<RowBooking> {
                         ),
                       ),
                     ),
-                    onSelected: (value) {
-                      if (value == 1) {
-                        print('atiendo');
-                      } else {
-                        print('reprogramo');
-                      }
-                    },
-                    itemBuilder: (context) => [
-                      PopupMenuItem(
-                        value: 1,
-                        child: Text("Atender ahora"),
-                      ),
-                      PopupMenuItem(
-                        value: 2,
-                        child: Text("Reprogramar"),
-                      ),
-                    ],
                   ),
                 ),
               ],
@@ -272,45 +271,44 @@ class _RowBookingState extends State<RowBooking> {
                   children: [
                     Text(
                       stringTypes,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 12.0,
                       ),
                     ),
                     Text(
                       'Observación: ${widget.observation}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 12.0,
                       ),
                     ),
-                    SizedBox(height: 5),
-                    widget.delivery != "" && widget.address != ""
-                        ? Card(
-                          color: Colors.grey[200],
-                          child: Container(
-                            padding: EdgeInsets.all(8),
-                            width: double.maxFinite,
-                            child: Column(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.start,
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                              children: [
-                                Icon(IconProypet.delivery),
-                                SizedBox(height: 5),
-                                Text(
-                                  widget.delivery,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: 5),
-                                Text(widget.address),
-                              ],
-                            ),
+                    const SizedBox(height: 5),
+                    if (widget.delivery != '' && widget.address != '')
+                      Card(
+                        color: Colors.grey[200],
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          width: double.maxFinite,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Icon(IconProypet.delivery),
+                              const SizedBox(height: 5),
+                              Text(
+                                widget.delivery,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 5),
+                              Text(widget.address),
+                            ],
                           ),
-                        )
-                        : SizedBox(height: 0)
+                        ),
+                      )
+                    else
+                      const SizedBox(height: 0)
                   ],
                 ),
               ),

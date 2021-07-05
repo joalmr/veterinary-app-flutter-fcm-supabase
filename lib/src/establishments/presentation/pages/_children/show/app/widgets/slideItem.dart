@@ -12,7 +12,7 @@ class SlideItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
       child: AspectRatio(
         aspectRatio: 16 / 9,
@@ -29,19 +29,20 @@ class SlideItem extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(5),
+              margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
                 color: colorRed,
               ),
               child: IconButton(
-                icon: Icon(Icons.delete_rounded),
+                icon: const Icon(Icons.delete_rounded),
                 onPressed: () {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: Text('Eliminar'),
-                      content: Text('Seguro que desea eliminar esta imagen?'),
+                      title: const Text('Eliminar'),
+                      content:
+                          const Text('Seguro que desea eliminar esta imagen?'),
                       actions: <Widget>[
                         btnAltern(
                           text: 'Sí, eliminar',

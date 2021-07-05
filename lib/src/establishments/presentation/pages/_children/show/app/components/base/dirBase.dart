@@ -15,34 +15,33 @@ class DirBase extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<EditBaseController>(
       builder: (_) {
-        return 
-        TypeAheadField<Prediction>(
+        return TypeAheadField<Prediction>(
           suggestionsCallback: (filter) async {
-            String ruta =
-                "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter";
-            Uri url = Uri.parse(ruta);
-            var response = await http.get(url);
-            print(response.body);
-            var models = addressFromJson(response.body);
+            final String ruta =
+                'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter';
+            final Uri url = Uri.parse(ruta);
+            final response = await http.get(url);
+
+            final models = addressFromJson(response.body);
             return models.predictions!;
           },
-          onSuggestionSelected: (Prediction? data) => (data != null) ? _.gpsDireccion(data) : null,
+          onSuggestionSelected: (Prediction? data) =>
+              (data != null) ? _.gpsDireccion(data) : null,
           textFieldConfiguration: TextFieldConfiguration(
             controller: controller,
-            decoration: InputDecoration(labelText: 'Dirección'),
+            decoration: const InputDecoration(labelText: 'Dirección'),
           ),
-          noItemsFoundBuilder: (context)=>Padding(
-            padding: const EdgeInsets.all(8.0),
+          noItemsFoundBuilder: (context) => const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text('No se encontró'),
           ),
           itemBuilder: (context, address) => Padding(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: Text(
               address.name!,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          
         );
         // SimpleAutocompleteFormField<Prediction>(
         //   controller: controller,
