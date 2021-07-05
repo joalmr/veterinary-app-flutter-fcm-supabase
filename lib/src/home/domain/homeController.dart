@@ -6,7 +6,6 @@ import 'package:vet_app/src/bookings/data/model/bookingModel.dart';
 import 'package:vet_app/src/establishments/data/establishmentRepository.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
-
 class HomeController extends GetxController {
   final establishmentService = EstablishmentRepository();
   final _repoBooking = BookingRepository();
@@ -19,26 +18,31 @@ class HomeController extends GetxController {
   bool get cargaConfirmar => _cargaConfirmar.value;
   set cargaConfirmar(bool value) => _cargaConfirmar.value = value;
 
-  RxString nameVet = "".obs;
+  final nameVet = RxnString();
 
-  RxList<Booking> unconfirmed = <Booking>[].obs;
-  RxList<Booking> overdue = <Booking>[].obs;
-  RxList<Booking> today = <Booking>[].obs;
-  RxList<Booking> incoming = <Booking>[].obs;
+  final unconfirmed = RxList<Booking>();
+  final overdue = RxList<Booking>();
+  final today = RxList<Booking>();
+  final incoming = RxList<Booking>();
 
 ////////////////////////////////////////////////////////////////////////////////
 
   @override
   void onInit() {
-    getVet();
-    getAllBookings();
+    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
+      getVet();
+      getAllBookings();
+    }
+
     super.onInit();
   }
 
-  launchWhatsApp(String phone, String user, String petName, String date, String time) async {
+  launchWhatsApp(String phone, String user, String petName, String date,
+      String time) async {
     final link = WhatsAppUnilink(
       phoneNumber: '+51$phone',
-      text: "Hola $user somos de ${prefUser.vetName}, nos comunicamos por la reserva de $petName\nFecha: $date\nHora: $time",
+      text:
+          "Hola $user somos de ${prefUser.vetName}, nos comunicamos por la reserva de $petName\nFecha: $date\nHora: $time",
     );
     await launch('$link');
   }

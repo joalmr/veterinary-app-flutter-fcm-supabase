@@ -19,7 +19,7 @@ class NavigationBar extends StatefulWidget {
 class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
-    String? pageSelected = ModalRoute.of(context)!.settings.name;
+    String? pageSelected = ModalRoute.of(context)?.settings.name ?? '';
 
     return Align(
       alignment: Alignment.centerLeft,

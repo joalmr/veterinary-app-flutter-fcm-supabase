@@ -24,7 +24,7 @@ class DataMapModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "result": result!.toJson(),
+        "result": result?.toJson() ?? null,
         "status": status,
       };
 }
@@ -56,9 +56,9 @@ class Result {
 
   Map<String, dynamic> toJson() => {
         "address_components":
-            List<dynamic>.from(addressComponents!.map((x) => x.toJson())),
+            List<dynamic>.from(addressComponents?.map((x) => x.toJson()) ?? []),
         "formatted_address": formattedAddress,
-        "geometry": geometry!.toJson(),
+        "geometry": geometry?.toJson() ?? null,
         "name": name,
         "place_id": placeId,
       };
@@ -104,8 +104,8 @@ class Geometry {
       );
 
   Map<String, dynamic> toJson() => {
-        "location": location!.toJson(),
-        "viewport": viewport!.toJson(),
+        "location": location?.toJson() ?? null,
+        "viewport": viewport?.toJson() ?? null,
       };
 }
 

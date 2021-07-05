@@ -16,7 +16,7 @@ class HomePageApp extends StatelessWidget {
         return Scaffold(
           drawer: MenuDrawer(),
           appBar: AppBar(
-            title: FadeIn(child: Text(_.nameVet.value)),
+            title: FadeIn(child: Text(_.nameVet.value!)),
             actions: [
               IconButton(
                 onPressed: () {

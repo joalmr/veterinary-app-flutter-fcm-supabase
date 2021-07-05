@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/config/variablesGlobal.dart';
@@ -19,6 +20,7 @@ import 'package:vet_app/src/home/domain/homeController.dart';
 
 class BookingController extends GetxController {
   final _repo = BookingRepository();
+  final _homeController = Get.find<HomeController>();
   RxString condicion = "".obs;
   RxBool statusBooking = false.obs;
   RxList<DataNextdate> listNextdate = <DataNextdate>[].obs;
@@ -41,7 +43,12 @@ class BookingController extends GetxController {
   String? attentionId;
   String? attentioAmount;
 
-  final _homeController = Get.find<HomeController>();
+  final pesoController = new MoneyMaskedTextController(
+    decimalSeparator: '.',
+    thousandSeparator: ',',
+    precision: 2,
+    leftSymbol: '',
+  );
 
   @override
   Future<void> onInit() async {
@@ -55,8 +62,8 @@ class BookingController extends GetxController {
     birthday = Get.arguments['birthday'];
     //
     final general = await _repo.attend(prefUser.vetId!, bookingId!);
-    
-    print(jsonEncode(general));
+
+    // print(jsonEncode(general));
 
     _homeController.getAllBookings();
 
@@ -67,6 +74,25 @@ class BookingController extends GetxController {
     examenes.value = general.testing;
     otros.value = general.other;
     vacunas.value = general.vaccination;
+
+    // cirugia.update((val) {
+    //   val = general.surgery;
+    // });
+    // consulta.update((val) {
+    //   val = general.consultation;
+    // });
+    // desparasita.update((val) {
+    //   val = general.deworming;
+    // });
+    // examenes.update((val) {
+    //   val = general.testing;
+    // });
+    // otros.update((val) {
+    //   val = general.other;
+    // });
+    // vacunas.update((val) {
+    //   val = general.vaccination;
+    // });
   }
 
   @override
@@ -78,8 +104,9 @@ class BookingController extends GetxController {
   saveConsulta(ConsultationBooking data) => _saveConsulta(data);
   _saveConsulta(ConsultationBooking data) async {
     //actualiza dato
-    consulta.value = await _repo.saveConsultation(prefUser.vetId!, attentionId!, data);
-    
+    consulta.value =
+        await _repo.saveConsultation(prefUser.vetId!, attentionId!, data);
+
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Consulta',
@@ -94,8 +121,9 @@ class BookingController extends GetxController {
   saveCirugia(SurgeryBooking data) => _saveCirugia(data);
   _saveCirugia(SurgeryBooking data) async {
     //actualiza dato
-    cirugia.value = await _repo.saveSurgery(prefUser.vetId!, attentionId!, data);
-    
+    cirugia.value =
+        await _repo.saveSurgery(prefUser.vetId!, attentionId!, data);
+
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Cirugía',
@@ -110,8 +138,9 @@ class BookingController extends GetxController {
   saveDesparasitacion(DewormingBooking data) => _saveDesparasitacion(data);
   _saveDesparasitacion(DewormingBooking data) async {
     //actualiza dato
-    desparasita.value = await _repo.saveDeworming(prefUser.vetId!, attentionId!, data);
-    
+    desparasita.value =
+        await _repo.saveDeworming(prefUser.vetId!, attentionId!, data);
+
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Desparasitación',
@@ -126,8 +155,9 @@ class BookingController extends GetxController {
   saveVacuna(VaccinationBooking data) => _saveVacuna(data);
   _saveVacuna(VaccinationBooking data) async {
     //actualiza dato
-    vacunas.value = await _repo.saveVaccination(prefUser.vetId!, attentionId!, data);
-    
+    vacunas.value =
+        await _repo.saveVaccination(prefUser.vetId!, attentionId!, data);
+
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Vacuna',
@@ -156,8 +186,9 @@ class BookingController extends GetxController {
   saveExamenes(TestingBooking data) => _saveExamenes(data);
   _saveExamenes(TestingBooking data) async {
     //actualiza dato
-    examenes.value = await _repo.saveTesting(prefUser.vetId!, attentionId!, data);
-    
+    examenes.value =
+        await _repo.saveTesting(prefUser.vetId!, attentionId!, data);
+
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Exámenes',
@@ -173,7 +204,7 @@ class BookingController extends GetxController {
   _saveOtro(OthersBooking data) async {
     //actualiza dato
     otros.value = await _repo.saveOthers(prefUser.vetId!, attentionId!, data);
-    
+
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Text(
         'Se guardó Otros',
@@ -231,7 +262,7 @@ class BookingController extends GetxController {
     );
   }
 
-  saveFinalize()=>_saveFinalize();
+  saveFinalize() => _saveFinalize();
   _saveFinalize() async {
     print(attentionId);
     // final general = await _repo.attend(prefUser.vetId, bookingId);
@@ -239,7 +270,7 @@ class BookingController extends GetxController {
 
     FinalizeAttention tempFinalize = new FinalizeAttention();
 
-    tempFinalize.weight = 6.15;
+    tempFinalize.weight = pesoController.numberValue;
     tempFinalize.bodyCondition = 'overweight';
 
     listNextdate.forEach((element) {
@@ -248,7 +279,8 @@ class BookingController extends GetxController {
           {
             tempFinalize.consultationNotificationNextdate = element.date;
             tempFinalize.consultationNotificationReason = element.name;
-            tempFinalize.consultationNotificationObservation = element.observation;
+            tempFinalize.consultationNotificationObservation =
+                element.observation;
           }
           break;
         case 'deworming':
@@ -269,20 +301,42 @@ class BookingController extends GetxController {
           {
             tempFinalize.vaccinationNotificationNextdate = element.date;
             tempFinalize.vaccinationNotificationReason = element.name;
-            tempFinalize.vaccinationNotificationObservation = element.observation;
+            tempFinalize.vaccinationNotificationObservation =
+                element.observation;
           }
           break;
-        default: 
+        default:
           {
             tempFinalize.consultationNotificationNextdate = element.date;
             tempFinalize.consultationNotificationReason = element.name;
-            tempFinalize.consultationNotificationObservation = element.observation;
+            tempFinalize.consultationNotificationObservation =
+                element.observation;
           }
           break;
       }
     });
 
-    if(listNextdate.length>0){
+    if (pesoController.numberValue == 0) {
+      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+        content: Text(
+          'Debe registrar el peso',
+          style: TextStyle(color: colorRed),
+        ),
+        duration: Duration(seconds: 3),
+        backgroundColor: Colors.black.withOpacity(0.85),
+      ));
+      return null;
+    } else if (listNextdate.length == 0) {
+      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+        content: Text(
+          'Debe registrar un servicio de atención',
+          style: TextStyle(color: colorRed),
+        ),
+        duration: Duration(seconds: 3),
+        backgroundColor: Colors.black.withOpacity(0.85),
+      ));
+      return null;
+    } else {
       _repo.finalizeAttention(prefUser.vetId!, attentionId!, tempFinalize);
 
       ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
@@ -295,20 +349,5 @@ class BookingController extends GetxController {
       ));
       Get.back();
     }
-
-    else{
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: Text(
-          'Debe registrar una atención',
-          style: TextStyle(color: colorRed),
-        ),
-        duration: Duration(seconds: 3),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
-    }
-    
-    
   }
-
-  
 }

@@ -29,7 +29,7 @@ class OthersBooking {
 
   Map<String, dynamic> toJson() => {
         "amount": amount,
-        "others": List<dynamic>.from(others!.map((x) => x.toJson())),
+        "others": List<dynamic>.from(others?.map((x) => x.toJson()) ?? []),
         "recommendations": recommendations,
       };
 }

@@ -23,20 +23,18 @@ class _OtroViewState extends State<OtroView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        var listaOtro = _book.otros.value!.others ?? <OtherServ>[];
+        var listaOtro = _book.otros.value?.others ?? <OtherServ>[];
 
         final recomendationController = TextEditingController(
-          text: _book.otros.value!.recommendations ?? ''
-        );
+            text: _book.otros.value?.recommendations ?? '');
 
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.otros.value!.amount ?? 0,
+          initialValue: _book.otros.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
           leftSymbol: '',
         );
-
 
         return Scaffold(
           appBar: AppBar(
@@ -75,7 +73,7 @@ class _OtroViewState extends State<OtroView> {
                       textFieldConfiguration: TextFieldConfiguration(
                         controller: otroController,
                         decoration:
-                          InputDecoration(labelText: 'Busque otro servicio'),
+                            InputDecoration(labelText: 'Busque otro servicio'),
                       ),
                       noItemsFoundBuilder: (context) => Padding(
                         padding: const EdgeInsets.all(8.0),

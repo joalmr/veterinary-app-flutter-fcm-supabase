@@ -18,27 +18,24 @@ class _VacunaViewState extends State<VacunaView> {
   RxBool recomendaciones = false.obs;
 
   final vacunaController = TextEditingController();
-  
 
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        var listaVacuna = _book.vacunas.value!.vaccines ?? <Vaccine>[];
+        var listaVacuna = _book.vacunas.value?.vaccines ?? <Vaccine>[];
 
         final recomendationController = TextEditingController(
-          text: _book.vacunas.value!.recommendations ?? ''
-        );
+            text: _book.vacunas.value?.recommendations ?? '');
 
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.vacunas.value!.amount ?? 0,
+          initialValue: _book.vacunas.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
           leftSymbol: '',
         );
-        
-        
+
         return Scaffold(
           appBar: AppBar(
             title: Text('Vacuna'),

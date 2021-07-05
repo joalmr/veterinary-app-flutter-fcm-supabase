@@ -41,7 +41,7 @@ class ChatsView extends StatelessWidget {
                           ),
                           SizedBox(width: 10),
                           Column(
-                            children: [Text(chat.petlover!.name!)],
+                            children: [Text(chat.petlover?.name ?? '')],
                           )
                         ],
                       ),

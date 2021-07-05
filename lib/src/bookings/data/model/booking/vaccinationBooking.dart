@@ -31,7 +31,7 @@ class VaccinationBooking {
 
   Map<String, dynamic> toJson() => {
         "amount": amount,
-        "vaccines": List<dynamic>.from(vaccines!.map((x) => x.toJson())),
+        "vaccines": List<dynamic>.from(vaccines?.map((x) => x.toJson()) ?? []),
         "recommendations": recommendations,
       };
 }
@@ -66,6 +66,6 @@ class Vaccine {
         "id": id,
         "name": name,
         "laboratory": laboratory,
-        "antigens": List<dynamic>.from(antigens!.map((x) => x)),
+        "antigens": List<dynamic>.from(antigens?.map((x) => x) ?? []),
       };
 }

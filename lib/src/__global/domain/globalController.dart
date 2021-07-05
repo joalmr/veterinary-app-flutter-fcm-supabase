@@ -4,6 +4,7 @@ import 'package:vet_app/config/variablesGlobal.dart';
 import 'package:vet_app/routes/routes.dart';
 
 class GlobalController extends GetxController {
+  bool init = false;
   @override
   void onInit() {
     openApp();

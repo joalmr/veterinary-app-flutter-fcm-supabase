@@ -9,37 +9,31 @@ import 'package:vet_app/src/bookings/data/model/booking/consultationBooking.dart
 import 'package:vet_app/src/bookings/domain/bookingController.dart';
 import 'radioConsulta.dart';
 
-class ConsultaView extends StatefulWidget {
-  @override
-  _ConsultaViewState createState() => _ConsultaViewState();
-}
-
-class _ConsultaViewState extends State<ConsultaView> {
-  RxBool anamnesisBool = false.obs;
-  RxBool recomendacionesBool = false.obs;
+class ConsultaView extends StatelessWidget {
   final diagnosticoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(
-      builder: (_book) {
+      builder: (_) {
+        final listaDiagnostico = <Diagnosis>[].obs;
+        final anamnesisBoolConsulta = false.obs;
+        final recomendacionesBoolConsulta = false.obs;
+
         final anamnesisController = TextEditingController(
-          text: _book.consulta.value!.anamnesis ?? ''
+          text: _.consulta.value?.anamnesis ?? '',
         );
         final recomendationController = TextEditingController(
-          text: _book.consulta.value!.recommendations ?? ''
+          text: _.consulta.value?.recommendations ?? '',
         );
 
-        var listaDiagnostico = _book.consulta.value!.diagnoses ?? <Diagnosis>[];
-
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.consulta.value!.amount ?? 0,
+          initialValue: _.consulta.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
           leftSymbol: '',
         );
-
 
         return Scaffold(
           appBar: AppBar(
@@ -76,7 +70,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                           if (element.id == data.id) doble = true;
                         });
                         if (!doble) {
-                          setState(() => listaDiagnostico.add(data));
+                          listaDiagnostico.add(data);
                           diagnosticoController.clear();
                         }
                       },
@@ -122,7 +116,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                                     ),
                                     RadioConsulta(
                                       selectValue:
-                                           item.condition ?? 'Presumptive',
+                                          item.condition ?? 'Presumptive',
                                     ),
                                   ],
                                 ),
@@ -133,8 +127,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                                         (1 / 8),
                                 child: InkWell(
                                   onTap: () {
-                                    setState(
-                                        () => listaDiagnostico.remove(item));
+                                    listaDiagnostico.remove(item);
                                   },
                                   child: Icon(Icons.delete_rounded),
                                 ),
@@ -152,16 +145,17 @@ class _ConsultaViewState extends State<ConsultaView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                          icon: Icon(!anamnesisBool.value
+                          icon: Icon(!anamnesisBoolConsulta.value
                               ? Icons.add_circle_rounded
                               : Icons.remove_circle_rounded),
                           onPressed: () {
-                            anamnesisBool.value = !anamnesisBool.value;
+                            anamnesisBoolConsulta.value =
+                                !anamnesisBoolConsulta.value;
                           },
                         ),
                       ],
                     ),
-                    anamnesisBool.value
+                    anamnesisBoolConsulta.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: anamnesisController,
@@ -176,16 +170,17 @@ class _ConsultaViewState extends State<ConsultaView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                          icon: Icon(!recomendacionesBool.value
+                          icon: Icon(!recomendacionesBoolConsulta.value
                               ? Icons.add_circle_rounded
                               : Icons.remove_circle_rounded),
                           onPressed: () {
-                            recomendacionesBool.value = !recomendacionesBool.value;
+                            recomendacionesBoolConsulta.value =
+                                !recomendacionesBoolConsulta.value;
                           },
                         ),
                       ],
                     ),
-                    recomendacionesBool.value
+                    recomendacionesBoolConsulta.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: recomendationController,
@@ -212,7 +207,6 @@ class _ConsultaViewState extends State<ConsultaView> {
                       child: btnPrimary(
                         text: 'Guardar',
                         onPressed: () {
-                          print('llega consulta');
                           if (listaDiagnostico.length > 0 &&
                               amountController.numberValue > 0) {
                             final temp = ConsultationBooking(
@@ -221,7 +215,7 @@ class _ConsultaViewState extends State<ConsultaView> {
                               diagnoses: listaDiagnostico,
                               recommendations: recomendationController.text,
                             );
-                            _book.saveConsulta(temp);
+                            _.saveConsulta(temp);
                           } else {
                             ScaffoldMessenger.of(Get.context!)
                                 .showSnackBar(SnackBar(

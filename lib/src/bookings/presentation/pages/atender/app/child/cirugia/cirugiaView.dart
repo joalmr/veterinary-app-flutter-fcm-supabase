@@ -14,25 +14,21 @@ class CirugiaView extends StatefulWidget {
 class _CirugiaViewState extends State<CirugiaView> {
   RxBool recomendaciones = false.obs;
 
-  
-
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
         final recomendationController = TextEditingController(
-          text: _book.cirugia.value!.recommendations ?? ''
-        );
+            text: _book.cirugia.value?.recommendations ?? '');
 
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.cirugia.value!.amount ?? 0,
+          initialValue: _book.cirugia.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
           leftSymbol: '',
         );
 
-        
         return Scaffold(
           appBar: AppBar(
             title: Text('Cirugía'),

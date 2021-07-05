@@ -25,7 +25,7 @@ class BookingModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "result": List<dynamic>.from(result!.map((x) => x.toJson())),
+        "result": List<dynamic>.from(result?.map((x) => x.toJson()) ?? []),
         "message": message,
       };
 }
@@ -77,10 +77,12 @@ class Booking {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "booking_date":
-            "${bookingDate!.year.toString().padLeft(4, '0')}-${bookingDate!.month.toString().padLeft(2, '0')}-${bookingDate!.day.toString().padLeft(2, '0')}",
+        "booking_date": bookingDate == null
+            ? null
+            : "${bookingDate!.year.toString().padLeft(4, '0')}-${bookingDate!.month.toString().padLeft(2, '0')}-${bookingDate!.day.toString().padLeft(2, '0')}",
         "booking_time": bookingTime,
-        "booking_services": List<dynamic>.from(bookingServices!.map((x) => x)),
+        "booking_services":
+            List<dynamic>.from(bookingServices?.map((x) => x) ?? []),
         "booking_status": bookingStatus,
         "pet_name": petName,
         "pet_breed": petBreed,

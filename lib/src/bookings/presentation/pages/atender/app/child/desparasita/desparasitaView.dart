@@ -22,21 +22,20 @@ class _DesparasitaViewState extends State<DesparasitaView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        var listaDesparasita = _book.desparasita.value!.dewormers ?? <Dewormer>[];
+        var listaDesparasita =
+            _book.desparasita.value?.dewormers ?? <Dewormer>[];
 
         final recomendationController = TextEditingController(
-          text: _book.desparasita.value!.recommendations ?? ''
-        );
+            text: _book.desparasita.value?.recommendations ?? '');
 
         final amountController = new MoneyMaskedTextController(
-          initialValue: _book.desparasita.value!.amount ?? 0,
+          initialValue: _book.desparasita.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
           precision: 2,
           leftSymbol: '',
         );
 
-        
         return Scaffold(
           appBar: AppBar(
             title: Text('Desparasitación'),

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/resources/utils/datetimeFormat.dart';
 import 'package:vet_app/src/bookings/domain/bookingController.dart';
-import 'package:vet_app/src/bookings/presentation/pages/atender/app/components/condicionLista.dart';
 import 'child/cirugia/cirugiaView.dart';
 import 'components/proximaCita/proximaCita.dart';
 import 'components/tiposAtencionList.dart';
@@ -25,7 +23,6 @@ class AtenderView extends StatelessWidget {
     return GetX<BookingController>(
       init: BookingController(),
       builder: (_) {
-        print(condicionLista.length);
         return Scaffold(
           appBar: AppBar(
             title: Text('Atención'),
@@ -92,6 +89,7 @@ class AtenderView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5),
                   child: TextFormField(
+                    controller: _.pesoController,
                     decoration: InputDecoration(
                       labelText: 'Peso',
                       fillColor: Colors.white,
@@ -139,37 +137,37 @@ class AtenderView extends StatelessWidget {
                                 tipoAtencion(
                                   IconProypet.consulta,
                                   'Consulta',
-                                  _.consulta.value!=null ?'${_.consulta.value!.amount}':'',
-                                  () => Get.to(ConsultaView()),
+                                  _.consulta.value?.amount?.toString() ?? '',
+                                  () => Get.to(() => ConsultaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.cirugia,
                                   'Cirugía',
-                                  _.cirugia.value!=null ?'${_.cirugia.value!.amount}':'',
+                                  _.cirugia.value?.amount?.toString() ?? '',
                                   () => Get.to(CirugiaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.desparasitacion,
                                   'Desparasitación',
-                                  _.desparasita.value!=null ?'${_.desparasita.value!.amount}':'',
+                                  _.desparasita.value?.amount?.toString() ?? '',
                                   () => Get.to(DesparasitaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.grooming,
                                   'Grooming',
-                                  '',
+                                  'falta',
                                   () => Get.to(GroomingView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.vacuna,
                                   'Vacuna',
-                                  _.vacunas.value!=null ?'${_.vacunas.value!.amount}':'',
+                                  _.vacunas.value?.amount?.toString() ?? '',
                                   () => Get.to(VacunaView()),
                                 ),
                                 tipoAtencion(
                                   IconProypet.farmacia,
                                   'Otros',
-                                  _.otros.value!=null ?'${_.otros.value!.amount}':'',
+                                  _.otros.value?.amount?.toString() ?? '',
                                   () => Get.to(OtroView()),
                                 ),
                               ],
@@ -284,7 +282,7 @@ class AtenderView extends StatelessWidget {
                                               ),
                                             ),
                                         ],
-                                      )
+                                      ),
                               ],
                             ),
                     ),
@@ -296,22 +294,28 @@ class AtenderView extends StatelessWidget {
                     width: double.maxFinite,
                     child: !_.statusBooking.value
                         ? Padding(
-                          padding: Platform.isIOS ? EdgeInsets.only(bottom: 15) : EdgeInsets.zero,
-                          child: btnPrimary(
+                            padding: Platform.isIOS
+                                ? EdgeInsets.only(bottom: 15)
+                                : EdgeInsets.zero,
+                            child: btnPrimary(
                               text: 'Continuar',
                               onPressed: () {
                                 _.statusBooking.value = true;
-                              }),
-                        )
+                              },
+                            ),
+                          )
                         : Padding(
-                          padding: Platform.isIOS ? EdgeInsets.only(bottom: 15) : EdgeInsets.zero,
-                          child: Row(
+                            padding: Platform.isIOS
+                                ? EdgeInsets.only(bottom: 15)
+                                : EdgeInsets.zero,
+                            child: Row(
                               children: [
                                 btnSecondary(
-                                    text: 'Volver',
-                                    onPressed: () {
-                                      _.statusBooking.value = false;
-                                    }),
+                                  text: 'Volver',
+                                  onPressed: () {
+                                    _.statusBooking.value = false;
+                                  },
+                                ),
                                 SizedBox(width: 5),
                                 Expanded(
                                   child: btnPrimary(
@@ -321,7 +325,7 @@ class AtenderView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                        ),
+                          ),
                   ),
                 ),
               ],
