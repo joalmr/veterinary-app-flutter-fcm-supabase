@@ -49,6 +49,9 @@ class BookingController extends GetxController {
     precision: 2,
     leftSymbol: '',
   );
+  final listaDiagnostico = <Diagnosis>[].obs;
+  final anamnesisBoolConsulta = false.obs;
+  final recomendacionesBoolConsulta = false.obs;
 
   @override
   Future<void> onInit() async {

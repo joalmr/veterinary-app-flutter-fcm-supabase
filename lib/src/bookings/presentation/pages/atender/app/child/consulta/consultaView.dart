@@ -16,10 +16,6 @@ class ConsultaView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_) {
-        final listaDiagnostico = <Diagnosis>[].obs;
-        final anamnesisBoolConsulta = false.obs;
-        final recomendacionesBoolConsulta = false.obs;
-
         final anamnesisController = TextEditingController(
           text: _.consulta.value?.anamnesis ?? '',
         );
@@ -66,11 +62,11 @@ class ConsultaView extends StatelessWidget {
                       },
                       onSuggestionSelected: (Diagnosis data) {
                         var doble = false;
-                        listaDiagnostico.forEach((element) {
+                        _.listaDiagnostico.forEach((element) {
                           if (element.id == data.id) doble = true;
                         });
                         if (!doble) {
-                          listaDiagnostico.add(data);
+                          _.listaDiagnostico.add(data);
                           diagnosticoController.clear();
                         }
                       },
@@ -96,7 +92,7 @@ class ConsultaView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (var item in listaDiagnostico)
+                        for (var item in _.listaDiagnostico)
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +123,7 @@ class ConsultaView extends StatelessWidget {
                                         (1 / 8),
                                 child: InkWell(
                                   onTap: () {
-                                    listaDiagnostico.remove(item);
+                                    _.listaDiagnostico.remove(item);
                                   },
                                   child: Icon(Icons.delete_rounded),
                                 ),
@@ -145,17 +141,17 @@ class ConsultaView extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                          icon: Icon(!anamnesisBoolConsulta.value
+                          icon: Icon(!_.anamnesisBoolConsulta.value
                               ? Icons.add_circle_rounded
                               : Icons.remove_circle_rounded),
                           onPressed: () {
-                            anamnesisBoolConsulta.value =
-                                !anamnesisBoolConsulta.value;
+                            _.anamnesisBoolConsulta.value =
+                                !_.anamnesisBoolConsulta.value;
                           },
                         ),
                       ],
                     ),
-                    anamnesisBoolConsulta.value
+                    _.anamnesisBoolConsulta.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: anamnesisController,
@@ -170,17 +166,17 @@ class ConsultaView extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                          icon: Icon(!recomendacionesBoolConsulta.value
+                          icon: Icon(!_.recomendacionesBoolConsulta.value
                               ? Icons.add_circle_rounded
                               : Icons.remove_circle_rounded),
                           onPressed: () {
-                            recomendacionesBoolConsulta.value =
-                                !recomendacionesBoolConsulta.value;
+                            _.recomendacionesBoolConsulta.value =
+                                !_.recomendacionesBoolConsulta.value;
                           },
                         ),
                       ],
                     ),
-                    recomendacionesBoolConsulta.value
+                    _.recomendacionesBoolConsulta.value
                         ? TextFormField(
                             maxLines: 5,
                             controller: recomendationController,
@@ -207,12 +203,12 @@ class ConsultaView extends StatelessWidget {
                       child: btnPrimary(
                         text: 'Guardar',
                         onPressed: () {
-                          if (listaDiagnostico.length > 0 &&
+                          if (_.listaDiagnostico.length > 0 &&
                               amountController.numberValue > 0) {
                             final temp = ConsultationBooking(
                               amount: amountController.numberValue,
                               anamnesis: anamnesisController.text,
-                              diagnoses: listaDiagnostico,
+                              diagnoses: _.listaDiagnostico,
                               recommendations: recomendationController.text,
                             );
                             _.saveConsulta(temp);
