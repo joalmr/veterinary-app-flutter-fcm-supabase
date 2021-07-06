@@ -8,6 +8,7 @@ linter:
     - camel_case_extensions
     - prefer_single_quotes
     - annotate_overrides
+    - avoid_print
 # #     # camel_case_types: true
 # #     # avoid_classes_with_only_static_members: false
 # #     # comment_references: true
