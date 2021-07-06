@@ -18,7 +18,7 @@ class MapVet extends StatelessWidget {
           myLocationButtonEnabled: false,
           compassEnabled: false,
           mapToolbarEnabled: false,
-          gestureRecognizers: Set()
+          gestureRecognizers: {}
             ..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer()))
             ..add(
                 Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()))

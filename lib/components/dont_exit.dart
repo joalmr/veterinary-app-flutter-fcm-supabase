@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DontExit extends StatelessWidget {
   final Widget child;
 
-  const DontExit({required this.child});
+  const DontExit({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

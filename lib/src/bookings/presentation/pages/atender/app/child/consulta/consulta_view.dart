@@ -60,9 +60,11 @@ class ConsultaView extends StatelessWidget {
                       },
                       onSuggestionSelected: (Diagnosis data) {
                         var doble = false;
-                        _.listaDiagnostico.forEach((element) {
+
+                        for (var element in _.listaDiagnostico) {
                           if (element.id == data.id) doble = true;
-                        });
+                        }
+
                         if (!doble) {
                           _.listaDiagnostico.add(data);
                           diagnosticoController.clear();

@@ -8,17 +8,17 @@ final iconMap = <String, IconData>{
   'vaccination': IconProypet.vacuna,
   'delivery': IconProypet.delivery,
   'ecg': IconProypet.cardiograma,
-  'laboratory': IconProypet.tubo_ensayo,
+  'laboratory': IconProypet.tuboEnsayo,
   '24-hours': IconProypet.horas_24,
   'lodging': IconProypet.hospedaje,
   'petshop': IconProypet.petshop,
   'deworming': IconProypet.desparasitacion,
   'ultrasound': IconProypet.ecografia,
-  'x-ray': IconProypet.rayos_x,
+  'x-ray': IconProypet.rayosX,
   'resonance': IconProypet.resonancia,
   'pharmacy': IconProypet.farmacia,
   'hospitalization': IconProypet.hospitalizacion,
-  'kit-emergencia': IconProypet.kit_emergencia, //maletin de emergencia
+  'kit-emergencia': IconProypet.kitEmergencia, //maletin de emergencia
 };
 
 final slugNum = <String, int>{
@@ -47,13 +47,13 @@ final iconNum = <int, IconData>{
   4: IconProypet.vacuna,
   5: IconProypet.delivery,
   6: IconProypet.cardiograma,
-  7: IconProypet.tubo_ensayo,
+  7: IconProypet.tuboEnsayo,
   8: IconProypet.horas_24,
   9: IconProypet.hospedaje,
   10: IconProypet.petshop,
   11: IconProypet.desparasitacion,
   12: IconProypet.ecografia,
-  13: IconProypet.rayos_x,
+  13: IconProypet.rayosX,
   14: IconProypet.resonancia,
   15: IconProypet.farmacia,
   16: IconProypet.hospitalizacion,

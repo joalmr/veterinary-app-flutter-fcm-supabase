@@ -39,15 +39,15 @@ abstract class AppPages {
   static final pages = [
     GetPage(
       name: NameRoutes.splash,
-      page: () => SplashView(),
+      page: () => const SplashView(),
     ),
     GetPage(
       name: NameRoutes.register,
-      page: () => RegisterMain(),
+      page: () => const RegisterMain(),
     ),
     GetPage(
       name: NameRoutes.login,
-      page: () => LoginMain(),
+      page: () => const LoginMain(),
     ),
     GetPage(
       name: NameRoutes.home,

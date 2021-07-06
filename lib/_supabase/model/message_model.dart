@@ -14,11 +14,11 @@ class MessageModel {
   DateTime? sendAt;
 
   factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
-        id: json['id'] as int?,
-        canalId: json['canal_id'] as int?,
-        message: json['message'] as String?,
+        id: json['id'],
+        canalId: json['canal_id'],
+        message: json['message'],
         type: json['type'] as bool?,
-        sendAt: DateTime?.parse(json['send_at'] as String),
+        sendAt: DateTime?.parse(json['send_at']),
       );
 
   Map<String, dynamic> toJson() => {

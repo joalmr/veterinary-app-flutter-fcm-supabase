@@ -17,9 +17,9 @@ class VetStorage {
   String? vetLogo;
 
   factory VetStorage.fromJson(Map<String, dynamic> json) => VetStorage(
-        vetId: json['vetId'] as String,
-        vetName: json['vetName'] as String,
-        vetLogo: json['vetLogo'] as String,
+        vetId: json['vetId'],
+        vetName: json['vetName'],
+        vetLogo: json['vetLogo'],
       );
 
   Map<String, dynamic> toJson() => {

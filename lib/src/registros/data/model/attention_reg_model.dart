@@ -21,7 +21,7 @@ class AttentionRegModel {
 
   factory AttentionRegModel.fromJson(Map<String, dynamic> json) =>
       AttentionRegModel(
-        message: json['message'] as String?,
+        message: json['message'],
         result: List<AttentionReg>.from(
             json['result'].map((x) => AttentionReg.fromJson(x))),
       );
@@ -50,12 +50,12 @@ class AttentionReg {
   });
 
   factory AttentionReg.fromJson(Map<String, dynamic> json) => AttentionReg(
-        attentionDate: DateTime?.parse(json['attention_date'] as String),
-        attentionId: json['attention_id'] as String?,
-        petBreed: json['pet_breed'] as String?,
-        petName: json['pet_name'] as String?,
-        petPicture: json['pet_picture'] as String?,
-        userName: json['user_name'] as String?,
+        attentionDate: DateTime?.parse(json['attention_date']),
+        attentionId: json['attention_id'],
+        petBreed: json['pet_breed'],
+        petName: json['pet_name'],
+        petPicture: json['pet_picture'],
+        userName: json['user_name'],
       );
 
   Map<String, dynamic> toJson() => {

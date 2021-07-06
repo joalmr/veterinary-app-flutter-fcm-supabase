@@ -220,8 +220,8 @@ class BookingApi extends BookingInterface {
   }
 
   @override
-  Future<void> finalizeAttention(
-      String establishment, String attention, FinalizeAttention data) async {
+  Future<void> finalizeAttention(String establishment, String attention,
+      FinalizeAttention finaliza) async {
     final url = Uri.https(
       urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/finalize',
@@ -230,7 +230,7 @@ class BookingApi extends BookingInterface {
     final http.Response response = await http.post(
       url,
       headers: headersToken(),
-      body: finalizeAttentionToJson(data),
+      body: finalizeAttentionToJson(finaliza),
     );
 
     print(response.statusCode);

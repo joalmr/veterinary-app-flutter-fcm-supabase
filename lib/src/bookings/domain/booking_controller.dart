@@ -52,13 +52,13 @@ class BookingController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-    bookingId = Get.arguments['bookingId'] as String?;
-    petId = Get.arguments['petId'] as String?;
-    specie = Get.arguments['specie'] as String?;
-    breed = Get.arguments['breed'] as String?;
-    name = Get.arguments['name'] as String?;
-    image = Get.arguments['image'] as String?;
-    birthday = Get.arguments['birthday'] as String?;
+    bookingId = Get.arguments['bookingId'];
+    petId = Get.arguments['petId'];
+    specie = Get.arguments['specie'];
+    breed = Get.arguments['breed'];
+    name = Get.arguments['name'];
+    image = Get.arguments['image'];
+    birthday = Get.arguments['birthday'];
     //
     final general = await _repo.attend(prefUser.vetId!, bookingId!);
 
@@ -205,8 +205,8 @@ class BookingController extends GetxController {
       Get.back();
     } else {
       final temp = DataNextdate(
-        type: dato['type'] as String?,
-        name: dato['name'] as String?,
+        type: dato['type'],
+        name: dato['name'],
         date: formatDateBasic(DateTime.now()),
         observation: '-',
       );

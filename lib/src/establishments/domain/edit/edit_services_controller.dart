@@ -13,14 +13,16 @@ class EditServicesController extends GetxController {
 
   var servicesVet = <ServiceVetModel>[].obs;
   var servicesVetSet = <int>[].obs;
-  var entityBase = new EstablecimientoEntity().obs;
+  var entityBase = EstablecimientoEntity().obs;
 
   @override
   void onInit() {
     _getService();
-    showVetController.establishment.value.services!.forEach((element) {
+
+    for (var element in showVetController.establishment.value.services!) {
       servicesVetSet.add(element.id!);
-    });
+    }
+
     entityBase.update((val) {
       val!.name = showVetController.establishment.value.name;
       val.phone = showVetController.establishment.value.phone;

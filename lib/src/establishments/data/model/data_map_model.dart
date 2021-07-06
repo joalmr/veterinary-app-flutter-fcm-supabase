@@ -20,7 +20,7 @@ class DataMapModel {
 
   factory DataMapModel.fromJson(Map<String, dynamic> json) => DataMapModel(
         result: Result?.fromJson(json['result'] as Map<String, dynamic>),
-        status: json['status'] as String?,
+        status: json['status'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -48,10 +48,10 @@ class Result {
         addressComponents: List<AddressComponent>.from(
             json['address_components']
                 .map((x) => AddressComponent.fromJson(x))),
-        formattedAddress: json['formatted_address'] as String?,
+        formattedAddress: json['formatted_address'],
         geometry: Geometry?.fromJson(json['geometry'] as Map<String, dynamic>),
-        name: json['name'] as String?,
-        placeId: json['place_id'] as String?,
+        name: json['name'],
+        placeId: json['place_id'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -77,8 +77,8 @@ class AddressComponent {
 
   factory AddressComponent.fromJson(Map<String, dynamic> json) =>
       AddressComponent(
-        longName: json['long_name'] as String?,
-        shortName: json['short_name'] as String?,
+        longName: json['long_name'],
+        shortName: json['short_name'],
         types: List<String>.from(json['types'].map((x) => x)),
       );
 
@@ -119,8 +119,8 @@ class Location {
   double? lng;
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
-        lat: json['lat'] as double?,
-        lng: json['lng'] as double?,
+        lat: json['lat'],
+        lng: json['lng'],
       );
 
   Map<String, dynamic> toJson() => {

@@ -9,10 +9,11 @@ class CheckRegister extends StatefulWidget {
   final String? tipo;
 
   const CheckRegister({
+    Key? key,
     this.title,
     this.link,
     this.tipo,
-  });
+  }) : super(key: key);
 
   @override
   _CheckRegisterState createState() => _CheckRegisterState();

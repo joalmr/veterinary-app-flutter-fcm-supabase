@@ -11,9 +11,9 @@ class EstablishmentModel {
 
   factory EstablishmentModel.fromJson(Map<String, dynamic> json) =>
       EstablishmentModel(
-        id: json['id'] as int?,
-        establishmentId: json['establishment_id'] as String?,
-        name: json['name'] as String?,
+        id: json['id'],
+        establishmentId: json['establishment_id'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toJson() => {

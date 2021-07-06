@@ -57,9 +57,11 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                       },
                       onSuggestionSelected: (Dewormer data) {
                         var doble = false;
-                        listaDesparasita.forEach((element) {
+
+                        for (var element in listaDesparasita) {
                           if (element.id == data.id) doble = true;
-                        });
+                        }
+
                         if (!doble) {
                           setState(() {
                             listaDesparasita.add(data);

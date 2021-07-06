@@ -52,7 +52,7 @@ class ReprogramarController extends GetxController {
         if (message.containsKey('message')) {
           ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
             content: Text(
-              message['message'] as String,
+              message['message'],
             ),
             duration: const Duration(seconds: 7),
             backgroundColor: Colors.black.withOpacity(0.85),

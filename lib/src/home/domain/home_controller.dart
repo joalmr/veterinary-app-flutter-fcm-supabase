@@ -49,7 +49,7 @@ class HomeController extends GetxController {
 
   refreshUnconfirmed() => _refreshUnconfirmed();
 
-  Future<Null> _refreshUnconfirmed() async {
+  Future<dynamic> _refreshUnconfirmed() async {
     carga = true;
     await Future.delayed(const Duration(milliseconds: 2));
     getUnconfirmed();

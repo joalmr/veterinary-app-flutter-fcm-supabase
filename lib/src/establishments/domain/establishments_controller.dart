@@ -22,8 +22,9 @@ class EstablishmentsController extends GetxController {
     super.onInit();
   }
 
+  @override
   void refresh() => _refresh();
-  Future<Null> _refresh() async {
+  Future<dynamic> _refresh() async {
     await Future.delayed(const Duration(milliseconds: 2));
     getAll();
     return null;

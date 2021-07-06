@@ -48,27 +48,27 @@ class EstablishmentModal {
 
   factory EstablishmentModal.fromJson(Map<String, dynamic> json) =>
       EstablishmentModal(
-        address: json['address'] as String?,
-        description: json['description'] as String?,
+        address: json['address'],
+        description: json['description'],
         employees: List<Employee>.from(
             json['employees'].map((x) => Employee.fromJson(x))),
-        id: json['id'] as String?,
-        latitude: json['latitude'] as double?,
-        logo: json['logo'] as String?,
-        longitude: json['longitude'] as double?,
-        name: json['name'] as String?,
-        phone: json['phone'] as String?,
+        id: json['id'],
+        latitude: json['latitude'],
+        logo: json['logo'],
+        longitude: json['longitude'],
+        name: json['name'],
+        phone: json['phone'],
         prices: Prices?.fromJson(json['prices'] as Map<String, dynamic>),
-        reference: json['reference'] as String?,
-        ruc: json['ruc'] as String?,
+        reference: json['reference'],
+        ruc: json['ruc'],
         schedule: Schedule?.fromJson(json['schedule'] as Map<String, dynamic>),
         services: List<Service>.from(
             json['services'].map((x) => Service.fromJson(x))),
         slides: List<String>.from(json['slides'].map((x) => x)),
-        stars: json['stars'] as String?,
-        type: json['type'] as String?,
-        typeId: json['type_id'] as int?,
-        website: json['website'] as String?,
+        stars: json['stars'],
+        type: json['type'],
+        typeId: json['type_id'],
+        website: json['website'],
       );
 }
 
@@ -88,11 +88,11 @@ class Employee {
   });
 
   factory Employee.fromJson(Map<String, dynamic> json) => Employee(
-        id: json['id'] as String?,
-        establishmentId: json['establishment_id'] as String?,
-        typeId: json['type_id'] as int?,
-        name: json['name'] as String?,
-        code: json['code'] as String?,
+        id: json['id'],
+        establishmentId: json['establishment_id'],
+        typeId: json['type_id'],
+        name: json['name'],
+        code: json['code'],
       );
 }
 
@@ -106,8 +106,8 @@ class Service {
   String? name;
 
   factory Service.fromJson(Map<String, dynamic> json) => Service(
-        id: json['id'] as int?,
-        name: json['name'] as String?,
+        id: json['id'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -149,8 +149,8 @@ class Price {
   String? to;
 
   factory Price.fromJson(Map<String, dynamic> json) => Price(
-        from: json['from'] as String?,
-        to: json['to'] as String?,
+        from: json['from'],
+        to: json['to'],
       );
 }
 
@@ -207,8 +207,8 @@ class Day {
 
   factory Day.fromJson(Map<String, dynamic> json) => Day(
         daySwitch: json['switch'] as bool? ?? false,
-        timeStart: json['time_start'] as String? ?? '',
-        timeEnd: json['time_end'] as String? ?? '',
+        timeStart: json['time_start'] ?? '',
+        timeEnd: json['time_end'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {

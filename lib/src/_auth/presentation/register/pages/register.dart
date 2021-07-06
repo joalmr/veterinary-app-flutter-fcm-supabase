@@ -6,6 +6,8 @@ import 'app/register_view.dart';
 import 'web/register_page.dart';
 
 class RegisterMain extends StatelessWidget {
+  const RegisterMain({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<RegisterController>(

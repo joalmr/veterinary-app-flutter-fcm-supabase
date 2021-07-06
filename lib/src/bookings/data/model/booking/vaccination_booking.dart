@@ -23,10 +23,10 @@ class VaccinationBooking {
 
   factory VaccinationBooking.fromJson(Map<String, dynamic> json) =>
       VaccinationBooking(
-        amount: json['amount'] as double? ?? 0.0,
+        amount: json['amount'] ?? 0.0,
         vaccines: List<Vaccine>.from(
             json['vaccines'].map((x) => Vaccine.fromJson(x))),
-        recommendations: json['recommendations'] as String? ?? '',
+        recommendations: json['recommendations'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -56,9 +56,9 @@ class Vaccine {
   List<String>? antigens;
 
   factory Vaccine.fromJson(Map<String, dynamic> json) => Vaccine(
-        id: json['id'] as int?,
-        name: json['name'] as String?,
-        laboratory: json['laboratory'] as String?,
+        id: json['id'],
+        name: json['name'],
+        laboratory: json['laboratory'],
         antigens: List<String>.from(json['antigens'].map((x) => x)),
       );
 

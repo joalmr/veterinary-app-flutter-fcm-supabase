@@ -301,7 +301,7 @@ class EstablishmentApi extends EstablishmentInterface {
 
     final dato = jsonDecode(responseString);
 
-    return dato['logo'] as String;
+    return dato['logo'];
   }
 
   @override

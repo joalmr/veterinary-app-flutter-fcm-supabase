@@ -32,9 +32,9 @@ class EditBaseController extends GetxController {
     addressControl.text = showVetController.establishment.value.address!;
     phoneControl.text = showVetController.establishment.value.phone!;
 
-    showVetController.establishment.value.services!.forEach((element) {
+    for (var element in showVetController.establishment.value.services!) {
       services.add(element.id!);
-    });
+    }
 
     entityBase.update((val) {
       val!.name = showVetController.establishment.value.name;

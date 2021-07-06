@@ -17,9 +17,9 @@ class CanalModel {
   // String petloverName;
 
   factory CanalModel.fromJson(Map<String, dynamic> json) => CanalModel(
-        id: json['id'] as int?,
-        petloverId: json['petlover_id'] as int?,
-        establishmentId: json['establishment_id'] as int?,
+        id: json['id'],
+        petloverId: json['petlover_id'],
+        establishmentId: json['establishment_id'],
         petlover: json['petlover'] == null
             ? null
             : PetloverModel.fromJson(json['petlover'] as Map<String, dynamic>),

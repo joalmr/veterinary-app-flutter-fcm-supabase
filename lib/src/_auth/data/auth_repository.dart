@@ -25,8 +25,8 @@ class AuthRepository extends AuthInterface {
 
       if (response.statusCode == 200) {
         final jsonResp = json.decode(response.body);
-        prefUser.token = jsonResp['token'] as String;
-        prefUser.userRol = jsonResp['rol'] as String;
+        prefUser.token = jsonResp['token'];
+        prefUser.userRol = jsonResp['rol'];
       }
       return response.statusCode;
     } catch (ex) {

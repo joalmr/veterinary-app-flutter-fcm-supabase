@@ -120,34 +120,30 @@ class FullCalendar extends StatelessWidget {
                                   if (_.listCalendarBooking[i] == null)
                                     const SizedBox()
                                   else
-                                    _.listCalendarBooking[i].length as int > 0
+                                    _.listCalendarBooking[i].length > 0
                                         ? itemDay(
                                             'Atenciones',
-                                            _.listCalendarBooking[i].length
-                                                as int,
+                                            _.listCalendarBooking[i].length,
                                             colorMain,
                                           )
                                         : const SizedBox(),
                                   if (_.listCalendarNextDate[i] == null)
                                     const SizedBox()
                                   else
-                                    (_.listCalendarNextDate[i].length as int >
-                                            0)
+                                    (_.listCalendarNextDate[i].length > 0)
                                         ? itemDay(
                                             'Próx.citas',
-                                            _.listCalendarNextDate[i].length
-                                                as int,
+                                            _.listCalendarNextDate[i].length,
                                             Colors.pinkAccent,
                                           )
                                         : const SizedBox(),
                                   if (_.listCalendarEvent[i] == null)
                                     const SizedBox()
                                   else
-                                    _.listCalendarEvent[i].length as int > 0
+                                    _.listCalendarEvent[i].length > 0
                                         ? itemDay(
                                             'Eventos',
-                                            _.listCalendarEvent[i].length
-                                                as int,
+                                            _.listCalendarEvent[i].length,
                                             Colors.blueGrey,
                                           )
                                         : const SizedBox(),

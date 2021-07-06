@@ -22,7 +22,7 @@ class BookingModel {
         result: List<Booking>.from(json['result']
                 .map((x) => Booking.fromJson(x as Map<String, dynamic>))
             as Iterable<dynamic>),
-        message: json['message'] as String?,
+        message: json['message'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -61,19 +61,19 @@ class Booking {
   });
 
   factory Booking.fromJson(Map<String, dynamic> json) => Booking(
-        id: json['id'] as String?,
-        bookingDate: DateTime?.parse(json['booking_date'] as String),
-        bookingTime: json['booking_time'] as String?,
+        id: json['id'],
+        bookingDate: DateTime?.parse(json['booking_date']),
+        bookingTime: json['booking_time'],
         bookingServices:
             List<String>.from(json['booking_services'].map((x) => x)),
-        bookingStatus: json['booking_status'] as String?,
-        petName: json['pet_name'] as String?,
-        petBreed: json['pet_breed'] as String?,
-        petPicture: json['pet_picture'] as String?,
-        user: json['user'] as String?,
-        userPhone: json['user_phone'] as String?,
+        bookingStatus: json['booking_status'],
+        petName: json['pet_name'],
+        petBreed: json['pet_breed'],
+        petPicture: json['pet_picture'],
+        user: json['user'],
+        userPhone: json['user_phone'],
         options: Options?.fromJson(json['options'] as Map<String, dynamic>),
-        observation: json['observation'] as String? ?? '',
+        observation: json['observation'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -107,9 +107,9 @@ class Options {
   });
 
   factory Options.fromJson(Map<String, dynamic> json) => Options(
-        address: json['address'] as String? ?? '',
-        delivery: json['delivery'] as String? ?? '',
-        typeId: json['type_id'] as String? ?? '',
+        address: json['address'] ?? '',
+        delivery: json['delivery'] ?? '',
+        typeId: json['type_id'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {

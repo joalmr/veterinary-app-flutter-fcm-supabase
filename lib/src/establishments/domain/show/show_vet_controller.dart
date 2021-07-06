@@ -20,14 +20,15 @@ class ShowVetController extends GetxController {
 
   @override
   void onInit() {
-    argumentoId = Get.arguments as String?;
+    argumentoId = Get.arguments;
     getByid();
     super.onInit();
   }
 
+  @override
   Future refresh() => _refresh();
 
-  Future<Null> _refresh() async {
+  Future<dynamic> _refresh() async {
     cargando.value = true;
     await Future.delayed(const Duration(milliseconds: 2));
     getByid();

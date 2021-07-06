@@ -17,7 +17,7 @@ class CalendarEventResponse {
 
   factory CalendarEventResponse.fromJson(Map<String, dynamic> json) =>
       CalendarEventResponse(
-        message: json['message'] as String?,
+        message: json['message'],
         result: json['result'] as bool?,
       );
 

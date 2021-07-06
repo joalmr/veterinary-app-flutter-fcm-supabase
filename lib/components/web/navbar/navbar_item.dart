@@ -35,15 +35,17 @@ Widget navbarItem(
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 30.0),
-                    child: Icon(
-                      icon,
-                      color: color != null
-                          ? color
-                          : active
-                              ? Colors.white
-                              : Colors.white54,
-                      size: 19.0,
-                    ),
+                    child: color != null
+                        ? Icon(
+                            icon,
+                            color: color,
+                            size: 19.0,
+                          )
+                        : Icon(
+                            icon,
+                            color: active ? Colors.white : Colors.white54,
+                            size: 19.0,
+                          ),
                   ),
                 ],
               ),

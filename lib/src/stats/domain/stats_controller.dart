@@ -138,7 +138,7 @@ class StatsController extends GetxController {
         prefUser.vetId!, fechaIn.text, fechaOut.text);
     services.addAll(values.result!.services!);
 
-    services.forEach((element) {
+    for (var element in services) {
       final PieChartSectionData temp = PieChartSectionData(
         color: UniqueColorGenerator.getColor().withOpacity(0.7),
         value: element.value!.toDouble(),
@@ -146,7 +146,7 @@ class StatsController extends GetxController {
         radius: 25,
       );
       paiChartList.add(temp);
-    });
+    }
 
     cargaServices.value = false;
   }

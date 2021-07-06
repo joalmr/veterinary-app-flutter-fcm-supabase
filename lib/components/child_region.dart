@@ -7,10 +7,11 @@ class ChildRegion extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
 
   const ChildRegion({
+    Key? key,
     this.child,
     this.margin,
     this.padding,
-  });
+  }) : super(key: key);
 
   @override
   _ChildRegionState createState() => _ChildRegionState();

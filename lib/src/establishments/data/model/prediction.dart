@@ -16,7 +16,7 @@ class Address {
   factory Address.fromJson(Map<String, dynamic> json) => Address(
         predictions: List<Prediction>.from(
             json['predictions'].map((x) => Prediction.fromJson(x))),
-        status: json['status'] as String?,
+        status: json['status'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,9 +37,9 @@ class Prediction {
   });
 
   factory Prediction.fromJson(Map<String, dynamic> json) => Prediction(
-        name: json['description'] as String?,
-        id: json['id'] as String?,
-        placeId: json['place_id'] as String?,
+        name: json['description'],
+        id: json['id'],
+        placeId: json['place_id'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -51,7 +51,7 @@ class Prediction {
   String toString() => name!;
 
   @override
-  bool operator ==(Object o) => o is Prediction && o.id == id;
+  bool operator ==(o) => o is Prediction && o.id == id;
 
   @override
   int get hashCode => id.hashCode ^ name.hashCode;

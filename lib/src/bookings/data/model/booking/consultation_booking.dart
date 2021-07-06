@@ -5,7 +5,7 @@
 import 'dart:convert';
 
 ConsultationBooking consultationBookingFromJson(String str) =>
-    ConsultationBooking.fromJson(json.decode(str) as Map<String, String>);
+    ConsultationBooking.fromJson(json.decode(str));
 
 String consultationBookingToJson(ConsultationBooking data) =>
     json.encode(data.toJson());
@@ -25,11 +25,11 @@ class ConsultationBooking {
 
   factory ConsultationBooking.fromJson(Map<String, dynamic> json) =>
       ConsultationBooking(
-        amount: json['amount'] as double? ?? 0.0,
-        anamnesis: json['anamnesis'] as String?,
+        amount: json['amount'] ?? 0.0,
+        anamnesis: json['anamnesis'],
         diagnoses: List<Diagnosis>.from(
             json['diagnoses'].map((x) => Diagnosis.fromJson(x))),
-        recommendations: json['recommendations'] as String?,
+        recommendations: json['recommendations'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -59,9 +59,9 @@ class Diagnosis {
   String? condition;
 
   factory Diagnosis.fromJson(Map<String, dynamic> json) => Diagnosis(
-        id: json['id'] as int?,
-        name: json['name'] as String?,
-        condition: json['condition'] as String?,
+        id: json['id'],
+        name: json['name'],
+        condition: json['condition'],
       );
 
   Map<String, dynamic> toJson() => {

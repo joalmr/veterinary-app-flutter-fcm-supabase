@@ -58,9 +58,11 @@ class _VacunaViewState extends State<VacunaView> {
                       },
                       onSuggestionSelected: (Vaccine data) {
                         var doble = false;
-                        listaVacuna.forEach((element) {
+
+                        for (var element in listaVacuna) {
                           if (element.id == data.id) doble = true;
-                        });
+                        }
+
                         if (!doble) {
                           setState(() {
                             listaVacuna.add(data);

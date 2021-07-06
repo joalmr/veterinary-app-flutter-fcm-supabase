@@ -60,12 +60,12 @@ class DayDetail extends StatelessWidget {
                           EventBooking(
                             color:
                                 colorBlue, //TODO: cambiar color con el status
-                            image: booking.petPicture as String,
-                            petName: booking.petName as String,
-                            petBreed: booking.petBreed as String,
-                            time: booking.time as String,
-                            userName: booking.userName as String,
-                            status: booking.bookingStatus as String,
+                            image: booking.petPicture,
+                            petName: booking.petName,
+                            petBreed: booking.petBreed,
+                            time: booking.time,
+                            userName: booking.userName,
+                            status: booking.bookingStatus,
                           )
                       ],
                     ),
@@ -82,12 +82,12 @@ class DayDetail extends StatelessWidget {
                           const SizedBox(height: 0),
                         for (var nextDate in listaNextDate)
                           EventNextDate(
-                            image: nextDate.petPicture as String,
-                            petName: nextDate.petName as String,
-                            petBreed: nextDate.petBreed as String,
-                            motivo: nextDate.reason as String,
-                            userName: nextDate.userName as String,
-                            userPhone: nextDate.userPhone as String,
+                            image: nextDate.petPicture,
+                            petName: nextDate.petName,
+                            petBreed: nextDate.petBreed,
+                            motivo: nextDate.reason,
+                            userName: nextDate.userName,
+                            userPhone: nextDate.userPhone,
                             firstPush: true,
                             secondPush: false,
                           )
@@ -107,10 +107,10 @@ class DayDetail extends StatelessWidget {
                         for (var event in listaEvent)
                           EventNote(
                             color: Colors.blueGrey,
-                            title: event.title as String,
-                            time: event.time as String,
-                            members: event.members as String,
-                            description: event.description as String,
+                            title: event.title,
+                            time: event.time,
+                            members: event.members,
+                            description: event.description,
                           )
                       ],
                     ),

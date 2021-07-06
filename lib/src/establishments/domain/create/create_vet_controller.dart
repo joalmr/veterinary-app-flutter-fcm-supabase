@@ -164,7 +164,7 @@ class CreateVetController extends GetxController {
           colorText: colorWhite,
         );
       } else {
-        idVet = value[1] as String;
+        idVet = value[1];
         await _setEmployee(idVet);
         await _setSchedule(idVet);
         await _setPrices(idVet);
@@ -243,7 +243,7 @@ class CreateVetController extends GetxController {
   bool get ephone => v.phoneVet.text.isEmpty;
   bool get eruc => v.rucVet.text.isEmpty;
   bool get eweb => v.webVet.text.isEmpty;
-  bool get eservices => servicesVetSet.length == 0;
+  bool get eservices => servicesVetSet.isEmpty;
   //step 2
   bool get edirVet => v.dirVet.text.isEmpty;
   //step 3

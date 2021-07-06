@@ -14,8 +14,8 @@ class CheckFiltro extends StatefulWidget {
   });
 
   @override
-  _CheckFiltroState createState() => _CheckFiltroState(
-      title: this.title, checkBool: this.checkBool, onTapFn: this.onTapFn);
+  _CheckFiltroState createState() =>
+      _CheckFiltroState(title: title, checkBool: checkBool, onTapFn: onTapFn);
 }
 
 class _CheckFiltroState extends State<CheckFiltro> {

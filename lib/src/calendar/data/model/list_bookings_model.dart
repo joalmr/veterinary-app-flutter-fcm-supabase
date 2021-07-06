@@ -21,7 +21,7 @@ class ListBookingsModel {
 
   factory ListBookingsModel.fromJson(Map<String, dynamic> json) =>
       ListBookingsModel(
-        message: json['message'] as String?,
+        message: json['message'],
         result: Map.from(json['result']).map((k, v) =>
             MapEntry<String, List<Result>>(
                 k, List<Result>.from(v.map((x) => Result.fromJson(x))))),
@@ -60,16 +60,16 @@ class Result {
   String? userId;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
-        bookingStatus: json['booking_status'] as String?,
-        bookingId: json['booking_id'] as String?,
-        date: DateTime?.parse(json['date'] as String),
-        petPicture: json['pet_picture'] as String?,
-        petBreed: json['pet_breed'] as String?,
-        petId: json['pet_id'] as String?,
-        petName: json['pet_name'] as String?,
-        time: json['time'] as String?,
-        userName: json['user_name'] as String?,
-        userId: json['user_id'] as String?,
+        bookingStatus: json['booking_status'],
+        bookingId: json['booking_id'],
+        date: DateTime?.parse(json['date']),
+        petPicture: json['pet_picture'],
+        petBreed: json['pet_breed'],
+        petId: json['pet_id'],
+        petName: json['pet_name'],
+        time: json['time'],
+        userName: json['user_name'],
+        userId: json['user_id'],
       );
 
   Map<String, dynamic> toJson() => {

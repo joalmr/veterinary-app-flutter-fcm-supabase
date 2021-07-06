@@ -56,9 +56,11 @@ class _OtroViewState extends State<OtroView> {
                       },
                       onSuggestionSelected: (OtherServ data) {
                         var doble = false;
-                        listaOtro.forEach((element) {
+
+                        for (var element in listaOtro) {
                           if (element.id == data.id) doble = true;
-                        });
+                        }
+
                         if (!doble) {
                           setState(() {
                             listaOtro.add(data);

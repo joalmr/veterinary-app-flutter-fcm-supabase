@@ -92,7 +92,7 @@ class _NavigationBarState extends State<NavigationBar> {
                         (e) => navbarItem(
                           active: e['page'] == pageSelected,
                           icon: e['icon'] as IconData,
-                          onTap: () => Get.toNamed(e['page'] as String),
+                          onTap: () => Get.toNamed(e['page']),
                         ),
                       )
                       .toList(),

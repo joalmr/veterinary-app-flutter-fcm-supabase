@@ -36,9 +36,9 @@ class MenuDrawer extends StatelessWidget {
                       .map(
                         (e) => ListTile(
                           leading: Icon(e['icon'] as IconData),
-                          title: Text(e['name'] as String),
+                          title: Text(e['name']),
                           onTap: () {
-                            Get.offNamed(e['page'] as String);
+                            Get.offNamed(e['page']);
                           },
                         ),
                       )

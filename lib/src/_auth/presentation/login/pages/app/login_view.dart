@@ -4,6 +4,8 @@ import 'package:vet_app/resources/images/images.dart';
 import 'package:vet_app/src/_auth/presentation/login/widgets/card_login.dart';
 
 class LoginView extends StatelessWidget {
+  const LoginView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

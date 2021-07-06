@@ -5,6 +5,7 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/_auth/domain/login_controller.dart';
 
 class CardLogin extends StatelessWidget {
+  CardLogin({Key? key}) : super(key: key);
   // final _formKey = GlobalKey<FormState>();
   final emailText = TextEditingController();
   final passwordText = TextEditingController();

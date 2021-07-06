@@ -5,6 +5,8 @@ import 'package:vet_app/src/__global/domain/global_controller.dart';
 
 //GetWidget<GlobalController>
 class SplashView extends StatelessWidget {
+  const SplashView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GlobalController>(
