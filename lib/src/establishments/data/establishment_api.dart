@@ -143,8 +143,7 @@ class EstablishmentApi extends EstablishmentInterface {
       headers: headersToken(),
     );
 
-    final data =
-        Employee.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+    final data = Employee.fromJson(jsonDecode(response.body));
 
     return data;
   }

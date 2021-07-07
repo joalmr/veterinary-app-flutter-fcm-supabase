@@ -27,7 +27,7 @@ class OfferModal {
           formatIn: 'yyyy-MM-dd',
           formatOut: 'dd-MM-yyyy',
         ),
-        offer: Offer?.fromJson(json['offer'] as Map<String, dynamic>),
+        offer: Offer?.fromJson(json['offer']),
       );
 }
 

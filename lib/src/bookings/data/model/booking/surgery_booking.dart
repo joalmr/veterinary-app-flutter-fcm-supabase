@@ -19,7 +19,7 @@ class SurgeryBooking {
   String? recommendations;
 
   factory SurgeryBooking.fromJson(Map<String, dynamic> json) => SurgeryBooking(
-        amount: json['amount'] ?? 0.0,
+        amount: json['amount'].toDouble() ?? 0.0,
         recommendations: json['recommendations'] ?? '',
       );
 

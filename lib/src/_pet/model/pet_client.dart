@@ -19,12 +19,12 @@ class PetClient {
 
   factory PetClient.fromJson(Map<String, dynamic> json) => PetClient(
         message: json['message'],
-        result: Result.fromJson(json['result']),
+        result: json['result'] == null ? null : Result.fromJson(json['result']),
       );
 
   Map<String, dynamic> toJson() => {
         'message': message,
-        'result': result?.toJson(),
+        'result': result!.toJson(),
       };
 }
 

@@ -22,7 +22,7 @@ class WorkersModalInvitado {
   factory WorkersModalInvitado.fromJson(Map<String, dynamic> json) =>
       WorkersModalInvitado(
         message: json['message'],
-        result: Result?.fromJson(json['result'] as Map<String, dynamic>),
+        result: Result?.fromJson(json['result']),
       );
 
   Map<String, dynamic> toJson() => {

@@ -59,8 +59,7 @@ class BookingApi extends BookingInterface {
       url,
       headers: headersToken(),
     );
-    return BookingModel.fromJson(
-        json.decode(response.body) as Map<String, String>);
+    return BookingModel.fromJson(json.decode(response.body));
   }
 
   @override

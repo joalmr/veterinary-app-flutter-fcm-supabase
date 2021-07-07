@@ -21,7 +21,7 @@ class TestingBooking {
   String? recommendations;
 
   factory TestingBooking.fromJson(Map<String, dynamic> json) => TestingBooking(
-        amount: json['amount'] ?? 0.0,
+        amount: json['amount'].toDouble() ?? 0.0,
         tests: List<Test>.from(json['tests'].map((x) => Test.fromJson(x))),
         recommendations: json['recommendations'] ?? '',
       );

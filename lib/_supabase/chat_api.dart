@@ -49,9 +49,7 @@ class ChatApi {
 
     if (hasCanal.data != null) {
       final canalList = hasCanal.data as List;
-      canales = canalList
-          .map((e) => CanalModel.fromJson(e as Map<String, dynamic>))
-          .toList();
+      canales = canalList.map((e) => CanalModel.fromJson(e)).toList();
     }
 
     return canales;
@@ -68,9 +66,7 @@ class ChatApi {
 
     if (messages.data != null) {
       final messageList = messages.data as List;
-      mensajes = messageList
-          .map((e) => MessageModel.fromJson(e as Map<String, dynamic>))
-          .toList();
+      mensajes = messageList.map((e) => MessageModel.fromJson(e)).toList();
     }
 
     return mensajes;

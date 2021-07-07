@@ -1,6 +1,5 @@
-import 'package:vet_app/src/_pet/data/model/pet_client.dart';
-
-import 'package:vet_app/src/_pet/data/model/pet_client_history.dart';
+import 'package:vet_app/src/_pet/model/pet_client.dart';
+import 'package:vet_app/src/_pet/model/pet_client_history.dart';
 
 import '_pet_interface.dart';
 import 'pet_api.dart';

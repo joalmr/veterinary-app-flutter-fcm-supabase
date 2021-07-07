@@ -7,7 +7,7 @@ import 'widgets/view_pass.dart';
 import 'widgets/view_today.dart';
 
 class AtenderView extends StatefulWidget {
-  const AtenderView({Key? key}) : super(key: key);
+  AtenderView({Key? key}) : super(key: key);
 
   @override
   _AtenderViewState createState() => _AtenderViewState();
@@ -21,7 +21,7 @@ class _AtenderViewState extends State<AtenderView> {
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(left: 20.0, top: 15, bottom: 5),
+          margin: EdgeInsets.only(left: 20.0, top: 15, bottom: 5),
           child: Row(
             children: [
               InkWell(

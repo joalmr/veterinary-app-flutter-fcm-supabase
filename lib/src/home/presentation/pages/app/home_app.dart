@@ -51,7 +51,7 @@ class HomePageApp extends StatelessWidget {
                       Expanded(
                         child: TabBarView(
                           children: <Widget>[
-                            const AtenderView(),
+                            AtenderView(),
                             ConfirmarView(),
                           ],
                         ),

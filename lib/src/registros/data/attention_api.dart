@@ -21,7 +21,6 @@ class AttentionApi extends AttentionInterface {
       body: jsonEncode(filtros),
     );
 
-    return AttentionRegModel.fromJson(
-        json.decode(response.body) as Map<String, String>);
+    return AttentionRegModel.fromJson(json.decode(response.body));
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 FinalizeAttention finalizeAttentionFromJson(String str) =>
-    FinalizeAttention.fromJson(json.decode(str) as Map<String, String>);
+    FinalizeAttention.fromJson(json.decode(str));
 
 String finalizeAttentionToJson(FinalizeAttention data) =>
     json.encode(data.toJson());
@@ -44,7 +44,7 @@ class FinalizeAttention {
 
   factory FinalizeAttention.fromJson(Map<String, dynamic> json) =>
       FinalizeAttention(
-        weight: json['weight'] ?? 0,
+        weight: json['weight'].toDouble() ?? 0.0,
         temperature: json['temperature'],
         heartRhythm: json['heart_rhythm'],
         bodyCondition: json['body_condition'],

@@ -25,7 +25,7 @@ class ConsultationBooking {
 
   factory ConsultationBooking.fromJson(Map<String, dynamic> json) =>
       ConsultationBooking(
-        amount: json['amount'] ?? 0.0,
+        amount: json['amount'].toDouble() ?? 0.0,
         anamnesis: json['anamnesis'],
         diagnoses: List<Diagnosis>.from(
             json['diagnoses'].map((x) => Diagnosis.fromJson(x))),

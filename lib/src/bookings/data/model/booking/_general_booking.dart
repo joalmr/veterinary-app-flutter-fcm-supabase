@@ -6,7 +6,7 @@ import 'surgery_booking.dart';
 import 'vaccination_booking.dart';
 
 GeneralBooking generalBookingFromJson(String str) =>
-    GeneralBooking.fromJson(json.decode(str) as Map<String, String>);
+    GeneralBooking.fromJson(json.decode(str));
 
 String generalBookingToJson(GeneralBooking data) => json.encode(data.toJson());
 
@@ -52,7 +52,7 @@ class GeneralBooking {
         vaccination: json['vaccination'] == null
             ? null
             : VaccinationBooking.fromJson(json['vaccination']),
-        total: json['total'] ?? 0.0,
+        total: json['total'].toDouble() ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {

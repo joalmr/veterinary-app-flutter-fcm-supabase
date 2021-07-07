@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 EstablishmentModal establishmentModalFromJson(String str) =>
-    EstablishmentModal.fromJson(json.decode(str) as Map<String, dynamic>);
+    EstablishmentModal.fromJson(json.decode(str));
 
 class EstablishmentModal {
   String? address;
@@ -58,10 +58,10 @@ class EstablishmentModal {
         longitude: json['longitude'],
         name: json['name'],
         phone: json['phone'],
-        prices: Prices?.fromJson(json['prices'] as Map<String, dynamic>),
+        prices: Prices?.fromJson(json['prices']),
         reference: json['reference'],
         ruc: json['ruc'],
-        schedule: Schedule?.fromJson(json['schedule'] as Map<String, dynamic>),
+        schedule: Schedule?.fromJson(json['schedule']),
         services: List<Service>.from(
             json['services'].map((x) => Service.fromJson(x))),
         slides: List<String>.from(json['slides'].map((x) => x)),
@@ -130,12 +130,10 @@ class Prices {
   });
 
   factory Prices.fromJson(Map<String, dynamic> json) => Prices(
-        consultation:
-            Price?.fromJson(json['consultation'] as Map<String, dynamic>),
-        deworming: Price?.fromJson(json['deworming'] as Map<String, dynamic>),
-        vaccination:
-            Price?.fromJson(json['vaccination'] as Map<String, dynamic>),
-        grooming: Price?.fromJson(json['grooming'] as Map<String, dynamic>),
+        consultation: Price?.fromJson(json['consultation']),
+        deworming: Price?.fromJson(json['deworming']),
+        vaccination: Price?.fromJson(json['vaccination']),
+        grooming: Price?.fromJson(json['grooming']),
       );
 }
 
@@ -174,13 +172,13 @@ class Schedule {
   Day? sunday;
 
   factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
-        monday: Day?.fromJson(json['monday'] as Map<String, dynamic>),
-        tuesday: Day?.fromJson(json['tuesday'] as Map<String, dynamic>),
-        wednesday: Day?.fromJson(json['wednesday'] as Map<String, dynamic>),
-        thursday: Day?.fromJson(json['thursday'] as Map<String, dynamic>),
-        friday: Day?.fromJson(json['friday'] as Map<String, dynamic>),
-        saturday: Day?.fromJson(json['saturday'] as Map<String, dynamic>),
-        sunday: Day?.fromJson(json['sunday'] as Map<String, dynamic>),
+        monday: Day?.fromJson(json['monday']),
+        tuesday: Day?.fromJson(json['tuesday']),
+        wednesday: Day?.fromJson(json['wednesday']),
+        thursday: Day?.fromJson(json['thursday']),
+        friday: Day?.fromJson(json['friday']),
+        saturday: Day?.fromJson(json['saturday']),
+        sunday: Day?.fromJson(json['sunday']),
       );
 
   Map<String, dynamic> toJson() => {

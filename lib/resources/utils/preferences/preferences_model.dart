@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 VetStorage vetStorageFromJson(String str) =>
-    VetStorage.fromJson(json.decode(str) as Map<String, dynamic>);
+    VetStorage.fromJson(json.decode(str));
 
 String vetStorageToJson(VetStorage data) => json.encode(data.toJson());
 

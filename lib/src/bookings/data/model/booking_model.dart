@@ -5,7 +5,7 @@
 import 'dart:convert';
 
 BookingModel bookingModelFromJson(String str) =>
-    BookingModel.fromJson(json.decode(str) as Map<String, dynamic>);
+    BookingModel.fromJson(json.decode(str));
 
 String bookingModelToJson(BookingModel data) => json.encode(data.toJson());
 
@@ -20,8 +20,7 @@ class BookingModel {
 
   factory BookingModel.fromJson(Map<String, dynamic> json) => BookingModel(
         result: List<Booking>.from(json['result']
-                .map((x) => Booking.fromJson(x as Map<String, dynamic>))
-            as Iterable<dynamic>),
+            .map((x) => Booking.fromJson(x)) as Iterable<dynamic>),
         message: json['message'],
       );
 
@@ -72,7 +71,7 @@ class Booking {
         petPicture: json['pet_picture'],
         user: json['user'],
         userPhone: json['user_phone'],
-        options: Options?.fromJson(json['options'] as Map<String, dynamic>),
+        options: Options?.fromJson(json['options']),
         observation: json['observation'] ?? '',
       );
 

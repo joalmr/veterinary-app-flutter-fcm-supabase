@@ -47,7 +47,7 @@ class ReprogramarController extends GetxController {
       if (resp.statusCode == 200) {
         reprogramando.value = false;
 
-        final Map message = jsonDecode(resp.body) as Map<dynamic, dynamic>;
+        final Map message = jsonDecode(resp.body);
 
         if (message.containsKey('message')) {
           ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(

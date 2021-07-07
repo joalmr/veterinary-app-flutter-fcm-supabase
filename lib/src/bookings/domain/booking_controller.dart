@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
@@ -5,6 +7,8 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
+import 'package:vet_app/src/_pet/data/pet_repository.dart';
+import 'package:vet_app/src/_pet/model/pet_client.dart';
 import 'package:vet_app/src/bookings/data/booking_repository.dart';
 import 'package:vet_app/src/bookings/data/model/_finalize_attention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultation_booking.dart';
@@ -18,6 +22,7 @@ import 'package:vet_app/src/home/domain/home_controller.dart';
 
 class BookingController extends GetxController {
   final _repo = BookingRepository();
+  final _repoPet = PetClientRepository();
   final _homeController = Get.find<HomeController>();
   RxString condicion = ''.obs;
   RxBool statusBooking = false.obs;
@@ -30,6 +35,8 @@ class BookingController extends GetxController {
   String? name;
   String? image;
   String? birthday;
+
+  final petData = PetClient().obs;
 
   final cirugia = Rxn<SurgeryBooking>();
   final consulta = Rxn<ConsultationBooking>();
@@ -61,7 +68,11 @@ class BookingController extends GetxController {
     birthday = Get.arguments['birthday'];
     //
     final general = await _repo.attend(prefUser.vetId!, bookingId!);
+    print(jsonEncode(general));
 
+    // final data = await _repoPet.getPet();
+    print(' -> pet client');
+    // print(jsonEncode(data));
     // print(jsonEncode(general));
 
     _homeController.getAllBookings();

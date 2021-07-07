@@ -22,7 +22,7 @@ class CanalModel {
         establishmentId: json['establishment_id'],
         petlover: json['petlover'] == null
             ? null
-            : PetloverModel.fromJson(json['petlover'] as Map<String, dynamic>),
+            : PetloverModel.fromJson(json['petlover']),
       );
 
   Map<String, dynamic> toJson() => {
