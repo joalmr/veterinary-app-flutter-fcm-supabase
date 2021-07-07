@@ -7,8 +7,8 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
+import 'package:vet_app/src/_pet/data/model/pet_client.dart';
 import 'package:vet_app/src/_pet/data/pet_repository.dart';
-import 'package:vet_app/src/_pet/model/pet_client.dart';
 import 'package:vet_app/src/bookings/data/booking_repository.dart';
 import 'package:vet_app/src/bookings/data/model/_finalize_attention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultation_booking.dart';
@@ -28,15 +28,9 @@ class BookingController extends GetxController {
   RxBool statusBooking = false.obs;
   RxList<DataNextdate> listNextdate = <DataNextdate>[].obs;
 
-  String? bookingId;
-  String? petId;
-  String? specie;
-  String? breed;
-  String? name;
-  String? image;
-  String? birthday;
-
   final petData = PetClient().obs;
+
+  final loadingPage = true.obs;
 
   final cirugia = Rxn<SurgeryBooking>();
   final consulta = Rxn<ConsultationBooking>();
@@ -56,155 +50,11 @@ class BookingController extends GetxController {
   final anamnesisBoolConsulta = false.obs;
   final recomendacionesBoolConsulta = false.obs;
 
-  @override
-  Future<void> onInit() async {
-    super.onInit();
-    bookingId = Get.arguments['bookingId'];
-    petId = Get.arguments['petId'];
-    specie = Get.arguments['specie'];
-    breed = Get.arguments['breed'];
-    name = Get.arguments['name'];
-    image = Get.arguments['image'];
-    birthday = Get.arguments['birthday'];
-    //
-    final general = await _repo.attend(prefUser.vetId!, bookingId!);
-    print(jsonEncode(general));
+  String? bookingId;
+  String? petId;
+  String? image;
 
-    // final data = await _repoPet.getPet();
-    print(' -> pet client');
-    // print(jsonEncode(data));
-    // print(jsonEncode(general));
-
-    _homeController.getAllBookings();
-
-    attentionId = general.attentionId;
-    cirugia.value = general.surgery;
-    consulta.value = general.consultation;
-    desparasita.value = general.deworming;
-    examenes.value = general.testing as TestingBooking?;
-    otros.value = general.other;
-    vacunas.value = general.vaccination;
-  }
-
-  @override
-  void onClose() {
-    if (Get.context!.width < 900) Get.close(1);
-    super.onClose();
-  }
-
-  void saveConsulta(ConsultationBooking data) => _saveConsulta(data);
-  Future<void> _saveConsulta(ConsultationBooking data) async {
-    //actualiza dato
-    consulta.value =
-        await _repo.saveConsultation(prefUser.vetId!, attentionId!, data);
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Consulta',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
-  void saveCirugia(SurgeryBooking data) => _saveCirugia(data);
-  Future<void> _saveCirugia(SurgeryBooking data) async {
-    //actualiza dato
-    cirugia.value =
-        await _repo.saveSurgery(prefUser.vetId!, attentionId!, data);
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Cirugía',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
-  void saveDesparasitacion(DewormingBooking data) => _saveDesparasitacion(data);
-  Future<void> _saveDesparasitacion(DewormingBooking data) async {
-    //actualiza dato
-    desparasita.value =
-        await _repo.saveDeworming(prefUser.vetId!, attentionId!, data);
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Desparasitación',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
-  void saveVacuna(VaccinationBooking data) => _saveVacuna(data);
-  Future<void> _saveVacuna(VaccinationBooking data) async {
-    //actualiza dato
-    vacunas.value =
-        await _repo.saveVaccination(prefUser.vetId!, attentionId!, data);
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Vacuna',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
-  void saveGrooming() => _saveGrooming();
-  Future<void> _saveGrooming() async {
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Grooming',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
-  void saveExamenes(TestingBooking data) => _saveExamenes(data);
-  Future<void> _saveExamenes(TestingBooking data) async {
-    //actualiza dato
-    examenes.value =
-        await _repo.saveTesting(prefUser.vetId!, attentionId!, data);
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Exámenes',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
-  void saveOtro(OthersBooking data) => _saveOtro(data);
-  Future<void> _saveOtro(OthersBooking data) async {
-    //actualiza dato
-    otros.value = await _repo.saveOthers(prefUser.vetId!, attentionId!, data);
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Otros',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
+  String? idSplit;
 
   void add2List(dynamic dato) {
     if (listNextdate.where((x) => x.type == dato['type']).isNotEmpty) {
@@ -225,6 +75,40 @@ class BookingController extends GetxController {
       Get.back();
       // print(jsonEncode(listNextdate));
     }
+  }
+
+  @override
+  void onClose() {
+    if (Get.context!.width < 900) Get.close(1);
+    super.onClose();
+  }
+
+  @override
+  Future<void> onInit() async {
+    super.onInit();
+    bookingId = Get.arguments['bookingId'];
+    // petId = Get.arguments['petId'];
+    image = Get.arguments['image'];
+
+    final general = await _repo.attend(prefUser.vetId!, bookingId!);
+    //print(jsonEncode(general));
+
+    idSplit = image!.split('avatars/')[1].split('/')[0];
+    print(idSplit);
+
+    petData.value = await _repoPet.getPet(idSplit!);
+    print(' -> pet client');
+    loadingPage.value = false;
+
+    _homeController.getAllBookings();
+
+    attentionId = general.attentionId;
+    cirugia.value = general.surgery;
+    consulta.value = general.consultation;
+    desparasita.value = general.deworming;
+    examenes.value = general.testing as TestingBooking?;
+    otros.value = general.other;
+    vacunas.value = general.vaccination;
   }
 
   void removeList(DataNextdate dato) {
@@ -251,7 +135,86 @@ class BookingController extends GetxController {
     );
   }
 
+  void saveCirugia(SurgeryBooking data) => _saveCirugia(data);
+
+  void saveConsulta(ConsultationBooking data) => _saveConsulta(data);
+
+  void saveDesparasitacion(DewormingBooking data) => _saveDesparasitacion(data);
+
+  void saveExamenes(TestingBooking data) => _saveExamenes(data);
+
   void saveFinalize() => _saveFinalize();
+
+  void saveGrooming() => _saveGrooming();
+
+  void saveOtro(OthersBooking data) => _saveOtro(data);
+
+  void saveVacuna(VaccinationBooking data) => _saveVacuna(data);
+
+  Future<void> _saveCirugia(SurgeryBooking data) async {
+    //actualiza dato
+    cirugia.value =
+        await _repo.saveSurgery(prefUser.vetId!, attentionId!, data);
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Cirugía',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
+  Future<void> _saveConsulta(ConsultationBooking data) async {
+    //actualiza dato
+    consulta.value =
+        await _repo.saveConsultation(prefUser.vetId!, attentionId!, data);
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Consulta',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
+  Future<void> _saveDesparasitacion(DewormingBooking data) async {
+    //actualiza dato
+    desparasita.value =
+        await _repo.saveDeworming(prefUser.vetId!, attentionId!, data);
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Desparasitación',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
+  Future<void> _saveExamenes(TestingBooking data) async {
+    //actualiza dato
+    examenes.value =
+        await _repo.saveTesting(prefUser.vetId!, attentionId!, data);
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Exámenes',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
   Future<void> _saveFinalize() async {
     // final general = await _repo.attend(prefUser.vetId, bookingId);
     // print(general.total);
@@ -337,5 +300,48 @@ class BookingController extends GetxController {
       ));
       Get.back();
     }
+  }
+
+  Future<void> _saveGrooming() async {
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Grooming',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
+  Future<void> _saveOtro(OthersBooking data) async {
+    //actualiza dato
+    otros.value = await _repo.saveOthers(prefUser.vetId!, attentionId!, data);
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Otros',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
+  Future<void> _saveVacuna(VaccinationBooking data) async {
+    //actualiza dato
+    vacunas.value =
+        await _repo.saveVaccination(prefUser.vetId!, attentionId!, data);
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Vacuna',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
   }
 }

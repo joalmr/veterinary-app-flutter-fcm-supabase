@@ -1,7 +1,6 @@
-import 'package:vet_app/src/_pet/model/pet_client.dart';
-import 'package:vet_app/src/_pet/model/pet_client_history.dart';
-
 import '_pet_interface.dart';
+import 'model/pet_client.dart';
+import 'model/pet_client_history.dart';
 import 'pet_api.dart';
 
 class PetClientRepository extends PetClientInterface {

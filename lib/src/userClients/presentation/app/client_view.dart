@@ -112,7 +112,7 @@ class ClienteVista extends StatelessWidget {
               titulo: 'atenciones',
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 25),
           Center(
             child: contStatClient(
               context: context,

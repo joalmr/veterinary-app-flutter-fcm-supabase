@@ -231,11 +231,7 @@ class _CardAttentionState extends State<CardAttention> {
                                             arguments: {
                                               'bookingId': widget.bookingId,
                                               'petId': '-',
-                                              'specie': '-',
-                                              'breed': widget.petBreed,
-                                              'name': widget.petName,
                                               'image': widget.petImg,
-                                              'birthday': '-'
                                             });
                                       },
                                     ),

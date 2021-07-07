@@ -7,6 +7,7 @@ linter:
     - await_only_futures
     - camel_case_extensions
     - prefer_single_quotes
+    #- prefer_double_quotes
     - annotate_overrides
     - avoid_print
 # #     # camel_case_types: true
