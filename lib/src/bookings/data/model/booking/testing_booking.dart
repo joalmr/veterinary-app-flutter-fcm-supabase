@@ -33,6 +33,9 @@ class TestingBooking {
       };
 }
 
+List<Test> testsModelFromJson(String str) =>
+    List<Test>.from(json.decode(str).map((x) => Test.fromJson(x)));
+
 class Test {
   Test({
     this.id,

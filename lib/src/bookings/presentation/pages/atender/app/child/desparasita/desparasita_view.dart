@@ -21,8 +21,8 @@ class _DesparasitaViewState extends State<DesparasitaView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        final listaDesparasita =
-            _book.desparasita.value?.dewormers ?? <Dewormer>[];
+        // final listaDesparasita =
+        //     _book.desparasita.value?.dewormers ?? <Dewormer>[];
 
         final recomendationController = TextEditingController(
             text: _book.desparasita.value?.recommendations ?? '');
@@ -58,14 +58,12 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                       onSuggestionSelected: (Dewormer data) {
                         var doble = false;
 
-                        for (var element in listaDesparasita) {
+                        for (var element in _book.listDeworming) {
                           if (element.id == data.id) doble = true;
                         }
 
                         if (!doble) {
-                          setState(() {
-                            listaDesparasita.add(data);
-                          });
+                          _book.listDeworming.add(data);
                           desparasitaController.clear();
                         }
                       },
@@ -90,7 +88,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (var item in listaDesparasita)
+                        for (var item in _book.listDeworming)
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -115,9 +113,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                                         (1 / 8),
                                 child: InkWell(
                                   onTap: () {
-                                    setState(() {
-                                      listaDesparasita.remove(item);
-                                    });
+                                    _book.listDeworming.remove(item);
                                   },
                                   child: const Icon(Icons.delete_rounded),
                                 ),
@@ -171,12 +167,12 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                       child: btnPrimary(
                         text: 'Guardar',
                         onPressed: () {
-                          if (listaDesparasita.isNotEmpty &&
+                          if (_book.listDeworming.isNotEmpty &&
                               amountController.numberValue > 0) {
                             final temp = DewormingBooking(
                               amount: amountController.numberValue,
                               recommendations: recomendationController.text,
-                              dewormers: listaDesparasita,
+                              dewormers: _book.listDeworming,
                             );
                             _book.saveDesparasitacion(temp);
                           } else {

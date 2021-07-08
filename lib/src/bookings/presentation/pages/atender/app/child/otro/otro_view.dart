@@ -22,7 +22,7 @@ class _OtroViewState extends State<OtroView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        var listaOtro = _book.otros.value?.others ?? <OtherServ>[];
+        // var listaOtro = _book.otros.value?.others ?? <OtherServ>[];
 
         final recomendationController = TextEditingController(
             text: _book.otros.value?.recommendations ?? '');
@@ -52,19 +52,17 @@ class _OtroViewState extends State<OtroView> {
                         );
                         final response = await http.get(url);
                         final models = otherServModelFromJson(response.body);
-                        return models; //filter.trim() == '' ? [] : models;
+                        return models;
                       },
                       onSuggestionSelected: (OtherServ data) {
                         var doble = false;
 
-                        for (var element in listaOtro) {
+                        for (var element in _book.listOthers) {
                           if (element.id == data.id) doble = true;
                         }
 
                         if (!doble) {
-                          setState(() {
-                            listaOtro.add(data);
-                          });
+                            _book.listOthers.add(data);
                           otroController.clear();
                         }
                       },
@@ -89,7 +87,7 @@ class _OtroViewState extends State<OtroView> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (var item in listaOtro)
+                        for (var item in _book.listOthers)
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -114,9 +112,7 @@ class _OtroViewState extends State<OtroView> {
                                         (1 / 8),
                                 child: InkWell(
                                   onTap: () {
-                                    setState(() {
-                                      listaOtro.remove(item);
-                                    });
+                                      _book.listOthers.remove(item);
                                   },
                                   child: const Icon(Icons.delete_rounded),
                                 ),
@@ -170,12 +166,12 @@ class _OtroViewState extends State<OtroView> {
                       child: btnPrimary(
                         text: 'Guardar',
                         onPressed: () {
-                          if (listaOtro.isNotEmpty &&
+                          if (_book.listOthers.isNotEmpty &&
                               amountController.numberValue > 0) {
                             final temp = OthersBooking(
                               amount: amountController.numberValue,
                               recommendations: recomendationController.text,
-                              others: listaOtro,
+                              others: _book.listOthers,
                             );
                             _book.saveOtro(temp);
                           } else {

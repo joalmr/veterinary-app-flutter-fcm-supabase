@@ -5,72 +5,72 @@ import 'package:http/http.dart' as http;
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:vet_app/src/bookings/data/model/booking/vaccination_booking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/testing_booking.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
 
-class VacunaView extends StatefulWidget {
+class TestingView extends StatefulWidget {
   @override
-  _VacunaViewState createState() => _VacunaViewState();
+  _TestingViewState createState() => _TestingViewState();
 }
 
-class _VacunaViewState extends State<VacunaView> {
-  RxBool recomendaciones = false.obs;
+class _TestingViewState extends State<TestingView> {
+  RxBool recommendations = false.obs;
 
-  final vacunaController = TextEditingController();
+  final testingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        // var listaVacuna = _book.vacunas.value?.vaccines ?? <Vaccine>[];
+        // var listTesting = _book.examenes.value?.tests ?? <Test>[];
 
-        final recomendationController = TextEditingController(
-            text: _book.vacunas.value?.recommendations ?? '');
+        final recommendationController = TextEditingController(
+            text: _book.examenes.value?.recommendations ?? '');
 
         final amountController = MoneyMaskedTextController(
-          initialValue: _book.vacunas.value?.amount ?? 0,
+          initialValue: _book.examenes.value?.amount ?? 0,
           decimalSeparator: '.',
           thousandSeparator: ',',
         );
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Vacuna'),
+            title: Text('Exámenes'),
           ),
           body: Column(
             children: [
               Expanded(
                 child: ListView(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 8),
                   children: [
-                    TypeAheadField<Vaccine>(
+                    TypeAheadField<Test>(
                       // hideOnLoading: true,
                       suggestionsCallback: (filter) async {
                         final url = Uri.https(
                           urlBase!,
-                          '/autocomplete/vaccines',
+                          '/autocomplete/tests',
                           {'q': filter},
                         );
                         final response = await http.get(url);
-                        final models = vaccinesModelFromJson(response.body);
+                        final models = testsModelFromJson(response.body);
                         return models;
                       },
-                      onSuggestionSelected: (Vaccine data) {
+                      onSuggestionSelected: (Test data) {
                         var doble = false;
 
-                        for (var element in _book.listVaccines) {
+                        for (var element in _book.listTesting) {
                           if (element.id == data.id) doble = true;
                         }
 
                         if (!doble) {
-                          _book.listVaccines.add(data);
-                          vacunaController.clear();
+                          _book.listTesting.add(data);
+                          testingController.clear();
                         }
                       },
                       textFieldConfiguration: TextFieldConfiguration(
-                        controller: vacunaController,
+                        controller: testingController,
                         decoration:
-                            const InputDecoration(labelText: 'Busque vacuna'),
+                            const InputDecoration(labelText: 'Busque exámenes'),
                       ),
                       noItemsFoundBuilder: (context) => const Padding(
                         padding: EdgeInsets.all(8.0),
@@ -84,11 +84,11 @@ class _VacunaViewState extends State<VacunaView> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (var item in _book.listVaccines)
+                        for (var item in _book.listTesting)
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -113,7 +113,7 @@ class _VacunaViewState extends State<VacunaView> {
                                         (1 / 8),
                                 child: InkWell(
                                   onTap: () {
-                                    _book.listVaccines.remove(item);
+                                    _book.listTesting.remove(item);
                                   },
                                   child: const Icon(Icons.delete_rounded),
                                 ),
@@ -131,18 +131,18 @@ class _VacunaViewState extends State<VacunaView> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                            icon: Icon(!recomendaciones.value
+                            icon: Icon(!recommendations.value
                                 ? Icons.add_circle_rounded
                                 : Icons.remove_circle_rounded),
                             onPressed: () {
-                              recomendaciones.value = !recomendaciones.value;
+                              recommendations.value = !recommendations.value;
                             }),
                       ],
                     ),
-                    if (recomendaciones.value)
+                    if (recommendations.value)
                       TextFormField(
                         maxLines: 5,
-                        controller: recomendationController,
+                        controller: recommendationController,
                       )
                     else
                       const SizedBox(height: 0),
@@ -167,19 +167,19 @@ class _VacunaViewState extends State<VacunaView> {
                       child: btnPrimary(
                         text: 'Guardar',
                         onPressed: () {
-                          if (_book.listVaccines.isNotEmpty &&
+                          if (_book.listTesting.isNotEmpty &&
                               amountController.numberValue > 0) {
-                            final temp = VaccinationBooking(
+                            final temp = TestingBooking(
                               amount: amountController.numberValue,
-                              recommendations: recomendationController.text,
-                              vaccines: _book.listVaccines,
+                              recommendations: recommendationController.text,
+                              tests: _book.listTesting,
                             );
-                            _book.saveVacuna(temp);
+                            _book.saveExamenes(temp);
                           } else {
                             ScaffoldMessenger.of(Get.context!)
                                 .showSnackBar(SnackBar(
                               content:
-                                  const Text('Falta ingresar vacuna o monto'),
+                                  const Text('Falta ingresar examen o monto'),
                               duration: const Duration(seconds: 3),
                               backgroundColor: Colors.black.withOpacity(0.85),
                             ));

@@ -17,6 +17,7 @@ import 'child/consulta/consulta_view.dart';
 import 'child/desparasita/desparasita_view.dart';
 import 'child/grooming/grooming_view.dart';
 import 'child/otro/otro_view.dart';
+import 'child/testing/testing_view.dart';
 import 'child/vacuna/vacuna_view.dart';
 import 'components/proximaCita/proxima_cita.dart';
 import 'components/tipos_atencion_list.dart';
@@ -87,7 +88,7 @@ class AtenderView extends StatelessWidget {
                             IconButton(
                               icon: Icon(Icons.book_rounded),
                               onPressed: () {
-                                Get.to(PetHistoryPage(),arguments: _.idSplit);
+                                Get.to(PetHistoryPage(), arguments: _.idSplit);
                               },
                             ),
                             SizedBox(width: 10),
@@ -177,6 +178,13 @@ class AtenderView extends StatelessWidget {
                                         _.vacunas.value?.amount?.toString() ??
                                             '',
                                         () => Get.to(VacunaView()),
+                                      ),
+                                      tipoAtencion(
+                                        IconProypet.tuboEnsayo,
+                                        'Exámenes',
+                                        _.examenes.value?.amount?.toString() ??
+                                            '',
+                                        () => Get.to(TestingView()),
                                       ),
                                       tipoAtencion(
                                         IconProypet.farmacia,
