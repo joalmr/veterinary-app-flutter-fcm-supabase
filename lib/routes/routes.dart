@@ -2,10 +2,9 @@ import 'package:get/get.dart';
 import 'package:vet_app/middleware/global_middleware.dart';
 import 'package:vet_app/src/__global/presentation/splash_view.dart';
 import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
-import 'package:vet_app/src/_auth/presentation/register/pages/register.dart';
 import 'package:vet_app/src/bookings/presentation/pages/atender/atender_main.dart';
 import 'package:vet_app/src/calendar/presentation/pages/calendar.dart';
-import 'package:vet_app/src/chat/presentation/chats_view.dart';
+import 'package:vet_app/src/chat/presentation/chats_main.dart';
 import 'package:vet_app/src/config/presentation/pages/config_main.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/crea_vet.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/show_vet.dart';
@@ -19,7 +18,7 @@ import 'package:vet_app/src/workers/presentation/pages/workers.dart';
 
 class NameRoutes {
   static const String splash = '/';
-  static const String register = '/register';
+  // static const String register = '/register';
   static const String login = '/login';
   static const String home = '/home';
   static const String calendar = '/calendar';
@@ -41,10 +40,10 @@ abstract class AppPages {
       name: NameRoutes.splash,
       page: () => const SplashView(),
     ),
-    GetPage(
-      name: NameRoutes.register,
-      page: () => const RegisterMain(),
-    ),
+    // GetPage(
+    //   name: NameRoutes.register,
+    //   page: () => const RegisterMain(),
+    // ),
     GetPage(
       name: NameRoutes.login,
       page: () => const LoginMain(),
@@ -101,7 +100,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: NameRoutes.chats,
-      page: () => ChatsView(), //TODO: cambiar por main
+      page: () => ChatsMain(),
       middlewares: [GlobalMiddleware()],
     ),
     GetPage(

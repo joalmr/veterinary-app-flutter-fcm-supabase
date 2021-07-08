@@ -5,7 +5,7 @@ import 'package:vet_app/_supabase/model/canal_model.dart';
 import 'package:vet_app/_supabase/model/message_model.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 import 'package:vet_app/config/variables_global.dart';
-import 'package:vet_app/src/chat/presentation/message_view.dart';
+import 'package:vet_app/src/chat/presentation/app/message_view.dart';
 
 class ChatController extends GetxController {
   final _repo = ChatRepo();
