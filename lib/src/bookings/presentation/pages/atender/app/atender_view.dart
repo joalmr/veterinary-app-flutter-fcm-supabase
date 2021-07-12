@@ -27,7 +27,6 @@ class AtenderView extends StatelessWidget {
     return GetX<BookingController>(
       // init: BookingController(),
       builder: (_) {
-        int selected = 1;
         return Scaffold(
           appBar: AppBar(
             title: Text('Atención'),
@@ -117,41 +116,51 @@ class AtenderView extends StatelessWidget {
                           children: [
                             InkWell(
                               borderRadius: BorderRadius.circular(20.0),
-                              onTap: () {},
+                              onTap: () {
+                                _.selected.value = 0;
+                              },
                               child: tabSelect(
-                                selected: selected == 0,
+                                selected: _.selected.value == 0,
                                 text: 'Muy delgado',
                               ),
                             ),
                             InkWell(
                               borderRadius: BorderRadius.circular(20.0),
-                              onTap: () {},
+                              onTap: () {
+                                _.selected.value = 1;
+                              },
                               child: tabSelect(
-                                selected: selected == 1,
+                                selected: _.selected.value == 1,
                                 text: 'Bajo peso',
                               ),
                             ),
                             InkWell(
                               borderRadius: BorderRadius.circular(20.0),
-                              onTap: () {},
+                              onTap: () {
+                                _.selected.value = 2;
+                              },
                               child: tabSelect(
-                                selected: selected == 2,
+                                selected: _.selected.value == 2,
                                 text: 'Ideal',
                               ),
                             ),
                             InkWell(
                               borderRadius: BorderRadius.circular(20.0),
-                              onTap: () {},
+                              onTap: () {
+                                _.selected.value = 3;
+                              },
                               child: tabSelect(
-                                selected: selected == 3,
+                                selected: _.selected.value == 3,
                                 text: 'Sobrepeso',
                               ),
                             ),
                             InkWell(
                               borderRadius: BorderRadius.circular(20.0),
-                              onTap: () {},
+                              onTap: () {
+                                _.selected.value = 4;
+                              },
                               child: tabSelect(
-                                selected: selected == 4,
+                                selected: _.selected.value == 4,
                                 text: 'Obeso',
                               ),
                             ),

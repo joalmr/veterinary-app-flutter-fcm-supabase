@@ -44,6 +44,8 @@ class BookingController extends GetxController {
   final otros = Rxn<OthersBooking>();
   final vacunas = Rxn<VaccinationBooking>();
 
+  final selected = 2.obs;
+
   String? attentionId;
   String? attentioAmount;
 
@@ -284,11 +286,17 @@ class BookingController extends GetxController {
   Future<void> _saveFinalize() async {
     // final general = await _repo.attend(prefUser.vetId, bookingId);
     // print(general.total);
-
+    List<String> condition = [
+      'thin',
+      'underweight',
+      'ideal',
+      'overweight',
+      'obese'
+    ];
     final FinalizeAttention tempFinalize = FinalizeAttention();
 
     tempFinalize.weight = pesoController.numberValue;
-    tempFinalize.bodyCondition = 'overweight';
+    tempFinalize.bodyCondition = condition[selected.value];
 
     for (final element in listNextdate) {
       switch (element.type) {
