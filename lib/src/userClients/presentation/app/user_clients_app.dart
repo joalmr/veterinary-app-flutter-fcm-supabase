@@ -13,22 +13,21 @@ class UserClientsApp extends StatelessWidget {
       appBar: GetPlatform.isWeb
           ? null
           : AppBar(
-              title: const Text('Clientes'),
+              title: Text('Clientes'),
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.to(CreaCliente());
         },
-        child: const Icon(Icons.add_rounded),
+        child: Icon(Icons.add_rounded),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GetPlatform.isWeb
               ? Container(
-                  margin: const EdgeInsets.only(
-                      left: 30.0, top: 25.0, bottom: 10.0),
-                  child: const Text(
+                  margin: EdgeInsets.only(left: 30.0, top: 25.0, bottom: 10.0),
+                  child: Text(
                     'Clientes',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -45,7 +44,7 @@ class UserClientsApp extends StatelessWidget {
                   leading: CircleAvatar(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(100),
-                      child: const Icon(
+                      child: Icon(
                         Icons.accessibility_new_rounded,
                         color: Colors.white,
                         size: 32,

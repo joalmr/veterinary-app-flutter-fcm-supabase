@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/components/dont_exit.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
-
 import 'app/home_app.dart';
 import 'web/home_web.dart';
 
@@ -12,9 +10,7 @@ class HomeMain extends StatelessWidget {
     return GetBuilder<HomeController>(
       // init: HomeController(),
       builder: (_) {
-        return DontExit(
-          child: context.width < 900 ? HomePageApp() : HomePageWeb(),
-        );
+        return context.width < 900 ? HomePageApp() : HomePageWeb();
       },
     );
   }
