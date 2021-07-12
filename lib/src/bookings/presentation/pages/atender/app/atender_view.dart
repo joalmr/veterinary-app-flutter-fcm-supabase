@@ -10,6 +10,7 @@ import 'package:vet_app/resources/utils/calcula_edad.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/_pet/presentation/pages/pet_history/view.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
+import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tab_select.dart';
 import 'child/cirugia/cirugia_view.dart';
 import 'child/consulta/consulta_view.dart';
 import 'child/desparasita/desparasita_view.dart';
@@ -26,6 +27,7 @@ class AtenderView extends StatelessWidget {
     return GetX<BookingController>(
       // init: BookingController(),
       builder: (_) {
+        int selected = 1;
         return Scaffold(
           appBar: AppBar(
             title: Text('Atención'),
@@ -110,28 +112,49 @@ class AtenderView extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 5),
                         child: Text('Condición'),
                       ),
-                      Material(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(5),
-                        // child: Padding(
-                        //   padding: EdgeInsets.symmetric(horizontal: 5),
-                        //   child: DropdownButtonHideUnderline(
-                        //     child: DropdownButton(
-                        //       isExpanded: true,
-                        //       value: _.condicion,
-                        //       items: condicionLista.map((value) {
-                        //         return new DropdownMenuItem<String>(
-                        //           value: value.id,
-                        //           child: Text(value.name),
-                        //         );
-                        //       }).toList(),
-                        //       onChanged: (val) {
-                        //         print(val);
-                        //         // _.condicion.value = val.toString();
-                        //       },
-                        //     ),
-                        //   ),
-                        // ),
+                      Row(
+                        children: [
+                          InkWell(
+                            borderRadius: BorderRadius.circular(20.0),
+                            onTap: () {},
+                            child: tabSelect(
+                              selected: selected == 0,
+                              text: 'Muy delgado',
+                            ),
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(20.0),
+                            onTap: () {},
+                            child: tabSelect(
+                              selected: selected == 1,
+                              text: 'Bajo peso',
+                            ),
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(20.0),
+                            onTap: () {},
+                            child: tabSelect(
+                              selected: selected == 2,
+                              text: 'Ideal',
+                            ),
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(20.0),
+                            onTap: () {},
+                            child: tabSelect(
+                              selected: selected == 3,
+                              text: 'Sobrepeso',
+                            ),
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(20.0),
+                            onTap: () {},
+                            child: tabSelect(
+                              selected: selected == 4,
+                              text: 'Obeso',
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: 5),
                       Expanded(
