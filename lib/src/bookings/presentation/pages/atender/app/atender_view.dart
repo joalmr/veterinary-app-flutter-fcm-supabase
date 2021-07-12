@@ -112,49 +112,51 @@ class AtenderView extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 5),
                         child: Text('Condición'),
                       ),
-                      Row(
-                        children: [
-                          InkWell(
-                            borderRadius: BorderRadius.circular(20.0),
-                            onTap: () {},
-                            child: tabSelect(
-                              selected: selected == 0,
-                              text: 'Muy delgado',
+                      SingleChildScrollView(
+                        child: Row(
+                          children: [
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {},
+                              child: tabSelect(
+                                selected: selected == 0,
+                                text: 'Muy delgado',
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            borderRadius: BorderRadius.circular(20.0),
-                            onTap: () {},
-                            child: tabSelect(
-                              selected: selected == 1,
-                              text: 'Bajo peso',
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {},
+                              child: tabSelect(
+                                selected: selected == 1,
+                                text: 'Bajo peso',
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            borderRadius: BorderRadius.circular(20.0),
-                            onTap: () {},
-                            child: tabSelect(
-                              selected: selected == 2,
-                              text: 'Ideal',
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {},
+                              child: tabSelect(
+                                selected: selected == 2,
+                                text: 'Ideal',
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            borderRadius: BorderRadius.circular(20.0),
-                            onTap: () {},
-                            child: tabSelect(
-                              selected: selected == 3,
-                              text: 'Sobrepeso',
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {},
+                              child: tabSelect(
+                                selected: selected == 3,
+                                text: 'Sobrepeso',
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            borderRadius: BorderRadius.circular(20.0),
-                            onTap: () {},
-                            child: tabSelect(
-                              selected: selected == 4,
-                              text: 'Obeso',
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {},
+                              child: tabSelect(
+                                selected: selected == 4,
+                                text: 'Obeso',
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       SizedBox(height: 5),
                       Expanded(
