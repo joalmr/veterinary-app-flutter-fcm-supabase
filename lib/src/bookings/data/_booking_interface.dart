@@ -33,6 +33,6 @@ abstract class BookingInterface {
   Future<OthersBooking> saveOthers(
       String establishment, String attention, OthersBooking data);
   //
-  Future<void> finalizeAttention(
+  Future<dynamic> finalizeAttention(
       String establishment, String attention, FinalizeAttention finaliza);
 }

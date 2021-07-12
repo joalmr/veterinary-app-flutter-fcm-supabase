@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/design/styles/styles.dart';
 
 class GroomingView extends StatefulWidget {
   @override
@@ -18,6 +20,31 @@ class _GroomingViewState extends State<GroomingView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Grooming'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.dialog(
+                AlertDialog(
+                  title: const Text('Eliminar'),
+                  content:
+                      const Text('Seguro que desea eliminar esta atención?'),
+                  actions: <Widget>[
+                    btnAltern(
+                      text: 'Cancelar',
+                      onPressed: () => Get.back(),
+                    ),
+                    btnAltern(
+                      text: 'Eliminar',
+                      onPressed: () {},
+                      color: colorRed,
+                    ),
+                  ],
+                ),
+              );
+            },
+            icon: Icon(Icons.delete_rounded),
+          )
+        ],
       ),
       body: Column(
         children: [

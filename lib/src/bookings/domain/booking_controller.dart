@@ -108,7 +108,7 @@ class BookingController extends GetxController {
     idSplit = image!.split('avatars/')[1].split('/')[0];
 
     petData.value = await _repoPet.getPet(idSplit!);
-    print(' -> pet client');
+
     loadingPage.value = false;
 
     _homeController.getAllBookings();
@@ -284,8 +284,6 @@ class BookingController extends GetxController {
   }
 
   Future<void> _saveFinalize() async {
-    // final general = await _repo.attend(prefUser.vetId, bookingId);
-    // print(general.total);
     List<String> condition = [
       'thin',
       'underweight',
@@ -363,20 +361,32 @@ class BookingController extends GetxController {
       ));
       return;
     } else {
-      await _repo.finalizeAttention(
+      final dataResponse = await _repo.finalizeAttention(
           prefUser.vetId!, attentionId!, tempFinalize);
 
-      _global.generalLoad();
+      if (dataResponse['result'] == false) {
+        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+          content: Text(
+            'Oops! ocurrió un error',
+            style: TextStyle(color: colorRed),
+          ),
+          duration: const Duration(seconds: 3),
+          backgroundColor: Colors.black.withOpacity(0.85),
+        ));
+      } else {
+        _global.generalLoad();
 
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: const Text(
-          'Atencion finalizada',
-          style: TextStyle(color: colorMain),
-        ),
-        duration: const Duration(seconds: 3),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
-      Get.back();
+        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+          content: const Text(
+            'Atencion finalizada',
+            style: TextStyle(color: colorMain),
+          ),
+          duration: const Duration(seconds: 3),
+          backgroundColor: Colors.black.withOpacity(0.85),
+        ));
+        Get.back();
+      }
+
       // Get.offNamedUntil('/', (route) => false);
       // Get.until((route) => false);
     }

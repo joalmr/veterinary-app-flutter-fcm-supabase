@@ -219,7 +219,7 @@ class BookingApi extends BookingInterface {
   }
 
   @override
-  Future<void> finalizeAttention(String establishment, String attention,
+  Future<dynamic> finalizeAttention(String establishment, String attention,
       FinalizeAttention finaliza) async {
     final url = Uri.https(
       urlBase!,
@@ -235,5 +235,6 @@ class BookingApi extends BookingInterface {
 
     print('finalizó');
     print(response.body);
+    return jsonDecode(response.body);
   }
 }

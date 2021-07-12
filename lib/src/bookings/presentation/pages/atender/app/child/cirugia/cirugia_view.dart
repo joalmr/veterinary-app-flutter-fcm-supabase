@@ -3,6 +3,7 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgery_booking.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
 
@@ -30,6 +31,31 @@ class _CirugiaViewState extends State<CirugiaView> {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Cirugía'),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Get.dialog(
+                    AlertDialog(
+                      title: const Text('Eliminar'),
+                      content: const Text(
+                          'Seguro que desea eliminar esta atención?'),
+                      actions: <Widget>[
+                        btnAltern(
+                          text: 'Cancelar',
+                          onPressed: () => Get.back(),
+                        ),
+                        btnAltern(
+                          text: 'Eliminar',
+                          onPressed: () {},
+                          color: colorRed,
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                icon: Icon(Icons.delete_rounded),
+              )
+            ],
           ),
           body: Column(
             children: [

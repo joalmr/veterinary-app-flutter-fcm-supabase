@@ -5,6 +5,7 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:vet_app/config/variables_global.dart';
+import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultation_booking.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
 import 'radio_consulta.dart';
@@ -32,6 +33,31 @@ class ConsultaView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Consulta'),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Get.dialog(
+                    AlertDialog(
+                      title: const Text('Eliminar'),
+                      content: const Text(
+                          'Seguro que desea eliminar esta atención?'),
+                      actions: <Widget>[
+                        btnAltern(
+                          text: 'Cancelar',
+                          onPressed: () => Get.back(),
+                        ),
+                        btnAltern(
+                          text: 'Eliminar',
+                          onPressed: () {},
+                          color: colorRed,
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                icon: Icon(Icons.delete_rounded),
+              )
+            ],
           ),
           body: Column(
             children: [

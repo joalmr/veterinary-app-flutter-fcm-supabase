@@ -104,11 +104,11 @@ Widget tipoAtencion(
                               .apply(fontWeightDelta: 2),
                         ),
                       ),
-                      const Icon(
+                      Icon(
                         Icons.arrow_left_rounded,
-                        size: 14,
+                        size: 20,
                         color: colorRed,
-                      )
+                      ),
                     ],
                   ),
                 ),
