@@ -24,7 +24,7 @@ class StatsApi extends StatsInterface {
     );
 
     final http.Response response = await http.get(url, headers: headersToken());
-    print(response.statusCode);
+
     final statsBase = statBaseModelFromJson(response.body);
 
     return statsBase;
@@ -43,7 +43,7 @@ class StatsApi extends StatsInterface {
     );
 
     final http.Response response = await http.get(url, headers: headersToken());
-    print(response.statusCode);
+
     final statsComment = statCommentModelFromJson(response.body);
 
     return statsComment;

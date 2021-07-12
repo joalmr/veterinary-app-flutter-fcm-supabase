@@ -12,33 +12,33 @@ class MessagesView extends StatelessWidget {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text(''),
+            title: Text(''),
           ),
           body: Column(
             children: [
               Expanded(
                 child: _.mensajes.isEmpty
-                    ? const Icon(Icons.chat_bubble_outline_rounded)
+                    ? Icon(Icons.chat_bubble_outline_rounded)
                     : ListView.builder(
                         itemCount: _.mensajes.length,
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        padding: EdgeInsets.symmetric(horizontal: 5),
                         itemBuilder: (BuildContext context, int index) {
                           final message = _.mensajes[index];
                           return Container(
                             margin: message.type!
-                                ? const EdgeInsets.only(
+                                ? EdgeInsets.only(
                                     left: 15, top: 5, bottom: 5, right: 5)
-                                : const EdgeInsets.only(
+                                : EdgeInsets.only(
                                     right: 15, top: 5, bottom: 5, left: 5),
-                            padding: const EdgeInsets.only(
+                            padding: EdgeInsets.only(
                                 left: 15, top: 10, bottom: 2.5, right: 5),
                             decoration: BoxDecoration(
                                 borderRadius: !message.type!
-                                    ? const BorderRadius.only(
+                                    ? BorderRadius.only(
                                         topLeft: Radius.circular(25),
                                         topRight: Radius.circular(25),
                                         bottomLeft: Radius.circular(25))
-                                    : const BorderRadius.only(
+                                    : BorderRadius.only(
                                         topLeft: Radius.circular(25),
                                         topRight: Radius.circular(25),
                                         bottomRight: Radius.circular(25)),
@@ -50,17 +50,18 @@ class MessagesView extends StatelessWidget {
                               children: [
                                 Text(
                                   message.message!,
-                                  style: const TextStyle(fontSize: 14),
+                                  style: TextStyle(fontSize: 14),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 2.5),
+                                  padding:
+                                      EdgeInsets.only(top: 2.5, bottom: 2.5),
                                   child: Align(
                                     alignment: message.type!
                                         ? Alignment.bottomLeft
                                         : Alignment.bottomRight,
                                     child: Text(
                                       message.sendAt.toString().split(' ')[0],
-                                      style: const TextStyle(fontSize: 8),
+                                      style: TextStyle(fontSize: 8),
                                     ),
                                   ),
                                 ),
@@ -72,7 +73,7 @@ class MessagesView extends StatelessWidget {
               ),
               Container(
                 width: double.maxFinite,
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: mensaje,
                   decoration: InputDecoration(
@@ -83,7 +84,7 @@ class MessagesView extends StatelessWidget {
                         mensaje.text = '';
                       }
                     },
-                    child: const Text('Enviar'),
+                    child: Text('Enviar'),
                   )),
                 ),
               ),

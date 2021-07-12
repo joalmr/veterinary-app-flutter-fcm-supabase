@@ -30,7 +30,7 @@ class RowToday extends StatelessWidget {
                       date: formatDate(today.bookingDate!),
                       time: today.bookingTime!.substring(0, 5),
                       userName: today.user!,
-                      userPhone: 'Ej -> 993926739',
+                      userPhone: today.userPhone.toString(),
                       bookingServices: today.bookingServices!,
                       observation: today.observation!,
                       address: today.options!.address!,

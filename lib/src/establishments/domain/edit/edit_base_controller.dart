@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/data/request/establishment_request.dart';
 import 'package:vet_app/src/establishments/domain/show/show_vet_controller.dart';
-
-import '../establishments_controller.dart';
 
 class EditBaseController extends GetxController {
   final _repo = EstablishmentRepository();
@@ -15,7 +14,8 @@ class EditBaseController extends GetxController {
   final addressControl = TextEditingController();
 
   final showVetController = Get.find<ShowVetController>();
-  final vetController = Get.find<EstablishmentsController>();
+  final _global = Get.find<GlobalController>();
+  // final vetController = Get.find<EstablishmentsController>();
 
   final _vetTypeId = ''.obs;
   String get vetTypeId => _vetTypeId.value;
@@ -65,7 +65,8 @@ class EditBaseController extends GetxController {
     await _repo.updateBase(entityBase.value, showVetController.argumentoId!);
 
     showVetController.getByid();
-    vetController.getAll();
+    _global.generalLoad();
+    // vetController.getAll();
     Get.back();
   }
 

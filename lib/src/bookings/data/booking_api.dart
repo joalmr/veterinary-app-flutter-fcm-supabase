@@ -225,14 +225,15 @@ class BookingApi extends BookingInterface {
       urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/finalize',
     );
-
+    print('finaliza atencion');
+    print(finalizeAttentionToJson(finaliza));
     final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: finalizeAttentionToJson(finaliza),
     );
 
-    print(response.statusCode);
+    print('finalizó');
     print(response.body);
   }
 }

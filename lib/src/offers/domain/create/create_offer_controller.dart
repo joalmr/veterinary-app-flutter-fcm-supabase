@@ -63,9 +63,7 @@ class CreateOfferController extends GetxController {
             ? 'Percentage'
             : 'Total';
 
-    final datos =
-        double.tryParse(moneyController.numberValue.toString()) ?? 0.00;
-    print(datos);
+    // final datos = double.tryParse(moneyController.numberValue.toString()) ?? 0.00;
 
     if (description.text.trim() != '' &&
         moneyController.text.trim() != '' &&

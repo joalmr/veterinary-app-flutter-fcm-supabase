@@ -5,12 +5,14 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/routes/routes.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/bookings/data/booking_repository.dart';
-import 'package:vet_app/src/home/domain/home_controller.dart';
 
 class ReprogramarController extends GetxController {
   final bookingRepository = BookingRepository();
-  final _homeController = Get.find<HomeController>();
+  // final _homeController = Get.find<HomeController>();
+
+  final _global = Get.find<GlobalController>();
 
   RxBool reprogramando = false.obs;
   RxBool reprogramaBlock = false.obs;
@@ -58,7 +60,9 @@ class ReprogramarController extends GetxController {
             backgroundColor: Colors.black.withOpacity(0.85),
           ));
         } else {
-          _homeController.getAllBookings();
+          // _homeController.getAllBookings();
+          _global.generalLoad();
+
           Navigator.popUntil(
               Get.context!, ModalRoute.withName(NameRoutes.home));
         }

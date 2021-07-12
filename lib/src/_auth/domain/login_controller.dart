@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/_auth/data/auth_repository.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
@@ -12,6 +13,7 @@ class LoginController extends GetxController {
   final stablishmentService = EstablishmentRepository();
 
   final _homeController = Get.find<HomeController>();
+  final _global = Get.find<GlobalController>();
 
   String email = '';
   String password = '';
@@ -48,7 +50,7 @@ class LoginController extends GetxController {
       prefUser.vetData = vetStorageToJson(forStorage);
 
       _homeController.getVet();
-      _homeController.getAllBookings();
+      _global.generalLoad();
     }
   }
 }

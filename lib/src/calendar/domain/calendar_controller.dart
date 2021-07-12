@@ -11,6 +11,8 @@ import 'package:vet_app/src/calendar/data/model/calendar_nextdate_model.dart';
 class CalendarController extends GetxController {
   final _repo = CalendarRepository();
 
+  // final _global = Get.find<GlobalController>();
+
   final calendarBookings = <CalendarBooking>[].obs;
   final calendarNextdates = <CalendarNextdate>[].obs;
   final calendarEvents = <CalendarEvent>[].obs;
@@ -41,16 +43,17 @@ class CalendarController extends GetxController {
   RxString integrantes = ''.obs;
   RxString descripcion = ''.obs;
 
-  ///
-
   @override
-  void onInit() {
-    super.onInit();
-    dateString.value = formatDateBasic(today);
-    daysPerMonth.value = DateTime(valueYear.value, valueMonth.value + 1, 0).day;
+  void onReady() {
+    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
+      dateString.value = formatDateBasic(today);
+      daysPerMonth.value =
+          DateTime(valueYear.value, valueMonth.value + 1, 0).day;
 
-    listasCalendario(today);
-    tempDate = today;
+      listasCalendario(today);
+      tempDate = today;
+    }
+    super.onReady();
   }
 
   void monthMore() {
@@ -96,6 +99,7 @@ class CalendarController extends GetxController {
   }
 
   listCalendarBookings(DateTime date) => _listCalendarBookings(date);
+
   Future<void> _listCalendarBookings(DateTime date) async {
     final response =
         await _repo.listCalendarBookings(prefUser.vetId!, formatDateYM(date));
@@ -111,6 +115,7 @@ class CalendarController extends GetxController {
   }
 
   listCalendarNextdate(DateTime date) => _listCalendarNextdate(date);
+
   Future<void> _listCalendarNextdate(DateTime date) async {
     final response =
         await _repo.listCalendarNextdate(prefUser.vetId!, formatDateYM(date));
@@ -126,6 +131,7 @@ class CalendarController extends GetxController {
   }
 
   listCalendarEvents(DateTime date) => _listCalendarEvents(date);
+
   Future<void> _listCalendarEvents(DateTime date) async {
     final response =
         await _repo.listCalendarEvents(prefUser.vetId!, formatDateYM(date));
@@ -143,13 +149,18 @@ class CalendarController extends GetxController {
   ///
   ///
   newCalendarEvent() => _newCalendarEvent();
+
   Future<void> _newCalendarEvent() async {
     if (titulo.value.isEmpty ||
         fecha.value.isEmpty ||
         hora.value.isEmpty ||
         integrantes.value.isEmpty ||
         descripcion.value.isEmpty) {
-      print('Complete todos los campos');
+      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+        content: const Text('Complete todos los campos'),
+        duration: const Duration(seconds: 3),
+        backgroundColor: Colors.black.withOpacity(0.85),
+      ));
     } else {
       final tempEvent = CalendarEvent(
         title: titulo.value,
@@ -160,6 +171,8 @@ class CalendarController extends GetxController {
       );
 
       await _repo.newCalendarEvent(prefUser.vetId!, tempEvent);
+
+      listasCalendario(DateTime.now());
 
       Timer(
         const Duration(milliseconds: 2000),

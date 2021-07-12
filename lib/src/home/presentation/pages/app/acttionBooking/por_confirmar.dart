@@ -10,16 +10,15 @@ class ConfirmarView extends StatelessWidget {
     return GetX<HomeController>(
       builder: (_) {
         return _.carga
-            ? const Center(
+            ? Center(
                 child: CircularProgressIndicator(),
               )
             : _.unconfirmed.isEmpty
-                ? const Center(
+                ? Center(
                     child: Text('No tiene reservas por confirmar'),
                   )
                 : ListView.builder(
-                    padding:
-                        const EdgeInsets.only(left: 10, right: 10, top: 15),
+                    padding: EdgeInsets.only(left: 10, right: 10, top: 15),
                     itemCount: _.unconfirmed.length,
                     itemBuilder: (BuildContext context, int i) {
                       final unconfirmed = _.unconfirmed[i];

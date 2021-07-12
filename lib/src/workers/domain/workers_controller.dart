@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/workers/data/model/invitation_model.dart';
 import 'package:vet_app/src/workers/data/model/worker_model.dart';
 import 'package:vet_app/src/workers/data/model/worker_modelnvitado.dart';
@@ -18,9 +19,12 @@ class WorkersController extends GetxController {
   RxList<Invitation> workersInvitation = <Invitation>[].obs;
 
   @override
-  void onInit() {
+  void onReady() {
     init();
-    super.onInit();
+    if(prefUser.userRol != 'moderator'){
+      Get.offNamed(NameRoutes.home);
+    }
+    super.onReady();
   }
 
   init() => _init();

@@ -19,8 +19,10 @@ class CreateVetController extends GetxController {
   final _repo = EstablishmentRepository();
   final v = CreateVetValue();
 
-  EstablecimientoEntity entity = EstablecimientoEntity();
-  PriceEstablecimientoEntity prices = PriceEstablecimientoEntity();
+
+
+  final entity = Rxn<EstablecimientoEntity>();
+  final prices = Rxn<PriceEstablecimientoEntity>();
 
   final vetController = Get.find<EstablishmentsController>();
 
@@ -114,7 +116,7 @@ class CreateVetController extends GetxController {
       marcador.clear();
 
       v.dirVet.text = dato.name!;
-      entity.address = dato.name;
+      entity.value?.address = dato.name;
 
       final datoById = await _repo.getLatLngByPlaceId(dato.placeId!);
       final location = datoById.result!.geometry!.location;
@@ -148,14 +150,16 @@ class CreateVetController extends GetxController {
   }
 
   _newEstablishment() async {
-    entity.typeId = int.parse(vetType);
-    entity.latitude = lat;
-    entity.longitude = lng;
-    entity.services = servicesVetSet;
-    entity.reference = '';
+    entity.update((val) {
+      val!.typeId = int.parse(vetType);
+      val.latitude = lat;
+      val.longitude = lng;
+      val.services = servicesVetSet;
+      val.reference = '';
+    });
 
     // var resp =
-    _repo.setNew(entity).then((value) async {
+    _repo.setNew(entity.value!).then((value) async {
       if (value[0] != 200) {
         Get.snackbar(
           'Error',
@@ -169,7 +173,7 @@ class CreateVetController extends GetxController {
         await _setSchedule(idVet);
         await _setPrices(idVet);
         await _setDescription(idVet);
-        vetController.getAll();
+
       }
     });
   }
@@ -182,12 +186,14 @@ class CreateVetController extends GetxController {
   }
 
   _setPrices(String idVeterinaria) async {
-    prices.consultationPriceFrom = v.moneyConsulta.numberValue;
-    prices.dewormingPriceFrom = v.moneyDesparasita.numberValue;
-    prices.groomingPriceFrom = v.moneyGrooming.numberValue;
-    prices.vaccinationPriceFrom = v.moneyVacuna.numberValue;
+    prices.update((val) {
+      val?.consultationPriceFrom = v.moneyConsulta.numberValue;
+      val?.dewormingPriceFrom = v.moneyDesparasita.numberValue;
+      val?.groomingPriceFrom = v.moneyGrooming.numberValue;
+      val?.vaccinationPriceFrom = v.moneyVacuna.numberValue;
+    });
 
-    await _repo.setPrices(idVeterinaria, prices);
+    await _repo.setPrices(idVeterinaria, prices.value!);
   }
 
   _setSchedule(String idVeterinaria) async {
@@ -350,6 +356,7 @@ class CreateVetController extends GetxController {
     } else {
       checked = true;
       setFinaliza();
+      vetController.getAll();
       Timer(
         const Duration(milliseconds: 3500),
         () {

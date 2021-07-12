@@ -15,7 +15,9 @@ class CalendarEventView extends StatelessWidget {
               )
             : SizedBox(
                 child: SingleChildScrollView(
+                  padding: EdgeInsets.zero,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
@@ -36,14 +38,15 @@ class CalendarEventView extends StatelessWidget {
                             ),
                           ),
                           IconButton(
-                            icon:
-                                const Icon(Icons.keyboard_arrow_right_rounded),
+                            icon: Icon(Icons.keyboard_arrow_right_rounded),
                             onPressed: _.monthMore,
                           ),
-                          const SizedBox(width: 20),
+                          SizedBox(width: 20),
                         ],
                       ),
-                      const SizedBox(height: 15),
+                      GetPlatform.isWeb
+                          ? SizedBox(height: 1)
+                          : SizedBox(height: 15),
                       FullCalendar(),
                     ],
                   ),

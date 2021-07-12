@@ -11,8 +11,8 @@ class StatsPageWeb extends StatelessWidget {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const NavigationBar(),
-          const Expanded(
+          NavigationBar(),
+          Expanded(
             child: StatsData(),
           ),
           SizedBox(

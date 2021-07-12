@@ -1,15 +1,15 @@
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/request/price_est_request.dart';
 import 'package:vet_app/src/establishments/domain/show/show_vet_controller.dart';
 
-import '../establishments_controller.dart';
-
 class EditPricesController extends GetxController {
   final _repo = EstablishmentRepository();
   final showVetController = Get.find<ShowVetController>();
-  final vetController = Get.find<EstablishmentsController>();
+  final _global = Get.find<GlobalController>();
+  // final vetController = Get.find<EstablishmentsController>();
 
   final consultaControl = MoneyMaskedTextController(
     decimalSeparator: '.',
@@ -56,7 +56,8 @@ class EditPricesController extends GetxController {
     await _repo.setPrices(showVetController.argumentoId!, prices);
 
     showVetController.getByid();
-    vetController.getAll();
+    // vetController.getAll();
+    _global.generalLoad();
     showVetController.initialTab.value = 2;
     Get.back();
   }

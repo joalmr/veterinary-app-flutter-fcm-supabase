@@ -72,7 +72,24 @@ class StatsController extends GetxController {
       );
     } else {
       cargaStats();
-      Get.back(); //TODO: para app
+      Get.back();
+    }
+  }
+
+  ejecStatsWeb() {
+    final date1 = toDateBasic(fechaIn.text);
+    final date2 = toDateBasic(fechaOut.text);
+    final diffDate = date2.difference(date1);
+
+    if (diffDate.inDays < 1) {
+      Get.snackbar(
+        'Error',
+        'La "fecha desde" debe ser anterior a la "fecha hasta"',
+        backgroundColor: colorRed,
+        colorText: colorWhite,
+      );
+    } else {
+      cargaStats();
     }
   }
 

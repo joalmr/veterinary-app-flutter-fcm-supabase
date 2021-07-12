@@ -17,9 +17,11 @@ class EstablishmentsController extends GetxController {
       <EstablecimientoModelLite>[].obs;
 
   @override
-  void onInit() {
-    getAll();
-    super.onInit();
+  void onReady() {
+    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
+      getAll();
+    }
+    super.onReady();
   }
 
   @override

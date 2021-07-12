@@ -1,7 +1,11 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/subheader.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
+import 'package:vet_app/src/registros/domain/attentions_controller.dart';
+import 'package:vet_app/src/registros/presentation/widgets/check_filtro.dart';
 
 class MiniStatAttention extends StatefulWidget {
   @override
@@ -9,118 +13,116 @@ class MiniStatAttention extends StatefulWidget {
 }
 
 class _MiniStatAttentionState extends State<MiniStatAttention> {
-  double _currentSliderValue = 500;
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xffF7F7FF),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 30.0),
-          subHeader(title: 'Filtros'),
-          const SizedBox(height: 10.0),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.only(left: 20, right: 10),
-              children: [
-                // Text('Fecha desde'),
-                // dateForm(),
-                DateTimePicker(
-                  dateMask: 'dd-MM-yyyy',
-                  firstDate: DateTime(2020),
-                  lastDate: DateTime.now(),
-                  dateLabelText: 'Fecha desde',
-                  // onChanged: (val) => _.to.value = val,
-                ),
-
-                const SizedBox(height: 10),
-                const Text('Fecha hasta'),
-                // dateForm(),
-                DateTimePicker(
-                  dateMask: 'dd-MM-yyyy',
-                  firstDate: DateTime(2020),
-                  lastDate: DateTime.now(),
-                  dateLabelText: 'Fecha hasta',
-                  // onChanged: (val) => _.to.value = val,
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return GetX<AttentionsController>(
+      builder: (_) {
+        return Container(
+          color: Color(0xffF7F7FF),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 30.0),
+              subHeader(title: 'Filtros'),
+              SizedBox(height: 10.0),
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.only(left: 20, right: 10),
                   children: [
-                    const Text('Precio hasta'),
-                    Text('$_currentSliderValue'),
+                    // Text('Fecha desde'),
+                    // dateForm(),
+                    DateTimePicker(
+                      dateMask: 'dd-MM-yyyy',
+                      initialDate: toDateBasic(_.from.value),
+                      initialValue: _.from.value,
+                      firstDate: DateTime(2020),
+                      lastDate: DateTime.now(),
+                      dateLabelText: 'Fecha desde',
+                      onChanged: (val) => _.from.value = val,
+                    ),
+                    SizedBox(height: 10),
+                    // Text('Fecha hasta'),
+                    // dateForm(),
+                    DateTimePicker(
+                      dateMask: 'dd-MM-yyyy',
+                      initialDate: toDateBasic(_.to.value),
+                      initialValue: _.to.value,
+                      firstDate: DateTime(2020),
+                      lastDate: DateTime.now(),
+                      dateLabelText: 'Fecha hasta',
+                      onChanged: (val) => _.to.value = val,
+                    ),
+
+                    SizedBox(height: 15),
+                    TextFormField(
+                      decoration:
+                          InputDecoration(labelText: 'Nombre de usuario'),
+                      initialValue: _.userName.value,
+                      onChanged: (val) => _.userName.value = val,
+                    ),
+                    SizedBox(height: 15),
+                    TextFormField(
+                      decoration:
+                          InputDecoration(labelText: 'Nombre de mascota'),
+                      initialValue: _.petName.value,
+                      onChanged: (val) => _.petName.value = val,
+                    ),
+                    const SizedBox(height: 10),
+                    const Text('Especies'),
+                    CheckFiltro(
+                      title: 'Perros',
+                      checkBool: _.specie.contains(2) ? true : false,
+                      onTapFn: () {
+                        final bool hasSpecie = _.specie.contains(2);
+                        if (hasSpecie) {
+                          _.specie.remove(2);
+                        } else {
+                          _.specie.add(2);
+                        }
+                      },
+                    ),
+                    CheckFiltro(
+                      title: 'Gatos',
+                      checkBool: _.specie.contains(1) ? true : false,
+                      onTapFn: () {
+                        final bool hasSpecie = _.specie.contains(1);
+                        if (hasSpecie) {
+                          _.specie.remove(1);
+                        } else {
+                          _.specie.add(1);
+                        }
+                      },
+                    ),
+                    // SizedBox(height: 10),
+                    // Text('Servicios'),
+                    // SizedBox(height: 5),
+                    // CheckFiltro(title: 'Consulta'),
+                    // CheckFiltro(title: 'Cirugía'),
+                    // CheckFiltro(title: 'Grooming'),
+                    // CheckFiltro(title: 'Desparasitación'),
+                    // CheckFiltro(title: 'Vacuna'),
+                    // CheckFiltro(title: 'Examen'),
+                    // CheckFiltro(title: 'Otros servicios'),
+                    SizedBox(height: 5),
                   ],
                 ),
-                SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                    trackShape: const RoundedRectSliderTrackShape(),
-                    trackHeight: 4.0,
-                    thumbShape:
-                        const RoundSliderThumbShape(enabledThumbRadius: 8.0),
-                    overlayShape:
-                        const RoundSliderOverlayShape(overlayRadius: 12.0),
-                    tickMarkShape: const RoundSliderTickMarkShape(),
-                    valueIndicatorShape:
-                        const PaddleSliderValueIndicatorShape(),
-                    valueIndicatorTextStyle: const TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  child: Slider(
-                    value: _currentSliderValue,
-                    max: 500,
-                    divisions: 50,
-                    label: _currentSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _currentSliderValue = value;
-                      });
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: btnPrimary(
+                    text: 'Buscar',
+                    onPressed: () {
+                      _.getAll();
                     },
                   ),
                 ),
-                const SizedBox(height: 15),
-                TextFormField(
-                  decoration:
-                      const InputDecoration(labelText: 'Nombre de usuario'),
-                ),
-                const SizedBox(height: 15),
-                TextFormField(
-                  decoration:
-                      const InputDecoration(labelText: 'Nombre de mascota'),
-                ),
-                const SizedBox(height: 15),
-                const Text('Especies'),
-                // TODO: agregar onTapFn y checkBool
-                // CheckFiltro(title: 'Perros'),
-                // CheckFiltro(title: 'Gatos'),
-                // SizedBox(height: 10),
-                // Text('Servicios'),
-                // SizedBox(height: 5),
-                // CheckFiltro(title: 'Consulta'),
-                // CheckFiltro(title: 'Cirugía'),
-                // CheckFiltro(title: 'Grooming'),
-                // CheckFiltro(title: 'Desparasitación'),
-                // CheckFiltro(title: 'Vacuna'),
-                // CheckFiltro(title: 'Examen'),
-                // CheckFiltro(title: 'Otros servicios'),
-                const SizedBox(height: 5),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: btnPrimary(
-                text: 'Buscar',
-                onPressed: () {},
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

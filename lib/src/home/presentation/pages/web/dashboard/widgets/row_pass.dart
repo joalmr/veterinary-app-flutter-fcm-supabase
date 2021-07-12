@@ -30,7 +30,7 @@ class RowPass extends StatelessWidget {
                       date: formatDate(overdue.bookingDate!),
                       time: overdue.bookingTime!.substring(0, 5),
                       userName: overdue.user!,
-                      userPhone: 'Ej -> 993926739',
+                      userPhone: overdue.userPhone.toString(),
                       bookingServices: overdue.bookingServices!,
                       observation: overdue.observation!,
                       address: overdue.options!.address!,

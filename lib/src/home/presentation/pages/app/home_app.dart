@@ -20,6 +20,12 @@ class HomePageApp extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {
+                  Get.toNamed(NameRoutes.chats);
+                },
+                icon: const Icon(Icons.chat_bubble),
+              ),
+              IconButton(
+                onPressed: () {
                   Get.offNamed(NameRoutes.establishments);
                 },
                 icon: const Icon(Icons.star_rounded),

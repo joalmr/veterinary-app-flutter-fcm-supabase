@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/stats/presentation/widgets/dataTemp/data_venta_mensual.dart';
-
+import 'package:vet_app/src/stats/data/model/stats_sales_monthly_model.dart';
+import 'package:vet_app/src/stats/domain/stats_controller.dart';
 import '../../../../widgets/design_graph.dart';
 
 class ChartVentaMensual extends StatefulWidget {
@@ -12,16 +13,20 @@ class ChartVentaMensual extends StatefulWidget {
 class ChartVentaMensualState extends State<ChartVentaMensual> {
   @override
   Widget build(BuildContext context) {
-    return chartDesign(
-      title: 'Venta Mensual',
-      widget: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
-        child: _chartBar(dataVentaMensual),
-      ),
+    return GetX<StatsController>(
+      builder: (_) {
+        return chartDesign(
+          title: 'Venta Mensual',
+          widget: Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+            child: _chartBar(_.salesMonth),
+          ),
+        );
+      },
     );
   }
 
-  Widget _chartBar(List<DataVentaMensual> listData) {
+  Widget _chartBar(List<SalesMonth> listData) {
     double numeromayor = 0;
     for (int i = 0; i < listData.length && i < listData.length; i++) {
       if (listData[i].value! > numeromayor) {

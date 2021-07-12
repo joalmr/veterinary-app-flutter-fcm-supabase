@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 import 'package:vet_app/src/establishments/domain/show/show_vet_controller.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/app/components/employees/set_employee.dart';
 
-import '../establishments_controller.dart';
-
 class EditEmployeeController extends GetxController {
   final _repo = EstablishmentRepository();
   final showVetController = Get.find<ShowVetController>();
-  final vetController = Get.find<EstablishmentsController>();
+  // final vetController = Get.find<EstablishmentsController>();
+  final _global = Get.find<GlobalController>();
 
   final employees = <Employee>[].obs;
 
@@ -88,7 +88,8 @@ class EditEmployeeController extends GetxController {
     if (reponse == '200') {
       getEmployees();
       showVetController.getByid();
-      vetController.getAll();
+      // vetController.getAll();
+      _global.generalLoad();
       Get.back();
       showVetController.initialTab.value = 4;
     }

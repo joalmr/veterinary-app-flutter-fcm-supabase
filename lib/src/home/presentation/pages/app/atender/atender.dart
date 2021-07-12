@@ -63,7 +63,7 @@ class _AtenderViewState extends State<AtenderView> {
             ],
           ),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10),
         ConditionalSwitch.single<int>(
           context: context,
           valueBuilder: (BuildContext context) => selected,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/src/stats/domain/stats_controller.dart';
 import 'package:vet_app/src/stats/presentation/widgets/dataTemp/data_usuario.dart';
-
 import '../../../../widgets/design_graph.dart';
 
 class ChartUsers extends StatefulWidget {
@@ -12,12 +13,16 @@ class ChartUsers extends StatefulWidget {
 class ChartUsersState extends State<ChartUsers> {
   @override
   Widget build(BuildContext context) {
-    return chartDesign(
-      title: 'Usuarios Mensual',
-      widget: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
-        child: _chartBar(dataUsuario),
-      ),
+    return GetBuilder<StatsController>(
+      builder: (_) {
+        return chartDesign(
+          title: 'Usuarios Mensual',
+          widget: Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+            child: _chartBar(dataUsuario),
+          ),
+        );
+      },
     );
   }
 

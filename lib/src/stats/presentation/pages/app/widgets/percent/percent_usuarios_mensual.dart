@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stats/presentation/widgets/dataTemp/data_usuario.dart';
 import 'package:vet_app/src/stats/presentation/widgets/design_graph.dart';
-
 import '../w_value_percent.dart';
 
 class PercentUsuariosMensual extends StatelessWidget {
@@ -13,11 +12,11 @@ class PercentUsuariosMensual extends StatelessWidget {
         title: 'Usuarios Mensual',
         colorFondo: Colors.transparent,
         widget: Container(
-          padding: const EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(5.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 5),
                 child: Text('Últimos 3 meses'),
               ),

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,6 @@ import 'package:vet_app/resources/utils/calcula_edad.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/_pet/presentation/pages/pet_history/view.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
-
 import 'child/cirugia/cirugia_view.dart';
 import 'child/consulta/consulta_view.dart';
 import 'child/desparasita/desparasita_view.dart';
@@ -26,7 +24,7 @@ class AtenderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(
-      init: BookingController(),
+      // init: BookingController(),
       builder: (_) {
         return Scaffold(
           appBar: AppBar(

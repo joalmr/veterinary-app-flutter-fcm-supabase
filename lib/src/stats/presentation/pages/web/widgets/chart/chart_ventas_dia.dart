@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/stats/presentation/widgets/dataTemp/data_ventas_dia.dart';
-
+import 'package:vet_app/src/stats/data/model/stats_sales_daily_model.dart';
+import 'package:vet_app/src/stats/domain/stats_controller.dart';
 import '../../../../widgets/design_graph.dart';
 
 class ChartVentasDia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return chartDesign(
-      title: 'Ventas por día',
-      widget: Container(
-        padding: const EdgeInsets.all(10),
-        child: _chartBar(dataVentasDia),
-      ),
+    return GetX<StatsController>(
+      builder: (_) {
+        return chartDesign(
+          title: 'Ventas por día',
+          widget: Container(
+            padding: const EdgeInsets.all(10),
+            child: _chartBar(_.salesDay),
+          ),
+        );
+      },
     );
   }
 }
 
-Widget _chartBar(List<DataDay> listDay) {
+Widget _chartBar(List<SalesDay> listDay) {
   double numeromayor = 0;
   for (int i = 0; i < listDay.length && i < listDay.length; i++) {
     if (listDay[i].value! > numeromayor) {

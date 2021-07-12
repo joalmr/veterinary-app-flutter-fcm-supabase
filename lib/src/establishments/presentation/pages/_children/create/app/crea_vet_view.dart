@@ -13,10 +13,10 @@ class CreaVetView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             leading: NumStep(),
-            title: const Text('Crea establecimiento'),
+            title:  Text('Crea establecimiento'),
           ),
           body: _.checked
-              ? const Center(
+              ?  Center(
                   child: CircularProgressIndicator(),
                 )
               : BodyAddVet(),

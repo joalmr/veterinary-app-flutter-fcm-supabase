@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/components/dont_exit.dart';
 import '../../domain/workers_controller.dart';
 
 import 'app/workers_app.dart';
@@ -12,9 +11,7 @@ class WorkersMain extends StatelessWidget {
     return GetBuilder<WorkersController>(
       init: WorkersController(),
       builder: (_) {
-        return DontExit(
-          child: context.width < 900 ? WorkersPageApp() : WorkersPageWeb(),
-        );
+        return context.width < 900 ? WorkersPageApp() : WorkersPageWeb();
       },
     );
   }

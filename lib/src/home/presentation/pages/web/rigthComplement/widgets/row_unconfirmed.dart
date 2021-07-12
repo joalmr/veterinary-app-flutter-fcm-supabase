@@ -68,15 +68,15 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
     return GetBuilder<HomeController>(
       builder: (_) {
         return ChildRegion(
-          margin: const EdgeInsets.only(bottom: 15.0, left: 5, right: 5),
+          margin: EdgeInsets.only(bottom: 15.0, left: 5, right: 5),
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(width: 5.0),
+                    SizedBox(width: 5.0),
                     Container(
                       height: 38.0,
                       width: 38.0,
@@ -93,42 +93,42 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                             placeholder: (context, url) => Container(
                               color: Colors.grey.shade200,
                               alignment: Alignment.center,
-                              child: const CircularProgressIndicator(),
+                              child: CircularProgressIndicator(),
                             ),
                           ),
                           // Image.network(widget.petImg)
                         ),
                       ),
                     ),
-                    const SizedBox(width: 5.0),
+                    SizedBox(width: 5.0),
                     SizedBox(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             widget.petName,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 12.0,
                             ),
                           ),
                           Text(
                             widget.petBreed,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 10.0,
                             ),
                           ),
                           Text(
                             widget.date,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 12.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
                             widget.time,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 12.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -138,7 +138,7 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                             maxLines: 7,
                             textAlign: TextAlign.left,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.w300,
                               color: colorMain,
                               fontSize: 10.0,
@@ -149,7 +149,7 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                             maxLines: 7,
                             textAlign: TextAlign.left,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(fontSize: 10.0),
+                            style: TextStyle(fontSize: 10.0),
                           ),
                           if (widget.delivery != '' && widget.address != '')
                             Column(
@@ -157,19 +157,19 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                               children: [
                                 Text(
                                   widget.delivery,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.0,
                                   ),
                                 ),
                                 Text(
                                   widget.address,
-                                  style: const TextStyle(fontSize: 10.0),
+                                  style: TextStyle(fontSize: 10.0),
                                 ),
                               ],
                             )
                           else
-                            const SizedBox(height: 0)
+                            SizedBox(height: 0)
                         ],
                       ),
                     ),
@@ -196,11 +196,11 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                           height: 40,
                           decoration: BoxDecoration(
                             color: hovConfirma ? colorMain : colorMain[400],
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(5),
                             ),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
                               'Confirmar',
                               style: TextStyle(
@@ -252,11 +252,11 @@ class _RowUnconfirmedState extends State<RowUnconfirmed> {
                           decoration: BoxDecoration(
                             color:
                                 hovReprograma ? Colors.grey : Colors.grey[400],
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(5),
                             ),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
                               'Reprogramar',
                               style: TextStyle(

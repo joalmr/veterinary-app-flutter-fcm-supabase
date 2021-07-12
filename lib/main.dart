@@ -7,7 +7,10 @@ import 'config/variables_global.dart';
 import 'design/theme/theme.dart';
 import 'routes/routes.dart';
 import 'src/__global/domain/global_controller.dart';
+import 'src/calendar/domain/calendar_controller.dart';
+import 'src/establishments/domain/establishments_controller.dart';
 import 'src/home/domain/home_controller.dart';
+import 'src/registros/domain/attentions_controller.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,8 +23,11 @@ Future main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Get.put(GlobalController());
     Get.put(HomeController());
+    Get.put(CalendarController());
+    Get.put(AttentionsController());
+    Get.put(EstablishmentsController());
+    Get.put(GlobalController());
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: appPruebas,

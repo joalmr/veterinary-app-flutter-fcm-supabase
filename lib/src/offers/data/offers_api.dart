@@ -14,7 +14,7 @@ class OffersApi extends OffersInterface {
 
     final http.Response response = await http.get(url, headers: headersToken());
     ofertas = offerModalFromJson(response.body);
-    print(ofertas.length);
+
     return ofertas;
   }
 

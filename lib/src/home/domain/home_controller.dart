@@ -28,14 +28,15 @@ class HomeController extends GetxController {
 ////////////////////////////////////////////////////////////////////////////////
 
   @override
-  void onInit() {
+  void onReady() {
     if (prefUser.tokenHas() && prefUser.vetDataHas()) {
       getVet();
       getAllBookings();
     }
-
-    super.onInit();
+    super.onReady();
   }
+
+
 
   launchWhatsApp(String phone, String user, String petName, String date,
       String time) async {

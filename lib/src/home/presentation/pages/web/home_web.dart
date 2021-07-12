@@ -10,7 +10,7 @@ class HomePageWeb extends StatelessWidget {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const NavigationBar(),
+          NavigationBar(),
           Expanded(
             child: DashBoard(),
           ),

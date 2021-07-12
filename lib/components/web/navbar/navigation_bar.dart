@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:vet_app/resources/data/menu_data.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/routes/routes.dart';
-
 import 'navbar_item.dart';
 
 class NavigationBar extends StatefulWidget {

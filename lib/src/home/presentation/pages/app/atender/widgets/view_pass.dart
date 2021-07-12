@@ -12,12 +12,12 @@ class ViewPass extends StatelessWidget {
       builder: (_) {
         return Expanded(
           child: _.overdue.isEmpty
-              ? const Center(
+              ? Center(
                   child: Text('No tiene atenciones pasadas'),
                 )
               : ListView.builder(
                   itemCount: _.overdue.length,
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.only(left: 10, right: 10),
                   itemBuilder: (BuildContext context, int index) {
                     final overdue = _.overdue[index];
                     return CardAttention(

@@ -31,8 +31,8 @@ Widget itemCitas({String? text, String? slug}) {
       );
     },
     child: Container(
-      margin: const EdgeInsets.only(top: 2.5, bottom: 2.5, left: 5, right: 5),
-      padding: const EdgeInsets.symmetric(
+      margin: EdgeInsets.only(top: 2.5, bottom: 2.5, left: 5, right: 5),
+      padding: EdgeInsets.symmetric(
         horizontal: 10,
         vertical: 20,
       ),
@@ -42,14 +42,14 @@ Widget itemCitas({String? text, String? slug}) {
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black.withOpacity(0.15),
-            offset: const Offset(1.1, 1.1),
+            offset: Offset(1.1, 1.1),
             blurRadius: 10.0,
           ),
         ],
       ),
       child: Text(
         text!,
-        style: const TextStyle(
+        style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
       ),

@@ -1,20 +1,18 @@
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/establishmet.dart';
 
-// import '../establishmentsController.dart';
-
 class ShowVetController extends GetxController {
   final _repo = EstablishmentRepository();
+  final _global = Get.find<GlobalController>();
   // final vetController = Get.find<EstablishmentsController>();
 
-  var establishment = EstablishmentModal().obs;
-
-  var initialTab = 0.obs;
-
-  RxBool cargando = true.obs;
+  final establishment = EstablishmentModal().obs;
+  final initialTab = 0.obs;
+  final cargando = true.obs;
 
   String? argumentoId;
 
@@ -45,6 +43,7 @@ class ShowVetController extends GetxController {
 
   seleccionarLogo() async {
     await _procesarLogo(argumentoId!, ImageSource.gallery);
+    _global.generalLoad();
   }
 
   Future<void> _procesarLogo(String id, ImageSource origen) async {
@@ -62,6 +61,7 @@ class ShowVetController extends GetxController {
 
   Future<void> seleccionarSlide() async {
     await _procesarSlide(argumentoId!, ImageSource.gallery);
+    _global.generalLoad();
   }
 
   Future<void> _procesarSlide(String id, ImageSource origen) async {
@@ -84,6 +84,7 @@ class ShowVetController extends GetxController {
 
     await _repo.deleteSlide(argumentoId!, shortSlide);
     getByid();
+    _global.generalLoad();
     Get.close(2);
   }
 }

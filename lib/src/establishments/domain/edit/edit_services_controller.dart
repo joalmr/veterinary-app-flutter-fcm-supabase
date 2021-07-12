@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/service_model.dart';
 import 'package:vet_app/src/establishments/data/request/establishment_request.dart';
 import 'package:vet_app/src/establishments/domain/show/show_vet_controller.dart';
 
-import '../establishments_controller.dart';
-
 class EditServicesController extends GetxController {
   final _repo = EstablishmentRepository();
   final showVetController = Get.find<ShowVetController>();
-  final vetController = Get.find<EstablishmentsController>();
+  // final vetController = Get.find<EstablishmentsController>();
+  final _global = Get.find<GlobalController>();
 
   var servicesVet = <ServiceVetModel>[].obs;
   var servicesVetSet = <int>[].obs;
@@ -70,7 +70,8 @@ class EditServicesController extends GetxController {
     await _repo.updateBase(entityBase.value, showVetController.argumentoId!);
 
     showVetController.getByid();
-    vetController.getAll();
+    // vetController.getAll();
+    _global.generalLoad();
     Get.back();
     showVetController.initialTab.value = 0;
   }

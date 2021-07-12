@@ -12,12 +12,12 @@ class ViewToday extends StatelessWidget {
       builder: (_) {
         return Expanded(
           child: _.today.isEmpty
-              ? const Center(
+              ? Center(
                   child: Text('No tiene atenciones el día de hoy'),
                 )
               : ListView.builder(
                   itemCount: _.today.length,
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.only(left: 10, right: 10),
                   itemBuilder: (BuildContext context, int index) {
                     final today = _.today[index];
                     return CardAttention(

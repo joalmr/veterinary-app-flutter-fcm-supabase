@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
@@ -7,6 +5,7 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/_pet/data/model/pet_client.dart';
 import 'package:vet_app/src/_pet/data/pet_repository.dart';
 import 'package:vet_app/src/bookings/data/booking_repository.dart';
@@ -23,6 +22,10 @@ import 'package:vet_app/src/home/domain/home_controller.dart';
 class BookingController extends GetxController {
   final _repo = BookingRepository();
   final _repoPet = PetClientRepository();
+
+  final _global = Get.find<GlobalController>();
+  // final _repoCalendar = CalendarController();
+
   final _homeController = Get.find<HomeController>();
   RxString condicion = ''.obs;
   RxBool statusBooking = false.obs;
@@ -101,7 +104,6 @@ class BookingController extends GetxController {
     //print(jsonEncode(general));
 
     idSplit = image!.split('avatars/')[1].split('/')[0];
-    print(idSplit);
 
     petData.value = await _repoPet.getPet(idSplit!);
     print(' -> pet client');
@@ -341,7 +343,8 @@ class BookingController extends GetxController {
         backgroundColor: Colors.black.withOpacity(0.85),
       ));
       return;
-    } else if (itemList.isEmpty) { //TODO: revisar
+    } else if (itemList.isEmpty) {
+      //TODO: revisar
       ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
         content: const Text(
           'Debe registrar un servicio de atención',
@@ -352,8 +355,11 @@ class BookingController extends GetxController {
       ));
       return;
     } else {
-      _repo.finalizeAttention(prefUser.vetId!, attentionId!, tempFinalize);
-      _homeController.getAllBookings();
+      await _repo.finalizeAttention(
+          prefUser.vetId!, attentionId!, tempFinalize);
+
+      _global.generalLoad();
+
       ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
         content: const Text(
           'Atencion finalizada',

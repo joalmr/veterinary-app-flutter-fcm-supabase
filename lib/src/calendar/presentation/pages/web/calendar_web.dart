@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/components/web/navbar/navigation_bar.dart';
-import 'calendar/calendar_page.dart';
+import 'package:vet_app/src/calendar/presentation/pages/app/calendar/calendar_event_view.dart';
 
 class CalendarPageWeb extends StatelessWidget {
   @override
@@ -10,10 +10,10 @@ class CalendarPageWeb extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Row(
-          children: const [
+          children: [
             NavigationBar(),
             Expanded(
-              child: CalendarPage(),
+              child: CalendarEventView(),
             ),
           ],
         ),

@@ -21,7 +21,7 @@ class ContentReprograma extends StatelessWidget {
   final String? userPhone;
   final Color? color;
   final String? status;
-  const ContentReprograma({
+  ContentReprograma({
     Key? key,
     this.bookingId,
     this.petImg,
@@ -66,32 +66,32 @@ class ContentReprograma extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             color: Colors.grey.shade200,
                             alignment: Alignment.center,
-                            child: const CircularProgressIndicator(),
+                            child: CircularProgressIndicator(),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         petName!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
                       Text(
                         petBreed!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 14,
                         ),
                       ),
                       Text(
                         '$date $time',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -105,10 +105,10 @@ class ContentReprograma extends StatelessWidget {
                             height: 7.5,
                             width: 7.5,
                           ),
-                          const SizedBox(width: 5),
+                          SizedBox(width: 5),
                           Text(
                             status!,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 12.0,
                             ),
@@ -117,13 +117,13 @@ class ContentReprograma extends StatelessWidget {
                       ),
                       Text(
                         userName!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
                         userPhone!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -131,9 +131,9 @@ class ContentReprograma extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 25),
-              const Text('Fecha'),
-              const SizedBox(height: 5),
+              SizedBox(height: 25),
+              Text('Fecha'),
+              SizedBox(height: 5),
               // dateForm(onChanged: (val) => _.fecha.value = val),
               DateTimePicker(
                 dateMask: 'dd-MM-yyyy',
@@ -142,12 +142,12 @@ class ContentReprograma extends StatelessWidget {
                 dateLabelText: 'Fecha hasta',
                 onChanged: (val) => _.fecha.value = val,
               ),
-              const SizedBox(height: 10),
-              const Text('Hora'),
-              const SizedBox(height: 5),
+              SizedBox(height: 10),
+              Text('Hora'),
+              SizedBox(height: 5),
               // timeForm(onChanged: (val) => _.hora.value = val),
               TextFormField(
-                decoration: const InputDecoration(labelText: 'Hora'),
+                decoration: InputDecoration(labelText: 'Hora'),
                 enableInteractiveSelection: false,
                 controller: timeController,
                 readOnly: true,
@@ -175,7 +175,7 @@ class ContentReprograma extends StatelessWidget {
                   );
                 },
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: 30),
               Center(
                 child: btnSecondary(
                   text: 'Reprogramar',
@@ -187,29 +187,29 @@ class ContentReprograma extends StatelessWidget {
                 FadeIn(
                   child: Center(
                     child: Container(
-                      margin: const EdgeInsets.symmetric(
+                      margin: EdgeInsets.symmetric(
                         horizontal: 5,
                         vertical: 10,
                       ),
-                      padding: const EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
                       width: 250,
                       decoration: BoxDecoration(
                         color: colorRed,
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 5),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               _.msgfecha.value,
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.white),
                             ),
                             Text(
                               _.msghora.value,
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ],
                         ),
@@ -218,7 +218,7 @@ class ContentReprograma extends StatelessWidget {
                   ),
                 )
               else
-                const SizedBox(height: 0),
+                SizedBox(height: 0),
             ],
           ),
         );

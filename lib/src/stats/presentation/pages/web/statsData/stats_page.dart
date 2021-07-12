@@ -12,7 +12,7 @@ import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chart_ven
 import 'filter_stas.dart';
 
 class StatsData extends StatefulWidget {
-  const StatsData({Key? key}) : super(key: key);
+  StatsData({Key? key}) : super(key: key);
 
   @override
   _StatsDataState createState() => _StatsDataState();
@@ -29,7 +29,7 @@ class _StatsDataState extends State<StatsData> {
       builder: (_) {
         return Container(
           child: _.cargaBase.value
-              ? const Center(
+              ? Center(
                   child: CircularProgressIndicator(),
                 )
               : SingleChildScrollView(
@@ -37,13 +37,13 @@ class _StatsDataState extends State<StatsData> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(
+                        margin: EdgeInsets.only(
                             left: 30.0, top: 25.0, bottom: 10.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Estadísticas',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -51,7 +51,7 @@ class _StatsDataState extends State<StatsData> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right: 50),
+                              padding: EdgeInsets.only(right: 50),
                               child: btnAltern(
                                 text: 'Filtros',
                                 onPressed: () {
@@ -64,12 +64,9 @@ class _StatsDataState extends State<StatsData> {
                           ],
                         ),
                       ),
-                      if (filter)
-                        const FilterStat()
-                      else
-                        const SizedBox(height: 0),
+                      if (filter) FilterStat() else SizedBox(height: 0),
                       Container(
-                        margin: const EdgeInsets.only(left: 32.0),
+                        margin: EdgeInsets.only(left: 32.0),
                         child: Column(
                           children: [
                             Wrap(
@@ -113,7 +110,7 @@ class _StatsDataState extends State<StatsData> {
                                 Container(
                                   height: 250,
                                   width: 400,
-                                  margin: const EdgeInsets.symmetric(
+                                  margin: EdgeInsets.symmetric(
                                     horizontal: 5,
                                     vertical: 10,
                                   ),
@@ -122,7 +119,7 @@ class _StatsDataState extends State<StatsData> {
                                 Container(
                                   height: 250,
                                   width: 400,
-                                  margin: const EdgeInsets.symmetric(
+                                  margin: EdgeInsets.symmetric(
                                     horizontal: 5,
                                     vertical: 10,
                                   ),
@@ -131,7 +128,7 @@ class _StatsDataState extends State<StatsData> {
                                 Container(
                                   height: 250,
                                   width: 400,
-                                  margin: const EdgeInsets.symmetric(
+                                  margin: EdgeInsets.symmetric(
                                     horizontal: 5,
                                     vertical: 10,
                                   ),
@@ -140,7 +137,7 @@ class _StatsDataState extends State<StatsData> {
                                 Container(
                                   height: 250,
                                   width: 400,
-                                  margin: const EdgeInsets.symmetric(
+                                  margin: EdgeInsets.symmetric(
                                     horizontal: 5,
                                     vertical: 10,
                                   ),

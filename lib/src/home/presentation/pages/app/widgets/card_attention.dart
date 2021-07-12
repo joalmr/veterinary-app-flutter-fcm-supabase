@@ -24,7 +24,7 @@ class CardAttention extends StatefulWidget {
   final String delivery;
   final int attentionType;
 
-  const CardAttention({
+  CardAttention({
     required this.bookingId,
     required this.petImg,
     required this.petName,
@@ -66,7 +66,7 @@ class _CardAttentionState extends State<CardAttention> {
     }
 
     return Card(
-      margin: const EdgeInsets.only(bottom: 20),
+      margin: EdgeInsets.only(bottom: 20),
       child: Column(
         children: [
           ListTile(
@@ -76,12 +76,12 @@ class _CardAttentionState extends State<CardAttention> {
                 builder: (BuildContext context) {
                   return SizedBox(
                     child: Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
+                      padding: EdgeInsets.only(bottom: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(20.0),
+                            padding: EdgeInsets.all(20.0),
                             child: Row(
                               children: [
                                 Container(
@@ -101,19 +101,17 @@ class _CardAttentionState extends State<CardAttention> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(width: 10),
+                                SizedBox(width: 10),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       widget.petName,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    Text(
-                                      widget.petBreed,
-                                    ),
+                                    Text(widget.petBreed),
                                     Row(
                                       children: [
                                         Container(
@@ -125,10 +123,10 @@ class _CardAttentionState extends State<CardAttention> {
                                           height: 7.5,
                                           width: 7.5,
                                         ),
-                                        const SizedBox(width: 5),
+                                        SizedBox(width: 5),
                                         Text(
                                           widget.status,
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                             fontWeight: FontWeight.w300,
                                             fontSize: 12.0,
                                           ),
@@ -137,7 +135,7 @@ class _CardAttentionState extends State<CardAttention> {
                                     ),
                                     Text(
                                       '${widget.date} ${widget.time}',
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -147,7 +145,7 @@ class _CardAttentionState extends State<CardAttention> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
+                            padding: EdgeInsets.only(
                               left: 20,
                               right: 20,
                               bottom: 20,
@@ -155,7 +153,7 @@ class _CardAttentionState extends State<CardAttention> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   'Usuario',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w300,
@@ -163,16 +161,16 @@ class _CardAttentionState extends State<CardAttention> {
                                 ),
                                 Text(widget.userName),
                                 Text(widget.userPhone),
-                                const SizedBox(height: 5),
-                                const Text(
+                                SizedBox(height: 5),
+                                Text(
                                   'Tipo',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w300,
                                   ),
                                 ),
                                 Text(stringTypes),
-                                const SizedBox(height: 5),
-                                const Text(
+                                SizedBox(height: 5),
+                                Text(
                                   'Observaciones',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w300,
@@ -184,33 +182,33 @@ class _CardAttentionState extends State<CardAttention> {
                                       : widget.observation,
                                   maxLines: 5,
                                 ),
-                                const SizedBox(height: 5),
+                                SizedBox(height: 5),
                                 if (widget.delivery != '' &&
                                     widget.address != '')
                                   Card(
                                     color: Colors.grey[200],
                                     child: Container(
-                                      padding: const EdgeInsets.all(8),
+                                      padding: EdgeInsets.all(8),
                                       width: double.maxFinite,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          const Icon(IconProypet.delivery),
-                                          const SizedBox(height: 5),
+                                          Icon(IconProypet.delivery),
+                                          SizedBox(height: 5),
                                           Text(
                                             widget.delivery,
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          const SizedBox(height: 5),
+                                          SizedBox(height: 5),
                                           Text(widget.address),
                                         ],
                                       ),
                                     ),
                                   )
                                 else
-                                  const SizedBox(height: 0)
+                                  SizedBox(height: 0)
                               ],
                             ),
                           ),
@@ -218,29 +216,31 @@ class _CardAttentionState extends State<CardAttention> {
                             children: [
                               //* tipo de atencion
                               if (widget.attentionType == 3)
-                                const SizedBox(width: 0)
+                                SizedBox(width: 0)
                               else
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 20, right: 7.5),
+                                    padding:
+                                        EdgeInsets.only(left: 20, right: 7.5),
                                     child: btnSecondary(
                                       text: 'Atender',
                                       onPressed: () {
-                                        Get.toNamed(NameRoutes.atenderBooking,
-                                            arguments: {
-                                              'bookingId': widget.bookingId,
-                                              'petId': '-',
-                                              'image': widget.petImg,
-                                            });
+                                        Get.toNamed(
+                                          NameRoutes.atenderBooking,
+                                          arguments: {
+                                            'bookingId': widget.bookingId,
+                                            'petId': '-',
+                                            'image': widget.petImg,
+                                          },
+                                        );
                                       },
                                     ),
                                   ),
                                 ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 7.5, right: 20),
+                                  padding:
+                                      EdgeInsets.only(left: 7.5, right: 20),
                                   child: btnSecondary(
                                     text: 'Reprogramar',
                                     color: Colors.grey[600]!,
@@ -296,7 +296,7 @@ class _CardAttentionState extends State<CardAttention> {
               children: [
                 Text(
                   widget.petName,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -311,10 +311,10 @@ class _CardAttentionState extends State<CardAttention> {
                       height: 7.5,
                       width: 7.5,
                     ),
-                    const SizedBox(width: 5),
+                    SizedBox(width: 5),
                     Text(
                       widget.status,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 12.0,
                       ),
@@ -322,7 +322,7 @@ class _CardAttentionState extends State<CardAttention> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 5, bottom: 10),
+                  padding: EdgeInsets.only(top: 5, bottom: 10),
                   child: Row(
                     children: [
                       Icon(
@@ -330,7 +330,7 @@ class _CardAttentionState extends State<CardAttention> {
                         size: 14,
                         color: colorMain,
                       ),
-                      const Text(
+                      Text(
                         'Ver más',
                         style: TextStyle(
                           color: colorMain,
@@ -347,14 +347,14 @@ class _CardAttentionState extends State<CardAttention> {
               children: [
                 Text(
                   widget.date,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12.0,
                   ),
                 ),
                 Text(
                   widget.time,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 12.0,
                   ),

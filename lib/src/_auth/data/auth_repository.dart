@@ -9,6 +9,7 @@ class AuthRepository extends AuthInterface {
     try {
       prefUser.tokenDel();
       prefUser.vetDataDel();
+      prefUser.userRolDel();
       return 200;
     } catch (_) {
       return 500;

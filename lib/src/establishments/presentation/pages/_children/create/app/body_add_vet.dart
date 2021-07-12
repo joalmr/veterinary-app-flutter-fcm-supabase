@@ -25,7 +25,12 @@ class BodyAddVet extends StatelessWidget {
             Expanded(
               child: BodyStep(selected: _.selected),
             ),
-            const FooterCreateVet(),
+            GetPlatform.isIOS
+                ? Padding(
+                    padding: EdgeInsets.only(bottom: 15),
+                    child: FooterCreateVet(),
+                  )
+                : FooterCreateVet(),
           ],
         );
       },

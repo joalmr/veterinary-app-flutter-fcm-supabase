@@ -23,7 +23,7 @@ class FooterCreateVet extends StatelessWidget {
                     btnAltern(
                       bold: true,
                       text: 'Continuar',
-                      onPressed: _.validaStep1,
+                      onPressed: () => _.validaStep1(),
                     ),
                   ],
                 ),
@@ -40,7 +40,7 @@ class FooterCreateVet extends StatelessWidget {
                     btnAltern(
                       bold: true,
                       text: 'Continuar',
-                      onPressed: _.validaStep2,
+                      onPressed: () => _.validaStep2(),
                     ),
                   ],
                 ),
@@ -57,7 +57,7 @@ class FooterCreateVet extends StatelessWidget {
                     btnAltern(
                       bold: true,
                       text: 'Continuar',
-                      onPressed: _.validaStep3,
+                      onPressed: () => _.validaStep3(),
                     ),
                   ],
                 ),
@@ -75,7 +75,7 @@ class FooterCreateVet extends StatelessWidget {
                       bold: true,
                       text: 'Finalizar',
                       color: colorMain,
-                      onPressed: _.validaStep4,
+                      onPressed: () => _.validaStep4(),
                     ),
                   ],
                 ),

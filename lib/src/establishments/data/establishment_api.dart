@@ -99,16 +99,16 @@ class EstablishmentApi extends EstablishmentInterface {
       'code': code,
     };
 
-    final http.Response response = await http.post(
+    // final http.Response response =
+    await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(employee),
     );
 
-    final data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
+    // final data = jsonDecode(response.body);
+    // print(data);
+    return '';
   }
 
   //? obtener empleados
@@ -170,9 +170,8 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(employee),
     );
 
-    final data = jsonDecode(response.body);
+    // final data = jsonDecode(response.body);
 
-    print(data);
     return response.statusCode.toString();
   }
 
@@ -185,15 +184,14 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/employee/$employeeId',
     );
 
-    final http.Response response = await http.delete(
+    await http.delete(
       url,
       headers: headersToken(),
     );
 
-    final data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
+    // final data = jsonDecode(response.body);
+    // print(data);
+    return '';
   }
 
   @override
@@ -206,16 +204,13 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/prices',
     );
 
-    final http.Response response = await http.post(
+    await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(precios),
     );
 
-    final data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
+    return '';
   }
 
   @override
@@ -225,16 +220,15 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId/schedule',
     );
 
-    final http.Response response = await http.post(
+    await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(horarios),
     );
 
-    final data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
+    // final data = jsonDecode(response.body);
+    // print(data);
+    return '';
   }
 
   @override
@@ -250,16 +244,15 @@ class EstablishmentApi extends EstablishmentInterface {
     final descriptionData = {
       'description': description,
     };
-    final http.Response response = await http.post(
+    await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(descriptionData),
     );
 
-    final data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
+    // final data = jsonDecode(response.body);
+    // print(data);
+    return '';
   }
 
   @override
@@ -269,13 +262,13 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId',
     );
 
-    final http.Response response = await http.delete(
+    // final http.Response response =
+    await http.delete(
       url,
       headers: headersToken(),
     );
 
-    final data = jsonDecode(response.body);
-    print(data);
+    // final data = jsonDecode(response.body);
   }
 
   @override
@@ -318,13 +311,12 @@ class EstablishmentApi extends EstablishmentInterface {
     request.headers['X-Requested-With'] = 'XMLHttpRequest';
 
     request.files.add(pic);
-    final response = await request.send();
+    // final response =
+    await request.send();
 
-    final responseData = await response.stream.toBytes();
-    final responseString = String.fromCharCodes(responseData);
+    // final responseData = await response.stream.toBytes();
+    // final responseString = String.fromCharCodes(responseData);
 
-    final dato = jsonDecode(responseString);
-    print(dato);
     return 'slide ok';
   }
 
@@ -340,8 +332,8 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(datosBase),
     );
 
-    final data = jsonDecode(response.body);
-    print(data);
+    // final data = jsonDecode(response.body);
+
     return response.statusCode.toString();
   }
 
@@ -376,15 +368,15 @@ class EstablishmentApi extends EstablishmentInterface {
       'slide': slide,
     };
 
-    final http.Response response = await http.delete(
+    // final http.Response response =
+    await http.delete(
       url,
       headers: headersToken(),
       body: jsonEncode(jsonData),
     );
 
-    final data = jsonDecode(response.body);
-
-    print(data);
-    return 'asd';
+    // final data = jsonDecode(response.body);
+    // print(data);
+    return '';
   }
 }

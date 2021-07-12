@@ -2,15 +2,15 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/days/dia_semana.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/domain/show/show_vet_controller.dart';
-
-import '../establishments_controller.dart';
 
 class EditSchedulesController extends GetxController {
   final _repo = EstablishmentRepository();
   final showVetController = Get.find<ShowVetController>();
-  final vetController = Get.find<EstablishmentsController>();
+  final _global = Get.find<GlobalController>();
+  // final vetController = Get.find<EstablishmentsController>();
 
   var checkDay = <bool>[].obs;
   var iniDay = <String>[].obs;
@@ -196,7 +196,8 @@ class EditSchedulesController extends GetxController {
           showVetController.establishment.value.id!, schedule);
 
       showVetController.getByid();
-      vetController.getAll();
+      // vetController.getAll();
+      _global.generalLoad();
       Get.back();
       showVetController.initialTab.value = 3;
     }

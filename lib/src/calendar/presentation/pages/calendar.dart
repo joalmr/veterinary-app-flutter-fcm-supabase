@@ -10,7 +10,7 @@ class CalendarMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CalendarController>(
-      init: CalendarController(),
+      // init: CalendarController(),
       builder: (_) {
         return DontExit(
           child: context.width < 900 ? CalendarView() : CalendarPageWeb(),

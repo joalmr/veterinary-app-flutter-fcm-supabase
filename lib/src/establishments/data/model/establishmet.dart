@@ -147,8 +147,8 @@ class Price {
   String? to;
 
   factory Price.fromJson(Map<String, dynamic> json) => Price(
-        from: json['from'],
-        to: json['to'],
+        from: json['from'].toString(),
+        to: json['to'].toString(),
       );
 }
 
@@ -205,8 +205,8 @@ class Day {
 
   factory Day.fromJson(Map<String, dynamic> json) => Day(
         daySwitch: json['switch'] as bool? ?? false,
-        timeStart: json['time_start'] ?? '',
-        timeEnd: json['time_end'] ?? '',
+        timeStart: json['time_start']?.toString() ?? '',
+        timeEnd: json['time_end']?.toString() ?? '',
       );
 
   Map<String, dynamic> toJson() => {
