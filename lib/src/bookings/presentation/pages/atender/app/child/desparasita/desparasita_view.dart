@@ -17,23 +17,22 @@ class DesparasitaView extends StatefulWidget {
 class _DesparasitaViewState extends State<DesparasitaView> {
   RxBool recomendaciones = false.obs;
   final desparasitaController = TextEditingController();
+  // final listaDesparasita = _book.desparasita.value?.dewormers ?? <Dewormer>[];
+  final recomendationController = TextEditingController(
+    text:
+        Get.find<BookingController>().desparasita.value?.recommendations ?? '',
+  );
+
+  final amountController = MoneyMaskedTextController(
+    initialValue: Get.find<BookingController>().desparasita.value?.amount ?? 0,
+    decimalSeparator: '.',
+    thousandSeparator: ',',
+  );
 
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        // final listaDesparasita =
-        //     _book.desparasita.value?.dewormers ?? <Dewormer>[];
-
-        final recomendationController = TextEditingController(
-            text: _book.desparasita.value?.recommendations ?? '');
-
-        final amountController = MoneyMaskedTextController(
-          initialValue: _book.desparasita.value?.amount ?? 0,
-          decimalSeparator: '.',
-          thousandSeparator: ',',
-        );
-
         return Scaffold(
           appBar: AppBar(
             title: const Text('Desparasitación'),
@@ -52,7 +51,10 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                         ),
                         btnAltern(
                           text: 'Eliminar',
-                          onPressed: () {},
+                          onPressed: () {
+                            _book.deleteDesparasita();
+                            Get.close(2);
+                          },
                           color: colorRed,
                         ),
                       ],

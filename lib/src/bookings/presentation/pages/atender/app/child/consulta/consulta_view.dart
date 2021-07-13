@@ -13,23 +13,23 @@ import 'radio_consulta.dart';
 class ConsultaView extends StatelessWidget {
   final diagnosticoController = TextEditingController();
 
+  final anamnesisController = TextEditingController(
+    text: Get.find<BookingController>().consulta.value?.anamnesis ?? '',
+  );
+  final recomendationController = TextEditingController(
+    text: Get.find<BookingController>().consulta.value?.recommendations ?? '',
+  );
+
+  final amountController = MoneyMaskedTextController(
+    initialValue: Get.find<BookingController>().consulta.value?.amount ?? 0,
+    decimalSeparator: '.',
+    thousandSeparator: ',',
+  );
+
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_) {
-        final anamnesisController = TextEditingController(
-          text: _.consulta.value?.anamnesis ?? '',
-        );
-        final recomendationController = TextEditingController(
-          text: _.consulta.value?.recommendations ?? '',
-        );
-
-        final amountController = MoneyMaskedTextController(
-          initialValue: _.consulta.value?.amount ?? 0,
-          decimalSeparator: '.',
-          thousandSeparator: ',',
-        );
-
         return Scaffold(
           appBar: AppBar(
             title: const Text('Consulta'),
@@ -48,7 +48,10 @@ class ConsultaView extends StatelessWidget {
                         ),
                         btnAltern(
                           text: 'Eliminar',
-                          onPressed: () {},
+                          onPressed: () {
+                            _.deleteConsulta();
+                            Get.close(2);
+                          },
                           color: colorRed,
                         ),
                       ],

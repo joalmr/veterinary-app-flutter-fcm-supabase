@@ -242,52 +242,65 @@ class AtenderWeb extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       tipoAtencion(
-                                        IconProypet.consulta,
-                                        'Consulta',
-                                        _.consulta.value?.amount?.toString() ??
-                                            '',
-                                        () => Get.to(() => ConsultaView()),
-                                      ),
-                                      tipoAtencion(
-                                        IconProypet.cirugia,
-                                        'Cirugía',
-                                        _.cirugia.value?.amount?.toString() ??
-                                            '',
-                                        () => Get.to(CirugiaView()),
-                                      ),
-                                      tipoAtencion(
-                                        IconProypet.desparasitacion,
-                                        'Desparasitación',
-                                        _.desparasita.value?.amount
+                                        icon: IconProypet.consulta,
+                                        nombre: 'Consulta',
+                                        monto: _.consulta.value?.amount
                                                 ?.toString() ??
                                             '',
-                                        () => Get.to(DesparasitaView()),
+                                        onTap: () => Get.to(ConsultaView()),
+                                        onDelete: _.deleteConsulta,
                                       ),
                                       tipoAtencion(
-                                        IconProypet.grooming,
-                                        'Grooming',
-                                        'falta',
-                                        () => Get.to(GroomingView()),
-                                      ),
-                                      tipoAtencion(
-                                        IconProypet.vacuna,
-                                        'Vacuna',
-                                        _.vacunas.value?.amount?.toString() ??
+                                        icon: IconProypet.cirugia,
+                                        nombre: 'Cirugía',
+                                        monto: _.cirugia.value?.amount
+                                                ?.toString() ??
                                             '',
-                                        () => Get.to(VacunaView()),
+                                        onTap: () => Get.to(CirugiaView()),
+                                        onDelete: _.deleteCirugia,
                                       ),
                                       tipoAtencion(
-                                        IconProypet.tuboEnsayo,
-                                        'Exámenes',
-                                        _.examenes.value?.amount?.toString() ??
+                                        icon: IconProypet.desparasitacion,
+                                        nombre: 'Desparasitación',
+                                        monto: _.desparasita.value?.amount
+                                                ?.toString() ??
                                             '',
-                                        () => Get.to(TestingView()),
+                                        onTap: () => Get.to(DesparasitaView()),
+                                        onDelete: _.deleteDesparasita,
                                       ),
                                       tipoAtencion(
-                                        IconProypet.farmacia,
-                                        'Otros',
-                                        _.otros.value?.amount?.toString() ?? '',
-                                        () => Get.to(OtroView()),
+                                        icon: IconProypet.grooming,
+                                        nombre: 'Grooming',
+                                        monto: 'falta',
+                                        onTap: () => Get.to(GroomingView()),
+                                        onDelete: () {},
+                                      ),
+                                      tipoAtencion(
+                                        icon: IconProypet.vacuna,
+                                        nombre: 'Vacuna',
+                                        monto: _.vacunas.value?.amount
+                                                ?.toString() ??
+                                            '',
+                                        onTap: () => Get.to(VacunaView()),
+                                        onDelete: _.deleteVacuna,
+                                      ),
+                                      tipoAtencion(
+                                        icon: IconProypet.tuboEnsayo,
+                                        nombre: 'Exámenes',
+                                        monto: _.examenes.value?.amount
+                                                ?.toString() ??
+                                            '',
+                                        onTap: () => Get.to(TestingView()),
+                                        onDelete: _.deleteExamen,
+                                      ),
+                                      tipoAtencion(
+                                        icon: IconProypet.farmacia,
+                                        nombre: 'Otros',
+                                        monto:
+                                            _.otros.value?.amount?.toString() ??
+                                                '',
+                                        onTap: () => Get.to(OtroView()),
+                                        onDelete: _.deleteOtros,
                                       ),
                                     ],
                                   ),

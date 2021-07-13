@@ -35,7 +35,9 @@ class _GroomingViewState extends State<GroomingView> {
                     ),
                     btnAltern(
                       text: 'Eliminar',
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.close(2);
+                      },
                       color: colorRed,
                     ),
                   ],

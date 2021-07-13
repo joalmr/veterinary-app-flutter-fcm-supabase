@@ -35,4 +35,7 @@ abstract class BookingInterface {
   //
   Future<dynamic> finalizeAttention(
       String establishment, String attention, FinalizeAttention finaliza);
+  //
+  Future<dynamic> deleteServiceAttention(
+      String establishment, String attention, String type);
 }

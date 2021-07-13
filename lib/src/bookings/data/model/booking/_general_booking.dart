@@ -3,6 +3,7 @@ import 'consultation_booking.dart';
 import 'deworming_booking.dart';
 import 'others_booking.dart';
 import 'surgery_booking.dart';
+import 'testing_booking.dart';
 import 'vaccination_booking.dart';
 
 GeneralBooking generalBookingFromJson(String str) =>
@@ -29,7 +30,7 @@ class GeneralBooking {
   dynamic grooming;
   OthersBooking? other;
   SurgeryBooking? surgery;
-  dynamic testing;
+  TestingBooking? testing;
   VaccinationBooking? vaccination;
   double total;
 
@@ -48,7 +49,9 @@ class GeneralBooking {
         surgery: json['surgery'] == null
             ? null
             : SurgeryBooking.fromJson(json['surgery']),
-        testing: json['testing'],
+        testing: json['testing'] == null
+            ? null
+            : TestingBooking.fromJson(json['testing']),
         vaccination: json['vaccination'] == null
             ? null
             : VaccinationBooking.fromJson(json['vaccination']),

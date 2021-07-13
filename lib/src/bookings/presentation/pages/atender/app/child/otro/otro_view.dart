@@ -52,7 +52,10 @@ class _OtroViewState extends State<OtroView> {
                         ),
                         btnAltern(
                           text: 'Eliminar',
-                          onPressed: () {},
+                          onPressed: () {
+                            _book.deleteOtros();
+                            Get.close(2);
+                          },
                           color: colorRed,
                         ),
                       ],

@@ -95,120 +95,135 @@ class AtenderView extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 5),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: TextFormField(
-                            controller: _.pesoController,
-                            decoration: InputDecoration(
-                              labelText: 'Peso',
-                              fillColor: Colors.white,
-                            ),
-                            keyboardType: TextInputType.number,
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: Text('Condición'),
-                        ),
-                        SingleChildScrollView(
-                          child: Row(
+                        Card(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              InkWell(
-                                borderRadius: BorderRadius.circular(20.0),
-                                onTap: () {
-                                  _.selected.value = 0;
-                                },
-                                child: tabSelect(
-                                  selected: _.selected.value == 0,
-                                  text: 'Muy delgado',
+                              SizedBox(height: 5),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                child: TextFormField(
+                                  controller: _.pesoController,
+                                  decoration: InputDecoration(
+                                    labelText: 'Peso',
+                                  ),
+                                  keyboardType: TextInputType.number,
                                 ),
                               ),
-                              InkWell(
-                                borderRadius: BorderRadius.circular(20.0),
-                                onTap: () {
-                                  _.selected.value = 1;
-                                },
-                                child: tabSelect(
-                                  selected: _.selected.value == 1,
-                                  text: 'Bajo peso',
+                              SizedBox(height: 7.5),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                child: Text('Condición'),
+                              ),
+                              SingleChildScrollView(
+                                child: Row(
+                                  children: [
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      onTap: () {
+                                        _.selected.value = 0;
+                                      },
+                                      child: tabSelect(
+                                        selected: _.selected.value == 0,
+                                        text: 'Muy delgado',
+                                      ),
+                                    ),
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      onTap: () {
+                                        _.selected.value = 1;
+                                      },
+                                      child: tabSelect(
+                                        selected: _.selected.value == 1,
+                                        text: 'Bajo peso',
+                                      ),
+                                    ),
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      onTap: () {
+                                        _.selected.value = 2;
+                                      },
+                                      child: tabSelect(
+                                        selected: _.selected.value == 2,
+                                        text: 'Ideal',
+                                      ),
+                                    ),
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      onTap: () {
+                                        _.selected.value = 3;
+                                      },
+                                      child: tabSelect(
+                                        selected: _.selected.value == 3,
+                                        text: 'Sobrepeso',
+                                      ),
+                                    ),
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      onTap: () {
+                                        _.selected.value = 4;
+                                      },
+                                      child: tabSelect(
+                                        selected: _.selected.value == 4,
+                                        text: 'Obeso',
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              InkWell(
-                                borderRadius: BorderRadius.circular(20.0),
-                                onTap: () {
-                                  _.selected.value = 2;
-                                },
-                                child: tabSelect(
-                                  selected: _.selected.value == 2,
-                                  text: 'Ideal',
-                                ),
-                              ),
-                              InkWell(
-                                borderRadius: BorderRadius.circular(20.0),
-                                onTap: () {
-                                  _.selected.value = 3;
-                                },
-                                child: tabSelect(
-                                  selected: _.selected.value == 3,
-                                  text: 'Sobrepeso',
-                                ),
-                              ),
-                              InkWell(
-                                borderRadius: BorderRadius.circular(20.0),
-                                onTap: () {
-                                  _.selected.value = 4;
-                                },
-                                child: tabSelect(
-                                  selected: _.selected.value == 4,
-                                  text: 'Obeso',
-                                ),
-                              ),
+                              SizedBox(height: 7.5),
                             ],
                           ),
                         ),
                         SizedBox(height: 5),
                         tipoAtencion(
-                          IconProypet.consulta,
-                          'Consulta',
-                          _.consulta.value?.amount?.toString() ?? '',
-                          () => Get.to(() => ConsultaView()),
+                          icon: IconProypet.consulta,
+                          nombre: 'Consulta',
+                          monto: _.consulta.value?.amount?.toString() ?? '',
+                          onTap: () => Get.to(ConsultaView()),
+                          onDelete: _.deleteConsulta,
                         ),
                         tipoAtencion(
-                          IconProypet.cirugia,
-                          'Cirugía',
-                          _.cirugia.value?.amount?.toString() ?? '',
-                          () => Get.to(CirugiaView()),
+                          icon: IconProypet.cirugia,
+                          nombre: 'Cirugía',
+                          monto: _.cirugia.value?.amount?.toString() ?? '',
+                          onTap: () => Get.to(CirugiaView()),
+                          onDelete: _.deleteCirugia,
                         ),
                         tipoAtencion(
-                          IconProypet.desparasitacion,
-                          'Desparasitación',
-                          _.desparasita.value?.amount?.toString() ?? '',
-                          () => Get.to(DesparasitaView()),
+                          icon: IconProypet.desparasitacion,
+                          nombre: 'Desparasitación',
+                          monto: _.desparasita.value?.amount?.toString() ?? '',
+                          onTap: () => Get.to(DesparasitaView()),
+                          onDelete: _.deleteDesparasita,
                         ),
                         tipoAtencion(
-                          IconProypet.grooming,
-                          'Grooming',
-                          'falta',
-                          () => Get.to(GroomingView()),
+                          icon: IconProypet.grooming,
+                          nombre: 'Grooming',
+                          monto: 'falta',
+                          onTap: () => Get.to(GroomingView()),
+                          onDelete: () {},
                         ),
                         tipoAtencion(
-                          IconProypet.vacuna,
-                          'Vacuna',
-                          _.vacunas.value?.amount?.toString() ?? '',
-                          () => Get.to(VacunaView()),
+                          icon: IconProypet.vacuna,
+                          nombre: 'Vacuna',
+                          monto: _.vacunas.value?.amount?.toString() ?? '',
+                          onTap: () => Get.to(VacunaView()),
+                          onDelete: _.deleteVacuna,
                         ),
                         tipoAtencion(
-                          IconProypet.tuboEnsayo,
-                          'Exámenes',
-                          _.examenes.value?.amount?.toString() ?? '',
-                          () => Get.to(TestingView()),
+                          icon: IconProypet.tuboEnsayo,
+                          nombre: 'Exámenes',
+                          monto: _.examenes.value?.amount?.toString() ?? '',
+                          onTap: () => Get.to(TestingView()),
+                          onDelete: _.deleteExamen,
                         ),
                         tipoAtencion(
-                          IconProypet.farmacia,
-                          'Otros',
-                          _.otros.value?.amount?.toString() ?? '',
-                          () => Get.to(OtroView()),
+                          icon: IconProypet.farmacia,
+                          nombre: 'Otros',
+                          monto: _.otros.value?.amount?.toString() ?? '',
+                          onTap: () => Get.to(OtroView()),
+                          onDelete: _.deleteOtros,
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 10, top: 7.5),

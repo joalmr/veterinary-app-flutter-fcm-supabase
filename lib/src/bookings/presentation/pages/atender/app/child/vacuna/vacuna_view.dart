@@ -52,7 +52,10 @@ class _VacunaViewState extends State<VacunaView> {
                         ),
                         btnAltern(
                           text: 'Eliminar',
-                          onPressed: () {},
+                          onPressed: () {
+                            _book.deleteVacuna();
+                            Get.close(2);
+                          },
                           color: colorRed,
                         ),
                       ],

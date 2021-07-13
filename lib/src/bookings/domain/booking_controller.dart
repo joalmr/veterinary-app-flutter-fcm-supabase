@@ -27,14 +27,12 @@ class BookingController extends GetxController {
   // final _repoCalendar = CalendarController();
 
   final _homeController = Get.find<HomeController>();
-  RxString condicion = ''.obs;
-  RxBool statusBooking = false.obs;
-  RxList<DataNextdate> listNextdate = <DataNextdate>[].obs;
+  final condicion = ''.obs;
+  final statusBooking = false.obs;
+  final listNextdate = <DataNextdate>[].obs;
 
   final petData = PetClient().obs;
-
   final loadingPage = true.obs;
-
   final itemList = <String>[];
 
   final cirugia = Rxn<SurgeryBooking>();
@@ -99,13 +97,10 @@ class BookingController extends GetxController {
   Future<void> onInit() async {
     super.onInit();
     bookingId = Get.arguments['bookingId'];
-    // petId = Get.arguments['petId'];
     image = Get.arguments['image'];
+    idSplit = image!.split('avatars/')[1].split('/')[0];
 
     final general = await _repo.attend(prefUser.vetId!, bookingId!);
-    //print(jsonEncode(general));
-
-    idSplit = image!.split('avatars/')[1].split('/')[0];
 
     petData.value = await _repoPet.getPet(idSplit!);
 
@@ -117,9 +112,20 @@ class BookingController extends GetxController {
     cirugia.value = general.surgery;
     consulta.value = general.consultation;
     desparasita.value = general.deworming;
-    examenes.value = general.testing as TestingBooking?;
+    examenes.value = general.testing;
     otros.value = general.other;
     vacunas.value = general.vaccination;
+    // carga listas
+    listaDiagnostico.clear();
+    listaDiagnostico.addAll(consulta.value?.diagnoses ?? []);
+    listDeworming.clear();
+    listDeworming.addAll(desparasita.value?.dewormers ?? []);
+    listVaccines.clear();
+    listVaccines.addAll(vacunas.value?.vaccines ?? []);
+    listOthers.clear();
+    listOthers.addAll(otros.value?.others ?? []);
+    listTesting.clear();
+    listTesting.addAll(examenes.value?.tests ?? []);
   }
 
   void removeList(DataNextdate dato) {
@@ -146,46 +152,15 @@ class BookingController extends GetxController {
     );
   }
 
-  void saveCirugia(SurgeryBooking data) => _saveCirugia(data);
-
   void saveConsulta(ConsultationBooking data) => _saveConsulta(data);
-
-  void saveDesparasitacion(DewormingBooking data) => _saveDesparasitacion(data);
-
-  void saveExamenes(TestingBooking data) => _saveExamenes(data);
-
-  void saveFinalize() => _saveFinalize();
-
-  void saveGrooming() => _saveGrooming();
-
-  void saveOtro(OthersBooking data) => _saveOtro(data);
-
-  void saveVacuna(VaccinationBooking data) => _saveVacuna(data);
-
-  Future<void> _saveCirugia(SurgeryBooking data) async {
-    //actualiza dato
-    cirugia.value =
-        await _repo.saveSurgery(prefUser.vetId!, attentionId!, data);
-
-    itemList.add('cirugia');
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Cirugía',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
   Future<void> _saveConsulta(ConsultationBooking data) async {
     //actualiza dato
     consulta.value =
         await _repo.saveConsultation(prefUser.vetId!, attentionId!, data);
 
-    itemList.add('consulta');
+    if (!itemList.contains('consultation')) {
+      itemList.add('consultation');
+    }
 
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: const Text(
@@ -198,12 +173,35 @@ class BookingController extends GetxController {
     Get.back();
   }
 
+  void saveCirugia(SurgeryBooking data) => _saveCirugia(data);
+  Future<void> _saveCirugia(SurgeryBooking data) async {
+    cirugia.value =
+        await _repo.saveSurgery(prefUser.vetId!, attentionId!, data);
+
+    if (!itemList.contains('surgery')) {
+      itemList.add('surgery');
+    }
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Cirugía',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
+  void saveDesparasitacion(DewormingBooking data) => _saveDesparasitacion(data);
   Future<void> _saveDesparasitacion(DewormingBooking data) async {
     //actualiza dato
     desparasita.value =
         await _repo.saveDeworming(prefUser.vetId!, attentionId!, data);
 
-    itemList.add('desparasita');
+    if (!itemList.contains('deworming')) {
+      itemList.add('deworming');
+    }
 
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: const Text(
@@ -216,26 +214,11 @@ class BookingController extends GetxController {
     Get.back();
   }
 
-  Future<void> _saveExamenes(TestingBooking data) async {
-    //actualiza dato
-    examenes.value =
-        await _repo.saveTesting(prefUser.vetId!, attentionId!, data);
-
-    itemList.add('examenes');
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Exámenes',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
+  void saveGrooming() => _saveGrooming();
   Future<void> _saveGrooming() async {
-    itemList.add('grooming');
+    if (!itemList.contains('grooming')) {
+      itemList.add('grooming');
+    }
 
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: const Text(
@@ -248,29 +231,15 @@ class BookingController extends GetxController {
     Get.back();
   }
 
-  Future<void> _saveOtro(OthersBooking data) async {
-    //actualiza dato
-    otros.value = await _repo.saveOthers(prefUser.vetId!, attentionId!, data);
-
-    itemList.add('otro');
-
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Otros',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
-    Get.back();
-  }
-
+  void saveVacuna(VaccinationBooking data) => _saveVacuna(data);
   Future<void> _saveVacuna(VaccinationBooking data) async {
     //actualiza dato
     vacunas.value =
         await _repo.saveVaccination(prefUser.vetId!, attentionId!, data);
 
-    itemList.add('vacuna');
+    if (!itemList.contains('vaccination')) {
+      itemList.add('vaccination');
+    }
 
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: const Text(
@@ -283,6 +252,143 @@ class BookingController extends GetxController {
     Get.back();
   }
 
+  void saveExamenes(TestingBooking data) => _saveExamenes(data);
+  Future<void> _saveExamenes(TestingBooking data) async {
+    //actualiza dato
+    examenes.value =
+        await _repo.saveTesting(prefUser.vetId!, attentionId!, data);
+
+    if (!itemList.contains('testing')) {
+      itemList.add('testing');
+    }
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Exámenes',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
+  void saveOtro(OthersBooking data) => _saveOtro(data);
+  Future<void> _saveOtro(OthersBooking data) async {
+    //actualiza dato
+    otros.value = await _repo.saveOthers(prefUser.vetId!, attentionId!, data);
+
+    if (!itemList.contains('other')) {
+      itemList.add('other');
+    }
+
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: const Text(
+        'Se guardó Otros',
+        style: TextStyle(color: colorMain),
+      ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.black.withOpacity(0.85),
+    ));
+    Get.back();
+  }
+
+  deleteConsulta() {
+    deleteServicios('consultation');
+  }
+
+  deleteCirugia() {
+    deleteServicios('surgery');
+  }
+
+  deleteDesparasita() {
+    deleteServicios('deworming');
+  }
+
+  deleteGrooming() {
+    deleteServicios('grooming');
+  }
+
+  deleteVacuna() {
+    deleteServicios('vaccination');
+  }
+
+  deleteExamen() {
+    deleteServicios('testing');
+  }
+
+  deleteOtros() {
+    deleteServicios('other');
+  }
+
+  deleteServicios(String type) async {
+    // final generalDelelte =
+    await _repo.deleteServiceAttention(prefUser.vetId!, attentionId!, type);
+    switch (type) {
+      case 'consultation':
+        {
+          consulta.value = null;
+          listaDiagnostico.clear();
+        }
+        break;
+      case 'surgery':
+        {
+          cirugia.value = null;
+        }
+        break;
+      case 'deworming':
+        {
+          desparasita.value = null;
+          listDeworming.clear();
+        }
+        break;
+      case 'grooming':
+        break;
+      case 'vaccination':
+        {
+          vacunas.value = null;
+          listVaccines.clear();
+        }
+        break;
+      case 'testing':
+        {
+          examenes.value = null;
+          listTesting.clear();
+        }
+        break;
+      case 'other':
+        {
+          otros.value = null;
+          listOthers.clear();
+        }
+        break;
+      default:
+        null;
+    }
+    // cirugia.value = generalDelelte.surgery;
+    // consulta.value = generalDelelte.consultation;
+    // desparasita.value = generalDelelte.deworming;
+    // examenes.value = generalDelelte.testing;
+    // otros.value = generalDelelte.other;
+    // vacunas.value = generalDelelte.vaccination;
+    // // carga listas
+    // listaDiagnostico.clear();
+    // listaDiagnostico.addAll(consulta.value?.diagnoses ?? []);
+    // listDeworming.clear();
+    // listDeworming.addAll(desparasita.value?.dewormers ?? []);
+    // listVaccines.clear();
+    // listVaccines.addAll(vacunas.value?.vaccines ?? []);
+    // listOthers.clear();
+    // listOthers.addAll(otros.value?.others ?? []);
+    // listTesting.clear();
+    // listTesting.addAll(examenes.value?.tests ?? []);
+
+    if (itemList.contains(type)) {
+      itemList.remove(type);
+    }
+  }
+
+  void saveFinalize() => _saveFinalize();
   Future<void> _saveFinalize() async {
     List<String> condition = [
       'thin',

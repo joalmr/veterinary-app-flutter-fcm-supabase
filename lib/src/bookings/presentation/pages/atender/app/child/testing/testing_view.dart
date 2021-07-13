@@ -52,7 +52,10 @@ class _TestingViewState extends State<TestingView> {
                         ),
                         btnAltern(
                           text: 'Eliminar',
-                          onPressed: () {},
+                          onPressed: () {
+                            _book.deleteExamen();
+                            Get.close(2);
+                          },
                           color: colorRed,
                         ),
                       ],

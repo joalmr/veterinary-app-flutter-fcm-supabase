@@ -96,4 +96,10 @@ class BookingRepository extends BookingInterface {
       String establishment, String attention, FinalizeAttention finaliza) {
     return _api.finalizeAttention(establishment, attention, finaliza);
   }
+
+  @override
+  Future deleteServiceAttention(
+      String establishment, String attention, String type) {
+    return _api.deleteServiceAttention(establishment, attention, type);
+  }
 }

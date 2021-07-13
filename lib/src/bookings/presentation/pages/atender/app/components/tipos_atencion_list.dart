@@ -3,8 +3,13 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
-Widget tipoAtencion(
-    IconData icon, String nombre, String monto, void Function()? onTap) {
+Widget tipoAtencion({
+  required IconData icon,
+  required String nombre,
+  required String monto,
+  void Function()? onTap,
+  void Function()? onDelete,
+}) {
   return monto == ''
       ? Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -69,7 +74,10 @@ Widget tipoAtencion(
                     ),
                     btnAltern(
                       text: 'Eliminar',
-                      onPressed: () {},
+                      onPressed: () {
+                        onDelete!();
+                        Get.back();
+                      },
                       color: colorRed,
                     ),
                   ],

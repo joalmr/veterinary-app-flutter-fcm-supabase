@@ -195,7 +195,8 @@ class BookingApi extends BookingInterface {
       headers: headersToken(),
       body: testingBookingToJson(data),
     );
-
+    print('examen');
+    print(response.body);
     final dataResponse = testingBookingFromJson(response.body);
     return dataResponse;
   }
@@ -234,6 +235,25 @@ class BookingApi extends BookingInterface {
     );
 
     print('finalizó');
+    print(response.body);
+    return jsonDecode(response.body);
+  }
+
+  @override
+  Future<dynamic> deleteServiceAttention(
+      String establishment, String attention, String type) async {
+    final url = Uri.https(
+      urlBase!,
+      '/api/client/establishment/$establishment/attention/$attention/detail',
+    );
+    final dataJson = {'type': type};
+    final http.Response response = await http.delete(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(dataJson),
+    );
+
+    print(response.statusCode);
     print(response.body);
     return jsonDecode(response.body);
   }
