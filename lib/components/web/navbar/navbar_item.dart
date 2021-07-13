@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-//TODO: REVISAR LOS DEMAS FUNCTION
 Widget navbarItem(
     {required bool active,
     required IconData icon,

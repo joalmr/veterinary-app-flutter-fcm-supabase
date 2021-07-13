@@ -195,8 +195,7 @@ class BookingApi extends BookingInterface {
       headers: headersToken(),
       body: testingBookingToJson(data),
     );
-    print('examen');
-    print(response.body);
+
     final dataResponse = testingBookingFromJson(response.body);
     return dataResponse;
   }
@@ -253,8 +252,6 @@ class BookingApi extends BookingInterface {
       body: jsonEncode(dataJson),
     );
 
-    print(response.statusCode);
-    print(response.body);
     return jsonDecode(response.body);
   }
 }

@@ -37,11 +37,10 @@ class AuthRepository extends AuthInterface {
 
   @override
   Future<int> forgotPassword(String email) async {
-    print(email);
     final url = Uri.https(urlBase!, '/api/password/reset');
     final emailData = {'email': email};
     final response = await http.post(url, body: emailData);
-    print(response.statusCode);
+
     return response.statusCode;
   }
 }

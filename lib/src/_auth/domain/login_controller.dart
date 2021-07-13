@@ -46,7 +46,7 @@ class LoginController extends GetxController {
   void olvideContra(String email) => _olvideContra(email);
   _olvideContra(String email) async {
     btnOlvide.value = false;
-    print(email);
+
     final int logged = await authService.forgotPassword(email);
     if (logged == 200) {
       ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
