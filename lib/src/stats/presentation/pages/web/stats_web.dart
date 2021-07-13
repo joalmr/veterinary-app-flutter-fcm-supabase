@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:vet_app/components/web/navbar/navigation_bar.dart';
-
+import 'package:vet_app/design/layout/main_layout.dart';
 import 'feedback/feedback_page.dart';
 import 'statsData/stats_page.dart';
 
 class StatsPageWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
+    return MainLayout(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NavigationBar(),
           Expanded(
             child: StatsData(),
           ),

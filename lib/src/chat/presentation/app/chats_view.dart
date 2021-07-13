@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/app/menu.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/components/dont_exit.dart';
 import 'package:vet_app/src/chat/domain/chat_controller.dart';
 
 class ChatsView extends StatelessWidget {
@@ -12,8 +11,8 @@ class ChatsView extends StatelessWidget {
       init: ChatController(),
       builder: (_) {
         return Scaffold(
-          drawer: GetPlatform.isWeb ? null : MenuDrawer(),
-          appBar: GetPlatform.isWeb ? null : AppBar(title: Text('Chats')),
+          drawer: context.width > 900 ? null : MenuDrawer(),
+          appBar: context.width > 900 ? null : AppBar(title: Text('Chats')),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

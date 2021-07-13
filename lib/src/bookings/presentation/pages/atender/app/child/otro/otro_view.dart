@@ -187,29 +187,32 @@ class _OtroViewState extends State<OtroView> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    SizedBox(
-                      width: double.maxFinite,
-                      child: btnPrimary(
-                        text: 'Guardar',
-                        onPressed: () {
-                          if (_book.listOthers.isNotEmpty &&
-                              amountController.numberValue > 0) {
-                            final temp = OthersBooking(
-                              amount: amountController.numberValue,
-                              recommendations: recomendationController.text,
-                              others: _book.listOthers,
-                            );
-                            _book.saveOtro(temp);
-                          } else {
-                            ScaffoldMessenger.of(Get.context!)
-                                .showSnackBar(SnackBar(
-                              content:
-                                  const Text('Falta ingresar servicio o monto'),
-                              duration: const Duration(seconds: 3),
-                              backgroundColor: Colors.black.withOpacity(0.85),
-                            ));
-                          }
-                        },
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: SizedBox(
+                        width: double.maxFinite,
+                        child: btnPrimary(
+                          text: 'Guardar',
+                          onPressed: () {
+                            if (_book.listOthers.isNotEmpty &&
+                                amountController.numberValue > 0) {
+                              final temp = OthersBooking(
+                                amount: amountController.numberValue,
+                                recommendations: recomendationController.text,
+                                others: _book.listOthers,
+                              );
+                              _book.saveOtro(temp);
+                            } else {
+                              ScaffoldMessenger.of(Get.context!)
+                                  .showSnackBar(SnackBar(
+                                content: const Text(
+                                    'Falta ingresar servicio o monto'),
+                                duration: const Duration(seconds: 3),
+                                backgroundColor: Colors.black.withOpacity(0.85),
+                              ));
+                            }
+                          },
+                        ),
                       ),
                     ),
                   ],

@@ -12,7 +12,7 @@ class ConfigMain extends StatelessWidget {
     return GetBuilder<ConfigController>(
       init: ConfigController(),
       builder: (_) {
-        return context.width < 900 ? const ConfigView() : const ConfigPage();
+        return context.width < 900 ? const ConfigView() : ConfigPage();
       },
     );
   }

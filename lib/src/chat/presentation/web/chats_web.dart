@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
-import 'vetList/vet_list_page.dart';
+import 'package:vet_app/src/chat/presentation/app/chats_view.dart';
 
-class StablishmentsPage extends StatelessWidget {
+class ChatsWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      child: VetList(),
+      child: ChatsView(),
     );
   }
 }

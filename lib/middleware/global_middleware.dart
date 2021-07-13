@@ -9,7 +9,7 @@ class GlobalMiddleware extends GetMiddleware {
     if (prefUser.tokenHas() == true || route == '/login') {
       return null;
     } else {
-      return const RouteSettings(name: NameRoutes.login);
+      return RouteSettings(name: NameRoutes.login);
     }
   }
 }

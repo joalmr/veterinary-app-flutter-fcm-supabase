@@ -66,11 +66,14 @@ class _GroomingViewState extends State<GroomingView> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                SizedBox(
-                  width: double.maxFinite,
-                  child: btnPrimary(
-                    text: 'Guardar',
-                    onPressed: () {},
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: SizedBox(
+                    width: double.maxFinite,
+                    child: btnPrimary(
+                      text: 'Guardar',
+                      onPressed: () {},
+                    ),
                   ),
                 ),
               ],

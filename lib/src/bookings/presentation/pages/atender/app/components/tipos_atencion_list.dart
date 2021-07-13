@@ -8,36 +8,42 @@ Widget tipoAtencion(
   return monto == ''
       ? Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: InkWell(
-            onTap: onTap,
-            child: Card(
-              child: Container(
-                height: 65,
-                padding: const EdgeInsets.all(8),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 45,
-                      width: 45,
-                      decoration: BoxDecoration(
-                        color: Colors.black38,
-                        borderRadius: borderRadius,
+          child: Tooltip(
+            message: nombre,
+            child: InkWell(
+              onTap: onTap,
+              child: Card(
+                child: Container(
+                  height: 65,
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(
+                          color: Colors.black38,
+                          borderRadius: borderRadius,
+                        ),
+                        child: Icon(
+                          icon,
+                          color: Colors.white,
+                          size: 20,
+                        ),
                       ),
-                      child: Icon(
-                        icon,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        nombre,
-                        style:
-                            Get.textTheme.subtitle1!.apply(fontWeightDelta: 2),
-                      ),
-                    ),
-                  ],
+                      const SizedBox(width: 10),
+                      MediaQuery.of(Get.context!).size.width < 605 &&
+                              GetPlatform.isWeb
+                          ? SizedBox(height: 0)
+                          : Expanded(
+                              child: Text(
+                                nombre,
+                                style: Get.textTheme.subtitle1!
+                                    .apply(fontWeightDelta: 2),
+                              ),
+                            ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -89,13 +95,16 @@ Widget tipoAtencion(
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          nombre,
-                          style: Get.textTheme.subtitle1!
-                              .apply(fontWeightDelta: 2),
-                        ),
-                      ),
+                      MediaQuery.of(Get.context!).size.width < 605 &&
+                              GetPlatform.isWeb
+                          ? SizedBox(height: 0)
+                          : Expanded(
+                              child: Text(
+                                nombre,
+                                style: Get.textTheme.subtitle1!
+                                    .apply(fontWeightDelta: 2),
+                              ),
+                            ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Text(

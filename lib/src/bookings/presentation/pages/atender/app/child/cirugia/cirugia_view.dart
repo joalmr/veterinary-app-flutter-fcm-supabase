@@ -102,26 +102,29 @@ class _CirugiaViewState extends State<CirugiaView> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    SizedBox(
-                      width: double.maxFinite,
-                      child: btnPrimary(
-                        text: 'Guardar',
-                        onPressed: () {
-                          if (amountController.numberValue > 0) {
-                            final temp = SurgeryBooking(
-                              amount: amountController.numberValue,
-                              recommendations: recomendationController.text,
-                            );
-                            _book.saveCirugia(temp);
-                          } else {
-                            ScaffoldMessenger.of(Get.context!)
-                                .showSnackBar(SnackBar(
-                              content: const Text('Ingrese monto'),
-                              duration: const Duration(seconds: 3),
-                              backgroundColor: Colors.black.withOpacity(0.85),
-                            ));
-                          }
-                        },
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: SizedBox(
+                        width: double.maxFinite,
+                        child: btnPrimary(
+                          text: 'Guardar',
+                          onPressed: () {
+                            if (amountController.numberValue > 0) {
+                              final temp = SurgeryBooking(
+                                amount: amountController.numberValue,
+                                recommendations: recomendationController.text,
+                              );
+                              _book.saveCirugia(temp);
+                            } else {
+                              ScaffoldMessenger.of(Get.context!)
+                                  .showSnackBar(SnackBar(
+                                content: const Text('Ingrese monto'),
+                                duration: const Duration(seconds: 3),
+                                backgroundColor: Colors.black.withOpacity(0.85),
+                              ));
+                            }
+                          },
+                        ),
                       ),
                     ),
                   ],

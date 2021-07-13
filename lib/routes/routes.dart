@@ -16,36 +16,32 @@ import 'package:vet_app/src/stats/presentation/pages/stats.dart';
 import 'package:vet_app/src/userClients/presentation/user_clients.dart';
 
 class NameRoutes {
-  static const String splash = '/';
-  // static const String register = '/register';
-  static const String login = '/login';
-  static const String home = '/home';
-  static const String calendar = '/calendar';
-  static const String attentions = '/attentions';
-  static const String stats = '/stats';
-  static const String offers = '/offers';
-  static const String establishments = '/establishments';
-  static const String workers = '/workers';
-  static const String chats = '/chats';
-  static const String clientes = '/clients';
-  static const String config = '/config';
+  static String splash = '/';
+  // static  String register = '/register';
+  static String login = '/login';
+  static String home = '/home';
+  static String calendar = '/calendar';
+  static String attentions = '/attentions';
+  static String stats = '/stats';
+  static String offers = '/offers';
+  static String establishments = '/establishments';
+  // static String workers = '/workers';
+  static String chats = '/chats';
+  static String clientes = '/clients';
+  static String config = '/config';
 
-  static const String atenderBooking = '/booking'; //atender *
+  static String atenderBooking = '/booking'; //atender *
 }
 
 abstract class AppPages {
   static final pages = [
     GetPage(
       name: NameRoutes.splash,
-      page: () => const SplashView(),
+      page: () => SplashView(),
     ),
-    // GetPage(
-    //   name: NameRoutes.register,
-    //   page: () => const RegisterMain(),
-    // ),
     GetPage(
       name: NameRoutes.login,
-      page: () => const LoginMain(),
+      page: () => LoginMain(),
     ),
     GetPage(
       name: NameRoutes.home,
@@ -92,11 +88,6 @@ abstract class AppPages {
         ),
       ],
     ),
-    // GetPage(
-    //   name: NameRoutes.workers,
-    //   page: () => WorkersMain(),
-    //   middlewares: [GlobalMiddleware()],
-    // ),
     GetPage(
       name: NameRoutes.chats,
       page: () => ChatsMain(),

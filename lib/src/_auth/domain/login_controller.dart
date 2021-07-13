@@ -1,12 +1,15 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variables_global.dart';
+import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/_auth/data/auth_repository.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
+import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chart_servicios.dart';
 
 class LoginController extends GetxController {
   final authService = AuthRepository();
@@ -18,8 +21,10 @@ class LoginController extends GetxController {
   String email = '';
   String password = '';
 
-  RxBool errorLogIn = false.obs;
-  RxBool btnLogIn = true.obs;
+  final errorLogIn = false.obs;
+  final btnLogIn = true.obs;
+  final olvideBool = false.obs;
+  final btnOlvide = true.obs;
 
   void logIn() => _login();
   Future<void> _login() async {
@@ -37,6 +42,34 @@ class LoginController extends GetxController {
         () => errorLogIn.value = false,
       );
     }
+  }
+
+  void olvideContra(String email) => _olvideContra(email);
+  _olvideContra(String email) async {
+    btnOlvide.value = false;
+    print(email);
+    final int logged = await authService.forgotPassword(email);
+    if (logged == 200) {
+      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+        content: const Text(
+          'Se le ha enviado un email a su dirección ingresada',
+          style: TextStyle(color: colorMain),
+        ),
+        duration: const Duration(seconds: 7),
+        backgroundColor: Colors.black.withOpacity(0.85),
+      ));
+    } else {
+      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+        content: const Text(
+          'Oops! ocurrió un error, inténtelo más tarde',
+          style: TextStyle(color: colorRed),
+        ),
+        duration: const Duration(seconds: 5),
+        backgroundColor: Colors.black.withOpacity(0.85),
+      ));
+    }
+
+    btnOlvide.value = true;
   }
 
   Future<void> initHome() async {

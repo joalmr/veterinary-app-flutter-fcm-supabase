@@ -9,8 +9,8 @@ class UserClientsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: GetPlatform.isWeb ? null : MenuDrawer(),
-      appBar: GetPlatform.isWeb
+      drawer: MediaQuery.of(context).size.width > 900 ? null : MenuDrawer(),
+      appBar: MediaQuery.of(context).size.width > 900
           ? null
           : AppBar(
               title: Text('Clientes'),

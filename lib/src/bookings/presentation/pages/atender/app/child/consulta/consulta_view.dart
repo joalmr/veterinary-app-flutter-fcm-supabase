@@ -223,31 +223,35 @@ class ConsultaView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    SizedBox(
-                      width: double.maxFinite,
-                      child: btnPrimary(
-                        text: 'Guardar',
-                        onPressed: () {
-                          if (_.listaDiagnostico.isNotEmpty &&
-                              amountController.numberValue > 0) {
-                            final temp = ConsultationBooking(
-                              amount: amountController.numberValue,
-                              anamnesis: anamnesisController.text,
-                              diagnoses: _.listaDiagnostico,
-                              recommendations: recomendationController.text,
-                            );
-                            _.saveConsulta(temp);
-                          } else {
-                            ScaffoldMessenger.of(Get.context!).showSnackBar(
-                              SnackBar(
-                                content: const Text(
-                                    'Falta ingresar diagnóstico o monto'),
-                                duration: const Duration(seconds: 3),
-                                backgroundColor: Colors.black.withOpacity(0.85),
-                              ),
-                            );
-                          }
-                        },
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: SizedBox(
+                        width: double.maxFinite,
+                        child: btnPrimary(
+                          text: 'Guardar',
+                          onPressed: () {
+                            if (_.listaDiagnostico.isNotEmpty &&
+                                amountController.numberValue > 0) {
+                              final temp = ConsultationBooking(
+                                amount: amountController.numberValue,
+                                anamnesis: anamnesisController.text,
+                                diagnoses: _.listaDiagnostico,
+                                recommendations: recomendationController.text,
+                              );
+                              _.saveConsulta(temp);
+                            } else {
+                              ScaffoldMessenger.of(Get.context!).showSnackBar(
+                                SnackBar(
+                                  content: const Text(
+                                      'Falta ingresar diagnóstico o monto'),
+                                  duration: const Duration(seconds: 3),
+                                  backgroundColor:
+                                      Colors.black.withOpacity(0.85),
+                                ),
+                              );
+                            }
+                          },
+                        ),
                       ),
                     ),
                   ],
