@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vet_app/components/web/navbar/navigation_bar.dart';
+import 'package:vet_app/components/web/navigation_bar.dart';
 
 import 'add_vet.dart';
 

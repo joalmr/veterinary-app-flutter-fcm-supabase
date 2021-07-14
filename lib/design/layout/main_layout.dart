@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/app/menu.dart';
-import 'package:vet_app/components/web/navbar/navigation_bar.dart';
+import 'package:vet_app/components/web/navigation_bar.dart';
 
 class MainLayout extends StatelessWidget {
   final Widget child;
