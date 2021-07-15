@@ -75,7 +75,7 @@ class FullCalendar extends StatelessWidget {
                     i++)
                   SizedBox(
                     width: (MediaQuery.of(context).size.width) / divisor,
-                    height: 100,
+                    height: 110,
                     child: Container(
                       color: Colors.grey[200],
                     ),
@@ -106,7 +106,7 @@ class FullCalendar extends StatelessWidget {
                     },
                     child: Container(
                       width: (MediaQuery.of(context).size.width) / divisor,
-                      height: 100,
+                      height: 110,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey[200]!),
                       ),

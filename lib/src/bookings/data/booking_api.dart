@@ -48,7 +48,6 @@ class BookingApi extends BookingInterface {
       headers: headersToken(),
     );
 
-    print(response.body);
     final dataResponse = generalBookingFromJson(response.body);
     return dataResponse;
   }
@@ -228,16 +227,53 @@ class BookingApi extends BookingInterface {
       '/api/client/establishment/$establishment/attention/$attention/finalize',
     );
     print('finaliza atencion');
-    print(finalizeAttentionToJson(finaliza));
+    // print(finalizeAttentionToJson(finaliza));
+
+    String? consultationNotifica;
+    String? dewormingNotifica;
+    String? groomingNotifica;
+    String? vaccinationNotifica;
+
+    String jsonInputString =
+        '"weight": ${finaliza.weight},"temperature": ${finaliza.temperature},"heart_rhythm": ${finaliza.heartRhythm},"body_condition": "${finaliza.bodyCondition}"';
+
+    if (finaliza.consultationNotificationNextdate != null) {
+      consultationNotifica =
+          ',"consultation_notification_nextdate": "${finaliza.consultationNotificationNextdate!}", "consultation_notification_reason": "${finaliza.consultationNotificationReason!}", "consultation_notification_observation": "${finaliza.consultationNotificationObservation!}"';
+      jsonInputString += consultationNotifica;
+    }
+
+    if (finaliza.dewormingNotificationNextdate != null) {
+      dewormingNotifica =
+          ',"deworming_notification_nextdate": "${finaliza.dewormingNotificationNextdate!}","deworming_notification_reason": "${finaliza.dewormingNotificationReason!}","deworming_notification_observation": "${finaliza.dewormingNotificationObservation!}"';
+      jsonInputString += dewormingNotifica;
+    }
+
+    if (finaliza.groomingNotificationNextdate != null) {
+      groomingNotifica =
+          ',"grooming_notification_nextdate": "${finaliza.groomingNotificationNextdate!}","grooming_notification_reason": "${finaliza.groomingNotificationReason!}","grooming_notification_observation": "${finaliza.groomingNotificationObservation!}"';
+      jsonInputString += groomingNotifica;
+    }
+
+    if (finaliza.vaccinationNotificationNextdate != null) {
+      vaccinationNotifica =
+          ',"vaccination_notification_nextdate": "${finaliza.vaccinationNotificationNextdate!}","vaccination_notification_reason": "${finaliza.vaccinationNotificationReason!}","vaccination_notification_observation": "${finaliza.vaccinationNotificationObservation!}"';
+      jsonInputString += vaccinationNotifica;
+    }
+
+    final dataJson = jsonDecode('{$jsonInputString}');
+    print(jsonEncode(dataJson));
+
     final http.Response response = await http.post(
       url,
       headers: headersToken(),
-      body: finalizeAttentionToJson(finaliza),
+      body: jsonEncode(dataJson),
     );
 
     print('finalizó');
     print(response.body);
     return jsonDecode(response.body);
+    // return null;
   }
 
   @override
@@ -265,17 +301,12 @@ class BookingApi extends BookingInterface {
       '/api/client/establishment/$establishment/attention/$attention/grooming',
     );
 
-    print('============> envia grooming');
-    print(groomingBookingToJson(data));
-
     final http.Response response = await http.post(
       url,
       headers: headersToken(),
       body: groomingBookingToJson(data),
     );
-    print('====> grooming');
-    print(response.body);
-    print('<==== grooming');
+
     final dataResponse = groomingBookingFromJson(response.body);
     return dataResponse;
     // return null;

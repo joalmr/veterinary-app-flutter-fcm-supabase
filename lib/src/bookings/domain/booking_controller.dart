@@ -479,18 +479,20 @@ class BookingController extends GetxController {
         backgroundColor: Colors.black.withOpacity(0.85),
       ));
       return;
-    } else if (itemList.isEmpty) {
-      //TODO: revisar
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: const Text(
-          'Debe registrar un servicio de atención',
-          style: TextStyle(color: colorRed),
-        ),
-        duration: const Duration(seconds: 3),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
-      return;
-    } else {
+    }
+    // else if (itemList.isEmpty) {
+    //   //TODO: revisar
+    //   ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+    //     content: const Text(
+    //       'Debe registrar un servicio de atención',
+    //       style: TextStyle(color: colorRed),
+    //     ),
+    //     duration: const Duration(seconds: 3),
+    //     backgroundColor: Colors.black.withOpacity(0.85),
+    //   ));
+    //   return;
+    // }
+    else {
       final dataResponse = await _repo.finalizeAttention(
           prefUser.vetId!, attentionId!, tempFinalize);
 
