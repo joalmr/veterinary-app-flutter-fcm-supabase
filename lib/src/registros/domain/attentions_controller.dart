@@ -12,7 +12,7 @@ class AttentionsController extends GetxController {
   final from =
       formatDateBasic(DateTime.now().subtract(const Duration(days: 60))).obs;
 
-  final to = formatDateBasic(DateTime.now()).obs;
+  final to = formatDateBasic(DateTime.now().add(Duration(days: 1))).obs;
 
   final userName = ''.obs;
   final petName = ''.obs;
@@ -24,7 +24,6 @@ class AttentionsController extends GetxController {
       getAll();
     }
     super.onInit();
-
   }
 
   getAll() => _getAll();

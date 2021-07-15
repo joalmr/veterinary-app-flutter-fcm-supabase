@@ -44,7 +44,7 @@ class _FiltroAtencionesState extends State<FiltroAtenciones> {
                         initialDate: toDateBasic(_.to.value),
                         initialValue: _.to.value,
                         firstDate: DateTime(2020),
-                        lastDate: DateTime.now(),
+                        lastDate: DateTime.now().add(Duration(days: 1)),
                         dateLabelText: 'Fecha hasta',
                         onChanged: (val) => _.to.value = val,
                       ),
