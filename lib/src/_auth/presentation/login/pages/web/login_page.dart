@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Portada(),
+          Portada(),
           Expanded(
             child: SizedBox(
               child: Center(

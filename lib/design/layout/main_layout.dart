@@ -7,18 +7,25 @@ class MainLayout extends StatelessWidget {
   final Widget body;
   final bool drawerActive;
   final String? title;
+  final List<Widget>? actions;
+  final Widget? floatingActionButton;
   MainLayout({
     Key? key,
     required this.body,
     this.drawerActive = false,
     this.title,
+    this.actions,
+    this.floatingActionButton,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: (context.width < 900 && title != null)
-          ? AppBar(title: Text(title!))
+      appBar: (context.width < 900)
+          ? AppBar(
+              title: Text(title ?? ''),
+              actions: actions,
+            )
           : null,
       drawer: (context.width < 900 && drawerActive) ? MenuDrawer() : null,
       body: context.width < 900
@@ -33,6 +40,7 @@ class MainLayout extends StatelessWidget {
                 ),
               ],
             ),
+      floatingActionButton: floatingActionButton,
     );
   }
 }

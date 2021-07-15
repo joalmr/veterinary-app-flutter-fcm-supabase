@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vet_app/components/app/menu.dart';
+import 'package:vet_app/design/layout/main_layout.dart';
 // import 'package:get/get.dart';
 // import 'app/user_clients_app.dart';
 // import 'web/user_clients_web.dart';
@@ -7,11 +7,9 @@ import 'package:vet_app/components/app/menu.dart';
 class UserClientsMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: MenuDrawer(),
-      appBar: AppBar(
-        title: Text('Clientes'),
-      ),
+    return MainLayout(
+      title: 'Clientes',
+      drawerActive: true,
       body: Center(
         child: FittedBox(
           child: Padding(
@@ -41,7 +39,6 @@ class UserClientsMain extends StatelessWidget {
           ),
         ),
       ),
-      //context.width < 900 ? UserClientsApp() : UserClientsWeb(),
     );
   }
 }
