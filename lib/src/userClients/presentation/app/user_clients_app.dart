@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/app/menu.dart';
 
-import 'client_view.dart';
-import 'crea_cliente.dart';
+import 'clientes/client_view.dart';
+import 'clientes/crea_cliente.dart';
 
 class UserClientsApp extends StatelessWidget {
   @override

@@ -25,304 +25,289 @@ class AtenderView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Atención'),
-          ),
-          body: _.loadingPage.value
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Card(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
-                                child: Image(
-                                  height: 100,
-                                  width: 100,
-                                  image: CachedNetworkImageProvider(_.image!),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              SizedBox(width: 5),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: 5),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          _.petData.value.result!.name!,
-                                          style: Get.textTheme.subtitle1!
-                                              .apply(fontWeightDelta: 2),
-                                        ),
-                                        SizedBox(width: 5),
-                                        Icon(
-                                          Icons.pets_rounded,
-                                          size: 18,
-                                          color: colorMain,
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Text(
-                                        'Edad: ${calculateAge(_.petData.value.result!.birthdate)}'),
-                                    Text(
-                                        'Tipo: ${_.petData.value.result!.specieName!}'),
-                                    Text(
-                                        'Raza: ${_.petData.value.result!.breedName!}'),
-                                  ],
-                                ),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.book_rounded),
-                                onPressed: () {
-                                  Get.to(PetHistoryPage(),
-                                      arguments: _.idSplit);
-                                },
-                              ),
-                              SizedBox(width: 10),
-                            ],
-                          ),
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Card(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image(
+                          height: 100,
+                          width: 100,
+                          image: CachedNetworkImageProvider(_.image!),
+                          fit: BoxFit.cover,
                         ),
-                        SizedBox(height: 5),
-                        Card(
+                      ),
+                      SizedBox(width: 5),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 5),
+                            Row(
+                              children: [
+                                Text(
+                                  _.petData.value.result!.name!,
+                                  style: Get.textTheme.subtitle1!
+                                      .apply(fontWeightDelta: 2),
+                                ),
+                                SizedBox(width: 5),
+                                Icon(
+                                  Icons.pets_rounded,
+                                  size: 18,
+                                  color: colorMain,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                                'Edad: ${calculateAge(_.petData.value.result!.birthdate)}'),
+                            Text(
+                                'Tipo: ${_.petData.value.result!.specieName!}'),
+                            Text('Raza: ${_.petData.value.result!.breedName!}'),
+                          ],
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.book_rounded),
+                        onPressed: () {
+                          Get.to(PetHistoryPage(), arguments: _.idSplit);
+                        },
+                      ),
+                      SizedBox(width: 10),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 5),
+                Card(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 5),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        child: TextFormField(
+                          controller: _.pesoController,
+                          decoration: InputDecoration(
+                            labelText: 'Peso',
+                          ),
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
+                      SizedBox(height: 7.5),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        child: Text('Condición'),
+                      ),
+                      SingleChildScrollView(
+                        child: Row(
+                          children: [
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {
+                                _.selected.value = 0;
+                              },
+                              child: tabSelect(
+                                selected: _.selected.value == 0,
+                                text: 'Muy delgado',
+                              ),
+                            ),
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {
+                                _.selected.value = 1;
+                              },
+                              child: tabSelect(
+                                selected: _.selected.value == 1,
+                                text: 'Bajo peso',
+                              ),
+                            ),
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {
+                                _.selected.value = 2;
+                              },
+                              child: tabSelect(
+                                selected: _.selected.value == 2,
+                                text: 'Ideal',
+                              ),
+                            ),
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {
+                                _.selected.value = 3;
+                              },
+                              child: tabSelect(
+                                selected: _.selected.value == 3,
+                                text: 'Sobrepeso',
+                              ),
+                            ),
+                            InkWell(
+                              borderRadius: BorderRadius.circular(20.0),
+                              onTap: () {
+                                _.selected.value = 4;
+                              },
+                              child: tabSelect(
+                                selected: _.selected.value == 4,
+                                text: 'Obeso',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 7.5),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 5),
+                tipoAtencion(
+                  icon: IconProypet.consulta,
+                  nombre: 'Consulta',
+                  monto: _.consulta.value?.amount?.toString() ?? '',
+                  onTap: () => Get.to(ConsultaView()),
+                  onDelete: _.deleteConsulta,
+                ),
+                tipoAtencion(
+                  icon: IconProypet.cirugia,
+                  nombre: 'Cirugía',
+                  monto: _.cirugia.value?.amount?.toString() ?? '',
+                  onTap: () => Get.to(CirugiaView()),
+                  onDelete: _.deleteCirugia,
+                ),
+                tipoAtencion(
+                  icon: IconProypet.desparasitacion,
+                  nombre: 'Desparasitación',
+                  monto: _.desparasita.value?.amount?.toString() ?? '',
+                  onTap: () => Get.to(DesparasitaView()),
+                  onDelete: _.deleteDesparasita,
+                ),
+                tipoAtencion(
+                  icon: IconProypet.grooming,
+                  nombre: 'Grooming',
+                  monto: _.grooming.value?.amount?.toString() ?? '',
+                  onTap: () => Get.to(GroomingView()),
+                  onDelete: () {},
+                ),
+                tipoAtencion(
+                  icon: IconProypet.vacuna,
+                  nombre: 'Vacuna',
+                  monto: _.vacunas.value?.amount?.toString() ?? '',
+                  onTap: () => Get.to(VacunaView()),
+                  onDelete: _.deleteVacuna,
+                ),
+                tipoAtencion(
+                  icon: IconProypet.tuboEnsayo,
+                  nombre: 'Exámenes',
+                  monto: _.examenes.value?.amount?.toString() ?? '',
+                  onTap: () => Get.to(TestingView()),
+                  onDelete: _.deleteExamen,
+                ),
+                tipoAtencion(
+                  icon: IconProypet.farmacia,
+                  nombre: 'Otros',
+                  monto: _.otros.value?.amount?.toString() ?? '',
+                  onTap: () => Get.to(OtroView()),
+                  onDelete: _.deleteOtros,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 10, top: 7.5),
+                  child: Text(
+                    'Próximas citas',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      itemCitas(text: 'Consulta', slug: 'consultation'),
+                      itemCitas(text: 'Desparasitación', slug: 'deworming'),
+                      itemCitas(text: 'Grooming', slug: 'grooming'),
+                      itemCitas(text: 'Vacunas', slug: 'vaccination'),
+                    ],
+                  ),
+                ),
+                if (_.listNextdate.isEmpty)
+                  Center(
+                      child: Padding(
+                    padding: EdgeInsets.only(top: 35, bottom: 25),
+                    child: Text('Sin próximas citas'),
+                  ))
+                else
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (var item in _.listNextdate)
+                        Container(
+                          width: double.maxFinite,
+                          margin: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    item.name!,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  IconButton(
+                                    onPressed: () => _.removeList(item),
+                                    icon: Icon(
+                                      Icons.delete_forever_rounded,
+                                    ),
+                                  )
+                                ],
+                              ),
                               SizedBox(height: 5),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 5),
-                                child: TextFormField(
-                                  controller: _.pesoController,
-                                  decoration: InputDecoration(
-                                    labelText: 'Peso',
-                                  ),
-                                  keyboardType: TextInputType.number,
+                              DateTimePicker(
+                                dateMask: 'dd-MM-yyyy',
+                                initialValue: formatDate(DateTime.now()),
+                                firstDate: DateTime.now(),
+                                lastDate:
+                                    DateTime.now().add(Duration(days: 730)),
+                                dateLabelText: 'Fecha',
+                                onChanged: (val) => item.date = val,
+                              ),
+                              SizedBox(height: 5),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Observación',
                                 ),
+                                onChanged: (value) => item.observation = value,
+                                initialValue: item.observation,
+                                maxLines: 2,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                               ),
-                              SizedBox(height: 7.5),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 5),
-                                child: Text('Condición'),
-                              ),
-                              SingleChildScrollView(
-                                child: Row(
-                                  children: [
-                                    InkWell(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      onTap: () {
-                                        _.selected.value = 0;
-                                      },
-                                      child: tabSelect(
-                                        selected: _.selected.value == 0,
-                                        text: 'Muy delgado',
-                                      ),
-                                    ),
-                                    InkWell(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      onTap: () {
-                                        _.selected.value = 1;
-                                      },
-                                      child: tabSelect(
-                                        selected: _.selected.value == 1,
-                                        text: 'Bajo peso',
-                                      ),
-                                    ),
-                                    InkWell(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      onTap: () {
-                                        _.selected.value = 2;
-                                      },
-                                      child: tabSelect(
-                                        selected: _.selected.value == 2,
-                                        text: 'Ideal',
-                                      ),
-                                    ),
-                                    InkWell(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      onTap: () {
-                                        _.selected.value = 3;
-                                      },
-                                      child: tabSelect(
-                                        selected: _.selected.value == 3,
-                                        text: 'Sobrepeso',
-                                      ),
-                                    ),
-                                    InkWell(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      onTap: () {
-                                        _.selected.value = 4;
-                                      },
-                                      child: tabSelect(
-                                        selected: _.selected.value == 4,
-                                        text: 'Obeso',
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 7.5),
                             ],
                           ),
                         ),
-                        SizedBox(height: 5),
-                        tipoAtencion(
-                          icon: IconProypet.consulta,
-                          nombre: 'Consulta',
-                          monto: _.consulta.value?.amount?.toString() ?? '',
-                          onTap: () => Get.to(ConsultaView()),
-                          onDelete: _.deleteConsulta,
-                        ),
-                        tipoAtencion(
-                          icon: IconProypet.cirugia,
-                          nombre: 'Cirugía',
-                          monto: _.cirugia.value?.amount?.toString() ?? '',
-                          onTap: () => Get.to(CirugiaView()),
-                          onDelete: _.deleteCirugia,
-                        ),
-                        tipoAtencion(
-                          icon: IconProypet.desparasitacion,
-                          nombre: 'Desparasitación',
-                          monto: _.desparasita.value?.amount?.toString() ?? '',
-                          onTap: () => Get.to(DesparasitaView()),
-                          onDelete: _.deleteDesparasita,
-                        ),
-                        tipoAtencion(
-                          icon: IconProypet.grooming,
-                          nombre: 'Grooming',
-                          monto: _.grooming.value?.amount?.toString() ?? '',
-                          onTap: () => Get.to(GroomingView()),
-                          onDelete: () {},
-                        ),
-                        tipoAtencion(
-                          icon: IconProypet.vacuna,
-                          nombre: 'Vacuna',
-                          monto: _.vacunas.value?.amount?.toString() ?? '',
-                          onTap: () => Get.to(VacunaView()),
-                          onDelete: _.deleteVacuna,
-                        ),
-                        tipoAtencion(
-                          icon: IconProypet.tuboEnsayo,
-                          nombre: 'Exámenes',
-                          monto: _.examenes.value?.amount?.toString() ?? '',
-                          onTap: () => Get.to(TestingView()),
-                          onDelete: _.deleteExamen,
-                        ),
-                        tipoAtencion(
-                          icon: IconProypet.farmacia,
-                          nombre: 'Otros',
-                          monto: _.otros.value?.amount?.toString() ?? '',
-                          onTap: () => Get.to(OtroView()),
-                          onDelete: _.deleteOtros,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10, top: 7.5),
-                          child: Text(
-                            'Próximas citas',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              itemCitas(text: 'Consulta', slug: 'consultation'),
-                              itemCitas(
-                                  text: 'Desparasitación', slug: 'deworming'),
-                              itemCitas(text: 'Grooming', slug: 'grooming'),
-                              itemCitas(text: 'Vacunas', slug: 'vaccination'),
-                            ],
-                          ),
-                        ),
-                        if (_.listNextdate.isEmpty)
-                          Center(
-                              child: Padding(
-                            padding: EdgeInsets.only(top: 35, bottom: 25),
-                            child: Text('Sin próximas citas'),
-                          ))
-                        else
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              for (var item in _.listNextdate)
-                                Container(
-                                  width: double.maxFinite,
-                                  margin: EdgeInsets.all(5),
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            item.name!,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          IconButton(
-                                            onPressed: () => _.removeList(item),
-                                            icon: Icon(
-                                              Icons.delete_forever_rounded,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(height: 5),
-                                      DateTimePicker(
-                                        dateMask: 'dd-MM-yyyy',
-                                        initialValue:
-                                            formatDate(DateTime.now()),
-                                        firstDate: DateTime.now(),
-                                        lastDate: DateTime.now()
-                                            .add(Duration(days: 730)),
-                                        dateLabelText: 'Fecha',
-                                        onChanged: (val) => item.date = val,
-                                      ),
-                                      SizedBox(height: 5),
-                                      TextFormField(
-                                        decoration: InputDecoration(
-                                          labelText: 'Observación',
-                                        ),
-                                        onChanged: (value) =>
-                                            item.observation = value,
-                                        initialValue: item.observation,
-                                        maxLines: 2,
-                                        textCapitalization:
-                                            TextCapitalization.sentences,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                            ],
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 5, bottom: 50),
-                          child: btnPrimary(
-                            text: 'Finalizar atención',
-                            onPressed: () => _.saveFinalize(),
-                          ),
-                        ),
-                      ],
-                    ),
+                    ],
+                  ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5, bottom: 50),
+                  child: btnPrimary(
+                    text: 'Finalizar atención',
+                    onPressed: () => _.saveFinalize(),
                   ),
                 ),
+              ],
+            ),
+          ),
         );
       },
     );

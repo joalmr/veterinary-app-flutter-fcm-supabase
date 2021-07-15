@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
 
 import 'app/atender_view.dart';
@@ -11,7 +12,17 @@ class AtenderMain extends StatelessWidget {
     return GetBuilder<BookingController>(
       init: BookingController(),
       builder: (_) {
-        return GetPlatform.isWeb ? AtenderWeb() : AtenderView();
+        return MainLayout(
+          title: 'Atención',
+          body: _.loadingPage.value
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : GetPlatform.isWeb
+                  ? AtenderWeb()
+                  : AtenderView(),
+        );
+        // return;
       },
     );
   }

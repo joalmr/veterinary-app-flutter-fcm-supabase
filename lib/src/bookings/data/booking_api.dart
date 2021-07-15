@@ -226,8 +226,6 @@ class BookingApi extends BookingInterface {
       urlBase!,
       '/api/client/establishment/$establishment/attention/$attention/finalize',
     );
-    print('finaliza atencion');
-    // print(finalizeAttentionToJson(finaliza));
 
     String? consultationNotifica;
     String? dewormingNotifica;
@@ -262,7 +260,6 @@ class BookingApi extends BookingInterface {
     }
 
     final dataJson = jsonDecode('{$jsonInputString}');
-    print(jsonEncode(dataJson));
 
     final http.Response response = await http.post(
       url,
@@ -270,8 +267,6 @@ class BookingApi extends BookingInterface {
       body: jsonEncode(dataJson),
     );
 
-    print('finalizó');
-    print(response.body);
     return jsonDecode(response.body);
     // return null;
   }
