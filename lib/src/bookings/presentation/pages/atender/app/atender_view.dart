@@ -200,7 +200,7 @@ class AtenderView extends StatelessWidget {
                         tipoAtencion(
                           icon: IconProypet.grooming,
                           nombre: 'Grooming',
-                          monto: 'falta',
+                          monto: _.grooming.value?.amount?.toString() ?? '',
                           onTap: () => Get.to(GroomingView()),
                           onDelete: () {},
                         ),

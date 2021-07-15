@@ -8,6 +8,7 @@ import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultation_booking.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
+import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tab_select.dart';
 import 'radio_consulta.dart';
 
 class ConsultaView extends StatelessWidget {
@@ -25,6 +26,12 @@ class ConsultaView extends StatelessWidget {
     decimalSeparator: '.',
     thousandSeparator: ',',
   );
+
+  final List<String> type = [
+    'Consulta',
+    'Chequeo preventivo',
+    'Tratamiento',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +75,48 @@ class ConsultaView extends StatelessWidget {
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   children: [
-                    Row(
-                      children: const [
-                        Text(
-                          'Tipo',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                    Text(
+                      'Tipo',
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          InkWell(
+                            borderRadius: BorderRadius.circular(20.0),
+                            onTap: () {
+                              _.selectedTypeConsultation.value = 0;
+                            },
+                            child: tabSelect(
+                              selected: _.selectedTypeConsultation.value == 0,
+                              text: 'Consulta',
+                            ),
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(20.0),
+                            onTap: () {
+                              _.selectedTypeConsultation.value = 1;
+                            },
+                            child: tabSelect(
+                              selected: _.selectedTypeConsultation.value == 1,
+                              text: 'Chequeo preventivo',
+                            ),
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(20.0),
+                            onTap: () {
+                              _.selectedTypeConsultation.value = 2;
+                            },
+                            child: tabSelect(
+                              selected: _.selectedTypeConsultation.value == 2,
+                              text: 'Tratamiento',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
                     TypeAheadField<Diagnosis>(
                       suggestionsCallback: (filter) async {
                         final url = Uri.https(
@@ -240,6 +281,7 @@ class ConsultaView extends StatelessWidget {
                                 anamnesis: anamnesisController.text,
                                 diagnoses: _.listaDiagnostico,
                                 recommendations: recomendationController.text,
+                                type: type[_.selectedTypeConsultation.value],
                               );
                               _.saveConsulta(temp);
                             } else {

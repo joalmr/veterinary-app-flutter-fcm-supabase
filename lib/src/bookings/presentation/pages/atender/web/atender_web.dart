@@ -30,7 +30,7 @@ class AtenderWeb extends StatelessWidget {
       builder: (_) {
         return MainLayout(
           title: 'Atención',
-          child: Column(
+          body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

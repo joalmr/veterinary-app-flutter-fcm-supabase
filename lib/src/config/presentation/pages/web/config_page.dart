@@ -13,7 +13,7 @@ class ConfigPage extends StatelessWidget {
     return GetBuilder<ConfigController>(
       builder: (_) {
         return MainLayout(
-          child: Expanded(
+          body: Expanded(
             child: SizedBox(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

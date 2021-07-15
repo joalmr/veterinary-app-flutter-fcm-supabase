@@ -6,7 +6,7 @@ class ChatsWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      child: ChatsView(),
+      body: ChatsView(),
     );
   }
 }

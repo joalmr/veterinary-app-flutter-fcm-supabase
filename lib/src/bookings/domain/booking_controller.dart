@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
@@ -12,6 +14,7 @@ import 'package:vet_app/src/bookings/data/booking_repository.dart';
 import 'package:vet_app/src/bookings/data/model/_finalize_attention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultation_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/deworming_booking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/grooming_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/others_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgery_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/testing_booking.dart';
@@ -38,11 +41,13 @@ class BookingController extends GetxController {
   final cirugia = Rxn<SurgeryBooking>();
   final consulta = Rxn<ConsultationBooking>();
   final desparasita = Rxn<DewormingBooking>();
+  final grooming = Rxn<GroomingBooking>(); //grooming
   final examenes = Rxn<TestingBooking>();
   final otros = Rxn<OthersBooking>();
   final vacunas = Rxn<VaccinationBooking>();
 
   final selected = 2.obs;
+  final selectedTypeConsultation = 0.obs;
 
   String? attentionId;
   String? attentioAmount;
@@ -51,9 +56,14 @@ class BookingController extends GetxController {
     decimalSeparator: '.',
     thousandSeparator: ',',
   );
+
+  //consulta
   final listaDiagnostico = <Diagnosis>[].obs;
   final anamnesisBoolConsulta = false.obs;
   final recomendacionesBoolConsulta = false.obs;
+  //grooming
+  final listaGroomingsIds = <int>[].obs;
+  final listaGroomingsNames = <String>[].obs;
 
   final listDeworming = <Dewormer>[].obs;
   final listOthers = <OtherServ>[].obs;
@@ -83,7 +93,6 @@ class BookingController extends GetxController {
       );
       listNextdate.add(temp);
       Get.back();
-      // print(jsonEncode(listNextdate));
     }
   }
 
@@ -112,9 +121,37 @@ class BookingController extends GetxController {
     cirugia.value = general.surgery;
     consulta.value = general.consultation;
     desparasita.value = general.deworming;
+    grooming.value = general.grooming;
     examenes.value = general.testing;
     otros.value = general.other;
     vacunas.value = general.vaccination;
+    //
+    if (consulta.value != null) {
+      switch (consulta.value!.type) {
+        case 'Consulta':
+          selectedTypeConsultation.value = 0;
+          break;
+        case 'Chequeo preventivo':
+          selectedTypeConsultation.value = 1;
+          break;
+        case 'Tratamiento':
+          selectedTypeConsultation.value = 2;
+          break;
+        default:
+          selectedTypeConsultation.value = 0;
+      }
+    }
+
+    if (grooming.value != null) {
+      print('grooming.value');
+      print(jsonEncode(grooming.value));
+      if (grooming.value?.groomingIds != null) {
+        print(grooming.value!.groomingIds!);
+        print(grooming.value!.groomings!);
+        listaGroomingsIds.addAll(grooming.value!.groomingIds!);
+        listaGroomingsNames.addAll(grooming.value!.groomings!);
+      }
+    }
     // carga listas
     listaDiagnostico.clear();
     listaDiagnostico.addAll(consulta.value?.diagnoses ?? []);
@@ -155,6 +192,7 @@ class BookingController extends GetxController {
   void saveConsulta(ConsultationBooking data) => _saveConsulta(data);
   Future<void> _saveConsulta(ConsultationBooking data) async {
     //actualiza dato
+
     consulta.value =
         await _repo.saveConsultation(prefUser.vetId!, attentionId!, data);
 
@@ -214,8 +252,11 @@ class BookingController extends GetxController {
     Get.back();
   }
 
-  void saveGrooming() => _saveGrooming();
-  Future<void> _saveGrooming() async {
+  void saveGrooming(GroomingBooking data) => _saveGrooming(data);
+  Future<void> _saveGrooming(GroomingBooking data) async {
+    grooming.value =
+        await _repo.saveGrooming(prefUser.vetId!, attentionId!, data);
+    // saveGrooming
     if (!itemList.contains('grooming')) {
       itemList.add('grooming');
     }
@@ -365,23 +406,6 @@ class BookingController extends GetxController {
       default:
         null;
     }
-    // cirugia.value = generalDelelte.surgery;
-    // consulta.value = generalDelelte.consultation;
-    // desparasita.value = generalDelelte.deworming;
-    // examenes.value = generalDelelte.testing;
-    // otros.value = generalDelelte.other;
-    // vacunas.value = generalDelelte.vaccination;
-    // // carga listas
-    // listaDiagnostico.clear();
-    // listaDiagnostico.addAll(consulta.value?.diagnoses ?? []);
-    // listDeworming.clear();
-    // listDeworming.addAll(desparasita.value?.dewormers ?? []);
-    // listVaccines.clear();
-    // listVaccines.addAll(vacunas.value?.vaccines ?? []);
-    // listOthers.clear();
-    // listOthers.addAll(otros.value?.others ?? []);
-    // listTesting.clear();
-    // listTesting.addAll(examenes.value?.tests ?? []);
 
     if (itemList.contains(type)) {
       itemList.remove(type);

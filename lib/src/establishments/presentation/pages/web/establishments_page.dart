@@ -6,7 +6,7 @@ class StablishmentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      child: VetList(),
+      body: VetList(),
     );
   }
 }

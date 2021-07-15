@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:vet_app/src/bookings/data/model/_finalize_attention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultation_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/deworming_booking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/grooming_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/others_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgery_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/testing_booking.dart';
@@ -101,5 +102,11 @@ class BookingRepository extends BookingInterface {
   Future deleteServiceAttention(
       String establishment, String attention, String type) {
     return _api.deleteServiceAttention(establishment, attention, type);
+  }
+
+  @override
+  Future<GroomingBooking?> saveGrooming(
+      String establishment, String attention, GroomingBooking data) {
+    return _api.saveGrooming(establishment, attention, data);
   }
 }

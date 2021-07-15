@@ -16,12 +16,14 @@ class ConsultationBooking {
     this.anamnesis,
     this.diagnoses,
     this.recommendations,
+    this.type,
   });
 
   double? amount;
   String? anamnesis;
   List<Diagnosis>? diagnoses;
   String? recommendations;
+  String? type;
 
   factory ConsultationBooking.fromJson(Map<String, dynamic> json) =>
       ConsultationBooking(
@@ -30,6 +32,7 @@ class ConsultationBooking {
         diagnoses: List<Diagnosis>.from(
             json['diagnoses'].map((x) => Diagnosis.fromJson(x))),
         recommendations: json['recommendations'],
+        type: json['type'] ?? 'Consulta',
       );
 
   Map<String, dynamic> toJson() => {
@@ -38,6 +41,7 @@ class ConsultationBooking {
         'diagnoses':
             List<dynamic>.from(diagnoses?.map((x) => x.toJson()) ?? []),
         'recommendations': recommendations,
+        'type': type,
       };
 }
 

@@ -6,7 +6,7 @@ class UserClientsWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      child: UserClientsApp(),
+      body: UserClientsApp(),
       // Row(
       //   children: [
       //     Expanded(flex: 2, child: UserClientsApp()

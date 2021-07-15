@@ -42,9 +42,8 @@ class _TestingViewState extends State<TestingView> {
                 onPressed: () {
                   Get.dialog(
                     AlertDialog(
-                      title: const Text('Eliminar'),
-                      content: const Text(
-                          'Seguro que desea eliminar esta atención?'),
+                      title: Text('Eliminar'),
+                      content: Text('Seguro que desea eliminar esta atención?'),
                       actions: <Widget>[
                         btnAltern(
                           text: 'Cancelar',
@@ -99,17 +98,17 @@ class _TestingViewState extends State<TestingView> {
                       textFieldConfiguration: TextFieldConfiguration(
                         controller: testingController,
                         decoration:
-                            const InputDecoration(labelText: 'Busque exámenes'),
+                            InputDecoration(labelText: 'Busque exámenes'),
                       ),
-                      noItemsFoundBuilder: (context) => const Padding(
+                      noItemsFoundBuilder: (context) => Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text('No se encontró'),
                       ),
                       itemBuilder: (context, address) => Padding(
-                        padding: const EdgeInsets.all(8),
+                        padding: EdgeInsets.all(8),
                         child: Text(
                           address.name!,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -130,7 +129,7 @@ class _TestingViewState extends State<TestingView> {
                                   children: [
                                     Text(
                                       item.name!,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],
@@ -144,18 +143,18 @@ class _TestingViewState extends State<TestingView> {
                                   onTap: () {
                                     _book.listTesting.remove(item);
                                   },
-                                  child: const Icon(Icons.delete_rounded),
+                                  child: Icon(Icons.delete_rounded),
                                 ),
                               )
                             ],
                           ),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                        Text(
                           'Recomendaciones',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -174,25 +173,25 @@ class _TestingViewState extends State<TestingView> {
                         controller: recommendationController,
                       )
                     else
-                      const SizedBox(height: 0),
+                      SizedBox(height: 0),
                   ],
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(
-                    top: 10, left: 10, right: 10, bottom: 5),
+                padding:
+                    EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
                 child: Column(
                   children: [
                     TextFormField(
                       keyboardType: TextInputType.number,
                       controller: amountController,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'Monto vacuna',
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
+                      padding: EdgeInsets.only(bottom: 30),
                       child: SizedBox(
                         width: double.maxFinite,
                         child: btnPrimary(
@@ -209,9 +208,8 @@ class _TestingViewState extends State<TestingView> {
                             } else {
                               ScaffoldMessenger.of(Get.context!)
                                   .showSnackBar(SnackBar(
-                                content:
-                                    const Text('Falta ingresar examen o monto'),
-                                duration: const Duration(seconds: 3),
+                                content: Text('Falta ingresar examen o monto'),
+                                duration: Duration(seconds: 3),
                                 backgroundColor: Colors.black.withOpacity(0.85),
                               ));
                             }

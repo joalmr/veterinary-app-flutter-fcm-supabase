@@ -7,7 +7,7 @@ class WorkersPageWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      child: Row(
+      body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(

@@ -4,6 +4,7 @@ import 'package:vet_app/resources/utils/header_http.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/bookings/data/model/_finalize_attention.dart';
 import 'package:vet_app/src/bookings/data/model/booking/consultation_booking.dart';
+import 'package:vet_app/src/bookings/data/model/booking/grooming_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/testing_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/others_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/vaccination_booking.dart';
@@ -47,6 +48,7 @@ class BookingApi extends BookingInterface {
       headers: headersToken(),
     );
 
+    print(response.body);
     final dataResponse = generalBookingFromJson(response.body);
     return dataResponse;
   }
@@ -253,5 +255,29 @@ class BookingApi extends BookingInterface {
     );
 
     return jsonDecode(response.body);
+  }
+
+  @override
+  Future<GroomingBooking?> saveGrooming(
+      String establishment, String attention, GroomingBooking data) async {
+    final url = Uri.https(
+      urlBase!,
+      '/api/client/establishment/$establishment/attention/$attention/grooming',
+    );
+
+    print('============> envia grooming');
+    print(groomingBookingToJson(data));
+
+    final http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: groomingBookingToJson(data),
+    );
+    print('====> grooming');
+    print(response.body);
+    print('<==== grooming');
+    final dataResponse = groomingBookingFromJson(response.body);
+    return dataResponse;
+    // return null;
   }
 }

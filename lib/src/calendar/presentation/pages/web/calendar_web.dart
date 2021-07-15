@@ -6,7 +6,7 @@ class CalendarPageWeb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      child: Padding(
+      body: Padding(
         padding: EdgeInsets.only(top: 20),
         child: CalendarEventView(),
       ),

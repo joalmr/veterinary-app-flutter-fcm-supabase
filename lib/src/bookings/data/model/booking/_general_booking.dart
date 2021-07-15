@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'consultation_booking.dart';
 import 'deworming_booking.dart';
+import 'grooming_booking.dart';
 import 'others_booking.dart';
 import 'surgery_booking.dart';
 import 'testing_booking.dart';
@@ -27,7 +28,7 @@ class GeneralBooking {
   String? attentionId;
   ConsultationBooking? consultation;
   DewormingBooking? deworming;
-  dynamic grooming;
+  GroomingBooking? grooming;
   OthersBooking? other;
   SurgeryBooking? surgery;
   TestingBooking? testing;
@@ -42,7 +43,9 @@ class GeneralBooking {
         deworming: json['deworming'] == null
             ? null
             : DewormingBooking.fromJson(json['deworming']),
-        grooming: json['grooming'],
+        grooming: json['grooming'] == null
+            ? null
+            : GroomingBooking.fromJson(json['grooming']),
         other: json['other'] == null
             ? null
             : OthersBooking.fromJson(json['other']),
@@ -62,10 +65,10 @@ class GeneralBooking {
         'attention_id': attentionId,
         'consultation': consultation?.toJson(),
         'deworming': deworming?.toJson(),
-        'grooming': grooming,
+        'grooming': grooming?.toJson(),
         'other': other?.toJson(),
         'surgery': surgery?.toJson(),
-        'testing': testing,
+        'testing': testing?.toJson(),
         'vaccination': vaccination?.toJson(),
         'total': total,
       };
