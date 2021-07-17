@@ -9,6 +9,7 @@ class MainLayout extends StatelessWidget {
   final String? title;
   final List<Widget>? actions;
   final Widget? floatingActionButton;
+  final bool floatingABOnlyApp;
   MainLayout({
     Key? key,
     required this.body,
@@ -16,6 +17,7 @@ class MainLayout extends StatelessWidget {
     this.title,
     this.actions,
     this.floatingActionButton,
+    this.floatingABOnlyApp = false,
   }) : super(key: key);
 
   @override

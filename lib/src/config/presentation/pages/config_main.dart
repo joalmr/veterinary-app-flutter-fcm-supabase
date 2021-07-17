@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/design/layout/main_layout.dart';
 
 import '../../domain/config_controller.dart';
 
@@ -12,7 +13,11 @@ class ConfigMain extends StatelessWidget {
     return GetBuilder<ConfigController>(
       init: ConfigController(),
       builder: (_) {
-        return context.width < 900 ? const ConfigView() : ConfigPage();
+        return MainLayout(
+          drawerActive: true,
+          title: 'Configuración',
+          body: context.width < 900 ? const ConfigView() : ConfigPage(),
+        );
       },
     );
   }
