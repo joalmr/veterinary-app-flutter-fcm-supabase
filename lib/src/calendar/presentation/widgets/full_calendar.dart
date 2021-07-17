@@ -18,7 +18,9 @@ class FullCalendar extends StatelessWidget {
         // final divisor = GetPlatform.isMobile ? 7.05 : 7.5;
         return GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 7, childAspectRatio: 2 / 3.5),
+            crossAxisCount: 7,
+            childAspectRatio: context.width < 900 ? 2 / 3.5 : 1,
+          ),
           children: [
             Container(
               padding: EdgeInsets.only(bottom: 2.5),

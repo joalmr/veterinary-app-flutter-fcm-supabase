@@ -45,7 +45,9 @@ class CalendarEventView extends StatelessWidget {
                     GetPlatform.isWeb
                         ? SizedBox(height: 1)
                         : SizedBox(height: 2.5),
-                    Expanded(child: FullCalendar()),
+                    Expanded(
+                      child: FullCalendar(),
+                    ),
                   ],
                 ),
               );

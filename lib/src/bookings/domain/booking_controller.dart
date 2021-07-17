@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
@@ -144,7 +145,10 @@ class BookingController extends GetxController {
 
     if (grooming.value != null) {
       print('grooming.value');
-      print(jsonEncode(grooming.value));
+      _print() {
+        log(jsonEncode(grooming.value));
+      }
+
       if (grooming.value?.groomingIds != null) {
         print(grooming.value!.groomingIds!);
         print(grooming.value!.groomings!);
