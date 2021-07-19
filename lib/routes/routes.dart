@@ -49,7 +49,10 @@ abstract class AppPages {
       middlewares: [GlobalMiddleware()],
     ),
     GetPage(
-      name: NameRoutes.atenderBooking, //atender reserva
+      // name: NameRoutes.atenderBooking,
+      name: NameRoutes.atenderBooking,
+
+      ///:id -atender reserva
       page: () => AtenderMain(),
       middlewares: [GlobalMiddleware()],
     ),

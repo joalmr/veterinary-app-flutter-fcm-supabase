@@ -29,8 +29,8 @@ class AtenderWeb extends StatelessWidget {
       builder: (_) {
         return SingleChildScrollView(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
-            // crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               context.width < 900
                   ? SizedBox(height: 0)

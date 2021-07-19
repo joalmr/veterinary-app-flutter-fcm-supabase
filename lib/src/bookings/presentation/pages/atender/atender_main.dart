@@ -9,7 +9,7 @@ import 'web/atender_web.dart';
 class AtenderMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BookingController>(
+    return GetX<BookingController>(
       init: BookingController(),
       builder: (_) {
         return MainLayout(

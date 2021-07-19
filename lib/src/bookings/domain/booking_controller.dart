@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
@@ -72,7 +71,7 @@ class BookingController extends GetxController {
   final listVaccines = <Vaccine>[].obs;
 
   String? bookingId;
-  String? petId;
+  // String? petId;
   String? image;
 
   String? idSplit;
@@ -104,9 +103,10 @@ class BookingController extends GetxController {
   }
 
   @override
-  Future<void> onInit() async {
-    super.onInit();
+  Future<void> onReady() async {
     bookingId = Get.arguments['bookingId'];
+    // bookingId = Get.parameters['id'];
+
     image = Get.arguments['image'];
     idSplit = image!.split('avatars/')[1].split('/')[0];
 
@@ -144,10 +144,8 @@ class BookingController extends GetxController {
     }
 
     if (grooming.value != null) {
-      print('grooming.value');
-      _print() {
-        log(jsonEncode(grooming.value));
-      }
+      log('grooming.value');
+      log(jsonEncode(grooming.value));
 
       if (grooming.value?.groomingIds != null) {
         print(grooming.value!.groomingIds!);
@@ -167,6 +165,7 @@ class BookingController extends GetxController {
     listOthers.addAll(otros.value?.others ?? []);
     listTesting.clear();
     listTesting.addAll(examenes.value?.tests ?? []);
+    super.onReady();
   }
 
   void removeList(DataNextdate dato) {

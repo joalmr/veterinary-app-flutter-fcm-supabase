@@ -1,31 +1,4 @@
-String? consultationNotifica;
-String? dewormingNotifica;
-String? groomingNotifica;
-String? vaccinationNotifica;
+https://danger.proypet.com/api/client/establishment/494229b7-0bac-40b4-b7df-5716f78762ca/booking/7720fb77-2ce9-42c8-9e71-8ed42d051bad/attend
 
-String jsonInputString =
-        '''"weight": ${finaliza.weight},"temperature": ${finaliza.temperature},"heart_rhythm": ${finaliza.heartRhythm},"body_condition": ${finaliza.bodyCondition},''';
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGI0ZmUxMjFjODAzNTAzZmI1YzMyZDEyZTllODI2MDEzZGEzZWZiNThjNGY5NmEwZWYxYTIwOGE3YWEyZGEyZjMwYzAxMTY5YmFlZGU2NGIiLCJpYXQiOjE2MjY2NTk5MDYsIm5iZiI6MTYyNjY1OTkwNiwiZXhwIjoxNjU4MTk1OTA2LCJzdWIiOiJiOGE1NGVjZi0yNGI2LTQ3MzMtYTFkOS05YjJmOGJlODZkNDAiLCJzY29wZXMiOltdfQ.YDtO18QzaYIdtcrRwbz5rhGoMx98v1g2A-UcN-2cQjNtxLasMCZUqQ3nHp4BbQ2p06iMaDq_Iiy8T9hsAL-q6h4btcl24gDxVtlZb-IDu7GwaC9FYDG4Z3bCbpke7A3tMyCjqomz5WyGImNxchXbq5JAk6YG7YJBpeu5kuTy8ZMixVleTRfY2IJr7AL7VFwRWOLhQ4Rx6547BeC53AJQDo-hEe1KGjUEfrS1zQ2UOVywB3Sa-8Zy6kPr-8V3ReWESeNgoxMtFDLXuE8BfVgvpCjcSq2zADdmMmXo6BgoFI_xk9xvvoUceUV_R4NoPL2zzOEGUNP8OPq_x8HAyX8mXNcgTcTE9SPMx5ODnIzVudtVZ6fEYrIXd1lNrcNfF0x-pRbcbKpeCUUvE_iXDbRwySbTJk0UT87i0x-tHcGZqjyECE761Ady8caf-Eh5o-YTJXxESDVYOvnY0T5f50KGGyE8-5rYtfirVGwQad06ArpxPm8bO4NxD8a7b9isU3DsCS23czVv0WVUeHO6dm0iPtF8eLw0KdgDw-4KvMuFn4mTnTTpHZBzYRRFtv-ZtLDmj1vysRA-udvUi9UMbkI2VI3F-84NAOIdOVPryUS8tkasFpzqZvkcqMKyNAWdX3mYOzdTD6_pQDUx01Irv1P9U_1ilFkAcJIKRPW9hphlkyA
 
-    if (finaliza.consultationNotificationNextdate != null) {
-      consultationNotifica =
-          '''"consultation_notification_nextdate": ${finaliza.consultationNotificationNextdate!}, "consultation_notification_reason": ${finaliza.consultationNotificationReason!}, "consultation_notification_observation": ${finaliza.consultationNotificationObservation!},''';
-      jsonInputString += consultationNotifica;
-    }
-
-    if (finaliza.dewormingNotificationNextdate != null) {
-      dewormingNotifica =
-          '''"deworming_notification_nextdate": ${finaliza.dewormingNotificationNextdate!},"deworming_notification_reason": ${finaliza.dewormingNotificationReason!},"deworming_notification_observation": ${finaliza.dewormingNotificationObservation!},''';
-      jsonInputString += dewormingNotifica;
-    }
-
-    if (finaliza.groomingNotificationNextdate != null) {
-      groomingNotifica =
-          '''"grooming_notification_nextdate":${finaliza.groomingNotificationNextdate!},"grooming_notification_reason": ${finaliza.groomingNotificationReason!},"grooming_notification_observation": ${finaliza.groomingNotificationObservation!},''';
-      jsonInputString += groomingNotifica;
-    }
-
-    if (finaliza.vaccinationNotificationNextdate != null) {
-      vaccinationNotifica =
-          '''"vaccination_notification_nextdate":${finaliza.vaccinationNotificationNextdate!},"vaccination_notification_reason":${finaliza.vaccinationNotificationReason!},"vaccination_notification_observation":${finaliza.vaccinationNotificationObservation!},''';
-      jsonInputString += vaccinationNotifica;
-    }

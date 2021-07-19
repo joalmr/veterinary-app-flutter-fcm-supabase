@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -55,7 +56,7 @@ class ShowVetController extends GetxController {
       establishment.value.logo = await _repo.setLogo(id, _image);
       establishment.refresh();
     } else {
-      print('No image');
+      log('No image');
     }
   }
 
@@ -74,7 +75,7 @@ class ShowVetController extends GetxController {
       await getByid();
       Get.back();
     } else {
-      print('No image');
+      log('No image');
     }
   }
 

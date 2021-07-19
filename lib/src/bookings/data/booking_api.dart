@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/header_http.dart';
 import 'package:vet_app/config/variables_global.dart';
@@ -40,6 +41,9 @@ class BookingApi extends BookingInterface {
 
   @override
   Future<GeneralBooking> attend(String establishment, String booking) async {
+    log(establishment);
+    log(booking);
+
     final url = Uri.https(urlBase!,
         '/api/client/establishment/$establishment/booking/$booking/attend');
 
@@ -47,6 +51,9 @@ class BookingApi extends BookingInterface {
       url,
       headers: headersToken(),
     );
+
+    log('attend');
+    log(response.body);
 
     final dataResponse = generalBookingFromJson(response.body);
     return dataResponse;
@@ -84,6 +91,8 @@ class BookingApi extends BookingInterface {
     );
 
     final http.Response response = await http.get(url, headers: headersToken());
+    log(response.body);
+
     return bookingModelFromJson(response.body);
   }
 

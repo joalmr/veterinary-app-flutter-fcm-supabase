@@ -28,7 +28,7 @@ class GroomingBooking {
         amount: json['amount'].toDouble() ?? 0.0,
         groomings: List<String>.from(json['groomings'].map((x) => x)),
         groomingIds: List<int>.from(json['grooming_ids'].map((x) => x)),
-        recommendations: json['recommendations'],
+        recommendations: json['recommendations'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {

@@ -16,13 +16,14 @@ class _GroomingViewState extends State<GroomingView> {
   RxBool recommendations = false.obs;
 
   final recommendationController = TextEditingController(
-      text:
-          Get.find<BookingController>().grooming.value?.recommendations ?? '');
+      // text:Get.find<BookingController>().grooming.value?.recommendations ?? ''
+      );
 
   final amountController = MoneyMaskedTextController(
-    initialValue: Get.find<BookingController>().grooming.value?.amount == null
-        ? 0
-        : Get.find<BookingController>().grooming.value!.amount!,
+    initialValue: 0,
+    // Get.find<BookingController>().grooming.value?.amount == null
+    //     ? 0
+    //     : Get.find<BookingController>().grooming.value!.amount!,
     decimalSeparator: '.',
     thousandSeparator: ',',
   );
@@ -159,7 +160,6 @@ class _GroomingViewState extends State<GroomingView> {
                               groomingIds: _.listaGroomingsIds,
                               groomings: _.listaGroomingsNames,
                             );
-
                             _.saveGrooming(temp);
                           } else {
                             ScaffoldMessenger.of(Get.context!).showSnackBar(
