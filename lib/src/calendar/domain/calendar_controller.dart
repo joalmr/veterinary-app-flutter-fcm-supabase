@@ -172,7 +172,9 @@ class CalendarController extends GetxController {
 
       await _repo.newCalendarEvent(prefUser.vetId!, tempEvent);
 
-      listasCalendario(DateTime.now());
+      valueMonth.value = toDateBasic(fecha.value).month;
+      valueYear.value = toDateBasic(fecha.value).year;
+      listasCalendario(toDateBasic(fecha.value));
 
       Timer(
         const Duration(milliseconds: 2000),
