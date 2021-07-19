@@ -23,6 +23,7 @@ class ViewPass extends StatelessWidget {
                     return CardAttention(
                       attentionType: 1,
                       bookingId: overdue.id!,
+                      petId: overdue.petId!,
                       petImg: overdue.petPicture!,
                       petName: overdue.petName!,
                       petBreed: overdue.petBreed!,

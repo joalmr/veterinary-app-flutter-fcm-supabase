@@ -23,6 +23,7 @@ class ViewFuture extends StatelessWidget {
                     return CardAttention(
                       attentionType: 3,
                       bookingId: incoming.id!,
+                      petId: incoming.petId!,
                       petImg: incoming.petPicture!,
                       petName: incoming.petName!,
                       petBreed: incoming.petBreed!,

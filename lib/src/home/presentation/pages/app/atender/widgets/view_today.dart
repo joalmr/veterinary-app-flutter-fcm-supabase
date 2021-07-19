@@ -23,6 +23,7 @@ class ViewToday extends StatelessWidget {
                     return CardAttention(
                       attentionType: 2,
                       bookingId: today.id!,
+                      petId: today.petId!,
                       petImg: today.petPicture!,
                       petName: today.petName!,
                       petBreed: today.petBreed!,

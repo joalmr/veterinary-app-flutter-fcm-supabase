@@ -16,14 +16,13 @@ class _GroomingViewState extends State<GroomingView> {
   RxBool recommendations = false.obs;
 
   final recommendationController = TextEditingController(
-      // text:Get.find<BookingController>().grooming.value?.recommendations ?? ''
-      );
+    text: Get.find<BookingController>().grooming.value?.recommendations ?? '',
+  );
 
   final amountController = MoneyMaskedTextController(
-    initialValue: 0,
-    // Get.find<BookingController>().grooming.value?.amount == null
-    //     ? 0
-    //     : Get.find<BookingController>().grooming.value!.amount!,
+    initialValue: Get.find<BookingController>().grooming.value?.amount == null
+        ? 0
+        : Get.find<BookingController>().grooming.value!.amount!,
     decimalSeparator: '.',
     thousandSeparator: ',',
   );
@@ -114,9 +113,11 @@ class _GroomingViewState extends State<GroomingView> {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       IconButton(
-                          icon: Icon(!recommendations.value
-                              ? Icons.add_circle_rounded
-                              : Icons.remove_circle_rounded),
+                          icon: Icon(
+                            !recommendations.value
+                                ? Icons.add_circle_rounded
+                                : Icons.remove_circle_rounded,
+                          ),
                           onPressed: () {
                             recommendations.value = !recommendations.value;
                           }),

@@ -36,6 +36,7 @@ class Booking {
   String? bookingTime;
   List<String>? bookingServices;
   String? bookingStatus;
+  String? petId;
   String? petName;
   String? petBreed;
   String? petPicture;
@@ -50,6 +51,7 @@ class Booking {
     this.bookingTime,
     this.bookingServices,
     this.bookingStatus,
+    this.petId,
     this.petName,
     this.petBreed,
     this.petPicture,
@@ -66,6 +68,7 @@ class Booking {
         bookingServices:
             List<String>.from(json['booking_services'].map((x) => x)),
         bookingStatus: json['booking_status'],
+        petId: json['pet_id'],
         petName: json['pet_name'],
         petBreed: json['pet_breed'],
         petPicture: json['pet_picture'],
@@ -84,6 +87,7 @@ class Booking {
         'booking_services':
             List<dynamic>.from(bookingServices?.map((x) => x) ?? []),
         'booking_status': bookingStatus,
+        'pet_id': petId,
         'pet_name': petName,
         'pet_breed': petBreed,
         'pet_picture': petPicture,

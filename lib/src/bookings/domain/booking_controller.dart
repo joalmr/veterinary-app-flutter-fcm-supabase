@@ -72,9 +72,9 @@ class BookingController extends GetxController {
 
   String? bookingId;
   // String? petId;
-  String? image;
+  // String? image;
 
-  String? idSplit;
+  String? petId;
 
   void add2List(dynamic dato) {
     if (listNextdate.where((x) => x.type == dato['type']).isNotEmpty) {
@@ -106,13 +106,11 @@ class BookingController extends GetxController {
   Future<void> onReady() async {
     bookingId = Get.arguments['bookingId'];
     // bookingId = Get.parameters['id'];
-
-    image = Get.arguments['image'];
-    idSplit = image!.split('avatars/')[1].split('/')[0];
+    petId = Get.arguments['petId'];
 
     final general = await _repo.attend(prefUser.vetId!, bookingId!);
 
-    petData.value = await _repoPet.getPet(idSplit!);
+    petData.value = await _repoPet.getPet(petId!);
 
     loadingPage.value = false;
 

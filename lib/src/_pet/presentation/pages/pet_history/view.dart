@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/calcula_edad.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 
 import '../../../domain/logic.dart';
+import '../icon_row.dart';
 
 class PetHistoryPage extends StatelessWidget {
   // final PetHistoryLogic logic = Get.put(PetHistoryLogic());
@@ -95,6 +97,26 @@ class PetHistoryPage extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  Text(
+                                      'Fecha: ${formatDateTime(history.attentionDate!).split(' ')[0]}'),
+                                  Text(
+                                      'Hora: ${formatDateTime(history.attentionDate!).split(' ')[1]}'),
+                                  Text(
+                                      'Condición corporal: ${history.bodyCondition!}'),
+                                  // Text(history.establishment!),
+                                  // Text(history.establishmentLogo!),
+                                  Text('Peso: ${history.weight!.toString()}'),
+                                  ExpansionTile(
+                                    title: iconRow(history.details),
+                                    //petHistory.value.result!.first.details
+                                    childrenPadding: EdgeInsets.all(2),
+                                    tilePadding: EdgeInsets.zero,
+                                    expandedAlignment: Alignment.topLeft,
+                                    children: [
+                                      detailRow(history.details),
+                                      SizedBox(height: 10),
+                                    ],
+                                  ),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,

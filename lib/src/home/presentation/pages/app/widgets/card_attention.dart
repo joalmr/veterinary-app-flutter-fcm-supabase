@@ -9,6 +9,7 @@ import 'package:vet_app/src/bookings/presentation/pages/reprogramar/app/reprogra
 
 class CardAttention extends StatefulWidget {
   final String bookingId;
+  final String petId;
   final String petImg;
   final String petName;
   final String petBreed;
@@ -26,6 +27,7 @@ class CardAttention extends StatefulWidget {
 
   CardAttention({
     required this.bookingId,
+    required this.petId,
     required this.petImg,
     required this.petName,
     required this.petBreed,
@@ -229,8 +231,8 @@ class _CardAttentionState extends State<CardAttention> {
                                           NameRoutes.atenderBooking,
                                           arguments: {
                                             'bookingId': widget.bookingId,
-                                            'petId': '-',
-                                            'image': widget.petImg,
+                                            'petId': widget.petId,
+                                            // 'image': widget.petImg,
                                           },
                                         );
                                       },

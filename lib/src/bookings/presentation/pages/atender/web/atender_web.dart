@@ -61,7 +61,8 @@ class AtenderWeb extends StatelessWidget {
                               child: Image(
                                 height: 100,
                                 width: 100,
-                                image: CachedNetworkImageProvider(_.image!),
+                                image: CachedNetworkImageProvider(
+                                    _.petData.value.result!.picture!),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -99,7 +100,7 @@ class AtenderWeb extends StatelessWidget {
                             IconButton(
                               icon: Icon(Icons.book_rounded),
                               onPressed: () {
-                                Get.to(PetHistoryPage(), arguments: _.idSplit);
+                                Get.to(PetHistoryPage(), arguments: _.petId);
                               },
                             ),
                             SizedBox(width: 10),
