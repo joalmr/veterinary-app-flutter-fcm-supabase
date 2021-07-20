@@ -5,7 +5,6 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/stats/domain/stats_controller.dart';
 import 'package:vet_app/src/stats/presentation/pages/web/components/stat_content.dart';
 import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chart_servicios.dart';
-import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chart_usuarios.dart';
 import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chart_venta_mensual.dart';
 import 'package:vet_app/src/stats/presentation/pages/web/widgets/chart/chart_ventas_dia.dart';
 
@@ -17,8 +16,6 @@ class StatsData extends StatefulWidget {
   @override
   _StatsDataState createState() => _StatsDataState();
 }
-
-// final data = [55.0, 90.0, 50.0, 40.0, 35.0, 55.0, 70.0, 100.0];
 
 class _StatsDataState extends State<StatsData> {
   bool filter = false;
@@ -134,15 +131,16 @@ class _StatsDataState extends State<StatsData> {
                                   ),
                                   child: ChartVentaMensual(),
                                 ),
-                                Container(
-                                  height: 250,
-                                  width: 400,
-                                  margin: EdgeInsets.symmetric(
-                                    horizontal: 5,
-                                    vertical: 10,
-                                  ),
-                                  child: ChartUsers(),
-                                ),
+                                // Container(
+                                //   height: 250,
+                                //   width: 400,
+                                //   margin: EdgeInsets.symmetric(
+                                //     horizontal: 5,
+                                //     vertical: 10,
+                                //   ),
+                                //   child: ChartUsers(),
+                                // ),
+
                                 // Container(
                                 //   height: 250,
                                 //   width: 400,

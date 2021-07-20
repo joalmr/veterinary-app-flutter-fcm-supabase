@@ -3,7 +3,6 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'base/values_stats.dart';
 import 'comentarios/feedback_view.dart';
 import 'widgets/percent/percent_servicios.dart';
-import 'widgets/percent/percent_usuarios_mensual.dart';
 import 'widgets/percent/percent_venta_mensual.dart';
 import 'widgets/percent/percent_ventas_dia.dart';
 
@@ -11,7 +10,7 @@ class StatsPageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 6,
+      length: 5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -29,7 +28,7 @@ class StatsPageApp extends StatelessWidget {
               Tab(text: 'Servicios atendidos'),
               Tab(text: 'Ventas por día'),
               Tab(text: 'Venta mensual'),
-              Tab(text: 'Usuarios mensual'),
+              // Tab(text: 'Usuarios mensual'),
             ],
           ),
           Expanded(
@@ -40,7 +39,7 @@ class StatsPageApp extends StatelessWidget {
                 PercentServicios(),
                 PercentVentasDia(),
                 PercentVentaMensual(),
-                PercentUsuariosMensual(),
+                // PercentUsuariosMensual(),
               ],
             ),
           ),

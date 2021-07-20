@@ -103,9 +103,6 @@ class BookingController extends GetxController {
   }
 
   Future<void> initLoad() async {
-    // bookingId.value = Get.parameters['id'].toString();
-    // petId.value = Get.arguments['petId'].toString();
-
     final general = await _repo.attend(prefUser.vetId!, bookingId.value);
 
     petData.value = await _repoPet.getPet(petId.value);
@@ -188,8 +185,6 @@ class BookingController extends GetxController {
 
   void saveConsulta(ConsultationBooking data) => _saveConsulta(data);
   Future<void> _saveConsulta(ConsultationBooking data) async {
-    //actualiza dato
-
     consulta.value =
         await _repo.saveConsultation(prefUser.vetId!, attentionId!, data);
 
@@ -381,6 +376,9 @@ class BookingController extends GetxController {
         }
         break;
       case 'grooming':
+        grooming.value = null;
+        listaGroomingsIds.clear();
+        listaGroomingsNames.clear();
         break;
       case 'vaccination':
         {

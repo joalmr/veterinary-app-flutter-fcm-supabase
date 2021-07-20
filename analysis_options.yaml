@@ -7,9 +7,11 @@ linter:
     - await_only_futures
     - camel_case_extensions
     - prefer_single_quotes
-    #- prefer_double_quotes
+    
     - annotate_overrides
     - avoid_print
+    # - avoid_renaming_method_parameters
+
 # #     # camel_case_types: true
 # #     # avoid_classes_with_only_static_members: false
 # #     # comment_references: true

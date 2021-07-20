@@ -7,7 +7,6 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/resources/utils/calcula_edad.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
-import 'package:vet_app/src/_pet/presentation/pages/pet_history/view.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
 import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tab_select.dart';
 import 'child/cirugia/cirugia_view.dart';
@@ -194,7 +193,7 @@ class AtenderView extends StatelessWidget {
                   nombre: 'Grooming',
                   monto: _.grooming.value?.amount?.toString() ?? '',
                   onTap: () => Get.to(GroomingView()),
-                  onDelete: () {},
+                  onDelete: _.deleteGrooming,
                 ),
                 tipoAtencion(
                   icon: IconProypet.vacuna,

@@ -7,7 +7,6 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/resources/utils/calcula_edad.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
-import 'package:vet_app/src/_pet/presentation/pages/pet_history/view.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
 import 'package:vet_app/src/bookings/presentation/pages/atender/app/child/cirugia/cirugia_view.dart';
 import 'package:vet_app/src/bookings/presentation/pages/atender/app/child/consulta/consulta_view.dart';

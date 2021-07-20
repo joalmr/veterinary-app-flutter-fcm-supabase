@@ -27,8 +27,6 @@ class _GroomingViewState extends State<GroomingView> {
     thousandSeparator: ',',
   );
 
-  var listaGrooming = [];
-
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(builder: (_) {
@@ -50,6 +48,7 @@ class _GroomingViewState extends State<GroomingView> {
                       btnAltern(
                         text: 'Eliminar',
                         onPressed: () {
+                          _.deleteGrooming();
                           Get.close(2);
                         },
                         color: colorRed,
