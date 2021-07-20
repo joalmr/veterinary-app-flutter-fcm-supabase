@@ -9,7 +9,7 @@ import 'web/home_web.dart';
 class HomeMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
+    return GetX<HomeController>(
       builder: (_) {
         return MainLayout(
           drawerActive: true,

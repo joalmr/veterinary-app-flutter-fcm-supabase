@@ -70,11 +70,9 @@ class BookingController extends GetxController {
   final listTesting = <Test>[].obs;
   final listVaccines = <Vaccine>[].obs;
 
-  String? bookingId;
+  final bookingId = ''.obs;
+  final petId = ''.obs;
   // String? petId;
-  // String? image;
-
-  String? petId;
 
   void add2List(dynamic dato) {
     if (listNextdate.where((x) => x.type == dato['type']).isNotEmpty) {
@@ -99,19 +97,18 @@ class BookingController extends GetxController {
   @override
   void onClose() {
     if (Get.context!.width < 900) Get.close(1);
+    bookingId.value = '';
+    petId.value = '';
     super.onClose();
   }
 
-  @override
-  Future<void> onReady() async {
-    bookingId = Get.arguments['bookingId'];
-    // bookingId = Get.parameters['id'];
-    petId = Get.arguments['petId'];
+  Future<void> initLoad() async {
+    // bookingId.value = Get.parameters['id'].toString();
+    // petId.value = Get.arguments['petId'].toString();
 
-    final general = await _repo.attend(prefUser.vetId!, bookingId!);
+    final general = await _repo.attend(prefUser.vetId!, bookingId.value);
 
-    petData.value = await _repoPet.getPet(petId!);
-
+    petData.value = await _repoPet.getPet(petId.value);
     loadingPage.value = false;
 
     _homeController.getAllBookings();
@@ -163,7 +160,6 @@ class BookingController extends GetxController {
     listOthers.addAll(otros.value?.others ?? []);
     listTesting.clear();
     listTesting.addAll(examenes.value?.tests ?? []);
-    super.onReady();
   }
 
   void removeList(DataNextdate dato) {

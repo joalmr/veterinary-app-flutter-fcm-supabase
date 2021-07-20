@@ -5,6 +5,7 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/routes/routes.dart';
+import 'package:vet_app/src/bookings/domain/booking_controller.dart';
 import 'package:vet_app/src/bookings/presentation/pages/reprogramar/app/reprogramar.dart';
 
 class CardAttention extends StatefulWidget {
@@ -226,15 +227,14 @@ class _CardAttentionState extends State<CardAttention> {
                                         EdgeInsets.only(left: 20, right: 7.5),
                                     child: btnSecondary(
                                       text: 'Atender',
-                                      onPressed: () {
-                                        Get.toNamed(
-                                          NameRoutes.atenderBooking,
-                                          arguments: {
-                                            'bookingId': widget.bookingId,
-                                            'petId': widget.petId,
-                                            // 'image': widget.petImg,
-                                          },
-                                        );
+                                      onPressed: () async {
+                                        final _book =
+                                            Get.find<BookingController>();
+                                        _book.bookingId.value =
+                                            widget.bookingId;
+                                        _book.petId.value = widget.petId;
+                                        await _book.initLoad();
+                                        Get.toNamed(NameRoutes.atenderBooking);
                                       },
                                     ),
                                   ),

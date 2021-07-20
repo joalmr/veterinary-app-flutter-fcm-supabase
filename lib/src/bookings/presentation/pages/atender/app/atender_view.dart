@@ -78,7 +78,8 @@ class AtenderView extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.book_rounded),
                         onPressed: () {
-                          Get.to(PetHistoryPage(), arguments: _.petId);
+                          Get.toNamed('/history/${_.petId}');
+                          // Get.to(PetHistoryPage(), arguments: _.petId);
                         },
                       ),
                       SizedBox(width: 10),

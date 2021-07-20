@@ -6,6 +6,7 @@ import 'package:vet_app/src/bookings/presentation/pages/reprogramar/app/reprogra
 
 class RowBookingFuture extends StatefulWidget {
   final String bookingId;
+  final String petId;
   final String petImg;
   final String petName;
   final String petBreed;
@@ -22,6 +23,7 @@ class RowBookingFuture extends StatefulWidget {
 
   RowBookingFuture({
     required this.bookingId,
+    required this.petId,
     required this.petImg,
     required this.petName,
     required this.petBreed,

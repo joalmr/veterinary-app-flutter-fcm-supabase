@@ -22,6 +22,7 @@ class RowToday extends StatelessWidget {
                     final today = _.today[index];
                     return RowBooking(
                       bookingId: today.id!,
+                      petId: today.petId!,
                       petImg: today.petPicture!,
                       petName: today.petName!,
                       petBreed: today.petBreed!,

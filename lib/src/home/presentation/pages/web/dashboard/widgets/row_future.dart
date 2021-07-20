@@ -21,6 +21,7 @@ class RowFuture extends StatelessWidget {
                     final incoming = _.incoming[index];
                     return RowBookingFuture(
                       bookingId: incoming.id!,
+                      petId: incoming.petId!,
                       petImg: incoming.petPicture!,
                       petName: incoming.petName!,
                       petBreed: incoming.petBreed!,

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/middleware/global_middleware.dart';
 import 'package:vet_app/src/__global/presentation/splash_view.dart';
 import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
+import 'package:vet_app/src/_pet/presentation/pages/pet_history/view.dart';
 import 'package:vet_app/src/bookings/presentation/pages/atender/atender_main.dart';
 import 'package:vet_app/src/calendar/presentation/pages/calendar.dart';
 import 'package:vet_app/src/chat/presentation/chats_main.dart';
@@ -31,6 +32,7 @@ class NameRoutes {
   static String config = '/config';
 
   static String atenderBooking = '/booking'; //atender *
+  // static String historialPet = '/history'; //atender *
 }
 
 abstract class AppPages {
@@ -49,8 +51,8 @@ abstract class AppPages {
       middlewares: [GlobalMiddleware()],
     ),
     GetPage(
-      // name: NameRoutes.atenderBooking,
       name: NameRoutes.atenderBooking,
+      // name: '${NameRoutes.atenderBooking}/:id',
 
       ///:id -atender reserva
       page: () => AtenderMain(),
@@ -104,6 +106,12 @@ abstract class AppPages {
     GetPage(
       name: NameRoutes.config,
       page: () => ConfigMain(),
+      middlewares: [GlobalMiddleware()],
+    ),
+    //
+    GetPage(
+      name: '/history/:pet',
+      page: () => PetHistoryPage(),
       middlewares: [GlobalMiddleware()],
     ),
   ];

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/header_http.dart';
 import 'package:vet_app/config/variables_global.dart';

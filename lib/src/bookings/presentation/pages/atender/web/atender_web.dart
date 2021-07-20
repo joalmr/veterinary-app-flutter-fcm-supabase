@@ -100,7 +100,8 @@ class AtenderWeb extends StatelessWidget {
                             IconButton(
                               icon: Icon(Icons.book_rounded),
                               onPressed: () {
-                                Get.to(PetHistoryPage(), arguments: _.petId);
+                                Get.toNamed('/history/${_.petId}');
+                                // Get.to(PetHistoryPage(), arguments: _.petId);
                               },
                             ),
                             SizedBox(width: 10),
@@ -233,7 +234,7 @@ class AtenderWeb extends StatelessWidget {
                           tipoAtencion(
                             icon: IconProypet.grooming,
                             nombre: 'Grooming',
-                            monto: 'falta',
+                            monto: _.grooming.value?.amount?.toString() ?? '',
                             onTap: () => Get.to(GroomingView()),
                             onDelete: () {},
                           ),

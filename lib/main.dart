@@ -8,6 +8,7 @@ import 'config/variables_global.dart';
 import 'design/theme/theme.dart';
 import 'routes/routes.dart';
 import 'src/__global/domain/global_controller.dart';
+import 'src/bookings/domain/booking_controller.dart';
 import 'src/calendar/domain/calendar_controller.dart';
 import 'src/establishments/domain/establishments_controller.dart';
 import 'src/home/domain/home_controller.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
     Get.put(AttentionsController());
     Get.put(EstablishmentsController());
     Get.put(GlobalController());
+    Get.put(BookingController());
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: appPruebas,

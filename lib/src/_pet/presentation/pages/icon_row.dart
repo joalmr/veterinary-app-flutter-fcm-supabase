@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 
 Widget iconRow(jsonData) {
@@ -73,7 +74,7 @@ Widget iconRow(jsonData) {
   );
 }
 
-Widget detailRow(jsonType) {
+Widget detailRow(jsonType, establishmentId) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +93,9 @@ Widget detailRow(jsonType) {
                 ),
                 Text(
                     'Recomendación: ${jsonType['surgery']['recommendations'] ?? '-'}'),
-                Text('Monto: ${jsonType['surgery']['amount']}'),
+                establishmentId != prefUser.vetId
+                    ? SizedBox(height: 0)
+                    : Text('Monto: ${jsonType['surgery']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
@@ -108,14 +111,18 @@ Widget detailRow(jsonType) {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                Text(
-                    'Anamnesis: ${jsonType['consultation']['anamnesis'] ?? '-'}'),
+                establishmentId != prefUser.vetId
+                    ? SizedBox(height: 0)
+                    : Text(
+                        'Anamnesis: ${jsonType['consultation']['anamnesis'] ?? '-'}'),
                 Text(
                     'Recomendación: ${jsonType['consultation']['recommendations'] ?? '-'}'),
                 Text('Diagnósticos:'),
                 for (var diagnoses in jsonType['consultation']['diagnoses'])
                   Text('- ${diagnoses['name']}'),
-                Text('Monto: ${jsonType['consultation']['amount']}'),
+                establishmentId != prefUser.vetId
+                    ? SizedBox(height: 0)
+                    : Text('Monto: ${jsonType['consultation']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
@@ -136,7 +143,9 @@ Widget detailRow(jsonType) {
                 Text('Desparasitantes:'),
                 for (var dewormers in jsonType['deworming']['dewormers'])
                   Text('- ${dewormers['name']}'),
-                Text('Monto: ${jsonType['deworming']['amount']}'),
+                establishmentId != prefUser.vetId
+                    ? SizedBox(height: 0)
+                    : Text('Monto: ${jsonType['deworming']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
@@ -157,7 +166,9 @@ Widget detailRow(jsonType) {
                 Text('Groomings:'),
                 for (var grooming in jsonType['grooming']['groomings'])
                   Text('- $grooming'),
-                Text('Monto: ${jsonType['grooming']['amount']}'),
+                establishmentId != prefUser.vetId
+                    ? SizedBox(height: 0)
+                    : Text('Monto: ${jsonType['grooming']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
@@ -178,7 +189,9 @@ Widget detailRow(jsonType) {
                 Text('Vacunas:'),
                 for (var vaccines in jsonType['vaccination']['vaccines'])
                   Text('- ${vaccines['name']}'),
-                Text('Monto: ${jsonType['vaccination']['amount']}'),
+                establishmentId != prefUser.vetId
+                    ? SizedBox(height: 0)
+                    : Text('Monto: ${jsonType['vaccination']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
@@ -199,7 +212,9 @@ Widget detailRow(jsonType) {
                 Text('Exámenes:'),
                 for (var tests in jsonType['testing']['tests'])
                   Text('- ${tests['name']}'),
-                Text('Monto: ${jsonType['testing']['amount']}'),
+                establishmentId != prefUser.vetId
+                    ? SizedBox(height: 0)
+                    : Text('Monto: ${jsonType['testing']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
@@ -220,7 +235,9 @@ Widget detailRow(jsonType) {
                 Text('Otros:'),
                 for (var others in jsonType['other']['others'])
                   Text('- ${others['name']}'),
-                Text('Monto: ${jsonType['other']['amount']}'),
+                establishmentId != prefUser.vetId
+                    ? SizedBox(height: 0)
+                    : Text('Monto: ${jsonType['other']['amount']}'),
               ],
             )
           : SizedBox(height: 0)

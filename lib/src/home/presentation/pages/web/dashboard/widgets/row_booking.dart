@@ -4,11 +4,13 @@ import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/routes/routes.dart';
+import 'package:vet_app/src/bookings/domain/booking_controller.dart';
 import 'package:vet_app/src/bookings/presentation/pages/reprogramar/app/reprogramar.dart';
 
 class RowBooking extends StatefulWidget {
   final String bookingId;
   final String petImg;
+  final String petId;
   final String petName;
   final String petBreed;
   final String status;
@@ -25,6 +27,7 @@ class RowBooking extends StatefulWidget {
   RowBooking({
     required this.bookingId,
     required this.petImg,
+    required this.petId,
     required this.petName,
     required this.petBreed,
     required this.status,
@@ -219,16 +222,13 @@ class _RowBookingState extends State<RowBooking> {
                 Expanded(
                   child: PopupMenuButton<int>(
                     tooltip: 'Atender a ${widget.petName}',
-                    onSelected: (value) {
+                    onSelected: (value) async {
                       if (value == 1) {
-                        Get.toNamed(
-                          NameRoutes.atenderBooking,
-                          arguments: {
-                            'bookingId': widget.bookingId,
-                            'petId': '-',
-                            'image': widget.petImg,
-                          },
-                        );
+                        final _book = Get.find<BookingController>();
+                        _book.bookingId.value = widget.bookingId;
+                        _book.petId.value = widget.petId;
+                        await _book.initLoad();
+                        Get.toNamed(NameRoutes.atenderBooking);
                       } else {
                         Navigator.push(
                           context,
