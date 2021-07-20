@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/config/variables_global.dart';
+import 'package:vet_app/resources/utils/header_http.dart';
 import 'auth_interface.dart';
 
 class AuthRepository extends AuthInterface {
@@ -32,6 +33,22 @@ class AuthRepository extends AuthInterface {
       return response.statusCode;
     } catch (ex) {
       return 500;
+    }
+  }
+
+  @override
+  Future<void> sendTokenFire(String fireToken) async {
+    final url = Uri.https(urlBase!, '/api/firebase');
+    final fireData = {'token': fireToken};
+    try {
+      await http.post(
+        url,
+        headers: headersToken(),
+        body: fireData,
+      );
+    } catch (ex) {
+      print(ex);
+      throw Exception(ex);
     }
   }
 
