@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
@@ -136,12 +134,9 @@ class BookingController extends GetxController {
     }
 
     if (grooming.value != null) {
-      log('grooming.value');
-      log(jsonEncode(grooming.value));
+      print('grooming.value');
 
       if (grooming.value?.groomingIds != null) {
-        print(grooming.value!.groomingIds!);
-        print(grooming.value!.groomings!);
         listaGroomingsIds.addAll(grooming.value!.groomingIds!);
         listaGroomingsNames.addAll(grooming.value!.groomings!);
       }

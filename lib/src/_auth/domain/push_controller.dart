@@ -20,7 +20,7 @@ class PushController extends GetxController {
 
   void firebaseToken() {
     _firebaseMessaging.getToken().then((token) {
-      print("==firebase token==");
+      print('==firebase token==');
       print(token);
       fireLogin.sendTokenFire(token!);
     });

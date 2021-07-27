@@ -13,7 +13,6 @@ class ClientsApi extends ClientsInterface {
     );
 
     final http.Response response = await http.get(url, headers: headersToken());
-
     final clients = clientsModelFromJson(response.body);
 
     return clients;
@@ -22,7 +21,8 @@ class ClientsApi extends ClientsInterface {
   @override
   Future createBooking(String establishment, String bookingAt, String petId,
       List<int> typeId, String userId) async {
-    print('object');
+    //booking_at -> fecha
+    print('crear object');
     return 'null';
   }
 }

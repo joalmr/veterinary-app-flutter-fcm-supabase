@@ -47,7 +47,6 @@ class AuthRepository extends AuthInterface {
         body: fireData,
       );
     } catch (ex) {
-      print(ex);
       throw Exception(ex);
     }
   }
