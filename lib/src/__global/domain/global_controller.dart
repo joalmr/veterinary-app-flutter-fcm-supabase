@@ -5,6 +5,7 @@ import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/calendar/domain/calendar_controller.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
 import 'package:vet_app/src/registros/domain/attentions_controller.dart';
+import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 
 class GlobalController extends GetxController {
   bool init = false;
@@ -12,6 +13,7 @@ class GlobalController extends GetxController {
   final _home = Get.find<HomeController>();
   final _calendar = Get.find<CalendarController>();
   final _attention = Get.find<AttentionsController>();
+  final _clients = Get.find<ClientsController>();
 
   @override
   void onInit() {
@@ -19,10 +21,11 @@ class GlobalController extends GetxController {
     super.onInit();
   }
 
-  void generalLoad(){
+  void generalLoad() {
     _home.getAllBookings();
-    _calendar.listasCalendario(DateTime.now());
+    _calendar.loadCalendar();
     _attention.getAll();
+    _clients.getClients();
   }
 
   void openApp() {

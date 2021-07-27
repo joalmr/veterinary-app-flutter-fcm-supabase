@@ -81,8 +81,8 @@ class LoginController extends GetxController {
 
       prefUser.vetData = vetStorageToJson(forStorage);
 
-      _homeController.getVet();
       _global.generalLoad();
+      _homeController.getVet();
     }
   }
 }

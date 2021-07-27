@@ -14,13 +14,14 @@ import 'src/calendar/domain/calendar_controller.dart';
 import 'src/establishments/domain/establishments_controller.dart';
 import 'src/home/domain/home_controller.dart';
 import 'src/registros/domain/attentions_controller.dart';
+import 'src/userClients/domain/user_clients_controller.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   await dotenv.load(fileName: '.env.dev');
-  await GetStorage.init();
   await Firebase.initializeApp();
+  await GetStorage.init();
 
   runApp(MyApp());
 }
@@ -32,7 +33,9 @@ class MyApp extends StatelessWidget {
     Get.put(CalendarController());
     Get.put(AttentionsController());
     Get.put(EstablishmentsController());
+    Get.put(ClientsController());
     Get.put(GlobalController());
+    //
     Get.put(BookingController());
 
     return GetMaterialApp(
@@ -48,14 +51,5 @@ class MyApp extends StatelessWidget {
         page: () => View404(),
       ),
     );
-
-    // return GetMaterialApp(
-    //   debugShowCheckedModeBanner: appPruebas,
-    //   title: 'Proypet',
-    //   theme: temaClaro,
-    //   themeMode: ThemeMode.light,
-    //   onGenerateRoute: RouteGenerator.generateRoute,
-    //   navigatorKey: locator<NavigationService>().navigatorKey,
-    // );
   }
 }

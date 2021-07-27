@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
+import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
+
+import 'app/clientes/crea_cliente.dart';
+import 'app/user_clients_app.dart';
 // import 'package:get/get.dart';
 // import 'app/user_clients_app.dart';
 // import 'web/user_clients_web.dart';
@@ -7,38 +12,31 @@ import 'package:vet_app/design/layout/main_layout.dart';
 class UserClientsMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MainLayout(
-      title: 'Clientes',
-      drawerActive: true,
-      body: Center(
-        child: FittedBox(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Image(
-                  image: AssetImage('assets/images/folder-bro.png'),
-                  height: 180,
-                ),
-                Text(
-                  'Próximamente!',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                  ),
-                ),
-                Text(
-                  'En este modulo podrás gestionar clientes',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 22,
-                  ),
-                ),
-              ],
+    return GetX<ClientsController>(
+      // init: ClientsController(),
+      builder: (_) {
+        return MainLayout(
+          drawerActive: true,
+          title: 'Clientes',
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search_rounded),
             ),
+          ],
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Get.to(CreaCliente());
+            },
+            child: Icon(Icons.add_rounded),
           ),
-        ),
-      ),
+          body: _.loadClients.value
+              ? Center(
+                  child: Text('No tiene chats de petlovers'),
+                )
+              : UserClientsApp(),
+        );
+      },
     );
   }
 }

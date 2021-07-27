@@ -42,6 +42,7 @@ class ChatController extends GetxController {
 
   void goToMessage(int canal) {
     Get.to(MessagesView());
+    //=> lei mensaje
     _getMessage(canal);
   }
 
@@ -59,20 +60,20 @@ class ChatController extends GetxController {
   }
 
   void runSubscription() {
-    //TODO: revisar si funciona especifico
+    //escucha mensaje
     subscriptionMessage =
-        supabaseClient.from('message') //:canal_id=eq.$canalId'
-            .on(SupabaseEventTypes.delete, (payload) {
+        supabaseClient.from('message').on(SupabaseEventTypes.delete, (payload) {
       _getMessage(canalId!);
     }).on(SupabaseEventTypes.update, (payload) {
+      //true =>
       _getMessage(canalId!);
     }).on(SupabaseEventTypes.insert, (payload) {
       _getMessage(canalId!);
     }).subscribe();
 
+    //escucha canal
     subscriptionMessage =
-        supabaseClient.from('canal') //:establishment_id=eq.$vetInt
-            .on(SupabaseEventTypes.delete, (payload) {
+        supabaseClient.from('canal').on(SupabaseEventTypes.delete, (payload) {
       getChats();
     }).on(SupabaseEventTypes.update, (payload) {
       getChats();

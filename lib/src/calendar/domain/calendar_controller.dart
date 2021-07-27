@@ -45,6 +45,11 @@ class CalendarController extends GetxController {
 
   @override
   void onReady() {
+    loadCalendar();
+    super.onReady();
+  }
+
+  void loadCalendar() {
     if (prefUser.tokenHas() && prefUser.vetDataHas()) {
       dateString.value = formatDateBasic(today);
       daysPerMonth.value =
@@ -53,7 +58,6 @@ class CalendarController extends GetxController {
       listasCalendario(today);
       tempDate = today;
     }
-    super.onReady();
   }
 
   void monthMore() {
