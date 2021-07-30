@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 
+import 'app/clientes/busca_cliente.dart';
 import 'app/clientes/crea_cliente.dart';
 import 'app/user_clients_app.dart';
 // import 'package:get/get.dart';
@@ -20,7 +21,9 @@ class UserClientsMain extends StatelessWidget {
           title: 'Clientes',
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(BuscaCliente());
+              },
               icon: Icon(Icons.search_rounded),
             ),
           ],

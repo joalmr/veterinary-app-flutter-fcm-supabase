@@ -15,6 +15,12 @@ String formatDateBasic(DateTime dateTime) {
   return formattedDate;
 }
 
+String formatYMDHms(DateTime dateTime) {
+  final String formattedDate =
+      DateFormat('yyyy-MM-dd HH:mm:ss').format(dateTime);
+  return formattedDate;
+}
+
 String formatDateYM(DateTime dateTime) {
   final String formattedDate = DateFormat('yyyy-MM').format(dateTime);
   return formattedDate;

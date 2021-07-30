@@ -6,46 +6,46 @@ class MascotaClienteAgregar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Agregar mascota'),
+        title: Text('Agregar mascota'),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(8),
+        padding: EdgeInsets.all(8),
         children: [
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Tipo mascota',
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Raza',
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Nombre',
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Fecha de nacimiento',
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Sexo',
             ),
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: 15),
           btnPrimary(
             text: 'Crear mascota',
             onPressed: () {},

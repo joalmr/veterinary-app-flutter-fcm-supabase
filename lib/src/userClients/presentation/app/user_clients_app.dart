@@ -42,7 +42,7 @@ class UserClientsApp extends StatelessWidget {
                     ),
                     title: Text('${cliente.name} ${cliente.lastname}'),
                     onTap: () {
-                      Get.to(ClienteVista());
+                      _.goToUser(cliente.id!);
                     },
                   );
                 },
