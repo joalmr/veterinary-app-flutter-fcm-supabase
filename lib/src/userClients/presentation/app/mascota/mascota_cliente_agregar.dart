@@ -19,36 +19,25 @@ class MascotaClienteAgregar extends StatelessWidget {
             padding: EdgeInsets.all(8),
             children: [
               TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: 'Tipo mascota',
-                ),
+                decoration: InputDecoration(labelText: 'Tipo mascota'),
               ),
               SizedBox(height: 10),
               TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: 'Raza',
-                ),
+                decoration: InputDecoration(labelText: 'Raza'),
               ),
               SizedBox(height: 10),
               TextFormField(
                 controller: petNameController,
-                keyboardType: TextInputType.emailAddress,
+                textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(labelText: 'Nombre'),
               ),
               SizedBox(height: 10),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Fecha de nacimiento',
-                ),
+                decoration: InputDecoration(labelText: 'Fecha de nacimiento'),
               ),
               SizedBox(height: 10),
               TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: 'Sexo',
-                ),
+                decoration: InputDecoration(labelText: 'Sexo'),
               ),
               SizedBox(height: 15),
               btnPrimary(

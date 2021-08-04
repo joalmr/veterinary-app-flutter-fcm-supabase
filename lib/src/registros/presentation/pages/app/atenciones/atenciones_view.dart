@@ -5,6 +5,8 @@ import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/registros/domain/attentions_controller.dart';
 import 'package:vet_app/src/registros/presentation/pages/app/widgets/card_atencion.dart';
 
+import 'get_attentions.dart';
+
 class AtencionesView extends StatelessWidget {
   const AtencionesView({Key? key}) : super(key: key);
 
@@ -25,6 +27,9 @@ class AtencionesView extends StatelessWidget {
               date: formatDate(reg.attentionDate!),
               time: formatTime(reg.attentionDate!),
               userName: reg.userName!,
+              onTap: () {
+                Get.to(GetAttention());
+              },
             );
           },
         );

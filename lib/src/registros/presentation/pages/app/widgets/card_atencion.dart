@@ -8,6 +8,7 @@ class CardAtencion extends StatelessWidget {
   final String date;
   final String time;
   final String userName;
+  final Function() onTap;
 
   const CardAtencion({
     required this.image,
@@ -16,12 +17,13 @@ class CardAtencion extends StatelessWidget {
     required this.date,
     required this.time,
     required this.userName,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       borderRadius: BorderRadius.circular(10),
       child: Card(
         child: Padding(
