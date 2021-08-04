@@ -83,6 +83,7 @@ class DayDetail extends StatelessWidget {
                         for (var nextDate in listaNextDate)
                           EventNextDate(
                             image: nextDate.petPicture,
+                            petId: nextDate.petId,
                             petName: nextDate.petName,
                             petBreed: nextDate.petBreed,
                             motivo: nextDate.reason,

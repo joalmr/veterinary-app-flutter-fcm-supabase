@@ -84,6 +84,7 @@ class CalendarApi extends CalendarInterface {
         url,
         headers: headersToken(),
       );
+
       return listNextdateModelFromJson(response.body);
     } catch (e) {
       return null;

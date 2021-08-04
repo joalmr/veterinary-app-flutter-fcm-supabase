@@ -15,7 +15,6 @@ class FullCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<CalendarController>(
       builder: (_) {
-        // final divisor = GetPlatform.isMobile ? 7.05 : 7.5;
         return GridView(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 7,

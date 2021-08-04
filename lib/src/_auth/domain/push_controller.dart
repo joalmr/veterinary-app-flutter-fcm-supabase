@@ -7,7 +7,7 @@ class PushController extends GetxController {
   final fireLogin = AuthRepository();
   // final homeC = Get.find<HomeController>();
 
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  final _firebaseMessaging = FirebaseMessaging.instance;
 
   firebase() => _firebase();
   Future<void> _firebase() async {

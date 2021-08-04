@@ -36,6 +36,7 @@ class ListNextdateModel {
 
 class Result {
   Result({
+    this.petId,
     this.petPicture,
     this.petBreed,
     this.petName,
@@ -46,6 +47,7 @@ class Result {
     this.type,
   });
 
+  String? petId;
   String? petPicture;
   String? petBreed;
   String? petName;
@@ -56,6 +58,7 @@ class Result {
   String? type;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
+        petId: json['pet_id'],
         petPicture: json['pet_picture'],
         petBreed: json['pet_breed'],
         petName: json['pet_name'],
@@ -67,6 +70,7 @@ class Result {
       );
 
   Map<String, dynamic> toJson() => {
+        'pet_id': petId,
         'pet_picture': petPicture,
         'pet_breed': petBreed,
         'pet_name': petName,

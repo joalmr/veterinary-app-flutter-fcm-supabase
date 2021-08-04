@@ -91,23 +91,27 @@ class ClientsApi extends ClientsInterface {
   }
 
   @override
-  Future<List<Breed>> getBreeds() async {
-    final url = Uri.https(urlBase!, '$pathBase/breeds');
+  Future<List<Breed>> getBreeds(int specie) async {
+    final url = Uri.https(
+      urlBase!,
+      '$pathBase/breeds',
+      {'specie': specie.toString()},
+    );
 
-    final http.Response response = await http.get(url);
+    final http.Response response = await http.get(url, headers: headersToken());
     final breeds = breedsModelFromJson(response.body);
 
-    return breeds.breeds ?? [];
+    return breeds.breeds!;
   }
 
   @override
   Future<List<Species>> getSpecies() async {
     final url = Uri.https(urlBase!, '$pathBase/species');
 
-    final http.Response response = await http.get(url);
+    final http.Response response = await http.get(url, headers: headersToken());
     final species = speciesModelFromJson(response.body);
 
-    return species.species ?? [];
+    return species.species!;
   }
 
   @override

@@ -6,6 +6,7 @@ import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
 import 'package:vet_app/src/userClients/data/clients_repository.dart';
+import 'package:vet_app/src/userClients/data/model/breed_model.dart';
 import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
 import 'package:vet_app/src/userClients/data/model/clients_model.dart';
 import 'package:vet_app/src/userClients/data/model/find_user_model.dart';
@@ -27,6 +28,8 @@ class ClientsController extends GetxController {
   final typeId = <int>[].obs;
   final bookingAt = formatYMDHms(DateTime.now()).obs;
 
+  final razas = <Breed>[].obs;
+
   // final userData = ResultFindUser().obs;
 
   final fecha = ''.obs;
@@ -34,6 +37,8 @@ class ClientsController extends GetxController {
 
   final programaAtencion = false.obs;
   final btnAtencion = true.obs;
+
+  Breed? razaSeleccionada;
 
   @override
   void onReady() {
@@ -48,6 +53,9 @@ class ClientsController extends GetxController {
 
       myClients.clear();
       myClients.addAll(response.result!);
+
+      await getBreeds(1);
+      razaSeleccionada = razas.first;
 
       loadClients.value = false;
     }
@@ -130,4 +138,36 @@ class ClientsController extends GetxController {
     getUserComplete();
     Get.back();
   }
+
+  getBreeds(int specie) async {
+    final response = await _repo.getBreeds(specie);
+
+    razas.clear();
+    razas.addAll(response);
+    print(razas);
+  }
+
+  Future<List<Breed>> getDataRaza(String filter) async {
+    List<Breed> lista = <Breed>[];
+    razas.forEach((element) {
+      var palabra = element.name;
+      bool contiene = palabra!.toLowerCase().contains(filter.toLowerCase());
+      if (contiene) {
+        lista.add(element);
+      }
+    });
+
+    var models = lista;
+    return models;
+  }
+
+  // void _obtenerRaza() async {
+  //   razaLista = await razaService.getBreed(especie.toString());
+  //   razaSeleccionada = razaLista.breeds.first;
+  //   razaName = razaLista.breeds.first.name;
+  //   razaId = razaLista.breeds.first.id;
+  //   razaTextC.text = razaName;
+  //   loading.value = false;
+  //   cargaRaza.value = false;
+  // }
 }

@@ -11,6 +11,7 @@ import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 class EventNextDate extends StatelessWidget {
   final String image;
+  final String petId;
   final String petName;
   final String petBreed;
   final String motivo;
@@ -21,6 +22,7 @@ class EventNextDate extends StatelessWidget {
 
   const EventNextDate({
     required this.image,
+    required this.petId,
     required this.petName,
     required this.petBreed,
     required this.motivo,
@@ -95,7 +97,9 @@ Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendien
                       child: Row(
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed('/history/$petId');
+                            },
                             style:
                                 TextButton.styleFrom(primary: Colors.black38),
                             child: const Icon(Icons.book_rounded),
@@ -105,7 +109,6 @@ Hola $userName somos de ${prefUser.vetName}, nos comunicamos por su cita pendien
                               launchWhatsApp();
                             },
                             child: const Icon(
-                              // LineAwesomeIcons.whatsapp,
                               LineIcons.whatSApp,
                               size: 32,
                             ),

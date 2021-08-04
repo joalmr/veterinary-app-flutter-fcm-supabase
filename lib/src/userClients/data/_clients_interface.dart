@@ -18,6 +18,6 @@ abstract class ClientsInterface {
   Future<FindUserModel> findUser(String mailUser);
   Future<UserClientModel> getUserClient(String establishment, String user);
   Future<List<Species>> getSpecies();
-  Future<List<Breed>> getBreeds();
+  Future<List<Breed>> getBreeds(int specie);
   Future<dynamic> insertPet(PetModelReq addpet);
 }

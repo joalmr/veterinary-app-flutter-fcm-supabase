@@ -32,8 +32,8 @@ class ClientsRepository extends ClientsInterface {
   }
 
   @override
-  Future<List<Breed>> getBreeds() {
-    return _api.getBreeds();
+  Future<List<Breed>> getBreeds(int specie) {
+    return _api.getBreeds(specie);
   }
 
   @override

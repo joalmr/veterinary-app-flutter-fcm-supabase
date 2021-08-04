@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/registros/domain/attentions_controller.dart';
-import 'package:vet_app/src/registros/presentation/pages/app/atenciones/get_attentions.dart';
+import 'package:vet_app/src/registros/presentation/pages/app/atenciones/get_attention.dart';
 import 'package:vet_app/src/registros/presentation/pages/app/widgets/card_atencion.dart';
 
 class Registered extends StatefulWidget {
