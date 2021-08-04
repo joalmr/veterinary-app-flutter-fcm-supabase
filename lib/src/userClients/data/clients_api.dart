@@ -3,6 +3,10 @@ import 'dart:convert';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/header_http.dart';
+import 'package:vet_app/src/userClients/data/model/species_model.dart';
+import 'package:vet_app/src/userClients/data/model/request/pet.dart';
+import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
+import 'package:vet_app/src/userClients/data/model/breed_model.dart';
 import '_clients_interface.dart';
 import 'model/clients_model.dart';
 import 'model/find_user_model.dart';
@@ -24,8 +28,6 @@ class ClientsApi extends ClientsInterface {
   @override
   Future<dynamic> createBooking(String establishment, String bookingAt,
       String petId, List<int> typeId, String userId) async {
-    //booking_at -> fecha
-    print('llega create');
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establishment/booking',
@@ -44,7 +46,6 @@ class ClientsApi extends ClientsInterface {
       body: jsonEncode(dataBooking),
     );
 
-    print(response.body);
     return response.body;
   }
 
@@ -73,5 +74,55 @@ class ClientsApi extends ClientsInterface {
     final user = findUserModelFromJson(response.body);
 
     return user;
+  }
+
+  ////////////////
+  ///
+  @override
+  Future<UserClientModel> getUserClient(
+      String establishment, String user) async {
+    final url = Uri.https(
+        urlBase!, '$pathBase/establishment/$establishment/client/$user');
+
+    final http.Response response = await http.get(url, headers: headersToken());
+    final userClient = userClientModelFromJson(response.body);
+
+    return userClient;
+  }
+
+  @override
+  Future<List<Breed>> getBreeds() async {
+    final url = Uri.https(urlBase!, '$pathBase/breeds');
+
+    final http.Response response = await http.get(url);
+    final breeds = breedsModelFromJson(response.body);
+
+    return breeds.breeds ?? [];
+  }
+
+  @override
+  Future<List<Species>> getSpecies() async {
+    final url = Uri.https(urlBase!, '$pathBase/species');
+
+    final http.Response response = await http.get(url);
+    final species = speciesModelFromJson(response.body);
+
+    return species.species ?? [];
+  }
+
+  @override
+  Future<dynamic> insertPet(PetModelReq addpet) async {
+    final url = Uri.https(
+      urlBase!,
+      '$pathBase/pet',
+    );
+
+    final http.Response response = await http.post(
+      url,
+      headers: headersToken(),
+      body: petModelToJson(addpet),
+    );
+
+    return response.body;
   }
 }

@@ -6,8 +6,10 @@ import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
 import 'package:vet_app/src/userClients/data/clients_repository.dart';
+import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
 import 'package:vet_app/src/userClients/data/model/clients_model.dart';
 import 'package:vet_app/src/userClients/data/model/find_user_model.dart';
+import 'package:vet_app/src/userClients/data/model/request/pet.dart';
 import 'package:vet_app/src/userClients/presentation/app/clientes/client_view.dart';
 
 class ClientsController extends GetxController {
@@ -18,13 +20,14 @@ class ClientsController extends GetxController {
 
   final myClients = <ResultClients>[].obs;
   final findClient = Rxn<ResultFindUser>();
+  final resultUserClient = Rxn<ResultUserClient>();
 
   final loadUserPets = true.obs;
   final userId = ''.obs;
   final typeId = <int>[].obs;
   final bookingAt = formatYMDHms(DateTime.now()).obs;
 
-  final userData = ResultFindUser().obs;
+  // final userData = ResultFindUser().obs;
 
   final fecha = ''.obs;
   final hora = ''.obs;
@@ -62,8 +65,14 @@ class ClientsController extends GetxController {
   }
 
   getUserComplete() async {
-    final response = await _repo.getUser(userId.value);
-    userData.value = response.result!;
+    loadUserPets.value = true;
+
+    final responseClient = await _repo.getUserClient(
+      prefUser.vetId!,
+      userId.value,
+    );
+
+    resultUserClient.value = responseClient.result;
     loadUserPets.value = false;
   }
 
@@ -83,6 +92,7 @@ class ClientsController extends GetxController {
     typeId.add(1);
     typeId.add(2);
     typeId.add(3);
+
     if (fecha.value.isEmpty || hora.value.isEmpty) {
       ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
         content: const Text(
@@ -112,5 +122,12 @@ class ClientsController extends GetxController {
     typeId.clear();
     _home.getAllBookings();
     // bookingAt.value = '';
+  }
+
+  addPet(PetModelReq addpet) async {
+    final response = await _repo.insertPet(addpet);
+    print(response);
+    getUserComplete();
+    Get.back();
   }
 }

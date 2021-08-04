@@ -1,5 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/_auth/data/auth_repository.dart';
 
 class PushController extends GetxController {
@@ -31,17 +32,23 @@ class PushController extends GetxController {
         .getInitialMessage()
         .then((RemoteMessage? message) {
       print('getInitialMessage');
-      if (message != null) {}
+      if (message != null) {
+        Get.find<GlobalController>().generalLoad();
+      }
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage? message) {
       print('onMessage');
-      if (message != null) {}
+      if (message != null) {
+        Get.find<GlobalController>().generalLoad();
+      }
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage? message) {
       print('onMessageOpenedApp');
-      if (message != null) {}
+      if (message != null) {
+        Get.find<GlobalController>().generalLoad();
+      }
     });
   }
 }

@@ -1,3 +1,7 @@
+import 'package:vet_app/src/userClients/data/model/species_model.dart';
+import 'package:vet_app/src/userClients/data/model/request/pet.dart';
+import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
+import 'package:vet_app/src/userClients/data/model/breed_model.dart';
 import '_clients_interface.dart';
 import 'clients_api.dart';
 import 'model/clients_model.dart';
@@ -25,5 +29,25 @@ class ClientsRepository extends ClientsInterface {
   @override
   Future<FindUserModel> getUser(String userId) {
     return _api.getUser(userId);
+  }
+
+  @override
+  Future<List<Breed>> getBreeds() {
+    return _api.getBreeds();
+  }
+
+  @override
+  Future<List<Species>> getSpecies() {
+    return _api.getSpecies();
+  }
+
+  @override
+  Future<UserClientModel> getUserClient(String establishment, String user) {
+    return _api.getUserClient(establishment, user);
+  }
+
+  @override
+  Future insertPet(PetModelReq addpet) {
+    return _api.insertPet(addpet);
   }
 }

@@ -28,7 +28,7 @@ class ClienteVista extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '${_.userData.value.name!} ${_.userData.value.lastname!}',
+                            '${_.resultUserClient.value!.user!.name!} ${_.resultUserClient.value!.user!.lastname!}',
                             style: TextStyle(
                               fontSize: 36,
                               fontWeight: FontWeight.w200,
@@ -39,7 +39,7 @@ class ClienteVista extends StatelessWidget {
                             children: [
                               Icon(Icons.phone_android_rounded),
                               Text(
-                                _.userData.value.phone!,
+                                _.resultUserClient.value!.user!.phone!,
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.w200,
@@ -83,45 +83,69 @@ class ClienteVista extends StatelessWidget {
                               ),
                             ),
                             for (var i = 0;
-                                i < _.userData.value.pets!.length;
+                                i <
+                                    _.resultUserClient.value!.user!.pets!
+                                        .length;
                                 i++)
                               Padding(
                                 padding: EdgeInsets.all(4.0),
                                 child: InkWell(
                                   borderRadius: BorderRadius.circular(100),
                                   onTap: () {
-                                    _.userData.value.pets![i].status == 0
+                                    _.resultUserClient.value!.user!.pets![i]
+                                                .status ==
+                                            0
                                         ? null
                                         : Get.to(
                                             AtenderMascota(
-                                              petClient:
-                                                  _.userData.value.pets![i],
+                                              petClient: _.resultUserClient
+                                                  .value!.user!.pets![i],
                                             ),
                                           );
                                   },
-                                  child: CircleAvatar(
-                                    radius: 45,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(100),
-                                      child: Stack(
-                                        children: [
-                                          Image(
-                                            image: CachedNetworkImageProvider(_
-                                                .userData
-                                                .value
-                                                .pets![i]
-                                                .picture!),
+                                  child: Column(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 45,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          child: Stack(
+                                            children: [
+                                              Image(
+                                                image:
+                                                    CachedNetworkImageProvider(_
+                                                        .resultUserClient
+                                                        .value!
+                                                        .user!
+                                                        .pets![i]
+                                                        .picture!),
+                                              ),
+                                              Container(
+                                                color: _
+                                                            .resultUserClient
+                                                            .value!
+                                                            .user!
+                                                            .pets![i]
+                                                            .status ==
+                                                        0
+                                                    ? Colors.black
+                                                        .withOpacity(0.45)
+                                                    : Colors.transparent,
+                                              )
+                                            ],
                                           ),
-                                          Container(
-                                            color: _.userData.value.pets![i]
-                                                        .status ==
-                                                    0
-                                                ? Colors.black.withOpacity(0.45)
-                                                : Colors.transparent,
-                                          )
-                                        ],
+                                        ),
                                       ),
-                                    ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        _.resultUserClient.value!.user!.pets![i]
+                                            .name!,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    ],
                                   ),
                                 ),
                               ),
@@ -133,7 +157,7 @@ class ClienteVista extends StatelessWidget {
                     Center(
                       child: contStatClient(
                         context: context,
-                        valor: 30930,
+                        valor: _.resultUserClient.value!.attentions!.toDouble(),
                         titulo: 'atenciones',
                       ),
                     ),
@@ -141,7 +165,7 @@ class ClienteVista extends StatelessWidget {
                     Center(
                       child: contStatClient(
                         context: context,
-                        valor: 1100220.50,
+                        valor: _.resultUserClient.value!.amount!,
                         titulo: 'soles',
                       ),
                     ),
