@@ -1,8 +1,8 @@
 import 'dart:convert';
-
 import 'package:vet_app/config/variables_global.dart';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/header_http.dart';
+import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
 import 'package:vet_app/src/userClients/data/model/species_model.dart';
 import 'package:vet_app/src/userClients/data/model/request/pet.dart';
 import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
@@ -127,6 +127,23 @@ class ClientsApi extends ClientsInterface {
       body: petModelToJson(addpet),
     );
 
+    return response.body;
+  }
+
+  @override
+  Future<dynamic> insertPetlover(
+      CreatePetloverReq addPetlover, String establishment) async {
+    final url = Uri.https(
+      urlBase!,
+      '$pathBase/establishment/$establishment/petlover',
+    );
+
+    final response = await http.post(
+      url,
+      headers: headersToken(),
+      body: createPetloverReqToJson(addPetlover),
+    );
+    print(response.body);
     return response.body;
   }
 }

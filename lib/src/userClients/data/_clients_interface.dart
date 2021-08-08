@@ -3,6 +3,7 @@ import 'model/client_user_model.dart';
 import 'model/clients_model.dart';
 import 'model/find_user_model.dart';
 import 'model/request/pet.dart';
+import 'model/request/petlover.dart';
 import 'model/species_model.dart';
 
 abstract class ClientsInterface {
@@ -20,4 +21,6 @@ abstract class ClientsInterface {
   Future<List<Species>> getSpecies();
   Future<List<Breed>> getBreeds(int specie);
   Future<dynamic> insertPet(PetModelReq addpet);
+  Future<dynamic> insertPetlover(
+      CreatePetloverReq addPetlover, String establishment);
 }

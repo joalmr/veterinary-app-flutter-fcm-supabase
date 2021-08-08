@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variables_global.dart';
@@ -11,6 +13,7 @@ import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
 import 'package:vet_app/src/userClients/data/model/clients_model.dart';
 import 'package:vet_app/src/userClients/data/model/find_user_model.dart';
 import 'package:vet_app/src/userClients/data/model/request/pet.dart';
+import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
 import 'package:vet_app/src/userClients/presentation/app/clientes/client_view.dart';
 
 class ClientsController extends GetxController {
@@ -158,5 +161,25 @@ class ClientsController extends GetxController {
 
     var models = lista;
     return models;
+  }
+
+  addPetlover(CreatePetloverReq addpetlover) async {
+    final response = await _repo.insertPetlover(addpetlover, prefUser.vetId!);
+
+    final responseJson = jsonDecode(response);
+
+    if (responseJson['result'] == false) {
+      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+        content: Text(
+          responseJson['message'],
+          style: TextStyle(color: colorRed),
+        ),
+        duration: const Duration(seconds: 7),
+        backgroundColor: Colors.black.withOpacity(0.85),
+      ));
+    } else {
+      await getClients();
+      Get.back();
+    }
   }
 }
