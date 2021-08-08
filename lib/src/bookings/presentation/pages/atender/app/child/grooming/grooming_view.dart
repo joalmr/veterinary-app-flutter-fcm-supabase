@@ -165,7 +165,7 @@ class _GroomingViewState extends State<GroomingView> {
                             ScaffoldMessenger.of(Get.context!).showSnackBar(
                               SnackBar(
                                 content: const Text(
-                                    'Falta ingresar servicio o monto'),
+                                    'Falta ingresar monto o servicio'),
                                 duration: const Duration(seconds: 3),
                                 backgroundColor: Colors.black.withOpacity(0.85),
                               ),

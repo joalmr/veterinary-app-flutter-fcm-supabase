@@ -208,7 +208,7 @@ class _TestingViewState extends State<TestingView> {
                             } else {
                               ScaffoldMessenger.of(Get.context!)
                                   .showSnackBar(SnackBar(
-                                content: Text('Falta ingresar examen o monto'),
+                                content: Text('Falta ingresar monto o examen'),
                                 duration: Duration(seconds: 3),
                                 backgroundColor: Colors.black.withOpacity(0.85),
                               ));

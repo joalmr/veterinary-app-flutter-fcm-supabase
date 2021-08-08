@@ -210,7 +210,7 @@ class _VacunaViewState extends State<VacunaView> {
                               ScaffoldMessenger.of(Get.context!)
                                   .showSnackBar(SnackBar(
                                 content:
-                                    const Text('Falta ingresar vacuna o monto'),
+                                    const Text('Falta ingresar monto o vacuna'),
                                 duration: const Duration(seconds: 3),
                                 backgroundColor: Colors.black.withOpacity(0.85),
                               ));

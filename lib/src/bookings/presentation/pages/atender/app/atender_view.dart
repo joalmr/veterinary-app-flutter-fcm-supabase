@@ -301,9 +301,24 @@ class AtenderView extends StatelessWidget {
                   ),
                 Padding(
                   padding: const EdgeInsets.only(top: 5, bottom: 50),
-                  child: btnPrimary(
-                    text: 'Finalizar atención',
-                    onPressed: () => _.saveFinalize(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 10, top: 5, bottom: 5),
+                        child: Text(
+                          _.montoTotal.value.toString(),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      btnPrimary(
+                        text: 'Finalizar atención',
+                        onPressed: () => _.saveFinalize(),
+                      ),
+                    ],
                   ),
                 ),
               ],

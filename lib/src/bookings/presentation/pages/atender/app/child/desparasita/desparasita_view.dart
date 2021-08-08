@@ -209,7 +209,7 @@ class _DesparasitaViewState extends State<DesparasitaView> {
                               ScaffoldMessenger.of(Get.context!)
                                   .showSnackBar(SnackBar(
                                 content: const Text(
-                                    'Falta ingresar desparasitación o monto'),
+                                    'Falta ingresar monto o desparasitación'),
                                 duration: const Duration(seconds: 3),
                                 backgroundColor: Colors.black.withOpacity(0.85),
                               ));

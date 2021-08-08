@@ -225,7 +225,6 @@ class ConsultaView extends StatelessWidget {
                       )
                     else
                       const SizedBox(height: 0),
-                    // SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -288,7 +287,7 @@ class ConsultaView extends StatelessWidget {
                               ScaffoldMessenger.of(Get.context!).showSnackBar(
                                 SnackBar(
                                   content: const Text(
-                                      'Falta ingresar diagnóstico o monto'),
+                                      'Falta ingresar monto o diagnóstico'),
                                   duration: const Duration(seconds: 3),
                                   backgroundColor:
                                       Colors.black.withOpacity(0.85),
