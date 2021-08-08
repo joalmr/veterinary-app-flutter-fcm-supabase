@@ -143,7 +143,7 @@ class ClientsApi extends ClientsInterface {
       headers: headersToken(),
       body: createPetloverReqToJson(addPetlover),
     );
-    print(response.body);
+
     return response.body;
   }
 }

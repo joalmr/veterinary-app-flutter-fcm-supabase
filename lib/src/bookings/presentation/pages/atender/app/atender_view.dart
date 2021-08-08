@@ -78,7 +78,6 @@ class AtenderView extends StatelessWidget {
                         icon: Icon(Icons.book_rounded),
                         onPressed: () {
                           Get.toNamed('/history/${_.petId}');
-                          // Get.to(PetHistoryPage(), arguments: _.petId);
                         },
                       ),
                       SizedBox(width: 10),
@@ -107,6 +106,7 @@ class AtenderView extends StatelessWidget {
                         child: Text('Condición'),
                       ),
                       SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
                             InkWell(

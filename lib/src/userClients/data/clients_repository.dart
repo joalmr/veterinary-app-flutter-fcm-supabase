@@ -1,5 +1,4 @@
 import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
-import 'package:vet_app/src/userClients/data/model/petlover_model.dart';
 import 'package:vet_app/src/userClients/data/model/species_model.dart';
 import 'package:vet_app/src/userClients/data/model/request/pet.dart';
 import 'package:vet_app/src/userClients/data/model/client_user_model.dart';

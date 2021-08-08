@@ -101,8 +101,6 @@ class ClientsController extends GetxController {
     btnAtencion.value = false;
     //! TODO: FALTA AGREGAS LISTA DE TYPES
     typeId.add(1);
-    typeId.add(2);
-    typeId.add(3);
 
     if (fecha.value.isEmpty || hora.value.isEmpty) {
       ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
@@ -136,7 +134,7 @@ class ClientsController extends GetxController {
   }
 
   addPet(PetModelReq addpet) async {
-    await _repo.insertPet(addpet); //final response =
+    await _repo.insertPet(addpet);
 
     getUserComplete();
     Get.back();
