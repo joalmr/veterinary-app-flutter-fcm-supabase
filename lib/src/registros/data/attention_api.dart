@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/header_http.dart';
+import 'package:vet_app/src/registros/data/model/attention_detail_model.dart';
 import 'package:vet_app/src/registros/data/model/attention_reg_model.dart';
 import 'package:http/http.dart' as http;
 import '_attentions_interface.dart';
@@ -22,5 +23,19 @@ class AttentionApi extends AttentionInterface {
     );
 
     return AttentionRegModel.fromJson(json.decode(response.body));
+  }
+
+  @override
+  Future<AttentionDetailModel> getAttentionDetail(
+      String establishment, String atencion) async {
+    final url = Uri.https(
+      urlBase!,
+      '$pathBase/establishment/$establishment/attention/$atencion',
+    );
+
+    final http.Response response = await http.get(url, headers: headersToken());
+    final attention = attentionDetailModelFromJson(response.body);
+
+    return attention;
   }
 }

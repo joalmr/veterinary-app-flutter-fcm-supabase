@@ -28,7 +28,7 @@ class AtencionesView extends StatelessWidget {
               time: formatTime(reg.attentionDate!),
               userName: reg.userName!,
               onTap: () {
-                Get.to(GetAttention());
+                Get.to(GetAttention(), arguments: reg.attentionId);
               },
             );
           },

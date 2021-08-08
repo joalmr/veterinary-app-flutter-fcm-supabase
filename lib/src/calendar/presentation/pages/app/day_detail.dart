@@ -58,8 +58,7 @@ class DayDetail extends StatelessWidget {
                           const SizedBox(height: 0),
                         for (var booking in listaBooking)
                           EventBooking(
-                            color:
-                                colorBlue, //TODO: cambiar color con el status
+                            color: colorBlue,
                             image: booking.petPicture,
                             petName: booking.petName,
                             petBreed: booking.petBreed,

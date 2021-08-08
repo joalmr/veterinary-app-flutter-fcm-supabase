@@ -133,8 +133,8 @@ class ClientsController extends GetxController {
   }
 
   addPet(PetModelReq addpet) async {
-    final response = await _repo.insertPet(addpet);
-    print(response);
+    await _repo.insertPet(addpet); //final response =
+
     getUserComplete();
     Get.back();
   }
@@ -144,30 +144,19 @@ class ClientsController extends GetxController {
 
     razas.clear();
     razas.addAll(response);
-    print(razas);
   }
 
   Future<List<Breed>> getDataRaza(String filter) async {
     List<Breed> lista = <Breed>[];
-    razas.forEach((element) {
+    for (var element in razas) {
       var palabra = element.name;
       bool contiene = palabra!.toLowerCase().contains(filter.toLowerCase());
       if (contiene) {
         lista.add(element);
       }
-    });
+    }
 
     var models = lista;
     return models;
   }
-
-  // void _obtenerRaza() async {
-  //   razaLista = await razaService.getBreed(especie.toString());
-  //   razaSeleccionada = razaLista.breeds.first;
-  //   razaName = razaLista.breeds.first.name;
-  //   razaId = razaLista.breeds.first.id;
-  //   razaTextC.text = razaName;
-  //   loading.value = false;
-  //   cargaRaza.value = false;
-  // }
 }
