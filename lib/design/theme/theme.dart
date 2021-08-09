@@ -9,8 +9,8 @@ ThemeData temaClaro = ThemeData(
   accentColor: colorMain,
   buttonColor: colorMain,
   brightness: Brightness.light,
-  iconTheme: IconThemeData(color: Colors.black38),
-  tooltipTheme: TooltipThemeData(
+  iconTheme: const IconThemeData(color: Colors.black38),
+  tooltipTheme: const TooltipThemeData(
     padding: EdgeInsets.all(5),
     verticalOffset: 10,
     textStyle: TextStyle(
@@ -18,7 +18,7 @@ ThemeData temaClaro = ThemeData(
       color: Colors.white,
     ),
   ),
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     textTheme: TextTheme(
       headline6: TextStyle(
         fontSize: 26,
@@ -35,24 +35,27 @@ ThemeData temaClaro = ThemeData(
   dialogTheme: DialogTheme(shape: shape10),
   cardTheme: CardTheme(
     shape: shape10,
-    // elevation: 2,
     shadowColor: Colors.black.withOpacity(0.3),
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: Colors.grey[200],
-    contentPadding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
-    hintStyle: TextStyle(fontSize: 14.0),
-    border: new OutlineInputBorder(
-      borderRadius: new BorderRadius.circular(5.0),
-      borderSide: new BorderSide(style: BorderStyle.none, width: 0),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+    hintStyle: const TextStyle(fontSize: 14.0),
+    labelStyle: const TextStyle(fontSize: 16.0),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5.0),
+      borderSide: const BorderSide(
+        style: BorderStyle.none,
+        width: 0,
+      ),
     ),
-    focusedBorder: new OutlineInputBorder(
-      borderRadius: new BorderRadius.circular(10.0),
-      borderSide: new BorderSide(style: BorderStyle.none, width: 0),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5.0),
+      borderSide: const BorderSide(color: colorMain),
     ),
   ),
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     headline1: TextStyle(color: Colors.black54),
     headline2: TextStyle(color: Colors.black54),
     headline3: TextStyle(color: Colors.black54),

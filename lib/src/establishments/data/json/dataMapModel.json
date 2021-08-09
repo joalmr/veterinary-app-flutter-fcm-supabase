@@ -1,0 +1,56 @@
+{
+    "result" : {
+       "address_components" : [
+          {
+             "long_name" : "Plaza del Callao",
+             "short_name" : "Plaza del Callao",
+             "types" : [ "route" ]
+          },
+          {
+             "long_name" : "Madrid",
+             "short_name" : "Madrid",
+             "types" : [ "locality", "political" ]
+          },
+          {
+             "long_name" : "Madrid",
+             "short_name" : "M",
+             "types" : [ "administrative_area_level_2", "political" ]
+          },
+          {
+             "long_name" : "Comunidad de Madrid",
+             "short_name" : "MD",
+             "types" : [ "administrative_area_level_1", "political" ]
+          },
+          {
+             "long_name" : "España",
+             "short_name" : "ES",
+             "types" : [ "country", "political" ]
+          },
+          {
+             "long_name" : "28013",
+             "short_name" : "28013",
+             "types" : [ "postal_code" ]
+          }
+       ],
+       "formatted_address" : "Plaza del Callao, 28013 Madrid, España",
+       "geometry" : {
+          "location" : {
+             "lat" : 40.4199109,
+             "lng" : -3.7059113
+          },
+          "viewport" : {
+             "northeast" : {
+                "lat" : 40.4212598802915,
+                "lng" : -3.704562319708497
+             },
+             "southwest" : {
+                "lat" : 40.4185619197085,
+                "lng" : -3.707260280291502
+             }
+          }
+       },
+       "name" : "Plaza del Callao",
+       "place_id" : "EiVQbGF6YSBkZWwgQ2FsbGFvLCAyODAxMyBNYWRyaWQsIFNwYWluIi4qLAoUChIJ65FkUXwoQg0RTHn3HpmRP6USFAoSCYE8CoCXKUINEWkijGHB3jbE"
+    },
+    "status" : "OK"
+ }

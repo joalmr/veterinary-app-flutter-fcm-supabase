@@ -1,51 +1,45 @@
 import 'package:get/get.dart';
-import 'package:vet_app/middleware/globalMiddleware.dart';
-import 'package:vet_app/src/_global/domain/globalBinding.dart';
-import 'package:vet_app/src/_global/view/splashView.dart';
-import 'package:vet_app/src/_vet/view/vetMain.dart';
-import 'package:vet_app/src/auth/view/register/register.dart';
-import 'package:vet_app/src/calendar/view/calendar.dart';
-import 'package:vet_app/src/config/view/configMain.dart';
-import 'package:vet_app/src/establishments/domain/binding/establishmentBinding.dart';
-import 'package:vet_app/src/home/domain/binding/homeBinding.dart';
-import 'package:vet_app/src/home/view/home.dart';
-import 'package:vet_app/src/offers/view/offers.dart';
-import 'package:vet_app/src/auth/view/Login/login.dart';
-import 'package:vet_app/src/attentions/view/attentions.dart';
-import 'package:vet_app/src/establishments/view/_children/create/creaVet.dart';
-import 'package:vet_app/src/establishments/view/_children/show/showVet.dart';
-import 'package:vet_app/src/establishments/view/establishments.dart';
-import 'package:vet_app/src/stats/view/stats.dart';
-import 'package:vet_app/src/workers/view/workers.dart';
+import 'package:vet_app/middleware/global_middleware.dart';
+import 'package:vet_app/src/__global/presentation/splash_view.dart';
+import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
+import 'package:vet_app/src/_pet/presentation/pages/pet_history/view.dart';
+import 'package:vet_app/src/bookings/presentation/pages/atender/atender_main.dart';
+import 'package:vet_app/src/calendar/presentation/pages/calendar.dart';
+import 'package:vet_app/src/chat/presentation/chats_main.dart';
+import 'package:vet_app/src/config/presentation/pages/config_main.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/crea_vet.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/show/show_vet.dart';
+import 'package:vet_app/src/home/presentation/pages/home.dart';
+import 'package:vet_app/src/offers/presentation/pages/offers.dart';
+import 'package:vet_app/src/registros/presentation/pages/attentions.dart';
+import 'package:vet_app/src/establishments/presentation/pages/establishments.dart';
+import 'package:vet_app/src/stats/presentation/pages/stats.dart';
+import 'package:vet_app/src/userClients/presentation/user_clients.dart';
 
 class NameRoutes {
-  static final String splash = '/';
-  static final String register = '/register';
-  static final String login = '/login';
-  static final String home = '/home';
-  static final String calendar = '/calendar';
-  static final String attentions = '/attentions';
-  static final String stats = '/stats';
-  static final String offers = '/offers';
-  static final String establishments = '/establishments';
-  static final String workers = '/workers';
-  static final String config = '/config';
+  static String splash = '/';
+  // static  String register = '/register';
+  static String login = '/login';
+  static String home = '/home';
+  static String calendar = '/calendar';
+  static String attentions = '/attentions';
+  static String stats = '/stats';
+  static String offers = '/offers';
+  static String establishments = '/establishments';
+  // static String workers = '/workers';
+  static String chats = '/chats';
+  static String clientes = '/clients';
+  static String config = '/config';
+
+  static String atenderBooking = '/booking'; //atender *
+  // static String historialPet = '/history'; //atender *
 }
 
 abstract class AppPages {
   static final pages = [
     GetPage(
-      name: '/uid/:user',
-      page: () => VetMain(),
-    ),
-    GetPage(
       name: NameRoutes.splash,
-      binding: GlobalBinding(),
       page: () => SplashView(),
-    ),
-    GetPage(
-      name: NameRoutes.register,
-      page: () => RegisterMain(),
     ),
     GetPage(
       name: NameRoutes.login,
@@ -53,8 +47,15 @@ abstract class AppPages {
     ),
     GetPage(
       name: NameRoutes.home,
-      binding: HomeBinding(),
       page: () => HomeMain(),
+      middlewares: [GlobalMiddleware()],
+    ),
+    GetPage(
+      name: NameRoutes.atenderBooking,
+      // name: '${NameRoutes.atenderBooking}/:id',
+
+      ///:id -atender reserva
+      page: () => AtenderMain(),
       middlewares: [GlobalMiddleware()],
     ),
     GetPage(
@@ -79,14 +80,12 @@ abstract class AppPages {
     ),
     GetPage(
       name: NameRoutes.establishments,
-      binding: EstablishmentsBinding(),
       page: () => EstablishmentsMain(),
       middlewares: [GlobalMiddleware()],
       children: [
         GetPage(
           name: '/create',
           page: () => CreateVetMain(),
-          // binding:
         ),
         GetPage(
           name: '/show',
@@ -95,13 +94,24 @@ abstract class AppPages {
       ],
     ),
     GetPage(
-      name: NameRoutes.workers,
-      page: () => WorkersMain(),
+      name: NameRoutes.chats,
+      page: () => ChatsMain(),
+      middlewares: [GlobalMiddleware()],
+    ),
+    GetPage(
+      name: NameRoutes.clientes,
+      page: () => UserClientsMain(),
       middlewares: [GlobalMiddleware()],
     ),
     GetPage(
       name: NameRoutes.config,
       page: () => ConfigMain(),
+      middlewares: [GlobalMiddleware()],
+    ),
+    //
+    GetPage(
+      name: '/history/:pet',
+      page: () => PetHistoryPage(),
       middlewares: [GlobalMiddleware()],
     ),
   ];

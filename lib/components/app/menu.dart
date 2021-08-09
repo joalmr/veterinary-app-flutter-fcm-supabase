@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/assets/data/menuData.dart';
-import 'package:vet_app/assets/images/images.dart';
+import 'package:vet_app/resources/data/menu_data.dart';
+import 'package:vet_app/resources/images/images.dart';
 
 class MenuDrawer extends StatelessWidget {
-  const MenuDrawer({Key key}) : super(key: key);
+  const MenuDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             boxShadow: [BoxShadow(color: Colors.black45)],
           ),
@@ -22,7 +22,8 @@ class MenuDrawer extends StatelessWidget {
                 height: 60,
                 width: double.maxFinite,
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 15.0),
                   alignment: Alignment.centerLeft,
                   child: Image(
                     image: AssetImage(imgLogoProypet),
@@ -34,7 +35,7 @@ class MenuDrawer extends StatelessWidget {
                   children: dataMenu
                       .map(
                         (e) => ListTile(
-                          leading: Icon(e['icon']),
+                          leading: Icon(e['icon'] as IconData),
                           title: Text(e['name']),
                           onTap: () {
                             Get.offNamed(e['page']);
@@ -45,8 +46,8 @@ class MenuDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Configuración'),
+                leading: const Icon(Icons.settings),
+                title: const Text('Configuración'),
                 onTap: () => Get.toNamed('/config'),
               ),
             ],
@@ -56,3 +57,4 @@ class MenuDrawer extends StatelessWidget {
     );
   }
 }
+//veterinaria@proypet.com
