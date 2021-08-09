@@ -6,7 +6,7 @@ on:
 
 jobs:
   
-  build_appbundle:
+  build_web:
     name: Build Flutter (Web)
     runs-on: ubuntu-latest
     steps:
