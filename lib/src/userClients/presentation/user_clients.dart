@@ -14,7 +14,6 @@ class UserClientsMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetX<ClientsController>(
-      // init: ClientsController(),
       builder: (_) {
         return MainLayout(
           drawerActive: true,
@@ -35,7 +34,7 @@ class UserClientsMain extends StatelessWidget {
           ),
           body: _.loadClients.value
               ? Center(
-                  child: Text('No tiene chats de petlovers'),
+                  child: Text('No tiene petlovers'),
                 )
               : UserClientsApp(),
         );

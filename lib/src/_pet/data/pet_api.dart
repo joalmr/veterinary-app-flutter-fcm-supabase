@@ -14,7 +14,8 @@ class PetClientApi extends PetClientInterface {
       url,
       headers: headersToken(),
     );
-
+    print('pet client');
+    print(response.body);
     final petResponse = petClientFromJson(response.body);
     return petResponse;
   }

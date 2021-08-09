@@ -5,7 +5,6 @@ import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 import '../components/container_stat_client.dart';
 import '../mascota/atender_mascota.dart';
-// import '../mascota/x_mascota_cliente.dart';
 import '../mascota/mascota_cliente_agregar.dart';
 
 class ClienteVista extends StatelessWidget {
