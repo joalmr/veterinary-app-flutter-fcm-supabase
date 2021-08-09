@@ -1,8 +1,10 @@
+[![CI](https://github.com/joalmr/veterinary_app/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/joalmr/veterinary_app/actions/workflows/ci.yml)
+
 # vet_app
 
 este repositorio cuenta con github actions para el buidl web
 
-# prueba github actions
+# github actions
 
 ## for run web
 flutter run -d chrome --web-renderer html
