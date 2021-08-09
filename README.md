@@ -1,5 +1,7 @@
 # vet_app
 
+este repositorio cuenta con github actions para el buidl web
+
 ## for run web
 flutter run -d chrome --web-renderer html
 
