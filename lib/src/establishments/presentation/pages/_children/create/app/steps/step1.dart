@@ -2,50 +2,49 @@ import 'package:easy_mask/easy_mask.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/dataTipo.dart';
-
-
+import 'package:vet_app/src/establishments/domain/create/create_vet_controller.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/data_tipo.dart';
 
 class Step1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetX<CreateVetController>(
       builder: (_) {
-        return Container(
+        return SizedBox(
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Nombre'),
+                decoration: const InputDecoration(labelText: 'Nombre'),
                 controller: _.v.nameVet,
-                onChanged: (val) => _.entity.name = val,
+                onChanged: (val) => _.entity.value?.name = val,
                 textCapitalization: TextCapitalization.sentences,
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Teléfono'),
+                decoration: const InputDecoration(labelText: 'Teléfono'),
                 controller: _.v.phoneVet,
-                onChanged: (val) => _.entity.phone = val,
+                onChanged: (val) => _.entity.value?.phone = val,
                 keyboardType: TextInputType.number,
                 inputFormatters: [TextInputMask(mask: '999-999-999')],
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
-                decoration: InputDecoration(labelText: 'RUC'),
+                decoration: const InputDecoration(labelText: 'RUC'),
                 controller: _.v.rucVet,
-                onChanged: (val) => _.entity.ruc = val,
+                onChanged: (val) => _.entity.value?.ruc = val,
                 keyboardType: TextInputType.number,
                 inputFormatters: [TextInputMask(mask: '99999999999')],
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Web o red social'),
+                decoration:
+                    const InputDecoration(labelText: 'Web o red social'),
                 controller: _.v.webVet,
-                onChanged: (val) => _.entity.website = val,
+                onChanged: (val) => _.entity.value?.website = val,
               ),
-              SizedBox(height: 15),
-              Text('Tipo'),
+              const SizedBox(height: 15),
+              const Text('Tipo'),
               Material(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(5),
@@ -56,32 +55,30 @@ class Step1 extends StatelessWidget {
                       isExpanded: true,
                       value: _.vetType,
                       items: itemTipo.map((ItemService value) {
-                        return new DropdownMenuItem<String>(
+                        return DropdownMenuItem<String>(
                           value: value.id,
-                          child: new Text(value.name),
+                          child: Text(value.name!),
                         );
                       }).toList(),
-                      onChanged: (val) {
-                        print(val);
-                        _.vetType = val;
+                      onChanged: (String? val) {
+                        _.vetType = val!;
                       },
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 15),
-              Text('Servicios'),
+              const SizedBox(height: 15),
+              const Text('Servicios'),
               Wrap(
                 children: _.servicesVet
                     .map(
                       (item) => Container(
-                        margin: EdgeInsets.symmetric(horizontal: 2),
+                        margin: const EdgeInsets.symmetric(horizontal: 2),
                         child: TextButton(
-                          child: Text(item.name),
-                          onPressed: () => _.add2List(item.id),
+                          onPressed: () => _.add2List(item.id!),
                           style: TextButton.styleFrom(
-                            textStyle: TextStyle(fontSize: 10),
-                            padding: EdgeInsets.symmetric(
+                            textStyle: const TextStyle(fontSize: 10),
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 0.5, horizontal: 5.0),
                             alignment: Alignment.center,
                             backgroundColor: _.servicesVetSet.contains(item.id)
@@ -90,16 +87,17 @@ class Step1 extends StatelessWidget {
                             primary: _.servicesVetSet.contains(item.id)
                                 ? Colors.white
                                 : colorGreen,
-                            side: BorderSide(color: colorGreen),
+                            side: const BorderSide(color: colorGreen),
                           ),
+                          child: Text(item.name!),
                         ),
                       ),
                     )
                     .toList()
                     .cast<Widget>(),
               ),
-              SizedBox(height: 5),
-              SizedBox(height: 20),
+              const SizedBox(height: 5),
+              const SizedBox(height: 20),
             ],
           ),
         );

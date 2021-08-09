@@ -8,22 +8,22 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/bookings/domain/reprogramar/reprogramarController.dart';
+import 'package:vet_app/src/bookings/domain/reprogramar/reprogramar_controller.dart';
 
 class ReprogramarItem extends StatelessWidget {
-  final String bookingId;
-  final String petImg;
-  final String petName;
-  final String petBreed;
-  final String date;
-  final String time;
-  final String userName;
-  final String userPhone;
-  final Color color;
-  final String status;
+  final String? bookingId;
+  final String? petImg;
+  final String? petName;
+  final String? petBreed;
+  final String? date;
+  final String? time;
+  final String? userName;
+  final String? userPhone;
+  final Color? color;
+  final String? status;
 
   ReprogramarItem({
-    Key key,
+    Key? key,
     this.bookingId,
     this.petImg,
     this.petName,
@@ -54,11 +54,9 @@ class ReprogramarItem extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
                 child: SingleChildScrollView(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
@@ -71,7 +69,7 @@ class ReprogramarItem extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(5.0),
                                 child: CachedNetworkImage(
-                                  imageUrl: petImg,
+                                  imageUrl: petImg!,
                                   fit: BoxFit.cover,
                                   placeholder: (context, url) => Container(
                                     color: Colors.grey.shade200,
@@ -84,18 +82,17 @@ class ReprogramarItem extends StatelessWidget {
                           ),
                           SizedBox(width: 10),
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                petName,
+                                petName!,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
                               ),
                               Text(
-                                petBreed,
+                                petBreed!,
                                 style: TextStyle(
                                   fontSize: 14,
                                 ),
@@ -107,8 +104,6 @@ class ReprogramarItem extends StatelessWidget {
                                 ),
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
@@ -121,7 +116,7 @@ class ReprogramarItem extends StatelessWidget {
                                   ),
                                   SizedBox(width: 5),
                                   Text(
-                                    status,
+                                    status!,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w300,
                                       fontSize: 12.0,
@@ -130,13 +125,13 @@ class ReprogramarItem extends StatelessWidget {
                                 ],
                               ),
                               Text(
-                                userName,
+                                userName!,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
-                                userPhone,
+                                userPhone!,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -151,7 +146,7 @@ class ReprogramarItem extends StatelessWidget {
                       DateTimePicker(
                         dateMask: 'dd-MM-yyyy',
                         firstDate: DateTime.now(),
-                        lastDate: DateTime(DateTime.now().year+3),
+                        lastDate: DateTime(DateTime.now().year + 3),
                         dateLabelText: 'Fecha',
                         onChanged: (val) => _.fecha.value = val,
                       ),
@@ -164,19 +159,20 @@ class ReprogramarItem extends StatelessWidget {
                         controller: timeController,
                         readOnly: true,
                         onTap: () {
-                          final format = DateFormat("HH:mm");
+                          final format = DateFormat('HH:mm');
                           Navigator.of(context).push(
                             showPicker(
                               context: context,
                               value: pickedTime,
-                              onChange: (TimeOfDay newTime) => pickedTime = newTime,
+                              onChange: (TimeOfDay newTime) =>
+                                  pickedTime = newTime,
                               is24HrFormat: true,
                               minuteInterval: MinuteInterval.TEN,
                               maxMinute: 50,
                               barrierDismissible: false,
                               iosStylePicker: true,
-                              hourLabel: "horas",
-                              minuteLabel: "minutos",
+                              hourLabel: 'horas',
+                              minuteLabel: 'minutos',
                               okText: 'Aceptar',
                               cancelText: 'Cancelar',
                               onChangeDateTime: (DateTime dateTime) {
@@ -191,42 +187,41 @@ class ReprogramarItem extends StatelessWidget {
                       Center(
                         child: btnSecondary(
                           text: 'Reprogramar',
-                          color: Colors.grey[600],
-                          onPressed: () => _.reprogramar(bookingId),
+                          color: Colors.grey[600]!,
+                          onPressed: () => _.reprogramar(bookingId!),
                         ),
                       ),
-                      _.errorDateTime.value
-                          ? FadeIn(
-                              child: Container(
-                                margin: EdgeInsets.all(5),
-                                padding: EdgeInsets.all(5),
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                  color: colorRed,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 5),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        _.msgfecha.value,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      Text(
-                                        _.msghora.value,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ],
+                      if (_.errorDateTime.value)
+                        FadeIn(
+                          child: Container(
+                            margin: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(5),
+                            width: double.maxFinite,
+                            decoration: BoxDecoration(
+                              color: colorRed,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    _.msgfecha.value,
+                                    style: TextStyle(color: Colors.white),
                                   ),
-                                ),
+                                  Text(
+                                    _.msghora.value,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ],
                               ),
-                            )
-                          : SizedBox(height: 0),
+                            ),
+                          ),
+                        )
+                      else
+                        SizedBox(height: 0),
                     ],
                   ),
                 ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional_switch.dart';
-import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tabSelect.dart';
+import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tab_select.dart';
 
-import 'widgets/viewFuture.dart';
-import 'widgets/viewPass.dart';
-import 'widgets/viewToday.dart';
+import 'widgets/view_future.dart';
+import 'widgets/view_pass.dart';
+import 'widgets/view_today.dart';
 
 class AtenderView extends StatefulWidget {
-  const AtenderView({Key key}) : super(key: key);
+  AtenderView({Key? key}) : super(key: key);
 
   @override
   _AtenderViewState createState() => _AtenderViewState();
@@ -23,7 +23,6 @@ class _AtenderViewState extends State<AtenderView> {
         Container(
           margin: EdgeInsets.only(left: 20.0, top: 15, bottom: 5),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
                 borderRadius: BorderRadius.circular(20.0),

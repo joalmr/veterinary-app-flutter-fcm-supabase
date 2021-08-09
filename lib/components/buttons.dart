@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 Widget btnPrimary({
-  @required String text,
-  @required Function onPressed,
+  required String text,
+  required void Function()? onPressed,
 }) {
   return GestureDetector(
     onTap: onPressed,
@@ -11,7 +11,7 @@ Widget btnPrimary({
       height: 48,
       decoration: BoxDecoration(
         color: colorMain,
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(16.0),
         ),
         boxShadow: <BoxShadow>[
@@ -26,7 +26,7 @@ Widget btnPrimary({
         child: Text(
           text,
           textAlign: TextAlign.left,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 16.5,
             letterSpacing: 0.0,
@@ -50,15 +50,14 @@ Widget btnPrimary({
 }
 
 Widget btnSecondary({
-  @required String text,
-  @required Function onPressed,
+  required String text,
+  required void Function()? onPressed,
   Color color = colorMain,
 }) {
   return TextButton(
-    child: Text(text),
     onPressed: onPressed,
     style: TextButton.styleFrom(
-      padding: EdgeInsets.symmetric(horizontal: 15.0), //vertical: 15.0,
+      padding: const EdgeInsets.symmetric(horizontal: 15.0), //vertical: 15.0,
       alignment: Alignment.center,
       primary: color,
       side: BorderSide(color: color),
@@ -66,24 +65,25 @@ Widget btnSecondary({
         borderRadius: BorderRadius.circular(16.0),
       ),
     ),
+    child: Text(text),
   );
 }
 
 Widget btnAltern({
-  @required String text,
-  @required Function onPressed,
+  required String text,
+  required void Function()? onPressed,
   Color color = Colors.black54,
   bool bold = false,
 }) {
   return TextButton(
-    child: Text(text),
     onPressed: onPressed,
     style: TextButton.styleFrom(
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
       textStyle: TextStyle(
         fontWeight: bold ? FontWeight.bold : FontWeight.normal,
       ),
       primary: color,
     ),
+    child: Text(text),
   );
 }

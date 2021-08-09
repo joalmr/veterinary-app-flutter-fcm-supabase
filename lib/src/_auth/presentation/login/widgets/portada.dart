@@ -5,7 +5,7 @@ import 'package:vet_app/resources/images/images.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 class Portada extends StatelessWidget {
-  const Portada({Key key}) : super(key: key);
+  const Portada({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +25,20 @@ class Portada extends StatelessWidget {
           children: <Widget>[
             SizedBox(width: 25.0),
             Text(
-              "Be",
+              'Be',
               style: TextStyle(
-                fontSize: 62,
+                fontSize: 60,
                 fontWeight: FontWeight.w900,
               ),
             ),
-            SizedBox(width: 20.0),
+            SizedBox(width: 15.0),
             RotateAnimatedTextKit(
               repeatForever: true,
-              text: ["Carefull", "Happy", "Proypet"],
-              textStyle: TextStyle(
-                fontSize: 62,
+              text: ['Carefull', 'Happy', 'Proypet'],
+              textStyle: const TextStyle(
+                fontSize: 60,
                 fontWeight: FontWeight.w900,
               ),
-              textAlign: TextAlign.start,
             ),
           ],
         ),

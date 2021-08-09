@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-Widget subHeader({@required title}) {
+Widget subHeader({required String title}) {
   return Container(
-    margin: EdgeInsets.only(
+    margin: const EdgeInsets.only(
       left: 30.0,
       right: 30.0,
       top: 5.0,
@@ -10,7 +10,7 @@ Widget subHeader({@required title}) {
     ),
     child: Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 14.0,
       ),

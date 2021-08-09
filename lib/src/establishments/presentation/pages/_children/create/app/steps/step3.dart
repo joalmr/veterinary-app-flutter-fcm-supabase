@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/resources/utils/days/diaSemana.dart';
-import 'package:vet_app/src/establishments/domain/create/createVetController.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/checkHorario.dart';
-import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/dataTipo.dart';
-
-
+import 'package:vet_app/resources/utils/days/dia_semana.dart';
+import 'package:vet_app/src/establishments/domain/create/create_vet_controller.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/check_horario.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/widgets/data_tipo.dart';
 
 class Step3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetX<CreateVetController>(
       builder: (_) {
-        return Container(
+        return SizedBox(
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             children: [
-              SizedBox(height: 15),
-              Text(
+              const SizedBox(height: 15),
+              const Text(
                 'Personal',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Divider(),
-              Text('Tipo'),
+              const Divider(),
+              const Text('Tipo'),
               Material(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(5),
@@ -33,45 +31,46 @@ class Step3 extends StatelessWidget {
                       isExpanded: true,
                       value: _.personalType,
                       items: personalTipo.map((ItemService value) {
-                        return new DropdownMenuItem<String>(
+                        return DropdownMenuItem<String>(
                           value: value.id,
-                          child: new Text(value.name),
+                          child: Text(value.name!),
                         );
                       }).toList(),
-                      onChanged: (val) {
-                        print(val);
-                        _.personalType = val;
+                      onChanged: (String? val) {
+                        _.personalType = val!;
                       },
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Nombre y apellido'),
+                decoration:
+                    const InputDecoration(labelText: 'Nombre y apellido'),
                 controller: _.v.personalNameVet,
                 textCapitalization: TextCapitalization.words,
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               _.personalType == '2'
                   ? Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormField(
-                          decoration: InputDecoration(labelText: 'Código CMV'),
+                          decoration:
+                              const InputDecoration(labelText: 'Código CMV'),
                           controller: _.v.personalCodeVet,
                           keyboardType: TextInputType.number,
                         ),
                       ],
                     )
-                  : SizedBox(height: 0),
-              SizedBox(height: 15),
-              Text(
+                  : const SizedBox(height: 0),
+              const SizedBox(height: 15),
+              const Text(
                 'Horario',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               for (var i = 0; i < 7; i++)
                 CheckHorario(
                   iniController: _.v.iniController[i],
@@ -79,37 +78,37 @@ class Step3 extends StatelessWidget {
                   day: diaSemana[i],
                   index: i,
                 ),
-              SizedBox(height: 15),
-              Text(
+              const SizedBox(height: 15),
+              const Text(
                 'Precios',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Consulta'),
+                decoration: const InputDecoration(labelText: 'Consulta'),
                 controller: _.v.moneyConsulta,
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Desparasitación'),
+                decoration: const InputDecoration(labelText: 'Desparasitación'),
                 controller: _.v.moneyDesparasita,
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Vacuna'),
+                decoration: const InputDecoration(labelText: 'Vacuna'),
                 controller: _.v.moneyVacuna,
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Grooming'),
+                decoration: const InputDecoration(labelText: 'Grooming'),
                 controller: _.v.moneyGrooming,
                 keyboardType: TextInputType.number,
               ),
-              SizedBox(height: 5),
-              SizedBox(height: 20),
+              const SizedBox(height: 5),
+              const SizedBox(height: 20),
             ],
           ),
         );
