@@ -46,8 +46,8 @@ class ResultUserClient {
 
   factory ResultUserClient.fromJson(Map<String, dynamic> json) =>
       ResultUserClient(
-        amount: json['amount'].toDouble(),
-        attentions: json['attentions'],
+        amount: json['amount'].toDouble()??0.0,
+        attentions: json['attentions']??0,
         user: User.fromJson(json['user']),
       );
 
@@ -65,7 +65,7 @@ class User {
     this.lastname,
     this.phone,
     this.email,
-    this.settings,
+    // this.settings,
     this.pets,
   });
 
@@ -74,7 +74,7 @@ class User {
   String? lastname;
   String? phone;
   String? email;
-  Settings? settings;
+  // Settings? settings;
   List<PetClient>? pets;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -83,7 +83,7 @@ class User {
         lastname: json['lastname'],
         phone: json['phone'],
         email: json['email'],
-        settings: Settings.fromJson(json['settings']),
+        // settings: Settings.fromJson(json['settings']),
         pets: List<PetClient>.from(
             json['pets'].map((x) => PetClient.fromJson(x))),
       );
@@ -94,7 +94,7 @@ class User {
         'lastname': lastname,
         'phone': phone,
         'email': email,
-        'settings': settings!.toJson(),
+        // 'settings': settings!.toJson(),
         'pets': List<dynamic>.from(pets!.map((x) => x.toJson())),
       };
 }

@@ -31,7 +31,11 @@ class _MascotaClienteAgregarState extends State<MascotaClienteAgregar> {
           appBar: AppBar(
             title: Text('Agregar mascota'),
           ),
-          body: ListView(
+          body: 
+          Center(child: 
+          Container(
+            width: context.width < 900 ? double.maxFinite : 800,
+            child: ListView(
             padding: EdgeInsets.all(8),
             children: [
               Text('Tipo mascota'),
@@ -207,6 +211,11 @@ class _MascotaClienteAgregarState extends State<MascotaClienteAgregar> {
               ),
             ],
           ),
+
+          ),
+          )
+          
+           
         );
       },
     );

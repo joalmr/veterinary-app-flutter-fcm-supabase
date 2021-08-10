@@ -49,7 +49,7 @@ class VetList extends StatelessWidget {
                       aprobado: establecimiento.status!,
                       tipo: establecimiento.type!,
                     ),
-                ]),
+                ],),
               ),
             ],
           ),

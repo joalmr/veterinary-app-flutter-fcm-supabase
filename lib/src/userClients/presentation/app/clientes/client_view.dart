@@ -18,7 +18,12 @@ class ClienteVista extends StatelessWidget {
               ? Center(
                   child: CircularProgressIndicator(),
                 )
-              : Column(
+              : 
+              Center(child: 
+              
+              Container(
+                width: context.width < 900 ? double.maxFinite : 800,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
@@ -59,7 +64,33 @@ class ClienteVista extends StatelessWidget {
                     ),
                     SizedBox(
                       width: double.maxFinite,
-                      child: SingleChildScrollView(
+                      child: 
+                      _.resultUserClient.value!.user!.pets!.isEmpty?
+                           Column(
+                             children: [
+                               Text('No tiene mascotas', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),),
+                               Padding(
+                              padding: EdgeInsets.all(4.0),
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(100),
+                                onTap: () {
+                                  Get.to(MascotaClienteAgregar());
+                                },
+                                child: CircleAvatar(
+                                  radius: 45,
+                                  backgroundColor: colorMain,
+                                  child: Icon(
+                                    Icons.add_rounded,
+                                    size: 45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                             ],
+                           )
+                           :
+                      SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
@@ -171,6 +202,10 @@ class ClienteVista extends StatelessWidget {
                     SizedBox(height: 20),
                   ],
                 ),
+              ),
+              ),
+              
+              
         );
       },
     );

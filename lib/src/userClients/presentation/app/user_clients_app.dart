@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 
 class UserClientsApp extends StatelessWidget {
@@ -35,10 +36,11 @@ class UserClientsApp extends StatelessWidget {
                         final cliente = _.myClients[index];
                         return ListTile(
                           leading: CircleAvatar(
+                            backgroundColor: colorMain.withOpacity(0.6),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: Icon(
-                                Icons.accessibility_new_rounded,
+                                Icons.person,
                                 color: Colors.white,
                                 size: 32,
                               ),

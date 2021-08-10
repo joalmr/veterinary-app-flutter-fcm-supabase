@@ -9,7 +9,11 @@ class VetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<EstablishmentsController>(
       builder: (_) {
-        return ListView.builder(
+        return 
+        _.establecimientos.isEmpty ?
+        Center(child: Text('No tiene establecimientos'),)
+        :
+         ListView.builder(
           itemCount: _.establecimientos.length,
           itemBuilder: (BuildContext context, int index) {
             final establecimiento = _.establecimientos[index];
@@ -23,11 +27,6 @@ class VetsView extends StatelessWidget {
             );
           },
         );
-        // RefreshIndicator(
-        //   key: refreshKey,
-        //   onRefresh: _.refresh,
-        //   child: ,
-        // );
       },
     );
   }

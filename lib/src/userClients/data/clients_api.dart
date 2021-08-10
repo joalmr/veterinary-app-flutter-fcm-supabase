@@ -86,6 +86,7 @@ class ClientsApi extends ClientsInterface {
         urlBase!, '$pathBase/establishment/$establishment/client/$user');
 
     final http.Response response = await http.get(url, headers: headersToken());
+    
     final userClient = userClientModelFromJson(response.body);
 
     return userClient;

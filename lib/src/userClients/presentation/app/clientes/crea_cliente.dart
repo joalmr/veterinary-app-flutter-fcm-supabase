@@ -19,7 +19,13 @@ class CreaCliente extends StatelessWidget {
           appBar: AppBar(
             title: Text('Crear cliente'),
           ),
-          body: ListView(
+          body:
+          Center(child:
+          
+          Container(
+
+            width: context.width < 900 ? double.maxFinite : 800,
+            child: ListView(
             padding: EdgeInsets.all(8),
             children: [
               TextFormField(
@@ -80,6 +86,10 @@ class CreaCliente extends StatelessWidget {
               ),
             ],
           ),
+          ),
+          ),
+          
+           
         );
       },
     );

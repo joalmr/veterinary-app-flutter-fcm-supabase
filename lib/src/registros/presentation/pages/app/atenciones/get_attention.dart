@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_rich_text/easy_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/calcula_edad.dart';
 import 'package:vet_app/src/registros/domain/get_attention_controller.dart';
@@ -14,10 +15,9 @@ class GetAttention extends StatelessWidget {
     return GetX<GetAttentionsController>(
         init: GetAttentionsController(),
         builder: (_) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Detalle de atención'),
-            ),
+          return MainLayout(
+            drawerActive: true, 
+            title: 'Detalle de atención',
             body: _.loadingPage.value
                 ? Center(
                     child: CircularProgressIndicator(),
