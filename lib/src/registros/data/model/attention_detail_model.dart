@@ -56,7 +56,7 @@ class ResultAttentionDetail {
 
   factory ResultAttentionDetail.fromJson(Map<String, dynamic> json) =>
       ResultAttentionDetail(
-        attentionAmount: json['attention_amount'] ?? '0',
+        attentionAmount: json['attention_amount']?.toString() ?? '0',
         attentionDate: DateTime.parse(json['attention_date']),
         attentionId: json['attention_id'],
         attentionDetails: json[
