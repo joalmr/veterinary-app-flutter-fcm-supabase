@@ -34,9 +34,7 @@ class AttentionApi extends AttentionInterface {
     );
 
     final http.Response response = await http.get(url, headers: headersToken());
-    // TODO:
-    print('attention detail');
-    print(response.body);
+
     final attention = attentionDetailModelFromJson(response.body);
 
     return attention;

@@ -1,14 +1,32 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_rich_text/easy_rich_text.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/calcula_edad.dart';
 import 'package:vet_app/src/registros/domain/get_attention_controller.dart';
 
-class GetAttention extends StatelessWidget {
+import 'get_attention/detail.dart';
+
+class GetAttention extends StatefulWidget {
   const GetAttention({Key? key}) : super(key: key);
+
+  @override
+  _GetAttentionState createState() => _GetAttentionState();
+}
+
+class _GetAttentionState extends State<GetAttention> {
+  String? _directoryPath;
+
+  void _selectFolder() {
+    FilePicker.platform.getDirectoryPath().then((value) {
+      setState(() => _directoryPath = value);
+    });
+    print(_directoryPath);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +34,7 @@ class GetAttention extends StatelessWidget {
         init: GetAttentionsController(),
         builder: (_) {
           return MainLayout(
-            drawerActive: true, 
+            drawerActive: true,
             title: 'Detalle de atención',
             body: _.loadingPage.value
                 ? Center(
@@ -181,7 +199,6 @@ class GetAttention extends StatelessWidget {
                           ),
                         ),
                       ),
-                      //
                       Expanded(
                         child: DefaultTabController(
                           length: 2,
@@ -206,14 +223,57 @@ class GetAttention extends StatelessWidget {
                                 child: TabBarView(
                                   children: <Widget>[
                                     Container(
-                                      color: colorBrown1,
+                                      child: ListView(
+                                        children: [
+                                          _.attention.value.result!
+                                                      .attentionDetails !=
+                                                  null
+                                              ? detailAttention(_
+                                                  .attention
+                                                  .value
+                                                  .result!
+                                                  .attentionDetails)
+                                              : SizedBox(height: 0)
+                                        ],
+                                      ),
                                     ),
                                     Container(
-                                      color: colorBrown2,
+                                      child: Center(
+                                        child: btnSecondary(
+                                          text: 'Subir archivo',
+                                          onPressed: () {
+                                            _selectFolder();
+                                          },
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
+                              Container(
+                                height: 80,
+                                width: double.maxFinite,
+                                color: Colors.grey[300],
+                                padding: EdgeInsets.only(right: 20),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text('Monto'),
+                                      Text(
+                                        _.attention.value.result!
+                                            .attentionAmount!,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ),

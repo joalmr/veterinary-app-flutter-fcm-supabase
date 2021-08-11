@@ -19,12 +19,12 @@ class WorkersController extends GetxController {
   RxList<Invitation> workersInvitation = <Invitation>[].obs;
 
   @override
-  void onReady() {
+  void onInit() {
     init();
-    if(prefUser.userRol != 'moderator'){
+    if (prefUser.userRol != 'moderator') {
       Get.offNamed(NameRoutes.home);
     }
-    super.onReady();
+    super.onInit();
   }
 
   init() => _init();

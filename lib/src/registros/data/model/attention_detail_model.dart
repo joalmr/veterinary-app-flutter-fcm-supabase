@@ -33,6 +33,7 @@ class AttentionDetailModel {
 
 class ResultAttentionDetail {
   ResultAttentionDetail({
+    this.attentionAmount,
     this.attentionDate,
     this.attentionId,
     this.attentionDetails,
@@ -43,9 +44,10 @@ class ResultAttentionDetail {
     this.userName,
   });
 
+  String? attentionAmount;
   DateTime? attentionDate;
   String? attentionId;
-  AttentionDetails? attentionDetails;
+  dynamic attentionDetails; //AttentionDetails?
   String? petBreed;
   String? petId;
   String? petName;
@@ -54,9 +56,11 @@ class ResultAttentionDetail {
 
   factory ResultAttentionDetail.fromJson(Map<String, dynamic> json) =>
       ResultAttentionDetail(
+        attentionAmount: json['attention_amount'] ?? '0',
         attentionDate: DateTime.parse(json['attention_date']),
         attentionId: json['attention_id'],
-        attentionDetails: AttentionDetails.fromJson(json['attention_details']),
+        attentionDetails: json[
+            'attention_details'], // AttentionDetails.fromJson(json['attention_details']),
         petBreed: json['pet_breed'],
         petId: json['pet_id'],
         petName: json['pet_name'],
@@ -67,7 +71,7 @@ class ResultAttentionDetail {
   Map<String, dynamic> toJson() => {
         'attention_date': attentionDate!.toIso8601String(),
         'attention_id': attentionId,
-        'attention_details': attentionDetails!.toJson(),
+        // 'attention_details': attentionDetails!.toJson(),
         'pet_breed': petBreed,
         'pet_id': petId,
         'pet_name': petName,

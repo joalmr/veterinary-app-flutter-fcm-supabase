@@ -44,9 +44,9 @@ class ClientsController extends GetxController {
   Breed? razaSeleccionada;
 
   @override
-  void onReady() {
+  void onInit() {
     getClients();
-    super.onReady();
+    super.onInit();
   }
 
   getClients() async {

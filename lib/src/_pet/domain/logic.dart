@@ -12,12 +12,12 @@ class PetHistoryLogic extends GetxController {
   final loadingPage = true.obs;
 
   @override
-  Future<void> onReady() async {
+  Future<void> onInit() async {
     petData.value = await _repo.getPet(Get.parameters['pet'].toString());
     petHistory.value =
         await _repo.getPetHistory(Get.parameters['pet'].toString());
     loadingPage.value = false;
 
-    super.onReady();
+    super.onInit();
   }
 }

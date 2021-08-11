@@ -44,9 +44,9 @@ class CalendarController extends GetxController {
   RxString descripcion = ''.obs;
 
   @override
-  void onReady() {
+  void onInit() {
     loadCalendar();
-    super.onReady();
+    super.onInit();
   }
 
   void loadCalendar() {
