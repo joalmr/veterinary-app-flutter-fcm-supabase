@@ -1,4 +1,4 @@
-package com.joalmr.veterinary
+package com.example.vetproypet
 
 import io.flutter.embedding.android.FlutterActivity
 

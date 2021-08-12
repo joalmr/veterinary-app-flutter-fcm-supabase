@@ -52,6 +52,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "957887873262-1k4slp3p1kn3t7299ifje23rln743s4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vetproypet",
+            "certificate_hash": "1ddda5ea346b1e5c4dcd8623cadabc414d44c49c"
+          }
+        },
+        {
           "client_id": "957887873262-ohtqu18lc376go7pbl2g1mad2g9l9anq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

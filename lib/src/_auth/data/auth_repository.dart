@@ -40,15 +40,12 @@ class AuthRepository extends AuthInterface {
   Future<void> sendTokenFire(String fireToken) async {
     final url = Uri.https(urlBase!, '/api/firebase');
     final fireData = {'token': fireToken};
-    try {
+    
       await http.post(
         url,
         headers: headersToken(),
-        body: fireData,
+        body: jsonEncode(fireData),
       );
-    } catch (ex) {
-      throw Exception(ex);
-    }
   }
 
   @override
