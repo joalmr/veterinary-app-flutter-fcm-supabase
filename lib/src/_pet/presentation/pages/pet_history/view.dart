@@ -107,18 +107,20 @@ class PetHistoryPage extends StatelessWidget {
                                   // Text(history.establishment!),
                                   // Text(history.establishmentLogo!),
                                   Text('Peso: ${history.weight!.toString()}'),
-                                  ExpansionTile(
-                                    title: iconRow(history.details),
-                                    //petHistory.value.result!.first.details
-                                    childrenPadding: EdgeInsets.all(2),
-                                    tilePadding: EdgeInsets.zero,
-                                    expandedAlignment: Alignment.topLeft,
-                                    children: [
-                                      detailRow(history.details,
-                                          history.establishmentId),
-                                      SizedBox(height: 10),
-                                    ],
-                                  ),
+                                  history.details == null
+                                      ? SizedBox(height: 0)
+                                      : ExpansionTile(
+                                          title: iconRow(history.details),
+                                          //petHistory.value.result!.first.details
+                                          childrenPadding: EdgeInsets.all(2),
+                                          tilePadding: EdgeInsets.zero,
+                                          expandedAlignment: Alignment.topLeft,
+                                          children: [
+                                            detailRow(history.details,
+                                                history.establishmentId),
+                                            SizedBox(height: 10),
+                                          ],
+                                        ),
                                   history.establishmentId != prefUser.vetId
                                       ? SizedBox(height: 0)
                                       : Row(

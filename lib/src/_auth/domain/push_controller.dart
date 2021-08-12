@@ -22,8 +22,6 @@ class PushController extends GetxController {
 
   void firebaseToken() {
     _firebaseMessaging.getToken().then((token) {
-      print('==firebase token==');
-      print(token);
       fireLogin.sendTokenFire(token!);
     });
   }
@@ -32,21 +30,18 @@ class PushController extends GetxController {
     FirebaseMessaging.instance
         .getInitialMessage()
         .then((RemoteMessage? message) {
-      print('getInitialMessage');
       if (message != null) {
         Get.find<GlobalController>().generalLoad();
       }
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage? message) {
-      print('onMessage');
       if (message != null) {
         Get.find<GlobalController>().generalLoad();
       }
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage? message) {
-      print('onMessageOpenedApp');
       if (message != null) {
         Get.find<GlobalController>().generalLoad();
       }
