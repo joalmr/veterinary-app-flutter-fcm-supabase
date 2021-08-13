@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   animate_do: ^2.0.0
+  top_snackbar_flutter: ^1.0.0
   animated_text_kit: ^4.0.0
   cached_network_image: ^3.0.0
   country_code_picker: ^2.0.1

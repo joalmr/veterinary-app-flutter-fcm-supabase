@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/header_http.dart';
 import 'package:vet_app/src/registros/data/model/attention_detail_model.dart';
@@ -38,5 +39,57 @@ class AttentionApi extends AttentionInterface {
     final attention = attentionDetailModelFromJson(response.body);
 
     return attention;
+  }
+
+  @override
+  Future<dynamic> downloadFile(String establishment, String attention) async {
+    final url = Uri.https(
+      urlBase!,
+      '$pathBase/establishment/$establishment/attention/$attention/file/download',
+    );
+
+    final response = await http.get(url, headers: headersToken());
+
+    return response.body;
+  }
+
+  @override
+  Future<dynamic> showFile(String establishment, String attention) async {
+    final url = Uri.https(
+      urlBase!,
+      '$pathBase/establishment/$establishment/attention/$attention/file',
+    );
+
+    final response = await http.get(url, headers: headersToken());
+
+    final dato = jsonDecode(response.body);
+
+    return dato['result']['file'] ?? null;
+  }
+
+  @override
+  Future<dynamic> uploadFile(
+      String establishment, String attention, File file) async {
+    final url = Uri.https(
+      urlBase!,
+      '/api/client/establishment/$establishment/attention/$attention/file',
+    );
+
+    final request = http.MultipartRequest('POST', url);
+    final pic = await http.MultipartFile.fromPath('file', file.path);
+
+    request.headers['Content-Type'] = 'application/json; charset=UTF-8';
+    request.headers['Authorization'] = 'Bearer ${prefUser.token}';
+    request.headers['X-Requested-With'] = 'XMLHttpRequest';
+
+    request.files.add(pic);
+    final response = await request.send();
+
+    final responseData = await response.stream.toBytes();
+    final responseString = String.fromCharCodes(responseData);
+
+    print(response.statusCode);
+
+    return responseString;
   }
 }

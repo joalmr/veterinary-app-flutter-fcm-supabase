@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 import 'package:vet_app/src/userClients/presentation/app/mascota/atender_mascota.dart';
@@ -26,15 +27,9 @@ class BuscaCliente extends StatelessWidget {
                       suffixIcon: IconButton(
                         onPressed: () {
                           if (buscaCliente.text.isEmpty) {
-                            ScaffoldMessenger.of(Get.context!)
-                                .showSnackBar(SnackBar(
-                              content: const Text(
-                                'Ingrese email de cliente',
-                                style: TextStyle(color: colorRed),
-                              ),
-                              duration: const Duration(seconds: 3),
-                              backgroundColor: Colors.black.withOpacity(0.85),
-                            ));
+                            snackBarMessage(
+                              message: 'Ingrese email de cliente',
+                            );
                           } else {
                             _.findClients(buscaCliente.text);
                           }

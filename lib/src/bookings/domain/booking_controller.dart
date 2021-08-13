@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
@@ -76,11 +77,9 @@ class BookingController extends GetxController {
 
   void add2List(dynamic dato) {
     if (listNextdate.where((x) => x.type == dato['type']).isNotEmpty) {
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: const Text('Ya tiene una próxima cita de este tipo'),
-        duration: const Duration(seconds: 3),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
+      snackBarMessage(
+        message: 'Ya tiene una próxima cita de este tipo',
+      );
       Get.back();
     } else {
       final temp = DataNextdate(
@@ -203,20 +202,11 @@ class BookingController extends GetxController {
       data,
     );
 
-    // if (!itemList.contains('consultation')) {
-    //   itemList.add('consultation');
-    // }
-
-    // montoTotal.value = montoTotal.value + consulta.value!.amount!;
     recorreDatosAtt();
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Consulta',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
+    snackBarMessage(
+      type: TypeSnackBar.SUCCESS,
+      message: 'Se guardó Consulta',
+    );
 
     Get.back();
   }
@@ -229,20 +219,11 @@ class BookingController extends GetxController {
       data,
     );
 
-    // if (!itemList.contains('surgery')) {
-    //   itemList.add('surgery');
-    // }
-
-    // montoTotal.value = montoTotal.value + cirugia.value!.amount!;
     recorreDatosAtt();
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Cirugía',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
+    snackBarMessage(
+      type: TypeSnackBar.SUCCESS,
+      message: 'Se guardó Cirugía',
+    );
     Get.back();
   }
 
@@ -254,20 +235,11 @@ class BookingController extends GetxController {
       data,
     );
 
-    // if (!itemList.contains('deworming')) {
-    //   itemList.add('deworming');
-    // }
-
-    // montoTotal.value = montoTotal.value + desparasita.value!.amount!;
     recorreDatosAtt();
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Desparasitación',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
+    snackBarMessage(
+      type: TypeSnackBar.SUCCESS,
+      message: 'Se guardó Desparasitación',
+    );
     Get.back();
   }
 
@@ -279,20 +251,11 @@ class BookingController extends GetxController {
       data,
     );
 
-    // if (!itemList.contains('grooming')) {
-    //   itemList.add('grooming');
-    // }
-
-    // montoTotal.value = montoTotal.value + grooming.value!.amount!;
     recorreDatosAtt();
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Grooming',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
+    snackBarMessage(
+      type: TypeSnackBar.SUCCESS,
+      message: 'Se guardó Grooming',
+    );
     Get.back();
   }
 
@@ -304,20 +267,11 @@ class BookingController extends GetxController {
       data,
     );
 
-    // if (!itemList.contains('vaccination')) {
-    //   itemList.add('vaccination');
-    // }
-
-    // montoTotal.value = montoTotal.value + vacunas.value!.amount!;
     recorreDatosAtt();
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Vacuna',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
+    snackBarMessage(
+      type: TypeSnackBar.SUCCESS,
+      message: 'Se guardó Vacuna',
+    );
     Get.back();
   }
 
@@ -329,20 +283,11 @@ class BookingController extends GetxController {
       data,
     );
 
-    // if (!itemList.contains('testing')) {
-    //   itemList.add('testing');
-    // }
-
-    // montoTotal.value = montoTotal.value + examenes.value!.amount!;
     recorreDatosAtt();
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Exámenes',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
+    snackBarMessage(
+      type: TypeSnackBar.SUCCESS,
+      message: 'Se guardó Exámenes',
+    );
     Get.back();
   }
 
@@ -354,20 +299,11 @@ class BookingController extends GetxController {
       data,
     );
 
-    // if (!itemList.contains('other')) {
-    //   itemList.add('other');
-    // }
-
-    // montoTotal.value = montoTotal.value + otros.value!.amount!;
     recorreDatosAtt();
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-      content: const Text(
-        'Se guardó Otros',
-        style: TextStyle(color: colorMain),
-      ),
-      duration: const Duration(seconds: 3),
-      backgroundColor: Colors.black.withOpacity(0.85),
-    ));
+    snackBarMessage(
+      type: TypeSnackBar.SUCCESS,
+      message: 'Se guardó Otros',
+    );
     Get.back();
   }
 
@@ -491,24 +427,14 @@ class BookingController extends GetxController {
 
     if (montoTotal.value == 0 || pesoController.numberValue == 0) {
       if (pesoController.numberValue == 0) {
-        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-          content: const Text(
-            'Debe registrar el peso',
-            style: TextStyle(color: colorRed),
-          ),
-          duration: const Duration(seconds: 3),
-          backgroundColor: Colors.black.withOpacity(0.85),
-        ));
+        snackBarMessage(
+          message: 'Debe registrar el peso',
+        );
         return;
       } else if (montoTotal.value == 0) {
-        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-          content: const Text(
-            'Debe registrar servicio',
-            style: TextStyle(color: colorRed),
-          ),
-          duration: const Duration(seconds: 3),
-          backgroundColor: Colors.black.withOpacity(0.85),
-        ));
+        snackBarMessage(
+          message: 'Debe registrar servicio',
+        );
         return;
       }
     } else {
@@ -519,25 +445,16 @@ class BookingController extends GetxController {
       );
 
       if (dataResponse['result'] == false) {
-        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-          content: Text(
-            'Oops! ocurrió un error',
-            style: TextStyle(color: colorRed),
-          ),
-          duration: const Duration(seconds: 3),
-          backgroundColor: Colors.black.withOpacity(0.85),
-        ));
+        snackBarMessage(
+          type: TypeSnackBar.ERROR,
+          message: 'Oops! ocurrió un error',
+        );
       } else {
         _global.generalLoad();
-
-        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-          content: const Text(
-            'Atencion finalizada',
-            style: TextStyle(color: colorMain),
-          ),
-          duration: const Duration(seconds: 3),
-          backgroundColor: Colors.black.withOpacity(0.85),
-        ));
+        snackBarMessage(
+          type: TypeSnackBar.SUCCESS,
+          message: 'Atencion finalizada',
+        );
         Get.back();
       }
     }

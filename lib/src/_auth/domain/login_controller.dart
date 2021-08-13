@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
@@ -54,23 +55,16 @@ class LoginController extends GetxController {
 
     final int logged = await authService.forgotPassword(email);
     if (logged == 200) {
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: const Text(
-          'Se le ha enviado un email a su dirección ingresada',
-          style: TextStyle(color: colorMain),
-        ),
-        duration: const Duration(seconds: 7),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
+      snackBarMessage(
+        message: 'Se le ha enviado un email a su dirección ingresada',
+        seconds: 7,
+      );
     } else {
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: const Text(
-          'Oops! ocurrió un error, inténtelo más tarde',
-          style: TextStyle(color: colorRed),
-        ),
-        duration: const Duration(seconds: 5),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
+      snackBarMessage(
+        type: TypeSnackBar.ERROR,
+        message: 'Oops! ocurrió un error, inténtelo más tarde',
+        seconds: 5,
+      );
     }
 
     btnOlvide.value = true;

@@ -13,7 +13,7 @@ class HomeMain extends StatelessWidget {
       builder: (_) {
         return MainLayout(
           drawerActive: true,
-          title: _.nameVet.value ?? '',
+          title: _.nameVet.value,
           actions: [
             IconButton(
               onPressed: () {

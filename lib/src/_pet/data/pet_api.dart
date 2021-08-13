@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/header_http.dart';
 import '_pet_interface.dart';

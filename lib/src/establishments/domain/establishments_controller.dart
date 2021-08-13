@@ -2,9 +2,11 @@ import 'package:get/get.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/establishment_model_lite.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/show_vet.dart';
+import 'package:vet_app/src/home/domain/home_controller.dart';
 
 class EstablishmentsController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
@@ -38,6 +40,7 @@ class EstablishmentsController extends GetxController {
     establecimientos.clear();
     final lista = await establishmentRepo.getAll();
     establecimientos.addAll(lista);
+
     carga = false;
   }
 
@@ -60,8 +63,8 @@ class EstablishmentsController extends GetxController {
     forStorage.vetLogo = logo;
 
     prefUser.vetData = vetStorageToJson(forStorage);
-
-    getAll();
+    Get.find<HomeController>().nameVet.value = name!;
+    Get.find<GlobalController>().generalLoad();
   }
 
   void favoriteVetToInit(String? id, String? name, String? logo) {
@@ -72,8 +75,9 @@ class EstablishmentsController extends GetxController {
     forStorage.vetLogo = logo;
 
     prefUser.vetData = vetStorageToJson(forStorage);
+    Get.find<HomeController>().nameVet.value = name!;
+    Get.find<GlobalController>().generalLoad();
 
-    getAll();
     Get.offNamedUntil(NameRoutes.home, (route) => false);
   }
 }

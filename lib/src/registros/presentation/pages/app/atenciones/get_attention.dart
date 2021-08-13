@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_rich_text/easy_rich_text.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/calcula_edad.dart';
@@ -11,23 +9,8 @@ import 'package:vet_app/src/registros/domain/get_attention_controller.dart';
 
 import 'get_attention/detail.dart';
 
-class GetAttention extends StatefulWidget {
+class GetAttention extends StatelessWidget {
   const GetAttention({Key? key}) : super(key: key);
-
-  @override
-  _GetAttentionState createState() => _GetAttentionState();
-}
-
-class _GetAttentionState extends State<GetAttention> {
-  String? _directoryPath;
-
-  void _selectFolder() {
-    FilePicker.platform.getDirectoryPath().then((value) {
-      setState(() => _directoryPath = value);
-    });
-    print(_directoryPath);
-  }
-
   @override
   Widget build(BuildContext context) {
     return GetX<GetAttentionsController>(
@@ -174,23 +157,23 @@ class _GetAttentionState extends State<GetAttention> {
                                           ),
                                         ],
                                       ),
-                                      EasyRichText(
-                                        'Condición corporal: ${_.petData.value!.result!.status!}',
-                                        defaultStyle: const TextStyle(
-                                          color: Colors.black38,
-                                          fontSize: 12,
-                                        ),
-                                        patternList: [
-                                          EasyRichTextPattern(
-                                            targetString: _
-                                                .petData.value!.result!.status
-                                                .toString(),
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                      // EasyRichText(
+                                      //   'Condición corporal: ${_.petData.value!.result!.status!}',
+                                      //   defaultStyle: const TextStyle(
+                                      //     color: Colors.black38,
+                                      //     fontSize: 12,
+                                      //   ),
+                                      //   patternList: [
+                                      //     EasyRichTextPattern(
+                                      //       targetString: _
+                                      //           .petData.value!.result!.status
+                                      //           .toString(),
+                                      //       style: const TextStyle(
+                                      //         fontWeight: FontWeight.bold,
+                                      //       ),
+                                      //     ),
+                                      //   ],
+                                      // ),
                                     ],
                                   ),
                                 ),
@@ -238,13 +221,76 @@ class _GetAttentionState extends State<GetAttention> {
                                       ),
                                     ),
                                     Container(
-                                      child: Center(
-                                        child: btnSecondary(
-                                          text: 'Subir archivo',
-                                          onPressed: () {
-                                            _selectFolder();
-                                          },
-                                        ),
+                                      child: Column(
+                                        children: [
+                                          Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: _.fileName.value.isEmpty
+                                                  ? Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child:
+                                                          Text('Sin archivos'),
+                                                    )
+                                                  : InkWell(
+                                                      onTap: () {},
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Text(
+                                                            _.fileName.value),
+                                                      )),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.1),
+                                          Container(
+                                            margin: const EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(2.0),
+                                            height: 120,
+                                            width: 250,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border:
+                                                  Border.all(color: colorMain),
+                                            ),
+                                            child: InkWell(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              onTap: () {
+                                                _.uploadFile();
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'Subir archivo',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w800,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '*Puede subir un archivo de hasta 8Mb',
+                                                    style:
+                                                        TextStyle(fontSize: 10),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
