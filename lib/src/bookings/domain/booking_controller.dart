@@ -204,7 +204,7 @@ class BookingController extends GetxController {
 
     recorreDatosAtt();
     snackBarMessage(
-      type: TypeSnackBar.SUCCESS,
+      type: TypeSnackBarName.SUCCESS,
       message: 'Se guardó Consulta',
     );
 
@@ -221,7 +221,7 @@ class BookingController extends GetxController {
 
     recorreDatosAtt();
     snackBarMessage(
-      type: TypeSnackBar.SUCCESS,
+      type: TypeSnackBarName.SUCCESS,
       message: 'Se guardó Cirugía',
     );
     Get.back();
@@ -237,7 +237,7 @@ class BookingController extends GetxController {
 
     recorreDatosAtt();
     snackBarMessage(
-      type: TypeSnackBar.SUCCESS,
+      type: TypeSnackBarName.SUCCESS,
       message: 'Se guardó Desparasitación',
     );
     Get.back();
@@ -253,7 +253,7 @@ class BookingController extends GetxController {
 
     recorreDatosAtt();
     snackBarMessage(
-      type: TypeSnackBar.SUCCESS,
+      type: TypeSnackBarName.SUCCESS,
       message: 'Se guardó Grooming',
     );
     Get.back();
@@ -269,7 +269,7 @@ class BookingController extends GetxController {
 
     recorreDatosAtt();
     snackBarMessage(
-      type: TypeSnackBar.SUCCESS,
+      type: TypeSnackBarName.SUCCESS,
       message: 'Se guardó Vacuna',
     );
     Get.back();
@@ -285,7 +285,7 @@ class BookingController extends GetxController {
 
     recorreDatosAtt();
     snackBarMessage(
-      type: TypeSnackBar.SUCCESS,
+      type: TypeSnackBarName.SUCCESS,
       message: 'Se guardó Exámenes',
     );
     Get.back();
@@ -301,7 +301,7 @@ class BookingController extends GetxController {
 
     recorreDatosAtt();
     snackBarMessage(
-      type: TypeSnackBar.SUCCESS,
+      type: TypeSnackBarName.SUCCESS,
       message: 'Se guardó Otros',
     );
     Get.back();
@@ -446,13 +446,13 @@ class BookingController extends GetxController {
 
       if (dataResponse['result'] == false) {
         snackBarMessage(
-          type: TypeSnackBar.ERROR,
+          type: TypeSnackBarName.ERROR,
           message: 'Oops! ocurrió un error',
         );
       } else {
         _global.generalLoad();
         snackBarMessage(
-          type: TypeSnackBar.SUCCESS,
+          type: TypeSnackBarName.SUCCESS,
           message: 'Atencion finalizada',
         );
         Get.back();

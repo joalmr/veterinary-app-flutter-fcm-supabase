@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/_pet/data/model/pet_client.dart';
@@ -68,18 +66,17 @@ class GetAttentionsController extends GetxController {
         upFile,
       );
       final datoJson = jsonDecode(response);
-      print(datoJson);
-      print(datoJson['message']);
+
       if (datoJson['message'] == 'File uploaded successfully') {
         snackBarMessage(
-          type: TypeSnackBar.SUCCESS,
+          type: TypeSnackBarName.SUCCESS,
           message: 'Se subió el archivo con éxito',
         );
         showFile();
       }
     } else {
       snackBarMessage(
-        type: TypeSnackBar.ERROR,
+        type: TypeSnackBarName.ERROR,
         message: 'El formato del archivo no es compatible',
       );
     }

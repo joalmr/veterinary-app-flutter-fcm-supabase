@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/snackbar.dart';
-import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 
@@ -64,7 +63,7 @@ class CreaCliente extends StatelessWidget {
                           emailController.text.isEmpty ||
                           phoneController.text.isEmpty) {
                         snackBarMessage(
-                          type: TypeSnackBar.ERROR,
+                          type: TypeSnackBarName.ERROR,
                           message: 'Complete los datos',
                           seconds: 7,
                         );

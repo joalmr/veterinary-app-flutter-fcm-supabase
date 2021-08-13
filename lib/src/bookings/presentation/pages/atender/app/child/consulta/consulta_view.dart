@@ -286,6 +286,7 @@ class ConsultaView extends StatelessWidget {
                               _.saveConsulta(temp);
                             } else {
                               snackBarMessage(
+                                type: TypeSnackBarName.ERROR,
                                 message: 'Falta ingresar monto o diagnóstico',
                               );
                             }

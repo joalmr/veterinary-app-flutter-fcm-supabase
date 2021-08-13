@@ -63,8 +63,11 @@ class AttentionApi extends AttentionInterface {
     final response = await http.get(url, headers: headersToken());
 
     final dato = jsonDecode(response.body);
-
-    return dato['result']['file'] ?? null;
+    if (dato['message'] == 'File uploaded successfully') {
+      return dato['result']['file'];
+    } else {
+      null;
+    }
   }
 
   @override
@@ -87,8 +90,6 @@ class AttentionApi extends AttentionInterface {
 
     final responseData = await response.stream.toBytes();
     final responseString = String.fromCharCodes(responseData);
-
-    print(response.statusCode);
 
     return responseString;
   }

@@ -157,23 +157,6 @@ class GetAttention extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      // EasyRichText(
-                                      //   'Condición corporal: ${_.petData.value!.result!.status!}',
-                                      //   defaultStyle: const TextStyle(
-                                      //     color: Colors.black38,
-                                      //     fontSize: 12,
-                                      //   ),
-                                      //   patternList: [
-                                      //     EasyRichTextPattern(
-                                      //       targetString: _
-                                      //           .petData.value!.result!.status
-                                      //           .toString(),
-                                      //       style: const TextStyle(
-                                      //         fontWeight: FontWeight.bold,
-                                      //       ),
-                                      //     ),
-                                      //   ],
-                                      // ),
                                     ],
                                   ),
                                 ),

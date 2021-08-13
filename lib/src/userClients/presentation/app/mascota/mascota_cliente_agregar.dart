@@ -190,7 +190,7 @@ class _MascotaClienteAgregarState extends State<MascotaClienteAgregar> {
                       onPressed: () {
                         if (petNameController.text.isEmpty || _raza == 0) {
                           snackBarMessage(
-                            type: TypeSnackBar.ERROR,
+                            type: TypeSnackBarName.ERROR,
                             message: 'Complete los datos',
                             seconds: 7,
                           );

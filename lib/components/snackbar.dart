@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
-class TypeSnackBar {
+class TypeSnackBarName {
   // ignore: constant_identifier_names
   static const INFO = 'info';
   // ignore: constant_identifier_names
@@ -13,7 +13,7 @@ class TypeSnackBar {
 
 void snackBarMessage({
   required String message,
-  String type = TypeSnackBar.INFO,
+  String type = TypeSnackBarName.INFO,
   int seconds = 3,
 }) {
   switch (type) {
@@ -44,7 +44,7 @@ void snackBarMessage({
         SnackBar(
           backgroundColor: Colors.transparent,
           duration: Duration(seconds: seconds),
-          content: CustomSnackBar.success(
+          content: CustomSnackBar.error(
             message: message,
           ),
         ),

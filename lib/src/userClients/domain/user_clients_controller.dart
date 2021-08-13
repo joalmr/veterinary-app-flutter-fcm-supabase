@@ -1,10 +1,7 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
-import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
@@ -105,7 +102,7 @@ class ClientsController extends GetxController {
 
     if (fecha.value.isEmpty || hora.value.isEmpty) {
       snackBarMessage(
-        type: TypeSnackBar.ERROR,
+        type: TypeSnackBarName.ERROR,
         message: 'Oops! Seleccione fecha u hora',
       );
     } else {
@@ -165,7 +162,7 @@ class ClientsController extends GetxController {
 
     if (responseJson['result'] == false) {
       snackBarMessage(
-        type: TypeSnackBar.ERROR,
+        type: TypeSnackBarName.ERROR,
         message: responseJson['message'],
       );
     } else {
