@@ -43,7 +43,9 @@ class ClientsController extends GetxController {
 
   @override
   void onInit() {
-    getClients();
+    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
+      getClients();
+    }
     super.onInit();
   }
 

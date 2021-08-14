@@ -5,6 +5,7 @@ import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/__global/domain/global_controller.dart';
+import 'package:vet_app/src/__new/new_establishment.dart';
 import 'package:vet_app/src/_auth/data/auth_repository.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
@@ -33,10 +34,18 @@ class LoginController extends GetxController {
     btnLogIn.value = false;
     final int logged = await authService.login(email, password);
     if (logged == 200) {
-      await initHome();
-      pushController.firebase(); //TODO: firebase
-      btnLogIn.value = true;
-      Get.offNamed(NameRoutes.home);
+      final establishment = await stablishmentService.getAll();
+
+      if (establishment.isEmpty) {
+        print('no tiene establecimiento');
+        btnLogIn.value = true;
+        Get.to(NewEstablishment());
+      } else {
+        await initHome();
+        pushController.firebase(); //TODO: firebase
+        btnLogIn.value = true;
+        Get.offNamed(NameRoutes.home);
+      }
     } else {
       errorLogIn.value = true;
       btnLogIn.value = true;
@@ -71,6 +80,7 @@ class LoginController extends GetxController {
   Future<void> initHome() async {
     if (prefUser.vetDataHas() == false) {
       final temp = await stablishmentService.getFirst();
+
       final VetStorage forStorage = VetStorage();
       forStorage.vetId = temp.id;
       forStorage.vetName = temp.name;
