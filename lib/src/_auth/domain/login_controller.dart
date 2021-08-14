@@ -5,9 +5,9 @@ import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/__global/domain/global_controller.dart';
-import 'package:vet_app/src/__new/new_establishment.dart';
 import 'package:vet_app/src/_auth/data/auth_repository.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
+import 'package:vet_app/src/establishments/presentation/pages/_children/create/crea_vet.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
 
 import 'push_controller.dart';
@@ -37,9 +37,10 @@ class LoginController extends GetxController {
       final establishment = await stablishmentService.getAll();
 
       if (establishment.isEmpty) {
-        print('no tiene establecimiento');
         btnLogIn.value = true;
-        Get.to(NewEstablishment());
+        //is web?
+        pushController.firebase();
+        Get.off(CreateVetMain());
       } else {
         await initHome();
         pushController.firebase(); //TODO: firebase

@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/days/dia_semana.dart';
 import 'package:vet_app/routes/routes.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/data/model/service_model.dart';
@@ -18,8 +19,6 @@ import 'create_vet_value.dart';
 class CreateVetController extends GetxController {
   final _repo = EstablishmentRepository();
   final v = CreateVetValue();
-
-
 
   final entity = Rxn<EstablecimientoEntity>();
   final prices = Rxn<PriceEstablecimientoEntity>();
@@ -173,7 +172,7 @@ class CreateVetController extends GetxController {
         await _setSchedule(idVet);
         await _setPrices(idVet);
         await _setDescription(idVet);
-
+        Get.find<GlobalController>().generalLoad();
       }
     });
   }
