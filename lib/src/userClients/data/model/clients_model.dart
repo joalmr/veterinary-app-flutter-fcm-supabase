@@ -37,7 +37,7 @@ class ResultClients {
     this.lastname,
     this.phone,
     this.email,
-    this.settings,
+    // this.settings,
   });
 
   String? id;
@@ -45,7 +45,7 @@ class ResultClients {
   String? lastname;
   String? phone;
   String? email;
-  Settings? settings;
+  // Settings? settings;
 
   factory ResultClients.fromJson(Map<String, dynamic> json) => ResultClients(
         id: json['id'],
@@ -53,7 +53,7 @@ class ResultClients {
         lastname: json['lastname'],
         phone: json['phone'],
         email: json['email'],
-        settings: Settings.fromJson(json['settings']),
+        // settings: Settings.fromJson(json['settings']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -62,7 +62,7 @@ class ResultClients {
         'lastname': lastname,
         'phone': phone,
         'email': email,
-        'settings': settings!.toJson(),
+        // 'settings': settings!.toJson(),
       };
 }
 

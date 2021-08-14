@@ -1,9 +1,7 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
-import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
@@ -44,9 +42,11 @@ class ClientsController extends GetxController {
   Breed? razaSeleccionada;
 
   @override
-  void onReady() {
-    getClients();
-    super.onReady();
+  void onInit() {
+    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
+      getClients();
+    }
+    super.onInit();
   }
 
   getClients() async {
@@ -103,14 +103,10 @@ class ClientsController extends GetxController {
     typeId.add(1);
 
     if (fecha.value.isEmpty || hora.value.isEmpty) {
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: const Text(
-          'Oops! Seleccione fecha u hora',
-          style: TextStyle(color: colorRed),
-        ),
-        duration: const Duration(seconds: 3),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: 'Oops! Seleccione fecha u hora',
+      );
     } else {
       bookingAt.value = '${fecha.value} ${hora.value}:00';
       await _createBooking(petId);
@@ -167,14 +163,10 @@ class ClientsController extends GetxController {
     final responseJson = jsonDecode(response);
 
     if (responseJson['result'] == false) {
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: Text(
-          responseJson['message'],
-          style: TextStyle(color: colorRed),
-        ),
-        duration: const Duration(seconds: 7),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: responseJson['message'],
+      );
     } else {
       await getClients();
       Get.back();

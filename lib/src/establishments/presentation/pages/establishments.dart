@@ -25,7 +25,7 @@ class EstablishmentsMain extends StatelessWidget {
                     icon: Icon(Icons.people_rounded),
                   )
           ],
-          floatingActionButton: FloatingActionButton(
+          floatingActionButton: GetPlatform.isWeb? SizedBox(height: 0) : FloatingActionButton(
             onPressed: () => Get.toNamed('/establishments/create'),
             child: const Icon(Icons.add_rounded),
           ),

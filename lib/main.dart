@@ -19,7 +19,7 @@ import 'src/userClients/domain/user_clients_controller.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
-  await dotenv.load(fileName: '.env.dev');
+  await dotenv.load(fileName: '.env');
   await Firebase.initializeApp();
   await GetStorage.init();
 

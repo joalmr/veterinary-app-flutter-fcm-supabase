@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/bookings/data/model/booking/grooming_booking.dart';
 import 'package:vet_app/src/bookings/domain/booking_controller.dart';
@@ -162,13 +163,8 @@ class _GroomingViewState extends State<GroomingView> {
                             );
                             _.saveGrooming(temp);
                           } else {
-                            ScaffoldMessenger.of(Get.context!).showSnackBar(
-                              SnackBar(
-                                content: const Text(
-                                    'Falta ingresar monto o servicio'),
-                                duration: const Duration(seconds: 3),
-                                backgroundColor: Colors.black.withOpacity(0.85),
-                              ),
+                            snackBarMessage(
+                              message: 'Falta ingresar monto o servicio',
                             );
                           }
                         },

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/__global/domain/global_controller.dart';
@@ -52,13 +53,9 @@ class ReprogramarController extends GetxController {
         final Map message = jsonDecode(resp.body);
 
         if (message.containsKey('message')) {
-          ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-            content: Text(
-              message['message'],
-            ),
-            duration: const Duration(seconds: 7),
-            backgroundColor: Colors.black.withOpacity(0.85),
-          ));
+          snackBarMessage(
+            message: message['message'],
+          );
         } else {
           // _homeController.getAllBookings();
           _global.generalLoad();

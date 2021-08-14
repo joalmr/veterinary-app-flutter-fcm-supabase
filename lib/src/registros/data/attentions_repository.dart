@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:vet_app/src/registros/data/model/attention_detail_model.dart';
 import 'package:vet_app/src/registros/data/model/attention_reg_model.dart';
 
@@ -17,5 +19,21 @@ class AttentionRepository extends AttentionInterface {
   Future<AttentionDetailModel> getAttentionDetail(
       String establishment, String atencion) {
     return _api.getAttentionDetail(establishment, atencion);
+  }
+
+  @override
+  Future<dynamic> downloadFile(String establishment, String attention) {
+    return _api.downloadFile(establishment, attention);
+  }
+
+  @override
+  Future<dynamic> showFile(String establishment, String attention) {
+    return _api.showFile(establishment, attention);
+  }
+
+  @override
+  Future<dynamic> uploadFile(
+      String establishment, String attention, File file) {
+    return _api.uploadFile(establishment, attention, file);
   }
 }

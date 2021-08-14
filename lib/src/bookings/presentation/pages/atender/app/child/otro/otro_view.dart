@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:vet_app/design/styles/styles.dart';
@@ -206,13 +207,9 @@ class _OtroViewState extends State<OtroView> {
                               );
                               _book.saveOtro(temp);
                             } else {
-                              ScaffoldMessenger.of(Get.context!)
-                                  .showSnackBar(SnackBar(
-                                content: const Text(
-                                    'Falta ingresar monto o servicio'),
-                                duration: const Duration(seconds: 3),
-                                backgroundColor: Colors.black.withOpacity(0.85),
-                              ));
+                              snackBarMessage(
+                                message: 'Falta ingresar monto o servicio',
+                              );
                             }
                           },
                         ),

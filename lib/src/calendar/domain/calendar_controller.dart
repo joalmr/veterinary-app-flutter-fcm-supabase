@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/calendar/data/calendar_repository.dart';
@@ -44,9 +45,11 @@ class CalendarController extends GetxController {
   RxString descripcion = ''.obs;
 
   @override
-  void onReady() {
-    loadCalendar();
-    super.onReady();
+  void onInit() {
+    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
+      loadCalendar();
+    }
+    super.onInit();
   }
 
   void loadCalendar() {
@@ -160,11 +163,9 @@ class CalendarController extends GetxController {
         hora.value.isEmpty ||
         integrantes.value.isEmpty ||
         descripcion.value.isEmpty) {
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: const Text('Complete todos los campos'),
-        duration: const Duration(seconds: 3),
-        backgroundColor: Colors.black.withOpacity(0.85),
-      ));
+      snackBarMessage(
+        message: 'Complete todos los campos',
+      );
     } else {
       final tempEvent = CalendarEvent(
         title: titulo.value,

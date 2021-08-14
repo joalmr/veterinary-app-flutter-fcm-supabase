@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/_auth/domain/login_controller.dart';
 
@@ -170,16 +171,9 @@ class CardLogin extends StatelessWidget {
                             onTap: _.btnOlvide.value
                                 ? () {
                                     if (passwordOlvide.text.isEmpty) {
-                                      ScaffoldMessenger.of(Get.context!)
-                                          .showSnackBar(SnackBar(
-                                        content: const Text(
-                                          'Ingrese su email',
-                                          style: TextStyle(color: colorRed),
-                                        ),
-                                        duration: const Duration(seconds: 3),
-                                        backgroundColor:
-                                            Colors.black.withOpacity(0.85),
-                                      ));
+                                      snackBarMessage(
+                                        message: 'Ingrese su email',
+                                      );
                                     } else {
                                       _.olvideContra(passwordOlvide.text);
                                     }

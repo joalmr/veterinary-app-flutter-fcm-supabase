@@ -74,12 +74,12 @@ Widget iconRow(jsonData) {
   );
 }
 
-Widget detailRow(jsonType, establishmentId) {
+Widget detailRow(jsonData, establishmentId) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      jsonType.containsKey('surgery')
+      jsonData.containsKey('surgery')
           ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,14 +92,14 @@ Widget detailRow(jsonType, establishmentId) {
                   ),
                 ),
                 Text(
-                    'Recomendación: ${jsonType['surgery']['recommendations'] ?? '-'}'),
+                    'Recomendación: ${jsonData['surgery']['recommendations'] ?? '-'}'),
                 establishmentId != prefUser.vetId
                     ? SizedBox(height: 0)
-                    : Text('Monto: ${jsonType['surgery']['amount']}'),
+                    : Text('Monto: ${jsonData['surgery']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
-      jsonType.containsKey('consultation')
+      jsonData.containsKey('consultation')
           ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,19 +114,19 @@ Widget detailRow(jsonType, establishmentId) {
                 establishmentId != prefUser.vetId
                     ? SizedBox(height: 0)
                     : Text(
-                        'Anamnesis: ${jsonType['consultation']['anamnesis'] ?? '-'}'),
+                        'Anamnesis: ${jsonData['consultation']['anamnesis'] ?? '-'}'),
                 Text(
-                    'Recomendación: ${jsonType['consultation']['recommendations'] ?? '-'}'),
+                    'Recomendación: ${jsonData['consultation']['recommendations'] ?? '-'}'),
                 Text('Diagnósticos:'),
-                for (var diagnoses in jsonType['consultation']['diagnoses'])
+                for (var diagnoses in jsonData['consultation']['diagnoses'])
                   Text('- ${diagnoses['name']}'),
                 establishmentId != prefUser.vetId
                     ? SizedBox(height: 0)
-                    : Text('Monto: ${jsonType['consultation']['amount']}'),
+                    : Text('Monto: ${jsonData['consultation']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
-      jsonType.containsKey('deworming')
+      jsonData.containsKey('deworming')
           ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,17 +139,17 @@ Widget detailRow(jsonType, establishmentId) {
                   ),
                 ),
                 Text(
-                    'Recomendación: ${jsonType['deworming']['recommendations'] ?? '-'}'),
+                    'Recomendación: ${jsonData['deworming']['recommendations'] ?? '-'}'),
                 Text('Desparasitantes:'),
-                for (var dewormers in jsonType['deworming']['dewormers'])
+                for (var dewormers in jsonData['deworming']['dewormers'])
                   Text('- ${dewormers['name']}'),
                 establishmentId != prefUser.vetId
                     ? SizedBox(height: 0)
-                    : Text('Monto: ${jsonType['deworming']['amount']}'),
+                    : Text('Monto: ${jsonData['deworming']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
-      jsonType.containsKey('grooming')
+      jsonData.containsKey('grooming')
           ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,17 +162,17 @@ Widget detailRow(jsonType, establishmentId) {
                   ),
                 ),
                 Text(
-                    'Recomendación: ${jsonType['grooming']['recommendations'] ?? '-'}'),
+                    'Recomendación: ${jsonData['grooming']['recommendations'] ?? '-'}'),
                 Text('Groomings:'),
-                for (var grooming in jsonType['grooming']['groomings'])
+                for (var grooming in jsonData['grooming']['groomings'])
                   Text('- $grooming'),
                 establishmentId != prefUser.vetId
                     ? SizedBox(height: 0)
-                    : Text('Monto: ${jsonType['grooming']['amount']}'),
+                    : Text('Monto: ${jsonData['grooming']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
-      jsonType.containsKey('vaccination')
+      jsonData.containsKey('vaccination')
           ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,17 +185,17 @@ Widget detailRow(jsonType, establishmentId) {
                   ),
                 ),
                 Text(
-                    'Recomendación: ${jsonType['vaccination']['recommendations'] ?? '-'}'),
+                    'Recomendación: ${jsonData['vaccination']['recommendations'] ?? '-'}'),
                 Text('Vacunas:'),
-                for (var vaccines in jsonType['vaccination']['vaccines'])
+                for (var vaccines in jsonData['vaccination']['vaccines'])
                   Text('- ${vaccines['name']}'),
                 establishmentId != prefUser.vetId
                     ? SizedBox(height: 0)
-                    : Text('Monto: ${jsonType['vaccination']['amount']}'),
+                    : Text('Monto: ${jsonData['vaccination']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
-      jsonType.containsKey('testing')
+      jsonData.containsKey('testing')
           ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,17 +208,17 @@ Widget detailRow(jsonType, establishmentId) {
                   ),
                 ),
                 Text(
-                    'Recomendación: ${jsonType['testing']['recommendations'] ?? '-'}'),
+                    'Recomendación: ${jsonData['testing']['recommendations'] ?? '-'}'),
                 Text('Exámenes:'),
-                for (var tests in jsonType['testing']['tests'])
+                for (var tests in jsonData['testing']['tests'])
                   Text('- ${tests['name']}'),
                 establishmentId != prefUser.vetId
                     ? SizedBox(height: 0)
-                    : Text('Monto: ${jsonType['testing']['amount']}'),
+                    : Text('Monto: ${jsonData['testing']['amount']}'),
               ],
             )
           : SizedBox(height: 0),
-      jsonType.containsKey('other')
+      jsonData.containsKey('other')
           ? Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -231,13 +231,13 @@ Widget detailRow(jsonType, establishmentId) {
                   ),
                 ),
                 Text(
-                    'Recomendación: ${jsonType['other']['recommendations'] ?? '-'}'),
+                    'Recomendación: ${jsonData['other']['recommendations'] ?? '-'}'),
                 Text('Otros:'),
-                for (var others in jsonType['other']['others'])
+                for (var others in jsonData['other']['others'])
                   Text('- ${others['name']}'),
                 establishmentId != prefUser.vetId
                     ? SizedBox(height: 0)
-                    : Text('Monto: ${jsonType['other']['amount']}'),
+                    : Text('Monto: ${jsonData['other']['amount']}'),
               ],
             )
           : SizedBox(height: 0)

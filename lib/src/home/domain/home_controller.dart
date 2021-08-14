@@ -18,7 +18,7 @@ class HomeController extends GetxController {
   bool get cargaConfirmar => _cargaConfirmar.value;
   set cargaConfirmar(bool value) => _cargaConfirmar.value = value;
 
-  final nameVet = RxnString();
+  final nameVet = ''.obs;
 
   final unconfirmed = RxList<Booking>();
   final overdue = RxList<Booking>();
@@ -28,15 +28,13 @@ class HomeController extends GetxController {
 ////////////////////////////////////////////////////////////////////////////////
 
   @override
-  void onReady() {
+  void onInit() {
     if (prefUser.tokenHas() && prefUser.vetDataHas()) {
       getVet();
       getAllBookings();
     }
-    super.onReady();
+    super.onInit();
   }
-
-
 
   launchWhatsApp(String phone, String user, String petName, String date,
       String time) async {
@@ -61,8 +59,7 @@ class HomeController extends GetxController {
     nameVet.value = prefUser.vetName!;
   }
 
-  //!   listas bookings
-  //
+  //*   listas bookings
   getUnconfirmed() => _getUnconfirmed();
   Future<void> _getUnconfirmed() async {
     unconfirmed.clear();
