@@ -16,7 +16,7 @@ class LoginController extends GetxController {
   final authService = AuthRepository();
   final stablishmentService = EstablishmentRepository();
 
-  final pushController = PushController();
+  // final pushController = PushController();
 
   final _homeController = Get.find<HomeController>();
   final _global = Get.find<GlobalController>();
@@ -42,7 +42,7 @@ class LoginController extends GetxController {
         Get.to(NewEstablishment());
       } else {
         await initHome();
-        pushController.firebase(); //TODO: firebase
+        // pushController.firebase(); //TODO: firebase
         btnLogIn.value = true;
         Get.offNamed(NameRoutes.home);
       }

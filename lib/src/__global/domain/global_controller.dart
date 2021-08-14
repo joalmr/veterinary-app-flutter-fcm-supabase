@@ -18,7 +18,7 @@ class GlobalController extends GetxController {
   final _clients = Get.find<ClientsController>();
   final _establishment = Get.find<EstablishmentsController>();
 
-  final pushController = PushController();
+  // final pushController = PushController();
 
   @override
   void onInit() {
@@ -36,7 +36,7 @@ class GlobalController extends GetxController {
 
   void openApp() {
     if (prefUser.tokenHas() == true && prefUser.vetDataHas() == true) {
-      pushController.firebase(); // TODO: firebase
+      // pushController.firebase(); // TODO: firebase
       Timer(const Duration(milliseconds: 2500),
           () => Get.offNamed(NameRoutes.home));
     } else {
