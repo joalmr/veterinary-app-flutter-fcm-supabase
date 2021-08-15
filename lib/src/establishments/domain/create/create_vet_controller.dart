@@ -168,7 +168,7 @@ class CreateVetController extends GetxController {
         await _setSchedule(idVet);
         await _setPrices(idVet);
         await _setDescription(idVet);
-        Get.find<GlobalController>().generalLoad();
+        // Get.find<GlobalController>().generalLoad();
       }
     });
   }
@@ -181,7 +181,6 @@ class CreateVetController extends GetxController {
   }
 
   _setPrices(String idVeterinaria) async {
-    //TODO: prices
     prices.update((val) {
       val!.consultationPriceFrom = v.moneyConsulta.numberValue;
       val.dewormingPriceFrom = v.moneyDesparasita.numberValue;
@@ -355,8 +354,10 @@ class CreateVetController extends GetxController {
           checked = false;
           if (someNew.value != null) {
             final temp = await _repo.getFirst();
-
             final VetStorage forStorage = VetStorage();
+
+            prefUser.hasMenu = true;
+
             forStorage.vetId = temp.id;
             forStorage.vetName = temp.name;
             forStorage.vetLogo = temp.logo;

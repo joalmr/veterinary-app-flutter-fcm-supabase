@@ -19,3 +19,7 @@ flutter packages pub run flutter_launcher_icons:main
 
 keytool -list -v \
 -alias androiddebugkey -keystore ~/.android/debug.keystore
+
+
+keytool -list -v \
+-alias upload -keystore /Users/admin/keystore.jks

@@ -70,17 +70,17 @@ class LoginController extends GetxController {
   Future<void> initHome() async {
     final establishment = await establishmentService.getAll();
     pushController.firebase(); //TODO: firebase
-    if (establishment.isEmpty) {
+    if (establishment!.isEmpty) {
+      prefUser.hasMenu = false;
       btnLogIn.value = true;
-      //is web?
       if (GetPlatform.isWeb) {
         Get.off(NewEstablishment());
       } else {
         Get.off(CreateVetMain(), arguments: 'new-estab');
       }
     } else if (prefUser.vetDataHas() == false) {
+      prefUser.hasMenu = true;
       final temp = await establishmentService.getFirst();
-
       final VetStorage forStorage = VetStorage();
       forStorage.vetId = temp.id;
       forStorage.vetName = temp.name;
@@ -90,7 +90,6 @@ class LoginController extends GetxController {
 
       _global.generalLoad();
       _homeController.getVet();
-
       btnLogIn.value = true;
       Get.offNamed(NameRoutes.home);
     }

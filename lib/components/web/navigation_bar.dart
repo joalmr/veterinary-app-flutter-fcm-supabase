@@ -89,9 +89,9 @@ class _NavigationBarState extends State<NavigationBar> {
                   children: dataMenu
                       .map(
                         (e) => navbarItem(
-                          active: e['page'] == pageSelected,
-                          icon: e['icon'] as IconData,
-                          onTap: () => Get.toNamed(e['page']),
+                          active: e.page == pageSelected,
+                          icon: e.icon as IconData,
+                          onTap: e.fn,
                         ),
                       )
                       .toList(),

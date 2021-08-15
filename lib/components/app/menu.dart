@@ -10,50 +10,52 @@ class MenuDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            boxShadow: [BoxShadow(color: Colors.black45)],
-          ),
-          width: 300,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 60,
-                width: double.maxFinite,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 15.0),
-                  alignment: Alignment.centerLeft,
-                  child: Image(
-                    image: AssetImage(imgLogoProypet),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: ListView(
-                  children: dataMenu
-                      .map(
-                        (e) => ListTile(
-                          leading: Icon(e['icon'] as IconData),
-                          title: Text(e['name']),
-                          onTap: () {
-                            Get.offNamed(e['page']);
-                          },
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-              ListTile(
-                leading: const Icon(Icons.settings),
-                title: const Text('Configuración'),
-                onTap: () => Get.toNamed('/config'),
-              ),
-            ],
-          ),
+          child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [BoxShadow(color: Colors.black45)],
         ),
-      ),
+        width: 300,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 60,
+              width: double.maxFinite,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 15.0,
+                ),
+                alignment: Alignment.centerLeft,
+                child: Image(
+                  image: AssetImage(imgLogoProypet),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                children: dataMenu
+                    .map(
+                      (e) => ListTile(
+                        leading: Icon(e.icon as IconData),
+                        title: Text(
+                          e.name!,
+                          style: TextStyle(color: e.color),
+                        ),
+                        onTap: e.fn,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Configuración'),
+              onTap: () => Get.toNamed('/config'),
+            ),
+          ],
+        ),
+      )),
     );
   }
 }

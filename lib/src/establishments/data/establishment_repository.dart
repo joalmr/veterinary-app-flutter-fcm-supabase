@@ -18,7 +18,7 @@ class EstablishmentRepository extends EstablishmentInterface {
   }
 
   @override
-  Future<List<EstablecimientoModelLite>> getAll() {
+  Future<List<EstablecimientoModelLite>?> getAll() {
     return _api.getAll();
   }
 
