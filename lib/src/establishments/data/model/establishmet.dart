@@ -147,8 +147,8 @@ class Price {
   String? to;
 
   factory Price.fromJson(Map<String, dynamic> json) => Price(
-        from: json['from'].toString(),
-        to: json['to'].toString(),
+        from: json['from']?.toString() ?? '0',
+        to: json['to']?.toString() ?? '0',
       );
 }
 

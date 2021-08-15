@@ -52,6 +52,7 @@ class Step2 extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               TextFormField(
+                onChanged: (val) => _.entity.value.reference = val,
                 decoration: const InputDecoration(labelText: 'Referencia'),
                 textCapitalization: TextCapitalization.sentences,
               ),

@@ -2,22 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
-class TypeSnackBarName {
-  // ignore: constant_identifier_names
-  static const INFO = 'info';
-  // ignore: constant_identifier_names
-  static const SUCCESS = 'success';
-  // ignore: constant_identifier_names
-  static const ERROR = 'error';
-}
+// ignore: constant_identifier_names
+enum TypeSnackBarName { INFO, SUCCESS, ERROR }
 
 void snackBarMessage({
   required String message,
-  String type = TypeSnackBarName.INFO,
+  TypeSnackBarName type = TypeSnackBarName.INFO,
   int seconds = 3,
 }) {
   switch (type) {
-    case 'info':
+    case TypeSnackBarName.INFO:
       ScaffoldMessenger.of(Get.context!).showSnackBar(
         SnackBar(
           backgroundColor: Colors.transparent,
@@ -28,7 +22,7 @@ void snackBarMessage({
         ),
       );
       break;
-    case 'success':
+    case TypeSnackBarName.SUCCESS:
       ScaffoldMessenger.of(Get.context!).showSnackBar(
         SnackBar(
           backgroundColor: Colors.transparent,
@@ -39,7 +33,7 @@ void snackBarMessage({
         ),
       );
       break;
-    case 'error':
+    case TypeSnackBarName.ERROR:
       ScaffoldMessenger.of(Get.context!).showSnackBar(
         SnackBar(
           backgroundColor: Colors.transparent,

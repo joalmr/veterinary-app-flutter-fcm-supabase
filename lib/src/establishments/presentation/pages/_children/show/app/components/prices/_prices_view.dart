@@ -45,22 +45,21 @@ class PricesView extends StatelessWidget {
             children: [
               precio(
                 'Consulta',
-                double.parse(prices.consultation!.from!).toStringAsFixed(2),
+                double.parse(prices.consultation?.from ?? '0')
+                    .toStringAsFixed(2),
               ),
               precio(
                 'Grooming',
-                // prices.grooming.from.toString(),
-                double.parse(prices.grooming!.from!).toStringAsFixed(2),
+                double.parse(prices.grooming?.from ?? '0').toStringAsFixed(2),
               ),
               precio(
                 'Desparasitación',
-                // prices.deworming.from.toString(),
-                double.parse(prices.deworming!.from!).toStringAsFixed(2),
+                double.parse(prices.deworming?.from ?? '0').toStringAsFixed(2),
               ),
               precio(
                 'Vacunas',
-                // prices.vaccination.from.toString(),
-                double.parse(prices.vaccination!.from!).toStringAsFixed(2),
+                double.parse(prices.vaccination?.from ?? '0')
+                    .toStringAsFixed(2),
               ),
             ],
           )

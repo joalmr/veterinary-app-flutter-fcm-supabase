@@ -6,6 +6,7 @@ import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
+import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/_pet/data/model/pet_client.dart';
 import 'package:vet_app/src/_pet/data/pet_repository.dart';
@@ -26,7 +27,6 @@ class BookingController extends GetxController {
   final _repoPet = PetClientRepository();
 
   final _global = Get.find<GlobalController>();
-  // final _repoCalendar = CalendarController();
 
   final _homeController = Get.find<HomeController>();
   final condicion = ''.obs;
@@ -35,7 +35,6 @@ class BookingController extends GetxController {
 
   final petData = PetClient().obs;
   final loadingPage = true.obs;
-  // final itemList = <String>[];
 
   final cirugia = Rxn<SurgeryBooking>();
   final consulta = Rxn<ConsultationBooking>();
@@ -73,7 +72,6 @@ class BookingController extends GetxController {
 
   final bookingId = ''.obs;
   final petId = ''.obs;
-  // String? petId;
 
   void add2List(dynamic dato) {
     if (listNextdate.where((x) => x.type == dato['type']).isNotEmpty) {
@@ -179,8 +177,6 @@ class BookingController extends GetxController {
   }
 
   Future<void> recorreDatosAtt() async {
-    // montoTotal.value = 0;
-
     final general = await _repo.attend(prefUser.vetId!, bookingId.value);
 
     general.consultation?.amount ?? 0;
@@ -455,7 +451,7 @@ class BookingController extends GetxController {
           type: TypeSnackBarName.SUCCESS,
           message: 'Atencion finalizada',
         );
-        Get.back();
+        Get.offAllNamed(NameRoutes.home);
       }
     }
   }

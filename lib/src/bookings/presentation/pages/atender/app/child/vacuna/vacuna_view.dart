@@ -24,8 +24,6 @@ class _VacunaViewState extends State<VacunaView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        // var listaVacuna = _book.vacunas.value?.vaccines ?? <Vaccine>[];
-
         final recomendationController = TextEditingController(
             text: _book.vacunas.value?.recommendations ?? '');
 

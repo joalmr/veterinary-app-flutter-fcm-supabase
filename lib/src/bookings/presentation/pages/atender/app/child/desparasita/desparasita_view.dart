@@ -18,7 +18,6 @@ class DesparasitaView extends StatefulWidget {
 class _DesparasitaViewState extends State<DesparasitaView> {
   RxBool recomendaciones = false.obs;
   final desparasitaController = TextEditingController();
-  // final listaDesparasita = _book.desparasita.value?.dewormers ?? <Dewormer>[];
   final recomendationController = TextEditingController(
     text:
         Get.find<BookingController>().desparasita.value?.recommendations ?? '',

@@ -5,6 +5,7 @@ import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/__global/domain/global_controller.dart';
+import 'package:vet_app/src/__new_from_web/new_establishment.dart';
 import 'package:vet_app/src/_auth/data/auth_repository.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/crea_vet.dart';
@@ -14,7 +15,7 @@ import 'push_controller.dart';
 
 class LoginController extends GetxController {
   final authService = AuthRepository();
-  final stablishmentService = EstablishmentRepository();
+  final establishmentService = EstablishmentRepository();
 
   final pushController = PushController();
 
@@ -34,19 +35,7 @@ class LoginController extends GetxController {
     btnLogIn.value = false;
     final int logged = await authService.login(email, password);
     if (logged == 200) {
-      final establishment = await stablishmentService.getAll();
-
-      if (establishment.isEmpty) {
-        btnLogIn.value = true;
-        //is web?
-        pushController.firebase();
-        Get.off(CreateVetMain());
-      } else {
-        await initHome();
-        pushController.firebase(); //TODO: firebase
-        btnLogIn.value = true;
-        Get.offNamed(NameRoutes.home);
-      }
+      await initHome();
     } else {
       errorLogIn.value = true;
       btnLogIn.value = true;
@@ -79,8 +68,18 @@ class LoginController extends GetxController {
   }
 
   Future<void> initHome() async {
-    if (prefUser.vetDataHas() == false) {
-      final temp = await stablishmentService.getFirst();
+    final establishment = await establishmentService.getAll();
+    pushController.firebase(); //TODO: firebase
+    if (establishment.isEmpty) {
+      btnLogIn.value = true;
+      //is web?
+      if (GetPlatform.isWeb) {
+        Get.off(NewEstablishment());
+      } else {
+        Get.off(CreateVetMain(), arguments: 'new-estab');
+      }
+    } else if (prefUser.vetDataHas() == false) {
+      final temp = await establishmentService.getFirst();
 
       final VetStorage forStorage = VetStorage();
       forStorage.vetId = temp.id;
@@ -91,6 +90,9 @@ class LoginController extends GetxController {
 
       _global.generalLoad();
       _homeController.getVet();
+
+      btnLogIn.value = true;
+      Get.offNamed(NameRoutes.home);
     }
   }
 }

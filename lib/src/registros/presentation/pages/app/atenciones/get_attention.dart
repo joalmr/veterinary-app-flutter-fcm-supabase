@@ -5,6 +5,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/calcula_edad.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/registros/domain/get_attention_controller.dart';
 
 import 'get_attention/detail.dart';
@@ -162,6 +163,20 @@ class GetAttention extends StatelessWidget {
                                 ),
                               )
                             ],
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                            top: 4,
+                            bottom: 4,
+                          ),
+                          child: Text(
+                            'Fecha de atención: ${formatDateTime(_.attention.value.result!.attentionDate!)}',
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

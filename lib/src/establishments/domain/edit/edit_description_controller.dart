@@ -21,7 +21,7 @@ class EditDescriptionController extends GetxController {
   editDescripcion() => _editDescription();
   Future<void> _editDescription() async {
     await _repo.setDescription(
-        showVetController.argumentoId!, descripcionControl.text);
+        showVetController.argumentoId.value, descripcionControl.text);
     descripcionControl.text = '';
 
     showVetController.getByid();

@@ -24,8 +24,6 @@ class _TestingViewState extends State<TestingView> {
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        // var listTesting = _book.examenes.value?.tests ?? <Test>[];
-
         final recommendationController = TextEditingController(
             text: _book.examenes.value?.recommendations ?? '');
 
