@@ -15,7 +15,13 @@ flutter build web --web-renderer html
 ## poner icono
 flutter packages pub run flutter_launcher_icons:main
 
+# despliegue android
+flutter build appbundle
 
+# despliegue ios 
+abrir en xcode, esperar q termine da cargar la barra
+flutter build ios --release
+product -> archive
 
 keytool -list -v \
 -alias androiddebugkey -keystore ~/.android/debug.keystore
