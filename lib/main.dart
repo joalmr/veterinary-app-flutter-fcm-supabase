@@ -1,4 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart'; //TODO: activar firebase
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
@@ -20,7 +20,7 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   await dotenv.load(fileName: '.env');
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp(); //TODO: activar firebase
   await GetStorage.init();
 
   runApp(MyApp());
