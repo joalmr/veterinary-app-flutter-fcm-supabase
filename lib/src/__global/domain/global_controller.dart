@@ -19,7 +19,7 @@ class GlobalController extends GetxController {
   final _clients = Get.find<ClientsController>();
   final _establishment = Get.find<EstablishmentsController>();
 
-  // final pushController = PushController();
+  final pushController = PushController();
 
   // final hasMenu = false.obs;
 
@@ -39,7 +39,7 @@ class GlobalController extends GetxController {
 
   Future<void> openApp() async {
     if (prefUser.tokenHas() == true && prefUser.vetDataHas() == true) {
-      // pushController.firebase(); // TODO: firebase
+      pushController.firebase(); // TODO: firebase
       final response = await EstablishmentRepository().getAll();
 
       if (response!.isNotEmpty) {

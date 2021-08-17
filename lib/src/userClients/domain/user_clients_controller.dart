@@ -99,7 +99,7 @@ class ClientsController extends GetxController {
 
   createBookingLate(String petId) async {
     btnAtencion.value = false;
-    //! TODO: FALTA AGREGAS LISTA DE TYPES
+    //! TODO: FALTA AGREGAR LISTA DE TYPES
     typeId.add(1);
 
     if (fecha.value.isEmpty || hora.value.isEmpty) {
