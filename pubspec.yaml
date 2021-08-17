@@ -50,7 +50,6 @@ dependencies:
   flutter_sparkline: ^0.1.0
   flutter_typeahead: ^3.1.1
   get: ^4.1.4
-  # get_it: ^7.1.3
   get_storage: ^2.0.2
   google_fonts: ^2.0.0
   google_maps_flutter: ^2.0.3
@@ -96,7 +95,6 @@ flutter:
     - .env.dev
     - assets/map_style.txt
     - assets/images/
-    # - assets/images/gif/
     - assets/images/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
