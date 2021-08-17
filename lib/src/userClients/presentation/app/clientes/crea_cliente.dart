@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/snackbar.dart';
+import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 
@@ -15,16 +16,31 @@ class CreaCliente extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ClientsController>(
       builder: (_) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Crear cliente'),
-          ),
+        return MainLayout(
+          title: 'Crear cliente',
           body: Center(
             child: Container(
               width: context.width < 900 ? double.maxFinite : 800,
               child: ListView(
                 padding: EdgeInsets.all(8),
                 children: [
+                  context.width >= 900
+                      ? Padding(
+                          padding: const EdgeInsets.only(
+                            left: 30.0,
+                            right: 30.0,
+                            top: 25.0,
+                            bottom: 10.0,
+                          ),
+                          child: Text(
+                            'Crear cliente',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                        )
+                      : SizedBox(height: 0),
                   TextFormField(
                     controller: nameController,
                     decoration: InputDecoration(

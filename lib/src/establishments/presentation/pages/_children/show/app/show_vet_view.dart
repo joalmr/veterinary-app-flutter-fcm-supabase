@@ -19,7 +19,7 @@ class ShowVetView extends StatelessWidget {
     return GetX<ShowVetController>(
       builder: (_) {
         return _.cargando.value
-            ? const Scaffold(
+            ? Scaffold(
                 body: Center(
                   child: CircularProgressIndicator(),
                 ),
@@ -52,36 +52,42 @@ class ShowVetView extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        top: 30,
+                        top: 2.5,
                         left: 5,
-                        child: IconButton(
-                          icon: const Icon(Icons.arrow_back),
-                          onPressed: () => Get.back(),
+                        child: SafeArea(
+                          child: IconButton(
+                            icon: const Icon(Icons.arrow_back),
+                            onPressed: () => Get.back(),
+                          ),
                         ),
                       ),
                       Positioned(
-                        top: 30,
+                        top: 5,
                         right: 5,
-                        child: Container(
-                          height: 25.0,
-                          width: 25.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20.0),
-                            color: Colors.white,
-                          ),
-                          child: Center(
-                            child: IconButton(
-                              splashRadius: 20,
-                              iconSize: 18,
-                              icon: const Icon(
-                                Icons.edit,
+                        child: GetPlatform.isWeb
+                            ? SizedBox(height: 0)
+                            : SafeArea(
+                                child: Container(
+                                  height: 25.0,
+                                  width: 25.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    color: Colors.white,
+                                  ),
+                                  child: Center(
+                                    child: IconButton(
+                                      splashRadius: 20,
+                                      iconSize: 18,
+                                      icon: const Icon(
+                                        Icons.edit,
+                                      ),
+                                      onPressed: () {
+                                        Get.to(const EditSlidesView());
+                                      },
+                                    ),
+                                  ),
+                                ),
                               ),
-                              onPressed: () {
-                                Get.to(const EditSlidesView());
-                              },
-                            ),
-                          ),
-                        ),
                       ),
                       Positioned(
                         right: 7.5,
@@ -106,24 +112,27 @@ class ShowVetView extends StatelessWidget {
                             Positioned(
                               bottom: 0.0,
                               right: 0.0,
-                              child: Container(
-                                height: 25.0,
-                                width: 25.0,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  color: Colors.white,
-                                ),
-                                child: Center(
-                                  child: IconButton(
-                                    splashRadius: 20,
-                                    iconSize: 18,
-                                    icon: const Icon(
-                                      Icons.edit,
+                              child: GetPlatform.isWeb
+                                  ? SizedBox(height: 0)
+                                  : Container(
+                                      height: 25.0,
+                                      width: 25.0,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        color: Colors.white,
+                                      ),
+                                      child: Center(
+                                        child: IconButton(
+                                          splashRadius: 20,
+                                          iconSize: 18,
+                                          icon: const Icon(
+                                            Icons.edit,
+                                          ),
+                                          onPressed: () => _.seleccionarLogo(),
+                                        ),
+                                      ),
                                     ),
-                                    onPressed: () => _.seleccionarLogo(),
-                                  ),
-                                ),
-                              ),
                             ),
                           ],
                         ),
@@ -211,25 +220,27 @@ class ShowVetView extends StatelessWidget {
                                   Positioned(
                                     bottom: 0.0,
                                     right: 0.0,
-                                    child: Container(
-                                      height: 25.0,
-                                      width: 25.0,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                        color: Colors.white,
-                                      ),
-                                      child: Center(
-                                        child: IconButton(
-                                          splashRadius: 20,
-                                          iconSize: 18,
-                                          icon: const Icon(Icons.edit),
-                                          onPressed: () {
-                                            Get.to(EditBaseView());
-                                          },
-                                        ),
-                                      ),
-                                    ),
+                                    child: GetPlatform.isWeb
+                                        ? SizedBox(height: 0)
+                                        : Container(
+                                            height: 25.0,
+                                            width: 25.0,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                              color: Colors.white,
+                                            ),
+                                            child: Center(
+                                              child: IconButton(
+                                                splashRadius: 20,
+                                                iconSize: 18,
+                                                icon: const Icon(Icons.edit),
+                                                onPressed: () {
+                                                  Get.to(EditBaseView());
+                                                },
+                                              ),
+                                            ),
+                                          ),
                                   ),
                                 ],
                               ),

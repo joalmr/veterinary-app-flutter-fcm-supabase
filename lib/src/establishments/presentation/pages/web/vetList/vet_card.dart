@@ -111,7 +111,7 @@ class VetCard extends StatelessWidget {
                                   bold: true,
                                   color: colorRed,
                                   onPressed: () {
-                                    _.deldete(id);
+                                    _.delete(id);
                                     Get.back();
                                   },
                                 ),

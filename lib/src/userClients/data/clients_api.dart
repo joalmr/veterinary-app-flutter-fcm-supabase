@@ -51,7 +51,7 @@ class ClientsApi extends ClientsInterface {
   }
 
   @override
-  Future<FindUserModel> findUser(String mailUser) async {
+  Future<FindUserModel?> findUser(String mailUser) async {
     final url = Uri.https(
       urlBase!,
       '$pathBase/users',

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/header_http.dart';
@@ -13,12 +14,13 @@ import 'request/price_est_request.dart';
 
 class EstablishmentApi extends EstablishmentInterface {
   @override
-  Future<List<EstablecimientoModelLite>> getAll() async {
+  Future<List<EstablecimientoModelLite>?> getAll() async {
     final url = Uri.https(urlBase!, '$pathBase/establishments');
-    final http.Response response = await http.get(
+    final response = await http.get(
       url,
       headers: headersToken(),
     );
+
     final establecimientos = establecimientoModelLiteFromJson(response.body);
     return establecimientos;
   }
@@ -99,15 +101,12 @@ class EstablishmentApi extends EstablishmentInterface {
       'code': code,
     };
 
-    // final http.Response response =
     await http.post(
       url,
       headers: headersToken(),
       body: jsonEncode(employee),
     );
 
-    // final data = jsonDecode(response.body);
-    // print(data);
     return '';
   }
 
@@ -170,8 +169,6 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(employee),
     );
 
-    // final data = jsonDecode(response.body);
-
     return response.statusCode.toString();
   }
 
@@ -189,8 +186,6 @@ class EstablishmentApi extends EstablishmentInterface {
       headers: headersToken(),
     );
 
-    // final data = jsonDecode(response.body);
-    // print(data);
     return '';
   }
 
@@ -226,8 +221,6 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(horarios),
     );
 
-    // final data = jsonDecode(response.body);
-    // print(data);
     return '';
   }
 
@@ -250,8 +243,6 @@ class EstablishmentApi extends EstablishmentInterface {
       body: jsonEncode(descriptionData),
     );
 
-    // final data = jsonDecode(response.body);
-    // print(data);
     return '';
   }
 
@@ -262,13 +253,10 @@ class EstablishmentApi extends EstablishmentInterface {
       '$pathBase/establishment/$establecimientoId',
     );
 
-    // final http.Response response =
     await http.delete(
       url,
       headers: headersToken(),
     );
-
-    // final data = jsonDecode(response.body);
   }
 
   @override

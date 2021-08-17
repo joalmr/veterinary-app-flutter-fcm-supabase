@@ -131,22 +131,6 @@ class _StatsDataState extends State<StatsData> {
                                   ),
                                   child: ChartVentaMensual(),
                                 ),
-                                // Container(
-                                //   height: 250,
-                                //   width: 400,
-                                //   margin: EdgeInsets.symmetric(
-                                //     horizontal: 5,
-                                //     vertical: 10,
-                                //   ),
-                                //   child: ChartUsers(),
-                                // ),
-
-                                // Container(
-                                //   height: 250,
-                                //   width: 400,
-                                //   margin: EdgeInsets.all(5.0),
-                                //   child: ChartLineArea(data: data),
-                                // ),
                               ],
                             ),
                           ],

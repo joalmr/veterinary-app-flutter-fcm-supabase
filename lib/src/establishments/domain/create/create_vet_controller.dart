@@ -1,16 +1,20 @@
 import 'dart:async';
-
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:vet_app/components/snackbar.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/days/dia_semana.dart';
+import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
+import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/prediction.dart';
 import 'package:vet_app/src/establishments/data/model/service_model.dart';
 import 'package:vet_app/src/establishments/data/request/establishment_request.dart';
 import 'package:vet_app/src/establishments/data/request/price_est_request.dart';
+import 'package:vet_app/src/home/domain/home_controller.dart';
 
 import '../establishments_controller.dart';
 import 'create_vet_value.dart';
@@ -19,10 +23,8 @@ class CreateVetController extends GetxController {
   final _repo = EstablishmentRepository();
   final v = CreateVetValue();
 
-
-
-  final entity = Rxn<EstablecimientoEntity>();
-  final prices = Rxn<PriceEstablecimientoEntity>();
+  final entity = EstablecimientoEntity().obs;
+  final prices = PriceEstablecimientoEntity().obs;
 
   final vetController = Get.find<EstablishmentsController>();
 
@@ -62,9 +64,14 @@ class CreateVetController extends GetxController {
 
   String displayStringForOption(Prediction option) => option.name!;
 
+  final someNew = Rxn<String>();
+
   @override
   void onInit() {
     super.onInit();
+    if (Get.arguments != null) {
+      someNew.value = Get.arguments;
+    }
     _getService();
     rootBundle.loadString('assets/map_style.txt').then((string) {
       _mapStyle = string;
@@ -92,31 +99,20 @@ class CreateVetController extends GetxController {
     }
   }
 
-  // buscaDireccion(String filter)=>_buscaDireccion(filter);
-  // _buscaDireccion(String filter) async {
-  //   print(filter);
-  //   String ruta =
-  //       'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=$keyMap&language=es&input=$filter';
-  //   Uri url = Uri.parse(ruta);
-  //   var response = await http.get(url);
-  //   print(response.body);
-  //   var models = addressFromJson(response.body);
-  //   return models.predictions;
-  // }
-
   gpsDireccion(Prediction data) {
     _searchandNavigate(data);
   }
 
   double? lat; //-12.045645176850693, -77.03056366799036
   double? lng;
+  // final referencia = ''.obs;
 
   _searchandNavigate(Prediction dato) async {
     if (v.dirVet.text.trim() != '') {
       marcador.clear();
 
       v.dirVet.text = dato.name!;
-      entity.value?.address = dato.name;
+      entity.value.address = dato.name;
 
       final datoById = await _repo.getLatLngByPlaceId(dato.placeId!);
       final location = datoById.result!.geometry!.location;
@@ -149,17 +145,16 @@ class CreateVetController extends GetxController {
     }
   }
 
+  setFinaliza() => _newEstablishment();
   _newEstablishment() async {
     entity.update((val) {
       val!.typeId = int.parse(vetType);
       val.latitude = lat;
       val.longitude = lng;
       val.services = servicesVetSet;
-      val.reference = '';
     });
 
-    // var resp =
-    _repo.setNew(entity.value!).then((value) async {
+    _repo.setNew(entity.value).then((value) async {
       if (value[0] != 200) {
         Get.snackbar(
           'Error',
@@ -173,7 +168,7 @@ class CreateVetController extends GetxController {
         await _setSchedule(idVet);
         await _setPrices(idVet);
         await _setDescription(idVet);
-
+        // Get.find<GlobalController>().generalLoad();
       }
     });
   }
@@ -187,13 +182,13 @@ class CreateVetController extends GetxController {
 
   _setPrices(String idVeterinaria) async {
     prices.update((val) {
-      val?.consultationPriceFrom = v.moneyConsulta.numberValue;
-      val?.dewormingPriceFrom = v.moneyDesparasita.numberValue;
-      val?.groomingPriceFrom = v.moneyGrooming.numberValue;
-      val?.vaccinationPriceFrom = v.moneyVacuna.numberValue;
+      val!.consultationPriceFrom = v.moneyConsulta.numberValue;
+      val.dewormingPriceFrom = v.moneyDesparasita.numberValue;
+      val.groomingPriceFrom = v.moneyGrooming.numberValue;
+      val.vaccinationPriceFrom = v.moneyVacuna.numberValue;
     });
 
-    await _repo.setPrices(idVeterinaria, prices.value!);
+    await _repo.setPrices(idVeterinaria, prices.value);
   }
 
   _setSchedule(String idVeterinaria) async {
@@ -241,8 +236,6 @@ class CreateVetController extends GetxController {
   _setDescription(String idVeterinaria) async {
     await _repo.setDescription(idVeterinaria, description);
   }
-
-  setFinaliza() => _newEstablishment();
 
   //step 1
   bool get ename => v.nameVet.text.isEmpty;
@@ -345,23 +338,39 @@ class CreateVetController extends GetxController {
     }
   }
 
-  validaStep4() {
+  validaStep4() async {
     if (edescriptionVet) {
-      Get.snackbar(
-        'Error',
-        'Llene los campos',
-        backgroundColor: colorRed,
-        colorText: colorWhite,
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: 'Llene los campos',
       );
     } else {
       checked = true;
-      setFinaliza();
-      vetController.getAll();
+      await _newEstablishment();
+
       Timer(
         const Duration(milliseconds: 3500),
-        () {
+        () async {
           checked = false;
-          Get.offNamed(NameRoutes.establishments);
+          if (someNew.value != null) {
+            final temp = await _repo.getFirst();
+            final VetStorage forStorage = VetStorage();
+
+            prefUser.hasMenu = true;
+
+            forStorage.vetId = temp.id;
+            forStorage.vetName = temp.name;
+            forStorage.vetLogo = temp.logo;
+
+            prefUser.vetData = vetStorageToJson(forStorage);
+
+            Get.find<HomeController>().getVet();
+            Get.find<GlobalController>().generalLoad();
+            Get.offNamed(NameRoutes.home);
+          } else {
+            vetController.getAll();
+            Get.offNamed(NameRoutes.establishments);
+          }
         },
       );
     }

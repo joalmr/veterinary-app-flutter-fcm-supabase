@@ -53,7 +53,7 @@ class EditPricesController extends GetxController {
     prices.dewormingPriceFrom = desparasitaControl.numberValue;
     prices.groomingPriceFrom = groomingControl.numberValue;
     prices.vaccinationPriceFrom = vacunaControl.numberValue;
-    await _repo.setPrices(showVetController.argumentoId!, prices);
+    await _repo.setPrices(showVetController.argumentoId.value, prices);
 
     showVetController.getByid();
     // vetController.getAll();

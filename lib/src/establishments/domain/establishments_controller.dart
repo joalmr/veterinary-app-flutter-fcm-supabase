@@ -39,15 +39,33 @@ class EstablishmentsController extends GetxController {
     carga = true;
     establecimientos.clear();
     final lista = await establishmentRepo.getAll();
-    establecimientos.addAll(lista);
+    establecimientos.addAll(lista ?? []);
 
+    if (establecimientos.isNotEmpty) {
+      prefUser.hasMenu = true;
+    } else {
+      prefUser.hasMenu = false;
+    }
     carga = false;
   }
 
-  void deldete(String id) => _deldete(id);
-  Future<void> _deldete(String id) async {
+  void delete(String id) => _delete(id);
+  Future<void> _delete(String id) async {
     await establishmentRepo.deleteEstablishmetn(id);
     getAll();
+    if (prefUser.vetId == id) {
+      if (establecimientos.isNotEmpty) {
+        final VetStorage forStorage = VetStorage();
+        forStorage.vetId = establecimientos.first.id;
+        forStorage.vetName = establecimientos.first.name;
+        forStorage.vetLogo = establecimientos.first.logo;
+
+        prefUser.vetData = vetStorageToJson(forStorage);
+      } else {
+        prefUser.vetDataDel();
+        prefUser.hasMenu = false;
+      }
+    }
   }
 
   void go2Show(String id) => _go2Show(id);

@@ -26,13 +26,10 @@ class NameRoutes {
   static String stats = '/stats';
   static String offers = '/offers';
   static String establishments = '/establishments';
-  // static String workers = '/workers';
   static String chats = '/chats';
   static String clientes = '/clients';
   static String config = '/config';
-
-  static String atenderBooking = '/booking'; //atender *
-  // static String historialPet = '/history'; //atender *
+  static String atenderBooking = '/booking'; //? atender
 }
 
 abstract class AppPages {
@@ -52,9 +49,6 @@ abstract class AppPages {
     ),
     GetPage(
       name: NameRoutes.atenderBooking,
-      // name: '${NameRoutes.atenderBooking}/:id',
-
-      ///:id -atender reserva
       page: () => AtenderMain(),
       middlewares: [GlobalMiddleware()],
     ),

@@ -4,14 +4,14 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "c35b41e943a190f5ef95131ab9f019ff",
-"index.html": "99ae28cd8ba28ff7858aaad92236daf4",
-"/": "99ae28cd8ba28ff7858aaad92236daf4",
-"main.dart.js": "7d36cac8777c217eec7650097e9beb95",
+"index.html": "a6d7bea90b71553c26e661318a7c6c61",
+"/": "a6d7bea90b71553c26e661318a7c6c61",
+"main.dart.js": "29b3df7e9154c79734d425ef407b108a",
 "favicon.png": "aef33633c5c0bfb10897eb82347464ec",
 "icons/Icon-192.png": "e194ee209513d7cea638e75388a8d16c",
 "icons/Icon-512.png": "e889d96fb4bc64d7cbacbdac99955a83",
 "manifest.json": "acefdfc29fdc72d96b1d1d980fe1fa4b",
-"assets/AssetManifest.json": "e4de500419ba386e341e189e9ced3c13",
+"assets/AssetManifest.json": "1c9f914858fb8f8a4c1b16275f12da54",
 "assets/NOTICES": "efa49f89da6cdc270f5840dd4c94c37a",
 "assets/FontManifest.json": "98e7eafbee58d78dd223ef40013ca33f",
 "assets/packages/day_night_time_picker/assets/moon.png": "71137650ab728a466a50fa4fa78fb2b9",
@@ -352,6 +352,7 @@ const RESOURCES = {
 "assets/assets/images/portada.jpg": "867ae43b3fd9e327e98448f93032ef6a",
 "assets/assets/images/empty.png": "c9477b1f1820f9acfb93eebb2e6679c2",
 "assets/assets/images/logo-proypet.png": "4d1acab72b89e9c34b004220c8e39039",
+"assets/assets/images/google-play.png": "a1cb6d28800c97de2b61431dbc027e31",
 "assets/assets/images/vetfoto.jpg": "d735192ecde544f550ca73e21ab97fc9",
 "assets/assets/images/proypet-partner.png": "2521076ce362d043855cf87025a10624",
 "assets/assets/images/cat-pr.png": "c2332fe9e6c85b2586f8eea562bc7023",
@@ -361,6 +362,7 @@ const RESOURCES = {
 "assets/assets/images/lottie/check.json": "7e0a1eaea721e81b0d8773d69a224d68",
 "assets/assets/images/lottie/loading-circulo.json": "01c2fdebdd3b355a101d71fa22b370b0",
 "assets/assets/images/folder-bro.png": "dc3310feff9f3357539946fe134287b3",
+"assets/assets/images/app-store.png": "5af206a86e9801abca6f4be5227d2273",
 "assets/assets/fonts/IconProypet.ttf": "fcd29f624dde5d30e39b69ffeeab2dea"
 };
 

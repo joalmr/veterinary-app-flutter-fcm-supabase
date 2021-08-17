@@ -16,7 +16,7 @@ abstract class ClientsInterface {
     String userId,
   );
   Future<FindUserModel> getUser(String userId);
-  Future<FindUserModel> findUser(String mailUser);
+  Future<FindUserModel?> findUser(String mailUser);
   Future<UserClientModel> getUserClient(String establishment, String user);
   Future<List<Species>> getSpecies();
   Future<List<Breed>> getBreeds(int specie);

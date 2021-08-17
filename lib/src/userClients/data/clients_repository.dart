@@ -23,7 +23,7 @@ class ClientsRepository extends ClientsInterface {
   }
 
   @override
-  Future<FindUserModel> findUser(String mailUser) {
+  Future<FindUserModel?> findUser(String mailUser) {
     return _api.findUser(mailUser);
   }
 

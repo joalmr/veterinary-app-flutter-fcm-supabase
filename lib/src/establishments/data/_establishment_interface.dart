@@ -46,7 +46,7 @@ abstract class EstablishmentInterface {
     String establecimientoId,
     String description,
   );
-  Future<List<EstablecimientoModelLite>> getAll();
+  Future<List<EstablecimientoModelLite>?> getAll();
   Future<EstablecimientoModelLite> getFirst();
   Future<EstablishmentModal> getById(String idVet);
   Future<String> setLogo(String establecimientoId, File image);

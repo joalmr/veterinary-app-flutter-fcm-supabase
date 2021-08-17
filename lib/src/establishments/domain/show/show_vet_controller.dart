@@ -15,11 +15,11 @@ class ShowVetController extends GetxController {
   final initialTab = 0.obs;
   final cargando = true.obs;
 
-  String? argumentoId;
+  final argumentoId = ''.obs;
 
   @override
   void onInit() {
-    argumentoId = Get.arguments;
+    argumentoId.value = Get.arguments;
     getByid();
     super.onInit();
   }
@@ -38,12 +38,12 @@ class ShowVetController extends GetxController {
 
   Future<void> _getByid() async {
     cargando.value = true;
-    establishment.value = await _repo.getById(argumentoId!);
+    establishment.value = await _repo.getById(argumentoId.value);
     cargando.value = false;
   }
 
   seleccionarLogo() async {
-    await _procesarLogo(argumentoId!, ImageSource.gallery);
+    await _procesarLogo(argumentoId.value, ImageSource.gallery);
     _global.generalLoad();
   }
 
@@ -61,7 +61,7 @@ class ShowVetController extends GetxController {
   }
 
   Future<void> seleccionarSlide() async {
-    await _procesarSlide(argumentoId!, ImageSource.gallery);
+    await _procesarSlide(argumentoId.value, ImageSource.gallery);
     _global.generalLoad();
   }
 
@@ -83,7 +83,7 @@ class ShowVetController extends GetxController {
   Future<void> _eliminarSlide(String slide) async {
     final shortSlide = slide.split('/storage/')[1];
 
-    await _repo.deleteSlide(argumentoId!, shortSlide);
+    await _repo.deleteSlide(argumentoId.value, shortSlide);
     getByid();
     _global.generalLoad();
     Get.close(2);

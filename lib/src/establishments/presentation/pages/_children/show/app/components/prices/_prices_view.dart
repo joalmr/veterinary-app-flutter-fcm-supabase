@@ -28,16 +28,18 @@ class PricesView extends StatelessWidget {
                   'Precios',
                   style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                 ),
-                IconButton(
-                  splashRadius: 20,
-                  iconSize: 18,
-                  icon: const Icon(
-                    Icons.edit,
-                  ),
-                  onPressed: () {
-                    Get.to(EditPricesView());
-                  },
-                ),
+                GetPlatform.isWeb
+                    ? SizedBox(height: 0)
+                    : IconButton(
+                        splashRadius: 20,
+                        iconSize: 18,
+                        icon: const Icon(
+                          Icons.edit,
+                        ),
+                        onPressed: () {
+                          Get.to(EditPricesView());
+                        },
+                      ),
               ],
             ),
           ),
@@ -45,22 +47,21 @@ class PricesView extends StatelessWidget {
             children: [
               precio(
                 'Consulta',
-                double.parse(prices.consultation!.from!).toStringAsFixed(2),
+                double.parse(prices.consultation?.from ?? '0')
+                    .toStringAsFixed(2),
               ),
               precio(
                 'Grooming',
-                // prices.grooming.from.toString(),
-                double.parse(prices.grooming!.from!).toStringAsFixed(2),
+                double.parse(prices.grooming?.from ?? '0').toStringAsFixed(2),
               ),
               precio(
                 'Desparasitación',
-                // prices.deworming.from.toString(),
-                double.parse(prices.deworming!.from!).toStringAsFixed(2),
+                double.parse(prices.deworming?.from ?? '0').toStringAsFixed(2),
               ),
               precio(
                 'Vacunas',
-                // prices.vaccination.from.toString(),
-                double.parse(prices.vaccination!.from!).toStringAsFixed(2),
+                double.parse(prices.vaccination?.from ?? '0')
+                    .toStringAsFixed(2),
               ),
             ],
           )

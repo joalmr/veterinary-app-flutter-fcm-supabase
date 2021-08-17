@@ -5,6 +5,9 @@ import 'preferences_model.dart';
 class PreferenciasUsuario {
   GetStorage box = GetStorage();
 
+  bool get hasMenu => box.read('hasMenu');
+  set hasMenu(bool value) => box.write('hasMenu', value);
+
   String get userRol => box.read('userRol') ?? '';
   set userRol(String value) => box.write('userRol', value);
   bool userRolHas() => box.hasData('userRol');

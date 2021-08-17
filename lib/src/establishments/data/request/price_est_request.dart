@@ -26,25 +26,25 @@ class PriceEstablecimientoEntity {
   double? groomingPriceFrom;
   double? vaccinationPriceFrom;
 
-  RxPriceEstablecimientoEntity? rx;
-  PriceEstablecimientoEntity({
-    this.consultationPriceFrom,
-    this.dewormingPriceFrom,
-    this.groomingPriceFrom,
-    this.vaccinationPriceFrom,
-  }) {
-    rx = RxPriceEstablecimientoEntity(
-      consultationPriceFrom!.obs,
-      dewormingPriceFrom!.obs,
-      groomingPriceFrom!.obs,
-      vaccinationPriceFrom!.obs,
-    );
-  }
+  // RxPriceEstablecimientoEntity? rx;
+  // PriceEstablecimientoEntity({
+  //   this.consultationPriceFrom,
+  //   this.dewormingPriceFrom,
+  //   this.groomingPriceFrom,
+  //   this.vaccinationPriceFrom,
+  // }) {
+  //   rx = RxPriceEstablecimientoEntity(
+  //     consultationPriceFrom!.obs,
+  //     dewormingPriceFrom!.obs,
+  //     groomingPriceFrom!.obs,
+  //     vaccinationPriceFrom!.obs,
+  //   );
+  // }
 
   Map<String, dynamic> toJson() => {
-        'consultation_price_from': consultationPriceFrom,
-        'deworming_price_from': dewormingPriceFrom,
-        'grooming_price_from': groomingPriceFrom,
-        'vaccination_price_from': vaccinationPriceFrom,
+        'consultation_price_from': consultationPriceFrom ?? 0,
+        'deworming_price_from': dewormingPriceFrom ?? 0,
+        'grooming_price_from': groomingPriceFrom ?? 0,
+        'vaccination_price_from': vaccinationPriceFrom ?? 0,
       };
 }

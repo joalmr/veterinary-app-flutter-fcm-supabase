@@ -13,7 +13,7 @@ import 'app/user_clients_app.dart';
 class UserClientsMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetX<ClientsController>(
+    return GetBuilder<ClientsController>(
       builder: (_) {
         return MainLayout(
           drawerActive: true,
@@ -32,11 +32,7 @@ class UserClientsMain extends StatelessWidget {
             },
             child: Icon(Icons.add_rounded),
           ),
-          body: _.loadClients.value
-              ? Center(
-                  child: Text('No tiene petlovers'),
-                )
-              : UserClientsApp(),
+          body: UserClientsApp(),
         );
       },
     );

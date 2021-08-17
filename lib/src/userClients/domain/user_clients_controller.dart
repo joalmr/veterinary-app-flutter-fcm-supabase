@@ -66,7 +66,7 @@ class ClientsController extends GetxController {
 
   findClients(String mailUser) async {
     final response = await _repo.findUser(mailUser);
-    findClient.value = response.result!;
+    findClient.value = response?.result; //TODO: revisando
   }
 
   goToUser(String user) async {

@@ -19,22 +19,19 @@ class OtroView extends StatefulWidget {
 class _OtroViewState extends State<OtroView> {
   RxBool recomendaciones = false.obs;
   final otroController = TextEditingController();
+  final recomendationController = TextEditingController(
+      text: Get.find<BookingController>().otros.value?.recommendations ?? '');
+
+  final amountController = MoneyMaskedTextController(
+    initialValue: Get.find<BookingController>().otros.value?.amount ?? 0,
+    decimalSeparator: '.',
+    thousandSeparator: ',',
+  );
 
   @override
   Widget build(BuildContext context) {
     return GetX<BookingController>(
       builder: (_book) {
-        // var listaOtro = _book.otros.value?.others ?? <OtherServ>[];
-
-        final recomendationController = TextEditingController(
-            text: _book.otros.value?.recommendations ?? '');
-
-        final amountController = MoneyMaskedTextController(
-          initialValue: _book.otros.value?.amount ?? 0,
-          decimalSeparator: '.',
-          thousandSeparator: ',',
-        );
-
         return Scaffold(
           appBar: AppBar(
             title: const Text('Otros'),
@@ -186,6 +183,7 @@ class _OtroViewState extends State<OtroView> {
                     TextFormField(
                       keyboardType: TextInputType.number,
                       controller: amountController,
+                      textInputAction: TextInputAction.none,
                       decoration: const InputDecoration(
                         labelText: 'Monto otros',
                       ),

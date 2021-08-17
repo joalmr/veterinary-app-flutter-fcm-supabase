@@ -58,8 +58,6 @@ class GetAttentionsController extends GetxController {
 
     if (result != null) {
       upFile = File(result.files.single.path!);
-      print('atencion id');
-      print(attentionId.value);
       final response = await _repo.uploadFile(
         prefUser.vetId!,
         attentionId.value,
