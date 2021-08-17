@@ -35,8 +35,8 @@ Widget _chartBar(List<SalesDay> listDay) {
     children: listDay
         .map(
           (e) => _barDay(
-            e.name!,
-            e.value!,
+            e.name??'-',
+            e.value??0,
             numeromayor,
           ),
         )
@@ -44,9 +44,8 @@ Widget _chartBar(List<SalesDay> listDay) {
   );
 }
 
-Widget _barDay(String day, double value, double mayor) {
-  final double valorY = (value * 150) / mayor;
-  // double ancho = (400 - (10 * 2)) / 7;
+Widget _barDay(String? day, double? value, double? mayor) {
+  final double valorY = (value! * 150) / mayor!;
 
   return Column(
     children: [
@@ -87,14 +86,9 @@ Widget _barDay(String day, double value, double mayor) {
           ),
         ),
       ),
-      // Container(
-      //   height: 5,
-      //   width: ancho,
-      //   color: Colors.red,
-      // ),
       const SizedBox(height: 5),
       Text(
-        day.substring(0, 3),
+        day!.substring(0, 3),
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 12,

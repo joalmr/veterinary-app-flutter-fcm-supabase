@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/calendar/presentation/widgets/event/event_booking.dart';
 import 'package:vet_app/src/calendar/presentation/widgets/event/event_next_date.dart';
@@ -18,10 +19,8 @@ class DayDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(day),
-      ),
+    return MainLayout(
+      title: day,
       body: DefaultTabController(
         length: 3,
         initialIndex: listaNextDate.isNotEmpty
@@ -30,7 +29,26 @@ class DayDetail extends StatelessWidget {
                 ? 0
                 : 2,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            MediaQuery.of(context).size.width >= 900
+                ? Padding(
+                    padding: const EdgeInsets.only(
+                      left: 30.0,
+                      right: 30.0,
+                      top: 25.0,
+                      bottom: 10.0,
+                    ),
+                    child: Text(
+                      day,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      ),
+                    ),
+                  )
+                : SizedBox(height: 0),
             const TabBar(
               indicatorColor: colorMain,
               labelColor: colorMain,

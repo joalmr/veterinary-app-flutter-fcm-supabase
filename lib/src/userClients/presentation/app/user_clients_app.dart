@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 
+import 'clientes/busca_cliente.dart';
+
 class UserClientsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,19 +13,32 @@ class UserClientsApp extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GetPlatform.isWeb
+            context.width >= 900
                 ? Container(
                     margin: EdgeInsets.only(
                       left: 30.0,
+                      right: 30.0,
                       top: 25.0,
                       bottom: 10.0,
                     ),
-                    child: Text(
-                      'Clientes',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ),
+                    width: double.maxFinite,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Clientes',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            Get.to(BuscaCliente());
+                          },
+                          icon: Icon(Icons.search_rounded),
+                        ),
+                      ],
                     ),
                   )
                 : SizedBox(height: 0),

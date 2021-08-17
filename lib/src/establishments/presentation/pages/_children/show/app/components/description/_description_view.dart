@@ -31,16 +31,18 @@ class DescriptionView extends StatelessWidget {
                       'Descripción',
                       style: Get.textTheme.subtitle2!.apply(fontWeightDelta: 2),
                     ),
-                    IconButton(
-                      splashRadius: 20,
-                      iconSize: 18,
-                      icon: const Icon(
-                        Icons.edit,
-                      ),
-                      onPressed: () {
-                        Get.to(EditDescriptionView());
-                      },
-                    ),
+                    GetPlatform.isWeb
+                        ? SizedBox(height: 0)
+                        : IconButton(
+                            splashRadius: 20,
+                            iconSize: 18,
+                            icon: const Icon(
+                              Icons.edit,
+                            ),
+                            onPressed: () {
+                              Get.to(EditDescriptionView());
+                            },
+                          ),
                   ],
                 ),
               ),

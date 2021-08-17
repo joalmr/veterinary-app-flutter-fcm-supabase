@@ -113,16 +113,18 @@ class EditEmployeesView extends StatelessWidget {
                                   );
                           },
                         ),
-                        IconButton(
-                          splashRadius: 20,
-                          icon: const Icon(
-                            Icons.edit,
-                            color: colorBlue,
-                          ),
-                          onPressed: () {
-                            _.goToUpdate(employee);
-                          },
-                        ),
+                        GetPlatform.isWeb
+                            ? SizedBox(height: 0)
+                            : IconButton(
+                                splashRadius: 20,
+                                icon: const Icon(
+                                  Icons.edit,
+                                  color: colorBlue,
+                                ),
+                                onPressed: () {
+                                  _.goToUpdate(employee);
+                                },
+                              ),
                       ],
                     ),
                   ],
