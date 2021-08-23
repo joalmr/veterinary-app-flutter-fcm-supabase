@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
-import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/icons_map.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/service_model.dart';
@@ -86,18 +86,14 @@ class CreateOfferController extends GetxController {
       }
     } else {
       if (description.text.trim() == '') {
-        Get.snackbar(
-          'Error',
-          'Debe agregar una descripción',
-          backgroundColor: colorRed,
-          colorText: colorWhite,
+        snackBarMessage(
+          type: TypeSnackBarName.ERROR,
+          message: 'Debe agregar una descripción',
         );
       } else {
-        Get.snackbar(
-          'Error',
-          'Debe ingresar el monto y ser mayor a 0',
-          backgroundColor: colorRed,
-          colorText: colorWhite,
+        snackBarMessage(
+          type: TypeSnackBarName.ERROR,
+          message: 'Debe ingresar el monto y ser mayor a 0',
         );
       }
     }

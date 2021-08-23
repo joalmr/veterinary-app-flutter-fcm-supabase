@@ -1,8 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
-import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/workers/data/model/invitation_model.dart';
 import 'package:vet_app/src/workers/data/model/worker_model.dart';
@@ -58,22 +58,30 @@ class WorkersController extends GetxController {
   setInvita() => _setInvita();
   _setInvita() async {
     if (!EmailValidator.validate(emailText.text)) {
-      Get.snackbar(
-        'Error',
-        'El formato del email es invalido',
-        backgroundColor: colorRed,
-        colorText: colorWhite,
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: 'El formato del email es invalido',
       );
+      // Get.snackbar(
+      //   'Error',
+      //   'El formato del email es invalido',
+      //   backgroundColor: colorRed,
+      //   colorText: colorWhite,
+      // );
     } else {
       InvitationModel value =
           await _repo.setInvita(prefUser.vetId!, emailText.text);
       if (!value.result!) {
-        Get.snackbar(
-          'Error',
-          value.message!,
-          backgroundColor: colorRed,
-          colorText: colorWhite,
+        snackBarMessage(
+          type: TypeSnackBarName.ERROR,
+          message: value.message!,
         );
+        // Get.snackbar(
+        //   'Error',
+        //   value.message!,
+        //   backgroundColor: colorRed,
+        //   colorText: colorWhite,
+        // );
       } else {
         emailText.clear();
         getInvitados();

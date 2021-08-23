@@ -21,8 +21,6 @@ class GlobalController extends GetxController {
 
   final pushController = PushController();
 
-  // final hasMenu = false.obs;
-
   @override
   void onInit() {
     openApp();

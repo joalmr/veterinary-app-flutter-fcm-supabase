@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:vet_app/design/styles/styles.dart';
 
 // ignore: constant_identifier_names
 enum TypeSnackBarName { INFO, SUCCESS, ERROR }
@@ -17,6 +18,7 @@ void snackBarMessage({
           backgroundColor: Colors.transparent,
           duration: Duration(seconds: seconds),
           content: CustomSnackBar.info(
+            backgroundColor: colorBlue,
             message: message,
           ),
         ),
@@ -28,6 +30,7 @@ void snackBarMessage({
           backgroundColor: Colors.transparent,
           duration: Duration(seconds: seconds),
           content: CustomSnackBar.success(
+            backgroundColor: colorGreen,
             message: message,
           ),
         ),
@@ -39,6 +42,7 @@ void snackBarMessage({
           backgroundColor: Colors.transparent,
           duration: Duration(seconds: seconds),
           content: CustomSnackBar.error(
+            backgroundColor: colorRed,
             message: message,
           ),
         ),
@@ -50,6 +54,7 @@ void snackBarMessage({
           backgroundColor: Colors.transparent,
           duration: Duration(seconds: seconds),
           content: CustomSnackBar.info(
+            backgroundColor: colorBlue,
             message: message,
           ),
         ),

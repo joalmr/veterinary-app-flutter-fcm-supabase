@@ -91,6 +91,7 @@ class LoginController extends GetxController {
       _global.generalLoad();
       _homeController.getVet();
       btnLogIn.value = true;
+
       Get.offNamed(NameRoutes.home);
     }
   }

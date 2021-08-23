@@ -51,6 +51,7 @@ class Prediction {
   String toString() => name!;
 
   @override
+  // ignore: avoid_renaming_method_parameters
   bool operator ==(o) => o is Prediction && o.id == id;
 
   @override

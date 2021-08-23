@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
@@ -64,12 +65,16 @@ class StatsController extends GetxController {
     final diffDate = date2.difference(date1);
 
     if (diffDate.inDays < 1) {
-      Get.snackbar(
-        'Error',
-        'La "fecha desde" debe ser anterior a la "fecha hasta"',
-        backgroundColor: colorRed,
-        colorText: colorWhite,
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: 'La "fecha desde" debe ser anterior a la "fecha hasta"',
       );
+      // Get.snackbar(
+      //   'Error',
+      //   'La "fecha desde" debe ser anterior a la "fecha hasta"',
+      //   backgroundColor: colorRed,
+      //   colorText: colorWhite,
+      // );
     } else {
       cargaStats();
       Get.back();

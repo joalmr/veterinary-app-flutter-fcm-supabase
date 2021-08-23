@@ -48,8 +48,8 @@ class EstablishmentModal {
 
   factory EstablishmentModal.fromJson(Map<String, dynamic> json) =>
       EstablishmentModal(
-        address: json['address'],
-        description: json['description'],
+        address: json['address'] ?? '',
+        description: json['description'] ?? '-',
         employees: List<Employee>.from(
             json['employees'].map((x) => Employee.fromJson(x))),
         id: json['id'],
@@ -68,7 +68,7 @@ class EstablishmentModal {
         stars: json['stars'],
         type: json['type'],
         typeId: json['type_id'],
-        website: json['website'],
+        website: json['website'] ?? '-',
       );
 }
 
@@ -204,7 +204,8 @@ class Day {
   String? timeEnd;
 
   factory Day.fromJson(Map<String, dynamic> json) => Day(
-        daySwitch:  json['switch'] == 'on' ? true : json['switch'] as bool? ?? false,
+        daySwitch:
+            json['switch'] == 'on' ? true : json['switch'] as bool? ?? false,
         timeStart: json['time_start']?.toString() ?? '',
         timeEnd: json['time_end']?.toString() ?? '',
       );

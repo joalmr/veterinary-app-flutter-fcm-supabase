@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
-import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/days/dia_semana.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
@@ -156,11 +155,9 @@ class CreateVetController extends GetxController {
 
     _repo.setNew(entity.value).then((value) async {
       if (value[0] != 200) {
-        Get.snackbar(
-          'Error',
-          'No se creó el establecimiento',
-          backgroundColor: colorRed,
-          colorText: colorWhite,
+        snackBarMessage(
+          type: TypeSnackBarName.ERROR,
+          message: 'No se creó el establecimiento',
         );
       } else {
         idVet = value[1];
@@ -258,11 +255,9 @@ class CreateVetController extends GetxController {
 
   validaStep1() {
     if (ename || ephone || eruc || eweb || eservices) {
-      Get.snackbar(
-        'Error',
-        'Llene todos los campos',
-        backgroundColor: colorRed,
-        colorText: colorWhite,
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: 'Llene todos los campos',
       );
     } else {
       if (selected < 4) selected++;
@@ -271,11 +266,9 @@ class CreateVetController extends GetxController {
 
   validaStep2() {
     if (edirVet) {
-      Get.snackbar(
-        'Error',
-        'Llene los campos',
-        backgroundColor: colorRed,
-        colorText: colorWhite,
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: 'Llene los campos',
       );
     } else {
       if (selected < 4) selected++;
@@ -310,27 +303,21 @@ class CreateVetController extends GetxController {
         emoneyGrooming ||
         epersonalNameVet ||
         epersonalCodeVet) {
-      Get.snackbar(
-        'Error',
-        'Llene los campos',
-        backgroundColor: colorRed,
-        colorText: colorWhite,
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: 'Llene los campos',
       );
     } else if (diaError != '' || diaHoraError != '') {
       if (diaError != '') {
-        Get.snackbar(
-          'Error',
-          'Complete los datos de $diaError',
-          backgroundColor: colorRed,
-          colorText: colorWhite,
+        snackBarMessage(
+          type: TypeSnackBarName.ERROR,
+          message: 'Complete los datos de $diaError',
         );
       }
       if (diaHoraError != '') {
-        Get.snackbar(
-          'Error',
-          diaHoraError,
-          backgroundColor: colorRed,
-          colorText: colorWhite,
+        snackBarMessage(
+          type: TypeSnackBarName.ERROR,
+          message: diaHoraError,
         );
       }
     } else {
