@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-Widget navbarItem(
-    {required bool active,
-    required IconData icon,
-    void Function()? onTap,
-    Color? color}) {
+Widget navbarItem({
+  required bool active,
+  required IconData icon,
+  void Function()? onTap,
+  Color? color,
+}) {
   return Material(
     color: Colors.transparent,
     child: InkWell(

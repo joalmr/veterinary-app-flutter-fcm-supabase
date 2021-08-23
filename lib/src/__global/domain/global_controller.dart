@@ -19,7 +19,7 @@ class GlobalController extends GetxController {
   final _clients = Get.find<ClientsController>();
   final _establishment = Get.find<EstablishmentsController>();
 
-  final pushController = PushController();
+  // final pushController = PushController();
 
   @override
   void onInit() {
@@ -37,22 +37,24 @@ class GlobalController extends GetxController {
 
   Future<void> openApp() async {
     if (prefUser.tokenHas() == true && prefUser.vetDataHas() == true) {
-      pushController.firebase(); // TODO: firebase
-      final response = await EstablishmentRepository().getAll();
+      // pushController.firebase(); // TODO: firebase
+      print('web');
+      // final response = await EstablishmentRepository().getAll();
 
-      if (response!.isNotEmpty) {
-        prefUser.hasMenu = true;
-        Timer(const Duration(milliseconds: 2500),
-            () => Get.offNamed(NameRoutes.home));
-      } else {
-        prefUser.hasMenu = false;
-        Timer(const Duration(milliseconds: 2500),
-            () => Get.offNamed(NameRoutes.establishments));
-      }
-    } else {
-      prefUser.hasMenu = false;
-      Timer(const Duration(milliseconds: 2500),
-          () => Get.offNamed(NameRoutes.login));
+      // if (response!.isNotEmpty) {
+      //   prefUser.hasMenu = true;
+      //   Timer(const Duration(milliseconds: 2500),
+      //       () => Get.offNamed(NameRoutes.home));
+      // } else {
+      //   prefUser.hasMenu = false;
+      //   Timer(const Duration(milliseconds: 2500),
+      //       () => Get.offNamed(NameRoutes.establishments));
+      // }
     }
+    // else {
+    //   prefUser.hasMenu = false;
+    //   Timer(const Duration(milliseconds: 2500),
+    //       () => Get.offNamed(NameRoutes.login));
+    // }
   }
 }

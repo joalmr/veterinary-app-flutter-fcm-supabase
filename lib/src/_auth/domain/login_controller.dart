@@ -17,7 +17,7 @@ class LoginController extends GetxController {
   final authService = AuthRepository();
   final establishmentService = EstablishmentRepository();
 
-  final pushController = PushController();
+  // final pushController = PushController();
 
   final _homeController = Get.find<HomeController>();
   final _global = Get.find<GlobalController>();
@@ -69,7 +69,7 @@ class LoginController extends GetxController {
 
   Future<void> initHome() async {
     final establishment = await establishmentService.getAll();
-    pushController.firebase(); //TODO: firebase
+    // pushController.firebase(); //TODO: firebase
     if (establishment!.isEmpty) {
       prefUser.hasMenu = false;
       btnLogIn.value = true;

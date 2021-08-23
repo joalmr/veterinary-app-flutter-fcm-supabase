@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/middleware/global_middleware.dart';
 import 'package:vet_app/src/__global/presentation/splash_view.dart';
 import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
@@ -44,7 +45,10 @@ class AppPages {
     unknownRoutePage,
     GetPage(
       name: NameRoutes.splash,
-      page: () => SplashView(),
+      // page: () => SplashView(),
+      page: () => prefUser.tokenHas() == true && prefUser.vetDataHas() == true
+          ? HomeMain()
+          : LoginMain(),
     ),
     GetPage(
       name: NameRoutes.login,
