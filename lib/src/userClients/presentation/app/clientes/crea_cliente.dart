@@ -1,16 +1,29 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 
-class CreaCliente extends StatelessWidget {
+class CreaCliente extends StatefulWidget {
+  @override
+  _CreaClienteState createState() => _CreaClienteState();
+}
+
+class _CreaClienteState extends State<CreaCliente> {
   final nameController = TextEditingController();
+
   final lastnameController = TextEditingController();
+
   final emailController = TextEditingController();
+
   final phoneController = TextEditingController();
+
+  bool notEmail = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +68,32 @@ class CreaCliente extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10),
-                  TextFormField(
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      labelText: 'Email del cliente',
-                    ),
+                  notEmail
+                      ? SizedBox(height: 0)
+                      : TextFormField(
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            labelText: 'Email del cliente',
+                          ),
+                        ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            notEmail = !notEmail;
+                          });
+                        },
+                        icon: Icon(notEmail
+                            ? Icons.check_box_outlined
+                            : Icons.check_box_outline_blank_rounded),
+                      ),
+                      Text(
+                        'No tiene email',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 10),
                   TextFormField(
@@ -76,7 +109,6 @@ class CreaCliente extends StatelessWidget {
                     onPressed: () {
                       if (nameController.text.isEmpty ||
                           lastnameController.text.isEmpty ||
-                          emailController.text.isEmpty ||
                           phoneController.text.isEmpty) {
                         snackBarMessage(
                           type: TypeSnackBarName.ERROR,
@@ -84,13 +116,29 @@ class CreaCliente extends StatelessWidget {
                           seconds: 7,
                         );
                       } else {
-                        final addpetlover = CreatePetloverReq(
-                          name: nameController.text,
-                          lastname: lastnameController.text,
-                          email: emailController.text,
-                          phone: phoneController.text,
-                        );
-                        _.addPetlover(addpetlover);
+                        String emailTxt = '';
+                        if (notEmail == false && emailController.text.isEmpty) {
+                          snackBarMessage(
+                            type: TypeSnackBarName.ERROR,
+                            message: 'Ingreso email',
+                            seconds: 5,
+                          );
+                        } else {
+                          if (notEmail) {
+                            emailTxt =
+                                '${nameController.text.removeAllWhitespace.toLowerCase()}${lastnameController.text.removeAllWhitespace.toLowerCase()}${formatDateEmail(DateTime.now())}@proypet.com';
+                          } else {
+                            emailTxt = emailController.text;
+                          }
+
+                          final addpetlover = CreatePetloverReq(
+                            name: nameController.text,
+                            lastname: lastnameController.text,
+                            email: emailTxt,
+                            phone: phoneController.text,
+                          );
+                          _.addPetlover(addpetlover);
+                        }
                       }
                     },
                   ),

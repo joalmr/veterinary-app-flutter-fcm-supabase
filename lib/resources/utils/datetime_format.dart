@@ -1,5 +1,10 @@
 import 'package:intl/intl.dart';
 
+String formatDateEmail(DateTime dateTime) {
+  final String formattedDate = DateFormat('ddMMyyyyHHmmss').format(dateTime);
+  return formattedDate;
+}
+
 String formatDateTime(DateTime dateTime) {
   final String formattedDate = DateFormat('dd-MM-yyyy HH:mm').format(dateTime);
   return formattedDate;
