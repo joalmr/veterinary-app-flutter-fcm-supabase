@@ -80,7 +80,7 @@ class AddSalesView extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Container(
-                                      height: 45,
+                                      height: 50,
                                       padding: EdgeInsets.all(2.5),
                                       child: NumberSelection(
                                         theme: NumberSelectionTheme(
@@ -94,10 +94,10 @@ class AddSalesView extends StatelessWidget {
                                         direction: Axis.horizontal,
                                         withSpring: false,
                                         onChanged: (int value) =>
-                                            print("value: $value"),
+                                            print('value: $value'),
                                         enableOnOutOfConstraintsAnimation: true,
                                         onOutOfConstraints: () => print(
-                                            "This value is too high or too low"),
+                                            'This value is too high or too low'),
                                       ),
                                     ),
                                   ),
