@@ -90,9 +90,9 @@ class AddSalesView extends StatelessWidget {
                                         ),
                                         initialValue: 1,
                                         minValue: 1,
-                                        maxValue: 10,
+                                        maxValue: 1000,
                                         direction: Axis.horizontal,
-                                        withSpring: true,
+                                        withSpring: false,
                                         onChanged: (int value) =>
                                             print("value: $value"),
                                         enableOnOutOfConstraintsAnimation: true,
@@ -124,7 +124,7 @@ class AddSalesView extends StatelessWidget {
                 ),
                 child: Text(
                   'Agregar producto',
-                  style: TextStyle(fontSize: 10.5),
+                  style: TextStyle(fontSize: 12.0),
                 ),
               ),
             ),
