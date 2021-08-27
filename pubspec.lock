@@ -106,13 +106,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-  currency_text_input_formatter:
-    dependency: "direct main"
-    description:
-      name: currency_text_input_formatter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   date_time_picker:
     dependency: "direct main"
     description:
@@ -497,6 +490,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  number_selection:
+    dependency: "direct main"
+    description:
+      name: number_selection
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   octo_image:
     dependency: "direct main"
     description:

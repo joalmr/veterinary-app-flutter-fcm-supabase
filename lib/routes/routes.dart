@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/middleware/global_middleware.dart';
-import 'package:vet_app/src/__global/presentation/splash_view.dart';
 import 'package:vet_app/src/_auth/presentation/login/pages/login.dart';
 import 'package:vet_app/src/_error404/view_404.dart';
 import 'package:vet_app/src/_pet/presentation/pages/pet_history/view.dart';
@@ -15,6 +14,7 @@ import 'package:vet_app/src/home/presentation/pages/home.dart';
 import 'package:vet_app/src/offers/presentation/pages/offers.dart';
 import 'package:vet_app/src/registros/presentation/pages/attentions.dart';
 import 'package:vet_app/src/establishments/presentation/pages/establishments.dart';
+import 'package:vet_app/src/sales/presentation/sales.dart';
 import 'package:vet_app/src/stats/presentation/pages/stats.dart';
 import 'package:vet_app/src/userClients/presentation/user_clients.dart';
 
@@ -31,8 +31,10 @@ class NameRoutes {
   static const String chats = '/chats';
   static const String clientes = '/clients';
   static const String config = '/config';
+  static const String sales = '/sales'; //? ventas
   static const String atenderBooking = '/booking'; //? atender
   static const String error404 = '/error404'; //? error
+
 }
 
 class AppPages {
@@ -118,6 +120,11 @@ class AppPages {
     GetPage(
       name: '/history/:pet',
       page: () => PetHistoryPage(),
+      middlewares: [GlobalMiddleware()],
+    ),
+    GetPage(
+      name: NameRoutes.sales,
+      page: () => SalesMain(),
       middlewares: [GlobalMiddleware()],
     ),
   ];

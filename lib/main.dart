@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: appPruebas,
       title: 'Proypet',
+      navigatorKey: Get.key,
       theme: temaClaro,
       themeMode: ThemeMode.light,
       localizationsDelegates: [

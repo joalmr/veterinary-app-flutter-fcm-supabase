@@ -34,10 +34,17 @@ List<DataMenu> dataMenu = [
     color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
   ),
   DataMenu(
-    icon: Icons.book_rounded,
-    name: 'Registro de atenciones',
-    page: NameRoutes.attentions,
-    fn: prefUser.hasMenu ? () => Get.offNamed(NameRoutes.attentions) : null,
+    icon: Icons.accessibility_new_rounded,
+    name: 'Clientes',
+    page: NameRoutes.clientes,
+    fn: () => Get.offNamed(NameRoutes.clientes),
+    color: Colors.black38,
+  ),
+  DataMenu(
+    icon: Icons.shopping_cart_rounded,
+    name: 'Ventas',
+    page: NameRoutes.calendar,
+    fn: prefUser.hasMenu ? () => Get.offNamed(NameRoutes.sales) : null,
     color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
   ),
   DataMenu(
@@ -45,6 +52,13 @@ List<DataMenu> dataMenu = [
     name: 'Estadísticas',
     page: NameRoutes.stats,
     fn: prefUser.hasMenu ? () => Get.offNamed(NameRoutes.stats) : null,
+    color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
+  ),
+  DataMenu(
+    icon: Icons.book_rounded,
+    name: 'Registro de atenciones',
+    page: NameRoutes.attentions,
+    fn: prefUser.hasMenu ? () => Get.offNamed(NameRoutes.attentions) : null,
     color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
   ),
   DataMenu(
@@ -66,13 +80,6 @@ List<DataMenu> dataMenu = [
     name: 'Chats',
     page: NameRoutes.chats,
     fn: () => Get.offNamed(NameRoutes.chats),
-    color: Colors.black38,
-  ),
-  DataMenu(
-    icon: Icons.accessibility_new_rounded,
-    name: 'Clientes',
-    page: NameRoutes.clientes,
-    fn: () => Get.offNamed(NameRoutes.clientes),
     color: Colors.black38,
   ),
 ];

@@ -25,12 +25,14 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  
+  number_selection: ^1.0.0
   animate_do: ^2.0.0
   animated_text_kit: ^4.0.0
   cached_network_image: ^3.0.0
   country_code_picker: ^2.0.1
   cupertino_icons: ^1.0.2
-  currency_text_input_formatter: ^2.0.0
+  # currency_text_input_formatter: ^2.0.0
   date_time_picker: ^2.0.0
   day_night_time_picker: ^1.0.2
   easy_mask: ^2.0.1

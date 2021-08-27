@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/src/sales/presentation/sales/add_sales.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 import '../components/container_stat_client.dart';
 import '../mascota/atender_mascota.dart';
@@ -194,6 +195,27 @@ class ClienteVista extends StatelessWidget {
                                     ],
                                   ),
                                 ),
+                        ),
+                        SizedBox(height: 20),
+                        Center(
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(AddSalesView());
+                            },
+                            borderRadius: BorderRadius.circular(100),
+                            child: Container(
+                              margin: EdgeInsets.all(4),
+                              padding: EdgeInsets.all(25),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                color: colorMain,
+                              ),
+                              child: Icon(
+                                Icons.add_shopping_cart_rounded,
+                                color: Colors.grey[200],
+                              ),
+                            ),
+                          ),
                         ),
                         SizedBox(height: 20),
                         Center(
