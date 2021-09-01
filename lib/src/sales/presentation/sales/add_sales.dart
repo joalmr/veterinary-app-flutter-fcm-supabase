@@ -1,11 +1,18 @@
+import 'package:cool_dropdown/cool_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:number_selection/number_selection.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/src/sales/presentation/sales/tipo_venta.dart';
 
-class AddSalesView extends StatelessWidget {
+class AddSalesView extends StatefulWidget {
+  @override
+  _AddSalesViewState createState() => _AddSalesViewState();
+}
+
+class _AddSalesViewState extends State<AddSalesView> {
   final priceController = MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
@@ -41,12 +48,21 @@ class AddSalesView extends StatelessWidget {
                             SizedBox(height: 20),
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              child: TextFormField(
-                                textCapitalization:
-                                    TextCapitalization.sentences,
-                                decoration: InputDecoration(
-                                  labelText: 'Tipo de producto',
+                                horizontal: 10,
+                                vertical: 5,
+                              ),
+                              child: CoolDropdown(
+                                dropdownList: itemListSales,
+                                placeholder: 'Seleccione tipo de producto',
+                                onChange: (selectedItem) {
+                                  print(selectedItem);
+                                },
+                                dropdownWidth: double.maxFinite,
+                                dropdownBoxHeight: 320,
+                                dropdownBoxWidth: 220,
+                                dropdownBD: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.grey[200],
                                 ),
                               ),
                             ),
