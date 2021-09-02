@@ -29,10 +29,10 @@ class ChatController extends GetxController {
 
     vetInt = await _repo.getEstablishment(prefUser.vetId!, prefUser.vetName!);
 
-    _repoProduct.getProductType(); //TODO: prueba venta type
+    // _repoProduct.getProductType(); //TODO: prueba venta type
     // _repoProduct.addProductSale(25.25, 3, vetInt!); //TODO: prueba venta type
     // _repoProduct.addProductSaleDetail('Mimaskot', 21.55, 2, 1, 'af9b7b6e-015f-4884-a867-c15b80587949');
-    _repoProduct.getSales(vetInt!);
+    // _repoProduct.getSales(vetInt!);
 
     runSubscription();
 

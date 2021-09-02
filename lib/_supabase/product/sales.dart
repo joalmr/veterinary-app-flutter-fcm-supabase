@@ -35,7 +35,7 @@ class Sales {
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'registered_at': registeredAt!.toIso8601String(),
+        // 'registered_at': registeredAt!.toIso8601String(),
         'price': price,
         'establishment_id': establishmentId,
         'petlover_id': petloverId,
