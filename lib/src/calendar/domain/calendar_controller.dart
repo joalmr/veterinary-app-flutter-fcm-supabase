@@ -46,21 +46,17 @@ class CalendarController extends GetxController {
 
   @override
   void onInit() {
-    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
-      loadCalendar();
-    }
+    loadCalendar();
+
     super.onInit();
   }
 
   void loadCalendar() {
-    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
-      dateString.value = formatDateBasic(today);
-      daysPerMonth.value =
-          DateTime(valueYear.value, valueMonth.value + 1, 0).day;
+    dateString.value = formatDateBasic(today);
+    daysPerMonth.value = DateTime(valueYear.value, valueMonth.value + 1, 0).day;
 
-      listasCalendario(today);
-      tempDate = today;
-    }
+    listasCalendario(today);
+    tempDate = today;
   }
 
   void monthMore() {

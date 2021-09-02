@@ -36,7 +36,9 @@ class GlobalController extends GetxController {
   }
 
   Future<void> openApp() async {
-    if (prefUser.tokenHas() == true && prefUser.vetDataHas() == true) {
+    if (prefUser.tokenHas() == true &&
+        prefUser.vetDataHas() == true &&
+        prefUser.vetIdSupaHas() == true) {
       // pushController.firebase(); // TODO: firebase
       print('web');
       // final response = await EstablishmentRepository().getAll();

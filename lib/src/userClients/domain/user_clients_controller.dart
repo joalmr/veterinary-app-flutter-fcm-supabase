@@ -43,25 +43,22 @@ class ClientsController extends GetxController {
 
   @override
   void onInit() {
-    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
-      getClients();
-    }
+    getClients();
+
     super.onInit();
   }
 
   getClients() async {
-    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
-      loadClients.value = true;
-      final response = await _repo.getMyCLients(prefUser.vetId!);
+    loadClients.value = true;
+    final response = await _repo.getMyCLients(prefUser.vetId!);
 
-      myClients.clear();
-      myClients.addAll(response.result!);
+    myClients.clear();
+    myClients.addAll(response.result!);
 
-      await getBreeds(1);
-      razaSeleccionada = razas.first;
+    await getBreeds(1);
+    razaSeleccionada = razas.first;
 
-      loadClients.value = false;
-    }
+    loadClients.value = false;
   }
 
   findClients(String mailUser) async {

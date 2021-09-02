@@ -18,7 +18,7 @@ class ChatRepo {
     return _api.addMessage(canalId, message);
   }
 
-  Future<int> getEstablishment(String uuid, String name) {
-    return _api.getEstablishment(uuid, name);
-  }
+  // Future<int> getEstablishment(String uuid, String name) {
+  //   return _api.getEstablishment(uuid, name);
+  // }
 }

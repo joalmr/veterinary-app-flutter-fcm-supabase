@@ -48,7 +48,9 @@ class AppPages {
     GetPage(
       name: NameRoutes.splash,
       // page: () => SplashView(),
-      page: () => prefUser.tokenHas() == true && prefUser.vetDataHas() == true
+      page: () => prefUser.tokenHas() == true &&
+              prefUser.vetDataHas() == true &&
+              prefUser.vetIdSupaHas() == true
           ? HomeMain()
           : LoginMain(),
     ),

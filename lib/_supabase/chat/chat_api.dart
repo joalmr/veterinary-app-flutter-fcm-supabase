@@ -6,36 +6,36 @@ import 'package:vet_app/config/variables_supabase.dart';
 class ChatApi {
   final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
 
-  Future<int> addEstablishment(String uuid, String name) async {
-    final response = await supabaseClient.from('establishment').insert([
-      {
-        'vet_id': uuid,
-        'name': name,
-      }
-    ]).execute();
+  // Future<int> addEstablishment(String uuid, String name) async {
+  //   final response = await supabaseClient.from('establishment').insert([
+  //     {
+  //       'vet_id': uuid,
+  //       'name': name,
+  //     }
+  //   ]).execute();
 
-    final dato = response.data as List;
-    return dato.first['id'] as int;
-  }
+  //   final dato = response.data as List;
+  //   return dato.first['id'] as int;
+  // }
 
-  Future<int> getEstablishment(String uuid, String name) async {
-    int idVet;
+  // Future<int> getEstablishment(String uuid, String name) async {
+  //   int idVet;
 
-    final hasVet = await supabaseClient
-        .from('establishment')
-        .select()
-        .eq('vet_id', uuid)
-        .single()
-        .execute();
+  //   final hasVet = await supabaseClient
+  //       .from('establishment')
+  //       .select()
+  //       .eq('vet_id', uuid)
+  //       .single()
+  //       .execute();
 
-    if (hasVet.data == null) {
-      idVet = await addEstablishment(uuid, name);
-    } else {
-      idVet = hasVet.data['id'] as int;
-    }
+  //   if (hasVet.data == null) {
+  //     idVet = await addEstablishment(uuid, name);
+  //   } else {
+  //     idVet = hasVet.data['id'] as int;
+  //   }
 
-    return idVet;
-  }
+  //   return idVet;
+  // }
 
   Future<List<CanalModel>> getCanal(int vetInt) async {
     List<CanalModel> canales = [];

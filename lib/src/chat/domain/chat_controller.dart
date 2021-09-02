@@ -3,7 +3,6 @@ import 'package:supabase/supabase.dart';
 import 'package:vet_app/_supabase/chat/chat_repo.dart';
 import 'package:vet_app/_supabase/model/canal_model.dart';
 import 'package:vet_app/_supabase/model/message_model.dart';
-import 'package:vet_app/_supabase/product/product_repo.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/chat/presentation/app/message_view.dart';
@@ -11,13 +10,13 @@ import 'package:vet_app/src/chat/presentation/app/message_view.dart';
 class ChatController extends GetxController {
   final _repo = ChatRepo();
 
-  final _repoProduct = ProductRepo();
+  // final _repoProduct = ProductRepo();
 
   RxBool cargando = true.obs;
   RxList<CanalModel> chats = <CanalModel>[].obs;
   RxList<MessageModel> mensajes = <MessageModel>[].obs;
 
-  int? vetInt;
+  // int? vetInt;
   int? canalId;
 
   RealtimeSubscription? subscriptionMessage;
@@ -27,7 +26,7 @@ class ChatController extends GetxController {
   Future<void> onInit() async {
     super.onInit();
 
-    vetInt = await _repo.getEstablishment(prefUser.vetId!, prefUser.vetName!);
+    // vetInt = await _repo.getEstablishment(prefUser.vetId!, prefUser.vetName!);
 
     // _repoProduct.getProductType(); //TODO: prueba venta type
     // _repoProduct.addProductSale(25.25, 3, vetInt!); //TODO: prueba venta type
@@ -42,7 +41,7 @@ class ChatController extends GetxController {
 
   getChats() => _getChats();
   Future<void> _getChats() async {
-    final response = await _repo.getCanal(vetInt!);
+    final response = await _repo.getCanal(prefUser.vetIdSupa);
 
     chats.clear();
     chats.addAll(response);

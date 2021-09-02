@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:vet_app/_supabase/auth/auth_repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
@@ -90,6 +91,8 @@ class LoginController extends GetxController {
 
       _global.generalLoad();
       _homeController.getVet();
+
+      AuthSupaRepo().getEstablishment(forStorage.vetId!, forStorage.vetName!);
       btnLogIn.value = true;
 
       Get.offNamed(NameRoutes.home);

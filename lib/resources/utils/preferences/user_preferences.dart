@@ -28,4 +28,9 @@ class PreferenciasUsuario {
   String? get vetId => vetStorageFromJson(vetData).vetId;
   String? get vetName => vetStorageFromJson(vetData).vetName;
   String? get vetLogo => vetStorageFromJson(vetData).vetLogo;
+
+  int get vetIdSupa => box.read('vetIdSupa');
+  set vetIdSupa(int value) => box.write('vetIdSupa', value);
+  bool vetIdSupaHas() => box.hasData('vetIdSupa');
+  Future<void> vetIdSupaDel() => box.remove('vetIdSupa');
 }
