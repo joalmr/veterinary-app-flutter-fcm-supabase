@@ -10,13 +10,10 @@ import 'package:vet_app/src/chat/presentation/app/message_view.dart';
 class ChatController extends GetxController {
   final _repo = ChatRepo();
 
-  // final _repoProduct = ProductRepo();
-
   RxBool cargando = true.obs;
   RxList<CanalModel> chats = <CanalModel>[].obs;
   RxList<MessageModel> mensajes = <MessageModel>[].obs;
 
-  // int? vetInt;
   int? canalId;
 
   RealtimeSubscription? subscriptionMessage;
@@ -25,13 +22,6 @@ class ChatController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-
-    // vetInt = await _repo.getEstablishment(prefUser.vetId!, prefUser.vetName!);
-
-    // _repoProduct.getProductType(); //TODO: prueba venta type
-    // _repoProduct.addProductSale(25.25, 3, vetInt!); //TODO: prueba venta type
-    // _repoProduct.addProductSaleDetail('Mimaskot', 21.55, 2, 1, 'af9b7b6e-015f-4884-a867-c15b80587949');
-    // _repoProduct.getSales(vetInt!);
 
     runSubscription();
 
@@ -49,7 +39,7 @@ class ChatController extends GetxController {
 
   void goToMessage(int canal) {
     Get.to(MessagesView());
-    //=> lei mensaje
+    //* lei mensaje
     _getMessage(canal);
   }
 
@@ -67,7 +57,7 @@ class ChatController extends GetxController {
   }
 
   void runSubscription() {
-    //escucha mensaje
+    //* escucha mensaje
     subscriptionMessage =
         supabaseClient.from('message').on(SupabaseEventTypes.delete, (payload) {
       _getMessage(canalId!);
@@ -78,7 +68,7 @@ class ChatController extends GetxController {
       _getMessage(canalId!);
     }).subscribe();
 
-    //escucha canal
+    //* escucha canal
     subscriptionMessage =
         supabaseClient.from('canal').on(SupabaseEventTypes.delete, (payload) {
       getChats();
