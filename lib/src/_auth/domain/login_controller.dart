@@ -84,6 +84,7 @@ class LoginController extends GetxController {
     } else {
       //if (prefUser.vetDataHas() == false)
       // prefUser.hasMenu = true;
+      //TODO: revisar login
       final temp = await establishmentService.getFirst();
       final VetStorage forStorage = VetStorage();
       forStorage.vetId = temp.id;

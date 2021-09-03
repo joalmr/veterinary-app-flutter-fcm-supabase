@@ -281,7 +281,11 @@ class _AddSalesViewState extends State<AddSalesView> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: btnPrimary(text: 'Finalizar venta', onPressed: () {}),
+                  child: btnPrimary(
+                      text: 'Finalizar venta',
+                      onPressed: () {
+                        _.addSale();
+                      }),
                 ),
               ],
             ),

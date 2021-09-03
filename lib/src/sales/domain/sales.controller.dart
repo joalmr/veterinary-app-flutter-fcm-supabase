@@ -8,10 +8,10 @@ class SalesController extends GetxController {
 
   final salesList = <SalesDetailModel>[].obs;
 
-  addSale() {
+  addSale() async {
     double priceTotal = 0;
 
-    _repo.addProductSale(3, prefUser.vetIdSupa);
+    String saleId = await _repo.addProductSale(3, prefUser.vetIdSupa);
 
     salesList.forEach((element) {
       _repo.addProductSaleDetail(
@@ -19,11 +19,11 @@ class SalesController extends GetxController {
         element.price!,
         element.quantity!,
         element.productTypeId!,
-        'productSaleId',
+        saleId,
       );
-      priceTotal += element.price!;
+      priceTotal += (element.price! * element.quantity!);
     });
 
-    _repo.updateProductSale(priceTotal, 'idProduct');
+    _repo.updateProductSale(priceTotal, saleId);
   }
 }

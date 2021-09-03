@@ -3,7 +3,7 @@ import 'product_api.dart';
 class ProductRepo {
   final _api = ProductApi();
 
-  Future<void> addProductSale(int petloverId, int establishmentId) {
+  Future<String> addProductSale(int petloverId, int establishmentId) {
     return _api.addProductSale(petloverId, establishmentId);
   }
 
