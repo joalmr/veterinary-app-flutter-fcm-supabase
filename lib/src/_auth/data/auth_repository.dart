@@ -21,20 +21,18 @@ class AuthRepository extends AuthInterface {
   @override
   Future<int> login(String email, String password) async {
     final url = Uri.https(urlBase!, '/api/client/login');
-    try {
-      final loginData = {'email': email, 'password': password};
 
-      final http.Response response = await http.post(url, body: loginData);
+    final loginData = {'email': email, 'password': password};
 
-      if (response.statusCode == 200) {
-        final jsonResp = json.decode(response.body);
-        prefUser.token = jsonResp['token'];
-        prefUser.userRol = jsonResp['rol'];
-      }
-      return response.statusCode;
-    } catch (ex) {
-      return 500;
+    final http.Response response = await http.post(url, body: loginData);
+
+    if (response.statusCode == 200) {
+      final jsonResp = json.decode(response.body);
+      prefUser.token = jsonResp['token'];
+      prefUser.userRol = jsonResp['rol'];
     }
+
+    return response.statusCode;
   }
 
   @override

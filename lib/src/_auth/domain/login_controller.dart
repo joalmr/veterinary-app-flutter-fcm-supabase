@@ -16,6 +16,7 @@ import 'push_controller.dart';
 
 class LoginController extends GetxController {
   final authService = AuthRepository();
+  final authSupa = AuthSupaRepo();
   final establishmentService = EstablishmentRepository();
 
   // final pushController = PushController();
@@ -71,16 +72,18 @@ class LoginController extends GetxController {
   Future<void> initHome() async {
     final establishment = await establishmentService.getAll();
     // pushController.firebase(); //TODO: firebase
-    if (establishment!.isEmpty) {
-      prefUser.hasMenu = false;
+    print(establishment!.length);
+    if (establishment.isEmpty) {
+      // prefUser.hasMenu = false;
       btnLogIn.value = true;
       if (GetPlatform.isWeb) {
         Get.off(NewEstablishment());
       } else {
         Get.off(CreateVetMain(), arguments: 'new-estab');
       }
-    } else if (prefUser.vetDataHas() == false) {
-      prefUser.hasMenu = true;
+    } else {
+      //if (prefUser.vetDataHas() == false)
+      // prefUser.hasMenu = true;
       final temp = await establishmentService.getFirst();
       final VetStorage forStorage = VetStorage();
       forStorage.vetId = temp.id;
@@ -88,11 +91,11 @@ class LoginController extends GetxController {
       forStorage.vetLogo = temp.logo;
 
       prefUser.vetData = vetStorageToJson(forStorage);
+      authSupa.getEstablishment(temp.id!, temp.name!);
 
       _global.generalLoad();
       _homeController.getVet();
 
-      AuthSupaRepo().getEstablishment(forStorage.vetId!, forStorage.vetName!);
       btnLogIn.value = true;
 
       Get.offNamed(NameRoutes.home);

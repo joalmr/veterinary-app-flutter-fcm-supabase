@@ -1,4 +1,5 @@
 import 'package:supabase/supabase.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 
 class AuthApi {
@@ -20,6 +21,7 @@ class AuthApi {
       idVet = hasVet.data['id'] as int;
     }
 
+    prefUser.vetIdSupa = idVet;
     return idVet;
   }
 

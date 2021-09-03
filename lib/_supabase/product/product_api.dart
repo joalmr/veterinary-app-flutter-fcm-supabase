@@ -4,15 +4,25 @@ import 'package:vet_app/config/variables_supabase.dart';
 class ProductApi {
   final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
 
-  Future<void> addProductSale(
-      double price, int petloverId, int establishmentId) async {
+  Future<void> addProductSale(int petloverId, int establishmentId) async {
     final response = await supabaseClient.from('product_sale').insert([
       {
         'establishment_id': establishmentId,
         'petlover_id': petloverId,
-        'price': price,
+        'price': 0,
       }
     ]).execute();
+
+    final dato = response.data as List;
+    print(dato);
+  }
+
+  Future<void> updateProductSale(double price, String idProduct) async {
+    final response = await supabaseClient
+        .from('product_sale')
+        .update({'price': price})
+        .eq('id', idProduct)
+        .execute();
 
     final dato = response.data as List;
     print(dato);
