@@ -8,10 +8,15 @@ class SalesController extends GetxController {
 
   final salesList = <SalesDetailModel>[].obs;
 
-  addSale() async {
+  final cargando = false.obs;
+
+  addSale(int idPetlover) async {
     double priceTotal = 0;
 
-    String saleId = await _repo.addProductSale(3, prefUser.vetIdSupa);
+    cargando.value = true;
+
+    // int idPetlover = await _repoPetlover.getPetlover(uuidPetlover, name, lastname);
+    String saleId = await _repo.addProductSale(idPetlover, prefUser.vetIdSupa);
 
     salesList.forEach((element) {
       _repo.addProductSaleDetail(
@@ -25,5 +30,9 @@ class SalesController extends GetxController {
     });
 
     _repo.updateProductSale(priceTotal, saleId);
+
+    cargando.value = false;
+    salesList.clear();
+    Get.back();
   }
 }

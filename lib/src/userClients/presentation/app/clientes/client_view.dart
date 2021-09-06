@@ -200,7 +200,11 @@ class ClienteVista extends StatelessWidget {
                         Center(
                           child: InkWell(
                             onTap: () {
-                              Get.to(AddSalesView());
+                              Get.to(
+                                AddSalesView(
+                                  petloverId: _.userIdSupabase.value,
+                                ),
+                              );
                             },
                             borderRadius: BorderRadius.circular(100),
                             child: Container(

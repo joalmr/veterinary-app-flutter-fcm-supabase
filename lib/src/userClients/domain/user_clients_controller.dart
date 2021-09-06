@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:vet_app/_supabase/auth/petlover_repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
@@ -28,6 +29,8 @@ class ClientsController extends GetxController {
   final userId = ''.obs;
   final typeId = <int>[].obs;
   final bookingAt = formatYMDHms(DateTime.now()).obs;
+
+  final userIdSupabase = 0.obs;
 
   final razas = <Breed>[].obs;
 
@@ -67,8 +70,10 @@ class ClientsController extends GetxController {
   }
 
   goToUser(String user) async {
-    userId.value = user;
+    userId.value = user; //uuid
+
     await getUserComplete();
+    //cargar venta
     Get.to(ClienteVista());
   }
 
@@ -78,6 +83,12 @@ class ClientsController extends GetxController {
     final responseClient = await _repo.getUserClient(
       prefUser.vetId!,
       userId.value,
+    );
+
+    userIdSupabase.value = await PetloverRepo().getPetlover(
+      userId.value,
+      responseClient.result!.user!.name!,
+      responseClient.result!.user!.lastname!,
     );
 
     resultUserClient.value = responseClient.result;

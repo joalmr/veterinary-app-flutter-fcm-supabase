@@ -4,6 +4,7 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:number_selection/number_selection.dart';
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/sales/domain/sales.controller.dart';
@@ -12,11 +13,24 @@ import 'package:vet_app/src/sales/presentation/sales/data/svg_venta.dart';
 import 'package:vet_app/src/sales/presentation/sales/data/tipo_venta.dart';
 
 class AddSalesView extends StatefulWidget {
+  final int petloverId;
+
+  const AddSalesView({
+    required this.petloverId,
+  });
+
   @override
-  _AddSalesViewState createState() => _AddSalesViewState();
+  _AddSalesViewState createState() => _AddSalesViewState(
+        petloverId: petloverId,
+      );
 }
 
 class _AddSalesViewState extends State<AddSalesView> {
+  int petloverId;
+  _AddSalesViewState({
+    required this.petloverId,
+  });
+
   final priceController = MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
@@ -282,10 +296,20 @@ class _AddSalesViewState extends State<AddSalesView> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: btnPrimary(
-                      text: 'Finalizar venta',
-                      onPressed: () {
-                        _.addSale();
-                      }),
+                    text: 'Finalizar venta',
+                    onPressed: _.cargando.value
+                        ? null
+                        : () {
+                            if (petloverId == 0) {
+                              snackBarMessage(
+                                message: 'Oops, ocurrio un error inesperado',
+                                type: TypeSnackBarName.ERROR,
+                              );
+                            } else {
+                              _.addSale(petloverId);
+                            }
+                          },
+                  ),
                 ),
               ],
             ),
