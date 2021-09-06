@@ -73,7 +73,7 @@ class ClientsController extends GetxController {
     userId.value = user; //uuid
 
     await getUserComplete();
-    //cargar venta
+
     Get.to(ClienteVista());
   }
 
@@ -90,6 +90,8 @@ class ClientsController extends GetxController {
       responseClient.result!.user!.name!,
       responseClient.result!.user!.lastname!,
     );
+
+    //TODO: cargar venta
 
     resultUserClient.value = responseClient.result;
     loadUserPets.value = false;

@@ -15,7 +15,6 @@ class SalesController extends GetxController {
 
     cargando.value = true;
 
-    // int idPetlover = await _repoPetlover.getPetlover(uuidPetlover, name, lastname);
     String saleId = await _repo.addProductSale(idPetlover, prefUser.vetIdSupa);
 
     salesList.forEach((element) {
