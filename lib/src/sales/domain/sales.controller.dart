@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:supabase/supabase.dart';
+import 'package:vet_app/_supabase/model/sales_detail_model.dart';
 import 'package:vet_app/_supabase/model/sales_model.dart';
 import 'package:vet_app/_supabase/product/product_repo.dart';
 import 'package:vet_app/config/variables_global.dart';
@@ -9,9 +10,9 @@ import 'package:vet_app/src/sales/domain/sales_model.dart';
 class SalesController extends GetxController {
   final _repo = ProductRepo();
 
-  final salesList = <SalesDetailModel>[].obs;
-
+  final salesList = <SalesDetailPreview>[].obs;
   final mySales = <SalesModel>[].obs;
+  final salesDetail = <SalesDetailModel>[].obs;
 
   final cargando = false.obs;
   RealtimeSubscription? subscriptionMessage;
@@ -30,12 +31,19 @@ class SalesController extends GetxController {
     mySales.addAll(response);
   }
 
+  getSaleDetail(String idSale) async {
+    final response = await _repo.getSaleDetail(idSale);
+    salesDetail.clear();
+    salesDetail.addAll(response);
+  }
+
   void runSubscription() {
     subscriptionMessage = supabaseClient
         .from('product_sale')
-        .on(SupabaseEventTypes.all, (payload) {
-      getSales();
-    }).subscribe();
+        .on(SupabaseEventTypes.insert, (payload) => getSales())
+        .on(SupabaseEventTypes.update, (payload) => getSales())
+        .on(SupabaseEventTypes.delete, (payload) => getSales())
+        .subscribe();
   }
 
   addSale(int idPetlover) async {

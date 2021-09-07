@@ -168,7 +168,7 @@ class _AddSalesViewState extends State<AddSalesView> {
                                       priceController.numberValue == 0) {
                                     print('Complete los datos');
                                   } else {
-                                    final data = SalesDetailModel(
+                                    final data = SalesDetailPreview(
                                       name: productoController.text,
                                       price: priceController.numberValue,
                                       quantity: cantidad,

@@ -1,5 +1,5 @@
-class SalesDetailModel {
-  SalesDetailModel({
+class SalesDetailPreview {
+  SalesDetailPreview({
     this.name,
     this.price,
     this.quantity,

@@ -27,7 +27,8 @@ class SalesMain extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final mySale = _.mySales[index];
                     return InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        await _.getSaleDetail(mySale.id!);
                         Get.to(SaleDetail(
                           name: mySale.petlover!.name!,
                           date: formatDateTime(mySale.registeredAt!),

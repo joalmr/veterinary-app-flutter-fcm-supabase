@@ -1,4 +1,5 @@
 import 'package:supabase/supabase.dart';
+import 'package:vet_app/_supabase/model/sales_detail_model.dart';
 import 'package:vet_app/_supabase/model/sales_model.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 
@@ -62,7 +63,9 @@ class ProductApi {
     return sales;
   }
 
-  Future<void> getSaleDetail(String id) async {
+  Future<List<SalesDetailModel>> getSaleDetail(String id) async {
+    List<SalesDetailModel> sales = [];
+
     final response = await supabaseClient
         .from('product_sale_detail')
         .select()
@@ -71,6 +74,9 @@ class ProductApi {
 
     print(response.data);
     final dato = response.data as List;
+    sales = dato.map((e) => SalesDetailModel.fromJson(e)).toList();
+
+    return sales;
   }
 
   Future<void> getProductType() async {
