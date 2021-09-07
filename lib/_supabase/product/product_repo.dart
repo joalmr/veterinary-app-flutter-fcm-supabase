@@ -1,3 +1,5 @@
+import 'package:vet_app/_supabase/model/sales_model.dart';
+
 import 'product_api.dart';
 
 class ProductRepo {
@@ -27,8 +29,12 @@ class ProductRepo {
     );
   }
 
-  Future<void> getSales(int id) {
+  Future<List<SalesModel>> getSales(int id) {
     return _api.getSales(id);
+  }
+
+  Future<void> getSaleDetail(String id) {
+    return _api.getSaleDetail(id);
   }
 
   Future<void> getProductType() {

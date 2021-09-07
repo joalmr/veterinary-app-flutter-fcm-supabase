@@ -1,4 +1,5 @@
 import 'package:supabase/supabase.dart';
+import 'package:vet_app/_supabase/model/sales_model.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 
 class ProductApi {
@@ -14,7 +15,7 @@ class ProductApi {
     ]).execute();
 
     final dato = response.data as List;
-    print(dato.first['id']);
+
     return dato.first['id'];
   }
 
@@ -45,15 +46,31 @@ class ProductApi {
     print(dato);
   }
 
-  Future<void> getSales(int id) async {
+  Future<List<SalesModel>> getSales(int id) async {
+    List<SalesModel> sales = [];
+
     final response = await supabaseClient
         .from('product_sale')
-        .select()
+        .select('''*, petlover (*)''')
         .eq('establishment_id', id)
+        .order('registered_at', ascending: false)
         .execute();
 
     final dato = response.data as List;
-    print(dato);
+    sales = dato.map((e) => SalesModel.fromJson(e)).toList();
+
+    return sales;
+  }
+
+  Future<void> getSaleDetail(String id) async {
+    final response = await supabaseClient
+        .from('product_sale_detail')
+        .select()
+        .eq('product_sale_id', id)
+        .execute();
+
+    print(response.data);
+    final dato = response.data as List;
   }
 
   Future<void> getProductType() async {

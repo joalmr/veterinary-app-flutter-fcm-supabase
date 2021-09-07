@@ -203,6 +203,9 @@ class ClienteVista extends StatelessWidget {
                               Get.to(
                                 AddSalesView(
                                   petloverId: _.userIdSupabase.value,
+                                  name: _.resultUserClient.value!.user!.name!,
+                                  lastname:
+                                      _.resultUserClient.value!.user!.lastname!,
                                 ),
                               );
                             },
