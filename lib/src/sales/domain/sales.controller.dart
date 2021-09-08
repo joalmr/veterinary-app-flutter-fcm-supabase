@@ -6,6 +6,7 @@ import 'package:vet_app/_supabase/product/product_repo.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 import 'package:vet_app/src/sales/domain/sales_model.dart';
+import 'package:vet_app/src/sales/presentation/sales.dart';
 
 class SalesController extends GetxController {
   final _repo = ProductRepo();
@@ -68,6 +69,6 @@ class SalesController extends GetxController {
 
     cargando.value = false;
     salesList.clear();
-    Get.back();
+    Get.off(SalesMain());
   }
 }

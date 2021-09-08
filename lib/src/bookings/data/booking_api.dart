@@ -10,6 +10,7 @@ import 'package:vet_app/src/bookings/data/model/booking/others_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/vaccination_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgery_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/deworming_booking.dart';
+import 'package:vet_app/src/bookings/data/model/petlover_user_model.dart';
 import '_booking_interface.dart';
 import 'model/booking/_general_booking.dart';
 import 'model/booking_model.dart';
@@ -306,5 +307,16 @@ class BookingApi extends BookingInterface {
     final dataResponse = groomingBookingFromJson(response.body);
     return dataResponse;
     // return null;
+  }
+
+  @override
+  Future<PetloverUser> getPetloverUser(String petId) async {
+    final url = Uri.https(
+      urlBase!,
+      '/api/client/pet/$petId/petlover',
+    );
+
+    final http.Response response = await http.get(url, headers: headersToken());
+    return petloverUserFromJson(response.body);
   }
 }

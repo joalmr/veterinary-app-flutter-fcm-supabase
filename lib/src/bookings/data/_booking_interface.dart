@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:vet_app/src/bookings/data/model/petlover_user_model.dart';
 
 import 'model/_finalize_attention.dart';
 import 'model/booking/_general_booking.dart';
@@ -43,4 +44,6 @@ abstract class BookingInterface {
   //
   Future<dynamic> deleteServiceAttention(
       String establishment, String attention, String type);
+
+  Future<PetloverUser> getPetloverUser(String petId);
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/_supabase/auth/petlover_repo.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
@@ -19,7 +20,9 @@ import 'package:vet_app/src/bookings/data/model/booking/others_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgery_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/testing_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/vaccination_booking.dart';
+import 'package:vet_app/src/bookings/data/model/petlover_user_model.dart';
 import 'package:vet_app/src/bookings/presentation/widgets/data_nextdate.dart';
+import 'package:vet_app/src/bookings/presentation/widgets/wanna_sale.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
 
 class BookingController extends GetxController {
@@ -447,11 +450,27 @@ class BookingController extends GetxController {
         );
       } else {
         _global.generalLoad();
-        snackBarMessage(
-          type: TypeSnackBarName.SUCCESS,
-          message: 'Atencion finalizada',
-        );
-        Get.offAllNamed(NameRoutes.home);
+
+        if (!GetPlatform.isWeb) {
+          PetloverUser respPetlover = await _repo.getPetloverUser(petId.value);
+          int petloverId = await PetloverRepo().getPetlover(
+            respPetlover.result!.id!,
+            respPetlover.result!.name!,
+            respPetlover.result!.lastname!,
+          );
+
+          Get.off(WannaSale(
+            idPetlover: petloverId,
+            name: respPetlover.result!.name!,
+            lastname: respPetlover.result!.lastname!,
+          ));
+        } else {
+          snackBarMessage(
+            type: TypeSnackBarName.SUCCESS,
+            message: 'Atencion finalizada',
+          );
+          Get.offAllNamed(NameRoutes.home);
+        }
       }
     }
   }

@@ -19,7 +19,7 @@ class LoginController extends GetxController {
   final authSupa = AuthSupaRepo();
   final establishmentService = EstablishmentRepository();
 
-  // final pushController = PushController();
+  final pushController = PushController();
 
   final _homeController = Get.find<HomeController>();
   final _global = Get.find<GlobalController>();
@@ -71,10 +71,9 @@ class LoginController extends GetxController {
 
   Future<void> initHome() async {
     final establishment = await establishmentService.getAll();
-    // pushController.firebase(); //TODO: firebase
-    print(establishment!.length);
-    if (establishment.isEmpty) {
-      // prefUser.hasMenu = false;
+    pushController.firebase(); //TODO: firebase
+
+    if (establishment!.isEmpty) {
       btnLogIn.value = true;
       if (GetPlatform.isWeb) {
         Get.off(NewEstablishment());
@@ -82,8 +81,6 @@ class LoginController extends GetxController {
         Get.off(CreateVetMain(), arguments: 'new-estab');
       }
     } else {
-      //if (prefUser.vetDataHas() == false)
-      // prefUser.hasMenu = true;
       //TODO: revisar login
       final temp = await establishmentService.getFirst();
       final VetStorage forStorage = VetStorage();

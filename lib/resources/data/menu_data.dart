@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/routes/routes.dart';
 
 class DataMenu {
@@ -24,14 +23,14 @@ List<DataMenu> dataMenu = [
     name: 'Inicio',
     page: NameRoutes.home,
     fn: () => Get.offNamed(NameRoutes.home),
-    color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
+    color: Colors.black38,
   ),
   DataMenu(
     icon: Icons.calendar_today_rounded,
     name: 'Calendario',
     page: NameRoutes.calendar,
     fn: () => Get.offNamed(NameRoutes.calendar),
-    color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
+    color: Colors.black38,
   ),
   DataMenu(
     icon: Icons.accessibility_new_rounded,
@@ -45,28 +44,28 @@ List<DataMenu> dataMenu = [
     name: 'Ventas',
     page: NameRoutes.calendar,
     fn: () => Get.offNamed(NameRoutes.sales),
-    color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
+    color: Colors.black38,
   ),
   DataMenu(
     icon: Icons.bar_chart_rounded,
     name: 'Estadísticas',
     page: NameRoutes.stats,
     fn: () => Get.offNamed(NameRoutes.stats),
-    color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
+    color: Colors.black38,
   ),
   DataMenu(
     icon: Icons.book_rounded,
     name: 'Registro de atenciones',
     page: NameRoutes.attentions,
     fn: () => Get.offNamed(NameRoutes.attentions),
-    color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
+    color: Colors.black38,
   ),
   DataMenu(
     icon: Icons.local_offer_rounded,
     name: 'Promociones',
     page: NameRoutes.offers,
     fn: () => Get.offNamed(NameRoutes.offers),
-    color: prefUser.hasMenu ? Colors.black38 : Colors.grey[200],
+    color: Colors.black38,
   ),
   DataMenu(
     icon: Icons.home_work_rounded,

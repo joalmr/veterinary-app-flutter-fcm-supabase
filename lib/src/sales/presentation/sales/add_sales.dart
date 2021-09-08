@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cool_dropdown/cool_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
@@ -56,6 +58,7 @@ class _AddSalesViewState extends State<AddSalesView> {
       builder: (_) {
         return MainLayout(
           title: 'Venta',
+          drawerActive: true,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,7 +169,7 @@ class _AddSalesViewState extends State<AddSalesView> {
                                       tipoProducto == 0 ||
                                       productoController.text.isEmpty ||
                                       priceController.numberValue == 0) {
-                                    print('Complete los datos');
+                                    log('Complete los datos');
                                   } else {
                                     final data = SalesDetailPreview(
                                       name: productoController.text,

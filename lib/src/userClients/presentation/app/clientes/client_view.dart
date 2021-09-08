@@ -15,6 +15,7 @@ class ClienteVista extends StatelessWidget {
     return GetX<ClientsController>(
       builder: (_) {
         return MainLayout(
+          drawerActive: true,
           body: _.loadUserPets.value
               ? Center(
                   child: CircularProgressIndicator(),

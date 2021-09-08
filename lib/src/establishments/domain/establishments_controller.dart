@@ -76,16 +76,8 @@ class EstablishmentsController extends GetxController {
     Get.to(ShowVetMain(), arguments: id);
   }
 
+  //TODO: mejorar favoriteVet
   void favoriteVet(String? id, String? name, String? logo) {
-    favoriteMain(id, name, logo);
-  }
-
-  Future<void> favoriteVetToInit(String? id, String? name, String? logo) async {
-    favoriteMain(id, name, logo); //TODO: revisar
-    Get.offNamedUntil(NameRoutes.home, (route) => false);
-  }
-
-  void favoriteMain(String? id, String? name, String? logo) {
     prefUser.vetDataDel();
     prefUser.vetIdSupaDel();
 
@@ -100,5 +92,24 @@ class EstablishmentsController extends GetxController {
 
     Get.find<HomeController>().nameVet.value = name!;
     Get.find<GlobalController>().generalLoad();
+  }
+
+  Future<void> favoriteVetToInit(String? id, String? name, String? logo) async {
+    prefUser.vetDataDel();
+    prefUser.vetIdSupaDel();
+
+    final VetStorage forStorage = VetStorage();
+    forStorage.vetId = id;
+    forStorage.vetName = name;
+    forStorage.vetLogo = logo;
+
+    prefUser.vetData = vetStorageToJson(forStorage);
+
+    AuthSupaRepo().getEstablishment(forStorage.vetId!, forStorage.vetName!);
+
+    Get.find<HomeController>().nameVet.value = name!;
+    Get.find<GlobalController>().generalLoad();
+
+    Get.offNamedUntil(NameRoutes.home, (route) => false);
   }
 }

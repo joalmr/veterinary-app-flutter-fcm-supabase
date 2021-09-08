@@ -280,7 +280,7 @@ class GetAttention extends StatelessWidget {
                                                     ),
                                                   ),
                                                   Text(
-                                                    '*Puede subir un archivo de hasta 8Mb',
+                                                    '*Puede subir un archivo de hasta 5Mb',
                                                     style:
                                                         TextStyle(fontSize: 10),
                                                   ),

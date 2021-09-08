@@ -21,19 +21,20 @@ class ProductApi {
   }
 
   Future<void> updateProductSale(double price, String idProduct) async {
-    final response = await supabaseClient
+    // final response =
+    await supabaseClient
         .from('product_sale')
         .update({'price': price})
         .eq('id', idProduct)
         .execute();
 
-    final dato = response.data as List;
-    print(dato);
+    // final dato = response.data as List;
   }
 
   Future<void> addProductSaleDetail(String name, double price, int quantity,
       int productTypeId, String productSaleId) async {
-    final response = await supabaseClient.from('product_sale_detail').insert([
+    // final response =
+    await supabaseClient.from('product_sale_detail').insert([
       {
         'name': name,
         'price': price,
@@ -43,8 +44,8 @@ class ProductApi {
       }
     ]).execute();
 
-    final dato = response.data as List;
-    print(dato);
+    // final dato = response.data as List;
+    // print(dato);
   }
 
   Future<List<SalesModel>> getSales(int id) async {
@@ -72,7 +73,6 @@ class ProductApi {
         .eq('product_sale_id', id)
         .execute();
 
-    print(response.data);
     final dato = response.data as List;
     sales = dato.map((e) => SalesDetailModel.fromJson(e)).toList();
 
@@ -80,10 +80,10 @@ class ProductApi {
   }
 
   Future<void> getProductType() async {
-    final response =
-        await supabaseClient.from('product_type').select().execute();
+    // final response =
+    await supabaseClient.from('product_type').select().execute();
 
-    final dato = response.data as List;
-    print(dato);
+    // final dato = response.data as List;
+    // print(dato);
   }
 }

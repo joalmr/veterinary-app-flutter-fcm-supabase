@@ -29,7 +29,6 @@ class CreateOfferController extends GetxController {
   String get serviceNum => _serviceNum.value;
   set serviceNum(String value) => _serviceNum.value = value;
 
-  // TODO:  REVISAR OTRO TIPO DE MONEY CONTROLLER
   final moneyController = MoneyMaskedTextController(
     decimalSeparator: '.',
     thousandSeparator: ',',

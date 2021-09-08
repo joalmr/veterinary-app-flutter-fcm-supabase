@@ -7,6 +7,7 @@ import 'package:vet_app/src/bookings/data/model/booking/others_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/surgery_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/testing_booking.dart';
 import 'package:vet_app/src/bookings/data/model/booking/vaccination_booking.dart';
+import 'package:vet_app/src/bookings/data/model/petlover_user_model.dart';
 
 import '_booking_interface.dart';
 import 'booking_api.dart';
@@ -108,5 +109,10 @@ class BookingRepository extends BookingInterface {
   Future<GroomingBooking?> saveGrooming(
       String establishment, String attention, GroomingBooking data) {
     return _api.saveGrooming(establishment, attention, data);
+  }
+
+  @override
+  Future<PetloverUser> getPetloverUser(String petId) {
+    return _api.getPetloverUser(petId);
   }
 }
