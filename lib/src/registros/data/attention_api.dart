@@ -105,9 +105,6 @@ class AttentionApi extends AttentionInterface {
       body: jsonEncode(dataJson),
     );
 
-    print(response.statusCode);
-    print(response.body);
-
     return response.statusCode;
   }
 }
