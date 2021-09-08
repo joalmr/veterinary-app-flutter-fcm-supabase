@@ -240,8 +240,29 @@ class GetAttention extends StatelessWidget {
                                                         padding:
                                                             const EdgeInsets
                                                                 .all(8.0),
-                                                        child: Text(
-                                                            _.fileName.value),
+                                                        child: Row(
+                                                          children: [
+                                                            Expanded(
+                                                              flex: 4,
+                                                              child: Text(_
+                                                                  .fileName
+                                                                  .value),
+                                                            ),
+                                                            Expanded(
+                                                                flex: 1,
+                                                                child:
+                                                                    IconButton(
+                                                                  onPressed: () =>
+                                                                      _.deleteFile(),
+                                                                  icon: Icon(
+                                                                    Icons
+                                                                        .delete_rounded,
+                                                                    color:
+                                                                        colorRed,
+                                                                  ),
+                                                                ))
+                                                          ],
+                                                        ),
                                                       )),
                                             ),
                                           ),

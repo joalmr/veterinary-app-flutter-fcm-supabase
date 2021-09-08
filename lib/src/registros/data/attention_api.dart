@@ -5,6 +5,7 @@ import 'package:vet_app/resources/utils/header_http.dart';
 import 'package:vet_app/src/registros/data/model/attention_detail_model.dart';
 import 'package:vet_app/src/registros/data/model/attention_reg_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:vet_app/src/registros/data/model/show_file_model.dart';
 import '_attentions_interface.dart';
 import 'model/filter_attention.dart';
 
@@ -54,19 +55,17 @@ class AttentionApi extends AttentionInterface {
   }
 
   @override
-  Future<dynamic> showFile(String establishment, String attention) async {
+  Future<ShowFile?> showFile(String establishment, String attention) async {
     final url = Uri.https(
       urlBase!,
       '$pathBase/establishment/$establishment/attention/$attention/file',
     );
 
     final response = await http.get(url, headers: headersToken());
-
-    final dato = jsonDecode(response.body);
-    if (dato['message'] == 'File uploaded successfully') {
-      return dato['result']['file'];
-    } else {
-      null;
+    try {
+      return showFileFromJson(response.body);
+    } catch (ex) {
+      return null;
     }
   }
 
@@ -92,5 +91,23 @@ class AttentionApi extends AttentionInterface {
     final responseString = String.fromCharCodes(responseData);
 
     return responseString;
+  }
+
+  @override
+  Future deleteFile(String establishment, String attention, int fileId) async {
+    final url = Uri.https(urlBase!,
+        '/api/client/establishment/$establishment/attention/$attention/file');
+
+    final dataJson = {'file_id': fileId};
+    final http.Response response = await http.delete(
+      url,
+      headers: headersToken(),
+      body: jsonEncode(dataJson),
+    );
+
+    print(response.statusCode);
+    print(response.body);
+
+    return response.statusCode;
   }
 }
