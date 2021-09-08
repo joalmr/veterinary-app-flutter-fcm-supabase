@@ -58,8 +58,10 @@ class ProductApi {
         .order('registered_at', ascending: false)
         .execute();
 
-    final dato = response.data as List;
-    sales = dato.map((e) => SalesModel.fromJson(e)).toList();
+    if (response.data != null) {
+      final dato = response.data as List;
+      sales = dato.map((e) => SalesModel.fromJson(e)).toList();
+    }
 
     return sales;
   }

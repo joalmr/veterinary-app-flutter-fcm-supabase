@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/src/sales/presentation/sales/add_sales.dart';
 import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
 import 'package:vet_app/src/userClients/presentation/app/mascota/atender_mascota.dart';
 
@@ -74,6 +75,51 @@ class BuscaCliente extends StatelessWidget {
                                   ],
                                 ),
                                 SizedBox(height: 5),
+                                GetPlatform.isWeb
+                                    ? SizedBox(height: 0)
+                                    : InkWell(
+                                        borderRadius: BorderRadius.circular(5),
+                                        onTap: () {
+                                          Get.to(
+                                            AddSalesView(
+                                              petloverId:
+                                                  _.userIdSupabase.value,
+                                              name: _.findClient.value!.name!,
+                                              lastname:
+                                                  _.findClient.value!.lastname!,
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.all(5),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 15, vertical: 8),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              color: colorMain),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                Icons.shopping_cart_rounded,
+                                                color: colorWhite,
+                                                size: 26,
+                                              ),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                'Generar venta',
+                                                style: TextStyle(
+                                                  color: colorWhite,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
                                 SingleChildScrollView(
                                   child: Row(
                                     children: [

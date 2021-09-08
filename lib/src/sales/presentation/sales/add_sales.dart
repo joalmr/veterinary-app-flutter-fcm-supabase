@@ -4,6 +4,7 @@ import 'package:cool_dropdown/cool_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:number_selection/number_selection.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/snackbar.dart';
@@ -74,120 +75,142 @@ class _AddSalesViewState extends State<AddSalesView> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    showModalBottomSheet(
+                    showBarModalBottomSheet(
                         context: context,
+                        expand: true,
                         builder: (context) {
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              SizedBox(height: 20),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 5,
-                                ),
-                                child: CoolDropdown(
-                                  dropdownList: itemListSales,
-                                  placeholder: 'Seleccione tipo de producto',
-                                  onChange: (selectedItem) {
-                                    setState(() {
-                                      tipoProducto = selectedItem['value'];
-                                    });
-                                  },
-                                  dropdownWidth: double.maxFinite,
-                                  dropdownBoxHeight: 320,
-                                  dropdownBoxWidth: 220,
-                                  dropdownBD: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.grey[200],
-                                  ),
+                          return Stack(
+                            children: [
+                              Container(),
+                              Positioned(
+                                bottom: -50,
+                                right: -65,
+                                child: Icon(
+                                  Icons.shopping_cart_rounded,
+                                  size: 350,
+                                  color: colorMain.withOpacity(0.1),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 5),
-                                child: TextFormField(
-                                  controller: productoController,
-                                  textCapitalization:
-                                      TextCapitalization.sentences,
-                                  decoration: InputDecoration(
-                                    labelText: 'Producto',
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 5),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Container(
-                                        padding: EdgeInsets.all(2.5),
-                                        child: TextFormField(
-                                          controller: priceController,
-                                          keyboardType: TextInputType.number,
-                                          decoration: InputDecoration(
-                                            labelText: 'Precio',
-                                          ),
-                                        ),
+                              Column(
+                                children: <Widget>[
+                                  SizedBox(height: 20),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 5,
+                                    ),
+                                    child: CoolDropdown(
+                                      dropdownList: itemListSales,
+                                      placeholder:
+                                          'Seleccione tipo de producto',
+                                      onChange: (selectedItem) {
+                                        setState(() {
+                                          tipoProducto = selectedItem['value'];
+                                        });
+                                      },
+                                      dropdownWidth: double.maxFinite,
+                                      dropdownBoxHeight: 320,
+                                      dropdownBoxWidth: 220,
+                                      dropdownBD: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: Colors.grey[200],
                                       ),
                                     ),
-                                    Expanded(
-                                      child: Container(
-                                        height: 50,
-                                        padding: EdgeInsets.all(2.5),
-                                        child: NumberSelection(
-                                          theme: NumberSelectionTheme(
-                                            iconsColor: Colors.white,
-                                            outOfConstraintsColor:
-                                                Colors.deepOrange,
-                                          ),
-                                          initialValue: 1,
-                                          minValue: 1,
-                                          maxValue: 1000,
-                                          direction: Axis.horizontal,
-                                          withSpring: false,
-                                          onChanged: (int value) {
-                                            setState(() {
-                                              cantidad = value;
-                                            });
-                                          },
-                                          enableOnOutOfConstraintsAnimation:
-                                              true,
-                                          onOutOfConstraints: () {},
-                                        ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: TextFormField(
+                                      controller: productoController,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
+                                      decoration: InputDecoration(
+                                        labelText: 'Producto',
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              btnSecondary(
-                                text: 'Agregar',
-                                onPressed: () {
-                                  if (cantidad == 0 ||
-                                      tipoProducto == 0 ||
-                                      productoController.text.isEmpty ||
-                                      priceController.numberValue == 0) {
-                                    log('Complete los datos');
-                                  } else {
-                                    final data = SalesDetailPreview(
-                                      name: productoController.text,
-                                      price: priceController.numberValue,
-                                      quantity: cantidad,
-                                      productTypeId: tipoProducto,
-                                    );
-                                    _.salesList.add(data);
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: TextFormField(
+                                      controller: priceController,
+                                      keyboardType: TextInputType.number,
+                                      decoration: InputDecoration(
+                                        labelText: 'Precio',
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 5,
+                                        left: 10,
+                                        right: 10,
+                                      ),
+                                      child: Text('Cantidad'),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 0,
+                                      bottom: 5,
+                                      left: 10,
+                                      right: 10,
+                                    ),
+                                    child: Container(
+                                      height: 50,
+                                      padding: EdgeInsets.all(2.5),
+                                      child: NumberSelection(
+                                        theme: NumberSelectionTheme(
+                                          iconsColor: Colors.white,
+                                          outOfConstraintsColor:
+                                              Colors.deepOrange,
+                                        ),
+                                        initialValue: 1,
+                                        minValue: 1,
+                                        maxValue: 1000,
+                                        direction: Axis.horizontal,
+                                        withSpring: false,
+                                        onChanged: (int value) {
+                                          setState(() {
+                                            cantidad = value;
+                                          });
+                                        },
+                                        enableOnOutOfConstraintsAnimation: true,
+                                        onOutOfConstraints: () {},
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 25),
+                                  btnSecondary(
+                                    text: 'Agregar',
+                                    onPressed: () {
+                                      if (cantidad == 0 ||
+                                          tipoProducto == 0 ||
+                                          productoController.text.isEmpty ||
+                                          priceController.numberValue == 0) {
+                                        log('Complete los datos');
+                                      } else {
+                                        final data = SalesDetailPreview(
+                                          name: productoController.text,
+                                          price: priceController.numberValue,
+                                          quantity: cantidad,
+                                          productTypeId: tipoProducto,
+                                        );
+                                        _.salesList.add(data);
 
-                                    setState(() {
-                                      productoController.text = '';
-                                      cantidad = 1;
-                                    });
-                                    Get.back();
-                                  }
-                                },
+                                        setState(() {
+                                          productoController.text = '';
+                                          cantidad = 1;
+                                        });
+                                        Get.back();
+                                      }
+                                    },
+                                  ),
+                                  SizedBox(height: 45),
+                                ],
                               ),
-                              SizedBox(height: 45),
                             ],
                           );
                         });

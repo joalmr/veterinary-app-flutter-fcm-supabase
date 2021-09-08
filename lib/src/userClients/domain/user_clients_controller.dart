@@ -71,6 +71,11 @@ class ClientsController extends GetxController {
   findClients(String mailUser) async {
     final response = await _repo.findUser(mailUser);
     findClient.value = response?.result; //TODO: revisando
+    userIdSupabase.value = await PetloverRepo().getPetlover(
+      findClient.value!.id!,
+      findClient.value!.name!,
+      findClient.value!.lastname!,
+    );
   }
 
   goToUser(String user) async {
@@ -140,7 +145,6 @@ class ClientsController extends GetxController {
     );
     typeId.clear();
     _home.getAllBookings();
-    // bookingAt.value = '';
   }
 
   addPet(PetModelReq addpet) async {
