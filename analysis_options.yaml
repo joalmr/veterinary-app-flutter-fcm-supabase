@@ -11,9 +11,5 @@ linter:
     annotate_overrides: true
     avoid_print: true
     avoid_function_literals_in_foreach_calls: false
-    # - avoid_renaming_method_parameters
-
-# #     # camel_case_types: true
-  
-    
+    # - avoid_renaming_method_parameters    
     
