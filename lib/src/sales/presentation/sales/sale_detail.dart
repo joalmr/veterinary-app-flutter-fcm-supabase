@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
-import 'package:vet_app/src/sales/domain/sales.controller.dart';
+import 'package:vet_app/src/sales/domain/my_sales_controller.dart';
 
 import 'data/svg_venta.dart';
 
@@ -16,13 +16,17 @@ class SaleDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetX<SalesController>(
+    return GetX<MySalesController>(
       builder: (_) {
         return MainLayout(
           title: name,
           body: Column(
             children: [
-              Text(date),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child:
+                    Align(alignment: Alignment.centerLeft, child: Text(date)),
+              ),
               Expanded(
                 child: ListView.builder(
                   itemCount: _.salesDetail.length,
@@ -83,6 +87,28 @@ class SaleDetail extends StatelessWidget {
                       ),
                     );
                   },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      _.totalSales.toStringAsFixed(2),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

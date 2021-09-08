@@ -8,7 +8,7 @@ import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/establishment_model_lite.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/show_vet.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
-import 'package:vet_app/src/sales/domain/sales.controller.dart';
+import 'package:vet_app/src/sales/domain/my_sales_controller.dart';
 
 class EstablishmentsController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
@@ -100,7 +100,7 @@ class EstablishmentsController extends GetxController {
     Get.find<HomeController>().nameVet.value = name!;
     Get.find<GlobalController>().generalLoad();
 
-    Get.find<SalesController>().getSales();
+    Get.find<MySalesController>().getSales();
   }
 
   Future<void> favoriteVetToInit(String? id, String? name, String? logo) async {
@@ -120,7 +120,7 @@ class EstablishmentsController extends GetxController {
     Get.find<HomeController>().nameVet.value = name!;
     Get.find<GlobalController>().generalLoad();
 
-    Get.find<SalesController>().getSales();
+    Get.find<MySalesController>().getSales();
 
     Get.offNamedUntil(NameRoutes.home, (route) => false);
   }

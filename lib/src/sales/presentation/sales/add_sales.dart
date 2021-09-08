@@ -56,6 +56,7 @@ class _AddSalesViewState extends State<AddSalesView> {
   @override
   Widget build(BuildContext context) {
     return GetX<SalesController>(
+      init: SalesController(),
       builder: (_) {
         return MainLayout(
           title: 'Venta',
@@ -199,6 +200,7 @@ class _AddSalesViewState extends State<AddSalesView> {
                                           productTypeId: tipoProducto,
                                         );
                                         _.salesList.add(data);
+                                        _.getTotal();
 
                                         setState(() {
                                           productoController.text = '';
@@ -306,6 +308,7 @@ class _AddSalesViewState extends State<AddSalesView> {
                                       InkWell(
                                         onTap: () {
                                           _.salesList.remove(producto);
+                                          _.getTotal();
                                         },
                                         child: Padding(
                                           padding: EdgeInsets.all(8.0),
@@ -324,6 +327,29 @@ class _AddSalesViewState extends State<AddSalesView> {
                           );
                         },
                       ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      _.totalSales.toStringAsFixed(2),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
-import 'package:vet_app/src/sales/domain/sales.controller.dart';
+import 'package:vet_app/src/sales/domain/my_sales_controller.dart';
 import 'package:vet_app/src/sales/presentation/sales/sale_detail.dart';
 
 class SalesMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetX<SalesController>(
+    return GetX<MySalesController>(
       builder: (_) {
         return MainLayout(
           drawerActive: true,

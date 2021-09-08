@@ -5,14 +5,15 @@ import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/sales/presentation/sales/add_sales.dart';
-import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
+import 'package:vet_app/src/userClients/domain/find_clients_controller.dart';
 import 'package:vet_app/src/userClients/presentation/app/mascota/atender_mascota.dart';
 
 class BuscaCliente extends StatelessWidget {
   final buscaCliente = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return GetX<ClientsController>(
+    return GetX<FindClientsController>(
+      init: FindClientsController(),
       builder: (_) {
         return MainLayout(
           title: 'Buscar cliente',
@@ -91,13 +92,15 @@ class BuscaCliente extends StatelessWidget {
                                           );
                                         },
                                         child: Container(
-                                          margin: EdgeInsets.all(5),
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 5, vertical: 8),
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 15, vertical: 8),
                                           decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                              color: colorMain),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            color: colorMain,
+                                          ),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -109,7 +112,7 @@ class BuscaCliente extends StatelessWidget {
                                               ),
                                               SizedBox(width: 10),
                                               Text(
-                                                'Generar venta',
+                                                'Venta de productos',
                                                 style: TextStyle(
                                                   color: colorWhite,
                                                   fontSize: 18,
