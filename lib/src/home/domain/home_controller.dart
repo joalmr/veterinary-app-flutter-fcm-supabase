@@ -29,8 +29,12 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    getVet();
-    getAllBookings();
+    if (prefUser.tokenHas() &&
+        prefUser.vetDataHas() &&
+        prefUser.vetIdSupaHas()) {
+      getVet();
+      getAllBookings();
+    }
 
     super.onInit();
   }

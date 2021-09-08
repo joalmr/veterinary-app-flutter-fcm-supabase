@@ -21,9 +21,14 @@ class SalesController extends GetxController {
 
   @override
   void onInit() {
+    if (prefUser.tokenHas() &&
+        prefUser.vetDataHas() &&
+        prefUser.vetIdSupaHas()) {
+      runSubscription();
+      getSales();
+    }
+
     super.onInit();
-    runSubscription();
-    getSales();
   }
 
   getSales() async {

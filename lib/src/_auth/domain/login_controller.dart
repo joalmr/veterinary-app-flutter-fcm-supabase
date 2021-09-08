@@ -11,6 +11,7 @@ import 'package:vet_app/src/_auth/data/auth_repository.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/crea_vet.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
+import 'package:vet_app/src/sales/domain/sales.controller.dart';
 
 import 'push_controller.dart';
 
@@ -21,8 +22,8 @@ class LoginController extends GetxController {
 
   final pushController = PushController();
 
-  final _homeController = Get.find<HomeController>();
-  final _global = Get.find<GlobalController>();
+  // final _homeController = Get.find<HomeController>();
+  // final _global = Get.find<GlobalController>();
 
   String email = '';
   String password = '';
@@ -89,10 +90,12 @@ class LoginController extends GetxController {
       forStorage.vetLogo = temp.logo;
 
       prefUser.vetData = vetStorageToJson(forStorage);
-      authSupa.getEstablishment(temp.id!, temp.name!);
+      await authSupa.getEstablishment(temp.id!, temp.name!);
 
-      _global.generalLoad();
-      _homeController.getVet();
+      Get.find<HomeController>().getVet();
+      Get.find<GlobalController>().generalLoad();
+
+      Get.find<SalesController>().getSales();
 
       btnLogIn.value = true;
 

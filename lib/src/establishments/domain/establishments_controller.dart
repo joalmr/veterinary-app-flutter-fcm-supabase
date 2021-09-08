@@ -8,6 +8,7 @@ import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/establishment_model_lite.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/show_vet.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
+import 'package:vet_app/src/sales/domain/sales.controller.dart';
 
 class EstablishmentsController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
@@ -21,7 +22,11 @@ class EstablishmentsController extends GetxController {
 
   @override
   void onInit() {
-    getAll();
+    if (prefUser.tokenHas() &&
+        prefUser.vetDataHas() &&
+        prefUser.vetIdSupaHas()) {
+      getAll();
+    }
 
     super.onInit();
   }
@@ -60,7 +65,8 @@ class EstablishmentsController extends GetxController {
         forStorage.vetName = establecimientos.first.name;
         forStorage.vetLogo = establecimientos.first.logo;
 
-        AuthSupaRepo().getEstablishment(forStorage.vetId!, forStorage.vetName!);
+        await AuthSupaRepo()
+            .getEstablishment(forStorage.vetId!, forStorage.vetName!);
 
         prefUser.vetData = vetStorageToJson(forStorage);
       } else {
@@ -77,7 +83,7 @@ class EstablishmentsController extends GetxController {
   }
 
   //TODO: mejorar favoriteVet
-  void favoriteVet(String? id, String? name, String? logo) {
+  Future<void> favoriteVet(String? id, String? name, String? logo) async {
     prefUser.vetDataDel();
     prefUser.vetIdSupaDel();
 
@@ -88,10 +94,13 @@ class EstablishmentsController extends GetxController {
 
     prefUser.vetData = vetStorageToJson(forStorage);
 
-    AuthSupaRepo().getEstablishment(forStorage.vetId!, forStorage.vetName!);
+    await AuthSupaRepo()
+        .getEstablishment(forStorage.vetId!, forStorage.vetName!);
 
     Get.find<HomeController>().nameVet.value = name!;
     Get.find<GlobalController>().generalLoad();
+
+    Get.find<SalesController>().getSales();
   }
 
   Future<void> favoriteVetToInit(String? id, String? name, String? logo) async {
@@ -105,10 +114,13 @@ class EstablishmentsController extends GetxController {
 
     prefUser.vetData = vetStorageToJson(forStorage);
 
-    AuthSupaRepo().getEstablishment(forStorage.vetId!, forStorage.vetName!);
+    await AuthSupaRepo()
+        .getEstablishment(forStorage.vetId!, forStorage.vetName!);
 
     Get.find<HomeController>().nameVet.value = name!;
     Get.find<GlobalController>().generalLoad();
+
+    Get.find<SalesController>().getSales();
 
     Get.offNamedUntil(NameRoutes.home, (route) => false);
   }

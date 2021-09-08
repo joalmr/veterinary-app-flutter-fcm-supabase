@@ -46,7 +46,11 @@ class CalendarController extends GetxController {
 
   @override
   void onInit() {
-    loadCalendar();
+    if (prefUser.tokenHas() &&
+        prefUser.vetDataHas() &&
+        prefUser.vetIdSupaHas()) {
+      loadCalendar();
+    }
 
     super.onInit();
   }

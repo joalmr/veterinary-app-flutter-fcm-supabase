@@ -20,7 +20,11 @@ class AttentionsController extends GetxController {
 
   @override
   void onInit() {
-    getAll();
+    if (prefUser.tokenHas() &&
+        prefUser.vetDataHas() &&
+        prefUser.vetIdSupaHas()) {
+      getAll();
+    }
 
     super.onInit();
   }

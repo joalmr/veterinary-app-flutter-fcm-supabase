@@ -352,7 +352,7 @@ class CreateVetController extends GetxController {
 
             prefUser.vetData = vetStorageToJson(forStorage);
 
-            AuthSupaRepo()
+            await AuthSupaRepo()
                 .getEstablishment(forStorage.vetId!, forStorage.vetName!);
 
             Get.find<HomeController>().getVet();

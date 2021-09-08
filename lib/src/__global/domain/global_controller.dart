@@ -26,7 +26,7 @@ class GlobalController extends GetxController {
     super.onInit();
   }
 
-  void generalLoad() {
+  void generalLoad() async {
     _home.getAllBookings();
     _calendar.loadCalendar();
     _attention.getAll();
@@ -39,7 +39,7 @@ class GlobalController extends GetxController {
         prefUser.vetDataHas() == true &&
         prefUser.vetIdSupaHas() == true) {
       pushController.firebase(); // TODO: firebase
-      log('web');
+      log('open');
       // // final response = await EstablishmentRepository().getAll();
 
       // // if (response!.isNotEmpty) {
