@@ -1,6 +1,6 @@
 import 'package:supabase/supabase.dart';
-import 'package:vet_app/_supabase/model/sales_detail_model.dart';
-import 'package:vet_app/_supabase/model/sales_model.dart';
+import 'package:vet_app/_supabase/model/sales_detail.model.dart';
+import 'package:vet_app/_supabase/model/sales.model.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 
 class ProductApi {

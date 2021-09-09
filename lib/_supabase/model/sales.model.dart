@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:vet_app/_supabase/model/petlover_model.dart';
+import 'package:vet_app/_supabase/model/petlover.model.dart';
 
 List<SalesModel> salesFromJson(String str) =>
     List<SalesModel>.from(json.decode(str).map((x) => SalesModel.fromJson(x)));

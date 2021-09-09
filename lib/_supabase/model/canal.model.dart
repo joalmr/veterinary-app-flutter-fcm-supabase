@@ -1,4 +1,4 @@
-import 'petlover_model.dart';
+import 'petlover.model.dart';
 
 class CanalModel {
   CanalModel({

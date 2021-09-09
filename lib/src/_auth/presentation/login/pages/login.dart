@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/src/_auth/domain/login_controller.dart';
 
-import 'app/login_view.dart';
-import 'web/login_page.dart';
+import 'app/login.app.dart';
+import 'web/login.web.dart';
 
 class LoginMain extends StatelessWidget {
   const LoginMain({Key? key}) : super(key: key);

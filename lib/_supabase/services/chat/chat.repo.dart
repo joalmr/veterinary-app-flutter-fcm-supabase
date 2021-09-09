@@ -1,7 +1,7 @@
-import 'package:vet_app/_supabase/model/canal_model.dart';
-import 'package:vet_app/_supabase/model/message_model.dart';
+import 'package:vet_app/_supabase/model/canal.model.dart';
+import 'package:vet_app/_supabase/model/message.model.dart';
 
-import 'chat_api.dart';
+import 'chat.api.dart';
 
 class ChatRepo {
   final _api = ChatApi();

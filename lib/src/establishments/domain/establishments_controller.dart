@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:vet_app/_supabase/services/auth/establishment_repo.dart';
+import 'package:vet_app/_supabase/services/auth/establishment.repo.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';

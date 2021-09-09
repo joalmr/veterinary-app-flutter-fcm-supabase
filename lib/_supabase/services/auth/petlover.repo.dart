@@ -1,4 +1,4 @@
-import 'package:vet_app/_supabase/services/auth/petlover_api.dart';
+import 'package:vet_app/_supabase/services/auth/petlover.api.dart';
 
 class PetloverRepo {
   final _api = PetloverApi();

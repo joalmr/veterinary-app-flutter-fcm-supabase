@@ -1,4 +1,4 @@
-import 'package:vet_app/_supabase/services/auth/establishment_api.dart';
+import 'package:vet_app/_supabase/services/auth/establishment.api.dart';
 
 class AuthSupaRepo {
   final _api = AuthEstablishmentApi();

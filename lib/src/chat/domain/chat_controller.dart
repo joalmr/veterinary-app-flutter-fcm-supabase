@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:supabase/supabase.dart';
-import 'package:vet_app/_supabase/services/chat/chat_repo.dart';
-import 'package:vet_app/_supabase/model/canal_model.dart';
-import 'package:vet_app/_supabase/model/message_model.dart';
+import 'package:vet_app/_supabase/services/chat/chat.repo.dart';
+import 'package:vet_app/_supabase/model/canal.model.dart';
+import 'package:vet_app/_supabase/model/message.model.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/chat/presentation/app/message_view.dart';
