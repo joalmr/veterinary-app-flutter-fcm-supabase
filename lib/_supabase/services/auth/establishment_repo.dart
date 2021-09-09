@@ -1,7 +1,7 @@
-import 'package:vet_app/_supabase/auth/auth_api.dart';
+import 'package:vet_app/_supabase/services/auth/establishment_api.dart';
 
 class AuthSupaRepo {
-  final _api = AuthApi();
+  final _api = AuthEstablishmentApi();
 
   Future<int> getEstablishment(String uuid, String name) {
     return _api.getEstablishment(uuid, name);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/_supabase/auth/petlover_repo.dart';
+import 'package:vet_app/_supabase/services/auth/petlover_repo.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';

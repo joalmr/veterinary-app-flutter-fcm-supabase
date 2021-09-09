@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:supabase/supabase.dart';
-import 'package:vet_app/_supabase/chat/chat_repo.dart';
+import 'package:vet_app/_supabase/services/chat/chat_repo.dart';
 import 'package:vet_app/_supabase/model/canal_model.dart';
 import 'package:vet_app/_supabase/model/message_model.dart';
 import 'package:vet_app/config/variables_supabase.dart';

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:vet_app/_supabase/auth/auth_repo.dart';
+import 'package:vet_app/_supabase/services/auth/establishment_repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';

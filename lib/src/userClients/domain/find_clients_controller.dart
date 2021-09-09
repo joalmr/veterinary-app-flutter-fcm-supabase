@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:vet_app/_supabase/auth/petlover_repo.dart';
+import 'package:vet_app/_supabase/services/auth/petlover_repo.dart';
 import 'package:vet_app/src/userClients/data/clients_repository.dart';
 import 'package:vet_app/src/userClients/data/model/find_user_model.dart';
 

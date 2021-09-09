@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:vet_app/_supabase/auth/petlover_repo.dart';
+import 'package:vet_app/_supabase/services/auth/petlover_repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';

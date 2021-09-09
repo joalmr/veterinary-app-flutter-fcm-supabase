@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:supabase/supabase.dart';
 import 'package:vet_app/_supabase/model/sales_detail_model.dart';
 import 'package:vet_app/_supabase/model/sales_model.dart';
-import 'package:vet_app/_supabase/product/product_repo.dart';
+import 'package:vet_app/_supabase/services/product_sale/product_sale.repo.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 

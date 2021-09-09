@@ -2,7 +2,7 @@ import 'package:supabase/supabase.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 
-class AuthApi {
+class AuthEstablishmentApi {
   final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
 
   Future<int> getEstablishment(String uuid, String name) async {
