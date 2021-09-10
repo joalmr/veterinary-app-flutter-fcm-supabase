@@ -12,17 +12,20 @@ class ProductExpenseApi {
       }
     ]).execute();
 
+    print(response.data);
     final dato = response.data as List;
 
     return dato.first['id'];
   }
 
   Future<void> updateProductExpense(double price, String idExpense) async {
-    await supabaseClient
+    final response = await supabaseClient
         .from('product_expense')
         .update({'price': price})
         .eq('id', idExpense)
         .execute();
+
+    print(response.data);
   }
 
   Future<void> addProductExpenseDetail(
@@ -33,7 +36,8 @@ class ProductExpenseApi {
     int productTypeId,
     String productSaleId,
   ) async {
-    await supabaseClient.from('product_expense_detail').insert([
+    final response =
+        await supabaseClient.from('product_expense_detail').insert([
       {
         'product_name': productName,
         'price': price,
@@ -43,6 +47,8 @@ class ProductExpenseApi {
         'product_expense_id': productSaleId,
       }
     ]).execute();
+
+    print(response.data);
   }
 
   Future<void> getExpenses(int establishmentId) async {

@@ -47,6 +47,13 @@ List<DataMenu> dataMenu = [
     color: Colors.black38,
   ),
   DataMenu(
+    icon: Icons.arrow_drop_down,
+    name: 'Gastos',
+    page: NameRoutes.expenses,
+    fn: () => Get.offNamed(NameRoutes.expenses),
+    color: Colors.black38,
+  ),
+  DataMenu(
     icon: Icons.bar_chart_rounded,
     name: 'Estadísticas',
     page: NameRoutes.stats,

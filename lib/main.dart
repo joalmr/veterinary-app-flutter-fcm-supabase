@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:vet_app/src/products/expenses/domain/my_expenses_controller.dart';
 import 'package:vet_app/src/products/sales/domain/my_sales_controller.dart';
 import 'config/variables_global.dart';
 import 'design/theme/theme.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
     //
     Get.put(BookingController());
     Get.put(MySalesController());
+    Get.put(MyExpensesController());
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: appPruebas,

@@ -12,6 +12,7 @@ import 'package:vet_app/src/establishments/presentation/pages/_children/create/c
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/show_vet.dart';
 import 'package:vet_app/src/home/presentation/pages/home.dart';
 import 'package:vet_app/src/offers/presentation/pages/offers.dart';
+import 'package:vet_app/src/products/expenses/presentation/expenses.dart';
 import 'package:vet_app/src/registros/presentation/pages/attentions.dart';
 import 'package:vet_app/src/establishments/presentation/pages/establishments.dart';
 import 'package:vet_app/src/products/sales/presentation/sales.dart';
@@ -32,6 +33,7 @@ class NameRoutes {
   static const String clientes = '/clients';
   static const String config = '/config';
   static const String sales = '/sales'; //? ventas
+  static const String expenses = '/expenses'; //? egresos
   static const String atenderBooking = '/booking'; //? atender
   static const String error404 = '/error404'; //? error
 
@@ -127,6 +129,11 @@ class AppPages {
     GetPage(
       name: NameRoutes.sales,
       page: () => SalesMain(),
+      middlewares: [GlobalMiddleware()],
+    ),
+    GetPage(
+      name: NameRoutes.expenses,
+      page: () => ExpensesMain(),
       middlewares: [GlobalMiddleware()],
     ),
   ];
