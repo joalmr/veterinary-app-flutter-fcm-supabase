@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
-import 'package:vet_app/src/sales/domain/my_sales_controller.dart';
+import 'package:vet_app/src/products/sales/domain/my_sales_controller.dart';
 
 import 'data/svg_venta.dart';
 

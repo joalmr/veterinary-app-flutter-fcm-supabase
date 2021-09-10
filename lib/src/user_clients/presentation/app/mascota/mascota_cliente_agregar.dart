@@ -7,9 +7,9 @@ import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/home/presentation/pages/web/dashboard/widgets/tab_select.dart';
-import 'package:vet_app/src/userClients/data/model/breed_model.dart';
-import 'package:vet_app/src/userClients/data/model/request/pet.dart';
-import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
+import 'package:vet_app/src/user_clients/data/model/breed_model.dart';
+import 'package:vet_app/src/user_clients/data/model/request/pet.dart';
+import 'package:vet_app/src/user_clients/domain/user_clients_controller.dart';
 
 class MascotaClienteAgregar extends StatefulWidget {
   @override

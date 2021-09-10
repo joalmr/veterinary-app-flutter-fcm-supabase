@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:vet_app/_supabase/services/auth/petlover.repo.dart';
-import 'package:vet_app/src/userClients/data/clients_repository.dart';
-import 'package:vet_app/src/userClients/data/model/find_user_model.dart';
+import 'package:vet_app/src/user_clients/data/clients_repository.dart';
+import 'package:vet_app/src/user_clients/data/model/find_user_model.dart';
 
 class FindClientsController extends GetxController {
   final _repo = ClientsRepository();

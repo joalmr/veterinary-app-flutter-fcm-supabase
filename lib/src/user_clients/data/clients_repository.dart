@@ -1,8 +1,8 @@
-import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
-import 'package:vet_app/src/userClients/data/model/species_model.dart';
-import 'package:vet_app/src/userClients/data/model/request/pet.dart';
-import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
-import 'package:vet_app/src/userClients/data/model/breed_model.dart';
+import 'package:vet_app/src/user_clients/data/model/request/petlover.dart';
+import 'package:vet_app/src/user_clients/data/model/species_model.dart';
+import 'package:vet_app/src/user_clients/data/model/request/pet.dart';
+import 'package:vet_app/src/user_clients/data/model/client_user_model.dart';
+import 'package:vet_app/src/user_clients/data/model/breed_model.dart';
 import '_clients_interface.dart';
 import 'clients_api.dart';
 import 'model/clients_model.dart';

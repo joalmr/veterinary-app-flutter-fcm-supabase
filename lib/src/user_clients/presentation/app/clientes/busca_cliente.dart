@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/sales/presentation/sales/add_sales.dart';
-import 'package:vet_app/src/userClients/domain/find_clients_controller.dart';
-import 'package:vet_app/src/userClients/presentation/app/mascota/atender_mascota.dart';
+import 'package:vet_app/src/products/sales/presentation/sales/add_sales.dart';
+import 'package:vet_app/src/user_clients/domain/find_clients_controller.dart';
+import 'package:vet_app/src/user_clients/presentation/app/mascota/atender_mascota.dart';
 
 class BuscaCliente extends StatelessWidget {
   final buscaCliente = TextEditingController();

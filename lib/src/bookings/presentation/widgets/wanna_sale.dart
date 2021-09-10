@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/routes/routes.dart';
-import 'package:vet_app/src/sales/presentation/sales/add_sales.dart';
+import 'package:vet_app/src/products/sales/presentation/sales/add_sales.dart';
 
 class WannaSale extends StatelessWidget {
   final int idPetlover;

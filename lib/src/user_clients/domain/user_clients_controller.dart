@@ -6,14 +6,14 @@ import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
-import 'package:vet_app/src/userClients/data/clients_repository.dart';
-import 'package:vet_app/src/userClients/data/model/breed_model.dart';
-import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
-import 'package:vet_app/src/userClients/data/model/clients_model.dart';
-import 'package:vet_app/src/userClients/data/model/find_user_model.dart';
-import 'package:vet_app/src/userClients/data/model/request/pet.dart';
-import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
-import 'package:vet_app/src/userClients/presentation/app/clientes/client_view.dart';
+import 'package:vet_app/src/user_clients/data/clients_repository.dart';
+import 'package:vet_app/src/user_clients/data/model/breed_model.dart';
+import 'package:vet_app/src/user_clients/data/model/client_user_model.dart';
+import 'package:vet_app/src/user_clients/data/model/clients_model.dart';
+import 'package:vet_app/src/user_clients/data/model/find_user_model.dart';
+import 'package:vet_app/src/user_clients/data/model/request/pet.dart';
+import 'package:vet_app/src/user_clients/data/model/request/petlover.dart';
+import 'package:vet_app/src/user_clients/presentation/app/clientes/client_view.dart';
 
 class ClientsController extends GetxController {
   final _repo = ClientsRepository();

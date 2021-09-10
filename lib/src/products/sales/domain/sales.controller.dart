@@ -3,8 +3,8 @@ import 'package:vet_app/_supabase/services/product_sale/product_sale.repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 
-import 'package:vet_app/src/sales/domain/sales_model.dart';
-import 'package:vet_app/src/sales/presentation/sales.dart';
+import 'package:vet_app/src/products/sales/domain/_sales_model.dart';
+import 'package:vet_app/src/products/sales/presentation/sales.dart';
 
 class SalesController extends GetxController {
   final _repo = ProductRepo();

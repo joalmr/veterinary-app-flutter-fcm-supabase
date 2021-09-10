@@ -4,8 +4,8 @@ import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
-import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
-import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
+import 'package:vet_app/src/user_clients/data/model/request/petlover.dart';
+import 'package:vet_app/src/user_clients/domain/user_clients_controller.dart';
 
 class CreaCliente extends StatefulWidget {
   @override

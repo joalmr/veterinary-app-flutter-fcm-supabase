@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
-import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
+import 'package:vet_app/src/user_clients/domain/user_clients_controller.dart';
 
 import 'app/clientes/busca_cliente.dart';
 import 'app/clientes/crea_cliente.dart';

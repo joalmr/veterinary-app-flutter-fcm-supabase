@@ -7,8 +7,8 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/styles/styles.dart';
-import 'package:vet_app/src/userClients/data/model/find_user_model.dart';
-import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
+import 'package:vet_app/src/user_clients/data/model/find_user_model.dart';
+import 'package:vet_app/src/user_clients/domain/user_clients_controller.dart';
 
 class AtenderMascota extends StatelessWidget {
   final PetClient petClient;

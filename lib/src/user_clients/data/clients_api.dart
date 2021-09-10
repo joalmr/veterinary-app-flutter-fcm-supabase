@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:http/http.dart' as http;
 import 'package:vet_app/resources/utils/header_http.dart';
-import 'package:vet_app/src/userClients/data/model/request/petlover.dart';
-import 'package:vet_app/src/userClients/data/model/species_model.dart';
-import 'package:vet_app/src/userClients/data/model/request/pet.dart';
-import 'package:vet_app/src/userClients/data/model/client_user_model.dart';
-import 'package:vet_app/src/userClients/data/model/breed_model.dart';
+import 'package:vet_app/src/user_clients/data/model/request/petlover.dart';
+import 'package:vet_app/src/user_clients/data/model/species_model.dart';
+import 'package:vet_app/src/user_clients/data/model/request/pet.dart';
+import 'package:vet_app/src/user_clients/data/model/client_user_model.dart';
+import 'package:vet_app/src/user_clients/data/model/breed_model.dart';
 import '_clients_interface.dart';
 import 'model/clients_model.dart';
 import 'model/find_user_model.dart';
@@ -86,7 +86,7 @@ class ClientsApi extends ClientsInterface {
         urlBase!, '$pathBase/establishment/$establishment/client/$user');
 
     final http.Response response = await http.get(url, headers: headersToken());
-    
+
     final userClient = userClientModelFromJson(response.body);
 
     return userClient;

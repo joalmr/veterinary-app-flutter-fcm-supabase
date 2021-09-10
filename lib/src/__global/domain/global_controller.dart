@@ -7,7 +7,7 @@ import 'package:vet_app/src/calendar/domain/calendar_controller.dart';
 import 'package:vet_app/src/establishments/domain/establishments_controller.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
 import 'package:vet_app/src/registros/domain/attentions_controller.dart';
-import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
+import 'package:vet_app/src/user_clients/domain/user_clients_controller.dart';
 
 class GlobalController extends GetxController {
   bool init = false;

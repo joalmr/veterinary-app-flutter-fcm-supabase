@@ -31,8 +31,13 @@ class ProductApi {
     // final dato = response.data as List;
   }
 
-  Future<void> addProductSaleDetail(String name, double price, int quantity,
-      int productTypeId, String productSaleId) async {
+  Future<void> addProductSaleDetail(
+    String name,
+    double price,
+    int quantity,
+    int productTypeId,
+    String productSaleId,
+  ) async {
     // final response =
     await supabaseClient.from('product_sale_detail').insert([
       {
@@ -75,8 +80,10 @@ class ProductApi {
         .eq('product_sale_id', id)
         .execute();
 
-    final dato = response.data as List;
-    sales = dato.map((e) => SalesDetailModel.fromJson(e)).toList();
+    if (response.data != null) {
+      final dato = response.data as List;
+      sales = dato.map((e) => SalesDetailModel.fromJson(e)).toList();
+    }
 
     return sales;
   }
