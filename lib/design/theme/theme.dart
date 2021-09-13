@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 ThemeData temaClaro = ThemeData(
   // fontFamily: GoogleFonts.lato().fontFamily,
   scaffoldBackgroundColor: Colors.grey[100],
   primarySwatch: colorMain,
-  accentColor: colorMain,
-  buttonColor: colorMain,
+  primaryColor: colorMain,
+  // accentColor: colorMain,
+  // buttonColor: colorMain,
   brightness: Brightness.light,
   iconTheme: const IconThemeData(color: Colors.black38),
   tooltipTheme: const TooltipThemeData(
@@ -18,13 +18,11 @@ ThemeData temaClaro = ThemeData(
       color: Colors.white,
     ),
   ),
-  appBarTheme: const AppBarTheme(
-    textTheme: TextTheme(
-      headline6: TextStyle(
-        fontSize: 26,
-        fontWeight: FontWeight.w300,
-        color: Colors.black38,
-      ),
+  appBarTheme: AppBarTheme(
+    titleTextStyle: TextStyle(
+      fontSize: 26,
+      fontWeight: FontWeight.w300,
+      color: Colors.black38,
     ),
     centerTitle: false,
     iconTheme: IconThemeData(color: Colors.black38),

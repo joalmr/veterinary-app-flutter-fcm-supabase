@@ -65,6 +65,7 @@ dependencies:
   line_icons: ^2.0.1
   lottie: ^1.0.1
   modal_bottom_sheet: ^2.0.0
+  number_inc_dec: ^0.8.0
   octo_image: ^1.0.0+1
   percent_indicator: ^3.0.1
   rxdart: ^0.27.1

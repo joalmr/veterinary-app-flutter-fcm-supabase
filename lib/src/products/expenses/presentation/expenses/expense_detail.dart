@@ -2,36 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/src/products/data/svg_venta.dart';
-import 'package:vet_app/src/products/sales/domain/my_sales_controller.dart';
+import 'package:vet_app/src/products/expenses/domain/my_expenses_controller.dart';
 
-class SaleDetail extends StatelessWidget {
+class ExpenseDetail extends StatelessWidget {
   final String date;
-  final String name;
 
-  const SaleDetail({
+  const ExpenseDetail({
     required this.date,
-    required this.name,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GetX<MySalesController>(
+    return GetX<MyExpensesController>(
       builder: (_) {
         return MainLayout(
-          title: name,
+          title: '',
           body: Column(
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
-                child:
-                    Align(alignment: Alignment.centerLeft, child: Text(date)),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(date),
+                ),
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: _.salesDetail.length,
+                  itemCount: _.expensesDetail.length,
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2.5),
                   itemBuilder: (BuildContext context, int index) {
-                    final sale = _.salesDetail[index];
+                    final expense = _.expensesDetail[index];
                     return Container(
                       margin: EdgeInsets.symmetric(vertical: 5),
                       padding:
@@ -53,11 +53,11 @@ class SaleDetail extends StatelessWidget {
                                     Container(
                                       height: 18,
                                       width: 18,
-                                      child: svgProducto[sale.productTypeId],
+                                      child: svgProducto[expense.productTypeId],
                                     ),
                                     SizedBox(width: 5),
                                     Text(
-                                      sale.name!,
+                                      expense.productName!,
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
@@ -66,7 +66,8 @@ class SaleDetail extends StatelessWidget {
                                   ],
                                 ),
                                 SizedBox(height: 5),
-                                Text('Cantidad: ${sale.quantity}'),
+                                Text('Cantidad: ${expense.quantity}'),
+                                Text('Proveedor: ${expense.supplierName}'),
                                 SizedBox(height: 2.5),
                               ],
                             ),
@@ -74,7 +75,7 @@ class SaleDetail extends StatelessWidget {
                           Expanded(
                             child: Center(
                               child: Text(
-                                sale.price!.toStringAsFixed(2),
+                                expense.price!.toStringAsFixed(2),
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w800,
@@ -101,7 +102,7 @@ class SaleDetail extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      _.totalSales.toStringAsFixed(2),
+                      _.totalExpenses.toStringAsFixed(2),
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

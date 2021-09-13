@@ -1,3 +1,5 @@
+import 'package:vet_app/_supabase/model/expense.model.dart';
+import 'package:vet_app/_supabase/model/expenses_detail.model.dart';
 import 'package:vet_app/_supabase/services/product_expense/product_expense.api.dart';
 
 class ProductExpenseRepo {
@@ -17,7 +19,7 @@ class ProductExpenseRepo {
     int quantity,
     String supplierName,
     int productTypeId,
-    String productSaleId,
+    String productExpenseId,
   ) {
     return _api.addProductExpenseDetail(
       productName,
@@ -25,15 +27,15 @@ class ProductExpenseRepo {
       quantity,
       supplierName,
       productTypeId,
-      productSaleId,
+      productExpenseId,
     );
   }
 
-  Future<void> getExpenses(int establishmentId) {
+  Future<List<ExpenseModel>> getExpenses(int establishmentId) {
     return _api.getExpenses(establishmentId);
   }
 
-  Future<void> getExpensesDetail(String id) {
+  Future<List<ExpensesDetailModel>> getExpensesDetail(String id) {
     return _api.getExpensesDetail(id);
   }
 }

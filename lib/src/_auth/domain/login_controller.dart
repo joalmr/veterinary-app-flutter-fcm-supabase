@@ -11,6 +11,7 @@ import 'package:vet_app/src/_auth/data/auth_repository.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/crea_vet.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
+import 'package:vet_app/src/products/expenses/domain/my_expenses_controller.dart';
 import 'package:vet_app/src/products/sales/domain/my_sales_controller.dart';
 
 import 'push_controller.dart';
@@ -96,6 +97,7 @@ class LoginController extends GetxController {
       Get.find<GlobalController>().generalLoad();
 
       Get.find<MySalesController>().getSales();
+      Get.find<MyExpensesController>().getExpenses();
 
       btnLogIn.value = true;
 

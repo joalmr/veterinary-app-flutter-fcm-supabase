@@ -20,4 +20,7 @@ final svgProducto = <int, Widget>{
   6: SvgPicture.asset(
     'assets/images/svg/farmaco.svg',
   ),
+  7: SvgPicture.asset(
+    'assets/images/svg/otro.svg',
+  ),
 };

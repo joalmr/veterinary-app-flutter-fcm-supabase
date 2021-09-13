@@ -12,8 +12,8 @@ import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/src/products/sales/domain/sales.controller.dart';
 import 'package:vet_app/src/products/sales/domain/_sales_model.dart';
-import 'package:vet_app/src/products/sales/presentation/sales/data/svg_venta.dart';
-import 'package:vet_app/src/products/sales/presentation/sales/data/tipo_venta.dart';
+import 'package:vet_app/src/products/data/svg_venta.dart';
+import 'package:vet_app/src/products/data/tipo_venta.dart';
 
 class AddSalesView extends StatefulWidget {
   final int petloverId;

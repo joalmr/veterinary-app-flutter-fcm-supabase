@@ -74,4 +74,16 @@ List itemListSales = [
       ),
     ),
   },
+  {
+    'label': 'Otro',
+    'value': 7,
+    'icon': Container(
+      key: UniqueKey(),
+      height: 20,
+      width: 20,
+      child: SvgPicture.asset(
+        'assets/images/svg/otro.svg',
+      ),
+    ),
+  },
 ];

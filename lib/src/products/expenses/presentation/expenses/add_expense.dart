@@ -5,31 +5,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:get/get.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:number_selection/number_selection.dart';
+import 'package:number_inc_dec/number_inc_dec.dart';
 import 'package:vet_app/components/buttons.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
 import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/src/products/expenses/domain/_expenses_model.dart';
 import 'package:vet_app/src/products/expenses/domain/expenses.controller.dart';
-import 'package:vet_app/src/products/sales/presentation/sales/data/svg_venta.dart';
-import 'package:vet_app/src/products/sales/presentation/sales/data/tipo_venta.dart';
+import 'package:vet_app/src/products/data/svg_venta.dart';
+import 'package:vet_app/src/products/data/tipo_venta.dart';
 
-class AddExpensesView extends StatelessWidget {
+class AddExpensesView extends StatefulWidget {
+  @override
+  State<AddExpensesView> createState() => _AddExpensesViewState();
+}
+
+class _AddExpensesViewState extends State<AddExpensesView> {
   final priceController = MoneyMaskedTextController(
     initialValue: 0,
     decimalSeparator: '.',
     thousandSeparator: ',',
   );
+
   final productoController = TextEditingController();
+  final proveedorController = TextEditingController();
+  final cantidadController = TextEditingController();
+
   int tipoProducto = 0;
   int cantidad = 1;
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ExpensesController>(
+    return GetX<ExpensesController>(
       init: ExpensesController(),
       builder: (_) {
         return MainLayout(
-          title: 'Gastos',
+          title: 'Egresos',
           drawerActive: true,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -50,7 +60,7 @@ class AddExpensesView extends StatelessWidget {
                                 bottom: -50,
                                 right: -65,
                                 child: Icon(
-                                  Icons.shopping_cart_rounded,
+                                  Icons.trending_down_rounded,
                                   size: 350,
                                   color: colorMain.withOpacity(0.1),
                                 ),
@@ -66,7 +76,11 @@ class AddExpensesView extends StatelessWidget {
                                     child: CoolDropdown(
                                       dropdownList: itemListSales,
                                       placeholder: 'Seleccione tipo',
-                                      onChange: (selectedItem) {},
+                                      onChange: (selectedItem) {
+                                        setState(() {
+                                          tipoProducto = selectedItem['value'];
+                                        });
+                                      },
                                       dropdownWidth: double.maxFinite,
                                       dropdownBoxHeight: 320,
                                       dropdownBoxWidth: 220,
@@ -80,11 +94,23 @@ class AddExpensesView extends StatelessWidget {
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 5),
                                     child: TextFormField(
+                                      controller: proveedorController,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
+                                      decoration: InputDecoration(
+                                        labelText: 'Proveedor',
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: TextFormField(
                                       controller: productoController,
                                       textCapitalization:
                                           TextCapitalization.sentences,
                                       decoration: InputDecoration(
-                                        labelText: 'Nombre',
+                                        labelText: 'Producto',
                                       ),
                                     ),
                                   ),
@@ -99,42 +125,36 @@ class AddExpensesView extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                        top: 5,
-                                        left: 10,
-                                        right: 10,
-                                      ),
-                                      child: Text('Cantidad'),
-                                    ),
-                                  ),
                                   Padding(
-                                    padding: EdgeInsets.only(
-                                      top: 0,
-                                      bottom: 5,
-                                      left: 10,
-                                      right: 10,
-                                    ),
-                                    child: Container(
-                                      height: 50,
-                                      padding: EdgeInsets.all(2.5),
-                                      child: NumberSelection(
-                                        theme: NumberSelectionTheme(
-                                          iconsColor: Colors.white,
-                                          outOfConstraintsColor:
-                                              Colors.deepOrange,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: NumberInputWithIncrementDecrement(
+                                      controller: cantidadController,
+                                      widgetContainerDecoration: BoxDecoration(
+                                        border: Border.all(
+                                          style: BorderStyle.none,
                                         ),
-                                        initialValue: 1,
-                                        minValue: 1,
-                                        maxValue: 1000,
-                                        direction: Axis.horizontal,
-                                        withSpring: false,
-                                        onChanged: (int value) {},
-                                        enableOnOutOfConstraintsAnimation: true,
-                                        onOutOfConstraints: () {},
                                       ),
+                                      numberFieldDecoration: InputDecoration(
+                                        labelText: 'Cantidad',
+                                      ),
+                                      onIncrement: (value) {
+                                        setState(() {
+                                          cantidad = value.toInt();
+                                        });
+                                      },
+                                      onDecrement: (value) {
+                                        setState(() {
+                                          cantidad = value.toInt();
+                                        });
+                                      },
+                                      onChanged: (value) {
+                                        setState(() {
+                                          cantidad = value.toInt();
+                                        });
+                                      },
+                                      min: 1,
+                                      initialValue: 1,
                                     ),
                                   ),
                                   SizedBox(height: 25),
@@ -144,9 +164,27 @@ class AddExpensesView extends StatelessWidget {
                                       if (cantidad == 0 ||
                                           tipoProducto == 0 ||
                                           productoController.text.isEmpty ||
+                                          proveedorController.text.isEmpty ||
                                           priceController.numberValue == 0) {
                                         log('Complete los datos');
                                       } else {
+                                        final data = ExpensesDetailPreview(
+                                            name: productoController.text,
+                                            price: priceController.numberValue,
+                                            quantity: cantidad,
+                                            productTypeId: tipoProducto,
+                                            proveedor:
+                                                proveedorController.text);
+
+                                        _.expensesList.add(data);
+                                        _.getTotal();
+
+                                        setState(() {
+                                          productoController.text = '';
+                                          proveedorController.text = '';
+                                          cantidad = 1;
+                                        });
+
                                         Get.back();
                                       }
                                     },
@@ -167,92 +205,114 @@ class AddExpensesView extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Agregar producto',
+                    'Agregar',
                     style: TextStyle(fontSize: 12.0),
                   ),
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 2,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(vertical: 5),
-                      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                child: _.expensesList.isEmpty
+                    ? Center(
+                        child: Icon(
+                          Icons.trending_down_rounded,
+                          size: 350,
+                          color: Colors.grey.withOpacity(0.15),
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: _.expensesList.length,
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        itemBuilder: (BuildContext context, int index) {
+                          final producto = _.expensesList[index];
+                          return Container(
+                            margin: EdgeInsets.symmetric(vertical: 5),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 0, horizontal: 5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                            ),
+                            child: Row(
                               children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      height: 18,
-                                      width: 18,
-                                      child: svgProducto[1],
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      'Prueba',
-                                      style: TextStyle(
-                                        fontSize: 14,
+                                Expanded(
+                                  flex: 2,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            height: 18,
+                                            width: 18,
+                                            child: svgProducto[
+                                                producto.productTypeId],
+                                          ),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            producto.name!,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(height: 5),
+                                      Text(
+                                        'Cantidad: ${producto.quantity}',
+                                        style: TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Proveedor: ${producto.proveedor}',
+                                        style: TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                SizedBox(height: 5),
-                                Text(
-                                  'Cantidad: 1',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w300,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 5),
+                                        child: Text(
+                                          producto.price!.toStringAsFixed(2),
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          _.expensesList.remove(producto);
+                                          _.getTotal();
+                                        },
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Icon(
+                                            Icons.delete_rounded,
+                                            color: colorRed,
+                                            size: 18,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 5),
-                                  child: Text(
-                                    'Prueba',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      Icons.delete_rounded,
-                                      color: colorRed,
-                                      size: 18,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               ),
               Padding(
                 padding:
@@ -268,7 +328,7 @@ class AddExpensesView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Prueba',
+                      _.totalExpenses.toStringAsFixed(2),
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -281,7 +341,7 @@ class AddExpensesView extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: btnPrimary(
                   text: 'Finalizar',
-                  onPressed: () {},
+                  onPressed: _.cargando.value ? null : () => _.addExpense(),
                 ),
               ),
             ],

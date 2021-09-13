@@ -1,4 +1,6 @@
 import 'package:supabase/supabase.dart';
+import 'package:vet_app/_supabase/model/expense.model.dart';
+import 'package:vet_app/_supabase/model/expenses_detail.model.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 
 class ProductExpenseApi {
@@ -12,20 +14,17 @@ class ProductExpenseApi {
       }
     ]).execute();
 
-    print(response.data);
     final dato = response.data as List;
-
     return dato.first['id'];
   }
 
   Future<void> updateProductExpense(double price, String idExpense) async {
-    final response = await supabaseClient
+    // final response =
+    await supabaseClient
         .from('product_expense')
         .update({'price': price})
         .eq('id', idExpense)
         .execute();
-
-    print(response.data);
   }
 
   Future<void> addProductExpenseDetail(
@@ -34,25 +33,22 @@ class ProductExpenseApi {
     int quantity,
     String supplierName,
     int productTypeId,
-    String productSaleId,
+    String productExpenseId,
   ) async {
-    final response =
-        await supabaseClient.from('product_expense_detail').insert([
+    await supabaseClient.from('product_expense_detail').insert([
       {
         'product_name': productName,
         'price': price,
         'quantity': quantity,
         'supplier_name': supplierName,
         'product_type_id': productTypeId,
-        'product_expense_id': productSaleId,
+        'product_expense_id': productExpenseId,
       }
     ]).execute();
-
-    print(response.data);
   }
 
-  Future<void> getExpenses(int establishmentId) async {
-    // List<ExpensesModel> expenses = [];
+  Future<List<ExpenseModel>> getExpenses(int establishmentId) async {
+    List<ExpenseModel> expenses = [];
 
     final response = await supabaseClient
         .from('product_expense')
@@ -61,17 +57,16 @@ class ProductExpenseApi {
         .order('created_at', ascending: false)
         .execute();
 
-    print(response.data);
     if (response.data != null) {
       final dato = response.data as List;
-      // expenses = dato.map((e) => ExpensesModel.fromJson(e)).toList();
+      expenses = dato.map((e) => ExpenseModel.fromJson(e)).toList();
     }
 
-    // return expenses;
+    return expenses;
   }
 
-  Future<void> getExpensesDetail(String id) async {
-    // List<ExpensesDetailModel> expenses = [];
+  Future<List<ExpensesDetailModel>> getExpensesDetail(String id) async {
+    List<ExpensesDetailModel> expenses = [];
 
     final response = await supabaseClient
         .from('product_expense_detail')
@@ -79,12 +74,11 @@ class ProductExpenseApi {
         .eq('product_expense_id', id)
         .execute();
 
-    print(response.data);
     if (response.data != null) {
       final dato = response.data as List;
-      // expenses = dato.map((e) => ExpensesDetailModel.fromJson(e)).toList();
+      expenses = dato.map((e) => ExpensesDetailModel.fromJson(e)).toList();
     }
 
-    // return expenses;
+    return expenses;
   }
 }
