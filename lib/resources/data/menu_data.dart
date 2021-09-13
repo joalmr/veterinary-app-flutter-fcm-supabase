@@ -42,7 +42,7 @@ List<DataMenu> dataMenu = [
   DataMenu(
     icon: Icons.shopping_cart_rounded,
     name: 'Ventas',
-    page: NameRoutes.calendar,
+    page: NameRoutes.sales,
     fn: () => Get.offNamed(NameRoutes.sales),
     color: Colors.black38,
   ),

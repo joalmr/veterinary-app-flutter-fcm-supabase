@@ -18,7 +18,7 @@ class GlobalController extends GetxController {
   final _clients = Get.find<ClientsController>();
   final _establishment = Get.find<EstablishmentsController>();
 
-  final pushController = PushController();
+  // final pushController = PushController();
 
   @override
   void onInit() {
@@ -38,24 +38,8 @@ class GlobalController extends GetxController {
     if (prefUser.tokenHas() == true &&
         prefUser.vetDataHas() == true &&
         prefUser.vetIdSupaHas() == true) {
-      pushController.firebase(); // TODO: firebase
+      // pushController.firebase(); // TODO: firebase
       log('open');
-      // // final response = await EstablishmentRepository().getAll();
-
-      // // if (response!.isNotEmpty) {
-      // //   prefUser.hasMenu = true;
-      // //   Timer(const Duration(milliseconds: 2500),
-      // //       () => Get.offNamed(NameRoutes.home));
-      // // } else {
-      // //   prefUser.hasMenu = false;
-      // //   Timer(const Duration(milliseconds: 2500),
-      // //       () => Get.offNamed(NameRoutes.establishments));
-      // // }
     }
-    // // else {
-    // //   prefUser.hasMenu = false;
-    // //   Timer(const Duration(milliseconds: 2500),
-    // //       () => Get.offNamed(NameRoutes.login));
-    // // }
   }
 }
