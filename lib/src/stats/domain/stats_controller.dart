@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/_supabase/services/product/product.repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
@@ -15,6 +16,7 @@ import 'package:vet_app/src/stats/data/stats_repository.dart';
 
 class StatsController extends GetxController {
   final _repo = StatsRepository();
+  final _repoGeneralVs = ProductGeneralRepo();
 
   final fechaIn = TextEditingController();
   final fechaOut = TextEditingController();
@@ -33,6 +35,8 @@ class StatsController extends GetxController {
   final cargaServices = false.obs;
   final cargaSalesDay = false.obs;
   final cargaSalesMonth = false.obs;
+
+  dynamic generalVersus = [];
 
   final hoy = DateTime.now();
 
@@ -57,6 +61,8 @@ class StatsController extends GetxController {
     getStatsService();
     getStatsDaily();
     getStatsMonthly();
+
+    generalVersus = await _repoGeneralVs.generalVersus();
   }
 
   ejecStats() {
@@ -69,12 +75,6 @@ class StatsController extends GetxController {
         type: TypeSnackBarName.ERROR,
         message: 'La "fecha desde" debe ser anterior a la "fecha hasta"',
       );
-      // Get.snackbar(
-      //   'Error',
-      //   'La "fecha desde" debe ser anterior a la "fecha hasta"',
-      //   backgroundColor: colorRed,
-      //   colorText: colorWhite,
-      // );
     } else {
       cargaStats();
       Get.back();

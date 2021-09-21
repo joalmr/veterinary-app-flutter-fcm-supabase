@@ -6,6 +6,7 @@ import 'package:vet_app/config/variables_supabase.dart';
 class ProductApi {
   final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
 
+  ////
   Future<String> addProductSale(int petloverId, int establishmentId) async {
     final response = await supabaseClient.from('product_sale').insert([
       {

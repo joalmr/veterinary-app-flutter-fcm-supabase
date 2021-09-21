@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:supabase/supabase.dart';
 import 'package:vet_app/_supabase/model/expense.model.dart';
 import 'package:vet_app/_supabase/model/expenses_detail.model.dart';
-import 'package:vet_app/_supabase/services/product_expense/product_expense.repo.dart';
+import 'package:vet_app/_supabase/services/product/expense/product_expense.repo.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 

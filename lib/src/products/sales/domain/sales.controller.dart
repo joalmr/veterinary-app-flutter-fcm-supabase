@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:vet_app/_supabase/services/product_sale/product_sale.repo.dart';
+import 'package:vet_app/_supabase/services/product/sale/product_sale.repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 

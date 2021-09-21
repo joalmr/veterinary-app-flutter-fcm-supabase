@@ -21,7 +21,7 @@ class LoginController extends GetxController {
   final authSupa = AuthSupaRepo();
   final establishmentService = EstablishmentRepository();
 
-  // final pushController = PushController();
+  final pushController = PushController();
 
   String email = '';
   String password = '';
@@ -70,7 +70,7 @@ class LoginController extends GetxController {
 
   Future<void> initHome() async {
     final establishment = await establishmentService.getAll();
-    // pushController.firebase(); //TODO: firebase
+    pushController.firebase(); //TODO: firebase
 
     if (establishment!.isEmpty) {
       btnLogIn.value = true;

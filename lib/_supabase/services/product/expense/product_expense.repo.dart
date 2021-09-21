@@ -1,6 +1,6 @@
 import 'package:vet_app/_supabase/model/expense.model.dart';
 import 'package:vet_app/_supabase/model/expenses_detail.model.dart';
-import 'package:vet_app/_supabase/services/product_expense/product_expense.api.dart';
+import 'package:vet_app/_supabase/services/product/expense/product_expense.api.dart';
 
 class ProductExpenseRepo {
   final _api = ProductExpenseApi();

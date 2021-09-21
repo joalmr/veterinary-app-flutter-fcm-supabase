@@ -34,8 +34,6 @@ class ClientsController extends GetxController {
 
   final razas = <Breed>[].obs;
 
-  // final userData = ResultFindUser().obs;
-
   final fecha = ''.obs;
   final hora = ''.obs;
 
@@ -70,7 +68,7 @@ class ClientsController extends GetxController {
 
   findClients(String mailUser) async {
     final response = await _repo.findUser(mailUser);
-    findClient.value = response?.result; //TODO: revisando
+    findClient.value = response?.result;
     userIdSupabase.value = await PetloverRepo().getPetlover(
       findClient.value!.id!,
       findClient.value!.name!,

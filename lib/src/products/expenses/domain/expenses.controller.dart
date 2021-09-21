@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:vet_app/_supabase/services/product_expense/product_expense.repo.dart';
+import 'package:vet_app/_supabase/services/product/expense/product_expense.repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/products/expenses/domain/_expenses_model.dart';

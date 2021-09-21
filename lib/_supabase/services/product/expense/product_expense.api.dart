@@ -1,11 +1,13 @@
 import 'package:supabase/supabase.dart';
 import 'package:vet_app/_supabase/model/expense.model.dart';
+
 import 'package:vet_app/_supabase/model/expenses_detail.model.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 
 class ProductExpenseApi {
   final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
 
+  ////
   Future<String> addProductExpense(int establishmentId) async {
     final response = await supabaseClient.from('product_expense').insert([
       {
