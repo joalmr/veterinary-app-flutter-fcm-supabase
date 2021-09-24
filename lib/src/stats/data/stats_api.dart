@@ -1,5 +1,6 @@
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/header_http.dart';
+import 'package:vet_app/src/stats/data/model/service_stats_versus_sales.model.dart';
 import 'package:vet_app/src/stats/data/model/stats_base_model.dart';
 import 'package:vet_app/src/stats/data/model/stat_comment_model.dart';
 import 'package:http/http.dart' as http;
@@ -47,6 +48,28 @@ class StatsApi extends StatsInterface {
     final statsComment = statCommentModelFromJson(response.body);
 
     return statsComment;
+  }
+
+  @override
+  Future<ServicesStatsModel> servicesStat(
+    String establecimientoId,
+    String fechain,
+    String fechaout,
+  ) async {
+    final url = Uri.https(
+      urlBase!,
+      '$pathBase/establishment/$establecimientoId/stats/attentions',
+      {
+        'from': fechain,
+        'to': fechaout,
+      },
+    );
+
+    final response = await http.get(url, headers: headersToken());
+
+    final servicesStatsModel = servicesStatsModelFromJson(response.body);
+
+    return servicesStatsModel;
   }
 
   @override

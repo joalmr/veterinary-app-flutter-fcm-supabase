@@ -7,6 +7,7 @@ import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/components/color_generate.dart';
+import 'package:vet_app/src/stats/data/model/service_stats_versus_sales.model.dart';
 import 'package:vet_app/src/stats/data/model/stat_comment_model.dart';
 import 'package:vet_app/src/stats/data/model/stats_base_model.dart';
 import 'package:vet_app/src/stats/data/model/stats_sales_daily_model.dart';
@@ -37,6 +38,7 @@ class StatsController extends GetxController {
   final cargaSalesMonth = false.obs;
 
   dynamic generalVersus = [];
+  ServicesStatsModel servicesSalesStats = ServicesStatsModel();
 
   final hoy = DateTime.now();
 
@@ -62,7 +64,12 @@ class StatsController extends GetxController {
     getStatsDaily();
     getStatsMonthly();
 
-    generalVersus = await _repoGeneralVs.generalVersus();
+    generalVersus =
+        await _repoGeneralVs.generalVersus(fechaIn.text, fechaOut.text);
+
+    servicesSalesStats =
+        await _repo.servicesStat(prefUser.vetId!, fechaIn.text, fechaOut.text);
+    update(['versusSales']);
   }
 
   ejecStats() {

@@ -1,3 +1,4 @@
+import 'package:vet_app/src/stats/data/model/service_stats_versus_sales.model.dart';
 import 'package:vet_app/src/stats/data/model/stats_sales_monthly_model.dart';
 
 import 'model/stat_comment_model.dart';
@@ -11,6 +12,11 @@ abstract class StatsInterface {
       String establecimientoId, String from, String to);
   Future<List<StatCommentModel>> getStatsComment(
       String establecimientoId, String from, String to);
+  Future<ServicesStatsModel> servicesStat(
+    String establecimientoId,
+    String fechain,
+    String fechaout,
+  );
   Future<StatsServiceModel> getStatsService(
       String establecimientoId, String from, String to);
   Future<StatsSalesDailyModel> getStatsDaily(String establecimientoId);
