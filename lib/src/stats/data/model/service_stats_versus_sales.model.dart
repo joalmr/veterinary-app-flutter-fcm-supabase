@@ -21,13 +21,13 @@ class ServicesStatsModel {
 
   factory ServicesStatsModel.fromJson(Map<String, dynamic> json) =>
       ServicesStatsModel(
-        message: json["message"],
-        result: Result.fromJson(json["result"]),
+        message: json['message'],
+        result: Result.fromJson(json['result']),
       );
 
   Map<String, dynamic> toJson() => {
-        "message": message,
-        "result": result!.toJson(),
+        'message': message,
+        'result': result!.toJson(),
       };
 }
 
@@ -41,12 +41,12 @@ class Result {
   int? count;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
-        amount: json["amount"].toDouble(),
-        count: json["count"],
+        amount: json['amount'].toDouble(),
+        count: json['count'],
       );
 
   Map<String, dynamic> toJson() => {
-        "amount": amount,
-        "count": count,
+        'amount': amount,
+        'count': count,
       };
 }
