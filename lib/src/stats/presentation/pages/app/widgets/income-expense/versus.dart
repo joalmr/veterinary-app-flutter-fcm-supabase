@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/products/data/svg_venta.dart';
 import 'package:vet_app/src/products/data/text_products.dart';
 import 'package:vet_app/src/stats/domain/stats_controller.dart';
@@ -12,6 +13,11 @@ class VersusSales extends StatelessWidget {
       builder: (_) {
         return ListView(
           children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10, top: 5),
+              child: Text(
+                  '''${formatDate(_.initialIn!)} a ${formatDate(_.initialOut!)}'''),
+            ),
             containerVersus(
               posicion: 1,
               ingreso: _.generalVersus[0]['ingreso'],
@@ -59,7 +65,7 @@ class VersusSales extends StatelessWidget {
                   Text(
                     'Servicios ',
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 22,
                       fontWeight: FontWeight.w300,
                     ),
                   ),
@@ -70,13 +76,16 @@ class VersusSales extends StatelessWidget {
                         child: Container(
                           child: Column(
                             children: [
-                              Container(
-                                height: 45,
-                                child: Text(
-                                  '#',
-                                  style: TextStyle(
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.bold,
+                              Tooltip(
+                                message: 'Cantidad',
+                                child: Container(
+                                  height: 45,
+                                  child: Text(
+                                    '#',
+                                    style: TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -97,9 +106,13 @@ class VersusSales extends StatelessWidget {
                         child: Container(
                           child: Column(
                             children: [
-                              Image(
-                                image: AssetImage('assets/images/increase.png'),
-                                height: 45,
+                              Tooltip(
+                                message: 'Ingresos',
+                                child: Image(
+                                  image:
+                                      AssetImage('assets/images/increase.png'),
+                                  height: 42,
+                                ),
                               ),
                               Text(
                                 _.servicesSalesStats.result!.amount
@@ -145,15 +158,15 @@ Widget containerVersus({
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 28,
-              width: 28,
+              height: 22,
+              width: 22,
               child: svgProducto[posicion],
             ),
             SizedBox(width: 7.5),
             Text(
               txtProducto[posicion]!,
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 22,
                 fontWeight: FontWeight.w300,
               ),
             )
@@ -166,14 +179,17 @@ Widget containerVersus({
               child: Container(
                 child: Column(
                   children: [
-                    Image(
-                      image: AssetImage('assets/images/increase.png'),
-                      height: 45,
+                    Tooltip(
+                      message: 'Ingresos',
+                      child: Image(
+                        image: AssetImage('assets/images/increase.png'),
+                        height: 42,
+                      ),
                     ),
                     Text(
                       ingreso!,
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -185,14 +201,17 @@ Widget containerVersus({
               child: Container(
                 child: Column(
                   children: [
-                    Image(
-                      image: AssetImage('assets/images/decrease.png'),
-                      height: 45,
+                    Tooltip(
+                      message: 'Egresos',
+                      child: Image(
+                        image: AssetImage('assets/images/decrease.png'),
+                        height: 42,
+                      ),
                     ),
                     Text(
                       egreso!,
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
