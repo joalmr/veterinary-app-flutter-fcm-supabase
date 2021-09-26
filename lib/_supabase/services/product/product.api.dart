@@ -3,6 +3,7 @@ import 'package:vet_app/_supabase/services/product/product_general_data.dart';
 
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/config/variables_supabase.dart';
+import 'package:vet_app/resources/utils/datetime_format.dart';
 
 import 'expense/expense.model.dart';
 import 'sale/income.model.dart';
@@ -11,6 +12,9 @@ class ProductGeneralApi {
   final supabaseClient = SupabaseClient(urlSupa!, keySupa!);
 
   Future<dynamic> generalVersus(String fechain, String fechaout) async {
+    final outDate = toDateBasic(fechaout).add(Duration(days: 1));
+    fechaout = formatDateBasic(outDate);
+
     List<IncomeDataModel> income = await sumIncome(fechain, fechaout);
     for (var item in income) {
       switch (item.productTypeId) {

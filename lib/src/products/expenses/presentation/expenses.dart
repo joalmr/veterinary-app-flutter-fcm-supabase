@@ -41,7 +41,7 @@ class ExpensesMain extends StatelessWidget {
                 child: _.myExpenses.isEmpty
                     ? Center(
                         child: Icon(
-                          Icons.shopping_cart_rounded,
+                          Icons.trending_down_rounded,
                           size: 350,
                           color: Colors.grey.withOpacity(0.15),
                         ),

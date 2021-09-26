@@ -145,6 +145,11 @@ Widget containerVersus({
   String? ingreso,
   String? egreso,
 }) {
+  final double numIngreso = ingreso != '-' ? double.parse(ingreso!) : 0;
+  final double numEgreso = egreso != '-' ? double.parse(egreso!) : 0;
+  double numRendimiento =
+      ((numIngreso - numEgreso) / (numEgreso == 0 ? 1 : numEgreso)) * 100;
+
   return Container(
     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
     padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
@@ -221,6 +226,32 @@ Widget containerVersus({
             ),
           ],
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            numRendimiento == 0
+                ? Icon(
+                    Icons.arrow_right,
+                    size: 30,
+                    color: Colors.amber,
+                  )
+                : numRendimiento.isNegative
+                    ? Icon(
+                        Icons.arrow_drop_down,
+                        size: 30,
+                        color: Colors.red,
+                      )
+                    : Icon(
+                        Icons.arrow_drop_up,
+                        size: 30,
+                        color: Colors.green,
+                      ),
+            Text(
+              '${numRendimiento.toStringAsFixed(2)}%',
+              style: TextStyle(),
+            ),
+          ],
+        )
       ],
     ),
   );

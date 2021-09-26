@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:supabase/supabase.dart';
 import 'package:vet_app/_supabase/model/expense.model.dart';
 
@@ -62,6 +64,9 @@ class ProductExpenseApi {
     if (response.data != null) {
       final dato = response.data as List;
       expenses = dato.map((e) => ExpenseModel.fromJson(e)).toList();
+    } else {
+      log(response.error!.details);
+      log(response.error!.message);
     }
 
     return expenses;

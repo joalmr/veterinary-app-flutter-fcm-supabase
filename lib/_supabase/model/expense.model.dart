@@ -7,8 +7,8 @@ import 'dart:convert';
 List<ExpenseModel> expenseModelFromJson(String str) => List<ExpenseModel>.from(
     json.decode(str).map((x) => ExpenseModel.fromJson(x)));
 
-// String expenseModelToJson(List<ExpenseModel> data) =>
-//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String expenseModelToJson(List<ExpenseModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ExpenseModel {
   ExpenseModel({
@@ -33,11 +33,11 @@ class ExpenseModel {
         establishmentId: json['establishment_id'],
       );
 
-  // Map<String, dynamic> toJson() => {
-  //       'id': id,
-  //       'created_at': createdAt!.toIso8601String(),
-  //       'updated_at': updatedAt!.toIso8601String(),
-  //       'price': price,
-  //       'establishment_id': establishmentId,
-  //     };
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'created_at': createdAt!.toIso8601String(),
+        'updated_at': updatedAt!.toIso8601String(),
+        'price': price,
+        'establishment_id': establishmentId,
+      };
 }
