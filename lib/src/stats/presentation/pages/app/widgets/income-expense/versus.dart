@@ -79,12 +79,12 @@ class VersusSales extends StatelessWidget {
                               Tooltip(
                                 message: 'Cantidad',
                                 child: Container(
-                                  height: 45,
+                                  height: 32,
                                   child: Text(
                                     '#',
                                     style: TextStyle(
-                                      fontSize: 28,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w900,
                                     ),
                                   ),
                                 ),
@@ -94,7 +94,7 @@ class VersusSales extends StatelessWidget {
                                         ?.toString() ??
                                     '-',
                                 style: TextStyle(
-                                  fontSize: 28,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -111,7 +111,7 @@ class VersusSales extends StatelessWidget {
                                 child: Image(
                                   image:
                                       AssetImage('assets/images/increase.png'),
-                                  height: 42,
+                                  height: 32,
                                 ),
                               ),
                               Text(
@@ -119,7 +119,7 @@ class VersusSales extends StatelessWidget {
                                         ?.toStringAsFixed(2) ??
                                     '-',
                                 style: TextStyle(
-                                  fontSize: 28,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
