@@ -188,13 +188,13 @@ Widget containerVersus({
                       message: 'Ingresos',
                       child: Image(
                         image: AssetImage('assets/images/increase.png'),
-                        height: 42,
+                        height: 32,
                       ),
                     ),
                     Text(
                       ingreso!,
                       style: TextStyle(
-                        fontSize: 26,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -210,13 +210,13 @@ Widget containerVersus({
                       message: 'Egresos',
                       child: Image(
                         image: AssetImage('assets/images/decrease.png'),
-                        height: 42,
+                        height: 32,
                       ),
                     ),
                     Text(
                       egreso!,
                       style: TextStyle(
-                        fontSize: 26,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
