@@ -45,8 +45,8 @@ android {
         applicationId "com.proypet.vet"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 5
-        versionName "0.7.0"
+        versionCode 6
+        versionName "0.7.1"
     }
 
     //TODO: esto debe estar activo para produccion
