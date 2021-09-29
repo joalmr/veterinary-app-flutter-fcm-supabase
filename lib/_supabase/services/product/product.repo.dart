@@ -6,4 +6,8 @@ class ProductGeneralRepo {
   Future<dynamic> generalVersus(String fechain, String fechaout) {
     return _api.generalVersus(fechain, fechaout);
   }
+
+  Future<dynamic> totalValuesversus(String fechain, String fechaout) {
+    return _api.totalValuesversus(fechain, fechaout);
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/src/products/data/svg_venta.dart';
 import 'package:vet_app/src/products/data/text_products.dart';
@@ -17,6 +18,11 @@ class VersusSales extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10, top: 5),
               child: Text(
                   '''${formatDate(_.initialIn!)} a ${formatDate(_.initialOut!)}'''),
+            ),
+            containerGeneralVersus(
+              ingreso: _.generalIngresos,
+              egreso: _.generalEgresos,
+              services: _.servicesSalesStats.result!.amount ?? 0,
             ),
             containerVersus(
               posicion: 1,
@@ -215,6 +221,119 @@ Widget containerVersus({
                     ),
                     Text(
                       egreso!,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            numRendimiento == 0
+                ? Icon(
+                    Icons.arrow_right,
+                    size: 30,
+                    color: Colors.amber,
+                  )
+                : numRendimiento.isNegative
+                    ? Icon(
+                        Icons.arrow_drop_down,
+                        size: 30,
+                        color: Colors.red,
+                      )
+                    : Icon(
+                        Icons.arrow_drop_up,
+                        size: 30,
+                        color: Colors.green,
+                      ),
+            Text(
+              '${numRendimiento.toStringAsFixed(2)}%',
+              style: TextStyle(),
+            ),
+          ],
+        )
+      ],
+    ),
+  );
+}
+
+Widget containerGeneralVersus({
+  required double ingreso,
+  required double egreso,
+  required double services,
+}) {
+  final double numIngreso = ingreso + services;
+  final double numEgreso = egreso;
+  double numRendimiento =
+      ((numIngreso - numEgreso) / (numEgreso == 0 ? 1 : numEgreso)) * 100;
+
+  return Container(
+    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+    decoration: BoxDecoration(
+      color: numRendimiento.isNegative
+          ? colorRed.withOpacity(0.3)
+          : colorMain.withOpacity(0.3),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'General',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w300,
+              ),
+            )
+          ],
+        ),
+        SizedBox(height: 5),
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                child: Column(
+                  children: [
+                    Tooltip(
+                      message: 'Ingresos',
+                      child: Image(
+                        image: AssetImage('assets/images/increase.png'),
+                        height: 32,
+                      ),
+                    ),
+                    Text(
+                      numIngreso.toStringAsFixed(2),
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                child: Column(
+                  children: [
+                    Tooltip(
+                      message: 'Egresos',
+                      child: Image(
+                        image: AssetImage('assets/images/decrease.png'),
+                        height: 32,
+                      ),
+                    ),
+                    Text(
+                      numEgreso.toStringAsFixed(2),
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,

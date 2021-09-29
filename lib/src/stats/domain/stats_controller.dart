@@ -37,7 +37,11 @@ class StatsController extends GetxController {
   final cargaSalesDay = false.obs;
   final cargaSalesMonth = false.obs;
 
+  double generalIngresos = 0;
+  double generalEgresos = 0;
+
   dynamic generalVersus = [];
+  dynamic totalValuesversus;
   ServicesStatsModel servicesSalesStats = ServicesStatsModel();
 
   final hoy = DateTime.now();
@@ -69,6 +73,13 @@ class StatsController extends GetxController {
 
     servicesSalesStats =
         await _repo.servicesStat(prefUser.vetId!, fechaIn.text, fechaOut.text);
+
+    final responseVersus =
+        await _repoGeneralVs.totalValuesversus(fechaIn.text, fechaOut.text);
+
+    generalIngresos = responseVersus['income'];
+    generalEgresos = responseVersus['expense'];
+
     update(['versusSales']);
   }
 

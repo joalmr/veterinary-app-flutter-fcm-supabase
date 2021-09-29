@@ -119,4 +119,28 @@ class ProductGeneralApi {
 
     return expense;
   }
+
+  Future<dynamic> totalValuesversus(String fechain, String fechaout) async {
+    final outDate = toDateBasic(fechaout).add(Duration(days: 1));
+    fechaout = formatDateBasic(outDate);
+
+    double totalIncome = 0;
+    double totalExpense = 0;
+
+    List<IncomeDataModel> income = await sumIncome(fechain, fechaout);
+    if (income.isNotEmpty) {
+      for (var item in income) {
+        totalIncome = totalIncome + item.sum!;
+      }
+    }
+
+    List<ExpenseDataModel> expense = await sumExpense(fechain, fechaout);
+    if (expense.isNotEmpty) {
+      for (var item in expense) {
+        totalExpense = totalExpense + item.sum!;
+      }
+    }
+    print({'income': totalIncome, 'expense': totalExpense});
+    return {'income': totalIncome, 'expense': totalExpense};
+  }
 }
