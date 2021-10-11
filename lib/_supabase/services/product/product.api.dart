@@ -140,7 +140,7 @@ class ProductGeneralApi {
         totalExpense = totalExpense + item.sum!;
       }
     }
-    print({'income': totalIncome, 'expense': totalExpense});
+
     return {'income': totalIncome, 'expense': totalExpense};
   }
 }

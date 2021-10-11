@@ -10,3 +10,6 @@ final urlGlobal = dotenv.env['URL_API'];
 
 final urlBase = dotenv.env['URL_BASE'];
 final pathBase = dotenv.env['PATH_BASE'];
+
+final urlTerminos = dotenv.env['TERMINOS'];
+final urlPoliticas = dotenv.env['POLITICAS'];

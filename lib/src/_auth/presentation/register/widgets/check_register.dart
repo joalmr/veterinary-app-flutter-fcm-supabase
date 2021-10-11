@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:url_launcher/link.dart';
+import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 
 class CheckRegister extends StatefulWidget {
@@ -58,9 +59,7 @@ class _CheckRegisterState extends State<CheckRegister> {
               ),
               Link(
                 uri: Uri.parse(
-                  widget.tipo == 'tyc'
-                      ? 'http://danger.proypet.com/terminos'
-                      : 'http://danger.proypet.com/politicas',
+                  widget.tipo == 'tyc' ? urlTerminos! : urlPoliticas!,
                 ),
                 builder: (_, link) {
                   return GestureDetector(
