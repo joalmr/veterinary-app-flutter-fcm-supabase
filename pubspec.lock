@@ -85,13 +85,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-  country_code_picker:
-    dependency: "direct main"
-    description:
-      name: country_code_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   crypto:
     dependency: transitive
     description:
@@ -232,27 +225,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.36.0"
-  fluro:
-    dependency: "direct main"
-    description:
-      name: fluro
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.3"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
   flutter_blurhash:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_blurhash
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.0"
   flutter_cache_manager:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_cache_manager
       url: "https://pub.dartlang.org"
@@ -300,13 +286,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.0"
-  flutter_linear_datepicker:
-    dependency: "direct main"
-    description:
-      name: flutter_linear_datepicker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.2"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -326,13 +305,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  flutter_sparkline:
-    dependency: "direct main"
-    description:
-      name: flutter_sparkline
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -364,13 +336,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.3.8"
-  get_it:
-    dependency: "direct main"
-    description:
-      name: get_it
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "7.2.0"
   get_storage:
     dependency: "direct main"
     description:
@@ -561,7 +526,7 @@ packages:
     source: hosted
     version: "1.0.0"
   octo_image:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: octo_image
       url: "https://pub.dartlang.org"
@@ -707,13 +672,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-  shamsi_date:
-    dependency: transitive
-    description:
-      name: shamsi_date
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -824,13 +782,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.4"
-  universal_platform:
-    dependency: transitive
-    description:
-      name: universal_platform
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0-nullsafety"
   url_launcher:
     dependency: "direct main"
     description:

@@ -29,3 +29,8 @@ keytool -list -v \
 
 keytool -list -v \
 -alias upload -keystore /Users/admin/keystore.jks
+
+
+
+## registro
+https://proypet.com/vetowner/register

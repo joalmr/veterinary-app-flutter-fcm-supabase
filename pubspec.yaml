@@ -31,7 +31,7 @@ dependencies:
   animated_text_kit: ^4.0.0
   cached_network_image: ^3.0.0
   cool_dropdown: ^1.0.4
-  country_code_picker: ^2.0.1
+  # country_code_picker: ^2.0.1
   cupertino_icons: ^1.0.2
   # currency_text_input_formatter: ^2.0.0
   date_time_picker: ^2.0.0
@@ -40,21 +40,21 @@ dependencies:
   easy_rich_text: ^0.5.4
   email_validator: ^2.0.1
   file_picker: ^4.0.0
-  firebase_core: ^1.6.0 #
-  firebase_messaging: ^10.0.7 #
+  firebase_core: #
+  firebase_messaging: #
   fl_chart: ^0.36.0
-  fluro: ^2.0.3
-  flutter_blurhash: ^0.6.0
-  flutter_cache_manager: ^3.1.2
+  # fluro: ^2.0.3
+  # flutter_blurhash: ^0.6.0
+  # flutter_cache_manager: ^3.1.2
   flutter_conditional_rendering: ^2.0.0
   flutter_dotenv: ^5.0.0
-  flutter_linear_datepicker: ^1.1.2
+  # flutter_linear_datepicker: ^1.1.2
   flutter_masked_text2: ^0.9.1
-  flutter_sparkline: ^0.1.0
+  # flutter_sparkline: ^0.1.0
   flutter_svg: ^0.22.0
   flutter_typeahead: ^3.1.1
   get: ^4.3.8
-  get_it: ^7.2.0
+  # get_it: ^7.2.0
   get_storage: ^2.0.2
   google_fonts: ^2.0.0
   google_maps_flutter: ^2.0.3
@@ -66,7 +66,7 @@ dependencies:
   lottie: ^1.0.1
   modal_bottom_sheet: ^2.0.0
   number_inc_dec: ^0.8.0
-  octo_image: ^1.0.0+1
+  # octo_image: ^1.0.0+1
   percent_indicator: ^3.0.1
   rxdart: ^0.27.1
   scrollable_positioned_list: ^0.1.10
