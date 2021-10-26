@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/layout/main_layout.dart';
-import 'package:vet_app/design/styles/styles.dart';
 import '../../domain/offers_controller.dart';
 import 'app/create/create_promocion_view.dart';
 import 'app/offers_app.dart';
@@ -20,12 +20,17 @@ class OffersMain extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               if (_.promociones.length >= 5) {
-                Get.snackbar(
-                  'Advertencia',
-                  'Alcanzaste el límite de promociones, hasta 5 promociones',
-                  backgroundColor: colorYellow,
-                  colorText: colorBrown1,
+                snackBarMessage(
+                  type: TypeSnackBarName.INFO,
+                  message:
+                      'Alcanzaste el límite de promociones, hasta 5 promociones',
                 );
+                // Get.snackbar(
+                //   'Advertencia',
+                //   'Alcanzaste el límite de promociones, hasta 5 promociones',
+                //   backgroundColor: colorYellow,
+                //   colorText: colorBrown1,
+                // );
               } else {
                 Get.to(CreaPromocionView());
               }

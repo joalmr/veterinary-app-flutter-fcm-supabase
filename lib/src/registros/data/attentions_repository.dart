@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:vet_app/src/registros/data/model/attention_detail_model.dart';
 import 'package:vet_app/src/registros/data/model/attention_reg_model.dart';
+import 'package:vet_app/src/registros/data/model/show_file_model.dart';
 
 import '_attentions_interface.dart';
 import 'attention_api.dart';
@@ -27,7 +28,7 @@ class AttentionRepository extends AttentionInterface {
   }
 
   @override
-  Future<dynamic> showFile(String establishment, String attention) {
+  Future<ShowFile?> showFile(String establishment, String attention) {
     return _api.showFile(establishment, attention);
   }
 
@@ -35,5 +36,10 @@ class AttentionRepository extends AttentionInterface {
   Future<dynamic> uploadFile(
       String establishment, String attention, File file) {
     return _api.uploadFile(establishment, attention, file);
+  }
+
+  @override
+  Future deleteFile(String establishment, String attention, int fileId) {
+    return _api.deleteFile(establishment, attention, fileId);
   }
 }

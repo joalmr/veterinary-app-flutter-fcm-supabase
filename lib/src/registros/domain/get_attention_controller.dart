@@ -21,6 +21,7 @@ class GetAttentionsController extends GetxController {
   File get upFile => _file.value;
 
   final fileName = ''.obs;
+  final fileId = 0.obs;
 
   final loadingPage = true.obs;
 
@@ -49,8 +50,17 @@ class GetAttentionsController extends GetxController {
       attentionId.value,
     );
     if (response != null) {
-      fileName.value = response;
+      fileId.value = response.result!.fileId!;
+      fileName.value = response.result!.file!;
+    } else {
+      fileId.value = 0;
+      fileName.value = '';
     }
+  }
+
+  deleteFile() async {
+    await _repo.deleteFile(prefUser.vetId!, attentionId.value, fileId.value);
+    showFile();
   }
 
   uploadFile() async {
@@ -63,6 +73,7 @@ class GetAttentionsController extends GetxController {
         attentionId.value,
         upFile,
       );
+
       final datoJson = jsonDecode(response);
 
       if (datoJson['message'] == 'File uploaded successfully') {
@@ -74,8 +85,8 @@ class GetAttentionsController extends GetxController {
       }
     } else {
       snackBarMessage(
-        type: TypeSnackBarName.ERROR,
-        message: 'El formato del archivo no es compatible',
+        type: TypeSnackBarName.INFO,
+        message: 'El archivo no es compatible',
       );
     }
   }

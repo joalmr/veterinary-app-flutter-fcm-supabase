@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:vet_app/_supabase/services/auth/establishment.repo.dart';
 import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
@@ -10,17 +11,17 @@ import 'package:vet_app/src/_auth/data/auth_repository.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/create/crea_vet.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
+import 'package:vet_app/src/products/expenses/domain/my_expenses_controller.dart';
+import 'package:vet_app/src/products/sales/domain/my_sales_controller.dart';
 
 import 'push_controller.dart';
 
 class LoginController extends GetxController {
   final authService = AuthRepository();
+  final authSupa = AuthSupaRepo();
   final establishmentService = EstablishmentRepository();
 
   // final pushController = PushController();
-
-  final _homeController = Get.find<HomeController>();
-  final _global = Get.find<GlobalController>();
 
   String email = '';
   String password = '';
@@ -70,16 +71,16 @@ class LoginController extends GetxController {
   Future<void> initHome() async {
     final establishment = await establishmentService.getAll();
     // pushController.firebase(); //TODO: firebase
+
     if (establishment!.isEmpty) {
-      prefUser.hasMenu = false;
       btnLogIn.value = true;
       if (GetPlatform.isWeb) {
         Get.off(NewEstablishment());
       } else {
         Get.off(CreateVetMain(), arguments: 'new-estab');
       }
-    } else if (prefUser.vetDataHas() == false) {
-      prefUser.hasMenu = true;
+    } else {
+      //TODO: revisar login
       final temp = await establishmentService.getFirst();
       final VetStorage forStorage = VetStorage();
       forStorage.vetId = temp.id;
@@ -87,10 +88,16 @@ class LoginController extends GetxController {
       forStorage.vetLogo = temp.logo;
 
       prefUser.vetData = vetStorageToJson(forStorage);
+      await authSupa.getEstablishment(temp.id!, temp.name!);
 
-      _global.generalLoad();
-      _homeController.getVet();
+      Get.find<HomeController>().getVet();
+      Get.find<GlobalController>().generalLoad();
+
+      Get.find<MySalesController>().getSales();
+      Get.find<MyExpensesController>().getExpenses();
+
       btnLogIn.value = true;
+
       Get.offNamed(NameRoutes.home);
     }
   }

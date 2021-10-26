@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:vet_app/_supabase/services/auth/establishment.repo.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/resources/utils/preferences/preferences_model.dart';
 import 'package:vet_app/routes/routes.dart';
@@ -7,6 +8,7 @@ import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/data/model/establishment_model_lite.dart';
 import 'package:vet_app/src/establishments/presentation/pages/_children/show/show_vet.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
+import 'package:vet_app/src/products/sales/domain/my_sales_controller.dart';
 
 class EstablishmentsController extends GetxController {
   final establishmentRepo = EstablishmentRepository();
@@ -20,9 +22,12 @@ class EstablishmentsController extends GetxController {
 
   @override
   void onInit() {
-    if (prefUser.tokenHas() && prefUser.vetDataHas()) {
+    if (prefUser.tokenHas() &&
+        prefUser.vetDataHas() &&
+        prefUser.vetIdSupaHas()) {
       getAll();
     }
+
     super.onInit();
   }
 
@@ -60,9 +65,13 @@ class EstablishmentsController extends GetxController {
         forStorage.vetName = establecimientos.first.name;
         forStorage.vetLogo = establecimientos.first.logo;
 
+        await AuthSupaRepo()
+            .getEstablishment(forStorage.vetId!, forStorage.vetName!);
+
         prefUser.vetData = vetStorageToJson(forStorage);
       } else {
         prefUser.vetDataDel();
+        prefUser.vetIdSupaDel();
         prefUser.hasMenu = false;
       }
     }
@@ -73,28 +82,45 @@ class EstablishmentsController extends GetxController {
     Get.to(ShowVetMain(), arguments: id);
   }
 
-  void favoriteVet(String? id, String? name, String? logo) {
+  //TODO: mejorar favoriteVet
+  Future<void> favoriteVet(String? id, String? name, String? logo) async {
     prefUser.vetDataDel();
+    prefUser.vetIdSupaDel();
+
     final VetStorage forStorage = VetStorage();
     forStorage.vetId = id;
     forStorage.vetName = name;
     forStorage.vetLogo = logo;
 
     prefUser.vetData = vetStorageToJson(forStorage);
+
+    await AuthSupaRepo()
+        .getEstablishment(forStorage.vetId!, forStorage.vetName!);
+
     Get.find<HomeController>().nameVet.value = name!;
     Get.find<GlobalController>().generalLoad();
+
+    Get.find<MySalesController>().getSales();
   }
 
-  void favoriteVetToInit(String? id, String? name, String? logo) {
+  Future<void> favoriteVetToInit(String? id, String? name, String? logo) async {
     prefUser.vetDataDel();
+    prefUser.vetIdSupaDel();
+
     final VetStorage forStorage = VetStorage();
     forStorage.vetId = id;
     forStorage.vetName = name;
     forStorage.vetLogo = logo;
 
     prefUser.vetData = vetStorageToJson(forStorage);
+
+    await AuthSupaRepo()
+        .getEstablishment(forStorage.vetId!, forStorage.vetName!);
+
     Get.find<HomeController>().nameVet.value = name!;
     Get.find<GlobalController>().generalLoad();
+
+    Get.find<MySalesController>().getSales();
 
     Get.offNamedUntil(NameRoutes.home, (route) => false);
   }

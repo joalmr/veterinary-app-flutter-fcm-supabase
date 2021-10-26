@@ -24,15 +24,15 @@ class ShowVetController extends GetxController {
     super.onInit();
   }
 
-  @override
-  Future refresh() => _refresh();
+  // @override
+  // Future refresh() => _refresh();
 
-  Future<dynamic> _refresh() async {
-    cargando.value = true;
-    await Future.delayed(const Duration(milliseconds: 2));
-    getByid();
-    return null;
-  }
+  // Future<dynamic> _refresh() async {
+  //   cargando.value = true;
+  //   await Future.delayed(const Duration(milliseconds: 2));
+  //   getByid();
+  //   return null;
+  // }
 
   getByid() => _getByid();
 

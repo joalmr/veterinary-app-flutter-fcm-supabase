@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:supabase/supabase.dart';
-import 'package:vet_app/_supabase/chat_repo.dart';
-import 'package:vet_app/_supabase/model/canal_model.dart';
-import 'package:vet_app/_supabase/model/message_model.dart';
+import 'package:vet_app/_supabase/services/chat/chat.repo.dart';
+import 'package:vet_app/_supabase/model/canal.model.dart';
+import 'package:vet_app/_supabase/model/message.model.dart';
 import 'package:vet_app/config/variables_supabase.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/src/chat/presentation/app/message_view.dart';
@@ -14,7 +14,6 @@ class ChatController extends GetxController {
   RxList<CanalModel> chats = <CanalModel>[].obs;
   RxList<MessageModel> mensajes = <MessageModel>[].obs;
 
-  int? vetInt;
   int? canalId;
 
   RealtimeSubscription? subscriptionMessage;
@@ -24,8 +23,6 @@ class ChatController extends GetxController {
   Future<void> onInit() async {
     super.onInit();
 
-    vetInt = await _repo.getEstablishment(prefUser.vetId!, prefUser.vetName!);
-
     runSubscription();
 
     await getChats();
@@ -34,7 +31,7 @@ class ChatController extends GetxController {
 
   getChats() => _getChats();
   Future<void> _getChats() async {
-    final response = await _repo.getCanal(vetInt!);
+    final response = await _repo.getCanal(prefUser.vetIdSupa);
 
     chats.clear();
     chats.addAll(response);
@@ -42,7 +39,7 @@ class ChatController extends GetxController {
 
   void goToMessage(int canal) {
     Get.to(MessagesView());
-    //=> lei mensaje
+    //* lei mensaje
     _getMessage(canal);
   }
 
@@ -60,7 +57,7 @@ class ChatController extends GetxController {
   }
 
   void runSubscription() {
-    //escucha mensaje
+    //* escucha mensaje
     subscriptionMessage =
         supabaseClient.from('message').on(SupabaseEventTypes.delete, (payload) {
       _getMessage(canalId!);
@@ -71,7 +68,7 @@ class ChatController extends GetxController {
       _getMessage(canalId!);
     }).subscribe();
 
-    //escucha canal
+    //* escucha canal
     subscriptionMessage =
         supabaseClient.from('canal').on(SupabaseEventTypes.delete, (payload) {
       getChats();

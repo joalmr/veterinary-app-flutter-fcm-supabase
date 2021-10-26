@@ -2,29 +2,14 @@ include: package:lints/recommended.yaml
 
 linter:
   rules:
-    - camel_case_types
-    - avoid_empty_else
-    - await_only_futures
-    - camel_case_extensions
-    - prefer_single_quotes
+    camel_case_types: true
+    avoid_empty_else: true
+    await_only_futures: true
+    camel_case_extensions: true
+    prefer_single_quotes: true
     
-    - annotate_overrides
-    - avoid_print
-    # - avoid_renaming_method_parameters
-
-# #     # camel_case_types: true
-# #     # avoid_classes_with_only_static_members: false
-# #     # comment_references: true
-# #     # lines_longer_than_80_chars: false
-# #     # prefer_single_quotes: true
-# #     # sort_constructors_first: false
-# #     # # avoid_classes_with_only_static_members: false
-# #     # # argument_type_not_assignable: false
-# #     # # comment_references: true
-# #     # # lines_longer_than_80_chars: true
-# #     # # prefer_single_quotes: true
-# #     # # prefer_double_quotes: false
-# #     # # sort_constructors_first: false
-  
-    
+    annotate_overrides: true
+    avoid_print: true
+    avoid_function_literals_in_foreach_calls: false
+    # - avoid_renaming_method_parameters    
     

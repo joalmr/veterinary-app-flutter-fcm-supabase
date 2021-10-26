@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:vet_app/design/styles/styles.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/resources/utils/days/dia_semana.dart';
 import 'package:vet_app/src/__global/domain/global_controller.dart';
 import 'package:vet_app/src/establishments/data/establishment_repository.dart';
@@ -132,19 +132,15 @@ class EditSchedulesController extends GetxController {
 
     if (diaError != '' || diaHoraError != '') {
       if (diaError != '') {
-        Get.snackbar(
-          'Error',
-          'Complete los datos de $diaError',
-          backgroundColor: colorRed,
-          colorText: colorWhite,
+        snackBarMessage(
+          type: TypeSnackBarName.ERROR,
+          message: 'Complete los datos de $diaError',
         );
       }
       if (diaHoraError != '') {
-        Get.snackbar(
-          'Error',
-          diaHoraError,
-          backgroundColor: colorRed,
-          colorText: colorWhite,
+        snackBarMessage(
+          type: TypeSnackBarName.ERROR,
+          message: diaHoraError,
         );
       }
       response = true;

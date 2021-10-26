@@ -1,4 +1,3 @@
-// TODO: FIREBASE
 // import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:get/get.dart';
 // import 'package:vet_app/src/__global/domain/global_controller.dart';
@@ -6,7 +5,6 @@
 
 // class PushController extends GetxController {
 //   final fireLogin = AuthRepository();
-//   // final homeC = Get.find<HomeController>();
 
 //   final _firebaseMessaging = FirebaseMessaging.instance;
 

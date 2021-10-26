@@ -1,14 +1,13 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:vet_app/config/variables_global.dart';
-import 'package:vet_app/routes/routes.dart';
 import 'package:vet_app/src/_auth/domain/push_controller.dart';
 import 'package:vet_app/src/calendar/domain/calendar_controller.dart';
-import 'package:vet_app/src/establishments/data/establishment_repository.dart';
 import 'package:vet_app/src/establishments/domain/establishments_controller.dart';
 import 'package:vet_app/src/home/domain/home_controller.dart';
 import 'package:vet_app/src/registros/domain/attentions_controller.dart';
-import 'package:vet_app/src/userClients/domain/user_clients_controller.dart';
+import 'package:vet_app/src/user_clients/domain/user_clients_controller.dart';
 
 class GlobalController extends GetxController {
   bool init = false;
@@ -21,15 +20,13 @@ class GlobalController extends GetxController {
 
   // final pushController = PushController();
 
-  // final hasMenu = false.obs;
-
   @override
   void onInit() {
     openApp();
     super.onInit();
   }
 
-  void generalLoad() {
+  void generalLoad() async {
     _home.getAllBookings();
     _calendar.loadCalendar();
     _attention.getAll();
@@ -38,23 +35,11 @@ class GlobalController extends GetxController {
   }
 
   Future<void> openApp() async {
-    if (prefUser.tokenHas() == true && prefUser.vetDataHas() == true) {
+    if (prefUser.tokenHas() == true &&
+        prefUser.vetDataHas() == true &&
+        prefUser.vetIdSupaHas() == true) {
       // pushController.firebase(); // TODO: firebase
-      final response = await EstablishmentRepository().getAll();
-
-      if (response!.isNotEmpty) {
-        prefUser.hasMenu = true;
-        Timer(const Duration(milliseconds: 2500),
-            () => Get.offNamed(NameRoutes.home));
-      } else {
-        prefUser.hasMenu = false;
-        Timer(const Duration(milliseconds: 2500),
-            () => Get.offNamed(NameRoutes.establishments));
-      }
-    } else {
-      prefUser.hasMenu = false;
-      Timer(const Duration(milliseconds: 2500),
-          () => Get.offNamed(NameRoutes.login));
+      log('open');
     }
   }
 }

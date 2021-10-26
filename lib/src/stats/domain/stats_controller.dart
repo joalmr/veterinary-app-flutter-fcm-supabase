@@ -1,10 +1,13 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vet_app/_supabase/services/product/product.repo.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/config/variables_global.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/utils/datetime_format.dart';
 import 'package:vet_app/components/color_generate.dart';
+import 'package:vet_app/src/stats/data/model/service_stats_versus_sales.model.dart';
 import 'package:vet_app/src/stats/data/model/stat_comment_model.dart';
 import 'package:vet_app/src/stats/data/model/stats_base_model.dart';
 import 'package:vet_app/src/stats/data/model/stats_sales_daily_model.dart';
@@ -14,6 +17,7 @@ import 'package:vet_app/src/stats/data/stats_repository.dart';
 
 class StatsController extends GetxController {
   final _repo = StatsRepository();
+  final _repoGeneralVs = ProductGeneralRepo();
 
   final fechaIn = TextEditingController();
   final fechaOut = TextEditingController();
@@ -32,6 +36,13 @@ class StatsController extends GetxController {
   final cargaServices = false.obs;
   final cargaSalesDay = false.obs;
   final cargaSalesMonth = false.obs;
+
+  double generalIngresos = 0;
+  double generalEgresos = 0;
+
+  dynamic generalVersus = [];
+  dynamic totalValuesversus;
+  ServicesStatsModel servicesSalesStats = ServicesStatsModel();
 
   final hoy = DateTime.now();
 
@@ -56,6 +67,20 @@ class StatsController extends GetxController {
     getStatsService();
     getStatsDaily();
     getStatsMonthly();
+
+    generalVersus =
+        await _repoGeneralVs.generalVersus(fechaIn.text, fechaOut.text);
+
+    servicesSalesStats =
+        await _repo.servicesStat(prefUser.vetId!, fechaIn.text, fechaOut.text);
+
+    final responseVersus =
+        await _repoGeneralVs.totalValuesversus(fechaIn.text, fechaOut.text);
+
+    generalIngresos = responseVersus['income'];
+    generalEgresos = responseVersus['expense'];
+
+    update(['versusSales']);
   }
 
   ejecStats() {
@@ -64,11 +89,9 @@ class StatsController extends GetxController {
     final diffDate = date2.difference(date1);
 
     if (diffDate.inDays < 1) {
-      Get.snackbar(
-        'Error',
-        'La "fecha desde" debe ser anterior a la "fecha hasta"',
-        backgroundColor: colorRed,
-        colorText: colorWhite,
+      snackBarMessage(
+        type: TypeSnackBarName.ERROR,
+        message: 'La "fecha desde" debe ser anterior a la "fecha hasta"',
       );
     } else {
       cargaStats();

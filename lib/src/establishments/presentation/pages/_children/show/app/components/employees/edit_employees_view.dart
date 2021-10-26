@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vet_app/components/buttons.dart';
+import 'package:vet_app/components/snackbar.dart';
 import 'package:vet_app/design/styles/styles.dart';
 import 'package:vet_app/resources/icons/proypet_icons.dart';
 import 'package:vet_app/src/establishments/domain/edit/edit_employees_controller.dart';
@@ -81,11 +82,10 @@ class EditEmployeesView extends StatelessWidget {
                           ),
                           onPressed: () {
                             _.employees.length <= 1
-                                ? Get.snackbar(
-                                    'Advertencia',
-                                    '''No puede ser eliminado, debe tener al menos un empleado''',
-                                    backgroundColor: colorYellow,
-                                    colorText: colorBrown1,
+                                ? snackBarMessage(
+                                    type: TypeSnackBarName.INFO,
+                                    message:
+                                        '''No puede ser eliminado, debe tener al menos un empleado''',
                                   )
                                 : showDialog(
                                     context: context,

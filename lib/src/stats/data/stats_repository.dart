@@ -1,3 +1,4 @@
+import 'package:vet_app/src/stats/data/model/service_stats_versus_sales.model.dart';
 import 'package:vet_app/src/stats/data/model/stats_base_model.dart';
 
 import 'package:vet_app/src/stats/data/model/stat_comment_model.dart';
@@ -22,6 +23,12 @@ class StatsRepository extends StatsInterface {
   Future<List<StatCommentModel>> getStatsComment(
       String establecimientoId, String from, String to) {
     return _api.getStatsComment(establecimientoId, from, to);
+  }
+
+  @override
+  Future<ServicesStatsModel> servicesStat(
+      String establecimientoId, String fechain, String fechaout) {
+    return _api.servicesStat(establecimientoId, fechain, fechaout);
   }
 
   @override

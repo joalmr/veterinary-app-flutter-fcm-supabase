@@ -29,3 +29,16 @@ keytool -list -v \
 
 keytool -list -v \
 -alias upload -keystore /Users/admin/keystore.jks
+
+
+
+## registro
+POST: proypet.com/vetowner/register
+
+[
+    'name' => ['required', 'string', 'max:255'],
+    'lastname' => ['required', 'string', 'max:255'],
+    'phone' => ['sometimes'],
+    'email' => ['required', 'string', 'email:filter', 'max:255', 'unique:users'],
+    'password' => ['required', 'string', 'min:8', 'confirmed'],
+]
