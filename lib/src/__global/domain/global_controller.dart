@@ -18,7 +18,7 @@ class GlobalController extends GetxController {
   final _clients = Get.find<ClientsController>();
   final _establishment = Get.find<EstablishmentsController>();
 
-  final pushController = PushController();
+  // final pushController = PushController();
 
   @override
   void onInit() {
@@ -38,7 +38,7 @@ class GlobalController extends GetxController {
     if (prefUser.tokenHas() == true &&
         prefUser.vetDataHas() == true &&
         prefUser.vetIdSupaHas() == true) {
-      pushController.firebase(); // TODO: firebase
+      // pushController.firebase(); // TODO: firebase
       log('open');
     }
   }
