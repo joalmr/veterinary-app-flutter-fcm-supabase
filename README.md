@@ -1,14 +1,29 @@
 # Partners Proypet
 
 <img src="./assets/1.png" 
-alt="Proypet Veterinaria" 
+alt="Proypet Partners" 
 width="auto" 
-height="512" 
+height="282" 
 />
 <img src="./assets/2.png" 
-alt="Proypet Veterinaria" 
+alt="Proypet Partners" 
 width="auto" 
-height="512" 
+height="282" 
+/>
+<img src="./assets/3.png" 
+alt="Proypet Partners" 
+width="auto" 
+height="282" 
+/>
+<img src="./assets/4.png" 
+alt="Proypet Partners" 
+width="auto" 
+height="282" 
+/>
+<img src="./assets/5.png" 
+alt="Proypet Partners" 
+width="auto" 
+height="282" 
 />
 
 ### App de seguimiento de clientes y postventa de servicios veterinarios
