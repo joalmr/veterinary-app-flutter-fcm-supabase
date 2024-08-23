@@ -5,6 +5,11 @@ alt="Proypet Veterinaria"
 width="auto" 
 height="512" 
 />
+<img src="./assets/2.png" 
+alt="Proypet Veterinaria" 
+width="auto" 
+height="512" 
+/>
 
 ### App de seguimiento de clientes y postventa de servicios veterinarios
 
