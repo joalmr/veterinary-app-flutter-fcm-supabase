@@ -77,6 +77,8 @@ Pasos para colaborar:
    4. Haz push: git push origin feature/nueva-funcionalidad
    5. Abre un Pull Request.
    ```
+## 📄 Licencia
+Este proyecto está bajo la licencia [MIT](#).
 
 ## 📬 Contacto
 Puedes contactarme desde mi portafolio:
