@@ -55,6 +55,8 @@
    flutter run
    ```
 
+---
+
 ## 🧠 Aprendizajes y Desafíos
 Durante el desarrollo de este proyecto aprendí a:
 - Usar Supabase como alternativa a Firebase para auth, base de datos y storage.
@@ -62,10 +64,14 @@ Durante el desarrollo de este proyecto aprendí a:
 - Diseñar una arquitectura escalable utilizando Provider como gestor de estado.
 - Separar datos clínicos por paciente y controlarlos desde una UI amigable.
 
+---
+
 ## 🔮 Próximas Funcionalidades
 - 📍 Integración con mapas para localizar veterinarias cercanas.
 - 🧑‍⚕️ Perfil profesional para veterinarios y groomers.
 - 💬 Chat en tiempo real entre clientes y profesionales.
+
+---
 
 ## 🤝 Contribuciones
 ¡Toda contribución es bienvenida!
@@ -77,12 +83,19 @@ Pasos para colaborar:
    4. Haz push: git push origin feature/nueva-funcionalidad
    5. Abre un Pull Request.
    ```
+
+---
+
 ## 📄 Licencia
 Este proyecto está bajo la licencia [MIT](#).
+
+---
 
 ## 📬 Contacto
 Puedes contactarme desde mi portafolio:
 👉 [https://joalmr.vercel.app](https://joalmr.vercel.app)
+
+---
 
 ## Partners Proypet
 
