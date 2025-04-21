@@ -84,7 +84,7 @@ Pasos para colaborar:
 Puedes contactarme desde mi portafolio:
 👉 [https://joalmr.vercel.app](https://joalmr.vercel.app)
 
-# Partners Proypet
+## Partners Proypet
 
 <img src="./assets/1.png" 
 alt="Proypet Partners" 
