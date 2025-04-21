@@ -2,8 +2,6 @@
 
 **Proypet** es una aplicación móvil desarrollada con Flutter, pensada para veterinarios y groomers. Facilita el seguimiento de clientes, la gestión de servicios postventa, el historial clínico de los pacientes, y permite programar notificaciones para futuras citas y seguimientos.
 
-![Proypet Partners](./assets/images/proypet_partners.png)
-
 ---
 
 ## 🚀 Características Principales
