@@ -12,8 +12,6 @@
 - 🔔 Notificaciones push para próximas citas y seguimientos.
 - 📊 Panel de control para visualizar estadísticas y métricas relevantes.
 
----
-
 ## 🛠️ Tecnologías Utilizadas
 
 - **Flutter** – Framework multiplataforma.
@@ -23,8 +21,6 @@
   - Storage.
 - **Firebase Cloud Messaging (FCM)** – Notificaciones push.
 - **Provider** – Gestión de estados en Flutter.
-
----
 
 ## 📦 Instalación y Configuración
 
@@ -55,8 +51,6 @@
    flutter run
    ```
 
----
-
 ## 🧠 Aprendizajes y Desafíos
 Durante el desarrollo de este proyecto aprendí a:
 - Usar Supabase como alternativa a Firebase para auth, base de datos y storage.
@@ -64,14 +58,10 @@ Durante el desarrollo de este proyecto aprendí a:
 - Diseñar una arquitectura escalable utilizando Provider como gestor de estado.
 - Separar datos clínicos por paciente y controlarlos desde una UI amigable.
 
----
-
 ## 🔮 Próximas Funcionalidades
 - 📍 Integración con mapas para localizar veterinarias cercanas.
 - 🧑‍⚕️ Perfil profesional para veterinarios y groomers.
 - 💬 Chat en tiempo real entre clientes y profesionales.
-
----
 
 ## 🤝 Contribuciones
 ¡Toda contribución es bienvenida!
@@ -84,12 +74,8 @@ Pasos para colaborar:
    5. Abre un Pull Request.
    ```
 
----
-
 ## 📄 Licencia
 Este proyecto está bajo la licencia [MIT](#).
-
----
 
 ## 📬 Contacto
 Puedes contactarme desde mi portafolio:
